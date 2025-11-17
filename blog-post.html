@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Reasons Your Twitter Audience Isn't Growing | Andrei Lucian</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F5F5F5;
+        }
+        .article-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            background-color: #F5F5F5;
+        }
+        .article-content {
+            max-width: 800px;
+        }
+        .article-meta {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        .article-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 32px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333333;
+        }
+        .article-body h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #000000;
+            margin: 48px 0 20px;
+            line-height: 1.3;
+        }
+        .article-body h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000000;
+            margin: 36px 0 16px;
+        }
+        .article-body p {
+            margin-bottom: 24px;
+        }
+        .article-body ul, .article-body ol {
+            margin: 24px 0;
+            padding-left: 32px;
+        }
+        .article-body li {
+            margin-bottom: 12px;
+        }
+        .article-body strong {
+            color: #000000;
+            font-weight: 700;
+        }
+        .article-body blockquote {
+            border-left: 4px solid #A0785A;
+            padding-left: 24px;
+            margin: 32px 0;
+            font-style: italic;
+            color: #666666;
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .sidebar-section {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 32px;
+            display: block;
+            object-fit: cover;
+            border: 2px solid #A0785A;
+            background-color: #f0f0f0;
+        }
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .author-bio {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            border-color: #A0785A;
+            color: #A0785A;
+            transform: translateY(-2px);
+        }
+        .product-promo {
+            margin-top: 16px;
+        }
+        .product-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .product-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #000000;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+        .product-desc {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .product-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #A0785A;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .product-link:hover {
+            background: #8d6a4a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(160, 120, 90, 0.3);
+        }
+        @media (max-width: 1024px) {
+            .article-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">Andrei Lucian</a>
+            <div class="nav-links">
+                <a href="index.html#newsletter-signup" class="nav-link">Newsletters</a>
+                <a href="ghostwriting.html" class="nav-link">Need a Ghostwriter?</a>
+            </div>
+            <div class="nav-icons">
+                <a href="mailto:contact@andreilucian.com" class="icon-link email-icon" aria-label="Email">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.5 5L10 10L17.5 5M3.33333 15H16.6667C17.5871 15 18.3333 14.2538 18.3333 13.3333V6.66667C18.3333 5.74619 17.5871 5 16.6667 5H3.33333C2.41286 5 1.66667 5.74619 1.66667 6.66667V13.3333C1.66667 14.2538 2.41286 15 3.33333 15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <div class="article-meta">by Andrei Lucian | 2025</div>
+            <h1 class="article-title">7 Reasons Your Twitter Audience Isn't Growing</h1>
+            
+            <div class="article-body">
+                <p>If you've been posting consistently on Twitter (X) but your audience isn't growing, you're not alone. After helping 20+ creators grow their accounts, I've identified the 8 most common reasons why audiences stagnate.</p>
+
+                <h2>1. You're Not Providing Value</h2>
+                <p>The biggest mistake I see is creators posting about their day without providing actionable value. Your audience needs to learn something, be inspired, or be entertained. Every post should serve your audience, not just you.</p>
+
+                <h2>2. Inconsistent Posting</h2>
+                <p>Posting once a week won't cut it. The algorithm rewards consistency. Aim for at least once per day, ideally 2-3 times. This keeps you top of mind and increases your chances of going viral.</p>
+
+                <h2>3. No Clear Niche</h2>
+                <p>If you're posting about everything, you're posting about nothing. Pick a niche and become known for it. Whether it's writing, business, or personal development, own your space.</p>
+
+                <h2>4. You're Not Engaging</h2>
+                <p>Social media is a two-way street. Reply to comments, engage with other creators in your niche, and build genuine relationships. Engagement begets engagement.</p>
+
+                <h2>5. Weak Hook</h2>
+                <p>Your first line determines if someone reads the rest. Use curiosity, controversy, or a bold statement. Make them want to know more.</p>
+
+                <h2>6. No Call to Action</h2>
+                <p>Tell your audience what to do. Ask a question, invite them to share their thoughts, or encourage them to follow for more. Clear CTAs drive engagement.</p>
+
+                <h2>7. Ignoring Analytics</h2>
+                <p>What gets measured gets managed. Check which posts perform best and create more like them. Double down on what works.</p>
+
+                <h2>8. Giving Up Too Soon</h2>
+                <p>Growth takes time. Most creators quit before they see results. Stay consistent for at least 90 days before evaluating. Success is a marathon, not a sprint.</p>
+
+                <h2>Conclusion</h2>
+                <p>Growing on X isn't complicated, but it requires consistency, value, and strategy. Focus on these 8 areas, and you'll see your audience grow.</p>
+
+                <p style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #e0e0e0; color: #666666;">
+                    I hope this article was helpful. You can sign up to my free newsletter below to get articles like this in your inbox.
+                </p>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Author Section -->
+            <div class="sidebar-section">
+                <img src="assets/images/483102354_9421932024568092_4232161367664087615_n.jpg" alt="Andrei Lucian" class="author-photo">
+                <h3 class="sidebar-title">Who Is Andrei Lucian?</h3>
+                <p class="author-bio">
+                    I turn founders into X & LinkedIn authorities with done-for-you content systems.
+                </p>
+                <div class="social-links">
+                    <a href="https://x.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M15.5 2h2.5l-5.5 6.25L18 15h-4.5l-3.5-4.5L6 15H2l5-5.75L2 2h4.5l3 4L13 2h2.5z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M4.5 2C3.67 2 3 2.67 3 3.5v13c0 .83.67 1.5 1.5 1.5h13c.83 0 1.5-.67 1.5-1.5v-13c0-.83-.67-1.5-1.5-1.5h-13zM7 7h2v8H7V7zm1-2a1 1 0 1 1 0 2 1 1 0 0 1-2 0zm3 2h1.5v8H11V7zm2.5 0H15v5.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V7h1.5v8H17v-3.5c0-1.38-1.12-2.5-2.5-2.5S12 10.12 12 11.5V15h-1V7z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2.5c2.76 0 3.08.01 4.17.06.98.04 1.51.18 1.86.3.47.15.8.33 1.15.68.35.35.53.68.68 1.15.12.35.26.88.3 1.86.05 1.09.06 1.41.06 4.17s-.01 3.08-.06 4.17c-.04.98-.18 1.51-.3 1.86-.15.47-.33.8-.68 1.15-.35.35-.68.53-1.15.68-.35.12-.88.26-1.86.3-1.09.05-1.41.06-4.17.06s-3.08-.01-4.17-.06c-.98-.04-1.51-.18-1.86-.3-.47-.15-.8-.33-1.15-.68-.35-.35-.53-.68-.68-1.15-.12-.35-.26-.88-.3-1.86-.05-1.09-.06-1.41-.06-4.17s.01-3.08.06-4.17c.04-.98.18-1.51.3-1.86.15-.47.33-.8.68-1.15.35-.35.68-.53 1.15-.68.35-.12.88-.26 1.86-.3 1.09-.05 1.41-.06 4.17-.06zm0-2.5C7.24 0 6.92.01 5.83.06 4.85.1 4.32.24 3.97.36 3.5.51 3.17.69 2.82 1.04 2.47 1.39 2.29 1.72 2.14 2.19 2.02 2.66 1.98 3.64 1.93 4.73 1.92 5.05 1.92 7.81 1.92 10.57s.01 5.52.06 6.61c.04.98.18 1.51.3 1.86.15.47.33.8.68 1.15.35.35.68.53 1.15.68.35.12.88.26 1.86.3 1.09.05 1.41.06 4.17.06s3.08-.01 4.17-.06c.98-.04 1.51-.18 1.86-.3.47-.15.8-.33 1.15-.68.35-.35.53-.68.68-1.15.12-.35.26-.88.3-1.86.05-1.09.06-1.41.06-4.17s-.01-3.08-.06-4.17c-.04-.98-.18-1.51-.3-1.86-.15-.47-.33-.8-.68-1.15-.35-.35-.68-.53-1.15-.68-.35-.12-.88-.26-1.86-.3-1.09-.05-1.41-.06-4.17-.06z"/>
+                            <path d="M10 5.38c-2.55 0-4.62 2.07-4.62 4.62s2.07 4.62 4.62 4.62 4.62-2.07 4.62-4.62-2.07-4.62-4.62-4.62zm0 7.62c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6.25-7.5c-.6 0-1.08.48-1.08 1.08s.48 1.08 1.08 1.08 1.08-.48 1.08-1.08-.48-1.08-1.08-1.08z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.threads.net/@yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Threads">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S3.5 13.59 3.5 10 6.41 3.5 10 3.5z"/>
+                            <path d="M10 6.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5S11.93 6.5 10 6.5zm0 5.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                            <circle cx="10" cy="10" r="1"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">How I Can Help You:</h3>
+                <div class="product-promo">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <div style="text-align: center; color: white; padding: 20px;">
+                                <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">WRITING</div>
+                                <div style="font-size: 32px; font-weight: 800;">SIMPLIFIED</div>
+                            </div>
+                        </div>
+                        <div class="product-name">Writing Simplified</div>
+                        <p class="product-desc">This free 17-page e-book explains how you actually write high-performing content for social media.</p>
+                        <a href="index.html#newsletter-signup" class="product-link">Learn More</a>
+                    </div>
+
+                    <div class="product-item">
+                        <div class="product-image">
+                            <div style="text-align: center; color: white; padding: 20px;">
+                                <div style="font-size: 48px; font-weight: 800; margin-bottom: 8px;">X</div>
+                                <div style="font-size: 24px; font-weight: 700;">SIMPLIFIED</div>
+                            </div>
+                        </div>
+                        <div class="product-name">X Simplified</div>
+                        <p class="product-desc">This free 45-page e-book explains how you actually grow and monetize your Twitter (X) account.</p>
+                        <a href="index.html#newsletter-signup" class="product-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-signup" style="background: var(--gradient-dark); padding: 80px 40px;">
+        <div class="signup-content" style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 32px; font-weight: 700; color: var(--text-white); margin-bottom: 16px;">Not a subscriber yet?</h2>
+            <p style="font-size: 18px; color: var(--text-light); margin-bottom: 32px;">
+                Join <strong style="color: var(--text-white);">550+ creators</strong> who get weekly strategies on digital writing, personal branding, and turning their writing into real income.
+            </p>
+            <form id="newsletterFormBottom" class="newsletter-form" style="max-width: 600px; margin: 0 auto;">
+                <input 
+                    type="email" 
+                    id="emailInputBottom" 
+                    class="email-input" 
+                    placeholder="Your Email"
+                    required
+                    style="flex: 1; min-width: 250px; padding: 16px 20px; font-size: 16px; border: 2px solid var(--border-light); background-color: rgba(255, 255, 255, 0.05); color: var(--text-white); font-family: inherit; border-radius: 8px;"
+                >
+                <button type="submit" class="submit-btn" style="padding: 16px 32px; font-size: 16px; font-weight: 600; background: var(--gradient-gold); color: var(--text-white); border: none; cursor: pointer; border-radius: 8px;">
+                    Read For Free
+                </button>
+            </form>
+            <div id="formMessageBottom" class="form-message"></div>
+        </div>
+    </section>
+
+    <!-- Article Navigation -->
+    <nav class="article-nav">
+        <div class="article-nav-container">
+            <a href="index.html#newsletter-signup" class="article-nav-link">Newsletters</a>
+            <a href="ghostwriting.html" class="article-nav-link">Need a Ghostwriter?</a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 Andrei Lucian. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

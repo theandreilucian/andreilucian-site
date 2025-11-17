@@ -1,0 +1,64 @@
+TESTIMONIAL FILES TO ADD TO: assets/images/testimonials/
+
+==========================================
+VIDEO TESTIMONIALS
+==========================================
+testimonial-1.mp4
+- Video testimonial from a client
+- Add corresponding thumbnail: video-thumb-1.jpg
+
+testimonial-2.mp4
+- Video testimonial from a client
+- Add corresponding thumbnail: video-thumb-2.jpg
+
+testimonial-3.mp4
+- Video testimonial from a client
+- Add corresponding thumbnail: video-thumb-3.jpg
+
+==========================================
+IMAGE/SCREENSHOT TESTIMONIALS
+==========================================
+testimonial-img-1.jpg
+- Screenshot of client testimonial (email, message, review, etc.)
+
+testimonial-img-2.jpg
+- Screenshot of client testimonial
+
+testimonial-img-3.jpg
+- Screenshot of client testimonial
+
+testimonial-img-4.jpg
+- Screenshot of client testimonial
+
+testimonial-img-5.jpg
+- Screenshot of client testimonial
+
+testimonial-img-6.jpg
+- Screenshot of client testimonial
+
+==========================================
+NOTES:
+- Videos should be in MP4 format
+- Video thumbnails (poster images) should be JPG format
+- Image testimonials can be JPG or PNG
+- Update the captions in ghostwriting.html with actual client names and roles
+- The section will automatically display once files are added
+- You can add more videos/images by duplicating the card structure in the HTML
+
+==========================================
+CURRENT STRUCTURE:
+- Video Testimonials: 3 slots (can add more)
+- Image Testimonials: 6 slots (can add more)
+- All responsive: 3 columns → 2 columns → 1 column on mobile
+
+
+
+
+
+
+
+
+
+
+
+
