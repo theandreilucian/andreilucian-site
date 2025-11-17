@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Generator - Personal Branding & X Growth System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .cover-container {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Personal Branding Cover */
+        .cover-personal-branding {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .cover-personal-branding::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(196, 154, 75, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c49a4b 0%, #d4a574 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(196, 154, 75, 0.3);
+        }
+
+        .cover-logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .cover-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        .cover-author {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* X Growth System Cover */
+        .cover-x-growth {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .cover-x-growth::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(74, 222, 128, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cover-x-logo {
+            font-size: 120px;
+            font-weight: 900;
+            color: #c49a4b;
+            line-height: 1;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(196, 154, 75, 0.3);
+        }
+
+        .cover-x-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cover-x-subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .cover-x-author {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .cover-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: rgba(196, 154, 75, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .stat-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .instructions {
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .instructions h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .instructions p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4a4a4a;
+            margin-bottom: 12px;
+        }
+
+        .instructions ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .instructions li {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4a4a4a;
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .instructions {
+                display: none;
+            }
+            .cover-container {
+                page-break-after: always;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Personal Branding Cover -->
+    <div class="cover-container cover-personal-branding">
+        <div class="cover-content">
+            <div class="cover-logo">
+                <div class="cover-logo-text">PB</div>
+            </div>
+            <h1 class="cover-title">PERSONAL<br>BRANDING</h1>
+            <p class="cover-subtitle">A curated collection of proven hooks, templates, and content pieces from best-performing posts</p>
+        </div>
+        <div class="cover-author">Andrei Lucian</div>
+    </div>
+
+    <!-- X Growth System Cover -->
+    <div class="cover-container cover-x-growth">
+        <div class="cover-content">
+            <div class="cover-x-logo">X</div>
+            <h1 class="cover-x-title">THE X<br>GROWTH SYSTEM</h1>
+            <div class="cover-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-text">0 to 44K followers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-text">6-figure business</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-text">2 hours per day</div>
+                </div>
+            </div>
+            <p class="cover-x-subtitle">The exact system, strategies, and frameworks that made it possible</p>
+        </div>
+        <div class="cover-x-author">Andrei Lucian</div>
+    </div>
+
+    <div class="instructions">
+        <h2>📸 How to Export These Covers as Images</h2>
+        <p><strong>Option 1: Screenshot (Quick Method)</strong></p>
+        <ul>
+            <li>Right-click on each cover</li>
+            <li>Select "Inspect" or "Inspect Element"</li>
+            <li>Right-click on the cover element in the developer tools</li>
+            <li>Select "Capture node screenshot" (Chrome/Edge)</li>
+            <li>Or use a screenshot tool to capture just the cover</li>
+        </ul>
+
+        <p><strong>Option 2: Browser Extension</strong></p>
+        <ul>
+            <li>Install "GoFullPage" or similar extension</li>
+            <li>Capture the covers and crop them</li>
+        </ul>
+
+        <p><strong>Option 3: Print to PDF</strong></p>
+        <ul>
+            <li>Press Ctrl+P (or Cmd+P on Mac)</li>
+            <li>Select "Save as PDF"</li>
+            <li>Each cover will be on a separate page</li>
+            <li>Convert PDF pages to images using online tools</li>
+        </ul>
+
+        <p><strong>Option 4: Online Tools</strong></p>
+        <ul>
+            <li>Use tools like htmlcsstoimage.com</li>
+            <li>Paste the HTML/CSS code for each cover</li>
+            <li>Download as PNG/JPG</li>
+        </ul>
+
+        <p><strong>Recommended Size:</strong> 400x600px (book cover ratio)</p>
+    </div>
+
+    <script>
+        // Optional: Add download functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
+
