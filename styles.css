@@ -866,23 +866,18 @@ body {
     text-align: left;
 }
 
-/* Center 2 products in second row (4th and empty 5th card) */
-.resource-grid > .resource-card:nth-child(4) {
-    grid-column: 1 / span 1;
-    justify-self: end;
-    margin-right: 16px;
-}
-
-.resource-grid > .resource-card:nth-child(5) {
-    display: none; /* Hide empty card on desktop */
-}
-
-/* Alternative approach: Center both in the middle 2 columns */
+/* Center 2 products in second row (4th and 5th card) */
 @media (min-width: 969px) {
     .resource-grid > .resource-card:nth-child(4) {
-        grid-column: 2 / span 1;
-        justify-self: center;
-        margin-right: 0;
+        grid-column: 1 / span 1;
+        justify-self: end;
+        margin-right: 16px;
+    }
+
+    .resource-grid > .resource-card:nth-child(5) {
+        grid-column: 3 / span 1;
+        justify-self: start;
+        margin-left: 16px;
     }
 }
 
@@ -962,6 +957,29 @@ body {
 .resource-button-free:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(196, 154, 75, 0.5);
+}
+
+.resource-button-course {
+    background-color: #2d3748;
+    color: #ffffff;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    margin: 0 20px 16px;
+    box-shadow: 0 6px 20px rgba(45, 55, 72, 0.35);
+}
+
+.resource-button-course .resource-icon {
+    font-size: 17px;
+}
+
+.resource-button-course:hover {
+    transform: translateY(-2px);
+    background-color: #1a202c;
+    box-shadow: 0 10px 24px rgba(45, 55, 72, 0.5);
 }
 
 .resource-tag {
