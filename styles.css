@@ -1981,6 +1981,57 @@ body.article-page .email-icon {
 
 .article-content {
     display: block;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+}
+
+.article-content h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 48px;
+    margin-bottom: 20px;
+    color: var(--text-white);
+    line-height: 1.2;
+}
+
+.article-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.3;
+}
+
+.article-content p {
+    margin-bottom: 18px;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.article-content ul {
+    margin: 20px 0;
+    padding-left: 24px;
+}
+
+.article-content li {
+    margin-bottom: 12px;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+.article-content strong {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.article-content em {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .article-outro {
