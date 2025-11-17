@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('emailInput');
     const emailInputBottom = document.getElementById('emailInputBottom');
     const substackUrlFromAttr = document.body ? document.body.getAttribute('data-substack-url') : null;
-    const SUBSTACK_URL = substackUrlFromAttr || (typeof window !== 'undefined' && window.SUBSTACK_URL) || 'https://newsletter.andreilucian.com';
+    const SUBSTACK_URL = substackUrlFromAttr || (typeof window !== 'undefined' && window.SUBSTACK_URL) || 'https://theandreilucian.substack.com';
     const formMessage = document.getElementById('formMessage');
     const formMessageBottom = document.getElementById('formMessageBottom');
     const articleUnlockForm = document.getElementById('articleUnlockForm');

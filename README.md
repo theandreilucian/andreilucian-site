@@ -52,7 +52,7 @@ Vercel will automatically deploy your changes! 🎉
 ## 🔗 Links
 
 - **Website:** https://andreilucian.com
-- **Newsletter:** https://newsletter.andreilucian.com (Substack)
+- **Newsletter:** https://theandreilucian.substack.com (Substack)
 
 ## 📚 Documentation
 
