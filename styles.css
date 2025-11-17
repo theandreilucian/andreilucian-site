@@ -918,9 +918,10 @@ body {
 
 .resource-card p {
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #4a4a4a;
-    padding: 0 20px 18px;
+    padding: 0 20px 20px;
+    flex-grow: 1;
     flex: 1;
 }
 
