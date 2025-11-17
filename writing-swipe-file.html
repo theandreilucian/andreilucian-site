@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Swipe File - Andrei Lucian</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .product-landing {
+            min-height: 100vh;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-landing::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .product-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-cover-wrapper {
+            margin-bottom: 60px;
+            perspective: 1000px;
+        }
+
+        .product-cover {
+            max-width: 280px;
+            width: 100%;
+            margin: 0 auto;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            transform: rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .product-cover:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        .product-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .product-title {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .product-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-form-wrapper {
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .product-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .product-email-input {
+            width: 100%;
+            padding: 18px 24px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #FFFFFF;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .product-email-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .product-email-input:focus {
+            outline: none;
+            border-color: #c49a4b;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .product-submit-btn {
+            padding: 18px 32px;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .product-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(74, 222, 128, 0.4);
+        }
+
+        .product-privacy {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 16px;
+        }
+
+        .product-back-link {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            z-index: 2;
+        }
+
+        .product-back-link:hover {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            .product-landing {
+                padding: 40px 20px;
+            }
+
+            .product-cover {
+                max-width: 220px;
+            }
+
+            .product-back-link {
+                top: 20px;
+                left: 20px;
+            }
+
+            .product-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="product-back-link">
+        ← Back to Home
+    </a>
+
+    <div class="product-landing">
+        <div class="product-container">
+            <div class="product-cover-wrapper">
+                <div class="product-cover">
+                    <img src="assets/images/GUMROAD/Screenshot 2025-09-27 191404.jpg" alt="Writing Swipe File Book Cover">
+                </div>
+            </div>
+
+            <h1 class="product-title">Writing Swipe File</h1>
+            
+            <p class="product-description">
+                A curated collection of 50+ proven hooks, templates, and content pieces from my best-performing posts. Copy, adapt, and make them yours. Perfect for writers who want to skip the trial-and-error and start with what works.
+            </p>
+
+            <div class="product-form-wrapper">
+                <form id="productForm" class="product-form">
+                    <input 
+                        type="email" 
+                        id="productEmail" 
+                        class="product-email-input" 
+                        placeholder="Email Address"
+                        required
+                    >
+                    <button type="submit" class="product-submit-btn">
+                        Read For Free
+                    </button>
+                </form>
+                <p class="product-privacy">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('productEmail').value;
+            const SUBSTACK_URL = 'https://theandreilucian.substack.com';
+            window.location.href = SUBSTACK_URL;
+        });
+    </script>
+</body>
+</html>
+
