@@ -307,7 +307,7 @@
                     <img src="assets/images/playing-to-win-cover.png.jpg" alt="Playing to Win cover">
                     <div class="article-product-body">
                         <h3>Playing to Win</h3>
-                        <p>The 6-part system I use to turn newsletter readers into superfans and customers—without sleazy funnels.</p>
+                        <p>This 21-page guide shows you how to improve your life without overthinking. If you use this, you'll boost your mindset, gain clarity, and level up fast. Zero fluff.</p>
                         <div class="article-product-actions">
                             <a class="article-product-button article-product-button--free" href="index.html#newsletter-signup">
                                 <span class="article-product-icon">🔗</span> Get The Book
@@ -329,31 +329,6 @@
                     </div>
                 </article>
 
-                <article class="article-product-card">
-                    <img src="assets/images/GUMROAD/Screenshot 2025-09-27 191404.jpg" alt="Aesthetic Writing cover">
-                    <div class="article-product-body">
-                        <h3>Aesthetic Writing</h3>
-                        <p>Learn the writing strategies I used to gain 70M organic impressions and 18,100 followers in only 90 days.</p>
-                        <div class="article-product-actions">
-                            <a class="article-product-button" href="offers.html">
-                                Learn More
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="article-product-card">
-                    <img src="assets/images/GUMROAD/Screenshot 2025-09-27 191404.jpg" alt="The X Growth System cover">
-                    <div class="article-product-body">
-                        <h3>The X Growth System</h3>
-                        <p>My exact system for growing from 0 to 44K followers and building a 6-figure business in 18 months.</p>
-                        <div class="article-product-actions">
-                            <a class="article-product-button" href="offers.html">
-                                Learn More
-                            </a>
-                        </div>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -398,6 +373,57 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Remove Aesthetic Writing and X Growth System product cards
+        function removeUnwantedProductCards() {
+            const productCards = document.querySelectorAll('.article-product-card');
+            let removed = 0;
+            
+            productCards.forEach(card => {
+                const title = card.querySelector('h3');
+                if (title) {
+                    const titleText = title.textContent.trim();
+                    // Remove cards with these exact titles or partial matches
+                    if (titleText.includes('Aesthetic Writing') || 
+                        titleText.includes('X Growth System') ||
+                        titleText === 'Aesthetic Writing' || 
+                        titleText === 'The X Growth System') {
+                        card.style.display = 'none';
+                        card.remove();
+                        removed++;
+                    }
+                }
+            });
+            
+            // Also check by description text as backup
+            if (removed === 0) {
+                productCards.forEach(card => {
+                    const description = card.querySelector('p');
+                    if (description) {
+                        const descText = description.textContent.trim();
+                        if (descText.includes('70M organic impressions') || 
+                            descText.includes('18,100 followers') ||
+                            descText.includes('44K followers') ||
+                            descText.includes('6-figure business in 18 months')) {
+                            card.style.display = 'none';
+                            card.remove();
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Run immediately and also on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', removeUnwantedProductCards);
+        } else {
+            removeUnwantedProductCards();
+        }
+        
+        // Also run after a short delay to catch dynamically loaded content
+        setTimeout(removeUnwantedProductCards, 100);
+        setTimeout(removeUnwantedProductCards, 500);
+    </script>
 </body>
 </html>
 

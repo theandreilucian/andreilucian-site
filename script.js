@@ -304,3 +304,56 @@ document.addEventListener('DOMContentLoaded', function() {
         initOfferCountdown();
     }
 });
+
+// Remove Aesthetic Writing and X Growth System product cards from article pages
+function removeUnwantedProductCards() {
+    const productCards = document.querySelectorAll('.article-product-card');
+    let removed = 0;
+    
+    productCards.forEach(card => {
+        const title = card.querySelector('h3');
+        if (title) {
+            const titleText = title.textContent.trim();
+            // Remove cards with these exact titles or partial matches
+            if (titleText.includes('Aesthetic Writing') || 
+                titleText.includes('X Growth System') ||
+                titleText === 'Aesthetic Writing' || 
+                titleText === 'The X Growth System') {
+                card.style.display = 'none';
+                card.remove();
+                removed++;
+            }
+        }
+    });
+    
+    // Also check by description text as backup
+    if (removed === 0) {
+        productCards.forEach(card => {
+            const description = card.querySelector('p');
+            if (description) {
+                const descText = description.textContent.trim();
+                if (descText.includes('70M organic impressions') || 
+                    descText.includes('18,100 followers') ||
+                    descText.includes('44K followers') ||
+                    descText.includes('6-figure business in 18 months')) {
+                    card.style.display = 'none';
+                    card.remove();
+                }
+            }
+        });
+    }
+}
+
+// Run product card removal on all pages
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        removeUnwantedProductCards();
+        // Run again after a delay to catch dynamically loaded content
+        setTimeout(removeUnwantedProductCards, 100);
+        setTimeout(removeUnwantedProductCards, 500);
+    });
+} else {
+    removeUnwantedProductCards();
+    setTimeout(removeUnwantedProductCards, 100);
+    setTimeout(removeUnwantedProductCards, 500);
+}
