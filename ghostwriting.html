@@ -4012,7 +4012,7 @@
                 </div>
                 <div class="testimonial-media-card">
                     <div class="testimonial-video">
-                        <video controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                        <video id="yanina-video" controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/VID_20251117_144649.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -5086,6 +5086,58 @@
             }
         }
     </style>
+    <script>
+        // Enhanced mobile video support for testimonial videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('.testimonial-video video');
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            videos.forEach(function(video) {
+                if (isMobile) {
+                    // Ensure all mobile attributes are set
+                    video.setAttribute('playsinline', '');
+                    video.setAttribute('webkit-playsinline', '');
+                    video.setAttribute('x5-video-player-type', 'h5');
+                    video.setAttribute('x5-video-player-fullscreen', 'true');
+                    video.setAttribute('x5-video-orientation', 'portrait');
+                    
+                    // Special handling for Yanina's video
+                    if (video.id === 'yanina-video') {
+                        // Force reload on mobile
+                        video.load();
+                        
+                        // Add tap to play
+                        video.addEventListener('touchstart', function() {
+                            if (video.paused) {
+                                video.play().catch(function(error) {
+                                    console.log('Play failed:', error);
+                                });
+                            }
+                        }, { once: true });
+                    }
+                    
+                    // Error handling for all videos
+                    video.addEventListener('error', function(e) {
+                        console.log('Video error:', video.error ? video.error.code : 'Unknown error');
+                        if (video.error) {
+                            const container = video.parentElement;
+                            if (container && !container.querySelector('.video-error')) {
+                                const errorMsg = document.createElement('div');
+                                errorMsg.className = 'video-error';
+                                errorMsg.style.cssText = 'color: #00ffff; padding: 20px; text-align: center; font-size: 14px; background: rgba(0,0,0,0.5); border-radius: 8px; margin-top: 10px;';
+                                if (video.error.code === 4) {
+                                    errorMsg.textContent = 'Video format not supported. Please try a different browser.';
+                                } else {
+                                    errorMsg.textContent = 'Video cannot be loaded. Please check your connection.';
+                                }
+                                container.appendChild(errorMsg);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 image.pngimage.png
