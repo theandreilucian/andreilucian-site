@@ -4011,11 +4011,16 @@
                     <p class="testimonial-media-caption">Darius - Lifestyle Coach</p>
                 </div>
                 <div class="testimonial-media-card">
-                    <div class="testimonial-video">
+                    <div class="testimonial-video" id="yanina-video-container">
                         <video id="yanina-video" controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                            <source src="assets/images/video testimonial/VID_20251117_144649.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2">
                             <source src="assets/images/video testimonial/VID_20251117_144649.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                        <div class="video-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; border-radius: 12px; align-items: center; justify-content: center; flex-direction: column; padding: 20px; text-align: center; z-index: 10;">
+                            <p style="color: #00ffff; font-size: 16px; margin-bottom: 10px;">Video unavailable on mobile</p>
+                            <p style="color: #888; font-size: 14px;">Please view on desktop</p>
+                        </div>
                     </div>
                     <p class="testimonial-media-caption">Yanina Alvarez - Ghostwriter</p>
                 </div>
@@ -5103,41 +5108,76 @@
                     
                     // Special handling for Yanina's video
                     if (video.id === 'yanina-video') {
-                        // Force reload on mobile
+                        const container = video.parentElement;
+                        const fallback = container.querySelector('.video-fallback');
+                        
+                        // Check if video can be decoded
+                        video.addEventListener('loadedmetadata', function() {
+                            // Video loaded successfully
+                            if (fallback) fallback.style.display = 'none';
+                        });
+                        
+                        // Error handling specifically for Yanina's video
+                        video.addEventListener('error', function(e) {
+                            console.log('Yanina video error:', video.error ? video.error.code : 'Unknown error');
+                            // Hide video and show fallback
+                            video.style.display = 'none';
+                            if (fallback) {
+                                fallback.style.display = 'flex';
+                            }
+                        });
+                        
+                        // Try to load and check if it works
                         video.load();
+                        
+                        // After a timeout, check if video loaded
+                        setTimeout(function() {
+                            if (video.readyState === 0 || video.error) {
+                                // Video failed to load
+                                video.style.display = 'none';
+                                if (fallback) {
+                                    fallback.style.display = 'flex';
+                                }
+                            }
+                        }, 2000);
                         
                         // Add tap to play
                         video.addEventListener('touchstart', function() {
-                            if (video.paused) {
+                            if (video.paused && !video.error) {
                                 video.play().catch(function(error) {
                                     console.log('Play failed:', error);
+                                    video.style.display = 'none';
+                                    if (fallback) {
+                                        fallback.style.display = 'flex';
+                                    }
                                 });
                             }
                         }, { once: true });
                     }
                     
-                    // Error handling for all videos
-                    video.addEventListener('error', function(e) {
-                        console.log('Video error:', video.error ? video.error.code : 'Unknown error');
-                        if (video.error) {
-                            const container = video.parentElement;
-                            if (container && !container.querySelector('.video-error')) {
-                                const errorMsg = document.createElement('div');
-                                errorMsg.className = 'video-error';
-                                errorMsg.style.cssText = 'color: #00ffff; padding: 20px; text-align: center; font-size: 14px; background: rgba(0,0,0,0.5); border-radius: 8px; margin-top: 10px;';
-                                if (video.error.code === 4) {
-                                    errorMsg.textContent = 'Video format not supported. Please try a different browser.';
-                                } else {
-                                    errorMsg.textContent = 'Video cannot be loaded. Please check your connection.';
+                    // Error handling for other videos
+                    if (video.id !== 'yanina-video') {
+                        video.addEventListener('error', function(e) {
+                            console.log('Video error:', video.error ? video.error.code : 'Unknown error');
+                            if (video.error) {
+                                const container = video.parentElement;
+                                if (container && !container.querySelector('.video-error')) {
+                                    const errorMsg = document.createElement('div');
+                                    errorMsg.className = 'video-error';
+                                    errorMsg.style.cssText = 'color: #00ffff; padding: 20px; text-align: center; font-size: 14px; background: rgba(0,0,0,0.5); border-radius: 8px; margin-top: 10px;';
+                                    if (video.error.code === 4) {
+                                        errorMsg.textContent = 'Video format not supported. Please try a different browser.';
+                                    } else {
+                                        errorMsg.textContent = 'Video cannot be loaded. Please check your connection.';
+                                    }
+                                    container.appendChild(errorMsg);
                                 }
-                                container.appendChild(errorMsg);
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             });
         });
     </script>
 </body>
 </html>
-image.pngimage.png
