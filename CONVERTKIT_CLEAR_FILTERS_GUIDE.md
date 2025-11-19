@@ -229,3 +229,11 @@ Once you've verified you see all 600 subscribers:
 
 **If you still see 26 subscribers after these steps, contact ConvertKit support!** 🚀
 
+
+
+
+
+
+
+
+

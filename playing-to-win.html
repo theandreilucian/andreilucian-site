@@ -144,6 +144,27 @@
             box-shadow: 0 8px 24px rgba(74, 222, 128, 0.4);
         }
 
+        .product-message {
+            margin-top: 16px;
+            font-size: 14px;
+            min-height: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .product-message.success {
+            color: #4ade80;
+        }
+
+        .product-message.error {
+            color: #f87171;
+        }
+
+        .product-message.loading {
+            color: #a78bfa;
+            font-style: italic;
+        }
+
         .product-privacy {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.6);
@@ -204,7 +225,7 @@
             <h1 class="product-title">Playing to Win</h1>
             
             <p class="product-description">
-                The proven 6-part system that turns newsletter subscribers into superfans and paying customers. No pushy funnels, just genuine relationship-building that actually works.
+                This 21-page guide shows you how to improve your life without overthinking. If you use this, you'll boost your mindset, gain clarity, and level up fast. Zero fluff.
             </p>
 
             <div class="product-form-wrapper">
@@ -220,6 +241,7 @@
                         Read For Free
                     </button>
                 </form>
+                <div id="productMessage" class="product-message" style="margin-top: 16px; font-size: 14px; min-height: 20px; color: rgba(255, 255, 255, 0.8); text-align: center;"></div>
                 <p class="product-privacy">
                     We respect your privacy. Unsubscribe at any time.
                 </p>
@@ -227,13 +249,27 @@
         </div>
     </div>
 
+    <!-- ConvertKit Configuration -->
+    <script>
+        // Get your Form ID from ConvertKit: https://app.convertkit.com/forms
+        // Get your API Key from ConvertKit: https://app.convertkit.com/account_settings/advanced_settings
+        window.CONVERTKIT_FORM_ID = 'YOUR_FORM_ID'; // Replace with your ConvertKit Form ID
+        window.CONVERTKIT_API_KEY = 'YOUR_API_KEY'; // Replace with your ConvertKit API Key
+        
+        // Redirect to Gumroad after successful subscription
+        window.CONVERTKIT_REDIRECT_URL = 'https://andreilucian.gumroad.com/l/smyhyb';
+    </script>
     <script src="script.js"></script>
     <script>
         document.getElementById('productForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('productEmail').value;
-            const SUBSTACK_URL = 'https://theandreilucian.substack.com';
-            window.location.href = SUBSTACK_URL;
+            const emailInput = document.getElementById('productEmail');
+            const messageElement = document.getElementById('productMessage');
+            const formId = window.CONVERTKIT_FORM_ID || 'YOUR_FORM_ID';
+            const apiKey = window.CONVERTKIT_API_KEY || 'YOUR_API_KEY';
+            
+            // Use ConvertKit submission handler
+            handleConvertKitSubmission(emailInput, messageElement, formId, apiKey);
         });
     </script>
 </body>

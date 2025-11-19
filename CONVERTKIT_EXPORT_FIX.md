@@ -213,3 +213,11 @@ ConvertKit export should include:
 
 **Good luck!** 🎯 ConvertKit support should be able to help export all 600 subscribers.
 
+
+
+
+
+
+
+
+

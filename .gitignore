@@ -25,3 +25,9 @@ node_modules/
 *.tmp
 *.temp
 
+# Large video files
+*.mp4
+*.mov
+*.avi
+assets/images/video testimonial/
+

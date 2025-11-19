@@ -2,12 +2,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const newsletterForm = document.getElementById('newsletterForm');
     const newsletterFormBottom = document.getElementById('newsletterFormBottom');
+    const newsletterFormGhostwriting = document.getElementById('newsletterFormGhostwriting');
     const emailInput = document.getElementById('emailInput');
     const emailInputBottom = document.getElementById('emailInputBottom');
-    const substackUrlFromAttr = document.body ? document.body.getAttribute('data-substack-url') : null;
-    const SUBSTACK_URL = substackUrlFromAttr || (typeof window !== 'undefined' && window.SUBSTACK_URL) || 'https://theandreilucian.substack.com';
+    const emailInputGhostwriting = document.getElementById('emailInputGhostwriting');
+    
+    // ConvertKit Configuration
+    // Get ConvertKit form ID from data attribute or use default
+    const convertKitFormIdFromAttr = document.body ? document.body.getAttribute('data-convertkit-form-id') : null;
+    const CONVERTKIT_FORM_ID = convertKitFormIdFromAttr || (typeof window !== 'undefined' && window.CONVERTKIT_FORM_ID) || 'YOUR_FORM_ID';
+    const CONVERTKIT_API_KEY = (typeof window !== 'undefined' && window.CONVERTKIT_API_KEY) || 'YOUR_API_KEY';
+    
     const formMessage = document.getElementById('formMessage');
     const formMessageBottom = document.getElementById('formMessageBottom');
+    const formMessageGhostwriting = document.getElementById('formMessageGhostwriting');
     const articleUnlockForm = document.getElementById('articleUnlockForm');
     const articleEmailInput = document.getElementById('articleEmail');
     const articleUnlockMessage = document.getElementById('articleUnlockMessage');
@@ -18,33 +26,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Top form handler
     if (newsletterForm) {
-        // If a Substack URL is configured, send users there instead of local handling
-        if (SUBSTACK_URL) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                window.location.href = SUBSTACK_URL;
-            });
-        } else {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                handleFormSubmission(emailInput, formMessage);
-            });
-        }
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleConvertKitSubmission(emailInput, formMessage, CONVERTKIT_FORM_ID, CONVERTKIT_API_KEY);
+        });
     }
 
     // Bottom form handler
     if (newsletterFormBottom) {
-        if (SUBSTACK_URL) {
-            newsletterFormBottom.addEventListener('submit', function(e) {
-                e.preventDefault();
-                window.location.href = SUBSTACK_URL;
-            });
-        } else {
-            newsletterFormBottom.addEventListener('submit', function(e) {
-                e.preventDefault();
-                handleFormSubmission(emailInputBottom, formMessageBottom);
-            });
-        }
+        newsletterFormBottom.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleConvertKitSubmission(emailInputBottom, formMessageBottom, CONVERTKIT_FORM_ID, CONVERTKIT_API_KEY);
+        });
+    }
+
+    // Ghostwriting page form handler
+    if (newsletterFormGhostwriting) {
+        newsletterFormGhostwriting.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleConvertKitSubmission(emailInputGhostwriting, formMessageGhostwriting, CONVERTKIT_FORM_ID, CONVERTKIT_API_KEY);
+        });
     }
 
     // Article unlock handler
@@ -90,13 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Rewrite any "newsletter" anchor links to Substack if configured
-    if (SUBSTACK_URL) {
-        document.querySelectorAll('a[href="#newsletter-signup"]').forEach(link => {
-            link.setAttribute('href', SUBSTACK_URL);
-            link.removeAttribute('data-scroll-target');
-        });
-    }
+    // Keep newsletter anchor links for smooth scrolling
+    // No need to rewrite them anymore since we're using ConvertKit
 
     function unlockArticleBody() {
         if (!articleBody) return;
@@ -110,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Handle form submission
-function handleFormSubmission(emailInput, messageElement) {
+// Handle ConvertKit form submission
+function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) {
     const email = emailInput.value.trim();
     
     if (!email) {
@@ -124,17 +120,77 @@ function handleFormSubmission(emailInput, messageElement) {
         return;
     }
     
-    // Here you would typically send the email to your backend
-    // For now, we'll just show a success message
-    console.log('Email submitted:', email);
+    // Check if ConvertKit is configured
+    if (formId === 'YOUR_FORM_ID' || apiKey === 'YOUR_API_KEY') {
+        showMessage(messageElement, 'ConvertKit is not configured. Please add your Form ID and API Key.', 'error');
+        console.error('ConvertKit not configured. Please set CONVERTKIT_FORM_ID and CONVERTKIT_API_KEY.');
+        return;
+    }
     
-    showMessage(messageElement, 'Thank you! Your submission has been received!', 'success');
+    // Show loading state
+    showMessage(messageElement, 'Subscribing...', 'loading');
+    emailInput.disabled = true;
     
-    // Reset form after 2 seconds
-    setTimeout(() => {
-        emailInput.value = '';
-        clearMessage(messageElement);
-    }, 3000);
+    // ConvertKit API endpoint
+    // For public forms, we can use the form's public endpoint
+    // Alternative: Use the API endpoint with api_key as query parameter
+    const convertKitUrl = `https://api.convertkit.com/v3/forms/${formId}/subscribe`;
+    
+    // Submit to ConvertKit
+    // Note: For public forms, you can also use the form's embed URL
+    // But using API gives more control
+    fetch(convertKitUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            api_key: apiKey,
+            email: email,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.subscription) {
+            showMessage(messageElement, 'Thank you for subscribing! Redirecting...', 'success');
+            emailInput.value = '';
+            
+            // Check if there's a redirect URL configured (e.g., Gumroad link)
+            const redirectUrl = (typeof window !== 'undefined' && window.CONVERTKIT_REDIRECT_URL) || null;
+            
+            if (redirectUrl) {
+                // Redirect to Gumroad or thank you page after 1.5 seconds
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 1500);
+            } else {
+                // No redirect - just show success message
+                showMessage(messageElement, 'Thank you for subscribing! Check your email to confirm.', 'success');
+                setTimeout(() => {
+                    clearMessage(messageElement);
+                }, 5000);
+            }
+        } else {
+            throw new Error(data.error || 'Subscription failed');
+        }
+    })
+    .catch(error => {
+        console.error('ConvertKit subscription error:', error);
+        showMessage(messageElement, 'Something went wrong. Please try again later.', 'error');
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+            clearMessage(messageElement);
+        }, 3000);
+    })
+    .finally(() => {
+        emailInput.disabled = false;
+    });
+}
+
+// Legacy function for backward compatibility (if needed)
+function handleFormSubmission(emailInput, messageElement) {
+    handleConvertKitSubmission(emailInput, messageElement, 'YOUR_FORM_ID', 'YOUR_API_KEY');
 }
 
 // Show message
@@ -163,15 +219,11 @@ function isValidEmail(email) {
 
 // Smooth scroll for anchor links
 (function() {
-    const substackUrlFromAttr = document.body ? document.body.getAttribute('data-substack-url') : null;
-    const SUBSTACK_URL = substackUrlFromAttr || (typeof window !== 'undefined' && window.SUBSTACK_URL) || null;
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             // Allow normal behavior for placeholders
             if (href === '#') return;
-            // If this is the newsletter anchor and a Substack URL is configured, don't smooth-scroll
-            if (href === '#newsletter-signup' && SUBSTACK_URL) return;
             
             e.preventDefault();
             const target = document.querySelector(href);
