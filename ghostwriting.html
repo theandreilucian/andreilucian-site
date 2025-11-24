@@ -5245,23 +5245,63 @@
                     card.style.zIndex = '1';
                 }
                 
-                // Load video metadata when user interacts (lazy loading for large files)
-                const loadVideo = function() {
+                // Load and play video when user interacts
+                const loadAndPlayVideo = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Load video if not loaded
                     if (video.readyState === 0) {
                         video.load();
                     }
+                    
+                    // Wait for video to be ready, then play
+                    const tryPlay = function() {
+                        if (video.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+                            video.play().catch(function(error) {
+                                console.log('Play failed:', error);
+                                // If autoplay fails, ensure controls are visible
+                                video.controls = true;
+                            });
+                        } else {
+                            // Wait a bit and try again
+                            setTimeout(tryPlay, 100);
+                        }
+                    };
+                    
+                    // If already loaded, play immediately
+                    if (video.readyState >= 2) {
+                        video.play().catch(function(error) {
+                            console.log('Play failed:', error);
+                            video.controls = true;
+                        });
+                    } else {
+                        // Wait for load, then play
+                        video.addEventListener('loadeddata', tryPlay, { once: true });
+                        video.addEventListener('canplay', tryPlay, { once: true });
+                    }
                 };
                 
-                // Load on click/touch
-                video.addEventListener('click', loadVideo, { once: true });
-                video.addEventListener('touchstart', loadVideo, { once: true });
+                // Load and play on click/touch
+                video.addEventListener('click', loadAndPlayVideo);
+                video.addEventListener('touchstart', loadAndPlayVideo, { passive: false });
                 
-                // Also load when video comes into view (Intersection Observer)
+                // Also make container clickable
+                const container = video.parentElement;
+                if (container) {
+                    container.addEventListener('click', function(e) {
+                        if (e.target !== video) {
+                            loadAndPlayVideo(e);
+                        }
+                    });
+                }
+                
+                // Also load metadata when video comes into view (Intersection Observer)
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver(function(entries) {
                         entries.forEach(function(entry) {
-                            if (entry.isIntersecting) {
-                                loadVideo();
+                            if (entry.isIntersecting && video.readyState === 0) {
+                                video.load(); // Just load metadata, don't play
                                 observer.unobserve(video);
                             }
                         });
@@ -5299,7 +5339,7 @@
                     }
                 });
                 
-                // Handle play attempts
+                // Handle play attempts - ensure video actually plays
                 video.addEventListener('play', function() {
                     const container = video.parentElement;
                     if (container) {
@@ -5308,7 +5348,26 @@
                             msg.remove();
                         });
                     }
+                    // Ensure video is visible when playing
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
                 });
+                
+                // Handle when user clicks play button on controls
+                video.addEventListener('loadeddata', function() {
+                    // Video is ready to play
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                });
+                
+                // Ensure video plays when play button is clicked in controls
+                video.addEventListener('play', function() {
+                    // Video is playing - make sure it's visible
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                }, false);
                 
                 // Handle orientation changes
                 window.addEventListener('orientationchange', function() {
