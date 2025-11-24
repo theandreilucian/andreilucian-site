@@ -4068,8 +4068,7 @@
                             x5-video-player-type="h5" 
                             x5-video-player-fullscreen="true" 
                             x5-video-orientation="portrait" 
-                            preload="none"
-                            loading="lazy"
+                            preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/Cristi Ghidu testimonial.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -4086,8 +4085,7 @@
                             x5-video-player-type="h5" 
                             x5-video-player-fullscreen="true" 
                             x5-video-orientation="portrait" 
-                            preload="none"
-                            loading="lazy"
+                            preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/Kardan testimonial .mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -4104,8 +4102,7 @@
                             x5-video-player-type="h5" 
                             x5-video-player-fullscreen="true" 
                             x5-video-orientation="portrait" 
-                            preload="none"
-                            loading="lazy"
+                            preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -4122,8 +4119,7 @@
                             x5-video-player-type="h5" 
                             x5-video-player-fullscreen="true" 
                             x5-video-orientation="portrait" 
-                            preload="none"
-                            loading="lazy"
+                            preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/VID_20251117_144649.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -5217,9 +5213,16 @@
                 video.setAttribute('x5-video-player-type', 'h5');
                 video.setAttribute('x5-video-player-fullscreen', 'true');
                 video.setAttribute('x5-video-orientation', 'portrait');
-                video.setAttribute('preload', 'none'); // Don't preload large files on mobile
+                video.setAttribute('preload', 'metadata'); // Load metadata so video is ready
                 video.controls = true;
                 video.playsInline = true;
+                
+                // Force video to load source immediately
+                const source = video.querySelector('source');
+                if (source && source.src) {
+                    video.src = source.src;
+                    video.load(); // Force load the video
+                }
                 
                 // FORCE video to be visible - critical for mobile
                 video.style.cssText = 'position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; display: block !important; visibility: visible !important; opacity: 1 !important; z-index: 10 !important; background: transparent !important; pointer-events: auto !important; object-fit: contain !important;';
@@ -5247,30 +5250,38 @@
                 
                 // Load and play video when user interacts
                 const loadAndPlayVideo = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Load video if not loaded
-                    if (video.readyState === 0) {
-                        video.load();
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
                     }
+                    
+                    // Ensure video source is set
+                    const source = video.querySelector('source');
+                    if (source && source.src && !video.src) {
+                        video.src = source.src;
+                    }
+                    
+                    // Force reload video
+                    video.load();
                     
                     // Wait for video to be ready, then play
                     const tryPlay = function() {
-                        if (video.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+                        console.log('Video readyState:', video.readyState, 'Error:', video.error);
+                        if (video.readyState >= 2 && !video.error) { // HAVE_CURRENT_DATA or higher
                             video.play().catch(function(error) {
                                 console.log('Play failed:', error);
-                                // If autoplay fails, ensure controls are visible
                                 video.controls = true;
                             });
+                        } else if (video.error) {
+                            console.error('Video error:', video.error.code, video.error.message);
                         } else {
                             // Wait a bit and try again
-                            setTimeout(tryPlay, 100);
+                            setTimeout(tryPlay, 200);
                         }
                     };
                     
                     // If already loaded, play immediately
-                    if (video.readyState >= 2) {
+                    if (video.readyState >= 2 && !video.error) {
                         video.play().catch(function(error) {
                             console.log('Play failed:', error);
                             video.controls = true;
@@ -5279,6 +5290,7 @@
                         // Wait for load, then play
                         video.addEventListener('loadeddata', tryPlay, { once: true });
                         video.addEventListener('canplay', tryPlay, { once: true });
+                        video.addEventListener('canplaythrough', tryPlay, { once: true });
                     }
                 };
                 
@@ -5296,12 +5308,25 @@
                     });
                 }
                 
-                // Also load metadata when video comes into view (Intersection Observer)
+                // Load video source immediately when page loads (for mobile)
+                const source = video.querySelector('source');
+                if (source && source.src) {
+                    video.src = source.src;
+                    // Load metadata immediately so video is ready
+                    video.load();
+                }
+                
+                // Also load when video comes into view (Intersection Observer)
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver(function(entries) {
                         entries.forEach(function(entry) {
-                            if (entry.isIntersecting && video.readyState === 0) {
-                                video.load(); // Just load metadata, don't play
+                            if (entry.isIntersecting) {
+                                // Ensure source is set
+                                const source = video.querySelector('source');
+                                if (source && source.src && !video.src) {
+                                    video.src = source.src;
+                                }
+                                video.load(); // Load video
                                 observer.unobserve(video);
                             }
                         });
@@ -5311,7 +5336,7 @@
                 
                 // Handle successful load
                 video.addEventListener('loadedmetadata', function() {
-                    console.log('Video metadata loaded:', video.src);
+                    console.log('Video metadata loaded:', video.src, 'Duration:', video.duration);
                     const container = video.parentElement;
                     if (container) {
                         const errorMsgs = container.querySelectorAll('.video-error-message, .video-fallback');
@@ -5321,6 +5346,23 @@
                     }
                     video.style.display = 'block';
                     video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Handle when video can start playing
+                video.addEventListener('canplay', function() {
+                    console.log('Video can play:', video.src);
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Handle when video is ready to play through
+                video.addEventListener('canplaythrough', function() {
+                    console.log('Video ready to play through:', video.src);
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
                 });
                 
                 // Better error handling - don't show error until user tries to play
