@@ -369,19 +369,21 @@
     </footer>
 
     <!-- ConvertKit Configuration -->
-    <!-- Replace YOUR_FORM_ID and YOUR_API_KEY with your actual ConvertKit credentials -->
+    <!-- ConvertKit is configured for blog post newsletter subscription -->
     <script>
-        // Get your Form ID from ConvertKit: https://app.convertkit.com/forms
-        // Get your API Key from ConvertKit: https://app.convertkit.com/account_settings/advanced_settings
-        window.CONVERTKIT_FORM_ID = 'YOUR_FORM_ID'; // Replace with your ConvertKit Form ID
-        window.CONVERTKIT_API_KEY = 'YOUR_API_KEY'; // Replace with your ConvertKit API Key
+        // ConvertKit Form ID for blog post newsletter subscription
+        // Using the same Form ID as your main newsletter (you can create a separate form if needed)
+        window.CONVERTKIT_FORM_ID = '7774194'; // ✅ Configured with your Form ID
+        
+        // ConvertKit API Key (API Secret Key) - same for all forms in your account
+        // Get this from: https://app.convertkit.com/account_settings/advanced_settings
+        window.CONVERTKIT_API_KEY = 'N_JVENuZ2KKUbm_Nqrk3Hw'; // ✅ Configured with your API Key
         
         // Optional: Redirect URL after successful subscription
-        // Set this to your Gumroad product link or thank you page
+        // Set this to your Gumroad product link, thank you page, or leave as null
         // Example: window.CONVERTKIT_REDIRECT_URL = 'https://yourname.gumroad.com/l/yourproduct';
-        // Leave as null if you don't want to redirect
-        window.CONVERTKIT_REDIRECT_URL = null; // Replace with your Gumroad URL or set to null
+        window.CONVERTKIT_REDIRECT_URL = null; // ⬅️ (Optional) Set redirect URL or leave as null
     </script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>

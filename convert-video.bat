@@ -1,10 +1,10 @@
 @echo off
 echo ========================================
-echo Video Conversion Script for Mobile
+echo Convert Yanina Video for Mobile
 echo ========================================
 echo.
 echo This script will convert VID_20251117_144649.mp4
-echo to a mobile-compatible format using FFmpeg.
+echo (Yanina's video) to a mobile-compatible format.
 echo.
 echo Make sure FFmpeg is installed and in your PATH.
 echo Download FFmpeg from: https://ffmpeg.org/download.html
@@ -20,19 +20,29 @@ if not exist "VID_20251117_144649.mp4" (
     exit /b 1
 )
 
-echo Converting video for mobile compatibility...
+echo Converting Yanina's video for mobile compatibility...
 echo.
 
+REM Create backup first
+if not exist "VID_20251117_144649.mp4.backup" (
+    copy "VID_20251117_144649.mp4" "VID_20251117_144649.mp4.backup" >nul
+    echo Backup created: VID_20251117_144649.mp4.backup
+    echo.
+)
+
+REM Convert to mobile-compatible format
 ffmpeg -i "VID_20251117_144649.mp4" ^
     -c:v libx264 ^
     -profile:v baseline ^
     -level 3.0 ^
     -pix_fmt yuv420p ^
+    -preset medium ^
+    -crf 23 ^
     -c:a aac ^
     -b:a 128k ^
     -movflags +faststart ^
     -y ^
-    "VID_20251117_144649_mobile.mp4"
+    "VID_20251117_144649_temp.mp4"
 
 if %errorlevel% equ 0 (
     echo.
@@ -40,14 +50,11 @@ if %errorlevel% equ 0 (
     echo Conversion successful!
     echo ========================================
     echo.
-    echo Backup created: VID_20251117_144649_original.mp4
-    echo New mobile-compatible file: VID_20251117_144649_mobile.mp4
+    echo Replacing original file...
+    move /y "VID_20251117_144649_temp.mp4" "VID_20251117_144649.mp4" >nul
     echo.
-    echo Now replacing original file...
-    move /y "VID_20251117_144649.mp4" "VID_20251117_144649_original.mp4"
-    move /y "VID_20251117_144649_mobile.mp4" "VID_20251117_144649.mp4"
-    echo.
-    echo Done! The video should now work on mobile devices.
+    echo Done! Yanina's video should now work on mobile devices.
+    echo Original backed up as: VID_20251117_144649.mp4.backup
 ) else (
     echo.
     echo ========================================
@@ -56,6 +63,7 @@ if %errorlevel% equ 0 (
     echo.
     echo Make sure FFmpeg is installed and accessible.
     echo Download from: https://ffmpeg.org/download.html
+    if exist "VID_20251117_144649_temp.mp4" del "VID_20251117_144649_temp.mp4"
 )
 
 echo.

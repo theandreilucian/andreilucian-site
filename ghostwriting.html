@@ -1120,9 +1120,10 @@
             border-radius: 16px;
             padding: 28px;
             transition: all 0.3s ease;
-            overflow: hidden;
+            overflow: visible; /* Changed to visible so video isn't cut off */
             min-height: 360px;
             position: relative;
+            z-index: 1;
         }
         .testimonial-media-card:hover {
             border-color: rgba(0, 255, 255, 0.6);
@@ -1135,21 +1136,72 @@
             padding-bottom: 65%; /* Slightly taller for better visibility */
             position: relative;
             border-radius: 12px;
-            overflow: hidden;
+            overflow: hidden; /* Keep hidden for border-radius but ensure video is visible */
             background: #000;
             border: 2px solid #2a2a2a;
             transition: all 0.3s ease;
             min-height: 400px;
             max-width: 100%;
+            z-index: 2;
+        }
+        @media (max-width: 768px) {
+            .testimonial-video {
+                min-height: 250px;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio for mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonial-video {
+                min-height: 200px;
+                padding-bottom: 56.25%;
+            }
         }
         .testimonial-video video {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
             border-radius: 10px;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            z-index: 10 !important;
+            background: transparent !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        @media (max-width: 768px) {
+            .testimonial-video video {
+                /* Ensure controls are always visible on mobile */
+                pointer-events: auto;
+                -webkit-touch-callout: default;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            /* Force hide any fallback messages on mobile */
+            .testimonial-video .video-fallback,
+            .testimonial-video .video-error-message {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonial-video video {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            /* Force hide any fallback messages on mobile */
+            .testimonial-video .video-fallback,
+            .testimonial-video .video-error-message {
+                display: none !important;
+                visibility: hidden !important;
+            }
         }
         .testimonial-media-card:hover .testimonial-video {
             border-color: #00ffff;
@@ -1211,6 +1263,7 @@
             .testimonials-text-grid,
             .testimonials-screenshot-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             .testimonials-media-grid .testimonial-media-card:nth-child(4) {
                 grid-column: 1;
@@ -1218,6 +1271,29 @@
             }
             .testimonials-section {
                 padding: 80px 20px;
+            }
+            .testimonial-media-card {
+                padding: 20px;
+                min-height: auto;
+            }
+            .testimonial-video {
+                min-height: 250px !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonials-media-grid {
+                gap: 24px;
+            }
+            .testimonial-media-card {
+                padding: 16px;
+            }
+            .testimonial-video {
+                min-height: 200px !important;
+                border-width: 1px;
+            }
+            .testimonial-media-caption {
+                font-size: 14px;
+                margin-top: 12px;
             }
         }
         .process-grid {
@@ -3985,7 +4061,15 @@
             <div class="testimonials-media-grid">
                 <div class="testimonial-media-card">
                     <div class="testimonial-video">
-                        <video controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                        <video 
+                            controls 
+                            playsinline 
+                            webkit-playsinline 
+                            x5-video-player-type="h5" 
+                            x5-video-player-fullscreen="true" 
+                            x5-video-orientation="portrait" 
+                            preload="metadata"
+                            style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/Cristi Ghidu testimonial.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -3994,7 +4078,15 @@
                 </div>
                 <div class="testimonial-media-card">
                     <div class="testimonial-video">
-                        <video controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                        <video 
+                            controls 
+                            playsinline 
+                            webkit-playsinline 
+                            x5-video-player-type="h5" 
+                            x5-video-player-fullscreen="true" 
+                            x5-video-orientation="portrait" 
+                            preload="metadata"
+                            style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/Kardan testimonial .mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -4003,7 +4095,15 @@
                 </div>
                 <div class="testimonial-media-card">
                     <div class="testimonial-video">
-                        <video controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                        <video 
+                            controls 
+                            playsinline 
+                            webkit-playsinline 
+                            x5-video-player-type="h5" 
+                            x5-video-player-fullscreen="true" 
+                            x5-video-orientation="portrait" 
+                            preload="metadata"
+                            style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -4011,15 +4111,19 @@
                     <p class="testimonial-media-caption">Darius - Lifestyle Coach</p>
                 </div>
                 <div class="testimonial-media-card">
-                    <div class="testimonial-video" id="yanina-video-container">
-                        <video id="yanina-video" controls playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" preload="auto" style="width: 100%; height: 100%; object-fit: contain;">
+                    <div class="testimonial-video">
+                        <video 
+                            controls 
+                            playsinline 
+                            webkit-playsinline 
+                            x5-video-player-type="h5" 
+                            x5-video-player-fullscreen="true" 
+                            x5-video-orientation="portrait" 
+                            preload="metadata"
+                            style="width: 100%; height: 100%; object-fit: contain;">
                             <source src="assets/images/video testimonial/VID_20251117_144649.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <div class="video-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; border-radius: 12px; align-items: center; justify-content: center; flex-direction: column; padding: 20px; text-align: center; z-index: 10;">
-                            <p style="color: #00ffff; font-size: 16px; margin-bottom: 10px;">Video unavailable on mobile</p>
-                            <p style="color: #888; font-size: 14px;">Please view on desktop</p>
-                        </div>
                     </div>
                     <p class="testimonial-media-caption">Yanina Alvarez - Ghostwriter</p>
                 </div>
@@ -4249,14 +4353,14 @@
         
         // ConvertKit API Key (API Secret Key)
         // Get this from: https://app.convertkit.com/account_settings/advanced_settings
-        window.CONVERTKIT_API_KEY = '3FNW-htLvYsmZri4q_rfvUk1aHCS0qmkHbevJPtVh9Q'; // ✅ Configured with your API Key
+        window.CONVERTKIT_API_KEY = 'N_JVENuZ2KKUbm_Nqrk3Hw'; // ✅ Configured with your API Key
         
         // Optional: Redirect URL after successful subscription
         // Set this to your Gumroad product link, thank you page, or leave as null
         // Example: window.CONVERTKIT_REDIRECT_URL = 'https://yourname.gumroad.com/l/how-i-grow-120-followers';
         window.CONVERTKIT_REDIRECT_URL = null; // ⬅️ (Optional) Set redirect URL or leave as null
     </script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2.0"></script>
     
     <!-- JavaScript to force visibility on mobile -->
     <script>
@@ -5091,90 +5195,229 @@
         }
     </style>
     <script>
-        // Enhanced mobile video support for testimonial videos
+        // Enhanced mobile video support - OPTIMIZED FOR LARGE FILES
         document.addEventListener('DOMContentLoaded', function() {
             const videos = document.querySelectorAll('.testimonial-video video');
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            
+            // Remove any existing error messages or fallback divs
+            document.querySelectorAll('.video-fallback, .video-error-message').forEach(function(el) {
+                el.remove();
+            });
             
             videos.forEach(function(video) {
-                if (isMobile) {
-                    // Ensure all mobile attributes are set
-                    video.setAttribute('playsinline', '');
-                    video.setAttribute('webkit-playsinline', '');
-                    video.setAttribute('x5-video-player-type', 'h5');
-                    video.setAttribute('x5-video-player-fullscreen', 'true');
-                    video.setAttribute('x5-video-orientation', 'portrait');
-                    
-                    // Special handling for Yanina's video
-                    if (video.id === 'yanina-video') {
-                        const container = video.parentElement;
-                        const fallback = container.querySelector('.video-fallback');
-                        
-                        // Check if video can be decoded
-                        video.addEventListener('loadedmetadata', function() {
-                            // Video loaded successfully
-                            if (fallback) fallback.style.display = 'none';
-                        });
-                        
-                        // Error handling specifically for Yanina's video
-                        video.addEventListener('error', function(e) {
-                            console.log('Yanina video error:', video.error ? video.error.code : 'Unknown error');
-                            // Hide video and show fallback
-                            video.style.display = 'none';
-                            if (fallback) {
-                                fallback.style.display = 'flex';
-                            }
-                        });
-                        
-                        // Try to load and check if it works
-                        video.load();
-                        
-                        // After a timeout, check if video loaded
-                        setTimeout(function() {
-                            if (video.readyState === 0 || video.error) {
-                                // Video failed to load
-                                video.style.display = 'none';
-                                if (fallback) {
-                                    fallback.style.display = 'flex';
-                                }
-                            }
-                        }, 2000);
-                        
-                        // Add tap to play
-                        video.addEventListener('touchstart', function() {
-                            if (video.paused && !video.error) {
-                                video.play().catch(function(error) {
-                                    console.log('Play failed:', error);
-                                    video.style.display = 'none';
-                                    if (fallback) {
-                                        fallback.style.display = 'flex';
-                                    }
-                                });
-                            }
-                        }, { once: true });
-                    }
-                    
-                    // Error handling for other videos
-                    if (video.id !== 'yanina-video') {
-                        video.addEventListener('error', function(e) {
-                            console.log('Video error:', video.error ? video.error.code : 'Unknown error');
-                            if (video.error) {
-                                const container = video.parentElement;
-                                if (container && !container.querySelector('.video-error')) {
-                                    const errorMsg = document.createElement('div');
-                                    errorMsg.className = 'video-error';
-                                    errorMsg.style.cssText = 'color: #00ffff; padding: 20px; text-align: center; font-size: 14px; background: rgba(0,0,0,0.5); border-radius: 8px; margin-top: 10px;';
-                                    if (video.error.code === 4) {
-                                        errorMsg.textContent = 'Video format not supported. Please try a different browser.';
-                                    } else {
-                                        errorMsg.textContent = 'Video cannot be loaded. Please check your connection.';
-                                    }
-                                    container.appendChild(errorMsg);
-                                }
-                            }
-                        });
-                    }
+                // FORCE mobile-friendly attributes
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
+                video.setAttribute('x5-video-player-type', 'h5');
+                video.setAttribute('x5-video-player-fullscreen', 'true');
+                video.setAttribute('x5-video-orientation', 'portrait');
+                video.setAttribute('preload', 'metadata'); // Load metadata so video is ready
+                video.controls = true;
+                video.playsInline = true;
+                
+                // Force video to load source immediately
+                const source = video.querySelector('source');
+                if (source && source.src) {
+                    video.src = source.src;
+                    video.load(); // Force load the video
                 }
+                
+                // FORCE video to be visible - critical for mobile
+                video.style.cssText = 'position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; display: block !important; visibility: visible !important; opacity: 1 !important; z-index: 10 !important; background: transparent !important; pointer-events: auto !important; object-fit: contain !important;';
+                
+                // Remove any error messages or overlays
+                const container = video.parentElement;
+                if (container) {
+                    const errorMsgs = container.querySelectorAll('.video-error-message, .video-fallback, .overlay');
+                    errorMsgs.forEach(function(msg) {
+                        msg.style.display = 'none';
+                        msg.remove();
+                    });
+                    // Ensure container doesn't block video
+                    container.style.overflow = 'hidden';
+                    container.style.position = 'relative';
+                    container.style.zIndex = '2';
+                }
+                
+                // Remove any parent overlays
+                const card = video.closest('.testimonial-media-card');
+                if (card) {
+                    card.style.overflow = 'visible';
+                    card.style.zIndex = '1';
+                }
+                
+                // Load and play video when user interacts
+                const loadAndPlayVideo = function(e) {
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    
+                    // Ensure video source is set
+                    const source = video.querySelector('source');
+                    if (source && source.src && !video.src) {
+                        video.src = source.src;
+                    }
+                    
+                    // Force reload video
+                    video.load();
+                    
+                    // Wait for video to be ready, then play
+                    const tryPlay = function() {
+                        console.log('Video readyState:', video.readyState, 'Error:', video.error);
+                        if (video.readyState >= 2 && !video.error) { // HAVE_CURRENT_DATA or higher
+                            video.play().catch(function(error) {
+                                console.log('Play failed:', error);
+                                video.controls = true;
+                            });
+                        } else if (video.error) {
+                            console.error('Video error:', video.error.code, video.error.message);
+                        } else {
+                            // Wait a bit and try again
+                            setTimeout(tryPlay, 200);
+                        }
+                    };
+                    
+                    // If already loaded, play immediately
+                    if (video.readyState >= 2 && !video.error) {
+                        video.play().catch(function(error) {
+                            console.log('Play failed:', error);
+                            video.controls = true;
+                        });
+                    } else {
+                        // Wait for load, then play
+                        video.addEventListener('loadeddata', tryPlay, { once: true });
+                        video.addEventListener('canplay', tryPlay, { once: true });
+                        video.addEventListener('canplaythrough', tryPlay, { once: true });
+                    }
+                };
+                
+                // Load and play on click/touch
+                video.addEventListener('click', loadAndPlayVideo);
+                video.addEventListener('touchstart', loadAndPlayVideo, { passive: false });
+                
+                // Also make container clickable
+                const container = video.parentElement;
+                if (container) {
+                    container.addEventListener('click', function(e) {
+                        if (e.target !== video) {
+                            loadAndPlayVideo(e);
+                        }
+                    });
+                }
+                
+                // Load video source immediately when page loads (for mobile)
+                const source = video.querySelector('source');
+                if (source && source.src) {
+                    video.src = source.src;
+                    // Load metadata immediately so video is ready
+                    video.load();
+                }
+                
+                // Also load when video comes into view (Intersection Observer)
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                // Ensure source is set
+                                const source = video.querySelector('source');
+                                if (source && source.src && !video.src) {
+                                    video.src = source.src;
+                                }
+                                video.load(); // Load video
+                                observer.unobserve(video);
+                            }
+                        });
+                    }, { rootMargin: '50px' });
+                    observer.observe(video);
+                }
+                
+                // Handle successful load
+                video.addEventListener('loadedmetadata', function() {
+                    console.log('Video metadata loaded:', video.src, 'Duration:', video.duration);
+                    const container = video.parentElement;
+                    if (container) {
+                        const errorMsgs = container.querySelectorAll('.video-error-message, .video-fallback');
+                        errorMsgs.forEach(function(msg) {
+                            msg.remove();
+                        });
+                    }
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Handle when video can start playing
+                video.addEventListener('canplay', function() {
+                    console.log('Video can play:', video.src);
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Handle when video is ready to play through
+                video.addEventListener('canplaythrough', function() {
+                    console.log('Video ready to play through:', video.src);
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Better error handling - don't show error until user tries to play
+                video.addEventListener('error', function(e) {
+                    console.log('Video error:', video.error ? video.error.code : 'Unknown');
+                    // Only show error if user actually tried to play
+                    if (!video.paused || video.currentTime > 0) {
+                        const container = video.parentElement;
+                        if (container && !container.querySelector('.video-error-message')) {
+                            const errorMsg = document.createElement('div');
+                            errorMsg.className = 'video-error-message';
+                            errorMsg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ffff; text-align: center; padding: 20px; font-size: 14px; z-index: 10; background: rgba(0,0,0,0.8); border-radius: 8px;';
+                            errorMsg.textContent = 'Tap to load video';
+                            container.appendChild(errorMsg);
+                        }
+                    }
+                });
+                
+                // Handle play attempts - ensure video actually plays
+                video.addEventListener('play', function() {
+                    const container = video.parentElement;
+                    if (container) {
+                        const errorMsgs = container.querySelectorAll('.video-error-message');
+                        errorMsgs.forEach(function(msg) {
+                            msg.remove();
+                        });
+                    }
+                    // Ensure video is visible when playing
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                });
+                
+                // Handle when user clicks play button on controls
+                video.addEventListener('loadeddata', function() {
+                    // Video is ready to play
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                });
+                
+                // Ensure video plays when play button is clicked in controls
+                video.addEventListener('play', function() {
+                    // Video is playing - make sure it's visible
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                }, false);
+                
+                // Handle orientation changes
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(function() {
+                        video.style.width = '100%';
+                        video.style.height = '100%';
+                    }, 100);
+                });
             });
         });
     </script>

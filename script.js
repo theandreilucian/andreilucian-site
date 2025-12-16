@@ -48,7 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Article unlock handler
+    // Check if user is a subscriber - if so, unlock all articles automatically
+    if (localStorage.getItem('andrei_subscriber') === 'true') {
+        unlockArticleBody();
+    }
+    
+    // Article unlock handler (for per-article unlock)
     if (articleUnlockStorageKey && localStorage.getItem(articleUnlockStorageKey) === 'true') {
         unlockArticleBody();
     }
@@ -152,6 +157,9 @@ function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) 
     .then(response => response.json())
     .then(data => {
         if (data.subscription) {
+            // Mark user as subscriber in localStorage - this unlocks all articles
+            localStorage.setItem('andrei_subscriber', 'true');
+            
             showMessage(messageElement, 'Thank you for subscribing! Redirecting...', 'success');
             emailInput.value = '';
             
@@ -165,7 +173,7 @@ function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) 
                 }, 1500);
             } else {
                 // No redirect - just show success message
-                showMessage(messageElement, 'Thank you for subscribing! Check your email to confirm.', 'success');
+                showMessage(messageElement, 'Thank you for subscribing! Check your email to confirm. You now have access to all articles!', 'success');
                 setTimeout(() => {
                     clearMessage(messageElement);
                 }, 5000);

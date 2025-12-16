@@ -3735,32 +3735,38 @@ body.article-page .email-icon {
     width: 190px;
     height: 190px;
     top: -15px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
     padding: 20px;
     word-wrap: break-word;
     overflow-wrap: break-word;
     box-sizing: border-box;
     overflow: hidden;
+    color: #ffffff;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 @media (max-width: 768px) {
     .visual-venn .venn-circle {
         width: 90px !important;
         height: 90px !important;
-        font-size: 8px !important;
+        font-size: 10px !important;
+        font-weight: 800 !important;
         padding: 4px !important;
         top: 0 !important;
         letter-spacing: 0 !important;
         line-height: 1.2 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5) !important;
+        background: rgba(255, 255, 255, 0.25) !important;
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
     }
 }
 
@@ -3768,9 +3774,13 @@ body.article-page .email-icon {
     .visual-venn .venn-circle {
         width: 65px !important;
         height: 65px !important;
-        font-size: 7px !important;
+        font-size: 9px !important;
+        font-weight: 800 !important;
         padding: 3px !important;
         line-height: 1.1 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5) !important;
+        background: rgba(255, 255, 255, 0.25) !important;
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
     }
 }
 
@@ -3780,6 +3790,33 @@ body.article-page .email-icon {
 
 .visual-venn .right {
     right: 0;
+}
+
+.visual-venn .venn-circle.venn-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 }
 
 .visual-venn .venn-overlap {
@@ -3794,9 +3831,19 @@ body.article-page .email-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     color: #041209;
+    text-shadow: none;
+    z-index: 3;
+}
+
+.visual-venn .venn-overlap.highlight {
+    font-size: 18px;
+    font-weight: 800;
+    color: #041209;
+    text-shadow: none;
+    letter-spacing: 0.5px;
 }
 
 .article-sidebar {
@@ -4863,7 +4910,8 @@ body.article-page .footer-text {
     .venn-circle {
         width: 70px !important;
         height: 70px !important;
-        font-size: 7px !important;
+        font-size: 9px !important;
+        font-weight: 800 !important;
         line-height: 1.1 !important;
         padding: 3px !important;
         word-wrap: break-word !important;
@@ -4876,6 +4924,10 @@ body.article-page .footer-text {
         left: auto !important;
         right: auto !important;
         transform: none !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5) !important;
+        background: rgba(255, 255, 255, 0.25) !important;
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
+        color: #ffffff !important;
         border-width: 1px !important;
     }
     
@@ -4899,9 +4951,13 @@ body.article-page .footer-text {
         transform: translate(-50%, -50%) scale(0.6) !important;
         width: 50px !important;
         height: 50px !important;
-        font-size: 6px !important;
+        font-size: 7px !important;
+        font-weight: 700 !important;
         z-index: 10 !important;
-        border-color: rgba(255,255,255,0.3) !important;
+        border-color: rgba(255,255,255,0.4) !important;
+        background: rgba(255, 255, 255, 0.18) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 6px rgba(0, 0, 0, 0.3) !important;
+        color: #ffffff !important;
     }
     
     /* Venn overlap (dollar sign) */
@@ -4913,6 +4969,13 @@ body.article-page .footer-text {
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
+    }
+    
+    .visual-venn .venn-overlap.highlight {
+        font-size: 10px !important;
+        font-weight: 800 !important;
+        width: 30px !important;
+        height: 30px !important;
     }
     
     /* Visual diagrams (flowcharts) */
@@ -5009,8 +5072,13 @@ body.article-page .footer-text {
     .visual-venn .venn-circle.venn-center {
         width: 40px !important;
         height: 40px !important;
-        font-size: 5px !important;
+        font-size: 6px !important;
+        font-weight: 700 !important;
         transform: translate(-50%, -50%) scale(0.5) !important;
+        background: rgba(255, 255, 255, 0.18) !important;
+        border-color: rgba(255,255,255,0.4) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 6px rgba(0, 0, 0, 0.3) !important;
+        color: #ffffff !important;
     }
     
     .visual-venn .venn-overlap,
@@ -5018,6 +5086,13 @@ body.article-page .footer-text {
         width: 20px !important;
         height: 20px !important;
         font-size: 12px !important;
+    }
+    
+    .visual-venn .venn-overlap.highlight {
+        font-size: 9px !important;
+        font-weight: 800 !important;
+        width: 25px !important;
+        height: 25px !important;
     }
     
     .visual-diagram {
