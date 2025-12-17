@@ -1,0 +1,291 @@
+<svg width="1584" height="396" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Enhanced background gradient with depth -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f0f;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Cyan gradient for accent elements -->
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00a8cc;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Enhanced glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Subtle shadow for depth -->
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Circular mask for profile picture -->
+    <clipPath id="circleClip">
+      <circle cx="1320" cy="198" r="120"/>
+    </clipPath>
+    
+    <!-- Circular masks for client profile pictures -->
+    <clipPath id="clientCircle1"><circle cx="100" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle2"><circle cx="135" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle3"><circle cx="170" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle4"><circle cx="205" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle5"><circle cx="240" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle6"><circle cx="275" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle7"><circle cx="310" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle8"><circle cx="345" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle9"><circle cx="380" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle10"><circle cx="415" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle11"><circle cx="450" cy="25" r="28"/></clipPath>
+    <clipPath id="clientCircle12"><circle cx="485" cy="25" r="28"/></clipPath>
+  </defs>
+  
+  <!-- Background with enhanced gradient -->
+  <rect width="1584" height="396" fill="url(#bgGradient)"/>
+  
+  <!-- Subtle geometric accent pattern -->
+  <circle cx="200" cy="100" r="150" fill="url(#cyanGradient)" opacity="0.03"/>
+  <circle cx="400" cy="250" r="120" fill="url(#cyanGradient)" opacity="0.02"/>
+  
+  <!-- Elegant divider line with gradient fade -->
+  <defs>
+    <linearGradient id="dividerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#00d9ff;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#00d9ff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  <line x1="950" y1="0" x2="950" y2="396" stroke="url(#dividerGradient)" stroke-width="1.5"/>
+  
+  <!-- LEFT SECTION (60%) - Enhanced centered content -->
+  <g transform="translate(475, 0)">
+    <!-- Premium badge/tag above -->
+    <rect x="-80" y="100" width="160" height="28" rx="14" fill="url(#cyanGradient)" opacity="0.15" stroke="url(#cyanGradient)" stroke-width="1" stroke-opacity="0.4"/>
+    <text x="0" y="120" 
+          font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="13" 
+          font-weight="600" 
+          fill="#00d9ff" 
+          text-anchor="middle"
+          letter-spacing="1.5px">
+      ✨ BOOK A FREE CALL
+    </text>
+    
+    <!-- Main headline with improved typography -->
+    <text x="0" y="210" 
+          font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="56" 
+          font-weight="800" 
+          fill="#ffffff" 
+          text-anchor="middle"
+          letter-spacing="-1px"
+          style="filter: url(#shadow);">
+      <tspan fill="url(#cyanGradient)" font-weight="800">OFFER</tspan>
+      <tspan fill="#ffffff" font-weight="700"> + </tspan>
+      <tspan fill="url(#cyanGradient)" font-weight="800">CONTENT</tspan>
+    </text>
+    
+    <!-- Subheadline -->
+    <text x="0" y="250" 
+          font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="56" 
+          font-weight="800" 
+          fill="#ffffff" 
+          text-anchor="middle"
+          letter-spacing="-1px"
+          style="filter: url(#shadow);">
+      <tspan fill="#ffffff">CLARITY</tspan>
+      <tspan fill="url(#cyanGradient)" font-size="48"> ↓</tspan>
+    </text>
+    
+    <!-- Decorative arrow accent -->
+    <path d="M -40 275 L 0 295 L 40 275" 
+          stroke="url(#cyanGradient)" 
+          stroke-width="2.5" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          opacity="0.6"/>
+  </g>
+  
+  <!-- RIGHT SECTION (40%) - Enhanced design -->
+  <!-- Main headline with improved styling -->
+  <text x="1100" y="50" 
+        font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="30" 
+        font-weight="700" 
+        fill="#ffffff" 
+        letter-spacing="-0.5px"
+        opacity="0.98">
+    Your <tspan fill="url(#cyanGradient)" font-weight="700">LinkedIn Growth</tspan>
+  </text>
+  <text x="1100" y="80" 
+        font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="30" 
+        font-weight="700" 
+        fill="url(#cyanGradient)" 
+        letter-spacing="-0.5px"
+        opacity="0.98">
+    Partner 💪
+  </text>
+  
+  <!-- Enhanced services section -->
+  <g transform="translate(1100, 105)">
+    <!-- Service 1: Ghostwriting - Modern card design -->
+    <rect x="0" y="0" width="380" height="52" rx="8" fill="#00d9ff" opacity="0.1" stroke="url(#cyanGradient)" stroke-width="1.5" stroke-opacity="0.5" style="filter: url(#shadow);"/>
+    <!-- Enhanced Ghostwriting icon -->
+    <circle cx="28" cy="26" r="8" fill="none" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-opacity="0.95"/>
+    <path d="M 22 22 Q 28 17 34 22" stroke="url(#cyanGradient)" stroke-width="2.5" fill="none" stroke-opacity="0.95"/>
+    <line x1="28" y1="34" x2="28" y2="42" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.95"/>
+    <line x1="20" y1="42" x2="36" y2="42" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.95"/>
+    <!-- Quill pen -->
+    <path d="M 36 24 L 42 18" stroke="url(#cyanGradient)" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95"/>
+    <circle cx="38" cy="22" r="1.5" fill="url(#cyanGradient)" opacity="0.95"/>
+    <text x="55" y="34" font-family="'Inter', sans-serif" font-size="19" font-weight="700" fill="#00d9ff" letter-spacing="0.5px">Ghostwriting</text>
+    
+    <!-- Service 2: Design - Modern card design -->
+    <rect x="0" y="62" width="380" height="52" rx="8" fill="#00d9ff" opacity="0.1" stroke="url(#cyanGradient)" stroke-width="1.5" stroke-opacity="0.5" style="filter: url(#shadow);"/>
+    <!-- Enhanced Design icon - modern pen with anchor points -->
+    <path d="M 22 83 L 32 73" stroke="url(#cyanGradient)" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95"/>
+    <circle cx="22" cy="83" r="3.5" fill="none" stroke="url(#cyanGradient)" stroke-width="2" stroke-opacity="0.95"/>
+    <circle cx="32" cy="73" r="3.5" fill="none" stroke="url(#cyanGradient)" stroke-width="2" stroke-opacity="0.95"/>
+    <circle cx="27" cy="78" r="2.5" fill="url(#cyanGradient)" opacity="0.95"/>
+    <line x1="35" y1="71" x2="38" y2="68" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.95"/>
+    <text x="55" y="87" font-family="'Inter', sans-serif" font-size="19" font-weight="700" fill="#00d9ff" letter-spacing="0.5px">Design</text>
+    
+    <!-- Service 3: Engagement - Modern card design -->
+    <rect x="0" y="124" width="380" height="52" rx="8" fill="#00d9ff" opacity="0.1" stroke="url(#cyanGradient)" stroke-width="1.5" stroke-opacity="0.5" style="filter: url(#shadow);"/>
+    <!-- Enhanced Engagement icon - modern speech bubble -->
+    <path d="M 22 137 Q 22 131 27 131 L 35 131 Q 40 131 40 137 L 40 147 L 31 147 L 27 151 L 27 147 L 22 147 Z" 
+          fill="none" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-opacity="0.95"/>
+    <circle cx="28" cy="140" r="2" fill="url(#cyanGradient)" opacity="0.95"/>
+    <circle cx="33" cy="140" r="2" fill="url(#cyanGradient)" opacity="0.95"/>
+    <circle cx="38" cy="140" r="2" fill="url(#cyanGradient)" opacity="0.95"/>
+    <text x="55" y="149" font-family="'Inter', sans-serif" font-size="19" font-weight="700" fill="#00d9ff" letter-spacing="0.5px">Engagement</text>
+  </g>
+  
+  <!-- Enhanced client logos section -->
+  <rect x="1100" y="270" width="380" height="42" rx="6" fill="url(#cyanGradient)" opacity="0.12" stroke="url(#cyanGradient)" stroke-width="1.5" stroke-opacity="0.5" style="filter: url(#shadow);"/>
+  <text x="1290" y="296" 
+        font-family="'Inter', sans-serif" 
+        font-size="17" 
+        font-weight="700" 
+        fill="#ffffff" 
+        text-anchor="middle"
+        letter-spacing="4px"
+        opacity="0.98">
+    PWC  |  L'ORÉAL  |  CSIRO
+  </text>
+  
+  <!-- Enhanced 6.1M+ Impressions Section -->
+  <g transform="translate(1100, 318)">
+    <text x="0" y="0" 
+          font-family="'Inter', sans-serif" 
+          font-size="17" 
+          font-weight="600" 
+          fill="#ffffff" 
+          letter-spacing="0.8px"
+          opacity="0.95">
+      6.1M+ Impressions on
+    </text>
+    <!-- Enhanced X/Twitter logo -->
+    <g transform="translate(165, -12)">
+      <circle cx="6" cy="6" r="8" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+      <path d="M 2 2 L 10 10 M 10 2 L 2 10" 
+            stroke="#ffffff" 
+            stroke-width="3" 
+            stroke-linecap="round"
+            opacity="0.95"/>
+    </g>
+  </g>
+  
+  <!-- Enhanced Social Proof Section -->
+  <g id="socialProofSection" transform="translate(1100, 345)">
+    <!-- Enhanced stars -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="20" fill="#FFD700" letter-spacing="4px" opacity="0.95">★★★★★</text>
+    
+    <!-- Enhanced overlapping client profile pictures with colored borders -->
+    <!-- Client 1 - Purple border -->
+    <circle cx="100" cy="25" r="32" fill="none" stroke="#9B59B6" stroke-width="3" opacity="0.85"/>
+    <image x="72" y="-7" width="64" height="64" href="assets/images/testimonials/Alex Stefan.jpg" clip-path="url(#clientCircle1)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 2 - Orange border -->
+    <circle cx="135" cy="25" r="32" fill="none" stroke="#FF8C42" stroke-width="3" opacity="0.85"/>
+    <image x="107" y="-7" width="64" height="64" href="assets/images/testimonials/David.jpg" clip-path="url(#clientCircle2)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 3 - Beige/Off-white border -->
+    <circle cx="170" cy="25" r="32" fill="none" stroke="#F5E6D3" stroke-width="3" opacity="0.85"/>
+    <image x="142" y="-7" width="64" height="64" href="assets/images/testimonials/Miguel.jpg" clip-path="url(#clientCircle3)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 4 - Pink border -->
+    <circle cx="205" cy="25" r="32" fill="none" stroke="#FF69B4" stroke-width="3" opacity="0.85"/>
+    <image x="177" y="-7" width="64" height="64" href="assets/images/testimonials/Roxana.jpg" clip-path="url(#clientCircle4)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 5 - Light blue/purple border -->
+    <circle cx="240" cy="25" r="32" fill="none" stroke="#87CEEB" stroke-width="3" opacity="0.85"/>
+    <image x="212" y="-7" width="64" height="64" href="assets/images/testimonials/Glenn.jpg" clip-path="url(#clientCircle5)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 6 - Coral Red border -->
+    <circle cx="275" cy="25" r="32" fill="none" stroke="#FF6B6B" stroke-width="3" opacity="0.85"/>
+    <image x="247" y="-7" width="64" height="64" href="assets/images/testimonials/client-6.jpg" clip-path="url(#clientCircle6)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 7 - Turquoise border -->
+    <circle cx="310" cy="25" r="32" fill="none" stroke="#4ECDC4" stroke-width="3" opacity="0.85"/>
+    <image x="282" y="-7" width="64" height="64" href="assets/images/testimonials/client-7.jpg" clip-path="url(#clientCircle7)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 8 - Mint Green border -->
+    <circle cx="345" cy="25" r="32" fill="none" stroke="#95E1D3" stroke-width="3" opacity="0.85"/>
+    <image x="317" y="-7" width="64" height="64" href="assets/images/testimonials/client-8.jpg" clip-path="url(#clientCircle8)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 9 - Lavender border -->
+    <circle cx="380" cy="25" r="32" fill="none" stroke="#AA96DA" stroke-width="3" opacity="0.85"/>
+    <image x="352" y="-7" width="64" height="64" href="assets/images/testimonials/client-9.jpg" clip-path="url(#clientCircle9)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Client 10 - Light Pink border -->
+    <circle cx="415" cy="25" r="32" fill="none" stroke="#FCBAD3" stroke-width="3" opacity="0.85"/>
+    <image x="387" y="-7" width="64" height="64" href="assets/images/testimonials/client-10.jpg" clip-path="url(#clientCircle10)" preserveAspectRatio="xMidYMid slice"/>
+    
+    <!-- Enhanced "and more" text -->
+    <text x="450" y="43" 
+          font-family="'Inter', sans-serif" 
+          font-size="15" 
+          font-weight="500" 
+          fill="#b3b3b3" 
+          letter-spacing="0.8px"
+          opacity="0.85">
+      ... and more
+    </text>
+  </g>
+  
+  <!-- Enhanced profile picture with modern border -->
+  <defs>
+    <linearGradient id="profileBorderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00a8cc;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <circle cx="1320" cy="198" r="124" fill="none" stroke="url(#profileBorderGradient)" stroke-width="3" opacity="0.7"/>
+  <circle cx="1320" cy="198" r="120" fill="none" stroke="#1a1a1a" stroke-width="1" opacity="0.4"/>
+  <image x="1200" y="78" width="240" height="240" 
+         href="assets/images/profile-picture.jpg" 
+         clip-path="url(#circleClip)"
+         preserveAspectRatio="xMidYMid slice"
+         opacity="0.98"
+         style="filter: url(#shadow);"/>
+  
+</svg>

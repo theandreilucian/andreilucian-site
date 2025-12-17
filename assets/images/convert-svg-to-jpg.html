@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to JPEG Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        button {
+            background: #00d9ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #00a8cc;
+        }
+        #svgContainer {
+            margin: 20px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SVG to JPEG Converter</h1>
+        <p>Click the button below to convert and download the SVG as JPEG:</p>
+        <button onclick="convertToJPG()">Convert to JPEG</button>
+        <div id="svgContainer"></div>
+    </div>
+
+    <script>
+        async function convertToJPG() {
+            try {
+                // Load the SVG file
+                const response = await fetch('banner-linkedin-header-new.svg');
+                const svgText = await response.text();
+                
+                // Create an image element
+                const img = new Image();
+                const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+                const url = URL.createObjectURL(svgBlob);
+                
+                img.onload = function() {
+                    // Create canvas
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 1584;
+                    canvas.height = 396;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Draw image on canvas
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Convert to JPEG
+                    canvas.toBlob(function(blob) {
+                        // Create download link
+                        const link = document.createElement('a');
+                        link.download = 'banner-linkedin-header-new.jpg';
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        
+                        // Clean up
+                        URL.revokeObjectURL(url);
+                        URL.revokeObjectURL(link.href);
+                    }, 'image/jpeg', 0.95);
+                };
+                
+                img.onerror = function() {
+                    alert('Error loading SVG file. Make sure the SVG file is in the same directory as this HTML file.');
+                };
+                
+                img.src = url;
+                
+            } catch (error) {
+                alert('Error: ' + error.message);
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

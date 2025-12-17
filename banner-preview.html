@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Banner Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            color: #b3b3b3;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .banner-container {
+            background: #000000;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner-preview {
+            width: 100%;
+            max-width: 1584px;
+            height: auto;
+            display: block;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            background: #00d9ff;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #00b8d9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+        }
+        
+        .info-box {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 800px;
+            color: #b3b3b3;
+        }
+        
+        .info-box h3 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .info-box code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d9ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>LinkedIn Banner Preview</h1>
+    
+    <div class="instructions">
+        <p>Preview your banner below. Right-click on the banner and select "Save Image As" to download it as PNG.</p>
+        <p><strong>Dimensions:</strong> 1584px × 396px (LinkedIn Standard)</p>
+    </div>
+    
+    <div class="banner-container">
+        <img src="assets/images/banner-linkedin-header-new.svg" alt="LinkedIn Banner" class="banner-preview" id="bannerImage">
+    </div>
+    
+    <div class="export-buttons">
+        <button onclick="downloadAsPNG()">Download as PNG</button>
+        <button onclick="copyToClipboard()">Copy Image</button>
+        <button onclick="openInNewTab()">Open SVG in New Tab</button>
+    </div>
+    
+    <div class="info-box">
+        <h3>How to Export as PNG:</h3>
+        <ul>
+            <li><strong>Method 1:</strong> Right-click the banner above → "Save Image As" → Save as PNG</li>
+            <li><strong>Method 2:</strong> Click "Download as PNG" button (requires modern browser)</li>
+            <li><strong>Method 3:</strong> Use online converter: <a href="https://svgtopng.com" target="_blank" style="color: #00d9ff;">svgtopng.com</a></li>
+            <li><strong>Method 4:</strong> Open SVG in browser → Take screenshot → Crop to banner size</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">File Location:</h3>
+        <p><code>assets/images/banner-linkedin-header-new.svg</code></p>
+        
+        <h3 style="margin-top: 20px;">To Add Client Images:</h3>
+        <p>See <code>CLIENT_IMAGES_SETUP.md</code> for detailed instructions on adding your client profile pictures.</p>
+    </div>
+    
+    <script>
+        async function downloadAsPNG() {
+            const img = document.getElementById('bannerImage');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1584;
+            canvas.height = 396;
+            
+            const imgObj = new Image();
+            imgObj.crossOrigin = 'anonymous';
+            
+            imgObj.onload = function() {
+                ctx.drawImage(imgObj, 0, 0, 1584, 396);
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'linkedin-banner.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            imgObj.src = img.src;
+        }
+        
+        async function copyToClipboard() {
+            try {
+                const img = document.getElementById('bannerImage');
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 1584;
+                canvas.height = 396;
+                
+                const imgObj = new Image();
+                imgObj.crossOrigin = 'anonymous';
+                
+                imgObj.onload = function() {
+                    ctx.drawImage(imgObj, 0, 0, 1584, 396);
+                    
+                    canvas.toBlob(async function(blob) {
+                        try {
+                            await navigator.clipboard.write([
+                                new ClipboardItem({ 'image/png': blob })
+                            ]);
+                            alert('Image copied to clipboard!');
+                        } catch (err) {
+                            alert('Failed to copy. Try right-clicking and "Save Image As" instead.');
+                        }
+                    }, 'image/png');
+                };
+                
+                imgObj.src = img.src;
+            } catch (err) {
+                alert('Clipboard feature not available. Use "Download as PNG" instead.');
+            }
+        }
+        
+        function openInNewTab() {
+            window.open('assets/images/banner-linkedin-header-new.svg', '_blank');
+        }
+    </script>
+</body>
+</html>

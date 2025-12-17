@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Landing Page - Andrei Lucian</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: #000000;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            background: #00d9ff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: #00b8d9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #00d9ff;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #00d9ff;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 20px;
+            background: #000000;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        .section-content strong {
+            color: #00d9ff;
+            font-weight: 700;
+        }
+
+        /* Proof Section */
+        .proof-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .proof-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .proof-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+
+        .proof-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* What's Included */
+        .includes-section {
+            padding: 80px 20px;
+            background: #000000;
+        }
+
+        .includes-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            list-style: none;
+        }
+
+        .includes-list li {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #00d9ff;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        .includes-list li::before {
+            content: "✓ ";
+            color: #00d9ff;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .pricing-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #00d9ff;
+            margin: 20px 0;
+        }
+
+        .pricing-price .old-price {
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+            margin-right: 15px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-features li::before {
+            content: "✓ ";
+            color: #00d9ff;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            background: #000000;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 25px 25px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Who Is This For */
+        .for-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .for-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .for-column {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .for-column h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00d9ff;
+        }
+
+        .for-column ul {
+            list-style: none;
+        }
+
+        .for-column li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .for-column li::before {
+            content: "• ";
+            color: #00d9ff;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            padding: 80px 20px;
+            background: #000000;
+            text-align: center;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00d9ff;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 217, 255, 0.3);
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: #00d9ff;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 40px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .for-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>How I Grew From 0 to [X] Followers and Built a [X]-Figure Business In [X] Months</h1>
+            <p class="hero-subtitle">
+                Use my proven system to gain <strong>6-figures, +50K followers, and +10M monthly impressions</strong> all while working only 2 hours per day.
+            </p>
+            <a href="#pricing" class="cta-button">Get Instant Access →</a>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">PROVEN RESULTS</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">13K</div>
+                    <div class="stat-label">LinkedIn Followers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2.9K</div>
+                    <div class="stat-label">X Followers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">25+</div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="container">
+        <div class="testimonial">
+            <p class="testimonial-text">
+                "[Your testimonial quote here - make it compelling and specific]"
+            </p>
+            <p class="testimonial-author">— [Name] | [Title/Company]</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">THE SHOCKING TRUTH ABOUT [TOPIC]...</h2>
+            <div class="section-content">
+                <p><strong>The ONE Thing That Prevents 99% Of Creators From Growing</strong></p>
+                <p>What your competitors don't want you to know…</p>
+                <p>I was able to build a $[X]k/mo business in only a year.</p>
+                <p>I also gained [X] followers in less than a year.</p>
+                <p>And my content went viral many times.</p>
+                <p>But the truth is that <strong>I almost gave up</strong> because I was making a mistake that 99% of creators make. This mistake cost me months of progress and it will prevent you from growing fast.</p>
+                <p>Back then, I only got [X] followers after months of daily posts. This was incredibly frustrating because I had bought the courses of all of the biggest creators. I was doing <strong>EXACTLY</strong> what they told me to do, but I simply wasn't growing…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section class="proof-section">
+        <div class="container">
+            <h2 class="section-title">PROOF IT WORKS</h2>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <h3>Result 1</h3>
+                    <p>Specific result or case study here. Show real numbers and outcomes.</p>
+                </div>
+                <div class="proof-card">
+                    <h3>Result 2</h3>
+                    <p>Another specific result or case study. Include screenshots or testimonials.</p>
+                </div>
+                <div class="proof-card">
+                    <h3>Result 3</h3>
+                    <p>More proof and social proof. Show that it works for others too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">THE CHANGE I MADE...</h2>
+            <div class="section-content">
+                <p>When I restarted, I knew that I had to try something completely different.</p>
+                <p>Instead of doing what everyone else was doing, I used <strong>a proven strategy</strong> that has helped [successful people] achieve [results].</p>
+                <p>This strategy is based on <strong>first principles thinking</strong> - focusing only on what actually matters for growth.</p>
+                <p>Here's what you actually need:</p>
+                <ul class="includes-list">
+                    <li>High-quality content that gets impressions</li>
+                    <li>An optimized profile that converts visitors</li>
+                    <li>A system that makes it all efficient</li>
+                    <li>The right offer to monetize your audience</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="includes-section">
+        <div class="container">
+            <h2 class="section-title">WHAT'S INCLUDED</h2>
+            <ul class="includes-list">
+                <li>[Module 1 Name] - Complete guide on [topic]</li>
+                <li>[Module 2 Name] - Step-by-step framework</li>
+                <li>[Module 3 Name] - Advanced strategies</li>
+                <li>[Bonus 1] - Additional resource ($[X] value)</li>
+                <li>[Bonus 2] - Another bonus resource ($[X] value)</li>
+                <li>[Bonus 3] - More bonuses included</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">CHOOSE YOUR TIER</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Tier 1</h3>
+                    <div class="pricing-price">
+                        <span class="old-price">$497</span>
+                        $197
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Level 1</li>
+                        <li>Core System Access</li>
+                        <li>All Growth Strategies</li>
+                        <li>Writing Frameworks</li>
+                        <li>Bonus Resources</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Instant Access →</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3 class="pricing-title">Tier 2 (Recommended)</h3>
+                    <div class="pricing-price">
+                        <span class="old-price">$1,000</span>
+                        $797
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Tier 1</li>
+                        <li>Monetization Strategies</li>
+                        <li>Offer Creation Framework</li>
+                        <li>Sales Systems</li>
+                        <li>Advanced Bonuses</li>
+                        <li>Q&A Recordings</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Instant Access →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is This For -->
+    <section class="for-section">
+        <div class="container">
+            <h2 class="section-title">WHO IS THIS FOR?</h2>
+            <div class="for-grid">
+                <div class="for-column">
+                    <h3>This is for you if:</h3>
+                    <ul>
+                        <li>You want to build a high-quality audience</li>
+                        <li>You want to write about your interests</li>
+                        <li>You want to help others at scale</li>
+                        <li>You want control over your time</li>
+                        <li>You want to build a business you're passionate about</li>
+                        <li>You're a long-term thinker</li>
+                    </ul>
+                </div>
+                <div class="for-column">
+                    <h3>This isn't for you if:</h3>
+                    <ul>
+                        <li>You want immediate results without work</li>
+                        <li>You hate creating content</li>
+                        <li>You don't care about building a personal brand</li>
+                        <li>You want to keep doing client work forever</li>
+                        <li>You expect results overnight</li>
+                        <li>You're not willing to invest in yourself</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>When do I get access to the course?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    You get instant access to the course after you pay. All materials are available immediately.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do I keep access to this course?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, you keep lifetime access to this course. You also get all future updates for the tier you purchased.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What's the difference between the 2 tiers?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Tier 1 teaches you everything about branding, writing, and growth. Tier 2 includes everything in Tier 1 plus monetization, offers, products, and selling strategies.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Will this course help me make money?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. You learn all the skills you need to thrive as a creator: writing, audience building, branding, creating products, and selling. You won't make a million dollars tomorrow, but long-term, this will make you a lot of money if you stay consistent.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Are there any other costs?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Not from my end. I will recommend some tools once you're inside. Some tools are free, some cost money. It's up to you whether you want to invest in these tools or not. But you only pay once for this course.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2 class="section-title">READY TO GET STARTED?</h2>
+            <p class="hero-subtitle" style="margin-bottom: 40px;">
+                Join hundreds of creators who are already using this system to build their personal brand and grow their business.
+            </p>
+            <a href="#pricing" class="cta-button">Get Instant Access →</a>
+        </div>
+    </section>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.faq-question span:last-child').forEach(item => {
+                if (item !== icon) {
+                    item.textContent = '+';
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,94 @@
+<svg width="1500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background -->
+  <rect width="1500" height="500" fill="#000000"/>
+  
+  <!-- Top Text: Premium Typography - Centered -->
+  <text x="750" y="180" 
+        font-family="'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif" 
+        font-size="46" 
+        font-weight="600" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        letter-spacing="4px"
+        opacity="0.98">
+    Authority → Content → Leads
+  </text>
+  
+  <!-- Icons Section - Aligned Below Text -->
+  <g transform="translate(750, 360)">
+    
+    <!-- Step 1: Lightbulb/Idea Icon - Under "Authority" -->
+    <g transform="translate(-320, 0)">
+      <!-- Lightbulb glass bulb -->
+      <path d="M 0 -30 Q -18 -30 -22 -15 Q -22 0 -12 8 L -10 18 Q -10 22 -6 24 Q -2 26 0 26 Q 2 26 6 24 Q 10 22 10 18 L 12 8 Q 22 0 22 -15 Q 18 -30 0 -30 Z" 
+            fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Lightbulb base/threads -->
+      <rect x="-8" y="26" width="16" height="6" rx="2" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <!-- Filament - horizontal line -->
+      <line x1="-10" y1="-10" x2="10" y2="-10" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Filament - vertical line -->
+      <line x1="0" y1="-25" x2="0" y2="-5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Sparkle/idea rays -->
+      <line x1="-18" y1="-20" x2="-24" y2="-26" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="-20" x2="24" y2="-26" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="-32" x2="0" y2="-38" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Arrow 1 - Consistent Spacing -->
+    <g transform="translate(-220, 0)">
+      <line x1="0" y1="0" x2="50" y2="0" stroke="#00d9ff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 40 -8 L 50 0 L 40 8" fill="#00d9ff" stroke="none"/>
+    </g>
+    
+    <!-- Step 2: Modern Document Icon - Under "Content" -->
+    <g transform="translate(-110, 0)">
+      <!-- Document body -->
+      <rect x="-26" y="-32" width="52" height="64" rx="4" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <!-- Document fold corner -->
+      <path d="M -26 -32 L -10 -32 L -26 -16 Z" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Content lines with bullets -->
+      <circle cx="-18" cy="-20" r="2" fill="#ffffff"/>
+      <line x1="-12" y1="-20" x2="20" y2="-20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-18" cy="-4" r="2" fill="#ffffff"/>
+      <line x1="-12" y1="-4" x2="20" y2="-4" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-18" cy="12" r="2" fill="#ffffff"/>
+      <line x1="-12" y1="12" x2="20" y2="12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Arrow 2 - Consistent Spacing -->
+    <g transform="translate(-30, 0)">
+      <line x1="0" y1="0" x2="50" y2="0" stroke="#00d9ff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 40 -8 L 50 0 L 40 8" fill="#00d9ff" stroke="none"/>
+    </g>
+    
+    <!-- Step 3: Stylized Eye Icon -->
+    <g transform="translate(80, 0)">
+      <!-- Eye shape - more elegant -->
+      <path d="M -32 0 Q -32 -20 0 -20 Q 32 -20 32 0 Q 32 20 0 20 Q -32 20 -32 0" 
+            fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Iris with highlight -->
+      <circle cx="0" cy="0" r="12" fill="#ffffff"/>
+      <circle cx="3" cy="-3" r="4" fill="#000000"/>
+      <!-- Eyelid detail -->
+      <path d="M -24 -12 Q 0 -16 24 -12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Arrow 3 - Consistent Spacing -->
+    <g transform="translate(150, 0)">
+      <line x1="0" y1="0" x2="50" y2="0" stroke="#00d9ff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 40 -8 L 50 0 L 40 8" fill="#00d9ff" stroke="none"/>
+    </g>
+    
+    <!-- Step 4: Premium Money Card Icon - Under "Leads" -->
+    <g transform="translate(270, 0)">
+      <!-- Card with rounded corners -->
+      <rect x="-24" y="-32" width="48" height="64" rx="6" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <!-- Card corner accent -->
+      <rect x="-20" y="-28" width="8" height="8" rx="1" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+      <!-- Dollar sign - refined -->
+      <text x="0" y="10" font-family="'Inter', 'SF Pro Display', -apple-system, sans-serif" 
+            font-size="42" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0">$</text>
+    </g>
+    
+  </g>
+</svg>

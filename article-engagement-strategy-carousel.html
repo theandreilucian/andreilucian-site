@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X (Twitter) Engagement Strategy - Instagram Carousel</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .carousel-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            background: #000000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-header {
+            background: linear-gradient(135deg, #E1306C 0%, #C13584 50%, #833AB4 100%);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .carousel-header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .carousel-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .carousel-slides {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-slides::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-slides::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .carousel-slides::-webkit-scrollbar-thumb {
+            background: #E1306C;
+            border-radius: 4px;
+        }
+
+        .slide {
+            min-width: 100%;
+            width: 100%;
+            height: 1080px;
+            scroll-snap-align: start;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #000000;
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.05) 0%, rgba(131, 58, 180, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #E1306C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #E1306C;
+        }
+
+        .slide-text {
+            font-size: 32px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .slide-list {
+            list-style: none;
+            font-size: 28px;
+            line-height: 2;
+            margin: 20px 0;
+        }
+
+        .slide-list li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .slide-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #E1306C;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        .slide-list li.cross::before {
+            content: '✗';
+            color: #ff4444;
+        }
+
+        .tier-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(225, 48, 108, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .tier-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #E1306C;
+            margin-bottom: 20px;
+        }
+
+        .tier-definition {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .template-box {
+            background: rgba(225, 48, 108, 0.1);
+            border-left: 4px solid #E1306C;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .template-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #E1306C;
+            margin-bottom: 15px;
+        }
+
+        .template-text {
+            font-size: 24px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight {
+            color: #E1306C;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: rgba(225, 48, 108, 0.1);
+            border: 2px solid #E1306C;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #E1306C;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: #1a1a1a;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #E1306C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #C13584;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #1a1a1a;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #E1306C;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .slide-title {
+                font-size: 42px;
+            }
+
+            .slide-subtitle {
+                font-size: 28px;
+            }
+
+            .slide-text {
+                font-size: 22px;
+            }
+
+            .slide-list {
+                font-size: 20px;
+            }
+
+            .tier-title {
+                font-size: 36px;
+            }
+        }
+
+        .cta-slide {
+            text-align: center;
+            align-items: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            border-radius: 15px;
+            text-decoration: none;
+            margin-top: 40px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(225, 48, 108, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel-header">
+            <h1>X (Twitter) Engagement Strategy</h1>
+            <p>Build a network of entrepreneurs through strategic engagement</p>
+        </div>
+
+        <div class="carousel-slides" id="carouselSlides">
+            <!-- Slide 1: Cover -->
+            <div class="slide">
+                <div class="slide-number">1/15</div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Build Your Network Through Strategic Engagement</h1>
+                    <p class="slide-text" style="font-size: 28px; margin-top: 40px; color: rgba(255,255,255,0.8);">
+                        A complete guide to building meaningful relationships with entrepreneurs on X (Twitter)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Goal -->
+            <div class="slide">
+                <div class="slide-number">2/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">ENGAGEMENT GOAL</h2>
+                    <p class="slide-text" style="font-size: 48px; font-weight: 700; margin-top: 40px;">
+                        Build a network of entrepreneurs through strategic engagement
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Philosophy - Engage With -->
+            <div class="slide">
+                <div class="slide-number">3/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">ENGAGE WITH</h2>
+                    <ul class="slide-list">
+                        <li>Real operators building real businesses</li>
+                        <li>High performers sharing discipline routines</li>
+                        <li>People asking genuine questions about operations</li>
+                        <li>Content about systems, not theory</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: Philosophy - Ignore -->
+            <div class="slide">
+                <div class="slide-number">4/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">IGNORE</h2>
+                    <ul class="slide-list">
+                        <li class="cross">Fake gurus</li>
+                        <li class="cross">Excuse-makers</li>
+                        <li class="cross">Theory without execution</li>
+                        <li class="cross">Vanity metrics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 5: How to Engage -->
+            <div class="slide">
+                <div class="slide-number">5/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">HOW TO ENGAGE</h2>
+                    <ul class="slide-list">
+                        <li>Short, sharp responses</li>
+                        <li>No fluff</li>
+                        <li>Direct answers</li>
+                        <li>Call out bullshit when needed</li>
+                        <li>Support real operators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 6: Tier 1 -->
+            <div class="slide">
+                <div class="slide-number">6/15</div>
+                <div class="slide-content">
+                    <div class="tier-card">
+                        <h2 class="tier-title">TIER 1: TOP PLAYERS</h2>
+                        <p class="tier-definition">50K+ followers, established authority</p>
+                        <p class="slide-text" style="font-size: 24px;">
+                            <strong>Frequency:</strong> 2-3 engagements per week<br>
+                            <strong>Strategy:</strong> Strategic, high-value interactions<br>
+                            <strong>Purpose:</strong> Learn, get on their radar, build relationships over time
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Tier 2 -->
+            <div class="slide">
+                <div class="slide-number">7/15</div>
+                <div class="slide-content">
+                    <div class="tier-card">
+                        <h2 class="tier-title">TIER 2: MEDIUM PLAYERS</h2>
+                        <p class="tier-definition">10K-50K followers, building authority</p>
+                        <p class="slide-text" style="font-size: 24px;">
+                            <strong>Frequency:</strong> 3-5 engagements per week<br>
+                            <strong>Strategy:</strong> Regular, value-driven interactions<br>
+                            <strong>Purpose:</strong> Build peer relationships, cross-pollinate audiences
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Tier 3 -->
+            <div class="slide">
+                <div class="slide-number">8/15</div>
+                <div class="slide-content">
+                    <div class="tier-card">
+                        <h2 class="tier-title">TIER 3: SMALL PLAYERS</h2>
+                        <p class="tier-definition">1K-10K followers, early stage</p>
+                        <p class="slide-text" style="font-size: 24px;">
+                            <strong>Frequency:</strong> 5-7 engagements per week<br>
+                            <strong>Strategy:</strong> Active support and mentorship<br>
+                            <strong>Purpose:</strong> Help build their network, establish yourself as operator-King
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Daily Schedule -->
+            <div class="slide">
+                <div class="slide-number">9/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">DAILY ENGAGEMENT</h2>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">4-7</div>
+                            <div class="stat-label">Tier 1</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">7-11</div>
+                            <div class="stat-label">Tier 2</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">11-17</div>
+                            <div class="stat-label">Tier 3</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">22-35</div>
+                            <div class="stat-label">Total Daily</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Templates -->
+            <div class="slide">
+                <div class="slide-number">10/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">ENGAGEMENT TEMPLATES</h2>
+                    <div class="template-box">
+                        <div class="template-title">Value-Add Reply</div>
+                        <div class="template-text">
+                            [Their insight] + [Your perspective] + [Actionable takeaway]
+                        </div>
+                    </div>
+                    <div class="template-box">
+                        <div class="template-title">Support + Insight</div>
+                        <div class="template-text">
+                            [Agree] + [Your experience] + [Actionable insight]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Do's -->
+            <div class="slide">
+                <div class="slide-number">11/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">DO</h2>
+                    <ul class="slide-list">
+                        <li>Provide value in every interaction</li>
+                        <li>Be genuine and authentic</li>
+                        <li>Support real operators</li>
+                        <li>Share insights and experiences</li>
+                        <li>Give before asking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 12: Don'ts -->
+            <div class="slide">
+                <div class="slide-number">12/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">DON'T</h2>
+                    <ul class="slide-list">
+                        <li class="cross">Ask for follows or engagement</li>
+                        <li class="cross">Spam or generic replies</li>
+                        <li class="cross">Engage with fake gurus</li>
+                        <li class="cross">Be transactional</li>
+                        <li class="cross">Copy-paste replies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 13: Success Metrics -->
+            <div class="slide">
+                <div class="slide-number">13/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">TRACK THESE METRICS</h2>
+                    <ul class="slide-list">
+                        <li>Meaningful relationships built</li>
+                        <li>Response rate from engagement</li>
+                        <li>Collaborations/partnerships formed</li>
+                        <li>Network growth (quality connections)</li>
+                        <li>Opportunities created</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 14: Philosophy -->
+            <div class="slide">
+                <div class="slide-number">14/15</div>
+                <div class="slide-content">
+                    <h2 class="slide-subtitle">REMEMBER</h2>
+                    <p class="slide-text" style="font-size: 36px; text-align: center; margin-top: 60px;">
+                        Quality <span class="highlight">></span> Quantity<br><br>
+                        Relationships <span class="highlight">></span> Transactions<br><br>
+                        Value <span class="highlight">></span> Asks<br><br>
+                        Long-term <span class="highlight">></span> Short-term
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 15: CTA -->
+            <div class="slide cta-slide">
+                <div class="slide-number">15/15</div>
+                <div class="slide-content">
+                    <h1 class="slide-title" style="font-size: 56px;">Ready to Build Your Network?</h1>
+                    <p class="slide-text" style="font-size: 28px; margin-top: 40px;">
+                        Engage authentically. Build relationships. Create value. Execute.
+                    </p>
+                    <p class="slide-text" style="font-size: 24px; margin-top: 60px; color: rgba(255,255,255,0.7);">
+                        Save this post and start implementing today
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-indicators" id="indicators"></div>
+        
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Create indicators
+        const indicatorsContainer = document.getElementById('indicators');
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+            indicator.onclick = () => goToSlide(i);
+            indicatorsContainer.appendChild(indicator);
+        }
+
+        function updateSlide() {
+            const carousel = document.getElementById('carouselSlides');
+            carousel.scrollTo({
+                left: currentSlide * carousel.offsetWidth,
+                behavior: 'smooth'
+            });
+            updateIndicators();
+            updateButtons();
+        }
+
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((ind, index) => {
+                if (index === currentSlide) {
+                    ind.classList.add('active');
+                } else {
+                    ind.classList.remove('active');
+                }
+            });
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        // Handle scroll to update current slide
+        document.getElementById('carouselSlides').addEventListener('scroll', () => {
+            const carousel = document.getElementById('carouselSlides');
+            const scrollLeft = carousel.scrollLeft;
+            const slideWidth = carousel.offsetWidth;
+            currentSlide = Math.round(scrollLeft / slideWidth);
+            updateIndicators();
+            updateButtons();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Initialize
+        updateButtons();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

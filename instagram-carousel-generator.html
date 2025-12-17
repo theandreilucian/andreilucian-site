@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Carousel Design Generator</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+        }
+
+        .sidebar {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .preview-area {
+            background: #000000;
+            border-radius: 20px;
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #E1306C;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea,
+        select,
+        input[type="color"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .color-group {
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="color"] {
+            height: 45px;
+            padding: 4px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .slide-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .slide-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slide-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #E1306C;
+        }
+
+        .slide-item.active {
+            border-color: #E1306C;
+            background: rgba(225, 48, 108, 0.1);
+        }
+
+        .slide-item-title {
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .slide-item-preview {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .carousel-canvas {
+            width: 1080px;
+            height: 1080px;
+            background: #000000;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-preview {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            position: relative;
+            color: #FFFFFF;
+        }
+
+        .slide-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.05) 0%, rgba(131, 58, 180, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .slide-text {
+            font-size: 32px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .slide-list-preview {
+            list-style: none;
+            font-size: 28px;
+            line-height: 2;
+            margin: 20px 0;
+            --accent-color: #E1306C;
+        }
+
+        .slide-list-preview li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .slide-list-preview li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color, #E1306C);
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .export-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: rgba(225, 48, 108, 0.1);
+            border: 1px solid rgba(225, 48, 108, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box-title {
+            color: #E1306C;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .info-box-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .slide-count {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .carousel-canvas {
+                width: 100%;
+                max-width: 1080px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E1306C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Carousel Designer</h1>
+            <p class="subtitle">Create Instagram carousel posts with custom designs</p>
+
+            <div class="info-box">
+                <div class="info-box-title">💡 Pro Tip</div>
+                <div class="info-box-text">
+                    Each slide is 1080x1080px (Instagram square format). Design your slides, then export them individually or as a full carousel.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Slides</div>
+                <div class="slide-list" id="slideList"></div>
+                <button class="btn btn-secondary" onclick="addSlide()">+ Add New Slide</button>
+            </div>
+
+            <div class="section" id="slideEditor">
+                <div class="section-title">Edit Slide</div>
+                <label>Slide Title</label>
+                <input type="text" id="slideTitle" placeholder="Enter slide title" oninput="updatePreview()">
+                
+                <label>Slide Content</label>
+                <textarea id="slideContent" placeholder="Enter slide content or bullet points (one per line)" oninput="updatePreview()"></textarea>
+                
+                <label>Background Color</label>
+                <div class="color-group">
+                    <input type="color" id="bgColor" value="#000000" onchange="updatePreview()">
+                    <input type="text" id="bgColorText" value="#000000" readonly>
+                </div>
+                
+                <label>Text Color</label>
+                <div class="color-group">
+                    <input type="color" id="textColor" value="#FFFFFF" onchange="updatePreview()">
+                    <input type="text" id="textColorText" value="#FFFFFF" readonly>
+                </div>
+                
+                <label>Accent Color</label>
+                <div class="color-group">
+                    <input type="color" id="accentColor" value="#E1306C" onchange="updatePreview()">
+                    <input type="text" id="accentColorText" value="#E1306C" readonly>
+                </div>
+
+                <label>Title Size</label>
+                <select id="titleSize" onchange="updatePreview()">
+                    <option value="48">Small (48px)</option>
+                    <option value="56">Medium (56px)</option>
+                    <option value="72" selected>Large (72px)</option>
+                    <option value="84">X-Large (84px)</option>
+                </select>
+
+                <label>Text Size</label>
+                <select id="textSize" onchange="updatePreview()">
+                    <option value="24">Small (24px)</option>
+                    <option value="28">Medium (28px)</option>
+                    <option value="32" selected>Large (32px)</option>
+                    <option value="36">X-Large (36px)</option>
+                </select>
+
+                <label>Content Type</label>
+                <select id="contentType" onchange="updatePreview()">
+                    <option value="text">Plain Text</option>
+                    <option value="list">Bullet List</option>
+                    <option value="heading">Heading Only</option>
+                </select>
+
+                <button class="btn" onclick="deleteCurrentSlide()">Delete This Slide</button>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Export</div>
+                <button class="btn" onclick="exportCurrentSlide()">📥 Export Current Slide</button>
+                <button class="btn btn-secondary" onclick="exportAllSlides()">📥 Export All Slides</button>
+                <div class="slide-count" id="slideCount">0 slides</div>
+            </div>
+        </div>
+
+        <div class="preview-area">
+            <div class="carousel-canvas" id="canvas">
+                <div class="slide-preview" id="slidePreview">
+                    <div class="slide-number" id="slideNumber">1/1</div>
+                    <div class="slide-content">
+                        <h1 class="slide-title" id="previewTitle">Your Slide Title</h1>
+                        <p class="slide-text" id="previewContent">Add your content here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slides = [
+            {
+                id: 1,
+                title: "Your Slide Title",
+                content: "Add your content here...",
+                bgColor: "#000000",
+                textColor: "#FFFFFF",
+                accentColor: "#E1306C",
+                titleSize: 72,
+                textSize: 32,
+                contentType: "text"
+            }
+        ];
+        let currentSlideIndex = 0;
+
+        // Initialize color inputs
+        document.getElementById('bgColor').addEventListener('input', (e) => {
+            document.getElementById('bgColorText').value = e.target.value.toUpperCase();
+            updatePreview();
+        });
+
+        document.getElementById('textColor').addEventListener('input', (e) => {
+            document.getElementById('textColorText').value = e.target.value.toUpperCase();
+            updatePreview();
+        });
+
+        document.getElementById('accentColor').addEventListener('input', (e) => {
+            document.getElementById('accentColorText').value = e.target.value.toUpperCase();
+            updatePreview();
+        });
+
+        function renderSlideList() {
+            const slideList = document.getElementById('slideList');
+            slideList.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                const slideItem = document.createElement('div');
+                slideItem.className = 'slide-item' + (index === currentSlideIndex ? ' active' : '');
+                slideItem.onclick = () => selectSlide(index);
+                slideItem.innerHTML = `
+                    <div class="slide-item-title">Slide ${index + 1}</div>
+                    <div class="slide-item-preview">${slide.title || 'Untitled'}</div>
+                `;
+                slideList.appendChild(slideItem);
+            });
+
+            document.getElementById('slideCount').textContent = `${slides.length} slide${slides.length !== 1 ? 's' : ''}`;
+        }
+
+        function selectSlide(index) {
+            currentSlideIndex = index;
+            loadSlide(slides[index]);
+            renderSlideList();
+        }
+
+        function loadSlide(slide) {
+            document.getElementById('slideTitle').value = slide.title;
+            document.getElementById('slideContent').value = slide.content;
+            document.getElementById('bgColor').value = slide.bgColor;
+            document.getElementById('bgColorText').value = slide.bgColor.toUpperCase();
+            document.getElementById('textColor').value = slide.textColor;
+            document.getElementById('textColorText').value = slide.textColor.toUpperCase();
+            document.getElementById('accentColor').value = slide.accentColor;
+            document.getElementById('accentColorText').value = slide.accentColor.toUpperCase();
+            document.getElementById('titleSize').value = slide.titleSize;
+            document.getElementById('textSize').value = slide.textSize;
+            document.getElementById('contentType').value = slide.contentType;
+            updatePreview();
+        }
+
+        function addSlide() {
+            const newSlide = {
+                id: slides.length + 1,
+                title: "New Slide",
+                content: "Add your content here...",
+                bgColor: "#000000",
+                textColor: "#FFFFFF",
+                accentColor: "#E1306C",
+                titleSize: 72,
+                textSize: 32,
+                contentType: "text"
+            };
+            slides.push(newSlide);
+            currentSlideIndex = slides.length - 1;
+            loadSlide(newSlide);
+            renderSlideList();
+        }
+
+        function deleteCurrentSlide() {
+            if (slides.length <= 1) {
+                alert("You need at least one slide!");
+                return;
+            }
+            slides.splice(currentSlideIndex, 1);
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = slides.length - 1;
+            }
+            loadSlide(slides[currentSlideIndex]);
+            renderSlideList();
+        }
+
+        function updatePreview() {
+            const slide = slides[currentSlideIndex];
+            
+            // Update slide data
+            slide.title = document.getElementById('slideTitle').value || "Untitled";
+            slide.content = document.getElementById('slideContent').value;
+            slide.bgColor = document.getElementById('bgColor').value;
+            slide.textColor = document.getElementById('textColor').value;
+            slide.accentColor = document.getElementById('accentColor').value;
+            slide.titleSize = parseInt(document.getElementById('titleSize').value);
+            slide.textSize = parseInt(document.getElementById('textSize').value);
+            slide.contentType = document.getElementById('contentType').value;
+
+            // Update preview
+            const preview = document.getElementById('slidePreview');
+            preview.style.backgroundColor = slide.bgColor;
+            preview.style.color = slide.textColor;
+
+            document.getElementById('slideNumber').textContent = `${currentSlideIndex + 1}/${slides.length}`;
+            
+            const titleEl = document.getElementById('previewTitle');
+            titleEl.textContent = slide.title || "Untitled";
+            titleEl.style.fontSize = slide.titleSize + 'px';
+            titleEl.style.color = slide.textColor;
+
+            const contentEl = document.getElementById('previewContent');
+            
+            if (slide.contentType === 'list') {
+                const lines = slide.content.split('\n').filter(line => line.trim());
+                if (lines.length > 0) {
+                    contentEl.innerHTML = '<ul class="slide-list-preview">' + 
+                        lines.map(line => `<li>${line.trim()}</li>`).join('') + 
+                        '</ul>';
+                    const listItems = contentEl.querySelectorAll('li');
+                    const list = contentEl.querySelector('.slide-list-preview');
+                    if (list) {
+                        list.style.setProperty('--accent-color', slide.accentColor);
+                    }
+                    listItems.forEach(li => {
+                        li.style.color = slide.textColor;
+                        li.style.fontSize = slide.textSize + 'px';
+                    });
+                } else {
+                    contentEl.innerHTML = '<ul class="slide-list-preview"><li>Add bullet points...</li></ul>';
+                }
+            } else if (slide.contentType === 'heading') {
+                contentEl.innerHTML = '';
+            } else {
+                contentEl.innerHTML = slide.content.split('\n').join('<br>') || 'Add your content here...';
+                contentEl.style.fontSize = slide.textSize + 'px';
+                contentEl.style.color = slide.textColor;
+            }
+
+            renderSlideList();
+        }
+
+        async function exportCurrentSlide() {
+            const canvas = document.getElementById('canvas');
+            try {
+                const canvasElement = await html2canvas(canvas, {
+                    backgroundColor: slides[currentSlideIndex].bgColor,
+                    scale: 1,
+                    logging: false,
+                    useCORS: true
+                });
+                
+                const link = document.createElement('a');
+                link.download = `carousel-slide-${currentSlideIndex + 1}.png`;
+                link.href = canvasElement.toDataURL('image/png');
+                link.click();
+            } catch (error) {
+                alert('Error exporting slide. Make sure html2canvas is loaded.');
+                console.error(error);
+            }
+        }
+
+        async function exportAllSlides() {
+            if (!confirm(`Export all ${slides.length} slides? This may take a moment.`)) {
+                return;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                selectSlide(i);
+                await new Promise(resolve => setTimeout(resolve, 500)); // Wait for render
+                await exportCurrentSlide();
+                await new Promise(resolve => setTimeout(resolve, 500)); // Wait between exports
+            }
+            
+            alert(`Exported ${slides.length} slides!`);
+        }
+
+        // Initialize
+        loadSlide(slides[0]);
+        renderSlideList();
+    </script>
+</body>
+</html>

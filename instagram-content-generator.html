@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Content Generator for Aerobic Coaches</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(225, 48, 108, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .template-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .template-btn {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .template-btn:hover,
+        .template-btn.active {
+            border-color: #E1306C;
+            background: rgba(225, 48, 108, 0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .content-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hashtag-section {
+            background: rgba(225, 48, 108, 0.1);
+            border: 1px solid rgba(225, 48, 108, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+        }
+        
+        .tip-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #E1306C;
+        }
+        
+        .tip-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tip-card li {
+            padding: 5px 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .tip-card li:before {
+            content: "✓ ";
+            color: #E1306C;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram Content Generator</h1>
+        <p class="subtitle">Create high-performing Instagram posts for your aerobic coaching brand</p>
+        
+        <!-- Content Generation -->
+        <div class="section">
+            <h2 class="section-title">Generate Your Instagram Post</h2>
+            
+            <div class="input-group">
+                <label>Your Name/Handle</label>
+                <input type="text" id="yourName" placeholder="e.g., @fitnesscoach or Sarah's Aerobics">
+            </div>
+            
+            <div class="input-group">
+                <label>Your Unique Story/Background</label>
+                <textarea id="yourStory" placeholder="e.g., I've been an aerobic coach for 5 years, helped 100+ clients transform their fitness, specialize in HIIT and cardio training..."></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>Content Type</label>
+                <div class="template-selector">
+                    <div class="template-btn active" data-template="workout">Quick Workout</div>
+                    <div class="template-btn" data-template="tip">Fitness Tip</div>
+                    <div class="template-btn" data-template="transformation">Transformation</div>
+                    <div class="template-btn" data-template="mistake">Form Correction</div>
+                    <div class="template-btn" data-template="motivation">Motivation</div>
+                    <div class="template-btn" data-template="myth">Myth Busting</div>
+                    <div class="template-btn" data-template="carousel">Carousel Post</div>
+                    <div class="template-btn" data-template="story">Personal Story</div>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>Specific Topic</label>
+                <input type="text" id="postTopic" placeholder="e.g., 5-minute morning cardio, common squat mistakes, why HIIT works">
+            </div>
+            
+            <button class="btn" onclick="generateContent()">Generate Instagram Post</button>
+        </div>
+        
+        <!-- Generated Content -->
+        <div class="section hidden" id="generatedSection">
+            <h2 class="section-title">Your Instagram Post</h2>
+            <div class="content-preview" id="generatedContent"></div>
+            <div class="hashtag-section" id="hashtags"></div>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-secondary" onclick="copyContent()">Copy Caption</button>
+                <button class="btn btn-secondary" onclick="copyHashtags()">Copy Hashtags</button>
+                <button class="btn btn-secondary" onclick="generateContent()">Generate Another</button>
+            </div>
+        </div>
+        
+        <!-- Instagram Tips -->
+        <div class="section">
+            <h2 class="section-title">Instagram Growth Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>Posting Strategy</h3>
+                    <ul>
+                        <li>Post 5-7x per week minimum</li>
+                        <li>Best times: 7-9 AM, 12-1 PM, 6-8 PM</li>
+                        <li>Use Reels for maximum reach</li>
+                        <li>Mix Reels, carousels, and single posts</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h3>Engagement</h3>
+                    <ul>
+                        <li>Reply to ALL comments within 2 hours</li>
+                        <li>Engage with 10-20 accounts daily</li>
+                        <li>Use Stories 2-3x per day</li>
+                        <li>Ask questions in captions</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h3>Hashtags</h3>
+                    <ul>
+                        <li>Use 20-30 hashtags per post</li>
+                        <li>Mix broad, medium, and niche tags</li>
+                        <li>Change hashtags each post</li>
+                        <li>Research competitor hashtags</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h3>Content Mix</h3>
+                    <ul>
+                        <li>80% value, 20% promotional</li>
+                        <li>Show transformations</li>
+                        <li>Share behind-the-scenes</li>
+                        <li>Provide actionable tips</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let selectedTemplate = 'workout';
+        
+        // Template selector
+        document.querySelectorAll('.template-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedTemplate = this.dataset.template;
+            });
+        });
+        
+        function generateContent() {
+            const name = document.getElementById('yourName').value.trim() || '@yourhandle';
+            const story = document.getElementById('yourStory').value.trim();
+            const topic = document.getElementById('postTopic').value.trim();
+            
+            if (!topic) {
+                alert('Please enter a specific topic for your post.');
+                return;
+            }
+            
+            const templates = {
+                workout: generateWorkoutPost(name, story, topic),
+                tip: generateTipPost(name, story, topic),
+                transformation: generateTransformationPost(name, story, topic),
+                mistake: generateMistakePost(name, story, topic),
+                motivation: generateMotivationPost(name, story, topic),
+                myth: generateMythPost(name, story, topic),
+                carousel: generateCarouselPost(name, story, topic),
+                story: generateStoryPost(name, story, topic)
+            };
+            
+            const content = templates[selectedTemplate] || templates.workout;
+            const hashtags = generateHashtags(topic);
+            
+            document.getElementById('generatedContent').textContent = content;
+            document.getElementById('hashtags').innerHTML = '<strong>Hashtags:</strong><br>' + hashtags;
+            document.getElementById('generatedSection').classList.remove('hidden');
+            
+            document.getElementById('generatedSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function generateWorkoutPost(name, story, topic) {
+            const hooks = [
+                `🔥 ${topic} - Try this NOW!`,
+                `💪 ${topic} in under 5 minutes`,
+                `⚡ Quick ${topic} workout`,
+                `🎯 The ${topic} routine that works`
+            ];
+            
+            const hook = hooks[Math.floor(Math.random() * hooks.length)];
+            
+            return `${hook}
+
+Here's how to do it:
+
+1️⃣ ${getRandomElement(['Warm up for 30 seconds', 'Start with light movement', 'Begin with dynamic stretches', 'Get your heart rate up gradually'])}
+
+2️⃣ ${getRandomElement(['Main exercise: 30 seconds on, 10 seconds rest', 'Perform the movement for 45 seconds', 'Do 3 sets of 20 reps', 'Complete 4 rounds of 30 seconds'])}
+
+3️⃣ ${getRandomElement(['Cool down with stretching', 'Finish with deep breathing', 'End with a 1-minute walk', 'Stretch for 2 minutes'])}
+
+Why this works:
+✅ ${getRandomElement(['Boosts metabolism', 'Improves cardiovascular health', 'Burns calories efficiently', 'Builds endurance'])}
+✅ ${getRandomElement(['Can be done anywhere', 'No equipment needed', 'Takes less than 10 minutes', 'Perfect for busy schedules'])}
+
+${story ? `This is part of my ${story.toLowerCase()} approach.` : 'This is a proven method I use with all my clients.'}
+
+Try it and let me know how it goes! 👇
+
+💬 Comment "DONE" when you finish
+💾 Save this post for later
+👆 Follow ${name} for daily workouts
+
+---
+${story ? `I'm ${name.split('@')[1] || name}, ${story}` : `I'm ${name}, your aerobic coach. Follow for more fitness tips!`}`;
+        }
+        
+        function generateTipPost(name, story, topic) {
+            return `💡 The ${topic} tip that changed everything:
+
+Most people think ${topic} is about ${getRandomElement(['intensity', 'duration', 'complexity', 'equipment'])}.
+
+But here's what actually matters:
+
+✅ ${getRandomElement(['Consistency over intensity', 'Form over speed', 'Recovery is key', 'Start where you are'])}
+✅ ${getRandomElement(['Focus on your breathing', 'Listen to your body', 'Progress gradually', 'Quality over quantity'])}
+✅ ${getRandomElement(['Rest days are essential', 'Nutrition supports training', 'Sleep affects performance', 'Mindset matters most'])}
+
+The game-changer?
+${getRandomElement(['Small daily actions compound', 'Progress, not perfection', 'Your body adapts to consistency', 'Trust the process'])}.
+
+${story ? `I learned this through ${story.toLowerCase()}.` : 'I see this with every client I coach.'}
+
+What's your biggest challenge with ${topic}?
+
+👇 Comment below - I'll help you!
+
+---
+💾 Save this for later
+👆 Follow ${name} for more fitness tips
+🔥 Share this with someone who needs it`;
+        }
+        
+        function generateTransformationPost(name, story, topic) {
+            return `✨ Transformation Tuesday: ${topic}
+
+Before: ${getRandomElement(['Struggled with', 'Couldn\'t do', 'Avoided', 'Was intimidated by'])} ${topic}
+
+After: ${getRandomElement(['Now loves', 'Masters', 'Excels at', 'Confident with'])} ${topic}
+
+The journey wasn't easy, but here's what made the difference:
+
+1. ${getRandomElement(['Started small and built up', 'Focused on form first', 'Stayed consistent', 'Found the right coach'])}
+2. ${getRandomElement(['Didn\'t give up on bad days', 'Celebrated small wins', 'Tracked progress', 'Stayed patient'])}
+3. ${getRandomElement(['Made it a habit', 'Found what they enjoyed', 'Set realistic goals', 'Built a support system'])}
+
+The key lesson:
+${getRandomElement(['Transformation takes time', 'Every expert was once a beginner', 'Progress > perfection', 'Your only competition is yesterday\'s you'])}.
+
+${story ? `This is why I do what I do - ${story.toLowerCase()}.` : 'This is what I help my clients achieve every day.'}
+
+Your transformation is possible too. 💪
+
+What's your fitness goal?
+
+👇 Share in the comments!
+
+---
+💾 Save this for motivation
+👆 Follow ${name} for transformation stories
+🔥 Tag someone who needs to see this`;
+        }
+        
+        function generateMistakePost(name, story, topic) {
+            return `❌ STOP doing this with ${topic}!
+
+I see this mistake ALL the time:
+
+❌ ${getRandomElement(['Rushing through movements', 'Skipping warm-ups', 'Ignoring form', 'Overtraining'])}
+❌ ${getRandomElement(['Not breathing properly', 'Comparing to others', 'Skipping rest days', 'All or nothing mindset'])}
+
+Here's what to do instead:
+
+✅ ${getRandomElement(['Focus on form first', 'Always warm up', 'Move with control', 'Train smart, not just hard'])}
+✅ ${getRandomElement(['Breathe with the movement', 'Focus on your journey', 'Rest is part of training', 'Consistency over intensity'])}
+
+Why this matters:
+${getRandomElement(['Prevents injuries', 'Better results', 'Sustainable progress', 'Long-term success'])}.
+
+${story ? `I've seen this in my ${story.toLowerCase()} experience.` : 'I coach clients through this every day.'}
+
+Have you made this mistake?
+
+👇 Comment "YES" if this resonates
+
+---
+💾 Save this to avoid common mistakes
+👆 Follow ${name} for form tips
+🔥 Share with someone who needs this`;
+        }
+        
+        function generateMotivationPost(name, story, topic) {
+            return `💪 Monday Motivation: ${topic}
+
+You don't have to be great to start.
+But you have to start to be great.
+
+Today's reminder:
+${getRandomElement(['Progress, not perfection', 'Small steps lead to big changes', 'Your body can do it, it\'s your mind you need to convince', 'The only bad workout is the one you didn\'t do'])}.
+
+${topic} might feel ${getRandomElement(['hard', 'impossible', 'overwhelming', 'intimidating'])} right now.
+
+But remember:
+✅ ${getRandomElement(['Every expert was once a beginner', 'You\'re stronger than you think', 'Consistency beats intensity', 'Your future self will thank you'])}
+✅ ${getRandomElement(['Small daily actions compound', 'You don\'t have to be perfect', 'Progress is progress', 'Trust the process'])}.
+
+${story ? `I know because ${story.toLowerCase()}.` : 'I see this with every client I work with.'}
+
+What's one thing you'll do today for your fitness?
+
+👇 Comment your commitment!
+
+---
+💾 Save this for when you need motivation
+👆 Follow ${name} for daily inspiration
+🔥 Tag someone who needs this today`;
+        }
+        
+        function generateMythPost(name, story, topic) {
+            return `🚫 Myth Busted: ${topic}
+
+Myth: ${getRandomElement(['More is always better', 'You need to train every day', 'Cardio kills muscle', 'No pain, no gain'])}.
+
+Reality: ${getRandomElement(['Quality over quantity', 'Rest days are essential', 'Cardio supports muscle growth', 'Pain means stop, not push'])}.
+
+Here's the truth about ${topic}:
+
+✅ ${getRandomElement(['It\'s about consistency, not intensity', 'Recovery is part of training', 'Everyone\'s journey is different', 'Small changes create big results'])}
+✅ ${getRandomElement(['Form matters more than speed', 'Progress takes time', 'Nutrition is 80% of results', 'Mindset is everything'])}.
+
+The real secret?
+${getRandomElement(['Sustainable habits', 'Finding what you enjoy', 'Consistency over perfection', 'Trusting the process'])}.
+
+${story ? `I used to believe this myth too, until ${story.toLowerCase()}.` : 'I help my clients see through these myths every day.'}
+
+What fitness myth did you used to believe?
+
+👇 Share in the comments!
+
+---
+💾 Save this to remember the truth
+👆 Follow ${name} for myth-busting content
+🔥 Share with someone who believes this myth`;
+        }
+        
+        function generateCarouselPost(name, story, topic) {
+            return `📚 ${topic}: The Complete Guide
+
+Swipe through for the full breakdown 👉
+
+Slide 1: ${getRandomElement(['The problem', 'Why this matters', 'Common mistakes', 'The basics'])}
+
+Slide 2: ${getRandomElement(['Step-by-step guide', 'How to do it', 'The method', 'The process'])}
+
+Slide 3: ${getRandomElement(['Pro tips', 'What to avoid', 'Common questions', 'Advanced techniques'])}
+
+Slide 4: ${getRandomElement(['Real results', 'Success stories', 'Before/after', 'The outcome'])}
+
+Slide 5: ${getRandomElement(['Your action steps', 'How to start', 'Next steps', 'Your challenge'])}
+
+Key takeaway:
+${getRandomElement(['Start small, build up', 'Consistency is key', 'Form over speed', 'Progress, not perfection'])}.
+
+${story ? `This is the system I use: ${story.toLowerCase()}.` : 'This is what I teach all my clients.'}
+
+Which slide was most helpful?
+
+👇 Comment the number!
+
+---
+💾 Save this carousel for reference
+👆 Follow ${name} for more guides
+🔥 Share this with someone who needs it`;
+        }
+        
+        function generateStoryPost(name, story, topic) {
+            return `📖 My ${topic} story:
+
+${story || `Two years ago, I ${getRandomElement(['struggled with', 'couldn\'t do', 'was intimidated by', 'avoided'])} ${topic}.`}
+
+I thought ${getRandomElement(['I wasn\'t good enough', 'it was too hard', 'I didn\'t have time', 'it wasn\'t for me'])}.
+
+But then I realized:
+${getRandomElement(['Everyone starts somewhere', 'Progress is progress', 'Small steps matter', 'I was stronger than I thought'])}.
+
+Here's what changed:
+
+1. ${getRandomElement(['I started small', 'I found a coach', 'I stayed consistent', 'I changed my mindset'])}
+2. ${getRandomElement(['I didn\'t give up', 'I celebrated wins', 'I tracked progress', 'I built a routine'])}
+3. ${getRandomElement(['I trusted the process', 'I was patient', 'I focused on me', 'I kept showing up'])}
+
+Now: ${getRandomElement(['I love', 'I excel at', 'I\'m confident with', 'I help others with'])} ${topic}.
+
+The lesson?
+${getRandomElement(['Your story isn\'t over', 'You\'re capable of more', 'Start where you are', 'Progress > perfection'])}.
+
+${story ? `This is my story: ${story}.` : 'This is why I do what I do.'}
+
+What's your ${topic} story?
+
+👇 Share in the comments!
+
+---
+💾 Save this if it resonates
+👆 Follow ${name} for more stories
+🔥 Tag someone who needs to hear this`;
+        }
+        
+        function generateHashtags(topic) {
+            const baseHashtags = [
+                '#fitness', '#workout', '#health', '#aerobics', '#cardio',
+                '#fitnesscoach', '#aerobictraining', '#cardiofitness', '#fitnessmotivation',
+                '#workoutmotivation', '#fitnesstips', '#cardiotraining', '#aerobicsclass',
+                '#fitnessjourney', '#healthylifestyle', '#workoutroutine', '#fitnesslife',
+                '#aerobicsworkout', '#fitnesscoaching', '#fitnesstrainer', '#cardio',
+                '#fitnessmotivation', '#workoutmotivation', '#fitnesstips', '#cardiofitness'
+            ];
+            
+            const topicHashtags = topic.toLowerCase().split(' ').map(word => '#' + word.replace(/[^a-z0-9]/g, ''));
+            
+            const allHashtags = [...baseHashtags, ...topicHashtags].slice(0, 30);
+            
+            return allHashtags.join(' ');
+        }
+        
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        
+        function copyContent() {
+            const content = document.getElementById('generatedContent').textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Caption copied to clipboard!');
+            });
+        }
+        
+        function copyHashtags() {
+            const hashtags = document.getElementById('hashtags').textContent.replace('Hashtags:', '').trim();
+            navigator.clipboard.writeText(hashtags).then(() => {
+                alert('Hashtags copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
