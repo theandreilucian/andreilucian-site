@@ -1,0 +1,81 @@
+═══════════════════════════════════════════════════════════
+   HOW TO UPLOAD YOUR WEBSITE TO GITHUB & VERCEL
+═══════════════════════════════════════════════════════════
+
+FOLLOW THESE 6 STEPS:
+
+───────────────────────────────────────────────────────────
+STEP 1: Open PowerShell
+───────────────────────────────────────────────────────────
+   • Press Windows Key + X
+   • Click "Windows PowerShell" or "Terminal"
+   • Type: cd D:\Website
+   • Press Enter
+
+───────────────────────────────────────────────────────────
+STEP 2: Add Your Files
+───────────────────────────────────────────────────────────
+   Type this command:
+   
+   git add .
+   
+   Press Enter
+
+───────────────────────────────────────────────────────────
+STEP 3: Commit Changes
+───────────────────────────────────────────────────────────
+   Type this command:
+   
+   git commit -m "Update website"
+   
+   Press Enter
+
+───────────────────────────────────────────────────────────
+STEP 4: Push to GitHub
+───────────────────────────────────────────────────────────
+   Type this command:
+   
+   git push origin main
+   
+   Press Enter
+   
+   (You might need to enter GitHub username/password)
+
+───────────────────────────────────────────────────────────
+STEP 5: Wait for Vercel (Automatic)
+───────────────────────────────────────────────────────────
+   • Wait 2-3 minutes
+   • Go to: https://vercel.com/dashboard
+   • Click your project
+   • Check "Deployments" tab
+   • Should show "Ready" ✅
+
+───────────────────────────────────────────────────────────
+STEP 6: Test Your Website
+───────────────────────────────────────────────────────────
+   • Open Incognito Mode: Ctrl + Shift + N
+   • Visit: https://andreilucian.com
+   • Right-click → "View Page Source"
+   • Search for "canonical" to verify
+
+═══════════════════════════════════════════════════════════
+   EASIER WAY: Use the Script!
+═══════════════════════════════════════════════════════════
+
+Just run this ONE command in PowerShell:
+
+   .\DEPLOY_NOW.ps1
+
+This does everything automatically!
+
+═══════════════════════════════════════════════════════════
+   IMPORTANT LINKS
+═══════════════════════════════════════════════════════════
+
+GitHub:  https://github.com/theandreilucian/andreilucian-site
+Vercel:  https://vercel.com/dashboard
+Website: https://andreilucian.com
+
+═══════════════════════════════════════════════════════════
+
+
