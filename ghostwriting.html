@@ -4211,6 +4211,7 @@
                             x5-video-orientation="portrait" 
                             preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
+                            <source src="assets/images/video%20testimonial/Faith%20-%20Digital%20Writer.mp4" type="video/mp4">
                             <source src="assets/images/video testimonial/Faith - Digital Writer.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -4228,6 +4229,7 @@
                             x5-video-orientation="portrait" 
                             preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
+                            <source src="assets/images/video%20testimonial/Jeffery%20-%20Ghoswriter.mp4" type="video/mp4">
                             <source src="assets/images/video testimonial/Jeffery - Ghoswriter.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -4245,6 +4247,7 @@
                             x5-video-orientation="portrait" 
                             preload="metadata"
                             style="width: 100%; height: 100%; object-fit: contain;">
+                            <source src="assets/images/video%20testimonial/Kingsley%20-%20Digital%20Writer.mp4" type="video/mp4">
                             <source src="assets/images/video testimonial/Kingsley - Digital Writer.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -5491,6 +5494,22 @@
                     }, { rootMargin: '50px' });
                     observer.observe(video);
                 }
+                
+                // Handle video errors
+                video.addEventListener('error', function(e) {
+                    console.error('Video error:', video.error, 'Source:', video.src);
+                    const container = video.parentElement;
+                    if (container && !container.querySelector('.video-error-message')) {
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'video-error-message';
+                        errorMsg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff6b6b; text-align: center; padding: 20px; z-index: 20;';
+                        errorMsg.textContent = 'Video failed to load. Click to retry.';
+                        errorMsg.addEventListener('click', function() {
+                            video.load();
+                        });
+                        container.appendChild(errorMsg);
+                    }
+                });
                 
                 // Handle successful load
                 video.addEventListener('loadedmetadata', function() {
