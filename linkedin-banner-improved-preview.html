@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Banner Preview - Improved</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            color: #b3b3b3;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .banner-container {
+            background: #000000;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+        
+        .banner-preview {
+            width: 100%;
+            max-width: 1584px;
+            height: auto;
+            display: block;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            background: #00d9ff;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #00b8d9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+        }
+        
+        .info-box {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 900px;
+            color: #b3b3b3;
+        }
+        
+        .info-box h3 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .info-box code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d9ff;
+        }
+        
+        iframe {
+            border: none;
+            width: 100%;
+            max-width: 1584px;
+            height: 450px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>LinkedIn Banner Preview - Improved Design</h1>
+    
+    <div class="instructions">
+        <p>Preview your improved LinkedIn banner below. The banner features enhanced typography, better spacing, and professional design.</p>
+        <p><strong>Dimensions:</strong> 1584px × 396px (LinkedIn Standard)</p>
+    </div>
+    
+    <div class="banner-container">
+        <iframe src="linkedin-banner-improved.html" class="banner-preview" id="bannerFrame"></iframe>
+    </div>
+    
+    <div class="export-buttons">
+        <button onclick="downloadAsPNG()">Download as PNG</button>
+        <button onclick="openInNewTab()">Open Banner in New Tab</button>
+    </div>
+    
+    <div class="info-box">
+        <h3>How to Export as PNG/JPEG:</h3>
+        <ul>
+            <li><strong>Method 1:</strong> Open the banner in a new tab → Right-click → "Save Image As" or use browser screenshot tools</li>
+            <li><strong>Method 2:</strong> Use browser extensions like "Full Page Screen Capture" or "Nimbus Screenshot"</li>
+            <li><strong>Method 3:</strong> Press F12 → Use browser DevTools screenshot feature (Ctrl+Shift+P → "screenshot")</li>
+            <li><strong>Method 4:</strong> Use online tools like htmlcsstoimage.com or screenshot.guru</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">To Add Your Avatar Image:</h3>
+        <p>1. Save your profile picture as <code>assets/images/avatar-placeholder.jpg</code> (or .png)</p>
+        <p>2. Or edit <code>linkedin-banner-improved.html</code> and update line ~280:</p>
+        <p><code>&lt;img src="assets/images/your-avatar.jpg" alt="Profile" class="avatar-image"&gt;</code></p>
+        <p><strong>Recommended:</strong> Square image, at least 500x500px, optimized for web</p>
+        
+        <h3 style="margin-top: 20px;">Design Improvements:</h3>
+        <ul>
+            <li><strong>Enhanced Typography:</strong> Inter font family with optimized weights and spacing</li>
+            <li><strong>Better Hierarchy:</strong> Improved font sizes (52px heading) with perfect line-height</li>
+            <li><strong>Professional Gradient:</strong> Rich black-to-teal gradient background</li>
+            <li><strong>Modern Buttons:</strong> Enhanced service buttons with hover effects and shadows</li>
+            <li><strong>Improved Spacing:</strong> Better padding and gap management throughout</li>
+            <li><strong>Avatar Enhancement:</strong> Glowing border effect and subtle filters</li>
+            <li><strong>Decorative Elements:</strong> Subtle circles and gradient overlays for depth</li>
+            <li><strong>Better Contrast:</strong> Optimized text colors for readability</li>
+            <li><strong>Smooth Animations:</strong> Fade-in effect on page load</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">Customization:</h3>
+        <p>You can easily customize colors, text, and layout by editing <code>linkedin-banner-improved.html</code></p>
+        <p><strong>Main Colors:</strong> #00d9ff (teal), #000000 (black), #ffffff (white)</p>
+    </div>
+    
+    <script>
+        async function downloadAsPNG() {
+            alert('To download: Open the banner in a new tab, then use browser screenshot tools or right-click to save.');
+            openInNewTab();
+        }
+        
+        function openInNewTab() {
+            window.open('linkedin-banner-improved.html', '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 1 — Azure: CPU-Only and ND GPU Lineup</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h3 { font-size: 1.1em; font-weight: 600; margin-top: 40px; margin-bottom: 18px; color: #93c5fd; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        .takeaway { background: #252830; border-left: 4px solid #3b82f6; padding: 22px 20px; margin: 32px 0; border-radius: 0 8px 8px 0; }
+        .takeaway p { margin-bottom: 12px; }
+        .takeaway p:last-child { margin-bottom: 0; }
+        .checklist { margin-top: 48px; padding-top: 28px; border-top: 1px solid #334155; font-size: 0.9em; color: #9ca3af; }
+        .checklist ol { margin-left: 20px; margin-top: 12px; }
+        .checklist li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Article 1 — Azure: CPU-Only and ND GPU Lineup</h1>
+        <p class="meta">Medium-length · One of three (Azure, BullSequana, Cray) · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>Azure is where Microsoft’s cloud meets serious HPC and AI.</p>
+        <p>Two tracks: CPU-only nodes for simulations, genomics, and memory-bound work — and the ND GPU lineup for AMD Instinct (MI200, MI300X).</p>
+        <p>This article covers what’s in the box and when to use which.</p>
+
+        <h2>CPU-only HPC: HBv4 and HBv5</h2>
+        <p>For workloads that don’t need GPUs, the HB series is the answer.</p>
+        <p><strong>HBv4</strong> is the current workhorse.</p>
+        <p>176 cores (AMD EPYC 9V33X Genoa-X). Two sockets of 96 cores each. 2.4 GHz base, 3.7 GHz boost.</p>
+        <p>Each node has:</p>
+        <ul>
+            <li>768 GiB DDR5</li>
+            <li>2× 1.8 TB NVMe, 1× 480 GB SSD</li>
+            <li>1× 400G NDR InfiniBand</li>
+            <li>80G Ethernet (2nd gen Azure SmartNIC)</li>
+        </ul>
+        <p>Built for scale-out HPC without a single GPU.</p>
+        <p><strong>HBv5</strong> is the next step, unveiled at SC24.</p>
+        <p>Microsoft’s custom socket pairs Genoa cores with HBM. There is no DDR DRAM.</p>
+        <p>Each node has:</p>
+        <ul>
+            <li><strong>CPU:</strong> 352 cores (AMD EPYC 9V64H), four sockets of 96-core CPUs.</li>
+            <li><strong>Memory:</strong> 400–450 GiB HBM3, 6.9 TB/s STREAM Triad.</li>
+            <li><strong>Storage:</strong> 14 TB NVMe (8× ~1,920 GB drives).</li>
+            <li><strong>Networking:</strong> 4× 200G NDR InfiniBand (one per socket), 160G Ethernet (2nd gen Azure SmartNIC).</li>
+        </ul>
+        <p>From the top, the board and power design are deliberately simple. Fewer failure points. Easier cooling and service.</p>
+        <p>For hospitals and government, that simplicity is reliability.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 1: Azure HBv5 — top view]</div>
+            <div class="hint">Insert your photo: four CPU modules, motherboard, power connector.</div>
+        </div>
+        <p>The rear tells the rest of the story. Eight NVMe slots. Four NDR InfiniBand adapters (one OSFP each). Dual-port Azure Boost v2 NIC. Dual-zone bus bar for power.</p>
+        <p>Everything needed to plug in and scale out.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 2: Azure HBv5 — rear view]</div>
+            <div class="hint">Insert your photo: eight NVMe slots, ConnectX-7 OSFP, Azure Boost v2 NIC, bus bar power.</div>
+        </div>
+        <div class="takeaway">
+            <p><strong>When to use:</strong> HBv4 for proven CPU-only HPC today. HBv5 when you want Genoa plus HBM and no DDR. Both are built for workloads that don’t need GPUs — and for teams that need to know exactly what’s inside the box.</p>
+        </div>
+
+        <h2>ND GPU lineup: MI200, MI300X</h2>
+        <p>The ND family offers AMD Instinct at scale. One cloud. Every GPU node.</p>
+        <p><strong>ND MI200 v4</strong> — Eight-way MI250X. The node behind Microsoft’s Explorer — #11 June 2023 Top500. One chassis, eight MI250X modules. Serious FP64 and matrix for HPC and AI.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 3: Azure ND MI200 v4 — physical node]</div>
+            <div class="hint">Insert your chassis photo.</div>
+        </div>
+        <p><strong>ND MI300X v5</strong> — Eight-way OAM baseboard. 96 cores Sapphire Rapids, 1,850 GiB DDR5, 1,000 GiB local, 8× AMD MI300X. One chassis, eight modules.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 4: Azure ND MI300X v5 — physical node]</div>
+            <div class="hint">Insert your photo.</div>
+        </div>
+        <div class="takeaway">
+            <p><strong>When to pick which:</strong></p>
+            <ul style="margin-bottom: 0;">
+                <li>AMD, Top500-proven → ND MI200 v4</li>
+                <li>Same density, eight-way AMD → ND MI300X v5</li>
+            </ul>
+            <p style="margin-top: 16px;">One cloud. Every node. No guesswork.</p>
+        </div>
+
+        <h2>Closing</h2>
+        <p>Azure gives you CPU-only HPC and the full ND GPU spread in one place. Drop in your images at the placeholders above and you have a complete medium-length article — ready for nerds, hospitals, and government.</p>
+        <div class="checklist">
+            <p><strong>Image checklist (this article):</strong></p>
+            <ol>
+                <li>Azure HBv5 — top view</li>
+                <li>Azure HBv5 — rear view</li>
+                <li>Azure ND MI200 v4 — physical node</li>
+                <li>Azure ND MI300X v5 — physical node</li>
+            </ol>
+        </div>
+    </article>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy-Paste Posts for Your 2 X Giveaways</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e7e9ea;
+            line-height: 1.6;
+            padding: 24px;
+        }
+        .page { max-width: 640px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: #fff; }
+        .subtitle { color: #71767b; font-size: 0.9rem; margin-bottom: 28px; }
+        .giveaway-block {
+            background: #16181c;
+            border: 1px solid #2f3336;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .giveaway-block h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #1d9bf0;
+            margin-bottom: 12px;
+        }
+        .giveaway-block .word {
+            display: inline-block;
+            background: #1d9bf0;
+            color: #000;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .giveaway-block .link {
+            font-size: 0.8rem;
+            color: #71767b;
+            margin-bottom: 12px;
+        }
+        .giveaway-block .link a { color: #1d9bf0; }
+        .post-box {
+            background: #000;
+            border: 2px solid #2f3336;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 10px;
+        }
+        .post-box:focus-within { border-color: #1d9bf0; }
+        .post-text {
+            display: block;
+            width: 100%;
+            min-height: 100px;
+            background: transparent;
+            border: none;
+            color: #e7e9ea;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+        .copy-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #1d9bf0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .copy-btn:hover { background: #1a8cd8; }
+        .copy-btn.copied { background: #00ba7c; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Copy-paste posts for your 2 giveaways</h1>
+        <p class="subtitle">Post on X. When someone follows + comments the word, send them the link.</p>
+
+        <!-- GIVEAWAY 1: SECRET FRAMEWORK -->
+        <div class="giveaway-block">
+            <h2>Giveaway 1 — My Secret Framework</h2>
+            <span class="word">Comment: FRAMEWORK</span>
+            <p class="link">Send them: <a href="giveaway-1-secret-framework.html">giveaway-1-secret-framework.html</a></p>
+            <div class="post-box">
+                <textarea class="post-text" id="post1" readonly>I structure all my X content around 3 pillars so it never feels random.
+
+Growth → Authority → Personality. One page. My secret framework.
+
+Follow me + comment FRAMEWORK and I'll send you the link.</textarea>
+                <button type="button" class="copy-btn" data-target="post1">Copy for X</button>
+            </div>
+        </div>
+
+        <!-- GIVEAWAY 2: 8 TEMPLATES -->
+        <div class="giveaway-block">
+            <h2>Giveaway 2 — 8 Proven Templates to Grow Your X</h2>
+            <span class="word">Comment: GROW</span>
+            <p class="link">Send them: <a href="giveaway-2-8-templates.html">giveaway-2-8-templates.html</a></p>
+            <div class="post-box">
+                <textarea class="post-text" id="post2" readonly>8 tweet templates I use to grow my X account. Fill the blanks and post.
+
+Comparison, List, Stop X Start Y, One-liner + 4 more. No course—just the formats.
+
+Follow me + comment GROW and I'll send you the link.</textarea>
+                <button type="button" class="copy-btn" data-target="post2">Copy for X</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var id = this.getAttribute('data-target');
+                var el = document.getElementById(id);
+                el.select();
+                navigator.clipboard.writeText(el.value).then(function() {
+                    btn.textContent = 'Copied';
+                    btn.classList.add('copied');
+                    setTimeout(function() { btn.textContent = 'Copy for X'; btn.classList.remove('copied'); }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrei Lucian's Growth Pillar - 62 Stop/Start Tweets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .tweet {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .tweet:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tweet-number {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .tweet-content {
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .tweet-meta {
+            color: #999;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+        
+        .copy-btn:active {
+            background: #4457c2;
+        }
+        
+        .header-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Andrei Lucian's Growth Pillar</h1>
+        <p class="subtitle">62 Stop/Start Tweets (2 Lines Each)</p>
+        
+        <div class="header-info">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">62</div>
+                    <div class="stat-label">Total Tweets</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Lines Each</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Ready to Post</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 1</div>
+            <div class="tweet-content">Stop chasing followers. Start building relationships.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(1)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 2</div>
+            <div class="tweet-content">Stop posting randomly. Start posting consistently.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(2)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 3</div>
+            <div class="tweet-content">Stop waiting for perfect. Start shipping daily.</div>
+            <div class="tweet-meta">
+                <span>45 chars</span>
+                <button class="copy-btn" onclick="copyTweet(3)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 4</div>
+            <div class="tweet-content">Stop talking about goals. Start executing systems.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(4)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 5</div>
+            <div class="tweet-content">Stop collecting courses. Start building your brand.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(5)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 6</div>
+            <div class="tweet-content">Stop focusing on vanity metrics. Start focusing on value delivery.</div>
+            <div class="tweet-meta">
+                <span>66 chars</span>
+                <button class="copy-btn" onclick="copyTweet(6)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 7</div>
+            <div class="tweet-content">Stop comparing yourself to others. Start documenting your journey.</div>
+            <div class="tweet-meta">
+                <span>63 chars</span>
+                <button class="copy-btn" onclick="copyTweet(7)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 8</div>
+            <div class="tweet-content">Stop making excuses. Start making content.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(8)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 9</div>
+            <div class="tweet-content">Stop waiting for inspiration. Start creating on schedule.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(9)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 10</div>
+            <div class="tweet-content">Stop hiding behind your brand. Start showing your process.</div>
+            <div class="tweet-meta">
+                <span>56 chars</span>
+                <button class="copy-btn" onclick="copyTweet(10)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 11</div>
+            <div class="tweet-content">Stop trying to be everything. Start being something specific.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(11)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 12</div>
+            <div class="tweet-content">Stop posting for likes. Start posting for leads.</div>
+            <div class="tweet-meta">
+                <span>45 chars</span>
+                <button class="copy-btn" onclick="copyTweet(12)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 13</div>
+            <div class="tweet-content">Stop ignoring your audience. Start engaging strategically.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(13)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 14</div>
+            <div class="tweet-content">Stop copying others' content. Start creating your own frameworks.</div>
+            <div class="tweet-meta">
+                <span>63 chars</span>
+                <button class="copy-btn" onclick="copyTweet(14)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 15</div>
+            <div class="tweet-content">Stop waiting for permission. Start building authority.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(15)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 16</div>
+            <div class="tweet-content">Stop optimizing for algorithms. Start optimizing for humans.</div>
+            <div class="tweet-meta">
+                <span>57 chars</span>
+                <button class="copy-btn" onclick="copyTweet(16)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 17</div>
+            <div class="tweet-content">Stop thinking you need more time. Start thinking you need better systems.</div>
+            <div class="tweet-meta">
+                <span>68 chars</span>
+                <button class="copy-btn" onclick="copyTweet(17)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 18</div>
+            <div class="tweet-content">Stop asking for followers. Start asking for engagement.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(18)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 19</div>
+            <div class="tweet-content">Stop being generic. Start being specific.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(19)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 20</div>
+            <div class="tweet-content">Stop hoarding knowledge. Start sharing frameworks.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(20)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 21</div>
+            <div class="tweet-content">Stop waiting for the right moment. Start creating the right moment.</div>
+            <div class="tweet-meta">
+                <span>63 chars</span>
+                <button class="copy-btn" onclick="copyTweet(21)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 22</div>
+            <div class="tweet-content">Stop focusing on follower count. Start focusing on follower quality.</div>
+            <div class="tweet-meta">
+                <span>63 chars</span>
+                <button class="copy-btn" onclick="copyTweet(22)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 23</div>
+            <div class="tweet-content">Stop posting and disappearing. Start posting and engaging.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(23)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 24</div>
+            <div class="tweet-content">Stop trying to go viral. Start trying to provide value.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(24)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 25</div>
+            <div class="tweet-content">Stop making it about you. Start making it about them.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(25)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 26</div>
+            <div class="tweet-content">Stop waiting for validation. Start validating yourself.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(26)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 27</div>
+            <div class="tweet-content">Stop planning forever. Start executing today.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(27)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 28</div>
+            <div class="tweet-content">Stop being afraid to share. Start being afraid not to share.</div>
+            <div class="tweet-meta">
+                <span>56 chars</span>
+                <button class="copy-btn" onclick="copyTweet(28)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 29</div>
+            <div class="tweet-content">Stop following trends. Start setting trends.</div>
+            <div class="tweet-meta">
+                <span>40 chars</span>
+                <button class="copy-btn" onclick="copyTweet(29)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 30</div>
+            <div class="tweet-content">Stop asking what to post. Start asking what value to provide.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(30)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 31</div>
+            <div class="tweet-content">Stop building a following. Start building an audience.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(31)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 32</div>
+            <div class="tweet-content">Stop waiting for engagement. Start creating engagement.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(32)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 33</div>
+            <div class="tweet-content">Stop being inconsistent. Start being reliable.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(33)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 34</div>
+            <div class="tweet-content">Stop hiding your mistakes. Start sharing your lessons.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(34)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 35</div>
+            <div class="tweet-content">Stop trying to impress. Start trying to help.</div>
+            <div class="tweet-meta">
+                <span>40 chars</span>
+                <button class="copy-btn" onclick="copyTweet(35)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 36</div>
+            <div class="tweet-content">Stop posting once a week. Start posting three times daily.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(36)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 37</div>
+            <div class="tweet-content">Stop being a perfectionist. Start being a creator.</div>
+            <div class="tweet-meta">
+                <span>46 chars</span>
+                <button class="copy-btn" onclick="copyTweet(37)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 38</div>
+            <div class="tweet-content">Stop waiting for the perfect idea. Start executing good ideas.</div>
+            <div class="tweet-meta">
+                <span>60 chars</span>
+                <button class="copy-btn" onclick="copyTweet(38)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 39</div>
+            <div class="tweet-content">Stop focusing on what you lack. Start focusing on what you have.</div>
+            <div class="tweet-meta">
+                <span>60 chars</span>
+                <button class="copy-btn" onclick="copyTweet(39)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 40</div>
+            <div class="tweet-content">Stop making it complicated. Start making it simple.</div>
+            <div class="tweet-meta">
+                <span>46 chars</span>
+                <button class="copy-btn" onclick="copyTweet(40)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 41</div>
+            <div class="tweet-content">Stop waiting for someone to notice. Start making yourself noticeable.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(41)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 42</div>
+            <div class="tweet-content">Stop being a consumer. Start being a creator.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(42)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 43</div>
+            <div class="tweet-content">Stop asking for permission. Start asking for feedback.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(43)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 44</div>
+            <div class="tweet-content">Stop building in private. Start building in public.</div>
+            <div class="tweet-meta">
+                <span>46 chars</span>
+                <button class="copy-btn" onclick="copyTweet(44)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 45</div>
+            <div class="tweet-content">Stop waiting for motivation. Start building discipline.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(45)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 46</div>
+            <div class="tweet-content">Stop trying to be original. Start trying to be helpful.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(46)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 47</div>
+            <div class="tweet-content">Stop focusing on quantity. Start focusing on quality.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(47)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 48</div>
+            <div class="tweet-content">Stop making excuses for not posting. Start making time for posting.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(48)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 49</div>
+            <div class="tweet-content">Stop waiting for the right time. Start making this the right time.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(49)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 50</div>
+            <div class="tweet-content">Stop being invisible. Start being valuable.</div>
+            <div class="tweet-meta">
+                <span>40 chars</span>
+                <button class="copy-btn" onclick="copyTweet(50)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 51</div>
+            <div class="tweet-content">Stop waiting for followers. Start earning followers.</div>
+            <div class="tweet-meta">
+                <span>46 chars</span>
+                <button class="copy-btn" onclick="copyTweet(51)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 52</div>
+            <div class="tweet-content">Stop posting about yourself. Start posting about your audience.</div>
+            <div class="tweet-meta">
+                <span>56 chars</span>
+                <button class="copy-btn" onclick="copyTweet(52)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 53</div>
+            <div class="tweet-content">Stop waiting for engagement. Start driving engagement.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(53)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 54</div>
+            <div class="tweet-content">Stop being afraid of criticism. Start being afraid of irrelevance.</div>
+            <div class="tweet-meta">
+                <span>60 chars</span>
+                <button class="copy-btn" onclick="copyTweet(54)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 55</div>
+            <div class="tweet-content">Stop making it about numbers. Start making it about impact.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(55)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 56</div>
+            <div class="tweet-content">Stop waiting for the perfect post. Start posting consistently.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(56)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 57</div>
+            <div class="tweet-content">Stop trying to please everyone. Start trying to help someone.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(57)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 58</div>
+            <div class="tweet-content">Stop waiting for opportunities. Start creating opportunities.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(58)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 59</div>
+            <div class="tweet-content">Stop being a spectator. Start being a participant.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(59)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 60</div>
+            <div class="tweet-content">Stop waiting for the algorithm. Start working with the algorithm.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(60)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 61</div>
+            <div class="tweet-content">Stop making it about you. Start making it about value.</div>
+            <div class="tweet-meta">
+                <span>50 chars</span>
+                <button class="copy-btn" onclick="copyTweet(61)">Copy</button>
+            </div>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 62</div>
+            <div class="tweet-content">Stop waiting for tomorrow. Start creating today.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(62)">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tweets = {
+            1: `Stop chasing followers. Start building relationships.`,
+            2: `Stop posting randomly. Start posting consistently.`,
+            3: `Stop waiting for perfect. Start shipping daily.`,
+            4: `Stop talking about goals. Start executing systems.`,
+            5: `Stop collecting courses. Start building your brand.`,
+            6: `Stop focusing on vanity metrics. Start focusing on value delivery.`,
+            7: `Stop comparing yourself to others. Start documenting your journey.`,
+            8: `Stop making excuses. Start making content.`,
+            9: `Stop waiting for inspiration. Start creating on schedule.`,
+            10: `Stop hiding behind your brand. Start showing your process.`,
+            11: `Stop trying to be everything. Start being something specific.`,
+            12: `Stop posting for likes. Start posting for leads.`,
+            13: `Stop ignoring your audience. Start engaging strategically.`,
+            14: `Stop copying others' content. Start creating your own frameworks.`,
+            15: `Stop waiting for permission. Start building authority.`,
+            16: `Stop optimizing for algorithms. Start optimizing for humans.`,
+            17: `Stop thinking you need more time. Start thinking you need better systems.`,
+            18: `Stop asking for followers. Start asking for engagement.`,
+            19: `Stop being generic. Start being specific.`,
+            20: `Stop hoarding knowledge. Start sharing frameworks.`,
+            21: `Stop waiting for the right moment. Start creating the right moment.`,
+            22: `Stop focusing on follower count. Start focusing on follower quality.`,
+            23: `Stop posting and disappearing. Start posting and engaging.`,
+            24: `Stop trying to go viral. Start trying to provide value.`,
+            25: `Stop making it about you. Start making it about them.`,
+            26: `Stop waiting for validation. Start validating yourself.`,
+            27: `Stop planning forever. Start executing today.`,
+            28: `Stop being afraid to share. Start being afraid not to share.`,
+            29: `Stop following trends. Start setting trends.`,
+            30: `Stop asking what to post. Start asking what value to provide.`,
+            31: `Stop building a following. Start building an audience.`,
+            32: `Stop waiting for engagement. Start creating engagement.`,
+            33: `Stop being inconsistent. Start being reliable.`,
+            34: `Stop hiding your mistakes. Start sharing your lessons.`,
+            35: `Stop trying to impress. Start trying to help.`,
+            36: `Stop posting once a week. Start posting three times daily.`,
+            37: `Stop being a perfectionist. Start being a creator.`,
+            38: `Stop waiting for the perfect idea. Start executing good ideas.`,
+            39: `Stop focusing on what you lack. Start focusing on what you have.`,
+            40: `Stop making it complicated. Start making it simple.`,
+            41: `Stop waiting for someone to notice. Start making yourself noticeable.`,
+            42: `Stop being a consumer. Start being a creator.`,
+            43: `Stop asking for permission. Start asking for feedback.`,
+            44: `Stop building in private. Start building in public.`,
+            45: `Stop waiting for motivation. Start building discipline.`,
+            46: `Stop trying to be original. Start trying to be helpful.`,
+            47: `Stop focusing on quantity. Start focusing on quality.`,
+            48: `Stop making excuses for not posting. Start making time for posting.`,
+            49: `Stop waiting for the right time. Start making this the right time.`,
+            50: `Stop being invisible. Start being valuable.`,
+            51: `Stop waiting for followers. Start earning followers.`,
+            52: `Stop posting about yourself. Start posting about your audience.`,
+            53: `Stop waiting for engagement. Start driving engagement.`,
+            54: `Stop being afraid of criticism. Start being afraid of irrelevance.`,
+            55: `Stop making it about numbers. Start making it about impact.`,
+            56: `Stop waiting for the perfect post. Start posting consistently.`,
+            57: `Stop trying to please everyone. Start trying to help someone.`,
+            58: `Stop waiting for opportunities. Start creating opportunities.`,
+            59: `Stop being a spectator. Start being a participant.`,
+            60: `Stop waiting for the algorithm. Start working with the algorithm.`,
+            61: `Stop making it about you. Start making it about value.`,
+            62: `Stop waiting for tomorrow. Start creating today.`
+        };
+
+        function copyTweet(num) {
+            const tweetText = tweets[num];
+            navigator.clipboard.writeText(tweetText).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#667eea';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy. Please select and copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>
+

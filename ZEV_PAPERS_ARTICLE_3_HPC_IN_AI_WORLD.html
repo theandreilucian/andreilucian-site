@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPC In An AI World — Commentary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .quote-block {
+            background: #252830;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .quote-block .label { font-size: 0.8em; color: #93c5fd; margin-bottom: 8px; }
+        .take { font-size: 0.9em; color: #d1d5db; margin-top: 12px; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>HPC In An AI World</h1>
+        <p class="meta">Reed, Dongarra, Gannon · An HPC-turned-AI practitioner’s commentary</p>
+
+        <h2>Introduction</h2>
+        <p>Dan Reed’s essay <strong>HPC In An AI World</strong> summarizes a longer statement piece he co-authored with Jack Dongarra and Dennis Gannon. It takes a hard, critical look at where the HPC community must look as the ground shifts under AI’s market forces.</p>
+        <p>Reading it—and the source paper—I agreed with many positions and disagreed with others. My background: traditional HPC for scientific computing at national scale, then Microsoft supporting massive-scale supercomputing for frontier model training, now VAST in the enterprise AI market. I marked up his essay with my own notes; below is that perspective in article form.</p>
+
+        <h2>1. Energy and data movement, not FLOPS</h2>
+        <div class="quote-block">
+            <div class="label">Reed — New Maxim Two</div>
+            <p>Energy and data movement, not floating point operations, are the scarce resources.</p>
+        </div>
+        <p>This has been true in HPC long before exascale. What’s relatively new is the AI world learning it: as <strong>inference</strong> overtakes <strong>training</strong> as the main consumer of GPU cycles, we see widespread DRAM shortages and extreme demand for <strong>HBM</strong> and memory bandwidth.</p>
+
+        <h2>2. Benchmarks are mirrors, not levers</h2>
+        <div class="quote-block">
+            <div class="label">Reed — New Maxim Three</div>
+            <p>Benchmarks are mirrors, not levers. They rarely drive technical change; they are snapshots of past and current reality, with little power to influence strategic directions.</p>
+        </div>
+        <p>Benchmarks <strong>do</strong> drive change among technology providers who act without conviction. Bad benchmarks can create and sustain an economy of buyers and sellers wasting resources because they don’t understand what drives productivity. The HPC community is generally savvier; most national centers now see <strong>HPL</strong> as not a meaningful yardstick. Politicians now get “hundreds of thousands of GPUs” or “gigawatts” without needing HPL.</p>
+        <p>Aside: a paper with Jack Dongarra as author now saying HPL is a snapshot of the past is ironic. My understanding is he’s why HPL results using <strong>emulated FP64</strong> (e.g. Ozaki scheme) aren’t allowed on Top500—so HPL reflects <strong>outputs</strong> (FP64 throughput) rather than <strong>outcomes</strong> (solving the system).</p>
+
+        <h2>3. Co-design: workflow first, or swimming upstream?</h2>
+        <div class="quote-block">
+            <div class="label">Reed — New Maxim Four</div>
+            <p>Winning systems are co-designed end-to-end—workflow first, parts list second. In HPC, we must pivot to funding sustained co-design ecosystems that bet on specific, high-impact scientific workflows.</p>
+        </div>
+        <p>I don’t agree. Funding sustained co-design as usually framed is <strong>swimming upstream with more conviction</strong>. The real path is to align scientific discovery with how the technology landscape is moving—ride the wave. That may mean different techniques and validation methods that make some existing expertise obsolete.</p>
+        <p>Slurm’s rigidities and ACL/kernel-based auth are critically limiting. Example: a bulk-synchronous MPI job across 100k GPUs—one node fails, whole job fails. <strong>Swimming upstream:</strong> faster file system, domain checkpoint library, SchedMD fast restart; fund all three and call it co-design. <strong>Riding the wave:</strong> treat the job as an end-to-end workflow; on node failure, transition to recovery state, orchestrator assigns a new node, runtime rebuilds state via distributed parity—no fast FS needed, but the app model must change from “single process” to “system whose state evolves with hardware.” Slurm can’t do that; it’s tied to the MPI model where nothing ever fails. Co-design should wait until HPC admits it’s swimming upstream.</p>
+
+        <h2>4. Prototyping at scale, or production at scale?</h2>
+        <div class="quote-block">
+            <div class="label">Reed — New Maxim Five</div>
+            <p>Research requires prototyping at scale (and risking failure), otherwise it is procurement. A prototype that cannot fail has another name—it’s called a product.</p>
+        </div>
+        <p>The idea is right; the <strong>title</strong> is wrong. Big AI infra providers don’t “prototype at scale.” They treat anything at scale as <strong>production</strong> and make it work—no year-long acceptance tests, shared integration responsibility with suppliers. National supercomputing has often worked that way in practice (e.g. <strong>Aurora</strong>: deployment fraught, processors cancelled before production, yet acceptance theatrics and “Aurora like Frontier”). AI takes a risk because the next breakthrough can’t wait. Failed or obsolete AI supers still get used (e.g. inference); the line between prototype and production is blurry.</p>
+
+        <h2>5. Multidisciplinary data fusion</h2>
+        <div class="quote-block">
+            <div class="label">Reed</div>
+            <p>Our gold is buried in disparate, multi-disciplinary datasets. We must build sustainable, multidisciplinary data fusion.</p>
+        </div>
+        <p>Easy to say; often feels empty. What’s stopping it isn’t willpower—it’s that fused multimodal data needs <strong>multimodal, multiphysics models</strong>, which are expensive relative to insights. The challenge is accepting <strong>more approximations</strong> so science-per-dollar is net positive. AI accepts less interpretable but more efficient empirical models—e.g. the <strong>Aurora climate model</strong>: a minute on one GPU vs hours on multiple GPUs for physics-based, by training on fused gridded and tabular data. If the forecast is off, forecasters shrug; for “weather a few days out,” that may be good enough.</p>
+
+        <h2>6. Governments and the right strategic asset</h2>
+        <div class="quote-block">
+            <div class="label">Reed</div>
+            <p>Governments must treat advanced computing as a strategic utility, Manhattan/Apollo scale.</p>
+        </div>
+        <p>Manhattan and Apollo had distinct goals and a defined lump of work; computing is a <strong>commodity</strong>, more like oil/gas reserves. In AI, computing is a pillar but not the only limiter. <strong>DeepSeek</strong> showed ingenuity and massive compute are orthogonal—fewer GPUs, more cleverness. Governments would do better to treat <strong>innovators</strong> as the strategic asset than to lead with GPU-count press releases. For every thousand GPUs deployed on government land, how many researchers and architects have left and aren’t coming back?</p>
+
+        <h2>Closing</h2>
+        <p>Reed’s essay pushes the HPC community to face where the world is going. I agree on scarcity, on the limits of benchmarks, and on accepting risk and failure. I disagree that the answer is mainly more co-design as traditionally framed, or that “prototyping at scale” is the right frame; data fusion and “strategic utility” need to be stated in terms that admit how hard the first is and what the second actually is—commodity, reserves, and people. This is one practitioner’s markup; if it sharpens the conversation for anyone else reading <em>HPC In An AI World</em>, it’s done its job.</p>
+
+        <p class="closing">Source: Dan Reed, “HPC In An AI World”; Reed, Dongarra, Gannon statement piece; commentator’s notes. No invented content.</p>
+    </article>
+</body>
+</html>

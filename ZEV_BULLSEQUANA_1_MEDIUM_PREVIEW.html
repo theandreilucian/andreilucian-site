@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zev — BullSequana: 1 Medium Thread | X Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .container { max-width: 720px; margin: 0 auto; }
+        .thread-block {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #334155;
+        }
+        .thread-block h2 { font-size: 1.25em; margin-bottom: 8px; color: #38bdf8; }
+        .thread-block .sub { font-size: 0.85em; color: #94a3b8; margin-bottom: 20px; }
+        .tweet {
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 3px solid #334155;
+        }
+        .tweet.img-placeholder { border-left-color: #22c55e; background: linear-gradient(135deg, #0f172a 0%, #0f1f14 100%); }
+        .tweet-num { font-size: 0.8em; color: #64748b; margin-bottom: 6px; }
+        .tweet-body { white-space: pre-wrap; line-height: 1.55; font-size: 15px; color: #cbd5e1; }
+        .img-label { color: #86efac; font-size: 0.9em; margin-bottom: 6px; }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-top: 8px;
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn:hover { background: #475569; }
+        .btn.copy { background: #1e40af; border-color: #2563eb; }
+        .btn.copy:hover { background: #2563eb; }
+        .header {
+            text-align: center;
+            padding: 24px 20px;
+            background: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            border: 1px solid #334155;
+        }
+        .header h1 { font-size: 1.4em; margin-bottom: 8px; }
+        .header p { color: #94a3b8; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BullSequana — 1 Medium Thread</h1>
+            <p>AI1242 · XH3406-3 · XH3515. Copy each tweet, upload images where marked. Zev voice — nerds, hospitals, government.</p>
+        </div>
+
+        <div class="thread-block">
+            <h2>BullSequana: Three Nodes (AI1242, XH3406-3, XH3515)</h2>
+            <p class="sub">10 tweets · 3 image slots</p>
+
+            <div class="tweet"><div class="tweet-num">1/</div><div class="tweet-body">Eviden BullSequana: three nodes that cover AMD's latest and the blade that powers JUPITER. AI1242 (MI355X), XH3406-3 (MI300A), XH3515 (GH200). Here's what's in each box.</div><button class="btn copy" onclick="copyT(1)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">2/</div><div class="tweet-body">AI1242 — the AMD MI355X node for the BullSequana XH3500 platform. 2× AMD 9005-series CPUs. 8× AMD MI355X GPUs in OAM. 2.3 TB HBM3e. 24× DDR5 RDIMMs. Up to 10× NICs — BXI v3, NDR InfiniBand, or Ethernet. Up to 4× NVMe SSDs. Dense, liquid-cooled, built for the heaviest HPC and AI workloads.</div><button class="btn copy" onclick="copyT(2)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">3/</div><div class="img-label">[Image: BullSequana AI1242 — physical node. Upload your photo: eight MI355X modules, e.g. SC25 display.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(3)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">4/</div><div class="tweet-body">Why AI1242 matters: same platform logic as the big cloud GPU nodes — pick your fabric (BXI, InfiniBand, or Ethernet), pack in the memory and storage you need. For labs and institutions that want AMD at scale, this is the node.</div><button class="btn copy" onclick="copyT(4)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">5/</div><div class="tweet-body">XH3406-3 — Eviden's MI300A blade. AMD Instinct MI300A = APU: one package, CPU and GPU. No discrete CPU–GPU wiring; one part, better coherence. Four MI300A modules per blade, thick black cabling between them. When you want tight coupling and unified memory, the APU can beat separate CPU + GPU.</div><button class="btn copy" onclick="copyT(5)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">6/</div><div class="img-label">[Image: BullSequana XH3406-3 — internal blade. Upload your photo: four MI300A modules, black cabling.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(6)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">7/</div><div class="tweet-body">XH3515 — the GH200 blade. This is what JUPITER uses. Two compute nodes per blade. Per node: 4× GH200 (Grace–Hopper) superchips. 480 GB usable LPDDR5 (Grace side). 360 GB HBM (Hopper side). 4× NDR200 InfiniBand HCAs (NVIDIA Quantum-2), 200 Gbit per GH200. One InfiniBand port per superchip.</div><button class="btn copy" onclick="copyT(7)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">8/</div><div class="img-label">[Image: BullSequana XH3515 — open blade. Upload your photo: GH200 modules, liquid cooling, Eviden branding.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(8)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">9/</div><div class="tweet-body">Why XH3515 matters: JUPITER is Europe's flagship exascale system. This blade is the building block. Grace–Hopper in a dense, coherent package; InfiniBand for scale-out. When the mission is sovereign HPC and AI, this is the node.</div><button class="btn copy" onclick="copyT(9)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">10/</div><div class="tweet-body">Takeaway: AI1242 for AMD MI355X and flexible fabric. XH3406-3 for MI300A APU density and coherence. XH3515 for GH200 and JUPITER-class scale. Three nodes, three choices. Eviden BullSequana — built for the workloads that define the next decade.</div><button class="btn copy" onclick="copyT(10)">Copy</button></div>
+        </div>
+    </div>
+
+    <script>
+        const tweets = {
+            1: "1/\n\nEviden BullSequana: three nodes that cover AMD's latest and the blade that powers JUPITER. AI1242 (MI355X), XH3406-3 (MI300A), XH3515 (GH200). Here's what's in each box.",
+            2: "2/\n\nAI1242 — the AMD MI355X node for the BullSequana XH3500 platform. 2× AMD 9005-series CPUs. 8× AMD MI355X GPUs in OAM. 2.3 TB HBM3e. 24× DDR5 RDIMMs. Up to 10× NICs — BXI v3, NDR InfiniBand, or Ethernet. Up to 4× NVMe SSDs. Dense, liquid-cooled, built for the heaviest HPC and AI workloads.",
+            3: "3/\n\n[Image: BullSequana AI1242 — physical node. Upload your photo here when you post.]",
+            4: "4/\n\nWhy AI1242 matters: same platform logic as the big cloud GPU nodes — pick your fabric (BXI, InfiniBand, or Ethernet), pack in the memory and storage you need. For labs and institutions that want AMD at scale, this is the node.",
+            5: "5/\n\nXH3406-3 — Eviden's MI300A blade. AMD Instinct MI300A = APU: one package, CPU and GPU. No discrete CPU–GPU wiring; one part, better coherence. Four MI300A modules per blade, thick black cabling between them. When you want tight coupling and unified memory, the APU can beat separate CPU + GPU.",
+            6: "6/\n\n[Image: BullSequana XH3406-3 — internal blade. Upload your photo here when you post.]",
+            7: "7/\n\nXH3515 — the GH200 blade. This is what JUPITER uses. Two compute nodes per blade. Per node: 4× GH200 (Grace–Hopper) superchips. 480 GB usable LPDDR5 (Grace side). 360 GB HBM (Hopper side). 4× NDR200 InfiniBand HCAs (NVIDIA Quantum-2), 200 Gbit per GH200. One InfiniBand port per superchip.",
+            8: "8/\n\n[Image: BullSequana XH3515 — open blade. Upload your photo here when you post.]",
+            9: "9/\n\nWhy XH3515 matters: JUPITER is Europe's flagship exascale system. This blade is the building block. Grace–Hopper in a dense, coherent package; InfiniBand for scale-out. When the mission is sovereign HPC and AI, this is the node.",
+            10: "10/\n\nTakeaway: AI1242 for AMD MI355X and flexible fabric. XH3406-3 for MI300A APU density and coherence. XH3515 for GH200 and JUPITER-class scale. Three nodes, three choices. Eviden BullSequana — built for the workloads that define the next decade."
+        };
+        function copyT(n) {
+            navigator.clipboard.writeText(tweets[n]).then(() => alert('Tweet ' + n + ' copied.'));
+        }
+    </script>
+</body>
+</html>

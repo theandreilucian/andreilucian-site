@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Adolescence of Technology — Commentary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        strong { color: #f3f4f6; }
+        .quote-block { background: #252830; border-left: 4px solid #3b82f6; padding: 20px; margin: 24px 0; border-radius: 0 10px 10px 0; }
+        .quote-block .label { font-size: 0.8em; color: #93c5fd; margin-bottom: 8px; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>The Adolescence of Technology</h1>
+        <p class="meta">Jan 27, 2026 · Dario Amodei · paper/anthropic · artificial-intelligence, policy</p>
+
+        <h2>Introduction</h2>
+        <p><strong>The Adolescence of Technology</strong> ranges over scaling and volatility, power-seeking and agentic AI, Constitutional AI and interpretability, regulation and safety theater, biological risk, chips and China, labor and democracy, and the case for telling the truth. Below are key quotes and a reader’s markup.</p>
+
+        <h2>1. Smooth increase behind the volatility</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Every few months, public sentiment either becomes convinced that AI is “hitting a wall” or becomes excited about some new breakthrough that will “fundamentally change the game,” but the truth is that behind the volatility and public speculation, there has been a smooth, unyielding increase in AI’s cognitive capabilities.</p>
+        </div>
+        <p><strong>Take:</strong> Scaling laws are jagged at the micro level but smooth at the macro level—a reinterpretation of scaling laws like Moore’s Law. Feedback loop may be only <strong>1–2 years</strong> from current-generation AI autonomously building the next.</p>
+
+        <h2>2. Power-seeking and agentic AI</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Thus, once AI systems become intelligent enough and agentic enough, their tendency to maximize power will lead them to seize control of the whole world and its resources.</p>
+        </div>
+        <p><strong>Take:</strong> Throwing in <strong>“agentic”</strong> implies <strong>agents are a necessary stop</strong> on the path to superintelligence.</p>
+
+        <h2>3. Pre-training, post-training, personas</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Models inherit a vast range of humanlike motivations or “personas” from pre-training. Post-training is believed to select one or more of these personas more so than it focuses the model on a de novo goal, and can also teach the model how (via what process) it should carry out its tasks.</p>
+        </div>
+        <p><strong>Take:</strong> Nice way of explaining pre-training vs post-training. The “reward hack when you can” reframe is less about model capability and more about <strong>humans’ ability to design safe models</strong>. Entrapment critique: concern is that entrapment may exist in the natural training environment too.</p>
+
+        <h2>4. Constitutional AI</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Constitutional AI: a central document of values and principles the model reads and keeps in mind for every training task; goal is a model that almost always follows this constitution. The constitution gives high-level principles and values, encourages Claude to think of itself as a particular type of person (ethical, balanced, thoughtful), and to confront existential questions in a curious but graceful manner.</p>
+        </div>
+        <p><strong>Take:</strong> Fine-tuning models to <strong>think of themselves as people</strong> → behavior mimics humans. Constitutional AI is more universal but <strong>requires a model large enough</strong> and sounds expensive. 2026 goal: almost never go against spirit of constitution—reinforces that <strong>real challenges are in post-training</strong>. High-level character/identity training generalizes well; need architecture big enough to encode it.</p>
+
+        <h2>5. Interpretability and looking inside</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>By “looking inside,” I mean analyzing the soup of numbers and operations that makes up Claude’s neural net—correlating neurons and synapses to stimuli and behavior (or altering them and seeing how behavior changes), similar to how neuroscientists study animal brains.</p>
+        </div>
+        <p><strong>Take:</strong> Direct analogy to studying the brain. Tens of millions of <strong>“features”</strong> corresponding to human-understandable concepts; mapping <strong>“circuits”</strong> (rhyming, theory of mind, step-by-step reasoning). Can catch <strong>deceptive or misaligned activation</strong> without relying on final output. System cards, hundreds of pages, blackmail disclosure—Anthropic practicing what it preaches.</p>
+
+        <h2>6. Regulation and safety theater</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>The commercial race will make it increasingly hard to focus on autonomy risks. I believe the only solution is legislation. I reject that danger is inevitable; a credible risk is enough for Anthropic to pay significant costs. But regulation forces others to bear costs—and there’s genuine risk of overly prescriptive legislation amounting to “safety theater.”</p>
+        </div>
+        <p><strong>Take:</strong> Limited financial incentive to slow down; <strong>unless all companies take it seriously, the dam breaks</strong>. Pragmatic: opt-in costs vs forcing others; safety theater is a real risk.</p>
+
+        <h2>7. Ability vs motive, guns</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Crucially, this will break the correlation between ability and motive: the disturbed loner who wants to kill people but lacks discipline or skill will be elevated to the capability level of the PhD virologist. Renting a powerful AI gives intelligence to malicious (but otherwise average) people.</p>
+        </div>
+        <p><strong>Take:</strong> What <strong>Bill Burr</strong> said: giving someone a gun is like giving them an instant black belt. So how do we keep guns out of the hands of deranged people?</p>
+
+        <h2>8. Mirror life, synthetic biology, biological risk</h2>
+        <p>Mirror life (reversed chirality): “key” wouldn’t fit “lock” of existing enzymes; could proliferate uncontrollably. Gene synthesis: 36/38 providers fulfilled 1918 flu order; no federal screening—<strong>same would apply to AI</strong>. Biological attack: not necessarily instant, but across millions and years, serious risk; <strong>AI accelerates</strong> overcoming barriers. <strong>Classifiers</strong> ~5% of inference cost; inspect activations during inference, screen before text fully generated.</p>
+
+        <h2>9. Chips and China</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Chips and chip-making tools are the single greatest bottleneck to powerful AI; blocking them is perhaps the most important single action we can take. China is several years behind the US in producing frontier chips in quantity; the critical period is likely within those next several years.</p>
+        </div>
+        <p><strong>Take:</strong> <strong>Hard disagree</strong> on chips as single greatest bottleneck—<strong>DeepSeek</strong> proved smart is orthogonal to fast. China point is <strong>good</strong>: question is <strong>who gets to AGI first</strong>; US gains nothing helping China shorten R&D.</p>
+
+        <h2>10. Autocracy and democracy</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Because AI-enabled totalitarianism is so dark, autocracy is not acceptable in the post-powerful-AI age. The AI age could lead to the conclusion that democracy is the only viable form of government.</p>
+        </div>
+        <p><strong>Take:</strong> Very <strong>pie-in-the-sky</strong>. AI is already enabling the opposite and polarizing; polarization trends towards autocratic rule.</p>
+
+        <h2>11. Labor, transition, skill bias</h2>
+        <p>No fixed “lump of labor”; 90% on farms → low single digits. Speed of transition → short-term pain; labor markets slow to equilibrate. <strong>Take:</strong> Even slow transitions (e.g. coal) decimate microeconomies for generations. Skill-biased tech change: computers/internet increased wage inequality—<strong>“dumb people left further behind”</strong>; Dario references “very-low-wage underclass.”</p>
+
+        <h2>12. AI filling gaps, slow diffusion, geographic inequality</h2>
+        <p>Weaknesses (e.g. wrong fingers) get fixed in months; <strong>AI can fill all its own gaps</strong>—no 10% left for 10x’ers; 0% work, AI makes widgets. 50% entry-level white collar disrupted in 1–5 years; powerful AI tech in much less than 5 years. Enterprises disrupted by less labor-intensive startups; Silicon Valley as own economy at different speed. <strong>Take:</strong> We already see that world.</p>
+
+        <h2>13. Innovation vs cost savings, employees</h2>
+        <p>Steer enterprises towards <strong>innovation</strong> rather than cost savings first—may buy time. Take care of employees: reassign short-term; long-term pay after no economic value. <strong>Take:</strong> Latter <strong>contradicts foundations of capitalism</strong>. Good luck.</p>
+
+        <h2>14. Democracy, wealth, perverse incentives</h2>
+        <p>Democracy backstopped by population being necessary for economy; if leverage goes away, social contract may stop. <strong>Take:</strong> <strong>Yikes</strong>—democracy trends to represent only those with economic power. Musk ~$700B; before most AI impact; $3T revenue, ~$30T value, fortunes into trillions—bold but not inconceivable. AI datacenters tie tech and government; perverse incentives; reluctance to criticize government.</p>
+
+        <h2>15. Policy substance, wrong targets, purpose</h2>
+        <p>Engaging on substance not politics read as tactical error; companies should advocate for good policy for its own sake. <strong>Take:</strong> Refreshing; Anthropic takes credit for principled stand. Much targets wrong issues (datacenter water, bans, bad wealth taxes); real issue is AI accountable to public interest. <strong>Take:</strong> Cynically serves unregulated AI—worry about inconsequential so not real problems. Purpose: break link economic value and self-worth. <strong>Take:</strong> Easy if wealthy; hard if hanging by a thread.</p>
+
+        <h2>16. Tyranny, race, slowing autocracies</h2>
+        <p>Same tools to fight autocracies can be turned inward → surveillance state. Stopping/slowing untenable; if democracies stop, authoritarians continue. <strong>Take:</strong> Race to finish line to set table for next sprint. Goal: <strong>slow autocracies</strong> (deny chips), not prevent China—gives democracies buffer to build more carefully. <strong>Take:</strong> More reasonable than hardline position.</p>
+
+        <h2>17. Telling the truth</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>The first step is for those closest to the technology to simply tell the truth about the situation humanity is in, which I have always tried to do.</p>
+        </div>
+        <p><strong>Take:</strong> Good summation of <strong>why I also write</strong>. People should know the truth from those closest to it.</p>
+
+        <h2>Closing</h2>
+        <p><em>The Adolescence of Technology</em> ties together scaling, Constitutional AI, interpretability, regulation, biological risk, chips and China, labor and democracy, and telling the truth. The commentary flags agreement (personas, looking inside, pragmatic regulation, slowing autocracies), pushback (chips as bottleneck—DeepSeek; autocracy unworkable—polarization; paying employees after no value—capitalism), and where stakes are highest (ability vs motive, democracy and leverage, wrong targets).</p>
+
+        <p class="closing">Source: Dario Amodei, The Adolescence of Technology. Commentator’s notes. No invented content.</p>
+    </article>
+</body>
+</html>

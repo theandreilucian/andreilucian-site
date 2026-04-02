@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems — Article 3: Discovery (OLCF), El Capitan (LLNL)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Systems — Article 3</h1>
+        <p class="meta">Discovery (OLCF), El Capitan (LLNL) · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>Two DOE flagships: <strong>Discovery</strong> at <strong>Oak Ridge (OLCF)</strong> — follow-on to Frontier, delivery 2028 — and <strong>El Capitan</strong> at <strong>Lawrence Livermore (LLNL)</strong> — Cray EX255a with MI300A APUs, in production at &gt;1.8 EFLOPS HPL. One future, one current; both define the public-sector exascale stack.</p>
+
+        <h2>Discovery (OLCF)</h2>
+        <p><strong>Jan 30, 2026 · #system, #usa/doe/ascr.</strong></p>
+        <p>Follow-on to Frontier at Oak Ridge. Delivery <strong>2028</strong>. (From the press release.)</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Discovery (OLCF)]</div>
+            <div class="hint">System, cabinet, or diagram</div>
+        </div>
+        <p><strong>Platform:</strong> <strong>Cray GX</strong>. <strong>CPU:</strong> <strong>Venice</strong>. <strong>GPU:</strong> <strong>AMD MI430X</strong>. <strong>Interconnect:</strong> next-generation <strong>Slingshot</strong>. <strong>Storage:</strong> <strong>Cray E2000</strong> Lustre appliances; <strong>Cray K3000</strong> DAOS appliances. ASCR path: next-gen Cray, Venice + MI430X, Lustre + DAOS; 2028.</p>
+
+        <h2>El Capitan (LLNL)</h2>
+        <p><strong>Dec 05, 2025 · #usa/doe/nnsa, #system.</strong></p>
+        <p>Cray EX255a / MI300A at Livermore. In production, <strong>&gt;1.8 EFLOPS</strong> HPL.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: El Capitan (LLNL)]</div>
+            <div class="hint">System, cabinet, or node</div>
+        </div>
+        <p><strong>HPL:</strong> max <strong>1.809 EFLOPS</strong> (Nov 2025); debut <strong>1.742 EFLOPS</strong> (Nov 2024). <strong>Scale:</strong> <strong>11,264</strong> EX255a nodes, <strong>45,056</strong> MI300A APUs, <strong>88</strong> cabinets, <strong>704</strong> Rabbit blades (8/cabinet). <strong>34.8 MW</strong> peak, <strong>30 MW</strong> HPL. <strong>Network:</strong> Slingshot-11, dragonfly. <strong>Node:</strong> 4× MI300A, 512 GB HBM3 (8-high), fully interconnected. <strong>Storage:</strong> 8 Rabbit blades/rack on Slingshot; global Lustre <strong>Merced</strong>. NNSA flagship; APU-based exascale reference.</p>
+
+        <h2>Why these systems matter</h2>
+        <p><strong>Discovery</strong> — OLCF next: Cray GX, Venice, MI430X, next-gen Slingshot, E2000 + K3000. 2028, ASCR. <strong>El Capitan</strong> — LLNL now: EX255a, 45k MI300A, 1.809 EF HPL, Slingshot-11, Rabbit + Merced. NNSA, APU deployment model.</p>
+
+        <p class="closing">Systems module — Article 3. Discovery (OLCF), El Capitan (LLNL). Insert your images at the green placeholders.</p>
+    </article>
+</body>
+</html>

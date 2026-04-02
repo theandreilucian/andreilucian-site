@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems — Article 9: KISTI-6, Leonardo, Lux</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Systems — Article 9</h1>
+        <p class="meta">KISTI-6, Leonardo, Lux · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>Three systems: <strong>KISTI-6</strong> (Korean flagship, Cray EX, 588 PF, Turin + GPU nodes, 1H2026); <strong>Leonardo</strong> (CINECA Bologna, BullSequana XH2000, GPU nodes, LISA upgrade to MI300X); <strong>Lux</strong> (OLCF phase-1 Frontier follow-on, ProLiant XD685, MI355X, AMD Pensando Ethernet, OCI Dedicated Region in NCCS).</p>
+
+        <h2>KISTI-6 (KISTI)</h2>
+        <p><strong>Jun 18, 2025 · #system/korea.</strong></p>
+        <p>Korean flagship, announced May 2025, commissioned <strong>1H2026</strong>. <strong>Cray EX</strong>, <strong>588 PF</strong> from <strong>2,084</strong> nodes.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: KISTI-6]</div>
+            <div class="hint">System or announcement</div>
+        </div>
+        <p><strong>Nodes:</strong> 2,048× Cray GPU nodes, 800× <strong>Turin</strong> CPU, 20× GPU nodes. <strong>96%</strong> liquid cooled (rear-door heat exchangers).</p>
+
+        <h2>Leonardo (CINECA)</h2>
+        <p><strong>Feb 18, 2026 · #europe/eurohpc, #system.</strong></p>
+        <p><strong>240 PF</strong> BullSequana XH2000 at CINECA, Bologna. HPL <strong>174.70 PF</strong>. <strong>Booster:</strong> 3,456 nodes (X2135), Xeon 8358 32c, 512 GB DDR4, 4× GPU (64 GB HBM2), 4× HDR100 IB. <strong>Data Centric:</strong> 1,536 nodes (X2610), 2× Sapphire Rapids 56c, 1× HDR100, 8 TB NVMe. <strong>Network:</strong> HDR IB dragonfly+; GPU group = two-level fat tree, 36× 200G switches, 180 nodes/720 GPUs. <strong>Storage:</strong> 5.7 PB flash (31× DDN ES400NVX2), 137.6 PB HDD (31× ES7990X, 4× SFA400NVX MDS). Tecnopolo Bologna (ex–tobacco factory; ECMWF site).</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Leonardo]</div>
+            <div class="hint">System or cabinets</div>
+        </div>
+
+        <h2>LISA upgrade (Leonardo)</h2>
+        <p>Sept 2024 RFP: <strong>LISA</strong> — delivery April 2025, acceptance Aug 2025. Prescriptive: <strong>8-way MI300X OAM</strong> (or equivalent). ≥165 nodes, 8 GPUs/node, memory coherence; ≥80 GB HBM/GPU, 2× x86, ≥1 TB host RAM, all slots occupied.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: LISA / Leonardo]</div>
+            <div class="hint">Upgrade or diagram</div>
+        </div>
+
+        <h2>Lux (OLCF)</h2>
+        <p><strong>Jan 30, 2026 · #usa/doe/ascr, #system.</strong></p>
+        <p>First phase of Frontier follow-on at Oak Ridge, deployment <strong>early 2026</strong>. <strong>ProLiant Compute XD685</strong>, <strong>AMD MI355X</strong>, <strong>AMD Pensando</strong> Ethernet; <strong>OCI</strong> as part of Lux AI Cluster — <strong>OCI Dedicated Region</strong> in <strong>NCCS</strong> (ex-Summit space).</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Lux (OLCF)]</div>
+            <div class="hint">System or announcement</div>
+        </div>
+
+        <h2>Why these systems matter</h2>
+        <p><strong>KISTI-6:</strong> Korean flagship Cray EX, 588 PF, GPU + Turin nodes, 96% liquid cooled. <strong>Leonardo:</strong> EuroHPC pre-exascale, 64 GB GPU Booster, HDR dragonfly+, two-tier Lustre; LISA = 8-way MI300X. <strong>Lux:</strong> OLCF phase-1, MI355X, OCI Dedicated Region in NCCS. Reference for Korea, EuroHPC, and DOE ASCR cloud-integrated AI.</p>
+
+        <p class="closing">Systems module — Article 9. KISTI-6, Leonardo, Lux. Insert your images at the green placeholders.</p>
+    </article>
+</body>
+</html>

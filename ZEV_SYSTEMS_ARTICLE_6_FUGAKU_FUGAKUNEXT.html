@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems — Article 6: Fugaku, FugakuNEXT (R-CCS)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
+        th, td { border: 1px solid #334155; padding: 10px 14px; text-align: left; }
+        th { background: #0f172a; color: #38bdf8; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Systems — Article 6</h1>
+        <p class="meta">Fugaku (R-CCS), FugakuNEXT (R-CCS) · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p><strong>Fugaku</strong> is Japan’s flagship at <strong>RIKEN-RCCS</strong> (Kobe): Fujitsu <strong>A64FX</strong>, HBM2, 415 PF HPL. <strong>FugakuNEXT</strong> follows: Kobe 2029, ops 2030; next-gen GPUs, <strong>Fujitsu Monaka-X</strong>, colocated <strong>IBM quantum</strong>. This article covers both: scale, node, FugakuNEXT architecture, performance targets, storage, and strawman node vision.</p>
+
+        <h2>Fugaku (R-CCS)</h2>
+        <p><strong>Dec 04, 2024 · #system/japan.</strong></p>
+        <p>RIKEN-RCCS Kobe. <strong>Fujitsu A64FX</strong>, HBM2. HPL <strong>415.53 PFLOPS</strong> (June 2020 Top500).</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Fugaku — system / cabinets]</div>
+            <div class="hint">R-CCS Kobe</div>
+        </div>
+        <p><strong>Scale:</strong> <strong>158,976</strong> nodes, <strong>158,976</strong> A64FX (1 per node), <strong>432</strong> racks (396 full @ 384 nodes, 36 half @ 192). <strong>Platform:</strong> 2 nodes/CMU, 8 CMUs/BoB, 3 BoBs/shelf, 8 shelves/rack. Commercial: PRIMEHPC FX1000. <strong>Node:</strong> 1× A64FX (48 SVE + 2 assist, 2.0–2.2 GHz, 3.07–3.38 TF FP64); <strong>32 GB</strong> HBM2, 1024 GB/s; 1× 10-port Tofu D (28 Gbps×2); 1× PCIe Gen3 x16.</p>
+
+        <h2>FugakuNEXT (R-CCS)</h2>
+        <p><strong>Aug 22, 2025 · #system/japan.</strong></p>
+        <p>Follow-on flagship; RIKEN-led, Fujitsu design, GPU vendor TBD. Kobe <strong>2029</strong>, operations <strong>2030</strong>.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: FugakuNEXT — announcement / diagram]</div>
+            <div class="hint">Specs or site</div>
+        </div>
+        <p><strong>Scale:</strong> Over <strong>3,400</strong> nodes, <strong>15K</strong> GPUs. <strong>2.6 EF</strong> FP64; 20× over Fugaku, 60× over K; <strong>600 EF</strong> FP8 2:1 sparse. <strong>&lt;40 MW</strong> (30 MW target). <strong>Architecture:</strong> <strong>Fujitsu Monaka-X</strong> (ARM, SME, possible NPU); Next-gen GPU; TBD host–device coherent; <strong>NVLink</strong> scale-up; custom scale-out. <strong>Colocated 156-qubit IBM Heron</strong> on scale-out fabric.</p>
+
+        <h2>Performance targets and requirements</h2>
+        <p><strong>Satoshi Matsuoka (Salishan 2025):</strong> raw 10×–20×; mixed precision 2×–8×; surrogates/PINN 10×–25×; <strong>total 200×–1000×</strong> over Fugaku (“Zettascale”).</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Performance targets / requirements table]</div>
+            <div class="hint">RFP table or slide</div>
+        </div>
+        <p><strong>System requirements (RFP / vendor):</strong> FP64 vector CPU 48 PF / GPU 3,000 PF; FP16/BF16 matrix CPU 1,500 PF / GPU 150,000 PF; FP8 CPU 3,000 PF / GPU 300,000 PF; FP8 2:1 sparse GPU 600,000 PF; memory 10 PiB CPU / 10 PiB GPU; bandwidth 8 PB/s CPU / 800 PB/s GPU.</p>
+
+        <h2>Storage and strawman vision</h2>
+        <p><strong>Storage (FugakuNEXT):</strong> Tier 1 near-node (e.g. CHFS, BeeOND); Tier 2 shared (Lustre, DAOS).</p>
+        <p><strong>Strawman non-quantum node (2028–2030):</strong> 3D-stacked CPU + accelerator; >20 TB/s SRAM (to ~40 TB/s); CGRA strong-scaling accelerator, >1 PF/node; <strong>silicon photonics</strong> 12 Tbps (1 Tbps×12); ~80k nodes; 2–3 EB/s mem BW (15–25× Fugaku); ~100 EF low-precision; 30×–100× app over Fugaku; ~30 MW. Themes: 3D stack, silicon photonics, CGRA, PIM.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Strawman architecture diagram]</div>
+            <div class="hint">3D stack, silicon photonics, CGRA</div>
+        </div>
+
+        <h2>Why Fugaku and FugakuNEXT matter</h2>
+        <p>Fugaku: 158k A64FX, 432 racks, Arm SVE, HBM2, Tofu D — reference for <strong>all-CPU Arm</strong> exascale. FugakuNEXT: 3.4k+ nodes, 15K GPUs, 2.6 EF FP64, 600 EF FP8 sparse, Monaka-X + next-gen GPU, IBM Heron 156q, 30 MW; 200×–1000× target; strawman 80k nodes, 3D stack, silicon photonics, CGRA. Reference for <strong>Japan’s flagship</strong> CPU+GPU+quantum roadmap.</p>
+
+        <p class="closing">Systems module — Article 6. Fugaku, FugakuNEXT (R-CCS). Insert your images at the green placeholders.</p>
+    </article>
+</body>
+</html>

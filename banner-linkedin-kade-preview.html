@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kade's LinkedIn Banner Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            color: #b3b3b3;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .banner-container {
+            background: #000000;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner-preview {
+            width: 100%;
+            max-width: 1584px;
+            height: auto;
+            display: block;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-box {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 800px;
+            color: #b3b3b3;
+        }
+        
+        .info-box h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .info-box code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kade's LinkedIn Banner Preview</h1>
+    
+    <div class="instructions">
+        <p>Preview your LinkedIn banner below. Right-click on the banner and select "Save Image As" to download it as PNG.</p>
+        <p><strong>Dimensions:</strong> 1584px × 396px (LinkedIn Standard)</p>
+    </div>
+    
+    <div class="banner-container">
+        <img src="assets/images/banner-linkedin-kade.svg" alt="Kade's LinkedIn Banner" class="banner-preview" id="bannerImage">
+    </div>
+    
+    <div class="export-buttons">
+        <button onclick="downloadAsPNG()">Download as PNG</button>
+        <button onclick="copyToClipboard()">Copy Image</button>
+        <button onclick="openInNewTab()">Open SVG in New Tab</button>
+    </div>
+    
+    <div class="info-box">
+        <h3>How to Export as PNG:</h3>
+        <ul>
+            <li><strong>Method 1:</strong> Right-click the banner above → "Save Image As" → Save as PNG</li>
+            <li><strong>Method 2:</strong> Click "Download as PNG" button (requires modern browser)</li>
+            <li><strong>Method 3:</strong> Use online converter: <a href="https://svgtopng.com" target="_blank" style="color: #ffffff;">svgtopng.com</a></li>
+            <li><strong>Method 4:</strong> Open SVG in browser → Take screenshot → Crop to banner size</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">File Location:</h3>
+        <p><code>assets/images/banner-linkedin-kade.svg</code></p>
+        
+        <h3 style="margin-top: 20px;">To Add Profile Picture:</h3>
+        <p><strong>Option 1:</strong> Save your profile picture as <code>assets/images/kade-profile-picture.jpg</code> (or .png)</p>
+        <p><strong>Option 2:</strong> Edit the SVG file and update the image path in the profile picture section (around line 340). Change:</p>
+        <p><code>href="assets/images/kade-profile-picture.jpg"</code></p>
+        <p>to your actual image path. The image should be square (at least 480x480px recommended).</p>
+        
+        <h3 style="margin-top: 20px;">Redesigned Features:</h3>
+        <ul>
+            <li><strong>Premium Dark Gradient:</strong> Rich black-to-navy gradient background</li>
+            <li><strong>Enhanced Typography:</strong> Larger headlines (82px) with perfect spacing</li>
+            <li><strong>Glassmorphism Container:</strong> Modern glass-like effect with inner borders</li>
+            <li><strong>Correct Icons:</strong> Clock icon for Health, Checklist for Discipline, Grid for Operations, Dollar for Wealth</li>
+            <li><strong>Elegant Wave Patterns:</strong> Subtle wave designs in bottom right</li>
+            <li><strong>Cyan Accent Colors:</strong> Professional #00d9ff gradient highlights</li>
+            <li><strong>Signature Line:</strong> "NO FLUFF. ONLY EXECUTION." with enhanced glow effects</li>
+            <li><strong>Goal Statement:</strong> "Building $100M ecosystem by 30"</li>
+            <li><strong>Four Pillars:</strong> Premium card design (110×80px) with proper icons</li>
+            <li><strong>Social Proof:</strong> "5× 7-Figure Businesses Built" with glow effect</li>
+            <li><strong>Geometric Accents:</strong> Subtle shapes for visual depth</li>
+            <li><strong>Professional Badge:</strong> "ENTREPRENEUR • BUILDER • OPERATOR"</li>
+            <li><strong>Premium Profile Area:</strong> Radial glow with decorative rings</li>
+            <li><strong>Optimized Layout:</strong> Perfectly balanced for LinkedIn profile picture overlap</li>
+            <li><strong>Enhanced Effects:</strong> Improved drop shadows, glows, and visual depth</li>
+        </ul>
+    </div>
+    
+    <script>
+        async function downloadAsPNG() {
+            const img = document.getElementById('bannerImage');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 1584;
+            canvas.height = 396;
+            
+            const imgObj = new Image();
+            imgObj.crossOrigin = 'anonymous';
+            
+            imgObj.onload = function() {
+                ctx.drawImage(imgObj, 0, 0, 1584, 396);
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'kade-linkedin-banner.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            imgObj.src = img.src;
+        }
+        
+        async function copyToClipboard() {
+            try {
+                const img = document.getElementById('bannerImage');
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 1584;
+                canvas.height = 396;
+                
+                const imgObj = new Image();
+                imgObj.crossOrigin = 'anonymous';
+                
+                imgObj.onload = function() {
+                    ctx.drawImage(imgObj, 0, 0, 1584, 396);
+                    
+                    canvas.toBlob(async function(blob) {
+                        try {
+                            await navigator.clipboard.write([
+                                new ClipboardItem({ 'image/png': blob })
+                            ]);
+                            alert('Image copied to clipboard!');
+                        } catch (err) {
+                            alert('Failed to copy. Try right-clicking and "Save Image As" instead.');
+                        }
+                    }, 'image/png');
+                };
+                
+                imgObj.src = img.src;
+            } catch (err) {
+                alert('Clipboard feature not available. Use "Download as PNG" instead.');
+            }
+        }
+        
+        function openInNewTab() {
+            window.open('assets/images/banner-linkedin-kade.svg', '_blank');
+        }
+    </script>
+</body>
+</html>
+

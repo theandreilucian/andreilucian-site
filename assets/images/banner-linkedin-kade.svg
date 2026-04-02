@@ -1,0 +1,398 @@
+<svg width="1584" height="396" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Rich dark blue gradient background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#152d4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f1b3d;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Premium cyan/teal gradient -->
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b8d9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- White gradient for text -->
+    <linearGradient id="whiteGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Cyan glow filter -->
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Strong cyan glow for accent text -->
+    <filter id="strongCyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Text shadow -->
+    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Drop shadow for panels -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+      <feOffset in="blur" dx="0" dy="6" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Profile picture clip path -->
+    <clipPath id="profileClip">
+      <circle cx="1320" cy="198" r="120"/>
+    </clipPath>
+    
+    <!-- Subtle overlay pattern -->
+    <pattern id="subtlePattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="40" cy="40" r="1" fill="#00d9ff" opacity="0.03"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bgGradient)"/>
+  
+  <!-- Subtle pattern overlay -->
+  <rect width="1584" height="396" fill="url(#subtlePattern)"/>
+  
+  <!-- TOP LEFT: Badge -->
+  <g transform="translate(60, 35)">
+    <rect x="0" y="0" width="300" height="40" rx="20" 
+          fill="rgba(0, 217, 255, 0.12)" 
+          stroke="url(#cyanGradient)" 
+          stroke-width="3" 
+          stroke-opacity="0.9"
+          style="filter: url(#cyanGlow);"/>
+    <rect x="2" y="2" width="296" height="36" rx="18" 
+          fill="none" 
+          stroke="rgba(0, 217, 255, 0.3)" 
+          stroke-width="1"/>
+    <text x="150" y="27" 
+          font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+          font-size="11" 
+          font-weight="900" 
+          fill="url(#cyanGradient)" 
+          text-anchor="middle"
+          letter-spacing="3.5px"
+          style="filter: url(#cyanGlow);">
+      ENTREPRENEUR • BUILDER • OPERATOR
+    </text>
+  </g>
+  
+  <!-- CENTER PANEL -->
+  <g transform="translate(60, 95)">
+    <!-- Main dark panel with glassmorphism effect -->
+    <rect x="0" y="0" width="1100" height="260" rx="16" 
+          fill="rgba(10, 22, 40, 0.9)" 
+          stroke="url(#cyanGradient)" 
+          stroke-width="2.5" 
+          stroke-opacity="0.5"
+          style="filter: url(#dropShadow);"/>
+    
+    <!-- Inner glow borders -->
+    <rect x="2" y="2" width="1096" height="256" rx="15" 
+          fill="none" 
+          stroke="rgba(0, 229, 255, 0.25)" 
+          stroke-width="1.5"
+          style="filter: url(#cyanGlow);"/>
+    <rect x="4" y="4" width="1092" height="252" rx="14" 
+          fill="none" 
+          stroke="rgba(0, 217, 255, 0.15)" 
+          stroke-width="1"/>
+    
+    <!-- TOP RIGHT: Small badge in panel -->
+    <g transform="translate(800, 20)">
+      <rect x="0" y="0" width="280" height="35" rx="17.5" 
+            fill="rgba(0, 229, 255, 0.12)" 
+            stroke="url(#cyanGradient)" 
+            stroke-width="2.5" 
+            stroke-opacity="0.85"
+            style="filter: url(#cyanGlow);"/>
+      <rect x="2" y="2" width="276" height="31" rx="15.5" 
+            fill="none" 
+            stroke="rgba(0, 217, 255, 0.3)" 
+            stroke-width="1"/>
+      <text x="140" y="23" 
+            font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+            font-size="9.5" 
+            font-weight="900" 
+            fill="url(#cyanGradient)" 
+            text-anchor="middle"
+            letter-spacing="3px"
+            style="filter: url(#cyanGlow);">
+        ENTREPRENEUR • BUILDER • OPERATOR
+      </text>
+    </g>
+    
+    <!-- LEFT SIDE: Main headline -->
+    <g transform="translate(50, 60)">
+      <text x="0" y="0" 
+            font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+            font-size="78" 
+            font-weight="900" 
+            fill="url(#whiteGradient)" 
+            letter-spacing="-4px"
+            style="filter: url(#textShadow);">
+        NO FLUFF.
+      </text>
+      
+      <text x="0" y="82" 
+            font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+            font-size="78" 
+            font-weight="900" 
+            fill="#ffffff" 
+            letter-spacing="-4px"
+            style="filter: url(#textShadow);">
+        ONLY
+      </text>
+      
+      <text x="0" y="164" 
+            font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+            font-size="78" 
+            font-weight="900" 
+            fill="url(#cyanGradient)" 
+            letter-spacing="-4px"
+            style="filter: url(#strongCyanGlow);">
+        EXECUTION.
+      </text>
+    </g>
+    
+    <!-- MIDDLE RIGHT: Four pillar icons -->
+    <g transform="translate(720, 75)">
+      <!-- Health - Empty circle -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="80" height="80" rx="10" 
+              fill="rgba(0, 229, 255, 0.1)" 
+              stroke="url(#cyanGradient)" 
+              stroke-width="2.5" 
+              stroke-opacity="0.7"
+              style="filter: url(#cyanGlow);"/>
+        <rect x="2" y="2" width="76" height="76" rx="9" 
+              fill="none" 
+              stroke="rgba(0, 217, 255, 0.2)" 
+              stroke-width="1"/>
+        <circle cx="40" cy="32" r="14" 
+                fill="none" 
+                stroke="url(#cyanGradient)" 
+                stroke-width="3" 
+                style="filter: url(#cyanGlow);"/>
+        <text x="40" y="68" 
+              font-family="'Inter', sans-serif" 
+              font-size="13" 
+              font-weight="700" 
+              fill="#ffffff" 
+              text-anchor="middle"
+              letter-spacing="0.5px"
+              style="filter: url(#textShadow);">
+          Health
+        </text>
+      </g>
+      
+      <!-- Discipline - Checkmark -->
+      <g transform="translate(95, 0)">
+        <rect x="0" y="0" width="80" height="80" rx="10" 
+              fill="rgba(0, 229, 255, 0.1)" 
+              stroke="url(#cyanGradient)" 
+              stroke-width="2.5" 
+              stroke-opacity="0.7"
+              style="filter: url(#cyanGlow);"/>
+        <rect x="2" y="2" width="76" height="76" rx="9" 
+              fill="none" 
+              stroke="rgba(0, 217, 255, 0.2)" 
+              stroke-width="1"/>
+        <circle cx="40" cy="32" r="14" 
+                fill="none" 
+                stroke="url(#cyanGradient)" 
+                stroke-width="3" 
+                style="filter: url(#cyanGlow);"/>
+        <path d="M 30 32 L 35 37 L 50 22" 
+              stroke="url(#cyanGradient)" 
+              stroke-width="3.5" 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              fill="none"
+              style="filter: url(#cyanGlow);"/>
+        <text x="40" y="68" 
+              font-family="'Inter', sans-serif" 
+              font-size="13" 
+              font-weight="700" 
+              fill="#ffffff" 
+              text-anchor="middle"
+              letter-spacing="0.5px"
+              style="filter: url(#textShadow);">
+          Discipline
+        </text>
+      </g>
+      
+      <!-- Operations - Empty circle -->
+      <g transform="translate(190, 0)">
+        <rect x="0" y="0" width="80" height="80" rx="10" 
+              fill="rgba(0, 229, 255, 0.1)" 
+              stroke="url(#cyanGradient)" 
+              stroke-width="2.5" 
+              stroke-opacity="0.7"
+              style="filter: url(#cyanGlow);"/>
+        <rect x="2" y="2" width="76" height="76" rx="9" 
+              fill="none" 
+              stroke="rgba(0, 217, 255, 0.2)" 
+              stroke-width="1"/>
+        <circle cx="40" cy="32" r="14" 
+                fill="none" 
+                stroke="url(#cyanGradient)" 
+                stroke-width="3" 
+                style="filter: url(#cyanGlow);"/>
+        <text x="40" y="68" 
+              font-family="'Inter', sans-serif" 
+              font-size="13" 
+              font-weight="700" 
+              fill="#ffffff" 
+              text-anchor="middle"
+              letter-spacing="0.5px"
+              style="filter: url(#textShadow);">
+          Operations
+        </text>
+      </g>
+      
+      <!-- Wealth - Dollar sign -->
+      <g transform="translate(285, 0)">
+        <rect x="0" y="0" width="80" height="80" rx="10" 
+              fill="rgba(0, 229, 255, 0.1)" 
+              stroke="url(#cyanGradient)" 
+              stroke-width="2.5" 
+              stroke-opacity="0.7"
+              style="filter: url(#cyanGlow);"/>
+        <rect x="2" y="2" width="76" height="76" rx="9" 
+              fill="none" 
+              stroke="rgba(0, 217, 255, 0.2)" 
+              stroke-width="1"/>
+        <circle cx="40" cy="32" r="14" 
+                fill="none" 
+                stroke="url(#cyanGradient)" 
+                stroke-width="3" 
+                style="filter: url(#cyanGlow);"/>
+        <text x="40" y="40" 
+              font-family="'Inter', sans-serif" 
+              font-size="26" 
+              font-weight="900" 
+              fill="url(#cyanGradient)" 
+              text-anchor="middle"
+              style="filter: url(#cyanGlow);">
+          $
+        </text>
+        <text x="40" y="68" 
+              font-family="'Inter', sans-serif" 
+              font-size="13" 
+              font-weight="700" 
+              fill="#ffffff" 
+              text-anchor="middle"
+              letter-spacing="0.5px"
+              style="filter: url(#textShadow);">
+          Wealth
+        </text>
+      </g>
+    </g>
+    
+    <!-- BOTTOM RIGHT: Social proof -->
+    <g transform="translate(720, 175)">
+      <text x="0" y="0" 
+            font-family="'Inter', sans-serif" 
+            font-size="19" 
+            font-weight="800" 
+            fill="url(#cyanGradient)" 
+            text-anchor="left"
+            letter-spacing="2.5px"
+            style="filter: url(#strongCyanGlow);">
+        5x 7-FIGURE BUSINESSES BUILT
+      </text>
+      
+      <text x="0" y="24" 
+            font-family="'Inter', sans-serif" 
+            font-size="14" 
+            font-weight="500" 
+            fill="#b0b0b0" 
+            text-anchor="left"
+            letter-spacing="0.8px"
+            style="filter: url(#textShadow);">
+        Documenting routines behind results
+      </text>
+    </g>
+  </g>
+  
+  <!-- RIGHT SIDE: Profile Picture -->
+  <g transform="translate(1320, 198)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="135" fill="url(#cyanGradient)" opacity="0.15" style="filter: url(#cyanGlow);"/>
+    
+    <!-- Decorative rings -->
+    <circle cx="0" cy="0" r="128" fill="none" stroke="url(#cyanGradient)" stroke-width="2.5" stroke-opacity="0.5" style="filter: url(#cyanGlow);"/>
+    <circle cx="0" cy="0" r="123" fill="none" stroke="url(#cyanGradient)" stroke-width="2" stroke-opacity="0.6"/>
+    
+    <!-- Profile circle background -->
+    <circle cx="0" cy="0" r="120" fill="#0a0e27"/>
+    
+    <!-- Profile picture -->
+    <image x="-120" y="-120" width="240" height="240" 
+           href="assets/images/profile-picture.jpg" 
+           clip-path="url(#profileClip)"
+           preserveAspectRatio="xMidYMid slice"
+           opacity="1"/>
+    
+    <!-- Fallback placeholder -->
+    <circle cx="0" cy="0" r="120" fill="#1a2d4a" opacity="0.95">
+      <title>Profile Photo</title>
+    </circle>
+    <text x="0" y="5" 
+          font-family="'Inter', sans-serif" 
+          font-size="11" 
+          font-weight="500" 
+          fill="#888888" 
+          text-anchor="middle"
+          opacity="0.8">
+      Profile Photo
+    </text>
+    
+    <!-- Inner border -->
+    <circle cx="0" cy="0" r="118" fill="none" stroke="url(#cyanGradient)" stroke-width="3" stroke-opacity="0.8" style="filter: url(#strongCyanGlow);"/>
+  </g>
+  
+  <!-- BOTTOM CENTER: Tagline -->
+  <g transform="translate(792, 370)">
+    <text x="0" y="0" 
+          font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" 
+          font-size="24" 
+          font-weight="700" 
+          fill="url(#whiteGradient)" 
+          text-anchor="middle"
+          letter-spacing="2.5px"
+          style="filter: url(#textShadow);">
+      Investing | Real Estate | Growth
+    </text>
+  </g>
+  
+</svg>

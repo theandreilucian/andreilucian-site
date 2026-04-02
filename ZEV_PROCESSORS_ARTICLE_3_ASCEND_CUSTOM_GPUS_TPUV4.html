@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processors — Article 3: Ascend, TPUv4</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        h3 { font-size: 1.05em; font-weight: 600; margin-top: 28px; margin-bottom: 14px; color: #93c5fd; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9em; }
+        th, td { border: 1px solid #334155; padding: 8px 12px; text-align: left; }
+        th { background: #252830; color: #93c5fd; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Processors — Article 3</h1>
+        <p class="meta">Huawei Ascend · Google TPUv4 · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>This article covers <strong>Huawei Ascend</strong> (910, 910C, CloudMatrix 384) and <strong>Google TPUv4</strong>—processor, ICI, trays, cubes, and reconfigurable superpods.</p>
+
+        <h2>Huawei Ascend</h2>
+        <p><strong>May 02, 2025 · #AI #GPU.</strong> Ascend = Huawei’s AI accelerator series.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Huawei Ascend]</div>
+            <div class="hint">Product or block diagram</div>
+        </div>
+        <p><strong>Ascend 910</strong> — Original; chiplets by <strong>TSMC N7+</strong>.</p>
+        <p><strong>Ascend 910C</strong> — Upgrade; compute chiplets by <strong>SMIC N+2</strong> (2nd gen 7 nm class); SoC ~<strong>53B transistors</strong>.</p>
+        <p><strong>CloudMatrix 384</strong> — Scale-up of 910C; <strong>384 Ascend 910C</strong> in one domain; est. <strong>$8.2M</strong>.</p>
+
+        <h2>Google TPUv4</h2>
+        <p><strong>Apr 11, 2025 · #GPU.</strong> See Google’s TPUv4 documentation for canonical spec.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: Google TPUv4]</div>
+            <div class="hint">Processor, tray, or cube diagram</div>
+        </div>
+        <h3>Processor</h3>
+        <p>Per TPUv4: 2 TensorCores, 8 MXUs, 2 vector units, 2 scalar units; no sparsity. <strong>32 GB HBM2</strong> (4? stacks), <strong>1.2 TB/s</strong>; x16 PCIe Gen3; <strong>192 W</strong> max.</p>
+        <h3>ICI</h3>
+        <p><strong>ICI</strong> = proprietary inter-chip interconnect; <strong>RDMA over P2P PCIe</strong>, host bypass; <strong>400G</strong> each direction; reliable data layer, in-order, credit-based flow control.</p>
+        <h3>Tray, cube, supercomputer</h3>
+        <p><strong>Tray</strong> = 4 processors, 2×2×1 ICI mesh. <strong>Cube</strong> = 16 trays = <strong>64 TPUs</strong>, 4×4×4 mesh, one OCS per cube; minimum reconfig granularity. <strong>SuperPod</strong> = 64 cubes = <strong>4,096 processors</strong>, 6,144 optical ICI links, 48 OCS. <strong>OCS</strong> (Palomar) forms job-specific torus (“slice”); reconfig in <strong>10 seconds</strong>.</p>
+        <h3>Jobs</h3>
+        <p>Borg schedules jobs; Pod Manager reconfigures OCS. Topology in <strong>(4x, 4y, 4z)</strong>; avoids job fragmentation. Multiple supercomputers can share a Borg cell.</p>
+        <h3>Performance (theoretical max TFLOPS)</h3>
+        <table>
+            <thead><tr><th>Data Type</th><th>VFMA</th><th>Matrix</th><th>Sparse</th></tr></thead>
+            <tbody>
+                <tr><td>BF16</td><td>—</td><td>275</td><td>—</td></tr>
+                <tr><td>INT8</td><td>—</td><td>275</td><td>—</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Legacy:</strong> TPUv3 = 1,024 TPUs, static 32×32 torus. TPUv2 = 256 TPUs, static 16×16 torus. TPUv4 differentiator = reconfigurable topology via OCS (10 s) and slice-based placement.</p>
+
+        <h2>Why these matter</h2>
+        <p><strong>Ascend</strong> — Non–US/non-AMD frontier track; 910C on SMIC; CloudMatrix 384, ~$8.2M. <strong>TPUv4</strong> — ICI (400G, RDMA), OCS and slices, 10 s reconfig, (4x,4y,4z) topology; reference for reconfigurable optical interconnect at scale.</p>
+
+        <p class="closing">Processors module — Article 3. Huawei Ascend, Google TPUv4. Insert your images at the green placeholders.</p>
+    </article>
+</body>
+</html>

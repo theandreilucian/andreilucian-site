@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Lucian — 10 Photo + Tweet Combos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #000000; --white: #ffffff; --cyan: #00bcd4; --gray: #5c6369; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: var(--white);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1 { font-size: 20px; color: var(--cyan); margin-bottom: 8px; }
+    .hint { font-size: 13px; color: var(--gray); margin-bottom: 24px; text-align: center; max-width: 600px; }
+
+    .combo {
+      width: 1080px;
+      max-width: 100%;
+      aspect-ratio: 1080 / 1350;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,188,212,0.25);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06) inset;
+      isolation: isolate;
+    }
+    .combo-bg {
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #0a0a0a;
+      image-rendering: auto;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
+      filter: contrast(1.12) saturate(0.98) brightness(0.82);
+    }
+    .combo-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.12) 60%, transparent 80%);
+      pointer-events: none;
+    }
+    .combo-tweet {
+      position: absolute;
+      left: 50%;
+      bottom: 14%;
+      transform: translateX(-50%) translateZ(0);
+      width: 94%;
+      max-width: 540px;
+      background: var(--white);
+      border-radius: 18px;
+      padding: 26px 30px 30px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 1px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      backface-visibility: hidden;
+      filter: contrast(1.03);
+    }
+    .combo-tweet-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .combo-tweet-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--cyan);
+      display: block;
+      image-rendering: auto;
+    }
+    .combo-tweet-profile { flex: 1; min-width: 0; }
+    .combo-tweet-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .combo-tweet-name { font-weight: 700; font-size: 19px; color: var(--black); letter-spacing: -0.02em; }
+    .combo-tweet-badge {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--cyan);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .combo-tweet-badge svg { width: 14px; height: 14px; fill: var(--white); }
+    .combo-tweet-handle { font-size: 17px; color: var(--cyan); margin-top: 2px; font-weight: 500; }
+    .combo-tweet-body {
+      font-size: 22px; font-weight: 700; line-height: 1.45; color: var(--black);
+      letter-spacing: -0.02em;
+    }
+    .combo-tweet-body p { margin: 0 0 0.4em; }
+    .combo-tweet-body p:last-child { margin-bottom: 0; }
+    .combo-tweet-body ul { list-style: none; padding: 0; margin: 0.35em 0 0; }
+    .combo-tweet-body li { margin-bottom: 0.3em; padding-left: 0; }
+    .combo-tweet-body li::before { content: "• "; color: var(--cyan); font-weight: 700; }
+    .combo-tweet-metrics { font-size: 16px; color: var(--gray); display: flex; gap: 24px; margin-top: 8px; font-weight: 500; }
+    .combo-tweet-metrics strong { color: var(--black); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>10 Photo + Tweet Combos — Andrei Lucian</h1>
+  <p class="hint">Screenshot each card at 1080×1350 for LinkedIn/X. For best clarity: use photos at <strong>1080×1350px or larger</strong> in <strong>assets/andrei-combo/</strong>, and take the screenshot at <strong>100% zoom</strong> so the combo fills the width (no scaling).</p>
+
+  <!-- Combo 1 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/117690816_3242571562504200_3281066342808113627_n.jpg');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>3 life-changing habits everyone should have.</p>
+        <ul><li>Reading.</li><li>Meditating.</li><li>Practicing.</li></ul>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>15</strong> Retweets</span><span><strong>137</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 2 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/492236527_9662154430545849_4446690033239621273_n.jpg');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>New freelancers should be focusing on:</p>
+        <ul><li>50% — Learning the skill</li><li>40% — Building network</li><li>10% — Outreach</li></ul>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>2</strong> Retweets</span><span><strong>82</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 3 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/511953314_23914930824841638_3338358814936025668_n.jpg');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>Please trust the process.</p>
+        <p>Don't overthink too much.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>81</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 4 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/A7403998.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>Do you want to make money?</p>
+        <ul><li>Start writing content</li><li>Start writing emails</li><li>Start writing offer</li></ul>
+        <p>Build your business on your terms.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>4</strong> Retweets</span><span><strong>65</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 5 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/AUTK3527.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>The reason you keep restarting is because you never commit long enough to see results.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>2</strong> Retweets</span><span><strong>54</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 6 — Car selfie + "If you want a new life" tweet -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/IMG_2880.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>If you want a new life,</p>
+        <p>stop repeating the old one.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>95</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 7 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/IMG_6977%20-%20Copy.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>You want confidence.</p>
+        <p>Confidence comes from keeping promises to yourself.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>9</strong> Retweets</span><span><strong>109</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 8 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/IMG_7489.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>Most successful people I've met aren't that smart.</p>
+        <p>They move fast, they take risks, they work a lot.</p>
+        <p>That's it.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>89</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 9 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/IMG_8071.JPG');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>I'm here to grow.</p>
+        <p>I'm here to make money.</p>
+        <p>I'm here to make new friends.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>3</strong> Retweets</span><span><strong>99</strong> Likes</span></div>
+    </div>
+  </div>
+
+  <!-- Combo 10 -->
+  <div class="combo">
+    <div class="combo-bg" style="background-image: url('assets/andrei-combo/VLP09493.jpg');"></div>
+    <div class="combo-tweet">
+      <div class="combo-tweet-header">
+        <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="combo-tweet-avatar">
+        <div class="combo-tweet-profile">
+          <div class="combo-tweet-name-row">
+            <span class="combo-tweet-name">Andrei Lucian</span>
+            <span class="combo-tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+          </div>
+          <div class="combo-tweet-handle">@theandreilucian</div>
+        </div>
+      </div>
+      <div class="combo-tweet-body">
+        <p>You don't need more time.</p>
+        <p>You need fewer excuses.</p>
+      </div>
+      <div class="combo-tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>99</strong> Likes</span></div>
+    </div>
+  </div>
+
+</body>
+</html>

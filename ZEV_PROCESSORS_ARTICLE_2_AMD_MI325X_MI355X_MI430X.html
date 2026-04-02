@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processors — Article 2: AMD MI325X, MI355X, MI430X</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9em; }
+        th, td { border: 1px solid #334155; padding: 8px 12px; text-align: left; }
+        th { background: #252830; color: #93c5fd; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Processors — Article 2</h1>
+        <p class="meta">AMD MI325X · MI355X · MI430X · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>Article 1 covered MI250X, MI300A, and MI300X. This one covers <strong>MI325X</strong> (CDNA 3 memory bump), <strong>MI355X</strong> (CDNA 4, inference-optimized), and <strong>MI430X</strong> (next-gen CDNA, HBM4, HPC).</p>
+
+        <h2>AMD MI325X — CDNA 3, memory bump</h2>
+        <p><strong>Oct 10, 2024 · #GPU · Q4 2024.</strong> MI325X is the <strong>memory bump</strong> to MI300X. Same CDNA 3 compute, upgraded memory and power. Positioned for high-memory inference and training.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: AMD MI325X]</div>
+            <div class="hint">Product or block diagram</div>
+        </div>
+        <p><strong>Per GPU:</strong> Same compute as MI300X (8 XCDs, 304 CUs, 1,216 matrix cores, 2.1 GHz, 2:4 sparsity). <strong>256 GB HBM3E</strong>, <strong>6 TB/s</strong>. 7× Infinity Fabric D2D, 1×16 PCIe Gen5. <strong>1000 W</strong> max TBP.</p>
+        <p>Launch: <strong>1.3 PF FP16</strong>, <strong>2.6 PF FP8</strong> (same as MI300X). Gain is capacity and bandwidth for larger models and longer context.</p>
+        <table>
+            <thead><tr><th>Type</th><th>VFMA</th><th>Matrix</th><th>Sparse</th></tr></thead>
+            <tbody>
+                <tr><td>FP64</td><td>81.7</td><td>163.4</td><td>—</td></tr>
+                <tr><td>FP32</td><td>164.4</td><td>163.4</td><td>—</td></tr>
+                <tr><td>TF32</td><td>—</td><td>653.7</td><td>1307.4</td></tr>
+                <tr><td>FP16</td><td>—</td><td>1307.4</td><td>2614.9</td></tr>
+                <tr><td>BF16</td><td>—</td><td>1307.4</td><td>2614.9</td></tr>
+                <tr><td>FP8</td><td>—</td><td>2614.9</td><td>5229.8</td></tr>
+                <tr><td>INT8</td><td>—</td><td>2614.9</td><td>5229.8</td></tr>
+            </tbody>
+        </table>
+
+        <h2>AMD MI355X — CDNA 4, inference-optimized</h2>
+        <p><strong>Jun 19, 2025 · #GPU.</strong> First <strong>CDNA 4</strong> GPU. <strong>Optimized for inferencing</strong>: lower FP64/FP32 than MI300X, higher 16-bit and 8-bit; adds <strong>FP6 and FP4</strong>. Low-precision strong for inference; FP64 high. 8-way OAM UBB.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: AMD MI355X]</div>
+            <div class="hint">Product or block diagram</div>
+        </div>
+        <p><strong>Per GPU:</strong> 8 XCDs, <strong>256 CUs</strong> (32 per XCD), 16,384 stream processors, 1,024 matrix cores; <strong>2.4 GHz</strong>; 2:4 sparsity; <strong>288 GB HBM3e</strong>, <strong>8 TB/s</strong>; 7× 153.6 GB/s Infinity Fabric D2D, 1×16 PCIe Gen5; <strong>1400 W</strong> max.</p>
+        <table>
+            <thead><tr><th>Type</th><th>VFMA</th><th>Matrix</th><th>Sparse</th></tr></thead>
+            <tbody>
+                <tr><td>FP64</td><td>78.6</td><td>78.6</td><td>—</td></tr>
+                <tr><td>FP32</td><td>157.3</td><td>157.3</td><td>—</td></tr>
+                <tr><td>FP16</td><td>—</td><td>2516.6</td><td>5033.2</td></tr>
+                <tr><td>BF16</td><td>—</td><td>2516.6</td><td>5033.2</td></tr>
+                <tr><td>FP8</td><td>—</td><td>5033.2</td><td>10066.4</td></tr>
+                <tr><td>FP6</td><td>—</td><td>10066.3</td><td>20132.6</td></tr>
+                <tr><td>FP4</td><td>—</td><td>10066.3</td><td>20132.6</td></tr>
+                <tr><td>INT8</td><td>—</td><td>5033.2</td><td>10066.4</td></tr>
+                <tr><td>INT4</td><td>—</td><td>5033.2</td><td>10066.4</td></tr>
+            </tbody>
+        </table>
+        <p>FP6 and FP4 = new levers for <strong>quantized and ultra–low-precision inference</strong>. The part to strong for inference and “same low-precision, better FP64.”</p>
+
+        <h2>AMD MI430X — Next-gen CDNA, HBM4, HPC</h2>
+        <p><strong>Jan 08, 2026 · #GPU.</strong> Future AMD GPU on <strong>next-generation CDNA</strong>, aimed at <strong>HPC</strong> with <strong>FP64</strong> hardware support.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image: AMD MI430X]</div>
+            <div class="hint">Product or block diagram</div>
+        </div>
+        <p><strong>Headline specs:</strong></p>
+        <ul>
+            <li><strong>432 GB HBM4</strong></li>
+            <li><strong>19.6 TB/s</strong> memory bandwidth</li>
+        </ul>
+        <p>Major step up for very large models, long context, and memory-bound HPC. FP64 focus = scientific simulation and double-precision. Full XCD/CU/TFLOPS details as AMD discloses.</p>
+
+        <h2>Why these three matter</h2>
+        <p><strong>MI325X</strong> — Same CDNA 3 compute, 256 GB HBM3E, 6 TB/s. More memory and bandwidth per GPU; high-memory inference and training.</p>
+        <p><strong>MI355X</strong> — CDNA 4, inference-first. FP6/FP4, 288 GB HBM3e, 8 TB/s, 1400 W. Inference-first; stronger FP64 than typical inference parts.</p>
+        <p><strong>MI430X</strong> — Next-gen CDNA, 432 GB HBM4, 19.6 TB/s. Placeholder for the next jump in capacity, bandwidth, and HPC.</p>
+        <p>With Article 1, this completes the arc from CDNA 2 through CDNA 4 and into the next node.</p>
+
+        <p class="closing">Processors module — Article 2. AMD MI325X, MI355X, MI430X. Insert your images at the green placeholders.</p>
+    </article>
+</body>
+</html>

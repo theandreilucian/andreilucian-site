@@ -14,7 +14,7 @@ Here's what I did:
 - I built my LinkedIn to 14,000 followers
 - I grew my X (Twitter) to 3,200 followers  
 - I got 550 followers on Threads
-- I have 700+ people reading my newsletter
+- I have 900+ people reading my Substack newsletter
 
 I started with zero followers. I learned how to write online. Now I teach others how to do it too.
 
@@ -1342,7 +1342,7 @@ Today:
 • No income
 Today:
 • 14K followers
-• 700+ newsletter subscribers
+• 900+ Substack subscribers
 • 5-figure income
 Consistency compounds.
 ```
@@ -2134,7 +2134,7 @@ You can do this. Start today.
 
 **About Andrei Lucian**
 
-Andrei helps people build their personal brand online. He writes on X, LinkedIn, Threads, and sends a weekly newsletter to 700+ subscribers.
+Andrei helps people build their personal brand online. He writes on X, LinkedIn, Threads, and sends a weekly Substack newsletter to 900+ subscribers.
 
 Follow him:
 - X (Twitter): @theandreilucian

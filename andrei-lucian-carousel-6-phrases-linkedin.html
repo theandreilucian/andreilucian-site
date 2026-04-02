@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel 6 — How I Write for LinkedIn | Andrei Lucian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --w: #ffffff; --b: #000000; --c: #00bcd4; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Oswald', sans-serif; background: #111; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    .deck { width: 1080px; max-width: 100%; aspect-ratio: 1080/1350; max-height: calc(100vh - 100px); position: relative; overflow: hidden; border: 3px solid var(--c); box-shadow: 0 0 60px rgba(0,188,212,0.25); }
+    .slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 48px 56px 28px; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .slide.active { opacity: 1; pointer-events: auto; }
+    .slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
+    .slide-footer { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding: 0 8px; }
+    .slide-footer-left { display: flex; align-items: center; }
+    .slide-footer-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--c); flex-shrink: 0; }
+    .slide-footer-info { margin-left: 14px; }
+    .slide-footer-name { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(16px, 2vw, 20px); }
+    .slide-footer-title { font-family: 'Oswald', sans-serif; font-size: clamp(12px, 1.5vw, 15px); opacity: 0.9; margin-top: 2px; }
+    .slide-footer-arrow { font-size: 38px; font-weight: 700; line-height: 1; color: var(--c); }
+    .slide-3 .slide-footer-name, .slide-3 .slide-footer-title { color: var(--b); }
+    .slide-3 .slide-footer-arrow { color: var(--b); }
+    .slide-5 .slide-footer-name, .slide-5 .slide-footer-title { color: var(--b); }
+    .slide-5 .slide-footer-arrow { color: var(--b); }
+    .slide-6 .slide-footer-name, .slide-6 .slide-footer-title { color: var(--b); }
+    .slide-6 .slide-footer-arrow { color: var(--b); }
+    .slide-num { font-family: 'Bebas Neue', sans-serif; font-size: 120px; line-height: 1; color: var(--c); opacity: 0.35; position: absolute; top: 48px; right: 56px; }
+    .slide h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.15; text-align: center; letter-spacing: 0.02em; max-width: 920px; }
+    .slide .line { font-family: 'Oswald', sans-serif; font-size: clamp(24px, 2.8vw, 34px); font-weight: 700; line-height: 1.4; text-align: center; max-width: 900px; margin: 0 0 0.55em; }
+    .slide .line:last-child { margin-bottom: 0; }
+    .slide .line .pop { color: var(--c); }
+    .slide .block { text-align: center; max-width: 900px; }
+    .slide ul.bullets { list-style: none; padding: 0; margin: 0; text-align: center; max-width: 880px; }
+    .slide ul.bullets li { font-family: 'Oswald', sans-serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; margin-bottom: 0.65em; line-height: 1.35; }
+    .slide ul.bullets li::before { content: "• "; color: var(--c); font-weight: 700; }
+    .slide-2 .bullets li::before, .slide-6 .bullets li::before { color: var(--b); }
+    .slide-1 { background: #f8f8f8; color: var(--b); justify-content: flex-start; padding: 40px 48px 0; }
+    .slide-1 .slide-num { display: none; }
+    .slide-1 .slide-content { align-items: flex-start; justify-content: flex-start; width: 100%; max-width: 100%; }
+    .slide-1 .hook-swipe { position: absolute; top: 40px; right: 48px; display: flex; align-items: center; gap: 8px; }
+    .slide-1 .hook-swipe span { font-family: 'Oswald', sans-serif; font-size: clamp(14px, 1.6vw, 18px); font-weight: 700; color: var(--b); }
+    .slide-1 .hook-swipe .arrow { font-size: 28px; color: var(--c); }
+    .slide-1 .hook-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 64px); line-height: 1.05; letter-spacing: 0.02em; color: var(--b); text-align: left; max-width: 720px; margin-bottom: 20px; }
+    .slide-1 .hook-headline .bold { color: var(--c); }
+    .slide-1 .hook-banner { background: var(--c); color: var(--w); font-family: 'Oswald', sans-serif; font-size: clamp(18px, 2.2vw, 24px); font-weight: 600; padding: 12px 24px; border-radius: 12px; margin-bottom: 32px; }
+    .slide-1 .hook-bottom { display: flex; align-items: center; justify-content: center; margin-top: auto; padding-bottom: 32px; }
+    .slide-1 .hook-photo-wrap { position: relative; flex-shrink: 0; }
+    .slide-1 .hook-photo-ring { width: 240px; height: 240px; border-radius: 50%; background: var(--c); padding: 8px; box-shadow: 0 8px 32px rgba(0,188,212,0.4); }
+    .slide-1 .hook-photo-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+    .slide-1 .hook-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: var(--c); }
+    .slide-2 { background: var(--b); color: var(--w); }
+    .slide-2 .line .pop { color: var(--c); }
+    .slide-3 { background: var(--w); color: var(--b); }
+    .slide-4 { background: var(--b); color: var(--w); }
+    .slide-4 .line .pop { color: var(--c); }
+    .slide-5 { background: var(--w); color: var(--b); border-bottom: 8px solid var(--c); }
+    .slide-6 { background: var(--c); color: var(--b); }
+    .slide-6 .slide-num { color: var(--b); }
+    .slide-7 { background: var(--b); color: var(--w); }
+    .slide-7 .line .pop { color: var(--c); }
+    .slide-8 { background: var(--b); color: var(--w); border: 6px solid var(--c); }
+    .slide-8 .cta { text-align: center; }
+    .slide-8 .thanks { font-family: 'Oswald', sans-serif; font-size: clamp(22px, 2.6vw, 32px); font-weight: 700; margin-bottom: 20px; }
+    .slide-8 .follow { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 5vw, 64px); color: var(--c); letter-spacing: 0.04em; margin-bottom: 16px; }
+    .slide-8 .repost { font-family: 'Oswald', sans-serif; font-size: clamp(20px, 2.4vw, 28px); font-weight: 600; opacity: 0.9; }
+    .nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; }
+    .nav button { width: 44px; height: 44px; border: 2px solid var(--c); background: var(--b); color: var(--c); font-size: 22px; cursor: pointer; font-family: 'Bebas Neue', sans-serif; transition: all 0.2s; }
+    .nav button:hover { background: var(--c); color: var(--b); }
+    .nav .dots { display: flex; gap: 6px; }
+    .nav .dot { width: 10px; height: 10px; border-radius: 50%; background: #333; border: none; cursor: pointer; transition: all 0.2s; }
+    .nav .dot.active { background: var(--c); transform: scale(1.25); }
+    .hint { color: #666; font-size: 13px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <div class="slide slide-1 active" data-i="1"><span class="slide-num">01</span><div class="hook-swipe"><span>Here's the full breakdown</span><span class="arrow">→</span></div><div class="slide-content"><p class="hook-headline">HOW I WRITE FOR <span class="bold">LINKEDIN</span></p><div class="hook-banner">(hook, value, question)</div><div class="hook-bottom"><div class="hook-photo-wrap"><div class="hook-photo-ring"><img src="assets/andrei-lucian-headshot.png.jpg" alt="Andrei Lucian"></div></div></div></div><div class="hook-bar"></div></div>
+    <div class="slide slide-2" data-i="2"><span class="slide-num">02</span><div class="slide-content"><ul class="bullets"><li>Hook.</li><li>Value.</li><li>Question. Every time.</li></ul></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-3" data-i="3"><span class="slide-num">03</span><div class="slide-content"><div class="block"><p class="line">Write to one person.</p><p class="line">Publish to many.</p></div></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-4" data-i="4"><span class="slide-num">04</span><div class="slide-content"><div class="block"><p class="line">"How I" beats "how to"</p><p class="line"><span class="pop">in the first line.</span></p></div></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-5" data-i="5"><span class="slide-num">05</span><div class="slide-content"><div class="block"><p class="line">Give the strategy.</p><p class="line">They'll still need you to do it.</p></div></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-6" data-i="6"><span class="slide-num">06</span><div class="slide-content"><ul class="bullets"><li>Story first.</li><li>Lesson second.</li><li>CTA third.</li></ul></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-7" data-i="7"><span class="slide-num">07</span><div class="slide-content"><div class="block"><p class="line">Read it out loud.</p><p class="line">If it sounds stiff, <span class="pop">rewrite.</span></p></div></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+    <div class="slide slide-8" data-i="8"><div class="slide-content"><div class="cta"><p class="thanks">Thanks for reading this.</p><p class="follow">FOLLOW ANDREI LUCIAN FOR MORE CONTENT.</p><p class="repost">Repost with your audience.</p></div></div><div class="slide-footer"><div class="slide-footer-left"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="slide-footer-img"></div><span class="slide-footer-arrow">→</span></div></div>
+  </div>
+  <div class="nav"><button type="button" id="prev">‹</button><div class="dots" id="dots"></div><button type="button" id="next">›</button></div>
+  <p class="hint">Screenshot each slide at 1080×1350 for LinkedIn. Use ← → keys.</p>
+  <p style="margin-top:12px;"><button type="button" id="exportAll" style="padding:12px 24px;background:#00bcd4;color:#000;border:2px solid #00bcd4;font-family:Oswald,sans-serif;font-weight:700;font-size:16px;cursor:pointer;">Download all slides as JPEG</button></p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let cur = 0;
+    const dotsEl = document.getElementById('dots');
+    slides.forEach((_, i) => { const d = document.createElement('button'); d.className = 'dot' + (i === 0 ? ' active' : ''); d.onclick = () => go(i); dotsEl.appendChild(d); });
+    const dots = dotsEl.querySelectorAll('.dot');
+    function go(i) { cur = (i + slides.length) % slides.length; slides.forEach((s, j) => s.classList.toggle('active', j === cur)); dots.forEach((d, j) => d.classList.toggle('active', j === cur)); }
+    document.getElementById('prev').onclick = () => go(cur - 1);
+    document.getElementById('next').onclick = () => go(cur + 1);
+    document.onkeydown = (e) => { if (e.key === 'ArrowLeft') go(cur - 1); if (e.key === 'ArrowRight') go(cur + 1); };
+    document.getElementById('exportAll').onclick = async function() {
+      const btn = this;
+      const deck = document.querySelector('.deck');
+      const baseName = (document.URL.split('/').pop() || 'carousel').replace(/\.html$/i, '');
+      const total = slides.length;
+      btn.disabled = true;
+      try {
+        for (let i = 0; i < total; i++) {
+          btn.textContent = 'Exporting slide ' + (i + 1) + '/' + total + '...';
+          go(i); await new Promise(r => setTimeout(r, 400));
+          let canvas;
+          try {
+            canvas = await Promise.race([
+              html2canvas(deck, { scale: 1.5, useCORS: true, logging: false, allowTaint: true }),
+              new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 15000))
+            ]);
+          } catch (e) { console.warn('Slide ' + (i + 1) + ' failed', e); continue; }
+          const num = String(i + 1).padStart(2, '0');
+          await new Promise(function(resolve) {
+            canvas.toBlob(function(blob) {
+              if (!blob) { resolve(); return; }
+              const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = baseName + '-slide-' + num + '.jpg'; a.click(); URL.revokeObjectURL(a.href);
+              resolve();
+            }, 'image/jpeg', 0.9);
+          });
+          await new Promise(r => setTimeout(r, 250));
+        }
+      } finally { btn.disabled = false; btn.textContent = 'Download all slides as JPEG'; }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghostwriter LinkedIn Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .banner {
+            width: 1584px;
+            height: 396px;
+            background: #000000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            pointer-events: none;
+        }
+        
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-right: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        
+        .graph-container {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .axis {
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            fill: none;
+        }
+        
+        .arrow {
+            fill: #ffffff;
+        }
+        
+        .complex-path {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .simple-path {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .start-point {
+            fill: #90ee90;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+        }
+        
+        .end-point {
+            fill: #90ee90;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+        }
+        
+        .center-divider {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, #ffffff, transparent);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .header-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+        
+        .arrow-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 1700px) {
+            .banner {
+                width: 100%;
+                max-width: 1584px;
+                height: auto;
+                min-height: 396px;
+                aspect-ratio: 4 / 1;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .banner {
+                flex-direction: column;
+                padding: 60px 40px 40px;
+                gap: 40px;
+            }
+            
+            .header {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin-bottom: 20px;
+            }
+            
+            .header-text {
+                font-size: 22px;
+            }
+            
+            .arrow-icon {
+                display: none;
+            }
+            
+            .center-divider {
+                display: none;
+            }
+            
+            .left-section,
+            .right-section {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="header">
+            <div class="header-text">Stop struggling with content.<br>Start growing with a ghostwriter.</div>
+        </div>
+        
+        <div class="center-divider"></div>
+        <div class="arrow-icon">→</div>
+        
+        <div class="left-section">
+            <div class="label">Go from this:</div>
+            <div class="graph-container">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Y-axis -->
+                    <line class="axis" x1="40" y1="260" x2="40" y2="40"/>
+                    <polygon class="arrow" points="40,40 35,50 45,50"/>
+                    
+                    <!-- X-axis -->
+                    <line class="axis" x1="40" y1="260" x2="360" y2="260"/>
+                    <polygon class="arrow" points="360,260 350,255 350,265"/>
+                    
+                    <!-- Complex winding path -->
+                    <path class="complex-path" d="M 50 250 
+                        Q 70 230, 90 240
+                        Q 110 250, 100 210
+                        Q 90 170, 120 190
+                        Q 150 210, 140 160
+                        Q 130 110, 160 130
+                        Q 190 150, 180 100
+                        Q 170 50, 200 70
+                        Q 230 90, 220 60
+                        Q 210 30, 240 50
+                        Q 270 70, 260 50
+                        Q 250 30, 280 40
+                        Q 310 50, 300 60"/>
+                    
+                    <!-- Start point -->
+                    <circle class="start-point" cx="50" cy="250" r="7"/>
+                    
+                    <!-- End point -->
+                    <circle class="end-point" cx="300" cy="60" r="7"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <div class="label">to this:</div>
+            <div class="graph-container">
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Y-axis -->
+                    <line class="axis" x1="40" y1="260" x2="40" y2="40"/>
+                    <polygon class="arrow" points="40,40 35,50 45,50"/>
+                    
+                    <!-- X-axis -->
+                    <line class="axis" x1="40" y1="260" x2="360" y2="260"/>
+                    <polygon class="arrow" points="360,260 350,255 350,265"/>
+                    
+                    <!-- Simple straight path -->
+                    <line class="simple-path" x1="50" y1="250" x2="300" y2="60"/>
+                    
+                    <!-- Start point -->
+                    <circle class="start-point" cx="50" cy="250" r="7"/>
+                    
+                    <!-- End point -->
+                    <circle class="end-point" cx="300" cy="60" r="7"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

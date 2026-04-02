@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy-Paste Posts for X Giveaways</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e7e9ea;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .page { max-width: 640px; margin: 0 auto; }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+        .subtitle {
+            color: #71767b;
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+        .post-section {
+            margin-bottom: 40px;
+        }
+        .post-section h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #00d9ff;
+            margin-bottom: 12px;
+        }
+        .post-box {
+            background: #16181c;
+            border: 2px solid #2f3336;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        .post-box:focus-within { border-color: #1d9bf0; }
+        .post-text {
+            display: block;
+            width: 100%;
+            min-height: 120px;
+            background: transparent;
+            border: none;
+            color: #e7e9ea;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+        .post-text::placeholder { color: #71767b; }
+        .copy-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #2f3336;
+        }
+        .copy-btn {
+            padding: 10px 20px;
+            background: #1d9bf0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .copy-btn:hover { background: #1a8cd8; }
+        .copy-btn.copied { background: #00ba7c; }
+        .hint { font-size: 0.8rem; color: #71767b; }
+        .alt-posts {
+            margin-top: 20px;
+        }
+        .alt-posts summary {
+            font-size: 0.85rem;
+            color: #8b98a5;
+            cursor: pointer;
+        }
+        .alt-post {
+            margin-top: 10px;
+            padding: 12px;
+            background: #000;
+            border-radius: 8px;
+            border: 1px solid #2f3336;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            color: #8b98a5;
+        }
+        .alt-post .copy-sm {
+            margin-top: 8px;
+            padding: 4px 10px;
+            background: #2f3336;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        .alt-post .copy-sm:hover { background: #3d4146; }
+        .link-to-value {
+            text-align: center;
+            margin-top: 48px;
+            padding: 24px;
+            background: #16181c;
+            border-radius: 12px;
+            border: 1px solid #2f3336;
+        }
+        .link-to-value a {
+            color: #00d9ff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Copy-paste posts for X</h1>
+        <p class="subtitle">Use these on X. When people follow + reply, send them the value page.</p>
+
+        <!-- GIVEAWAY 1: TEMPLATES -->
+        <section class="post-section">
+            <h2>Giveaway 1 — 12 Tweet Templates (reply "TEMPLATES")</h2>
+            <div class="post-box">
+                <textarea class="post-text" id="post1" readonly>I turned 12 viral tweet formats into a 1-page cheat sheet.
+
+Template name + structure. You fill the blanks.
+
+Follow me + reply "TEMPLATES" and I'll send it to you.</textarea>
+                <div class="copy-row">
+                    <span class="hint">Select all and copy, or click the button</span>
+                    <button type="button" class="copy-btn" data-target="post1">Copy for X</button>
+                </div>
+            </div>
+            <details class="alt-posts">
+                <summary>Other tweet options (click to expand)</summary>
+                <div class="alt-post">
+Most people don't know what to post on X.
+
+I use the same 12 structures over and over. They're on one page.
+
+Follow + reply "TEMPLATES" — I'll DM you the PDF.
+                    <button type="button" class="copy-sm" data-copy="Most people don't know what to post on X.\n\nI use the same 12 structures over and over. They're on one page.\n\nFollow + reply \"TEMPLATES\" — I'll DM you the PDF.">Copy</button>
+                </div>
+                <div class="alt-post">
+Stuck on what to post?
+
+12 tweet templates that actually get engagement. One page. No course.
+
+Follow me and reply "TEMPLATES" — I'll send it.
+                    <button type="button" class="copy-sm" data-copy="Stuck on what to post?\n\n12 tweet templates that actually get engagement. One page. No course.\n\nFollow me and reply \"TEMPLATES\" — I'll send it.">Copy</button>
+                </div>
+            </details>
+        </section>
+
+        <!-- GIVEAWAY 2: GAP -->
+        <section class="post-section">
+            <h2>Giveaway 2 — GAP Framework (reply "GAP")</h2>
+            <div class="post-box">
+                <textarea class="post-text" id="post2" readonly>I structure all my X content around 3 pillars: Growth, Authority, Personality.
+
+One page. No fluff. Follow + reply "GAP" and I'll send it.</textarea>
+                <div class="copy-row">
+                    <span class="hint">Select all and copy, or click the button</span>
+                    <button type="button" class="copy-btn" data-target="post2">Copy for X</button>
+                </div>
+            </div>
+            <details class="alt-posts">
+                <summary>Other tweet options (click to expand)</summary>
+                <div class="alt-post">
+The same framework that keeps my content from feeling random:
+
+Growth → Authority → Personality. One page breakdown.
+
+Follow me and reply "GAP" — I'll DM you the PDF.
+                    <button type="button" class="copy-sm" data-copy="The same framework that keeps my content from feeling random:\n\nGrowth → Authority → Personality. One page breakdown.\n\nFollow me and reply \"GAP\" — I'll DM you the PDF.">Copy</button>
+                </div>
+                <div class="alt-post">
+My content stopped being random when I used this frame:
+
+Growth (reach) • Authority (trust) • Personality (connection).
+
+One-pager. Follow + reply "GAP" and it's yours.
+                    <button type="button" class="copy-sm" data-copy="My content stopped being random when I used this frame:\n\nGrowth (reach) • Authority (trust) • Personality (connection).\n\nOne-pager. Follow + reply \"GAP\" and it's yours.">Copy</button>
+                </div>
+            </details>
+        </section>
+
+        <div class="link-to-value">
+            <p><a href="x-2-giveaways-value.html">View the value page</a> (the content you send when they reply)</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var id = this.getAttribute('data-target');
+                var el = document.getElementById(id);
+                el.select();
+                navigator.clipboard.writeText(el.value).then(function() {
+                    btn.textContent = 'Copied';
+                    btn.classList.add('copied');
+                    setTimeout(function() { btn.textContent = 'Copy for X'; btn.classList.remove('copied'); }, 2000);
+                });
+            });
+        });
+        document.querySelectorAll('.copy-sm').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var text = this.getAttribute('data-copy');
+                navigator.clipboard.writeText(text).then(function() {
+                    var t = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(function() { btn.textContent = t; }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

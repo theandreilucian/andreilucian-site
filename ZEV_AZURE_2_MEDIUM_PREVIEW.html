@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zev — Azure: 2 Medium Threads | X Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .container { max-width: 720px; margin: 0 auto; }
+        .thread-block {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid #334155;
+        }
+        .thread-block h2 {
+            font-size: 1.25em;
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+        .thread-block .sub {
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+        .tweet {
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 3px solid #334155;
+        }
+        .tweet.img-placeholder { border-left-color: #22c55e; background: linear-gradient(135deg, #0f172a 0%, #0f1f14 100%); }
+        .tweet-num { font-size: 0.8em; color: #64748b; margin-bottom: 6px; }
+        .tweet-body { white-space: pre-wrap; line-height: 1.55; font-size: 15px; color: #cbd5e1; }
+        .img-label { color: #86efac; font-size: 0.9em; margin-bottom: 6px; }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-top: 8px;
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn:hover { background: #475569; }
+        .btn.copy { background: #1e40af; border-color: #2563eb; }
+        .btn.copy:hover { background: #2563eb; }
+        .header {
+            text-align: center;
+            padding: 24px 20px;
+            background: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            border: 1px solid #334155;
+        }
+        .header h1 { font-size: 1.4em; margin-bottom: 8px; }
+        .header p { color: #94a3b8; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Azure — 2 Medium Threads</h1>
+            <p>Virality · Inspiration · Education. Copy each tweet, upload images where marked. Zev voice — nerds, hospitals, government.</p>
+        </div>
+
+        <div class="thread-block">
+            <h2>Thread 1 — CPU-Only HPC: HBv4 & HBv5</h2>
+            <p class="sub">9 tweets · 2 image slots</p>
+
+            <div class="tweet" data-thread="1" data-n="1"><div class="tweet-num">1/</div><div class="tweet-body">Not every big workload needs a GPU. Azure's CPU-only HPC nodes are where simulations, genomics, and memory-bound jobs run. Two generations: HBv4 and HBv5. Here's what's in the box.</div><button class="btn copy" onclick="copyT(1,1)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="2"><div class="tweet-num">2/</div><div class="tweet-body">HBv4 — the current workhorse. 176 cores (AMD EPYC 9V33X Genoa-X). Two sockets, 96 cores each. 2.4 GHz base, 3.7 GHz boost. 768 GiB DDR5. 2× 1.8 TB NVMe, 1× 480 GB SSD. 1× 400G ConnectX-7 NDR InfiniBand, 80G Ethernet (2nd gen Azure SmartNIC). Built for scale-out HPC without a single GPU.</div><button class="btn copy" onclick="copyT(1,2)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="3"><div class="tweet-num">3/</div><div class="tweet-body">HBv5 — the next step. Unveiled at SC24. Microsoft-only socket: Genoa cores + HBM. No DDR. All memory bandwidth where it matters.</div><button class="btn copy" onclick="copyT(1,3)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="4"><div class="tweet-num">4/</div><div class="tweet-body">Each HBv5 node: 352 cores (AMD EPYC 9V64H). Four sockets of 96-core CPUs. 400–450 GiB HBM3. 6.9 TB/s STREAM Triad. 14 TB NVMe (8× ~1,920 GB). 4× 200G ConnectX-7 NDR InfiniBand (one per socket). 160G Ethernet (2nd gen Azure SmartNIC). Same idea — more cores, more bandwidth, zero DDR.</div><button class="btn copy" onclick="copyT(1,4)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="1" data-n="5"><div class="tweet-num">5/</div><div class="img-label">[Image: Azure HBv5 — top view. Upload your photo: four CPU modules, simple motherboard, power connector.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(1,5)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="6"><div class="tweet-num">6/</div><div class="tweet-body">What you see from the top: a clean board, a simple power connector. Fewer failure points. Easier to cool and service. For hospitals and government, that's not boring — that's reliability.</div><button class="btn copy" onclick="copyT(1,6)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="1" data-n="7"><div class="tweet-num">7/</div><div class="img-label">[Image: Azure HBv5 — rear view. Upload your photo: eight NVMe slots, four ConnectX-7 OSFP, dual-port Azure Boost v2 NIC, dual-zone bus bar power.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(1,7)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="8"><div class="tweet-num">8/</div><div class="tweet-body">Rear tells the story: eight NVMe slots, four ConnectX-7 adapters (one OSFP each), dual-port Azure Boost v2 NIC, dual-zone bus bar for power. Everything you need to plug in and scale out.</div><button class="btn copy" onclick="copyT(1,8)">Copy</button></div>
+            <div class="tweet" data-thread="1" data-n="9"><div class="tweet-num">9/</div><div class="tweet-body">Takeaway: HBv4 when you want proven CPU-only HPC today. HBv5 when you want Genoa + HBM and no DDR. Both are built for the workloads that don't need GPUs — and for the teams that need to know exactly what's inside the box.</div><button class="btn copy" onclick="copyT(1,9)">Copy</button></div>
+        </div>
+
+        <div class="thread-block">
+            <h2>Thread 2 — Azure ND: Full GPU Lineup</h2>
+            <p class="sub">12 tweets · 5 image slots</p>
+
+            <div class="tweet" data-thread="2" data-n="1"><div class="tweet-num">1/</div><div class="tweet-body">One cloud. Every GPU node you need. Azure's ND family is the full menu: NVIDIA, AMD, and the node that scales to 72 GPUs in one domain. Here's the map.</div><button class="btn copy" onclick="copyT(2,1)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="2"><div class="tweet-num">2/</div><div class="tweet-body">ND A100 v4 — eight-way A100 in one chassis. Two SKUs: 40 GB HBM per GPU (Standard_ND96asr_A100_v4) or 80 GB (Standard_ND96amsr_A100_v4). Same compute density; pick by memory and cost. Labs and research know why 40 vs 80 GB changes the game.</div><button class="btn copy" onclick="copyT(2,2)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="2" data-n="3"><div class="tweet-num">3/</div><div class="img-label">[Image: Azure ND A100 v4 — physical node. Upload your chassis photo.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(2,3)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="4"><div class="tweet-num">4/</div><div class="tweet-body">ND MI200 v4 — eight-way MI250X. This is the node Microsoft used for Explorer. #11 on the June 2023 Top500. One chassis, eight MI250X modules. Serious FP64 and matrix for HPC and AI.</div><button class="btn copy" onclick="copyT(2,4)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="2" data-n="5"><div class="tweet-num">5/</div><div class="img-label">[Image: Azure ND MI200 v4 — physical node. Upload your chassis photo.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(2,5)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="6"><div class="tweet-num">6/</div><div class="tweet-body">ND H100 v5 — DGX in the cloud. Eight-way H100, Intel Sapphire Rapids host. 96 cores, 1,900 GiB DDR5, 28,000 GiB local NVMe (8× drives). 1× 80G Ethernet (100G Azure SmartNIC), 8× 400G ConnectX-7 NDR InfiniBand. Same node class as Eagle.</div><button class="btn copy" onclick="copyT(2,6)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="2" data-n="7"><div class="tweet-num">7/</div><div class="img-label">[Image: ND H100 v5 / Eagle — rear. Upload: E1.S SSD carriers, 4× OSFP, Azure SmartNIC, six power supplies.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(2,7)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="8"><div class="tweet-num">8/</div><div class="tweet-body">ND MI300X v5 — same platform as ND H100 v5, but 8-way OAM baseboard instead of HGX. 96 cores Sapphire Rapids, 1,850 GiB DDR5, 1,000 GiB local storage. 8× AMD Instinct MI300X. One chassis, eight modules. When you want AMD at the same density as H100.</div><button class="btn copy" onclick="copyT(2,8)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="2" data-n="9"><div class="tweet-num">9/</div><div class="img-label">[Image: Azure ND MI300X v5 — physical node. Upload your photo: eight MI300X OAM modules.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(2,9)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="10"><div class="tweet-num">10/</div><div class="tweet-body">ND GB200 v6 — Grace–Blackwell. Two GB200 Superchips per server (1 Grace CPU + 2 Blackwell GPUs each). NVLink-C2C for coherence. InfiniBand for scale-out. The number that matters: up to 72 GPUs in a single NVLink domain.</div><button class="btn copy" onclick="copyT(2,10)">Copy</button></div>
+            <div class="tweet img-placeholder" data-thread="2" data-n="11"><div class="tweet-num">11/</div><div class="img-label">[Image: Azure ND GB200 v6 — internal. Upload your photo: two GB200 Superchips, cabling.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(2,11)">Copy</button></div>
+            <div class="tweet" data-thread="2" data-n="12"><div class="tweet-num">12/</div><div class="tweet-body">When to pick which: cost-sensitive eight-way A100 → ND A100 v4. AMD, Top500-proven → ND MI200 v4. Max eight-way H100, DGX-style → ND H100 v5. Same density, AMD → ND MI300X v5. Grace–Blackwell, 72-GPU domain → ND GB200 v6. One cloud. Every node. No guesswork.</div><button class="btn copy" onclick="copyT(2,12)">Copy</button></div>
+        </div>
+    </div>
+
+    <script>
+        const threads = {
+            1: {
+                1: "1/\n\nNot every big workload needs a GPU. Azure's CPU-only HPC nodes are where simulations, genomics, and memory-bound jobs run. Two generations: HBv4 and HBv5. Here's what's in the box.",
+                2: "2/\n\nHBv4 — the current workhorse. 176 cores (AMD EPYC 9V33X Genoa-X). Two sockets, 96 cores each. 2.4 GHz base, 3.7 GHz boost. 768 GiB DDR5. 2× 1.8 TB NVMe, 1× 480 GB SSD. 1× 400G ConnectX-7 NDR InfiniBand, 80G Ethernet (2nd gen Azure SmartNIC). Built for scale-out HPC without a single GPU.",
+                3: "3/\n\nHBv5 — the next step. Unveiled at SC24. Microsoft-only socket: Genoa cores + HBM. No DDR. All memory bandwidth where it matters.",
+                4: "4/\n\nEach HBv5 node: 352 cores (AMD EPYC 9V64H). Four sockets of 96-core CPUs. 400–450 GiB HBM3. 6.9 TB/s STREAM Triad. 14 TB NVMe (8× ~1,920 GB). 4× 200G ConnectX-7 NDR InfiniBand (one per socket). 160G Ethernet (2nd gen Azure SmartNIC). Same idea — more cores, more bandwidth, zero DDR.",
+                5: "5/\n\n[Image: Azure HBv5 — top view. Upload your photo here when you post.]",
+                6: "6/\n\nWhat you see from the top: a clean board, a simple power connector. Fewer failure points. Easier to cool and service. For hospitals and government, that's not boring — that's reliability.",
+                7: "7/\n\n[Image: Azure HBv5 — rear view. Upload your photo here when you post.]",
+                8: "8/\n\nRear tells the story: eight NVMe slots, four ConnectX-7 adapters (one OSFP each), dual-port Azure Boost v2 NIC, dual-zone bus bar for power. Everything you need to plug in and scale out.",
+                9: "9/\n\nTakeaway: HBv4 when you want proven CPU-only HPC today. HBv5 when you want Genoa + HBM and no DDR. Both are built for the workloads that don't need GPUs — and for the teams that need to know exactly what's inside the box."
+            },
+            2: {
+                1: "1/\n\nOne cloud. Every GPU node you need. Azure's ND family is the full menu: NVIDIA, AMD, and the node that scales to 72 GPUs in one domain. Here's the map.",
+                2: "2/\n\nND A100 v4 — eight-way A100 in one chassis. Two SKUs: 40 GB HBM per GPU (Standard_ND96asr_A100_v4) or 80 GB (Standard_ND96amsr_A100_v4). Same compute density; pick by memory and cost. Labs and research know why 40 vs 80 GB changes the game.",
+                3: "3/\n\n[Image: Azure ND A100 v4 — physical node. Upload your chassis photo here when you post.]",
+                4: "4/\n\nND MI200 v4 — eight-way MI250X. This is the node Microsoft used for Explorer. #11 on the June 2023 Top500. One chassis, eight MI250X modules. Serious FP64 and matrix for HPC and AI.",
+                5: "5/\n\n[Image: Azure ND MI200 v4 — physical node. Upload your chassis photo here when you post.]",
+                6: "6/\n\nND H100 v5 — DGX in the cloud. Eight-way H100, Intel Sapphire Rapids host. 96 cores, 1,900 GiB DDR5, 28,000 GiB local NVMe (8× drives). 1× 80G Ethernet (100G Azure SmartNIC), 8× 400G ConnectX-7 NDR InfiniBand. Same node class as Eagle.",
+                7: "7/\n\n[Image: ND H100 v5 / Eagle — rear. Upload your photo here when you post.]",
+                8: "8/\n\nND MI300X v5 — same platform as ND H100 v5, but 8-way OAM baseboard instead of HGX. 96 cores Sapphire Rapids, 1,850 GiB DDR5, 1,000 GiB local storage. 8× AMD Instinct MI300X. One chassis, eight modules. When you want AMD at the same density as H100.",
+                9: "9/\n\n[Image: Azure ND MI300X v5 — physical node. Upload your photo here when you post.]",
+                10: "10/\n\nND GB200 v6 — Grace–Blackwell. Two GB200 Superchips per server (1 Grace CPU + 2 Blackwell GPUs each). NVLink-C2C for coherence. InfiniBand for scale-out. The number that matters: up to 72 GPUs in a single NVLink domain.",
+                11: "11/\n\n[Image: Azure ND GB200 v6 — internal. Upload your photo here when you post.]",
+                12: "12/\n\nWhen to pick which: cost-sensitive eight-way A100 → ND A100 v4. AMD, Top500-proven → ND MI200 v4. Max eight-way H100, DGX-style → ND H100 v5. Same density, AMD → ND MI300X v5. Grace–Blackwell, 72-GPU domain → ND GB200 v6. One cloud. Every node. No guesswork."
+            }
+        };
+        function copyT(thread, n) {
+            const t = threads[thread][n];
+            navigator.clipboard.writeText(t).then(() => alert('Thread ' + thread + ', tweet ' + n + ' copied.'));
+        }
+    </script>
+</body>
+</html>

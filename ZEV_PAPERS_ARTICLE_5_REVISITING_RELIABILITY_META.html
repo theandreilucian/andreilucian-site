@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisiting Reliability in Large-Scale ML Clusters — Commentary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .quote-block { background: #252830; border-left: 4px solid #3b82f6; padding: 20px; margin: 24px 0; border-radius: 0 10px 10px 0; }
+        .quote-block .label { font-size: 0.8em; color: #93c5fd; margin-bottom: 8px; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Revisiting Reliability in Large-Scale ML Clusters</h1>
+        <p class="meta">Jun 19, 2025 · paper/meta · reliability, ML clusters</p>
+
+        <h2>Introduction</h2>
+        <p>Meta’s paper reports on <strong>11 months</strong> of operations on two AI clusters: <strong>RSC-1</strong> (16K GPUs) and <strong>RSC-2</strong> (8K GPUs). Mixed workloads, wildly varying scales. Focus: reliability and metrics <strong>weighted by jobs</strong> vs <strong>weighted by cycles</strong> (node-minutes).</p>
+        <p>No breakthrough new to HPC folks—they rediscover <strong>forward progress</strong> (they call it ETTF) and show how different the picture looks when job-weighted. Formalized model ≈ <strong>nodes connected in series</strong>. Large portion on <strong>preemption policy</strong> (eligible after 2 hours): reduces queue wait but rapid large-job failures cause excessive preemption of small jobs and undercut utilization gains. Good <strong>signal</strong> that the AI community is converging on the same reliability questions as HPC. Good on Meta for being open; below are key quotes and a practitioner’s commentary.</p>
+
+        <h2>1. Scale, utilization, and job mix</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>4k GPU jobs constitute less than 1% of our jobs while consuming 12% of the GPU resources at the cluster level.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>11 months of data collected from state-of-the-art AI researcher clusters with >80% utilization. RSC-1 is a general ML cluster (e.g., training prominent LLMs) of 16k GPU size; RSC-2 focuses on vision applications and is of 8k GPU size. Our clusters use the Slurm scheduler on top of bare-metal allocations. Jobs are eligible to be preempted after running for 2 hours, and they have a maximum lifetime of 7 days. Overall, our clusters average 7.2k (RSC-1) and 4.4k (RSC-2) jobs submitted per day, averaging 83% and 85% cluster utilization, respectively.</p>
+        </div>
+
+        <h2>2. Health checks and recovery strategy</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Our infrastructure is designed to check that jobs are running on healthy hardware, restarting the job on different nodes if there is a failure. This can be viewed as a cooperative recovery strategy as the application is still responsible for correctly implementing checkpoint and resume logic.</p>
+        </div>
+        <p><strong>Take:</strong> Application must be aware of infrastructure and vice versa—infrastructure must be <strong>programmable by the application layer</strong>.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Health checks that are periodically scheduled to run every five minutes, and return codes indicating success, failure, or warning. Each health check examines GPU errors (e.g. XID errors), file system mounts, and services status (scheduler). High severity check failures will immediately signal a scheduler handler to remove the node and reschedule all jobs; lower severity will remove the node for remediation after jobs have finished.</p>
+        </div>
+        <p><strong>Take:</strong> Reliability integrated through the stack, from hardware health up into the application layer. Easier for Meta (research and facilities under one roof); harder for labs that rely on third-party training infrastructure.</p>
+
+        <h2>3. File systems vs object storage</h2>
+        <p><strong>Take:</strong> A significant amount of job failures is due to <strong>reliance on file systems</strong>. AI labs would do well to use <strong>object storage</strong> instead of parallel file systems: decouples data interaction from node health (node provides data plane, not control plane). Object storage delegates auth to the application layer so storage issues aren’t node health problems.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>IB Links, filesystem mounts, GPU memory errors, and PCIe errors contribute heavily to the failure rates.</p>
+        </div>
+        <p><strong>Take:</strong> <strong>File system mounts</strong> contributing so much is a strong indictment of shared file-based storage for model training. Object storage exclusively could have avoided a significant fraction of failures.</p>
+
+        <h2>4. ETTR, productive runtime, forward progress</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>ETTR is defined as the ratio of productive runtime to the available wallclock time of a job run. The exact definition of productive runtime is open to interpretation.</p>
+        </div>
+        <p><strong>Take:</strong> In <strong>zero-trust</strong> mode, infrastructure has no visibility into application runtime, so it cannot define productive runtime. Meta has effectively <strong>rediscovered</strong> the idea of <strong>“forward progress”</strong> as used in NNSA/HPC.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Job preemption, resource fragmentation, and failures are the dominant sources of lost goodput.</p>
+        </div>
+
+        <h2>5. MTTF by job size and single points of failure</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Figure 7 illustrates that the mean-time-to-failure (MTTF) of 1024-GPU jobs is 7.9 hours—roughly 2 orders-of-magnitude lower than 8-GPU jobs (47.7 days).</p>
+        </div>
+        <p><strong>Take:</strong> From 1024-GPU job failures, the <strong>MTBF of a single node</strong> is on the order of ~42 days. They’ve confirmed that <strong>each GPU node is a single point of failure</strong>. Should not be surprising.</p>
+
+        <h2>6. Preemption, crash loops, second-order effects</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>The worst-case version of this is a crash loop, where a single job is configured to requeue on failures. We see a 1024 GPU job NODE_FAIL and subsequently requeue 35 times, causing a total of 548 preemptions (over 7k GPUs).</p>
+        </div>
+        <p><strong>Take:</strong> Bad <strong>interaction between policy and infrastructure</strong>. One misbehaving job → hundreds of preemptions.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>16% of the total lost goodput resulting from hardware failures is due to second-order preemptions from jobs of much smaller sizes. The cluster as a whole is impacted beyond the failures themselves.</p>
+        </div>
+        <p><strong>Take:</strong> A significant amount of utilization loss is due to their <strong>preemption policy</strong>. Familiar to anyone who has scheduled hugely variable job sizes (backfill bubbles, node-draining bubbles). Restart time after failure: <strong>5–20 minutes</strong>.</p>
+
+        <h2>7. Checkpointing and ETTR</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Moving to a 5 minute checkpoint interval would increase expected ETTR to 0.93 (assuming checkpoint writes are non-blocking). 2048–4096 GPU job runs on RSC-1 show an average ETTR of over 0.9 at a one-hour assumed checkpoint interval. To reach ETTR of 0.9 for a 100,000 GPU training run, checkpointing intervals and restart overhead need to be ~2 minutes.</p>
+        </div>
+        <p><strong>Take:</strong> If checkpoints were <strong>non-blocking</strong>, why not checkpoint continuously and get 100% ETTR? Assuming non-blocking is a spherical cow. For larger jobs, hourly checkpointing wouldn’t work. You don’t need a heavily formalized model—reliability is well-approximated as <strong>independent nodes in series</strong>.</p>
+
+        <h2>8. Lemon nodes and network resilience</h2>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Our lemon node detection mechanism led to 10% reduction in large job failures (512+ GPUs), from 14% to 4%. Implementing lemon node detection can improve large job completion rate by over 30%.</p>
+        </div>
+        <p><strong>Take:</strong> Principle is good—find nodes that keep showing up in failed jobs (same idea as Darshan logs vs Lustre OSTs). But cherry-picking “large job” and the jump from 10% failure reduction to “30% completion rate improvement” feels like playing games with statistics. Qualitative statement that finding lemon nodes is good is undeniable.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>The network must remove and route around failures. Without resilience mechanisms in place, over 50% of bandwidth may be lost. We therefore envision future infrastructure that attempts to make unreliability less noticeable rather than attempting to remove it altogether.</p>
+        </div>
+        <p><strong>Take:</strong> Everyone uses <strong>adaptive routing</strong>; meaningful if pushing for fine-grained adaptive routing (e.g. not standard RoCE). “Make unreliability less noticeable” is a truism—nobody is trying to remove it altogether.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>We can improve the success rate of training runs by retroactively identifying the root cause of a NCCL timeout, by comparing logged data across different ranks.</p>
+        </div>
+        <p><strong>Take:</strong> Isn’t this what <strong>PyTorch flight recorder</strong> already does?</p>
+
+        <h2>Closing</h2>
+        <p>Useful <strong>operational snapshot</strong>: 11 months, 16K and 8K GPU clusters, Slurm, bare metal, 2-hour preemption, 83–85% utilization, health checks every five minutes. Commentary stresses: (1) <strong>file system mounts</strong> as major failure source → case for object storage; (2) ETTR/forward progress as rediscovery of HPC concepts; (3) single node as single point of failure at 1024-GPU scale; (4) preemption policy as big driver of lost goodput; (5) lemon node detection valuable but stats need careful reading; (6) non-blocking checkpoints as unrealistic for headline ETTR claim. For anyone building or operating large ML clusters, the paper is a good signal that the AI community is aligning with HPC on how to measure and improve reliability.</p>
+
+        <p class="closing">Source: Revisiting Reliability in Large-Scale Machine Learning Research Clusters (Meta). Commentator’s notes. No invented content.</p>
+    </article>
+</body>
+</html>

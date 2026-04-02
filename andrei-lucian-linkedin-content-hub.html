@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrei Lucian - 30 Days LinkedIn Content Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #001a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 217, 255, 0.05) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00ffff 0%, #00d9ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #b3b3b3;
+            margin-bottom: 20px;
+        }
+        
+        .profile-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .profile-link {
+            padding: 10px 20px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-link:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #00ffff;
+        }
+        
+        .card p {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00d9ff 0%, #00b8d9 100%);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00ffff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #b3b3b3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00ffff;
+        }
+        
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .section li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d0d0d0;
+        }
+        
+        .section li:last-child {
+            border-bottom: none;
+        }
+        
+        .file-link {
+            display: block;
+            padding: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            margin: 10px 0;
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .file-link:hover {
+            background: rgba(0, 255, 255, 0.2);
+            padding-left: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Andrei Lucian</h1>
+            <p class="subtitle">30 Days of LinkedIn Content + Customization Guide</p>
+            <div class="profile-links">
+                <a href="https://www.linkedin.com/in/andrei-lucian-0498901b8/" target="_blank" class="profile-link">LinkedIn Profile</a>
+                <a href="https://x.com/theandreilucian" target="_blank" class="profile-link">X (Twitter) Profile</a>
+                <a href="https://andreilucian.com" target="_blank" class="profile-link">Website</a>
+            </div>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">6.1M+</div>
+                <div class="stat-label">X Impressions</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12K</div>
+                <div class="stat-label">LinkedIn Followers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2.7K</div>
+                <div class="stat-label">X Followers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Clients Served</div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <div class="card">
+                <h2>📄 30 Days of LinkedIn Content</h2>
+                <p>Complete 30-day content plan with ready-to-use LinkedIn posts based on proven templates. Each post is personalized for your ghostwriting business.</p>
+                <a href="file:///D:/Website/andrei-lucian-30-days-linkedin-content.md" class="btn">Open Content File</a>
+            </div>
+            
+            <div class="card">
+                <h2>📋 Customization Guide</h2>
+                <p>Complete questionnaire to personalize all 30 posts with your real numbers, stories, client successes, and experiences. Fill this out to get your final customized content.</p>
+                <a href="file:///D:/Website/ANDREI_LUCIAN_CONTENT_CUSTOMIZATION_GUIDE.md" class="btn">Open Guide</a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>🚀 Quick Start Guide</h3>
+            <ul>
+                <li><strong>Step 1:</strong> Open the Customization Guide and fill out your information</li>
+                <li><strong>Step 2:</strong> Share your answers with me in the chat</li>
+                <li><strong>Step 3:</strong> I'll customize all 30 posts with your real numbers and stories</li>
+                <li><strong>Step 4:</strong> Get your final polished content ready to post</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>📊 What You'll Get</h3>
+            <ul>
+                <li>✅ 30 personalized LinkedIn posts (one per day)</li>
+                <li>✅ Your real metrics and numbers throughout</li>
+                <li>✅ Client success stories integrated</li>
+                <li>✅ Your voice and tone matched</li>
+                <li>✅ Top 50 hooks adapted for your brand</li>
+                <li>✅ Best practices and daily action plan</li>
+                <li>✅ Content schedule tracker</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>💡 Minimum Information Needed</h3>
+            <ul>
+                <li>✓ Your exact follower counts and metrics</li>
+                <li>✓ 1-2 client success stories with numbers</li>
+                <li>✓ Your biggest struggle when starting</li>
+                <li>✓ Your biggest mistake</li>
+                <li>✓ 1-2 key lessons learned</li>
+                <li>✓ Your writing style/tone preference</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>📁 File Locations</h3>
+            <a href="file:///D:/Website/andrei-lucian-30-days-linkedin-content.md" class="file-link">
+                📄 andrei-lucian-30-days-linkedin-content.md
+            </a>
+            <a href="file:///D:/Website/ANDREI_LUCIAN_CONTENT_CUSTOMIZATION_GUIDE.md" class="file-link">
+                📋 ANDREI_LUCIAN_CONTENT_CUSTOMIZATION_GUIDE.md
+            </a>
+        </div>
+    </div>
+</body>
+</html>

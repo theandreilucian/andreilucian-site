@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papers Module — Article 1: Policy, SmartNICs, Sustainability, RDMA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .quote-block {
+            background: #252830;
+            border-left: 4px solid #3b82f6;
+            padding: 20px 20px;
+            margin: 24px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .quote-block .label { font-size: 0.8em; color: #93c5fd; margin-bottom: 8px; }
+        .quote-block .label::before { content: '" '; }
+        .takeaway { background: #1e293b; border-left: 4px solid #22c55e; padding: 22px 20px; margin: 32px 0; border-radius: 0 8px 8px 0; }
+        .takeaway p { margin-bottom: 12px; }
+        .takeaway p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Papers Module — Article 1</h1>
+        <p class="meta">Policy · SmartNICs · Sustainability · RDMA · Insert quote blocks or images where marked</p>
+
+        <h2>Introduction</h2>
+        <p>The Papers module spans policy, infrastructure, sustainability, and systems design.</p>
+        <p>This article ties four strands together: government’s role in AI (democratic vs authoritarian), how Azure SmartNICs work, why clean power and carbon removal matter for datacenters, and what RDMA means for LLM systems.</p>
+        <p>Each section stands alone. Together they form one coherent read.</p>
+
+        <h2>1. A democratic vision for AI</h2>
+        <p>Sam Altman’s op-ed speaks to government’s role in AI. The title: <strong>A democratic vision for artificial intelligence must prevail over an authoritarian one.</strong></p>
+        <p>The piece is built around six pillars. No hype — policy, incentives, and infrastructure.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>American AI firms and industry need robust security measures so the coalition keeps the lead and the private sector can innovate.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Government and the private sector should partner to develop those measures as fast as possible.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Public–private partnerships should build the infrastructure so U.S. firms have the compute to expand access and distribute AI’s benefits.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Coherent commercial diplomacy: clarity on export controls and foreign investment rules for the global build-out of AI.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Making open-sourced models available to developers in allied nations strengthens the coalition. Leadership in AI means exporting values, not just technology.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>An investment fund for countries committed to democratic AI protocols could help them expand domestic compute.</p>
+        </div>
+        <div class="takeaway">
+            <p><strong>Takeaway:</strong> Align incentives. Build infrastructure. Set rules. Keep the lead where it matters.</p>
+        </div>
+
+        <h2>2. Azure SmartNICs</h2>
+        <p>Azure Accelerated Networking runs on SmartNICs. First generation in every Azure compute server from 2015. The job: one NIC with full SR-IOV and GFT support.</p>
+        <p><strong>GFT flows</strong> — VFP unified flows: L2/L3/L4 tuples and header transposition (HT) actions. <strong>Policy:</strong> VFP enforces on first packet of a flow; actions cached for the rest. <strong>Stateful flows</strong> → single core/thread. <strong>Pipeline:</strong> Parser → flow table lookup → Action (microcode; update without FPGA recompile).</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Exception packet: FPGA overloads 802.1Q VLAN ID, forwards to hypervisor vPort; VFP performs flow creation.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Parser stage parses aggregated header information to determine encapsulation type.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Termination packets (SYN, RST, FIN): FPGA duplicates — one to destination, one to hypervisor vPort for VFP TCP state tracking and rule deletion.</p>
+        </div>
+        <p>Lazy flow updates: first packet of each flow as exception. Online serviceability: turn off hardware acceleration, fall back to synthetic vNICs. Transparent bonding: VF as slave, TCP/IP bound to synthetic NIC. RDMA serviceability transparency at the app level is still an open question.</p>
+        <p>Scalability at 100G/200G/400G: flow tables and actions in the NIC keep the data plane off the host.</p>
+
+        <h2>3. Big Tech and clean power for AI</h2>
+        <p><strong>Big Tech Is Rushing to Find Clean Power to Fuel AI’s Insatiable Appetite</strong> — sustainability in HPC.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Tech companies are already the largest purchasers of wind and solar power.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Google pays a set rate that covers the difference between the cost of power and the lower-cost source the utility would have used. The utility can buy from a more expensive geothermal provider; Google covers the gap.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Tech companies and Nucor pay higher rates that help Duke Energy’s long-term costs and accelerate small nuclear and long-duration storage. Regulatory approval to fund such projects with ratepayer money alone is difficult.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Microsoft has struck deals with Occidental and Arbor (ex-SpaceX). It is by far the biggest buyer of carbon removal credits.</p>
+        </div>
+        <div class="takeaway">
+            <p><strong>Takeaway:</strong> Demand for clean, firm power is real. Contracts that de-risk build-out matter.</p>
+        </div>
+
+        <h2>4. Carbon removal — One dominant buyer</h2>
+        <p><strong>Carbon-Removal Firms Have One Very Big Backer. That’s a Problem.</strong></p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Most of the money in carbon removal is coming from one buyer: Microsoft. Microsoft has made more than two-thirds of all carbon-removal purchases to date.</p>
+        </div>
+        <p>Patch, CUR8, CarbonX act as market makers between buyers and project developers.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Removal credits (pull CO₂ from the atmosphere) are higher quality than avoidance credits (prevent release). Much more expensive: avoidance under $20/ton; removal/DAC up to $1,100/ton. So a removal credit is on the order of 55× an avoidance credit.</p>
+        </div>
+        <p>One dominant buyer is a risk. Diversity of demand would make the market more resilient.</p>
+
+        <h2>5. Datacenter emissions and genAI</h2>
+        <p><strong>Datacenters to emit 3× more carbon dioxide because of genAI.</strong></p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Microsoft’s CO₂ emissions rose 29.1% from the 2020 baseline; much was indirect (Scope 3) from building more datacenters.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>About 60% of that can be attributed to the power requirements of the facilities.</p>
+        </div>
+        <p>Reforestation and offsets are often discussed. The structural issue: more capacity, more power; the grid mix decides the footprint. Emissions reporting and power sourcing are no longer optional.</p>
+
+        <h2>6. RDMA in LLM systems</h2>
+        <p><strong>Explorations of RDMA in LLM Systems.</strong> Collectives assume a fixed world; disaggregated inference (Prefillers, Decoders, KvCache) needs scale-up/down and tolerates failure.</p>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Initializing the collective world is blocking; scale up or down and the whole world must pause.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Collectives guarantee global ordering; networks don’t. Some apps don’t want that — e.g. KvCache transfer, where only eventual arrival of all pages matters.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Collectives require same tensor shape and dtype; that can hurt ergonomics and performance (e.g. RPC with max message size).</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>Most RDMA uses RC (in-order). EFA uses SRD — reliable but unordered. SRD is datagram-based: send if you know the address. RC requires connection setup.</p>
+        </div>
+        <div class="quote-block">
+            <div class="label">Quote</div>
+            <p>IBGDA lets GPUs initiate NIC ops directly — only ConnectX supports it; otherwise CPU mediation. CPU–GPU PCIe latency is only ~2 μs.</p>
+        </div>
+        <div class="takeaway">
+            <p><strong>Takeaway:</strong> Collectives fit fixed training. For dynamic, disaggregated inference, you need something that doesn’t assume a fixed world. Custom inference engines and networking stacks are where the work is.</p>
+        </div>
+
+        <h2>7. FASST RFI</h2>
+        <p>The <strong>DOE FASST RFI</strong> is part of the policy and infrastructure landscape. Responses (e.g. “FASST will be DOE’s opportunity to adapt, align, or…”) have been published separately; the RFI shapes how advanced computing and AI align with national priorities.</p>
+
+        <h2>Closing</h2>
+        <p>Policy. Infrastructure. Sustainability. Systems. The Papers module is where these threads meet. Use the quote blocks above as the backbone of your layout — ready for nerds, hospitals, and government.</p>
+    </article>
+</body>
+</html>

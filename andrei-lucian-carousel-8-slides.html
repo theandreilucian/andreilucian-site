@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Lucian — 8-Slide Carousel</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --black: #000000;
+      --cyan: #00bcd4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+    }
+    .carousel-wrap {
+      width: 1080px;
+      max-width: 100%;
+      aspect-ratio: 1080 / 1350;
+      max-height: calc(100vh - 120px);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 40px rgba(0,188,212,0.2);
+    }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 72px 56px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .slide-1 { background: var(--black); color: var(--white); }
+    .slide-2 { background: var(--white); color: var(--black); }
+    .slide-3 { background: var(--cyan); color: var(--black); }
+    .slide-4 { background: var(--white); color: var(--black); }
+    .slide-5 { background: var(--black); color: var(--white); }
+    .slide-6 { background: var(--white); color: var(--black); }
+    .slide-7 { background: var(--cyan); color: var(--black); }
+    .slide-8 { background: var(--black); color: var(--white); border: 4px solid var(--cyan); }
+
+    .slide h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: center;
+      max-width: 900px;
+      letter-spacing: -0.02em;
+    }
+    .slide .line {
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+      max-width: 880px;
+      margin: 0 0 0.5em;
+    }
+    .slide .line:last-child { margin-bottom: 0; }
+    .slide .block { text-align: center; max-width: 880px; }
+    .slide .line .twist {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    .slide-3 .line .twist,
+    .slide-7 .line .twist { color: var(--black); }
+
+    .slide-8 .cta-block {
+      text-align: center;
+      max-width: 700px;
+    }
+    .slide-8 .cta-block .thanks {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
+    .slide-8 .cta-block .follow {
+      font-size: clamp(26px, 3.2vw, 42px);
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .slide-8 .cta-block .repost {
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 600;
+      color: var(--white);
+      opacity: 0.95;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .nav button {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--cyan);
+      background: var(--black);
+      color: var(--cyan);
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav button:hover {
+      background: var(--cyan);
+      color: var(--black);
+    }
+    .nav .dots {
+      display: flex;
+      gap: 8px;
+    }
+    .nav .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #333;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav .dot:hover { background: var(--cyan); }
+    .nav .dot.active { background: var(--cyan); transform: scale(1.2); }
+    .hint {
+      color: #888;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-wrap">
+    <div class="slide slide-1 active" data-slide="1">
+      <h2>10 things I had to unlearn to grow on LinkedIn</h2>
+    </div>
+    <div class="slide slide-2" data-slide="2">
+      <div class="block"><p class="line">More posts = more reach.</p><p class="line"><span class="twist">(Nope. Better posts do.)</span></p></div>
+    </div>
+    <div class="slide slide-3" data-slide="3">
+      <div class="block"><p class="line">I need to sound professional.</p><p class="line"><span class="twist">(I need to sound like me.)</span></p></div>
+    </div>
+    <div class="slide slide-4" data-slide="4">
+      <div class="block"><p class="line">Nobody cares what I think.</p><p class="line"><span class="twist">(They care if it helps.)</span></p></div>
+    </div>
+    <div class="slide slide-5" data-slide="5">
+      <div class="block"><p class="line">I have to post every day.</p><p class="line"><span class="twist">(I have to show up consistently.)</span></p></div>
+    </div>
+    <div class="slide slide-6" data-slide="6">
+      <div class="block"><p class="line">The algorithm is the enemy.</p><p class="line"><span class="twist">(The algorithm rewards value.)</span></p></div>
+    </div>
+    <div class="slide slide-7" data-slide="7">
+      <div class="block"><p class="line">I need a big following first.</p><p class="line"><span class="twist">(I need one person who gets it.)</span></p></div>
+    </div>
+    <div class="slide slide-8" data-slide="8">
+      <div class="cta-block">
+        <p class="thanks">Thanks for reading this.</p>
+        <p class="follow">Follow Andrei Lucian for more content.</p>
+        <p class="repost">Repost with your audience.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button type="button" id="prev" aria-label="Previous">‹</button>
+    <div class="dots" id="dots"></div>
+    <button type="button" id="next" aria-label="Next">›</button>
+  </div>
+  <p class="hint">Use arrows or click dots. Screenshot each slide at 1080×1350 for LinkedIn.</p>
+  <p style="margin-top:12px;"><button type="button" id="exportAll" style="padding:12px 24px;background:#00bcd4;color:#000;border:2px solid #00bcd4;font-family:Oswald,sans-serif;font-weight:700;font-size:16px;cursor:pointer;">Download all slides as JPEG</button></p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const dotsEl = document.getElementById('dots');
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => go(i));
+      dotsEl.appendChild(dot);
+    });
+    const dots = dotsEl.querySelectorAll('.dot');
+
+    function go(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('active', j === current));
+      dots.forEach((d, j) => d.classList.toggle('active', j === current));
+    }
+
+    prevBtn.addEventListener('click', () => go(current - 1));
+    nextBtn.addEventListener('click', () => go(current + 1));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(current - 1);
+      if (e.key === 'ArrowRight') go(current + 1);
+    });
+
+    document.getElementById('exportAll').onclick = async function() {
+      const btn = this;
+      const wrap = document.querySelector('.carousel-wrap');
+      const baseName = (document.URL.split('/').pop() || 'carousel').replace(/\.html$/i, '');
+      const total = slides.length;
+      btn.disabled = true;
+      try {
+        for (let i = 0; i < total; i++) {
+          btn.textContent = 'Exporting slide ' + (i + 1) + '/' + total + '...';
+          go(i); await new Promise(r => setTimeout(r, 400));
+          let canvas;
+          try {
+            canvas = await Promise.race([
+              html2canvas(wrap, { scale: 1.5, useCORS: true, logging: false, allowTaint: true }),
+              new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 15000))
+            ]);
+          } catch (e) { console.warn('Slide ' + (i + 1) + ' failed', e); continue; }
+          const num = String(i + 1).padStart(2, '0');
+          await new Promise(function(resolve) {
+            canvas.toBlob(function(blob) {
+              if (!blob) { resolve(); return; }
+              const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = baseName + '-slide-' + num + '.jpg'; a.click(); URL.revokeObjectURL(a.href);
+              resolve();
+            }, 'image/jpeg', 0.9);
+          });
+          await new Promise(r => setTimeout(r, 250));
+        }
+      } finally { btn.disabled = false; btn.textContent = 'Download all slides as JPEG'; }
+    };
+  </script>
+</body>
+</html>

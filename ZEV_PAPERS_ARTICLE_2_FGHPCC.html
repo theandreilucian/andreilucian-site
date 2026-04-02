@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FG-HPCC — Mission, Vision, Security, Use Cases</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .closing { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; font-size: 0.95em; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>FG-HPCC: One Article</h1>
+        <p class="meta">Mission · Vision · Security · Control plane · Use cases · LLNL/NNSA RFI</p>
+
+        <h2>Introduction</h2>
+        <p>The Future Generation High Performance Computing Center (FG-HPCC) is Lawrence Livermore National Security’s vision for the next step in NNSA computing.</p>
+        <p>It is not a single machine. It is a converged data center: HPC, AI training and inference, web services, analytics, and CI — composable, tightly integrated, and manageable through a common software stack.</p>
+        <p>This article walks through mission needs, gaps, the anticipated solution, security, the control plane, and the use cases that define what FG-HPCC must support.</p>
+
+        <h2>1. Evolving mission needs</h2>
+        <p>NNSA’s mission is evolving. The stockpile is aging; systems are refurbished, reused, or replaced.</p>
+        <p><strong>Simulation:</strong> ASC simulations need more realism and accuracy to track aging. Better physics and solution methods mean greater computational demand. Weapon modernization will make up a large share of NNSA workload in the coming decade.</p>
+        <p><strong>Collaboration:</strong> Design agency (DA) and production agency (PA) sites must work together. NNSA simulations increasingly use data and models from across the complex so that designs are optimized for real production.</p>
+        <p><strong>Scale:</strong> HPC use cases will grow from single-site studies to a web of connected sites — iterating on design and production. Multi-physics codes must integrate more capabilities and reach more users. Simulation results must reflect the latest PA data and stay consistent with manufacturing.</p>
+
+        <h2>2. Revolutionizing productivity</h2>
+        <p>HPC procurements and GPUs have already cut simulation times from weeks to hours. GPUs will stay central for physical simulation and AI.</p>
+        <p>The bottleneck is often not runtime but <strong>human factors</strong>: complex workflows and cross-complex collaboration. NNSA tri-labs are therefore focused on <strong>developer and designer productivity</strong>.</p>
+        <p>FG-HPCC aims to accelerate the mission along three paths:</p>
+        <ul>
+            <li><strong>AI</strong> — Guide and accelerate large simulation workflows, understand complex phenomena, automate non-simulation tasks. AI synthesizes knowledge from data. NNSA workloads will couple more with AI; simulation ensembles will feed AI training.</li>
+            <li><strong>Increased automation</strong> — AI, continuous deployment, ML models, workflow scheduling. Users set up and run large scientific workflows automatically and securely. Code teams build, test, and deploy automatically. ML-ops for versioning and managing models and software.</li>
+            <li><strong>Persistent services</strong> — NNSA HPC applications become remotely accessible services. DA/PA share simulations, models, and data. Data in S3-like object storage; hosted web portals for codes, data, and AI models.</li>
+        </ul>
+
+        <h2>3. Future infrastructure vision and gaps</h2>
+        <p>The vision: over 3 double-precision exaflops in peak capability, abundant utilities, and NNSA data centers that remain world-class. But those centers must <strong>evolve</strong> with the mission.</p>
+        <p><strong>Gap 1 — Independent systems and difficult upgrades:</strong> Most HPC procurements deliver integrated systems; centers run independently. Incremental upgrades are hard and often force changes to unrelated resources.</p>
+        <p><strong>Gap 2 — Limited security model:</strong> Current HPC centers rely on OS-level controls, trusted filesystems, and network zones. That model is too coarse for future NNSA needs. Strong isolation and multi-tenancy are missing.</p>
+        <p><strong>Gap 3 — Inefficient resource management:</strong> Users specify resources explicitly via per-machine batch schedulers. Decomposed workflows with multiple interacting components are poorly supported. No common scheduling layer to coordinate disparate or disaggregated resources.</p>
+
+        <h2>4. Anticipated solution — Center as a system</h2>
+        <p>LLNS will transform the Livermore Computing (LC) system into a <strong>converged data center</strong> supporting HPC, AI training, AI inference, web services, analytics, and CI.</p>
+        <p>Users compose heterogeneous compute and storage into complex, orchestrated workflows. Resources are co-scheduled and orchestrated via common interfaces. Automated provisioning of compute, storage, and network tailored to jobs. Users provision and control the system through well-defined APIs.</p>
+        <p><strong>Innovations:</strong> Multi-tenant hyperscale technologies; center-as-a-system deployment; cloud-like capabilities. Common open-source software stack; wider range of HPC/cloud vendors to avoid lock-in.</p>
+        <p><strong>Procurement:</strong> Flexible strategy; multiple awards. Five major elements (from one or more vendors): (1) ModSim capability, (2) AI train/inference with ModSim, (3) compute for persistent data-intensive services, (4) center-wide storage, (5) high-speed data-center network. Transition over 4–5 years. Other NNSA labs (Sandia, LANL, KCNSC) can tailor and compose with strong isolation via a central data center network.</p>
+
+        <h2>5. Open-source system software stack</h2>
+        <p>LLNS builds on ASC. Key pieces: <strong>SLURM</strong> (batch scheduling), <strong>Flux</strong> (next-gen resource manager, e.g. El Capitan), <strong>TOSS</strong> (tri-lab OS, RHEL-derived, STIG for classified), <strong>ZFS on Linux</strong> (Lustre), <strong>Spack</strong> (package manager), <strong>OpenCHAMI</strong> and others.</p>
+        <p>The envisioned stack places traditional HPC alongside frameworks for services and AI, with primitives for strong isolation, control-plane APIs, and storage APIs. The RFI aims to assess designs and prioritize collaborations.</p>
+
+        <h2>6. Security — Multi-tenancy, isolation, access control</h2>
+        <p>Security is <strong>paramount</strong>. Traditional HPC is too coarse. Future elements must build in robust security from hardware to software.</p>
+        <p><strong>Multi-tenancy:</strong> Multiple users at different security levels compose arbitrary subsets of resources. Strong logical separation where physical air gaps remain for classified vs unclassified.</p>
+        <p><strong>Strong on- and off-node isolation:</strong> One user must not observe another’s data or actions. Fine-grained partitioning of CPUs, GPUs, network, and storage.</p>
+        <p><strong>Flexible access control:</strong> Data owners control access. Role-based authentication. Filesystem authorization so a single node compromise does not breach the whole filesystem.</p>
+        <p>FG-HPCC resources must be usable for <strong>any</strong> workload without compromising security — batch, on-demand, persistent service, or untrusted CI. Secure node sharing; multiple tenants on same network or node. LLNS welcomes research into lowering overhead and cost for mission workloads.</p>
+
+        <h2>7. Interoperability and data center control plane</h2>
+        <p><strong>Interoperability:</strong> Resources from different elements must work together with strong isolation. Example: ModSim + AI + I/O for an AI-augmented workflow. Resource manager (Flux or Kubernetes) establishes an isolated network via the Data Center Network Core. May require bridging different isolation mechanisms by 2030.</p>
+        <p><strong>Control plane:</strong> Baseline storage, compute, and network allocation so users or facility staff build higher-level services or PaaS. Users compose FG-HPCC elements into private, isolated enclaves; elements can be added, upgraded, or removed without breaking workflows. RFI asks for open, on-premises, cloud-like control interfaces.</p>
+        <p><strong>APIs:</strong> Low-level IaaS-style APIs; Sunfish, Redfish, S3, Terraform where available; open and documented otherwise. Management of nodes, VMs, network, storage, AI processors, volumes. In-band and out-of-band management.</p>
+        <p><strong>Resource management:</strong> Flux for HPC allocation and scheduling; Kubernetes for facility and containerized user services. Flux+Kubernetes integration for converged HPC/cloud workflows. Guest OS: TOSS (RHEL-derived, STIG); virtualization and hypervisors with low overhead; network and storage isolation; complex-wide federation (e.g. DOE OneID, ESNHub).</p>
+
+        <h2>8. Future use cases</h2>
+        <p><strong>AI-augmented simulation:</strong> ModSim + embedded AI surrogates and AI orchestration; blend double-precision ModSim with low-precision inference, ideally on the same node.</p>
+        <p><strong>Digital twins:</strong> Twins of components at PA sites; AI monitors physical systems and integrates measurement streams; real-time and on-demand scheduling.</p>
+        <p><strong>Inverse design:</strong> Generative AI explores design spaces; orchestrates large numbers of ModSim runs; informs designers or trains surrogates.</p>
+        <p><strong>AI workloads:</strong> Campaigns, foundation models, data-surrogate models, HPC code assistants. Training from hundreds of hours to exaflop days. Data from TB to PB; read-mostly random-access or in-situ streams; provenance; data from NIF, AML, Vera Rubin, Scorpius.</p>
+        <p><strong>Services and data-centric:</strong> More orchestration for runs, training, inference. Co-scheduled services, strong isolation. Persistent services connecting to production agencies; data warehouses and lakes; cross-site replication and versioning; flexible access control and need-to-know.</p>
+        <p><strong>Developer workloads:</strong> Models and code versioned like code; CI for code and model changes; frequent model updates and human-in-the-loop; Jupyter, Colab, SageMaker; productive iteration inside FG-HPCC.</p>
+
+        <h2>9. Collaborations and RFI</h2>
+        <p>Respondents: high-level overview, capabilities, alignment. LLNS interested in HPC market impact and broad adoption. Collaborations: open-source, hardware/software testing, hardening, standardization. No mandated architecture.</p>
+        <p><strong>Roadmap:</strong> Security/isolation; processors for ModSim and AI; virtualization; I/O and storage; secure DC networks; long-range connectivity; open-source stack; PaaS; other.</p>
+        <p><strong>Gaps:</strong> Technologies unusable in HPC (overheads, latencies); software stack gaps for cloud-like on-prem; standardization with open-source. Software collaboration: isolation, encryption, network virtualization, MPI/libs/GPU in virtualized/containerized envs, open APIs and control planes.</p>
+        <p><strong>Other:</strong> Standards; testing at LC; AI accelerator integration. Hardware: testbeds, test/prove/harden under NDA.</p>
+        <p><strong>Review:</strong> Tri-labs + DOE Sci + federal. Two purposes: awareness of tech developments; prioritize industry/NNSA collaborations. Timeline: responses due 2025 Aug 8; review late Aug/Sep; feedback Fall/Winter 2025.</p>
+
+        <h2>Closing</h2>
+        <p>FG-HPCC is a vision for a converged NNSA data center: mission-driven productivity through AI, automation, and persistent services; security and isolation for multi-tenancy; common open-source stack and control plane; use cases that blend ModSim, AI, digital twins, inverse design, and data-centric workflows.</p>
+        <p>The RFI gathers information, assesses the stack and its gaps, and prioritizes collaborations. One article cannot replace the full document, but it summarizes the main threads so that nerds, hospitals, and government can see what FG-HPCC is and why it matters.</p>
+
+        <p class="closing">Source: LLNL FG-HPCC RFI (NNSA/DOE). Sections 2.3–2.5, 3.1–3.3, 4, 5, 6. No invented content.</p>
+    </article>
+</body>
+</html>

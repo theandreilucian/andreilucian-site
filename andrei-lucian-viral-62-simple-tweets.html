@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrei Lucian's Viral Growth Tweets - 62 Simple Tweets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .badge-viral {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .badge-simple {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-grade {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .tweet {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .tweet.hard-pill {
+            border-left-color: #dc3545;
+        }
+        
+        .tweet.stop-start {
+            border-left-color: #28a745;
+        }
+        
+        .tweet:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tweet-number {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .tweet-content {
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .tweet-meta {
+            color: #999;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+        
+        .copy-btn:active {
+            background: #4457c2;
+        }
+        
+        .template-type {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #666;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        .header-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Andrei Lucian's Viral Growth Tweets</h1>
+        <p class="subtitle">62 Tweets | 3rd Grade Reading Level</p>
+        <div class="badges">
+            <span class="badge badge-viral">🔥 VIRAL</span>
+            <span class="badge badge-simple">📝 SIMPLE</span>
+            <span class="badge badge-grade">📚 3RD GRADE</span>
+        </div>
+        
+        <div class="header-info">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">62</div>
+                    <div class="stat-label">Total Tweets</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Hard Pills</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">22</div>
+                    <div class="stat-label">Stop/Start</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hard Pill Tweets 1-20 -->
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 1</div>
+            <div class="tweet-content">Hard pill to swallow: You're not stuck. You're just not trying hard enough.</div>
+            <div class="tweet-meta">
+                <span>70 chars</span>
+                <button class="copy-btn" onclick="copyTweet(1)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 2</div>
+            <div class="tweet-content">Hard pill to swallow: Nobody cares about your excuses. They care about your results.</div>
+            <div class="tweet-meta">
+                <span>78 chars</span>
+                <button class="copy-btn" onclick="copyTweet(2)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 3</div>
+            <div class="tweet-content">Hard pill to swallow: Your followers don't owe you anything. You owe them value.</div>
+            <div class="tweet-meta">
+                <span>75 chars</span>
+                <button class="copy-btn" onclick="copyTweet(3)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 4</div>
+            <div class="tweet-content">Hard pill to swallow: You're not too busy. You're just not making it a priority.</div>
+            <div class="tweet-meta">
+                <span>72 chars</span>
+                <button class="copy-btn" onclick="copyTweet(4)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 5</div>
+            <div class="tweet-content">Hard pill to swallow: Perfect posts don't exist. Good posts posted daily do.</div>
+            <div class="tweet-meta">
+                <span>68 chars</span>
+                <button class="copy-btn" onclick="copyTweet(5)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 6</div>
+            <div class="tweet-content">Hard pill to swallow: You don't need more time. You need better systems.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(6)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 7</div>
+            <div class="tweet-content">Hard pill to swallow: Your content isn't bad. You're just not posting enough.</div>
+            <div class="tweet-meta">
+                <span>68 chars</span>
+                <button class="copy-btn" onclick="copyTweet(7)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 8</div>
+            <div class="tweet-content">Hard pill to swallow: You're not waiting for the right time. You're waiting for courage.</div>
+            <div class="tweet-meta">
+                <span>78 chars</span>
+                <button class="copy-btn" onclick="copyTweet(8)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 9</div>
+            <div class="tweet-content">Hard pill to swallow: Followers don't make you money. Value does.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(9)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 10</div>
+            <div class="tweet-content">Hard pill to swallow: You're not a perfectionist. You're a procrastinator.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(10)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 11</div>
+            <div class="tweet-content">Hard pill to swallow: Your audience doesn't need you. You need them.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(11)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 12</div>
+            <div class="tweet-content">Hard pill to swallow: You're not building a brand. You're building an audience.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(12)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 13</div>
+            <div class="tweet-content">Hard pill to swallow: Consistency beats talent every single time.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(13)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 14</div>
+            <div class="tweet-content">Hard pill to swallow: You're not failing. You're just not trying yet.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(14)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 15</div>
+            <div class="tweet-content">Hard pill to swallow: Your competition isn't better. They're just more consistent.</div>
+            <div class="tweet-meta">
+                <span>68 chars</span>
+                <button class="copy-btn" onclick="copyTweet(15)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 16</div>
+            <div class="tweet-content">Hard pill to swallow: You don't need motivation. You need discipline.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(16)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 17</div>
+            <div class="tweet-content">Hard pill to swallow: Your excuses are keeping you poor.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(17)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 18</div>
+            <div class="tweet-content">Hard pill to swallow: You're not too old to start. You're too scared.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(18)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 19</div>
+            <div class="tweet-content">Hard pill to swallow: Your content won't go viral. Your consistency will.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(19)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <div class="tweet hard-pill">
+            <div class="tweet-number">Tweet 20</div>
+            <div class="tweet-content">Hard pill to swallow: You're not building fast enough. You're building too slow.</div>
+            <div class="tweet-meta">
+                <span>62 chars</span>
+                <button class="copy-btn" onclick="copyTweet(20)">Copy</button>
+            </div>
+            <span class="template-type">Hard Pill to Swallow</span>
+        </div>
+
+        <!-- Stop/Start Tweets 21-42 -->
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 21</div>
+            <div class="tweet-content">Stop chasing followers. Start building relationships.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(21)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 22</div>
+            <div class="tweet-content">Stop posting randomly. Start posting daily.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(22)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 23</div>
+            <div class="tweet-content">Stop waiting for perfect. Start posting today.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(23)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 24</div>
+            <div class="tweet-content">Stop talking about goals. Start doing the work.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(24)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 25</div>
+            <div class="tweet-content">Stop buying more courses. Start using what you learned.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(25)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 26</div>
+            <div class="tweet-content">Stop making excuses. Start making content.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(26)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 27</div>
+            <div class="tweet-content">Stop waiting for inspiration. Start creating on schedule.</div>
+            <div class="tweet-meta">
+                <span>54 chars</span>
+                <button class="copy-btn" onclick="copyTweet(27)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 28</div>
+            <div class="tweet-content">Stop hiding your work. Start showing your process.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(28)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 29</div>
+            <div class="tweet-content">Stop trying to be perfect. Start trying to be consistent.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(29)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 30</div>
+            <div class="tweet-content">Stop posting for likes. Start posting for value.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(30)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 31</div>
+            <div class="tweet-content">Stop ignoring your audience. Start talking to them.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(31)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 32</div>
+            <div class="tweet-content">Stop copying others. Start being yourself.</div>
+            <div class="tweet-meta">
+                <span>38 chars</span>
+                <button class="copy-btn" onclick="copyTweet(32)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 33</div>
+            <div class="tweet-content">Stop waiting for permission. Start giving yourself permission.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(33)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 34</div>
+            <div class="tweet-content">Stop being afraid to share. Start being afraid not to share.</div>
+            <div class="tweet-meta">
+                <span>56 chars</span>
+                <button class="copy-btn" onclick="copyTweet(34)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 35</div>
+            <div class="tweet-content">Stop focusing on followers. Start focusing on value.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(35)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 36</div>
+            <div class="tweet-content">Stop planning forever. Start doing today.</div>
+            <div class="tweet-meta">
+                <span>38 chars</span>
+                <button class="copy-btn" onclick="copyTweet(36)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 37</div>
+            <div class="tweet-content">Stop waiting for the right time. Start making this the right time.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(37)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 38</div>
+            <div class="tweet-content">Stop being invisible. Start being helpful.</div>
+            <div class="tweet-meta">
+                <span>38 chars</span>
+                <button class="copy-btn" onclick="copyTweet(38)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 39</div>
+            <div class="tweet-content">Stop waiting for followers. Start earning them.</div>
+            <div class="tweet-meta">
+                <span>42 chars</span>
+                <button class="copy-btn" onclick="copyTweet(39)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 40</div>
+            <div class="tweet-content">Stop posting about yourself. Start posting about your audience.</div>
+            <div class="tweet-meta">
+                <span>56 chars</span>
+                <button class="copy-btn" onclick="copyTweet(40)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 41</div>
+            <div class="tweet-content">Stop waiting for engagement. Start creating engagement.</div>
+            <div class="tweet-meta">
+                <span>52 chars</span>
+                <button class="copy-btn" onclick="copyTweet(41)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <div class="tweet stop-start">
+            <div class="tweet-number">Tweet 42</div>
+            <div class="tweet-content">Stop being inconsistent. Start being reliable.</div>
+            <div class="tweet-meta">
+                <span>44 chars</span>
+                <button class="copy-btn" onclick="copyTweet(42)">Copy</button>
+            </div>
+            <span class="template-type">Stop/Start Format</span>
+        </div>
+
+        <!-- Simple Viral Tweets 43-62 -->
+        <div class="tweet">
+            <div class="tweet-number">Tweet 43</div>
+            <div class="tweet-content">You don't need 100K followers. You need 100 people who care.
+
+Quality beats quantity every time.</div>
+            <div class="tweet-meta">
+                <span>88 chars</span>
+                <button class="copy-btn" onclick="copyTweet(43)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 44</div>
+            <div class="tweet-content">Post every day for 30 days.
+
+See what happens.
+
+Most people quit before day 10.</div>
+            <div class="tweet-meta">
+                <span>78 chars</span>
+                <button class="copy-btn" onclick="copyTweet(44)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 45</div>
+            <div class="tweet-content">The best time to start was yesterday.
+
+The second best time is right now.
+
+Stop waiting.</div>
+            <div class="tweet-meta">
+                <span>78 chars</span>
+                <button class="copy-btn" onclick="copyTweet(45)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 46</div>
+            <div class="tweet-content">Your first 100 posts will be your worst.
+
+But you need them to get to post 101.
+
+Start posting.</div>
+            <div class="tweet-meta">
+                <span>88 chars</span>
+                <button class="copy-btn" onclick="copyTweet(46)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 47</div>
+            <div class="tweet-content">Done is better than perfect.
+
+Perfect never ships.
+
+Ship it.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(47)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 48</div>
+            <div class="tweet-content">You don't need a big audience.
+
+You need a loyal audience.
+
+Build loyalty first.</div>
+            <div class="tweet-meta">
+                <span>68 chars</span>
+                <button class="copy-btn" onclick="copyTweet(48)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 49</div>
+            <div class="tweet-content">Consistency beats talent.
+
+Every single time.
+
+Show up daily.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(49)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 50</div>
+            <div class="tweet-content">Stop asking what to post.
+
+Start asking what value to give.
+
+Value wins.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(50)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 51</div>
+            <div class="tweet-content">You don't need more followers.
+
+You need more engagement.
+
+Engage more.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(51)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 52</div>
+            <div class="tweet-content">Your content won't be perfect.
+
+That's okay.
+
+Post it anyway.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(52)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 53</div>
+            <div class="tweet-content">Most people quit before they see results.
+
+Don't be most people.
+
+Keep going.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(53)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 54</div>
+            <div class="tweet-content">You don't need permission to start.
+
+You need courage.
+
+Find it.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(54)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 55</div>
+            <div class="tweet-content">Stop waiting for the perfect idea.
+
+Start with a good idea.
+
+Good is good enough.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(55)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 56</div>
+            <div class="tweet-content">Your audience wants to see your journey.
+
+Not just your wins.
+
+Share both.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(56)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 57</div>
+            <div class="tweet-content">You don't need to be an expert.
+
+You need to be helpful.
+
+Help first.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(57)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 58</div>
+            <div class="tweet-content">Stop trying to impress everyone.
+
+Start trying to help someone.
+
+Help wins.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(58)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 59</div>
+            <div class="tweet-content">Your first post won't be great.
+
+Your 100th post will be better.
+
+Start now.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(59)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 60</div>
+            <div class="tweet-content">You don't need more time.
+
+You need better habits.
+
+Build them.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(60)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 61</div>
+            <div class="tweet-content">Stop waiting for someone to notice.
+
+Start making yourself noticeable.
+
+Show up daily.</div>
+            <div class="tweet-meta">
+                <span>58 chars</span>
+                <button class="copy-btn" onclick="copyTweet(61)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+
+        <div class="tweet">
+            <div class="tweet-number">Tweet 62</div>
+            <div class="tweet-content">The only way to get better is to start.
+
+Start today.
+
+Not tomorrow.</div>
+            <div class="tweet-meta">
+                <span>48 chars</span>
+                <button class="copy-btn" onclick="copyTweet(62)">Copy</button>
+            </div>
+            <span class="template-type">Simple Viral</span>
+        </div>
+    </div>
+
+    <script>
+        const tweets = {
+            1: `Hard pill to swallow: You're not stuck. You're just not trying hard enough.`,
+            2: `Hard pill to swallow: Nobody cares about your excuses. They care about your results.`,
+            3: `Hard pill to swallow: Your followers don't owe you anything. You owe them value.`,
+            4: `Hard pill to swallow: You're not too busy. You're just not making it a priority.`,
+            5: `Hard pill to swallow: Perfect posts don't exist. Good posts posted daily do.`,
+            6: `Hard pill to swallow: You don't need more time. You need better systems.`,
+            7: `Hard pill to swallow: Your content isn't bad. You're just not posting enough.`,
+            8: `Hard pill to swallow: You're not waiting for the right time. You're waiting for courage.`,
+            9: `Hard pill to swallow: Followers don't make you money. Value does.`,
+            10: `Hard pill to swallow: You're not a perfectionist. You're a procrastinator.`,
+            11: `Hard pill to swallow: Your audience doesn't need you. You need them.`,
+            12: `Hard pill to swallow: You're not building a brand. You're building an audience.`,
+            13: `Hard pill to swallow: Consistency beats talent every single time.`,
+            14: `Hard pill to swallow: You're not failing. You're just not trying yet.`,
+            15: `Hard pill to swallow: Your competition isn't better. They're just more consistent.`,
+            16: `Hard pill to swallow: You don't need motivation. You need discipline.`,
+            17: `Hard pill to swallow: Your excuses are keeping you poor.`,
+            18: `Hard pill to swallow: You're not too old to start. You're too scared.`,
+            19: `Hard pill to swallow: Your content won't go viral. Your consistency will.`,
+            20: `Hard pill to swallow: You're not building fast enough. You're building too slow.`,
+            21: `Stop chasing followers. Start building relationships.`,
+            22: `Stop posting randomly. Start posting daily.`,
+            23: `Stop waiting for perfect. Start posting today.`,
+            24: `Stop talking about goals. Start doing the work.`,
+            25: `Stop buying more courses. Start using what you learned.`,
+            26: `Stop making excuses. Start making content.`,
+            27: `Stop waiting for inspiration. Start creating on schedule.`,
+            28: `Stop hiding your work. Start showing your process.`,
+            29: `Stop trying to be perfect. Start trying to be consistent.`,
+            30: `Stop posting for likes. Start posting for value.`,
+            31: `Stop ignoring your audience. Start talking to them.`,
+            32: `Stop copying others. Start being yourself.`,
+            33: `Stop waiting for permission. Start giving yourself permission.`,
+            34: `Stop being afraid to share. Start being afraid not to share.`,
+            35: `Stop focusing on followers. Start focusing on value.`,
+            36: `Stop planning forever. Start doing today.`,
+            37: `Stop waiting for the right time. Start making this the right time.`,
+            38: `Stop being invisible. Start being helpful.`,
+            39: `Stop waiting for followers. Start earning them.`,
+            40: `Stop posting about yourself. Start posting about your audience.`,
+            41: `Stop waiting for engagement. Start creating engagement.`,
+            42: `Stop being inconsistent. Start being reliable.`,
+            43: `You don't need 100K followers. You need 100 people who care.
+
+Quality beats quantity every time.`,
+            44: `Post every day for 30 days.
+
+See what happens.
+
+Most people quit before day 10.`,
+            45: `The best time to start was yesterday.
+
+The second best time is right now.
+
+Stop waiting.`,
+            46: `Your first 100 posts will be your worst.
+
+But you need them to get to post 101.
+
+Start posting.`,
+            47: `Done is better than perfect.
+
+Perfect never ships.
+
+Ship it.`,
+            48: `You don't need a big audience.
+
+You need a loyal audience.
+
+Build loyalty first.`,
+            49: `Consistency beats talent.
+
+Every single time.
+
+Show up daily.`,
+            50: `Stop asking what to post.
+
+Start asking what value to give.
+
+Value wins.`,
+            51: `You don't need more followers.
+
+You need more engagement.
+
+Engage more.`,
+            52: `Your content won't be perfect.
+
+That's okay.
+
+Post it anyway.`,
+            53: `Most people quit before they see results.
+
+Don't be most people.
+
+Keep going.`,
+            54: `You don't need permission to start.
+
+You need courage.
+
+Find it.`,
+            55: `Stop waiting for the perfect idea.
+
+Start with a good idea.
+
+Good is good enough.`,
+            56: `Your audience wants to see your journey.
+
+Not just your wins.
+
+Share both.`,
+            57: `You don't need to be an expert.
+
+You need to be helpful.
+
+Help first.`,
+            58: `Stop trying to impress everyone.
+
+Start trying to help someone.
+
+Help wins.`,
+            59: `Your first post won't be great.
+
+Your 100th post will be better.
+
+Start now.`,
+            60: `You don't need more time.
+
+You need better habits.
+
+Build them.`,
+            61: `Stop waiting for someone to notice.
+
+Start making yourself noticeable.
+
+Show up daily.`,
+            62: `The only way to get better is to start.
+
+Start today.
+
+Not tomorrow.`
+        };
+
+        function copyTweet(num) {
+            const tweetText = tweets[num];
+            navigator.clipboard.writeText(tweetText).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#667eea';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy. Please select and copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>
+

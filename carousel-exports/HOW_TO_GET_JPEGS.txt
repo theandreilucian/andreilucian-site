@@ -1,0 +1,62 @@
+========================================
+GET JPEGs FOR LINKEDIN CAROUSELS
+========================================
+
+You have two options. Use Option A if you don't have Node.js. Use Option B for one-click export.
+
+----------------------------------------
+OPTION A — Using your browser (no Node)
+----------------------------------------
+
+1. Open this file in your browser (double-click or drag into Chrome/Edge):
+   andrei-lucian-10-carousels-index.html
+   (It's in the same folder as this carousel-exports folder.)
+
+2. Click the first carousel link (e.g. "10 things I had to unlearn...").
+
+3. On the carousel page, click the cyan button:
+   "Download all slides as JPEG"
+
+4. Your browser will download 8 JPEG files (slide-01, slide-02, ... slide-08).
+   They may go to your Downloads folder.
+
+5. Create a folder for this carousel (or use the one we made):
+   carousel-exports\andrei-lucian-carousel-1-unlearn\
+   Move the 8 downloaded JPEGs into that folder.
+
+6. Repeat steps 2–5 for each of the 10 carousels from the index page.
+
+7. When posting on LinkedIn: New post → Document/Carousel → upload the 8 images from one carousel folder in order (slide-01 first, then 02, 03, ... 08).
+
+----------------------------------------
+OPTION B — Automatic export (Node.js)
+----------------------------------------
+
+If you have Node.js installed:
+
+1. Open Command Prompt or PowerShell.
+2. Go to your project folder:
+   cd d:\Website
+3. Run:
+   npm run export-carousels
+   (or: node export-carousel-slides.js)
+
+4. All carousel-exports subfolders will be filled with JPEGs automatically.
+
+----------------------------------------
+FOLDER NAMES (for organizing downloads)
+----------------------------------------
+
+andrei-lucian-carousel-1-unlearn
+andrei-lucian-carousel-2-lines-repeat
+andrei-lucian-carousel-3-rules
+andrei-lucian-carousel-4-beliefs
+andrei-lucian-carousel-5-numbers-dont-move
+andrei-lucian-carousel-6-phrases-linkedin
+andrei-lucian-carousel-7-truths-building-public
+andrei-lucian-carousel-8-decisions
+andrei-lucian-carousel-8-slides
+andrei-lucian-carousel-9-impostor
+andrei-lucian-carousel-10-one-liners
+
+Each folder = one LinkedIn carousel post. Upload its JPEGs in order (01, 02, ... 08).

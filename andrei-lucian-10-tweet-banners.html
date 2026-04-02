@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrei Lucian — 10 Tweet Banners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #000000; --white: #ffffff; --cyan: #00bcd4; --gray: #8b98a5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: var(--white);
+      min-height: 100vh;
+      padding: 32px 24px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    .hint {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .tweet-card {
+      width: 600px;
+      max-width: 100%;
+      background: var(--black);
+      border: 1px solid #2f3336;
+      border-radius: 16px;
+      padding: 24px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .tweet-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .tweet-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--cyan);
+    }
+    .tweet-profile {
+      flex: 1;
+      min-width: 0;
+    }
+    .tweet-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tweet-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+    }
+    .tweet-badge {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--cyan);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tweet-badge svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--white);
+    }
+    .tweet-handle {
+      font-size: 15px;
+      color: var(--cyan);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .tweet-body {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--white);
+      margin-top: 4px;
+    }
+    .tweet-body p {
+      margin: 0 0 0.5em;
+    }
+    .tweet-body p:last-child {
+      margin-bottom: 0;
+    }
+    .tweet-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.4em 0 0;
+    }
+    .tweet-body li {
+      margin-bottom: 0.35em;
+      padding-left: 0;
+    }
+    .tweet-body li::before {
+      content: "• ";
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    .tweet-metrics {
+      display: flex;
+      gap: 24px;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    .tweet-metrics span {
+      color: var(--gray);
+    }
+    .tweet-metrics strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <h1>10 Tweet Banners — Andrei Lucian</h1>
+  <p class="hint">Screenshot each card (600px wide). Use as the single image for your tweet posts. Profile image: assets/andrei-lucian-headshot.png.jpg</p>
+
+  <!-- Tweet 1 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>3 life-changing habits everyone should have.</p>
+      <ul>
+        <li>Reading.</li>
+        <li>Meditating.</li>
+        <li>Practicing.</li>
+      </ul>
+    </div>
+    <div class="tweet-metrics"><span><strong>15</strong> Retweets</span><span><strong>137</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 2 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>New freelancers should be focusing on:</p>
+      <ul>
+        <li>50% — Learning the skill</li>
+        <li>40% — Building network</li>
+        <li>10% — Outreach</li>
+      </ul>
+    </div>
+    <div class="tweet-metrics"><span><strong>2</strong> Retweets</span><span><strong>82</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 3 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>Please trust the process.</p>
+      <p>Don't overthink too much.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>81</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 4 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>Do you want to make money?</p>
+      <ul>
+        <li>Start writing content</li>
+        <li>Start writing emails</li>
+        <li>Start writing offer</li>
+      </ul>
+      <p>Build your business on your terms.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>4</strong> Retweets</span><span><strong>65</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 5 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>The reason you keep restarting is because you never commit long enough to see results.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>2</strong> Retweets</span><span><strong>54</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 6 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>If you want a new life,</p>
+      <p>stop repeating the old one.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>95</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 7 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>You want confidence.</p>
+      <p>Confidence comes from keeping promises to yourself.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>9</strong> Retweets</span><span><strong>109</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 8 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>Most successful people I've met aren't that smart.</p>
+      <p>They move fast, they take risks, they work a lot.</p>
+      <p>That's it.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>89</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 9 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>I'm here to grow.</p>
+      <p>I'm here to make money.</p>
+      <p>I'm here to make new friends.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>3</strong> Retweets</span><span><strong>99</strong> Likes</span></div>
+  </div>
+
+  <!-- Tweet 10 -->
+  <div class="tweet-card">
+    <div class="tweet-header">
+      <img src="assets/andrei-lucian-headshot.png.jpg" alt="" class="tweet-avatar">
+      <div class="tweet-profile">
+        <div class="tweet-name-row">
+          <span class="tweet-name">Andrei Lucian</span>
+          <span class="tweet-badge"><svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.166-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.164.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.87l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.07-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg></span>
+        </div>
+        <div class="tweet-handle">@theandreilucian</div>
+      </div>
+    </div>
+    <div class="tweet-body">
+      <p>You don't need more time.</p>
+      <p>You need fewer excuses.</p>
+    </div>
+    <div class="tweet-metrics"><span><strong>8</strong> Retweets</span><span><strong>99</strong> Likes</span></div>
+  </div>
+
+</body>
+</html>

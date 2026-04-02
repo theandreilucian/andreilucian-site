@@ -12,7 +12,7 @@ I'm Andrei Lucian, and I built my online presence from zero to:
 • 14K LinkedIn followers
 • 3.2K X (Twitter) followers
 • 550 Threads followers
-• 700+ newsletter subscribers
+• 900+ Substack subscribers
 
 **What You'll Get:**
 
@@ -93,7 +93,7 @@ No complicated strategies. No confusing advice. Just simple, actionable steps th
 
 **About the Author:**
 
-Andrei Lucian helps people build their personal brand online. He writes on X, LinkedIn, Threads, and sends a weekly newsletter to 700+ subscribers.
+Andrei Lucian helps people build their personal brand online. He writes on X, LinkedIn, Threads, and sends a weekly Substack newsletter to 900+ subscribers.
 
 Follow him:
 • X (Twitter): @theandreilucian

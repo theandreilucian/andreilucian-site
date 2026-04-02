@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article 3 — Cray EX: Six Blades</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #1a1d23; color: #e4e6eb; line-height: 1.75; padding: 48px 24px 72px; }
+        .article { max-width: 52ch; margin: 0 auto; }
+        h1 { font-size: 1.75em; font-weight: 700; margin-bottom: 16px; color: #f3f4f6; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 56px; }
+        h2 { font-size: 1.3em; font-weight: 600; margin-top: 56px; margin-bottom: 24px; color: #38bdf8; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+        p { margin-bottom: 22px; }
+        ul { margin: 18px 0 28px 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: #f3f4f6; }
+        .img-placeholder { background: linear-gradient(135deg, #1e3329 0%, #0f172a 100%); border: 2px dashed #22c55e; border-radius: 12px; padding: 32px 20px; margin: 36px 0; text-align: center; }
+        .img-placeholder .label { font-family: -apple-system, sans-serif; font-size: 0.9em; color: #86efac; margin-bottom: 8px; }
+        .img-placeholder .hint { font-size: 0.85em; color: #6b7280; }
+        .takeaway { background: #252830; border-left: 4px solid #3b82f6; padding: 22px 20px; margin: 32px 0; border-radius: 0 8px 8px 0; }
+        .takeaway p { margin-bottom: 12px; }
+        .takeaway p:last-child { margin-bottom: 0; }
+        .checklist { margin-top: 48px; padding-top: 28px; border-top: 1px solid #334155; font-size: 0.9em; color: #9ca3af; }
+        .checklist ol { margin-left: 20px; margin-top: 12px; }
+        .checklist li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <h1>Article 3 — Cray EX: Six Blades</h1>
+        <p class="meta">Medium-length · One of three (Azure, BullSequana, Cray) · Insert images at green placeholders</p>
+
+        <h2>Introduction</h2>
+        <p>HPE’s Cray EX platform runs on Slingshot.</p>
+        <p>Six blades: B200, GH200, AMD Trento/Milan with MI250X or A100, MI300A APU, and CPU-only. One platform. Every workload.</p>
+        <p>This article walks through each blade: what’s in the box and when to use it.</p>
+
+        <h2>EX154n — The B200 Blade</h2>
+        <p><strong>EX154n</strong> is the B200 blade. One GB200 NVL4 board per blade: two Grace CPUs, four B200 GPUs, in an NVL4 configuration.</p>
+        <p>Accelerated compute blade for machine learning and sovereign AI. Each blade has: 100% liquid cooled, 1U chassis; one NVIDIA GB200 NVL4 Superchip; two Grace (240 GB per processor); four Blackwell GPUs (192 GB HBM3e per GPU); up to four Slingshot ports; one local NVMe SSD.</p>
+        <p>A Cray EX rack tops out at 224 GPUs (56 blades), not 256 — power or cooling limit. EX154n expected to ship by end of 2025.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 1: Cray EX154n — internal]</div>
+            <div class="hint">Insert your photo: liquid cooling, NVL4 board, chassis.</div>
+        </div>
+
+        <h2>EX235a — Trento + MI250X</h2>
+        <p><strong>EX235a</strong> — Trento + MI250X. Two nodes per blade.</p>
+        <p>Per node: 1× AMD Trento CPU, up to 512 GB DDR4, up to 2× NVMe SSDs, 4× AMD MI250X GPUs, up to 4× Slingshot-11 NICs.</p>
+        <p>Trento is a modified Milan with Infinity Fabric to the MI250X GPUs. GPU HBM is cache coherent with CPU memory. Slingshot-11 NICs are on the GPUs’ PCIe ports, not the CPU’s — performance-optimized layout.</p>
+
+        <h2>EX235n — Milan + A100</h2>
+        <p><strong>EX235n</strong> — Milan + A100. Two nodes per blade.</p>
+        <p>Per node: 1× AMD Milan CPU, up to 512 GB DDR4, no node-local storage, 4× NVIDIA A100 GPUs on HGX baseboard, up to 4× Slingshot-11 NICs.</p>
+
+        <h2>EX254n — GH200 Blade</h2>
+        <p><strong>EX254n</strong> — GH200 blade. Two nodes per blade.</p>
+        <p>Per node: 4× GH200 superchips (1 Grace 72-core, 1 Hopper H100 each). 128 GB LPDDR5X (HPE spec). 4× Slingshot-11 NICs. No NVMe in the wild; HPE docs mention M.2 blade kit. Each GH200 is its own NUMA domain. Used in Alps, Isambard-AI, KISTI-6.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 2: Cray EX254n or liquid-cooled blade]</div>
+            <div class="hint">Insert your photo: GH200 internals or copper cold plates, white tubes.</div>
+        </div>
+
+        <h2>EX255a — MI300A APU Blade</h2>
+        <p><strong>EX255a</strong> — MI300A APU blade. 2× 4-socket node cards (8 APUs per blade). 1× NVMe M.2 per node card (2 per blade). 4×–8× Slingshot-11 per node (8×–16× per blade).</p>
+        <p>Rabbit chassis uses spare Slingshot ports for NVMe. High density of 200G Slingshot as the industry moves to 400G NDR InfiniBand.</p>
+        <div class="img-placeholder">
+            <div class="label">[Image 3: Cray EX255a — blade internals]</div>
+            <div class="hint">Insert your photo: node cards, copper heatsinks, cabling.</div>
+        </div>
+
+        <h2>EX425 — CPU-Only</h2>
+        <p><strong>EX425</strong> — CPU-only. Two nodes per blade.</p>
+        <p>Per node: 2× AMD Rome or Milan CPUs, up to 1,024 GB DDR4 (8× DIMMs per socket, up to 64 GB/DIMM), no node-local storage, no GPUs, up to 4× Slingshot-11 NICs. The workhorse when the workload doesn’t need accelerators.</p>
+
+        <div class="takeaway">
+            <p><strong>Takeaway:</strong></p>
+            <ul style="margin-bottom: 0;">
+                <li>EX154n — B200 and sovereign AI</li>
+                <li>EX235a — Trento + MI250X and coherent memory</li>
+                <li>EX235n — Milan + A100</li>
+                <li>EX254n — GH200 and Alps/Isambard</li>
+                <li>EX255a — MI300A APU density</li>
+                <li>EX425 — CPU-only</li>
+            </ul>
+            <p style="margin-top: 16px;">Cray EX — one platform, six blades, every workload.</p>
+        </div>
+
+        <h2>Closing</h2>
+        <p>Drop in your images at the placeholders above and you have a complete medium-length article on Cray EX. Ready for nerds, hospitals, and government.</p>
+        <div class="checklist">
+            <p><strong>Image checklist (this article):</strong></p>
+            <ol>
+                <li>Cray EX154n — internal</li>
+                <li>Cray EX254n or liquid-cooled blade</li>
+                <li>Cray EX255a — blade internals</li>
+            </ol>
+        </div>
+    </article>
+</body>
+</html>

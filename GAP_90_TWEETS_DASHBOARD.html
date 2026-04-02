@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GAP 90 Tweets — Content Dashboard</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --text: #e5e5e5;
+      --muted: #888;
+      --green: #22c55e;
+      --purple: #a855f7;
+      --amber: #f59e0b;
+      --border: #2a2a2a;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; margin: 0; padding: 1rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tabs button {
+      padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--surface); color: var(--text);
+      border-radius: 6px; cursor: pointer; font-size: 0.9rem;
+    }
+    .tabs button:hover { background: #252525; }
+    .tabs button.active { border-color: var(--green); color: var(--green); }
+    .tabs button[data-pillar="personality"].active { border-color: var(--purple); color: var(--purple); }
+    .tabs button[data-pillar="authority"].active { border-color: var(--amber); color: var(--amber); }
+    .pillar { display: none; }
+    .pillar.visible { display: block; }
+    .tweet-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1rem 1rem 1rem 2.75rem; margin-bottom: 0.75rem; position: relative;
+    }
+    .tweet-card .num { position: absolute; left: 0.75rem; top: 1rem; color: var(--muted); font-size: 0.8rem; }
+    .tweet-card .text { white-space: pre-wrap; margin: 0; font-size: 0.95rem; }
+    .tweet-card .copy-btn {
+      position: absolute; right: 0.75rem; top: 0.75rem;
+      padding: 0.25rem 0.5rem; font-size: 0.75rem; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); border-radius: 4px; cursor: pointer;
+    }
+    .tweet-card .copy-btn:hover { color: var(--text); border-color: var(--muted); }
+    .tweet-card .copy-btn.copied { color: var(--green); border-color: var(--green); }
+    .sub { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>GAP 90 Tweets — Content Dashboard</h1>
+  <p class="sub">Click a pillar to filter. Click "Copy" on any tweet to copy the text.</p>
+  <div class="tabs">
+    <button class="active" data-pillar="growth">Growth (1–30)</button>
+    <button data-pillar="personality">Personality (31–60)</button>
+    <button data-pillar="authority">Authority (61–90)</button>
+  </div>
+
+  <div id="growth" class="pillar visible">
+    <div class="sub">Comparison / Opposites · One-Liner · List · Hook-List-Takeaway · Rule of 3 · Repetition · Stop/Start · Challenging Beliefs · Metaphor · Mix</div>
+    <div class="tweet-card" data-tweet="You don't need more time. You need fewer distractions."><span class="num">1</span><button class="copy-btn">Copy</button><p class="text">You don't need more time. You need fewer distractions.</p></div>
+    <div class="tweet-card" data-tweet="You don't need a degree. You need a high-income skill."><span class="num">2</span><button class="copy-btn">Copy</button><p class="text">You don't need a degree. You need a high-income skill.</p></div>
+    <div class="tweet-card" data-tweet="You don't need to be interesting. You need to be consistent."><span class="num">3</span><button class="copy-btn">Copy</button><p class="text">You don't need to be interesting. You need to be consistent.</p></div>
+    <div class="tweet-card" data-tweet="You are your biggest competitor. Beat yesterday's version."><span class="num">4</span><button class="copy-btn">Copy</button><p class="text">You are your biggest competitor. Beat yesterday's version.</p></div>
+    <div class="tweet-card" data-tweet="Freedom isn't the absence of work. It's the ability to choose what you work on."><span class="num">5</span><button class="copy-btn">Copy</button><p class="text">Freedom isn't the absence of work. It's the ability to choose what you work on.</p></div>
+    <div class="tweet-card" data-tweet="The cost of inaction is always higher than the cost of a mistake."><span class="num">6</span><button class="copy-btn">Copy</button><p class="text">The cost of inaction is always higher than the cost of a mistake.</p></div>
+    <div class="tweet-card" data-tweet="Skills that compound:
+• Writing
+• Speaking
+• Selling
+• Building in public
+Master one. Then the next."><span class="num">7</span><button class="copy-btn">Copy</button><p class="text">Skills that compound:
+• Writing
+• Speaking
+• Selling
+• Building in public
+Master one. Then the next.</p></div>
+    <div class="tweet-card" data-tweet="How to get unstuck:
+• Ship something small today
+• Share one lesson you learned
+• Reply to 3 people who inspire you
+Momentum beats perfection."><span class="num">8</span><button class="copy-btn">Copy</button><p class="text">How to get unstuck:
+• Ship something small today
+• Share one lesson you learned
+• Reply to 3 people who inspire you
+Momentum beats perfection.</p></div>
+    <div class="tweet-card" data-tweet="Underrated growth levers:
+• Comment before you post
+• Reply to every reply you get
+• DM one person you admire per week
+Relationships scale."><span class="num">9</span><button class="copy-btn">Copy</button><p class="text">Underrated growth levers:
+• Comment before you post
+• Reply to every reply you get
+• DM one person you admire per week
+Relationships scale.</p></div>
+    <div class="tweet-card" data-tweet="What actually moves the needle:
+• One skill, practiced daily
+• One audience, served consistently
+• One offer, refined over time
+Simplicity wins."><span class="num">10</span><button class="copy-btn">Copy</button><p class="text">What actually moves the needle:
+• One skill, practiced daily
+• One audience, served consistently
+• One offer, refined over time
+Simplicity wins.</p></div>
+    <div class="tweet-card" data-tweet="How to win in 6 months:
+• Learn a skill
+• Share what you learn
+• Build an audience
+• Do free work for social proof
+• Leverage proof for paid work
+Don't overcomplicate it."><span class="num">11</span><button class="copy-btn">Copy</button><p class="text">How to win in 6 months:
+• Learn a skill
+• Share what you learn
+• Build an audience
+• Do free work for social proof
+• Leverage proof for paid work
+Don't overcomplicate it.</p></div>
+    <div class="tweet-card" data-tweet="Underrated skills:
+• Saying no
+• Doing less, better
+• Knowing what to ignore
+Focus on what matters."><span class="num">12</span><button class="copy-btn">Copy</button><p class="text">Underrated skills:
+• Saying no
+• Doing less, better
+• Knowing what to ignore
+Focus on what matters.</p></div>
+    <div class="tweet-card" data-tweet="To grow faster:
+• Create more than you consume
+• Give more than you ask
+• Show up before you're ready
+Start before you feel ready."><span class="num">13</span><button class="copy-btn">Copy</button><p class="text">To grow faster:
+• Create more than you consume
+• Give more than you ask
+• Show up before you're ready
+Start before you feel ready.</p></div>
+    <div class="tweet-card" data-tweet="High-income skills to learn:
+• Writing
+• Copywriting
+• Sales
+• Storytelling
+Pick one. Go deep. Then monetize."><span class="num">14</span><button class="copy-btn">Copy</button><p class="text">High-income skills to learn:
+• Writing
+• Copywriting
+• Sales
+• Storytelling
+Pick one. Go deep. Then monetize.</p></div>
+    <div class="tweet-card" data-tweet="Build to improve your life. Lift to improve your body. Write to improve your mind."><span class="num">15</span><button class="copy-btn">Copy</button><p class="text">Build to improve your life. Lift to improve your body. Write to improve your mind.</p></div>
+    <div class="tweet-card" data-tweet="Depressed people live in the past. Anxious people live in the future. Happy people live in the present."><span class="num">16</span><button class="copy-btn">Copy</button><p class="text">Depressed people live in the past. Anxious people live in the future. Happy people live in the present.</p></div>
+    <div class="tweet-card" data-tweet="Study sales. Study design. Study writing. Study human nature. Study what converts. Then teach it."><span class="num">17</span><button class="copy-btn">Copy</button><p class="text">Study sales. Study design. Study writing. Study human nature. Study what converts. Then teach it.</p></div>
+    <div class="tweet-card" data-tweet="Replace scrolling with creating. Replace complaining with building. Replace waiting with starting. Replace excuses with action."><span class="num">18</span><button class="copy-btn">Copy</button><p class="text">Replace scrolling with creating. Replace complaining with building. Replace waiting with starting. Replace excuses with action.</p></div>
+    <div class="tweet-card" data-tweet="Stop talking about your goals. You're collecting dopamine you haven't earned yet. Start doing."><span class="num">19</span><button class="copy-btn">Copy</button><p class="text">Stop talking about your goals. You're collecting dopamine you haven't earned yet. Start doing.</p></div>
+    <div class="tweet-card" data-tweet="Stop focusing on outcomes. Start focusing on the daily actions that lead to outcomes."><span class="num">20</span><button class="copy-btn">Copy</button><p class="text">Stop focusing on outcomes. Start focusing on the daily actions that lead to outcomes.</p></div>
+    <div class="tweet-card" data-tweet="Stop telling yourself why you can't do it. Start telling yourself why you can."><span class="num">21</span><button class="copy-btn">Copy</button><p class="text">Stop telling yourself why you can't do it. Start telling yourself why you can.</p></div>
+    <div class="tweet-card" data-tweet="Stop waiting for permission. Start giving yourself permission."><span class="num">22</span><button class="copy-btn">Copy</button><p class="text">Stop waiting for permission. Start giving yourself permission.</p></div>
+    <div class="tweet-card" data-tweet="You don't need a degree if you can write well. Writing is the new resume."><span class="num">23</span><button class="copy-btn">Copy</button><p class="text">You don't need a degree if you can write well. Writing is the new resume.</p></div>
+    <div class="tweet-card" data-tweet="A degree doesn't mean you're a great thinker. It means you're a great memorizer. Think for yourself."><span class="num">24</span><button class="copy-btn">Copy</button><p class="text">A degree doesn't mean you're a great thinker. It means you're a great memorizer. Think for yourself.</p></div>
+    <div class="tweet-card" data-tweet="You don't need more followers to start. You need to start to get more followers."><span class="num">25</span><button class="copy-btn">Copy</button><p class="text">You don't need more followers to start. You need to start to get more followers.</p></div>
+    <div class="tweet-card" data-tweet="Building an audience is like lifting weights. You think it'll get you visibility—you end up with a bunch of people asking how you did it. Put in the reps."><span class="num">26</span><button class="copy-btn">Copy</button><p class="text">Building an audience is like lifting weights. You think it'll get you visibility—you end up with a bunch of people asking how you did it. Put in the reps.</p></div>
+    <div class="tweet-card" data-tweet="Content is like compound interest. Boring consistency beats viral one-offs. Keep depositing."><span class="num">27</span><button class="copy-btn">Copy</button><p class="text">Content is like compound interest. Boring consistency beats viral one-offs. Keep depositing.</p></div>
+    <div class="tweet-card" data-tweet="July: No clarity. No audience. No writing habit. Today: [X] followers. Writing daily. First clients. Things move fast when you move fast."><span class="num">28</span><button class="copy-btn">Copy</button><p class="text"><strong>July:</strong> No clarity. No audience. No writing habit. <strong>Today:</strong> [X] followers. Writing daily. First clients. Things move fast when you move fast.</p></div>
+    <div class="tweet-card" data-tweet="&quot;I don't have time.&quot; Wrong. You have the same 24 hours. You choose what gets your attention."><span class="num">29</span><button class="copy-btn">Copy</button><p class="text">"I don't have time." Wrong. You have the same 24 hours. You choose what gets your attention.</p></div>
+    <div class="tweet-card" data-tweet="I used to think success was luck. Then I started showing up every day. Luck is what happens when consistency meets opportunity."><span class="num">30</span><button class="copy-btn">Copy</button><p class="text">I used to think success was luck. Then I started showing up every day. Luck is what happens when consistency meets opportunity.</p></div>
+  </div>
+
+  <div id="personality" class="pillar">
+    <div class="sub">Ideas · Stories · Transformations · Milestones · Values · BTS · Goals · Lifestyle · Rule of 3 · Callout</div>
+    <div class="tweet-card" data-tweet="Creators are knowledge compressors. Learn. Take notes. Compress it. Help people evolve faster."><span class="num">31</span><button class="copy-btn">Copy</button><p class="text">Creators are knowledge compressors. Learn. Take notes. Compress it. Help people evolve faster.</p></div>
+    <div class="tweet-card" data-tweet="You must become a Self-Scientist. Make a plan. Test it. Reflect. Start treating your life like a study."><span class="num">32</span><button class="copy-btn">Copy</button><p class="text">You must become a Self-Scientist. Make a plan. Test it. Reflect. Start treating your life like a study.</p></div>
+    <div class="tweet-card" data-tweet="Your mind is a garden. What you read, watch, and listen to are the seeds. Plant better seeds."><span class="num">33</span><button class="copy-btn">Copy</button><p class="text">Your mind is a garden. What you read, watch, and listen to are the seeds. Plant better seeds.</p></div>
+    <div class="tweet-card" data-tweet="Clarity doesn't come from thinking. It comes from writing. Write to think. Don't think to write."><span class="num">34</span><button class="copy-btn">Copy</button><p class="text">Clarity doesn't come from thinking. It comes from writing. Write to think. Don't think to write.</p></div>
+    <div class="tweet-card" data-tweet="I hit rock bottom. No direction. No skills. No belief. Today I write daily, have an audience, and help others do the same. Here are 5 things that changed everything:"><span class="num">35</span><button class="copy-btn">Copy</button><p class="text">I hit rock bottom. No direction. No skills. No belief. Today I write daily, have an audience, and help others do the same. Here are 5 things that changed everything: [thread or next tweet]</p></div>
+    <div class="tweet-card" data-tweet="I used to wait for the &quot;right moment.&quot; It never came. I started anyway. The right moment is the one you create."><span class="num">36</span><button class="copy-btn">Copy</button><p class="text">I used to wait for the "right moment." It never came. I started anyway. The right moment is the one you create.</p></div>
+    <div class="tweet-card" data-tweet="I'm not a natural writer. I screwed up grammar, structure, and confidence. I kept writing. Stop letting your weaknesses hold you back."><span class="num">37</span><button class="copy-btn">Copy</button><p class="text">I'm not a natural writer. I screwed up grammar, structure, and confidence. I kept writing. Stop letting your weaknesses hold you back.</p></div>
+    <div class="tweet-card" data-tweet="I used to chase every opportunity. Burnout. Now I do less, better. One thing at a time. Energy is the real currency."><span class="num">38</span><button class="copy-btn">Copy</button><p class="text">I used to chase every opportunity. Burnout. Now I do less, better. One thing at a time. Energy is the real currency.</p></div>
+    <div class="tweet-card" data-tweet="I'm an addict. 2019: Scrolling. Complaining. Waiting. 2024: Writing. Building. Showing up. Find better addictions."><span class="num">39</span><button class="copy-btn">Copy</button><p class="text">I'm an addict. 2019: Scrolling. Complaining. Waiting. 2024: Writing. Building. Showing up. Find better addictions.</p></div>
+    <div class="tweet-card" data-tweet="Past me: Perfectionist. Paralyzed. No ship. Present me: Done is better than perfect. Shipping daily. Progress over polish."><span class="num">40</span><button class="copy-btn">Copy</button><p class="text">Past me: Perfectionist. Paralyzed. No ship. Present me: Done is better than perfect. Shipping daily. Progress over polish.</p></div>
+    <div class="tweet-card" data-tweet="I used to be &quot;cool&quot;: Parties. Noise. Approval. Now I'm &quot;boring&quot;: Gym. Writing. Deep work. Start being boring."><span class="num">41</span><button class="copy-btn">Copy</button><p class="text">I used to be "cool": Parties. Noise. Approval. Now I'm "boring": Gym. Writing. Deep work. Start being boring.</p></div>
+    <div class="tweet-card" data-tweet="Old me: Needed validation. New me: Needs only to show up. The shift was when I stopped caring more about likes than growth."><span class="num">42</span><button class="copy-btn">Copy</button><p class="text">Old me: Needed validation. New me: Needs only to show up. The shift was when I stopped caring more about likes than growth.</p></div>
+    <div class="tweet-card" data-tweet="I hit [X] followers. Writing online changed my life. The only thing I'd do differently is start sooner. Start writing today."><span class="num">43</span><button class="copy-btn">Copy</button><p class="text">I hit [X] followers. Writing online changed my life. The only thing I'd do differently is start sooner. Start writing today.</p></div>
+    <div class="tweet-card" data-tweet="First dollar online. Took longer than I wanted. Taught me more than any course. Your first win is the one that changes your belief."><span class="num">44</span><button class="copy-btn">Copy</button><p class="text">First dollar online. Took longer than I wanted. Taught me more than any course. Your first win is the one that changes your belief.</p></div>
+    <div class="tweet-card" data-tweet="One year of writing in public. No viral thread. Steady growth. Trust the process. Consistency beats virality."><span class="num">45</span><button class="copy-btn">Copy</button><p class="text">One year of writing in public. No viral thread. Steady growth. Trust the process. Consistency beats virality.</p></div>
+    <div class="tweet-card" data-tweet="8 Personal Rules:
+1. Write daily
+2. Do less, better
+3. Prioritize purpose
+4. Never chase—attract
+5. Competence is king
+6. Play long-term games
+7. Product over tactics
+8. Ignore 99% of noise"><span class="num">46</span><button class="copy-btn">Copy</button><p class="text"><strong>8 Personal Rules:</strong>
+1. Write daily
+2. Do less, better
+3. Prioritize purpose
+4. Never chase—attract
+5. Competence is king
+6. Play long-term games
+7. Product over tactics
+8. Ignore 99% of noise</p></div>
+    <div class="tweet-card" data-tweet="I don't do DMs for &quot;quick calls.&quot; I do deep work and share it. Boundaries aren't rude. They're respect for your craft."><span class="num">47</span><button class="copy-btn">Copy</button><p class="text">I don't do DMs for "quick calls." I do deep work and share it. Boundaries aren't rude. They're respect for your craft.</p></div>
+    <div class="tweet-card" data-tweet="I'd rather have 1,000 people who read everything than 100,000 who scroll. Quality of attention > quantity."><span class="num">48</span><button class="copy-btn">Copy</button><p class="text">I'd rather have 1,000 people who read everything than 100,000 who scroll. Quality of attention > quantity.</p></div>
+    <div class="tweet-card" data-tweet="My non-negotiables: Sleep. Movement. Writing. Everything else fits around these. Protect the core."><span class="num">49</span><button class="copy-btn">Copy</button><p class="text">My non-negotiables: Sleep. Movement. Writing. Everything else fits around these. Protect the core.</p></div>
+    <div class="tweet-card" data-tweet="Big changes soon: New [course/offer]. New format. Same mission—help you write and grow. Let's crush it."><span class="num">50</span><button class="copy-btn">Copy</button><p class="text">Big changes soon: New [course/offer]. New format. Same mission—help you write and grow. Let's crush it.</p></div>
+    <div class="tweet-card" data-tweet="This is where it happens. [Desk/setup]. No fancy gear. Just consistency. You don't need more—you need to use what you have."><span class="num">51</span><button class="copy-btn">Copy</button><p class="text">This is where it happens. [Desk/setup]. No fancy gear. Just consistency. You don't need more—you need to use what you have.</p></div>
+    <div class="tweet-card" data-tweet="Recording. Writing. Iterating. The boring stuff nobody posts. This is what actually builds an audience."><span class="num">52</span><button class="copy-btn">Copy</button><p class="text">Recording. Writing. Iterating. The boring stuff nobody posts. This is what actually builds an audience.</p></div>
+    <div class="tweet-card" data-tweet="Restarting [X] again. Aiming for [goal] by [date]. [X] left. I'll share the progress and lessons here."><span class="num">53</span><button class="copy-btn">Copy</button><p class="text">Restarting [X] again. Aiming for [goal] by [date]. [X] left. I'll share the progress and lessons here.</p></div>
+    <div class="tweet-card" data-tweet="My goal this quarter: [specific number or outcome]. I'll post updates every [timeframe]. Accountability in public."><span class="num">54</span><button class="copy-btn">Copy</button><p class="text">My goal this quarter: [specific number or outcome]. I'll post updates every [timeframe]. Accountability in public.</p></div>
+    <div class="tweet-card" data-tweet="Building in public isn't bragging. It's documenting. Someone needs to see that it's possible. That might be you."><span class="num">55</span><button class="copy-btn">Copy</button><p class="text">Building in public isn't bragging. It's documenting. Someone needs to see that it's possible. That might be you.</p></div>
+    <div class="tweet-card" data-tweet="My favorite thing about being a creator: Controlling my time. Money is nice. But the freedom to choose when and where you work is priceless."><span class="num">56</span><button class="copy-btn">Copy</button><p class="text">My favorite thing about being a creator: Controlling my time. Money is nice. But the freedom to choose when and where you work is priceless.</p></div>
+    <div class="tweet-card" data-tweet="Coffee. Notebook. Morning write. No meetings before noon. This is the life I built by choosing what to protect."><span class="num">57</span><button class="copy-btn">Copy</button><p class="text">Coffee. Notebook. Morning write. No meetings before noon. This is the life I built by choosing what to protect.</p></div>
+    <div class="tweet-card" data-tweet="I don't hustle 24/7. I work in bursts. Rest is part of the system. Sustainable beats dramatic."><span class="num">58</span><button class="copy-btn">Copy</button><p class="text">I don't hustle 24/7. I work in bursts. Rest is part of the system. Sustainable beats dramatic.</p></div>
+    <div class="tweet-card" data-tweet="Use mornings to create. Use afternoons to learn. Use evenings to reflect. Design your day."><span class="num">59</span><button class="copy-btn">Copy</button><p class="text">Use mornings to create. Use afternoons to learn. Use evenings to reflect. Design your day.</p></div>
+    <div class="tweet-card" data-tweet="&quot;I'm a perfectionist.&quot; No. You're a procrastinator. Ship and improve."><span class="num">60</span><button class="copy-btn">Copy</button><p class="text">"I'm a perfectionist." No. You're a procrastinator. Ship and improve.</p></div>
+  </div>
+
+  <div id="authority" class="pillar">
+    <div class="sub">Fill in [X], [your result], etc. with your real numbers. 2×3 Proof · Challenging Beliefs · Callout · Hook-List-Takeaway · Story · Comparison · Strategies · Metaphor · One-Liner</div>
+    <div class="tweet-card" data-tweet="July: No audience. No proof. No clients. October: [X] followers. [X] coaching calls. [X] paid clients. Things move fast when you move fast."><span class="num">61</span><button class="copy-btn">Copy</button><p class="text"><strong>July:</strong> No audience. No proof. No clients. <strong>October:</strong> [X] followers. [X] coaching calls. [X] paid clients. Things move fast when you move fast.</p></div>
+    <div class="tweet-card" data-tweet="I hit $[X]/mo. In less than [Y] months. Zero days off. Countless mistakes. Multiple failed offers. It was hard but I wouldn't change anything. Competence converts."><span class="num">62</span><button class="copy-btn">Copy</button><p class="text">I hit $[X]/mo. In less than [Y] months. Zero days off. Countless mistakes. Multiple failed offers. It was hard but I wouldn't change anything. Competence converts.</p></div>
+    <div class="tweet-card" data-tweet="Before: No writing habit. No niche. No audience. After: [X] articles. [X] followers. [X] revenue. Stack skills. Show up. Repeat."><span class="num">63</span><button class="copy-btn">Copy</button><p class="text"><strong>Before:</strong> No writing habit. No niche. No audience. <strong>After:</strong> [X] articles. [X] followers. [X] revenue. Stack skills. Show up. Repeat.</p></div>
+    <div class="tweet-card" data-tweet="[X] followers in [Y] months. Same bio the whole time. What changed: long-form content. Quality content beats a clever bio."><span class="num">64</span><button class="copy-btn">Copy</button><p class="text">[X] followers in [Y] months. Same bio the whole time. What changed: long-form content. Quality content beats a clever bio.</p></div>
+    <div class="tweet-card" data-tweet="Started from zero. No list. No audience. No credibility. Today: [X] subscribers. [X] clients. [X] revenue. Here's what I did:"><span class="num">65</span><button class="copy-btn">Copy</button><p class="text">Started from zero. No list. No audience. No credibility. Today: [X] subscribers. [X] clients. [X] revenue. Here's what I did: [thread or link]</p></div>
+    <div class="tweet-card" data-tweet="Bios are overrated. My profile conversion doubled when I started writing long-form—with the same bio. Focus on quality content."><span class="num">66</span><button class="copy-btn">Copy</button><p class="text">Bios are overrated. My profile conversion doubled when I started writing long-form—with the same bio. Focus on quality content.</p></div>
+    <div class="tweet-card" data-tweet="You don't need a big following to make money. You need a clear offer and 100 people who trust you. Start small. Serve deep."><span class="num">67</span><button class="copy-btn">Copy</button><p class="text">You don't need a big following to make money. You need a clear offer and 100 people who trust you. Start small. Serve deep.</p></div>
+    <div class="tweet-card" data-tweet="You don't need to go viral to grow. You need to be useful consistently. One person saved and shared > 10,000 scrolls."><span class="num">68</span><button class="copy-btn">Copy</button><p class="text">You don't need to go viral to grow. You need to be useful consistently. One person saved and shared > 10,000 scrolls.</p></div>
+    <div class="tweet-card" data-tweet="&quot;You need a niche.&quot; You need clarity. Niche is just clarity with a name. Get clear first. Narrow later."><span class="num">69</span><button class="copy-btn">Copy</button><p class="text">"You need a niche." You need clarity. Niche is just clarity with a name. Get clear first. Narrow later.</p></div>
+    <div class="tweet-card" data-tweet="Most &quot;growth tips&quot; are noise. What actually works: one platform, one format, one message. Repeat for 12 months."><span class="num">70</span><button class="copy-btn">Copy</button><p class="text">Most "growth tips" are noise. What actually works: one platform, one format, one message. Repeat for 12 months.</p></div>
+    <div class="tweet-card" data-tweet="&quot;I don't know what to write about.&quot; You have experiences. You have opinions. You have lessons. Start with one. Write that."><span class="num">71</span><button class="copy-btn">Copy</button><p class="text">"I don't know what to write about." You have experiences. You have opinions. You have lessons. Start with one. Write that.</p></div>
+    <div class="tweet-card" data-tweet="&quot;I'm not a good writer.&quot; You're not a practiced writer yet. Write 100 posts. Then decide."><span class="num">72</span><button class="copy-btn">Copy</button><p class="text">"I'm not a good writer." You're not a practiced writer yet. Write 100 posts. Then decide.</p></div>
+    <div class="tweet-card" data-tweet="&quot;I don't have results to share.&quot; Share your process. Share your failures. Share what you're learning. That's authority too."><span class="num">73</span><button class="copy-btn">Copy</button><p class="text">"I don't have results to share." Share your process. Share your failures. Share what you're learning. That's authority too.</p></div>
+    <div class="tweet-card" data-tweet="How I structure my writing day:
+• Morning: Deep write (no distractions)
+• Midday: Engage, reply, comment
+• Afternoon: Edit, schedule, plan
+Protect the morning."><span class="num">74</span><button class="copy-btn">Copy</button><p class="text"><strong>How I structure my writing day:</strong>
+• Morning: Deep write (no distractions)
+• Midday: Engage, reply, comment
+• Afternoon: Edit, schedule, plan
+Protect the morning.</p></div>
+    <div class="tweet-card" data-tweet="Top 1% writers:
+• Polarize
+• Network
+• Edit later, write first
+• Are concise
+• Cut the fluff
+• Use bullet points and white space
+• Write as they speak
+• Use active voice
+Study them. Then do your version."><span class="num">75</span><button class="copy-btn">Copy</button><p class="text"><strong>Top 1% writers:</strong>
+• Polarize
+• Network
+• Edit later, write first
+• Are concise
+• Cut the fluff
+• Use bullet points and white space
+• Write as they speak
+• Use active voice
+Study them. Then do your version.</p></div>
+    <div class="tweet-card" data-tweet="What got me to [X] followers:
+• One format (threads/posts)
+• One theme ([your niche])
+• 3–5x per week for [X] months
+Don't overcomplicate it."><span class="num">76</span><button class="copy-btn">Copy</button><p class="text"><strong>What got me to [X] followers:</strong>
+• One format (threads/posts)
+• One theme ([your niche])
+• 3–5x per week for [X] months
+Don't overcomplicate it.</p></div>
+    <div class="tweet-card" data-tweet="How to get your first 1,000 followers:
+• Show up daily
+• Reply to everyone
+• Share one lesson per post
+• Be useful before you're famous
+Consistency beats virality."><span class="num">77</span><button class="copy-btn">Copy</button><p class="text"><strong>How to get your first 1,000 followers:</strong>
+• Show up daily
+• Reply to everyone
+• Share one lesson per post
+• Be useful before you're famous
+Consistency beats virality.</p></div>
+    <div class="tweet-card" data-tweet="I did [X] free [calls/essays/reviews]. Collected testimonials. Found common pain points. Gave value first. Overdeliver for free. Then paid work follows."><span class="num">78</span><button class="copy-btn">Copy</button><p class="text">I did [X] free [calls/essays/reviews]. Collected testimonials. Found common pain points. Gave value first. Overdeliver for free. Then paid work follows.</p></div>
+    <div class="tweet-card" data-tweet="I had no portfolio. So I built one in public. Wrote [X] posts. Shared my process. Clients found me. Build in public. Proof compounds."><span class="num">79</span><button class="copy-btn">Copy</button><p class="text">I had no portfolio. So I built one in public. Wrote [X] posts. Shared my process. Clients found me. Build in public. Proof compounds.</p></div>
+    <div class="tweet-card" data-tweet="My first paid client came from a reply. Not a viral post. Not a funnel. A genuine reply. Relationships convert."><span class="num">80</span><button class="copy-btn">Copy</button><p class="text">My first paid client came from a reply. Not a viral post. Not a funnel. A genuine reply. Relationships convert.</p></div>
+    <div class="tweet-card" data-tweet="You don't need more tactics. You need one strategy executed for 12 months. Depth beats breadth."><span class="num">81</span><button class="copy-btn">Copy</button><p class="text">You don't need more tactics. You need one strategy executed for 12 months. Depth beats breadth.</p></div>
+    <div class="tweet-card" data-tweet="You don't need another course. You need to apply what you already know. Execution beats consumption."><span class="num">82</span><button class="copy-btn">Copy</button><p class="text">You don't need another course. You need to apply what you already know. Execution beats consumption.</p></div>
+    <div class="tweet-card" data-tweet="You don't need to be everywhere. You need to be somewhere, consistently. One platform done well > five done poorly."><span class="num">83</span><button class="copy-btn">Copy</button><p class="text">You don't need to be everywhere. You need to be somewhere, consistently. One platform done well > five done poorly.</p></div>
+    <div class="tweet-card" data-tweet="Skills that print money online:
+• Writing
+• Copywriting
+• Sales
+• Storytelling
+I built my business on the first two. You can start with one."><span class="num">84</span><button class="copy-btn">Copy</button><p class="text"><strong>Skills that print money online:</strong>
+• Writing
+• Copywriting
+• Sales
+• Storytelling
+I built my business on the first two. You can start with one.</p></div>
+    <div class="tweet-card" data-tweet="What I track every week:
+• Posts published
+• Replies sent
+• DMs with value
+• One new relationship
+Metrics matter. So do people."><span class="num">85</span><button class="copy-btn">Copy</button><p class="text"><strong>What I track every week:</strong>
+• Posts published
+• Replies sent
+• DMs with value
+• One new relationship
+Metrics matter. So do people.</p></div>
+    <div class="tweet-card" data-tweet="Underrated growth levers on X:
+• Quote-tweet with insight (don't just agree)
+• Reply to bigger accounts with value
+• Thread one idea people can save
+• Show your face (or voice) sometimes
+Algorithm rewards consistency and engagement."><span class="num">86</span><button class="copy-btn">Copy</button><p class="text"><strong>Underrated growth levers on X:</strong>
+• Quote-tweet with insight (don't just agree)
+• Reply to bigger accounts with value
+• Thread one idea people can save
+• Show your face (or voice) sometimes
+Algorithm rewards consistency and engagement.</p></div>
+    <div class="tweet-card" data-tweet="How I write a thread that converts:
+• Hook: One line that stops the scroll
+• Problem: Name the pain
+• Solution: Your framework or story
+• CTA: One clear next step
+Structure beats inspiration."><span class="num">87</span><button class="copy-btn">Copy</button><p class="text"><strong>How I write a thread that converts:</strong>
+• Hook: One line that stops the scroll
+• Problem: Name the pain
+• Solution: Your framework or story
+• CTA: One clear next step
+Structure beats inspiration.</p></div>
+    <div class="tweet-card" data-tweet="Building an audience is like lifting. You don't see results day one. You see them in month six. Put in the reps."><span class="num">88</span><button class="copy-btn">Copy</button><p class="text">Building an audience is like lifting. You don't see results day one. You see them in month six. Put in the reps.</p></div>
+    <div class="tweet-card" data-tweet="Writing online is compound interest. Each post is a deposit. Boring consistency beats viral luck. Keep depositing."><span class="num">89</span><button class="copy-btn">Copy</button><p class="text">Writing online is compound interest. Each post is a deposit. Boring consistency beats viral luck. Keep depositing.</p></div>
+    <div class="tweet-card" data-tweet="Process builds proof. Proof builds trust. Trust builds revenue. Share your process first."><span class="num">90</span><button class="copy-btn">Copy</button><p class="text">Process builds proof. Proof builds trust. Trust builds revenue. Share your process first.</p></div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.pillar').forEach(p => p.classList.remove('visible'));
+        document.getElementById(btn.dataset.pillar).classList.add('visible');
+      });
+    });
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.tweet-card');
+        const text = card.dataset.tweet || card.querySelector('.text').innerText.replace(/\s+/g, ' ').trim();
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+    });
+    document.querySelectorAll('.tweet-card').forEach(card => {
+      if (!card.dataset.tweet) card.dataset.tweet = card.querySelector('.text').innerText.replace(/\s+/g, ' ').replace(/\[thread or next tweet\]/g, '').trim();
+    });
+  </script>
+</body>
+</html>

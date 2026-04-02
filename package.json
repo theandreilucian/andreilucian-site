@@ -1,0 +1,13 @@
+{
+  "name": "ghostwriter-banner-converter",
+  "version": "1.0.0",
+  "description": "Convert HTML banner to JPEG",
+  "main": "convert-to-jpeg.js",
+  "scripts": {
+    "convert": "node convert-to-jpeg.js",
+    "export-carousels": "node export-carousel-slides.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

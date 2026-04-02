@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Strategy - Quick Links (Focused Approach)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .focus-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .focus-banner h2 {
+            margin-bottom: 10px;
+        }
+        .platform-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .platform-primary {
+            border-left: 5px solid #28a745;
+        }
+        .platform-minimal {
+            border-left: 5px solid #6c757d;
+        }
+        .platform-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.6em;
+            font-weight: bold;
+        }
+        .status-primary { background: #28a745; color: white; }
+        .status-minimal { background: #6c757d; color: white; }
+        .link-group {
+            margin-bottom: 20px;
+        }
+        .link-group-title {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .link-item {
+            display: block;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .link-item:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        .link-item::before {
+            content: "🔗";
+            font-size: 1.2em;
+        }
+        .account-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        .account-link:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateX(5px) scale(1.02);
+        }
+        .mentor-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .mentor-list li {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .mentor-list li:last-child {
+            border-bottom: none;
+        }
+        .quick-actions {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .quick-actions h2 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+        .action-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            color: #155724;
+        }
+        .minimal-note {
+            background: #f8f9fa;
+            border-left: 3px solid #6c757d;
+            padding: 10px;
+            margin-top: 10px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Platform Strategy - Quick Links</h1>
+        <p class="subtitle">Focused Approach: X & LinkedIn Primary, Others Minimal</p>
+
+        <div class="focus-banner">
+            <h2>🎯 FOCUS: X & LinkedIn (90% of time)</h2>
+            <p>Threads, Substack, Instagram are just for repurposing (10% of time)</p>
+        </div>
+
+        <!-- X (Twitter) Section - PRIMARY -->
+        <div class="platform-section platform-primary">
+            <div class="platform-title">
+                X (Twitter) - PRIMARY #1
+                <span class="status-badge status-primary">🔴 PRIMARY</span>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Your Account</div>
+                <a href="https://x.com/theandreilucian" target="_blank" class="link-item account-link">
+                    @theandreilucian - Your X Profile
+                </a>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Mentors & Resources</div>
+                <ul class="mentor-list">
+                    <li>📚 Stijn Noorman - The X Growth System (course)</li>
+                    <li>📚 Dan Koe - 2HR Writer & Mental Monetization</li>
+                    <li>📚 Dakota Robertson - Growth Ghost</li>
+                    <li>📚 Parker Worth - The Story System (Threads Guide)</li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Strategy</div>
+                <p style="color: #666; padding: 10px;">✅ Maintain current strategy (3 tweets/day, 100 comments, 20 DMs) - It's working!</p>
+            </div>
+        </div>
+
+        <!-- LinkedIn Section - PRIMARY -->
+        <div class="platform-section platform-primary">
+            <div class="platform-title">
+                LinkedIn - PRIMARY #2
+                <span class="status-badge status-primary">🔴 PRIMARY</span>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Your Account</div>
+                <a href="https://www.linkedin.com/in/andrei-lucian-0498901b8/" target="_blank" class="link-item account-link">
+                    Andrei Lucian - Your LinkedIn Profile
+                </a>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Mentors & Resources</div>
+                <ul class="mentor-list">
+                    <li>📚 Matt Barker – 30 Days of LinkedIn Content</li>
+                    <li>📚 Justin Welsh - The Content Operating System</li>
+                    <li>📚 Dan Koe - 2HR Writer & Mental Monetization</li>
+                    <li>📚 Lara Acosta (find & buy the course)</li>
+                    <li>📚 Dakota Robertson - Growth Ghost</li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Priority Actions</div>
+                <p style="color: #666; padding: 10px;">✅ Post 3-5 times/week (optimal), build engagement list (100+), join groups, use top frameworks</p>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Top Creators to Study</div>
+                <ul class="mentor-list">
+                    <li>🔗 <a href="https://www.linkedin.com/in/mattgray1/" target="_blank" style="color: #667eea;">Matt Gray</a> - LinkedIn growth expert</li>
+                    <li>🔗 <a href="https://www.linkedin.com/in/justinwelsh/" target="_blank" style="color: #667eea;">Justin Welsh</a> - Content Operating System</li>
+                    <li>🔗 <a href="https://www.linkedin.com/in/laraacostar/" target="_blank" style="color: #667eea;">Lara Acosta</a> - LinkedIn strategies</li>
+                    <li>🔗 <a href="https://www.linkedin.com/in/dickiebush/" target="_blank" style="color: #667eea;">Dickie Bush</a> - Writing frameworks</li>
+                    <li>🔗 <a href="https://www.linkedin.com/in/thedankoe/" target="_blank" style="color: #667eea;">Dan Koe</a> - 2HR Writer</li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Frameworks & Templates</div>
+                <a href="file:///D:/Website/LINKEDIN_FRAMEWORKS.md" target="_blank" class="link-item">
+                    LINKEDIN_FRAMEWORKS.md - Top Frameworks & Templates
+                </a>
+            </div>
+        </div>
+
+        <!-- Threads Section - MINIMAL -->
+        <div class="platform-section platform-minimal">
+            <div class="platform-title">
+                Threads App - MINIMAL
+                <span class="status-badge status-minimal">🟢 MINIMAL</span>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Your Account</div>
+                <a href="https://www.threads.com/@theandreiluciann" target="_blank" class="link-item account-link">
+                    @theandreiluciann - Your Threads Profile
+                </a>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Resources</div>
+                <a href="https://www.notion.so/Threads-Growth-Blueprint-29b0d83543b6811eb1d4f559172bcb74" target="_blank" class="link-item">
+                    Threads Growth Blueprint (Notion)
+                </a>
+            </div>
+            <div class="minimal-note">
+                ⏱️ Strategy: POST ONLY (1-2 posts/day, 5 min). ❌ NO engagement (no comments, no DMs, no likes).
+            </div>
+        </div>
+
+        <!-- Substack Section - MINIMAL -->
+        <div class="platform-section platform-minimal">
+            <div class="platform-title">
+                Substack - MINIMAL
+                <span class="status-badge status-minimal">🟢 MINIMAL</span>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Your Account</div>
+                <p style="color: #666; padding: 10px;">Add your Substack profile link here</p>
+            </div>
+            <div class="minimal-note">
+                ⏱️ Strategy: POST ONLY (1-2 posts/day, 5 min). ❌ NO engagement (no comments, no DMs, no likes).
+            </div>
+        </div>
+
+        <!-- Instagram Section - MINIMAL -->
+        <div class="platform-section platform-minimal">
+            <div class="platform-title">
+                Instagram - MINIMAL
+                <span class="status-badge status-minimal">🟢 MINIMAL</span>
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Your Account</div>
+                <p style="color: #666; padding: 10px;">Add your Instagram profile link here</p>
+            </div>
+            <div class="minimal-note">
+                ⏱️ Strategy: POST ONLY (2-3 posts/week, 2 min). ❌ NO engagement (no comments, no DMs, no likes).
+            </div>
+        </div>
+
+        <!-- Strategy Documents -->
+        <div class="platform-section">
+            <div class="platform-title">
+                📄 Strategy Documents
+            </div>
+            <div class="link-group">
+                <div class="link-group-title">Local Files (Open in Edge)</div>
+                <a href="file:///D:/Website/README_STRATEGY.md" target="_blank" class="link-item">
+                    README_STRATEGY.md - Overview & Quick Start
+                </a>
+                <a href="file:///D:/Website/PLATFORM_STRATEGY.md" target="_blank" class="link-item">
+                    PLATFORM_STRATEGY.md - Detailed Strategy
+                </a>
+                <a href="file:///D:/Website/QUICK_REFERENCE_TABLES.md" target="_blank" class="link-item">
+                    QUICK_REFERENCE_TABLES.md - Quick Lookup Tables
+                </a>
+                <a href="file:///D:/Website/VISUAL_STRATEGY_DIAGRAM.md" target="_blank" class="link-item">
+                    VISUAL_STRATEGY_DIAGRAM.md - Visual Diagrams
+                </a>
+                <a href="file:///D:/Website/DAILY_CHECKLIST.md" target="_blank" class="link-item">
+                    DAILY_CHECKLIST.md - Daily Action Checklist
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2>⚡ Priority Actions (Start Today)</h2>
+            <div class="action-item">
+                <strong>X (Twitter):</strong> ✅ Maintain current strategy (it's working!) - 45 min/day
+            </div>
+            <div class="action-item">
+                <strong>LinkedIn:</strong> ✅ Post 3-5 times/week (optimal), build engagement list (100+), join groups, use frameworks - 45 min/day
+            </div>
+            <div class="action-item">
+                <strong>Threads:</strong> ✅ POST ONLY (1-2 posts/day) - 5 min/day - ❌ NO engagement
+            </div>
+            <div class="action-item">
+                <strong>Substack:</strong> ✅ POST ONLY (1-2 posts/day) - 5 min/day - ❌ NO engagement
+            </div>
+            <div class="action-item">
+                <strong>Instagram:</strong> ✅ POST ONLY (2-3 posts/week) - 2 min every 2-3 days - ❌ NO engagement
+            </div>
+            <div class="action-item" style="margin-top: 15px; font-weight: bold; background: #fff3cd; color: #856404;">
+                <strong>Total Time:</strong> ~1.5-2 hours/day (90% on X & LinkedIn)
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; color: #666; padding: 20px;">
+            <p>💡 <strong>Tip:</strong> Bookmark this page in Microsoft Edge for quick access!</p>
+            <p style="margin-top: 10px;">Press <kbd>Ctrl + D</kbd> to bookmark</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">
+                Remember: Focus on X & LinkedIn (engagement only here). Post content only on others. No guilt! 🚀
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add click tracking (optional)
+        document.querySelectorAll('.link-item').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Clicked:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

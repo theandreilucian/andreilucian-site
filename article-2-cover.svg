@@ -1,0 +1,117 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="texture2" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#000" opacity="0.1"/>
+      <circle cx="30" cy="25" r="0.5" fill="#000" opacity="0.1"/>
+      <circle cx="50" cy="15" r="1.5" fill="#000" opacity="0.1"/>
+      <circle cx="70" cy="40" r="0.8" fill="#000" opacity="0.1"/>
+      <circle cx="90" cy="20" r="1" fill="#000" opacity="0.1"/>
+    </pattern>
+    <radialGradient id="shadowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.3"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#000000"/>
+  
+  <!-- Swirling background textures showing internal conflict -->
+  <g opacity="0.4">
+    <path d="M 960 540 Q 800 400, 600 500 T 400 600 T 200 700" stroke="#333" fill="none" stroke-width="3"/>
+    <path d="M 960 540 Q 1120 400, 1320 500 T 1520 600 T 1720 700" stroke="#333" fill="none" stroke-width="3"/>
+    <path d="M 960 540 Q 700 600, 500 700 T 300 800 T 100 900" stroke="#333" fill="none" stroke-width="3"/>
+    <path d="M 960 540 Q 1220 600, 1420 700 T 1620 800 T 1820 900" stroke="#333" fill="none" stroke-width="3"/>
+    
+    <!-- Conflicting swirls -->
+    <path d="M 700 400 Q 800 500, 900 400 Q 1000 300, 1100 400" stroke="#444" fill="none" stroke-width="2"/>
+    <path d="M 1100 400 Q 1000 500, 900 400 Q 800 300, 700 400" stroke="#444" fill="none" stroke-width="2"/>
+  </g>
+  
+  <!-- Person's shadow/reflection (the self-sabotage) -->
+  <g transform="translate(960, 700)" opacity="0.7">
+    <!-- Shadow figure (darker, more distorted) -->
+    <ellipse cx="0" cy="0" rx="35" ry="100" fill="#1a1a1a" transform="rotate(5)"/>
+    <circle cx="0" cy="-80" r="25" fill="#1a1a1a"/>
+    
+    <!-- Shadow arms (pulling down) -->
+    <ellipse cx="-40" cy="-20" rx="10" ry="60" fill="#1a1a1a" transform="rotate(30)"/>
+    <ellipse cx="40" cy="-20" rx="10" ry="60" fill="#1a1a1a" transform="rotate(-30)"/>
+    
+    <!-- Distorted features -->
+    <ellipse cx="-15" cy="-75" rx="8" ry="12" fill="#000"/>
+    <ellipse cx="15" cy="-75" rx="8" ry="12" fill="#000"/>
+    <path d="M -20 -60 Q 0 -50, 20 -60" stroke="#000" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Person breaking through (the true self emerging) -->
+  <g transform="translate(960, 400)">
+    <!-- Fragments falling away -->
+    <g opacity="0.8">
+      <!-- Fragment 1 (top left) -->
+      <path d="M -100 -150 L -80 -130 L -90 -120 L -110 -140 Z" fill="#333" stroke="#555" stroke-width="2"/>
+      <path d="M -100 -150 L -80 -130" stroke="#666" stroke-width="1"/>
+      
+      <!-- Fragment 2 (top right) -->
+      <path d="M 100 -150 L 120 -130 L 110 -120 L 90 -140 Z" fill="#333" stroke="#555" stroke-width="2"/>
+      <path d="M 100 -150 L 120 -130" stroke="#666" stroke-width="1"/>
+      
+      <!-- Fragment 3 (left side) -->
+      <path d="M -150 -50 L -130 -30 L -120 -40 L -140 -60 Z" fill="#333" stroke="#555" stroke-width="2"/>
+      
+      <!-- Fragment 4 (right side) -->
+      <path d="M 150 -50 L 130 -30 L 120 -40 L 140 -60 Z" fill="#333" stroke="#555" stroke-width="2"/>
+      
+      <!-- Fragment 5 (bottom left) -->
+      <path d="M -120 50 L -100 70 L -90 60 L -110 40 Z" fill="#333" stroke="#555" stroke-width="2"/>
+      
+      <!-- Fragment 6 (bottom right) -->
+      <path d="M 120 50 L 100 70 L 90 60 L 110 40 Z" fill="#333" stroke="#555" stroke-width="2"/>
+    </g>
+    
+    <!-- Person emerging (lighter, more defined) -->
+    <!-- Head emerging -->
+    <circle cx="0" cy="-80" r="30" fill="#ffffff" stroke="#000" stroke-width="3"/>
+    
+    <!-- Face features (simple, emerging) -->
+    <ellipse cx="-12" cy="-85" rx="4" ry="6" fill="#000"/>
+    <ellipse cx="12" cy="-85" rx="4" ry="6" fill="#000"/>
+    <path d="M -15 -70 Q 0 -65, 15 -70" stroke="#000" stroke-width="2" fill="none"/>
+    
+    <!-- Upper body emerging -->
+    <ellipse cx="0" cy="-20" rx="40" ry="80" fill="#ffffff" stroke="#000" stroke-width="3"/>
+    
+    <!-- Arms breaking through -->
+    <ellipse cx="-50" cy="-10" rx="12" ry="50" fill="#ffffff" stroke="#000" stroke-width="2" transform="rotate(-20)"/>
+    <ellipse cx="50" cy="-10" rx="12" ry="50" fill="#ffffff" stroke="#000" stroke-width="2" transform="rotate(20)"/>
+    
+    <!-- Hands breaking free -->
+    <ellipse cx="-70" cy="20" rx="8" ry="20" fill="#ffffff" stroke="#000" stroke-width="2" transform="rotate(-30)"/>
+    <ellipse cx="70" cy="20" rx="8" ry="20" fill="#ffffff" stroke="#000" stroke-width="2" transform="rotate(30)"/>
+    
+    <!-- Cracks in the mask/wall -->
+    <g stroke="#000" stroke-width="2" fill="none">
+      <path d="M -100 -150 L -120 -100"/>
+      <path d="M -90 -140 L -110 -90"/>
+      <path d="M 100 -150 L 120 -100"/>
+      <path d="M 90 -140 L 110 -90"/>
+      <path d="M -150 -50 L -140 0"/>
+      <path d="M 150 -50 L 140 0"/>
+    </g>
+  </g>
+  
+  <!-- Light breaking through from behind -->
+  <g opacity="0.3">
+    <circle cx="960" cy="400" r="200" fill="url(#shadowGradient)"/>
+    <circle cx="960" cy="400" r="150" fill="#ffffff" opacity="0.1"/>
+  </g>
+  
+  <!-- Additional swirling textures showing transformation -->
+  <g opacity="0.3">
+    <path d="M 600 300 Q 800 200, 1000 300 Q 1200 400, 1320 500" stroke="#555" fill="none" stroke-width="2"/>
+    <path d="M 600 600 Q 800 500, 1000 600 Q 1200 700, 1320 800" stroke="#555" fill="none" stroke-width="2"/>
+  </g>
+  
+  <!-- Text overlay area (for title if needed) -->
+  <rect x="0" y="0" width="1920" height="300" fill="url(#texture2)" opacity="0.1"/>
+</svg>

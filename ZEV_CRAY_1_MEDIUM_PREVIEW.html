@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zev — Cray: 1 Medium Thread | X Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 24px; }
+        .container { max-width: 720px; margin: 0 auto; }
+        .thread-block { background: #1e293b; border-radius: 16px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+        .thread-block h2 { font-size: 1.25em; margin-bottom: 8px; color: #38bdf8; }
+        .thread-block .sub { font-size: 0.85em; color: #94a3b8; margin-bottom: 20px; }
+        .tweet { background: #0f172a; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; border-left: 3px solid #334155; }
+        .tweet.img-placeholder { border-left-color: #22c55e; background: linear-gradient(135deg, #0f172a 0%, #0f1f14 100%); }
+        .tweet-num { font-size: 0.8em; color: #64748b; margin-bottom: 6px; }
+        .tweet-body { white-space: pre-wrap; line-height: 1.55; font-size: 15px; color: #cbd5e1; }
+        .img-label { color: #86efac; font-size: 0.9em; margin-bottom: 6px; }
+        .btn { display: inline-block; padding: 6px 12px; margin-top: 8px; background: #334155; border: 1px solid #475569; border-radius: 6px; color: #e2e8f0; font-size: 12px; cursor: pointer; }
+        .btn:hover { background: #475569; }
+        .btn.copy { background: #1e40af; border-color: #2563eb; }
+        .header { text-align: center; padding: 24px 20px; background: #1e293b; border-radius: 12px; margin-bottom: 28px; border: 1px solid #334155; }
+        .header h1 { font-size: 1.4em; margin-bottom: 8px; }
+        .header p { color: #94a3b8; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cray EX — 1 Medium Thread</h1>
+            <p>EX154n · EX235a · EX235n · EX254n · EX255a · EX425. Copy each tweet, upload images where marked.</p>
+        </div>
+        <div class="thread-block">
+            <h2>Cray EX: Six Blades</h2>
+            <p class="sub">12 tweets · 3 image slots</p>
+            <div class="tweet"><div class="tweet-num">1/</div><div class="tweet-body">Cray EX: six blades that cover B200, GH200, AMD Trento/Milan, MI250X, MI300A, and CPU-only. EX154n, EX235a, EX235n, EX254n, EX255a, EX425. Here's the map.</div><button class="btn copy" onclick="copyT(1)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">2/</div><div class="tweet-body">EX154n — the B200 blade. One GB200 NVL4 board per blade: two Grace CPUs, four B200 GPUs. 100% liquid cooled, 1U chassis. 240 GB memory per Grace; 192 GB HBM3e per B200. Up to four Slingshot injection ports per blade; one local NVMe SSD per blade. Accelerated compute for ML and sovereign AI.</div><button class="btn copy" onclick="copyT(2)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">3/</div><div class="img-label">[Image: Cray EX154n — internal. Upload your photo.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(3)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">4/</div><div class="tweet-body">Catch: a Cray EX rack tops out at 224 GPUs (56 blades), not 256 — power or cooling limit. EX154n is expected to ship by end of 2025.</div><button class="btn copy" onclick="copyT(4)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">5/</div><div class="tweet-body">EX235a — Trento + MI250X. Two nodes per blade. Per node: 1× AMD Trento CPU, up to 512 GB DDR4, up to 2× NVMe SSDs, 4× AMD MI250X GPUs, up to 4× Slingshot-11 NICs. Trento has Infinity Fabric to the MI250X GPUs: HBM is cache coherent with CPU memory. Slingshot-11 NICs are on the GPUs' PCIe ports, not the CPU's.</div><button class="btn copy" onclick="copyT(5)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">6/</div><div class="tweet-body">EX235n — Milan + A100. Two nodes per blade. Per node: 1× AMD Milan CPU, up to 512 GB DDR4, no node-local storage, 4× NVIDIA A100 GPUs on HGX baseboard, up to 4× Slingshot-11 NICs.</div><button class="btn copy" onclick="copyT(6)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">7/</div><div class="tweet-body">EX254n — GH200 blade. Two nodes per blade. Per node: 4× GH200 superchips (1 Grace 72c + 1 Hopper H100 each). 128 GB LPDDR5X (HPE spec; Grace supports up to 480 GB). 4× Slingshot-11. No NVMe in the wild; HPE docs mention M.2 blade kit. Each GH200 = one NUMA domain. Used in Alps, Isambard-AI, KISTI-6.</div><button class="btn copy" onclick="copyT(7)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">8/</div><div class="img-label">[Image: Cray EX254n or liquid-cooled blade. Upload your photo.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(8)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">9/</div><div class="tweet-body">EX255a — MI300A APU blade. 2× 4-socket node cards (8 APUs per blade). 1× NVMe M.2 slot per node card (2 per blade). 4×–8× Slingshot-11 per node (8×–16× per blade). Rabbit chassis uses spare Slingshot ports for NVMe. High density of 200G Slingshot in the era of 400G NDR InfiniBand.</div><button class="btn copy" onclick="copyT(9)">Copy</button></div>
+            <div class="tweet img-placeholder"><div class="tweet-num">10/</div><div class="img-label">[Image: Cray EX255a — blade internals. Upload your photo.]</div><div class="tweet-body">Attach your image with this tweet.</div><button class="btn copy" onclick="copyT(10)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">11/</div><div class="tweet-body">EX425 — CPU-only. Two nodes per blade. Per node: 2× AMD Rome or AMD Milan CPUs, up to 1024 GB DDR4 (8× DIMMs per socket, up to 64 GB/DIMM), no node-local storage, no GPUs, up to 4× Slingshot-11 NICs. The workhorse when the workload doesn't need accelerators.</div><button class="btn copy" onclick="copyT(11)">Copy</button></div>
+            <div class="tweet"><div class="tweet-num">12/</div><div class="tweet-body">Takeaway: EX154n for B200 and sovereign AI. EX235a for Trento + MI250X and coherent memory. EX235n for Milan + A100. EX254n for GH200 and Alps/Isambard. EX255a for MI300A APU density. EX425 for CPU-only. Cray EX — one platform, six blades, every workload.</div><button class="btn copy" onclick="copyT(12)">Copy</button></div>
+        </div>
+    </div>
+    <script>
+        const tweets = {
+            1: "1/\n\nCray EX: six blades that cover B200, GH200, AMD Trento/Milan, MI250X, MI300A, and CPU-only. EX154n, EX235a, EX235n, EX254n, EX255a, EX425. Here's the map.",
+            2: "2/\n\nEX154n — the B200 blade. One GB200 NVL4 board per blade: two Grace CPUs, four B200 GPUs. 100% liquid cooled, 1U chassis. 240 GB memory per Grace; 192 GB HBM3e per B200. Up to four Slingshot injection ports per blade; one local NVMe SSD per blade. Accelerated compute for ML and sovereign AI.",
+            3: "3/\n\n[Image: Cray EX154n — internal. Upload your photo here when you post.]",
+            4: "4/\n\nCatch: a Cray EX rack tops out at 224 GPUs (56 blades), not 256 — power or cooling limit. EX154n is expected to ship by end of 2025.",
+            5: "5/\n\nEX235a — Trento + MI250X. Two nodes per blade. Per node: 1× AMD Trento CPU, up to 512 GB DDR4, up to 2× NVMe SSDs, 4× AMD MI250X GPUs, up to 4× Slingshot-11 NICs. Trento has Infinity Fabric to the MI250X GPUs: HBM is cache coherent with CPU memory. Slingshot-11 NICs are on the GPUs' PCIe ports, not the CPU's.",
+            6: "6/\n\nEX235n — Milan + A100. Two nodes per blade. Per node: 1× AMD Milan CPU, up to 512 GB DDR4, no node-local storage, 4× NVIDIA A100 GPUs on HGX baseboard, up to 4× Slingshot-11 NICs.",
+            7: "7/\n\nEX254n — GH200 blade. Two nodes per blade. Per node: 4× GH200 superchips (1 Grace 72c + 1 Hopper H100 each). 128 GB LPDDR5X (HPE spec; Grace supports up to 480 GB). 4× Slingshot-11. No NVMe in the wild; HPE docs mention M.2 blade kit. Each GH200 = one NUMA domain. Used in Alps, Isambard-AI, KISTI-6.",
+            8: "8/\n\n[Image: Cray EX254n or liquid-cooled blade. Upload your photo here when you post.]",
+            9: "9/\n\nEX255a — MI300A APU blade. 2× 4-socket node cards (8 APUs per blade). 1× NVMe M.2 slot per node card (2 per blade). 4×–8× Slingshot-11 per node (8×–16× per blade). Rabbit chassis uses spare Slingshot ports for NVMe. High density of 200G Slingshot in the era of 400G NDR InfiniBand.",
+            10: "10/\n\n[Image: Cray EX255a — blade internals. Upload your photo here when you post.]",
+            11: "11/\n\nEX425 — CPU-only. Two nodes per blade. Per node: 2× AMD Rome or AMD Milan CPUs, up to 1024 GB DDR4 (8× DIMMs per socket, up to 64 GB/DIMM), no node-local storage, no GPUs, up to 4× Slingshot-11 NICs. The workhorse when the workload doesn't need accelerators.",
+            12: "12/\n\nTakeaway: EX154n for B200 and sovereign AI. EX235a for Trento + MI250X and coherent memory. EX235n for Milan + A100. EX254n for GH200 and Alps/Isambard. EX255a for MI300A APU density. EX425 for CPU-only. Cray EX — one platform, six blades, every workload."
+        };
+        function copyT(n) { navigator.clipboard.writeText(tweets[n]).then(() => alert('Tweet ' + n + ' copied.')); }
+    </script>
+</body>
+</html>

@@ -211,3 +211,6 @@ Helping founders master operations and scale to 8-9 figures with discipline, sys
 
 
 
+
+
+
