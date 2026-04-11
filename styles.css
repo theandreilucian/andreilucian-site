@@ -1879,9 +1879,98 @@ img {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     max-width: 1000px;
-    margin: 40px auto 80px;
+    margin: 40px auto 0;
     padding: 0 40px;
     justify-items: center;
+}
+
+.resources-micro-rubric-gap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: clamp(28px, 4vw, 48px) 40px 0;
+    border-top: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+@media (max-width: 640px) {
+    .resources-micro-rubric-gap {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resources-micro-rubric-gap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.resources-section .section-header-micro {
+    background-color: #222222;
+    padding: clamp(28px, 4vw, 36px) 40px;
+    margin: 0 0 clamp(20px, 3vw, 28px);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .resources-section .section-header-micro {
+        padding: 26px 24px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resources-section .section-header-micro {
+        padding: 24px 16px;
+        margin-bottom: 18px;
+    }
+}
+
+.resources-section .section-title-micro {
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-weight: 800;
+    color: var(--text-white);
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resources-section .section-title-micro-sub {
+    font-size: clamp(16px, 2.6vw, 22px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.45;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resource-grid-micro {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+    gap: 0;
+}
+
+@media (max-width: 640px) {
+    .resource-grid-micro {
+        padding: 0 20px;
+        margin-bottom: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resource-grid-micro {
+        padding: 0 16px;
+        margin-bottom: 56px;
+    }
 }
 
 @media (max-width: 968px) {
@@ -1897,7 +1986,7 @@ img {
         grid-template-columns: 1fr;
         gap: 24px;
         padding: 0 16px;
-        margin: 30px auto 60px;
+        margin: 30px auto 0;
     }
 }
 
@@ -1906,7 +1995,20 @@ img {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 12px;
-        margin: 24px auto 50px;
+        margin: 24px auto 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .resource-grid.resource-grid-micro {
+        margin: 0 auto 64px;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .resource-grid.resource-grid-micro {
+        margin: 0 auto 56px;
     }
 }
 
@@ -1938,25 +2040,42 @@ img {
     }
 }
 
-/* Center single product in second row (4th card) - below X Simplified (middle column) */
-@media (min-width: 969px) {
-    .resource-card-center {
-        grid-column: 1 / -1;
-        justify-self: center;
-        max-width: 500px;
-        width: 100%;
-    }
-}
-
-@media (max-width: 968px) {
-    .resource-card-center {
-        max-width: 100%;
-        width: 100%;
-    }
-}
-
 .resource-card-hidden {
     display: none;
+}
+
+/* Entire card is one link (e.g. Gumroad); keeps title + body + CTA in same hit target */
+a.resource-card--full-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.resource-card--full-link h3 {
+    color: #111111;
+}
+
+a.resource-card--full-link p {
+    color: #4a4a4a;
+}
+
+a.resource-card--full-link:focus-visible {
+    outline: 2px solid #c49a4b;
+    outline-offset: 3px;
+}
+
+a.resource-card--full-link:hover {
+    box-shadow: 0 22px 48px rgba(18, 18, 18, 0.12);
+    border-color: #dcd4c4;
+}
+
+/* WIP products: CTA shows “in building” + amber dashed outline */
+.resource-card--soon .resource-button--wip {
+    border: 1px dashed rgba(245, 158, 11, 0.7);
+    box-shadow:
+        0 6px 20px rgba(45, 55, 72, 0.35),
+        inset 0 0 0 1px rgba(245, 158, 11, 0.12);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
 }
 
 .resource-image-link {
@@ -4366,21 +4485,6 @@ body.article-page .footer-text {
 
     .article-nav-link {
         font-size: 14px;
-    }
-}
-
-@media (max-width: 968px) {
-    .resource-card-center {
-        grid-column: span 2;
-        justify-self: center;
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 640px) {
-    .resource-card-center {
-        grid-column: 1;
-        max-width: 100%;
     }
 }
 

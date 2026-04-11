@@ -3,240 +3,635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Personal Branding System - Andrei Lucian</title>
+    <title>The Micro-Brand Playbook — Andrei Lucian</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        .product-landing {
-            min-height: 100vh;
-            background: #000000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
+        :root {
+            --lp-black: #000000;
+            --lp-white: #ffffff;
+            --lp-paper: #ffffff;
+            --lp-gold: #c9a962;
+            --lp-gold-dim: #a68b4a;
+            --lp-cream: #fdf9f0;
+            --lp-peach: #e8b86d;
+            --lp-peach-hover: #d9a85a;
+            --lp-muted: rgba(255, 255, 255, 0.78);
+            --lp-card-dark: #1a1a1a;
+            --lp-text-dark: #1a1a1a;
+            --lp-max: 680px;
+            --lp-max-wide: 760px;
         }
 
-        .product-landing::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            background: var(--lp-black);
+            color: var(--lp-white);
+            line-height: 1.6;
         }
 
-        .product-container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-cover-wrapper {
-            margin-bottom: 60px;
-            perspective: 1000px;
-        }
-
-        .product-cover {
-            max-width: 280px;
-            width: 100%;
-            margin: 0 auto;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-            border-radius: 8px;
-            transform: rotateY(-5deg) rotateX(2deg);
-            transition: transform 0.3s ease;
-        }
-
-        .product-cover:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-        }
-
-        .product-cover img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-        }
-
-        .product-title {
-            font-size: clamp(40px, 6vw, 64px);
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .product-description {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 40px;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .product-form-wrapper {
-            max-width: 500px;
-            margin: 0 auto 24px;
-        }
-
-        .product-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .product-email-input {
-            width: 100%;
-            padding: 18px 24px;
-            font-size: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #FFFFFF;
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .product-email-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .product-email-input:focus {
-            outline: none;
-            border-color: #c49a4b;
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .product-submit-btn {
-            padding: 18px 32px;
-            font-size: 18px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 6px 20px rgba(45, 55, 72, 0.3);
-        }
-
-        .product-submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(45, 55, 72, 0.4);
-            background: linear-gradient(135deg, #1a202c 0%, #0f1419 100%);
-        }
-
-        .product-privacy {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 16px;
-        }
-
-        .product-back-link {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            color: rgba(255, 255, 255, 0.7);
+        .lp-back {
+            position: fixed;
+            top: 22px;
+            left: 22px;
+            z-index: 50;
+            color: rgba(255, 255, 255, 0.75);
             text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .lp-back:hover { color: #fff; }
+
+        .lp-kicker {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--lp-gold);
+            margin: 0 0 18px;
+            text-align: center;
+        }
+
+        .lp-band {
+            padding: clamp(48px, 7vw, 88px) 24px;
+        }
+        .lp-band--dark {
+            background: var(--lp-black);
+            text-align: center;
+        }
+        .lp-band--dark .lp-headline {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin: 0 auto 16px;
+            max-width: 720px;
+        }
+        .lp-band--dark .lp-sub {
+            font-size: clamp(16px, 2.2vw, 19px);
+            color: var(--lp-muted);
+            margin: 0 auto;
+            max-width: 520px;
+            font-weight: 400;
+        }
+
+        .lp-inner {
+            max-width: var(--lp-max-wide);
+            margin: 0 auto;
+        }
+
+        /* Centered white column on black frame */
+        .lp-paper-wrap {
+            background: var(--lp-black);
+            padding: 0 20px 56px;
+        }
+        .lp-paper {
+            background: var(--lp-paper);
+            color: var(--lp-text-dark);
+            max-width: var(--lp-max);
+            margin: 0 auto;
+            padding: clamp(36px, 5vw, 56px) clamp(24px, 4vw, 44px) clamp(44px, 6vw, 64px);
+        }
+        .lp-paper .lp-section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .lp-paper h2 {
+            font-size: clamp(22px, 3.2vw, 28px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 40px 0 16px;
+        }
+        .lp-paper h2:first-child { margin-top: 0; }
+        .lp-paper p {
+            margin: 0 0 1rem;
+            font-size: 17px;
+            line-height: 1.65;
+            color: #2d2d2d;
+        }
+        .lp-paper p.lead {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .lp-paper ul {
+            margin: 1.25rem 0 1.5rem;
+            padding-left: 1.2rem;
+        }
+        .lp-paper li {
+            margin-bottom: 0.65rem;
+            font-size: 17px;
+            line-height: 1.55;
+            color: #2d2d2d;
+        }
+        .lp-paper li::marker { color: var(--lp-gold-dim); }
+
+        .lp-callout {
+            background: var(--lp-cream);
+            border: 1px solid rgba(201, 169, 98, 0.45);
+            border-radius: 2px;
+            padding: 20px 22px;
+            margin: 28px 0;
+        }
+        .lp-callout-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--lp-gold-dim);
+            margin-bottom: 10px;
+        }
+        .lp-callout p {
+            margin: 0;
+            font-style: italic;
+            font-family: Lora, Georgia, serif;
+            color: #1a1a1a;
+        }
+
+        /* Black intro strip with avatar — Dan-style */
+        .lp-author-band {
+            background: var(--lp-black);
+            padding: clamp(40px, 6vw, 72px) 24px;
+        }
+        .lp-author-inner {
+            max-width: var(--lp-max);
+            margin: 0 auto;
             display: flex;
+            align-items: flex-start;
+            gap: clamp(20px, 4vw, 32px);
+            flex-wrap: wrap;
+        }
+        .lp-author-photo {
+            flex-shrink: 0;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--lp-gold);
+        }
+        .lp-author-text h2 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .lp-author-text .role {
+            font-size: 15px;
+            color: var(--lp-muted);
+            margin-bottom: 12px;
+        }
+        .lp-author-text p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .lp-testimonial {
+            background: var(--lp-cream);
+            padding: clamp(48px, 8vw, 80px) 24px;
+            text-align: center;
+        }
+        .lp-testimonial img.avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .lp-testimonial blockquote {
+            margin: 0 auto 20px;
+            max-width: 560px;
+            font-family: Lora, Georgia, serif;
+            font-size: clamp(17px, 2vw, 21px);
+            font-style: italic;
+            color: #1a1a1a;
+            line-height: 1.65;
+        }
+        .lp-testimonial cite {
+            font-style: normal;
+            display: block;
+        }
+        .lp-testimonial .name {
+            font-weight: 800;
+            font-size: 15px;
+            color: #1a1a1a;
+        }
+        .lp-testimonial .title {
+            font-size: 13px;
+            color: var(--lp-gold-dim);
+            margin-top: 4px;
+        }
+
+        .lp-cta-row {
+            text-align: center;
+            padding: 36px 20px 48px;
+            background: var(--lp-black);
+        }
+        .lp-btn-peach {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-            z-index: 2;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--lp-black);
+            background: var(--lp-peach);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            font-family: inherit;
+        }
+        .lp-btn-peach:hover {
+            background: var(--lp-peach-hover);
+            transform: translateY(-1px);
+        }
+        .lp-btn-peach--light-text {
+            color: #fff;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            font-size: 16px;
         }
 
-        .product-back-link:hover {
-            color: #FFFFFF;
+        /* Guarantee — full-width cream strip (reference: #FFFBF2, italic serif, centered) */
+        .lp-guarantee-band {
+            background: #FFFBF2;
+            padding: clamp(44px, 7vw, 80px) clamp(22px, 4vw, 40px);
+        }
+        .lp-guarantee-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .lp-guarantee-kicker {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--lp-gold-dim);
+            margin: 0 0 clamp(14px, 2vw, 20px);
+        }
+        .lp-guarantee-text {
+            margin: 0;
+            font-family: Lora, Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(17px, 2.2vw, 20px);
+            line-height: 1.65;
+            color: #2c3138;
         }
 
-        @media (max-width: 768px) {
-            .product-landing {
-                padding: 40px 20px;
-            }
+        /* Offer card */
+        .lp-offer-wrap {
+            background: var(--lp-black);
+            padding: 32px 20px 72px;
+        }
+        .lp-offer-card {
+            max-width: 420px;
+            margin: 0 auto;
+            background: var(--lp-white);
+            color: #1a1a1a;
+            border: 2px solid var(--lp-gold);
+            border-radius: 2px;
+            padding: 28px 24px 24px;
+            text-align: center;
+        }
+        .lp-offer-card .offer-kicker {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--lp-gold-dim);
+            margin-bottom: 6px;
+        }
+        .lp-offer-card .offer-sub {
+            font-size: 15px;
+            font-weight: 600;
+            color: #3d3d3d;
+            margin: 0 0 14px;
+            line-height: 1.35;
+        }
+        .lp-offer-card .offer-cover {
+            max-width: 200px;
+            margin: 16px auto 20px;
+            border-radius: 4px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .lp-offer-card .offer-price {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 8px 0 12px;
+        }
+        .lp-offer-card .offer-tagline {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.45;
+            margin-bottom: 20px;
+        }
+        .lp-offer-list {
+            text-align: left;
+            margin: 0 0 24px;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid #e8e8e8;
+        }
+        .lp-offer-list li {
+            padding: 14px 0 14px 32px;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 14px;
+            line-height: 1.45;
+            position: relative;
+        }
+        .lp-offer-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 4px;
+            color: var(--lp-gold-dim);
+            font-weight: 700;
+        }
 
-            .product-cover {
-                max-width: 220px;
-            }
+        /* FAQ */
+        .lp-faq {
+            background: var(--lp-black);
+            padding: clamp(40px, 6vw, 80px) 24px 80px;
+        }
+        .lp-faq .lp-kicker { margin-bottom: 12px; }
+        .lp-faq h2 {
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 800;
+            text-align: center;
+            margin: 0 0 10px;
+        }
+        .lp-faq .lp-sub {
+            text-align: center;
+            color: var(--lp-muted);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .lp-faq-item {
+            max-width: var(--lp-max);
+            margin: 0 auto 28px;
+        }
+        .lp-faq-item h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            color: #fff;
+        }
+        .lp-faq-item p {
+            margin: 0;
+            font-size: 16px;
+            color: var(--lp-muted);
+            line-height: 1.65;
+        }
 
-            .product-back-link {
-                top: 20px;
-                left: 20px;
-            }
+        .lp-footer {
+            text-align: center;
+            padding: 32px 20px 48px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.45);
+        }
 
-            .product-description {
-                font-size: 16px;
-            }
+        .lp-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 24px auto 0;
+        }
+        .lp-form input {
+            padding: 16px 18px;
+            font-size: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+        .lp-form input::placeholder { color: rgba(255,255,255,0.45); }
+        .lp-form input:focus {
+            outline: none;
+            border-color: var(--lp-gold);
+        }
+        .lp-form .lp-btn-submit {
+            padding: 16px;
+            font-weight: 700;
+            background: linear-gradient(180deg, #2d3340, #1a1f28);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .lp-back { top: 14px; left: 14px; }
+            .lp-paper p, .lp-paper li { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="product-back-link">
-        ← Back to Home
-    </a>
+    <a href="index.html" class="lp-back">← Back to Home</a>
 
-    <div class="product-landing">
-        <div class="product-container">
-            <div class="product-cover-wrapper">
-                <div class="product-cover">
-                    <img src="assets/images/blueprint-for-writing-online-cover.jpg.png?v=20250128" alt="The Blueprint for Writing Online - The Personal Branding System cover">
-                </div>
+    <!-- Hero -->
+    <header class="lp-band lp-band--dark" style="padding-top: clamp(72px, 12vw, 120px);">
+        <div class="lp-inner">
+            <p class="lp-kicker">Micro-product</p>
+            <h1 class="lp-headline">Grow your personal brand on X &amp; LinkedIn</h1>
+            <p class="lp-sub">Your playbook to accelerate growth—profile, content, networking, offer, and bonuses. <em>Edit this subhead anytime.</em></p>
+        </div>
+    </header>
+
+    <!-- White column — placeholder story -->
+    <div class="lp-paper-wrap">
+        <article class="lp-paper">
+            <p class="lp-section-label">The world is shifting</p>
+            <h2>Nobody wants to be a commodity</h2>
+            <p class="lead"><strong>Replace this block</strong> with your hook: the problem, the stakes, and why X + LinkedIn matter now.</p>
+            <p>Short paragraphs work. Add a stat, a story, or a contrarian take—whatever you’ll publish here later. Keep the layout; swap the words.</p>
+            <ul>
+                <li><strong>Bullet one.</strong> Pain point or belief your reader recognises.</li>
+                <li><strong>Bullet two.</strong> Another scenario—busy founder, new creator, career pivot, etc.</li>
+                <li><strong>Bullet three.</strong> Tease the promise of the playbook.</li>
+            </ul>
+
+            <div class="lp-callout">
+                <div class="lp-callout-label">By the end of this playbook</div>
+                <p>This will be your playbook to <strong>accelerate your growth on X &amp; LinkedIn</strong>. You can paste a sharper outcome sentence here later.</p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Dark mid-headline -->
+    <section class="lp-band lp-band--dark">
+        <div class="lp-inner">
+            <p class="lp-kicker">How it works</p>
+            <h2 class="lp-headline">Replace with your core mechanism headline</h2>
+            <p class="lp-sub">One line that explains the “aha” or the system—placeholder for now.</p>
+        </div>
+    </section>
+
+    <!-- Author strip -->
+    <section class="lp-author-band">
+        <div class="lp-author-inner">
+            <img class="lp-author-photo" src="assets/andrei-lucian-headshot.png.jpg" width="96" height="96" alt="Andrei Lucian">
+            <div class="lp-author-text">
+                <h2>Hey, I’m Andrei</h2>
+                <p class="role">Placeholder role line—who you help and in one sentence what you do.</p>
+                <p>Swap this paragraph for your creds, follower context, and why you wrote this playbook. Same structure as the reference pages: personal, direct, no fluff.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- White: curriculum preview -->
+    <div class="lp-paper-wrap">
+        <article class="lp-paper">
+            <p class="lead">Here’s everything tied to <strong>The Micro-Brand Playbook</strong> (rename if you like). You’ll refine this list later.</p>
+
+            <h2>1) Profile optimisation</h2>
+            <p>Placeholder: what they’ll fix on X and LinkedIn—headline, banner, bio, pins, featured links. Add bullets or a short story.</p>
+
+            <h2>2) Content strategy (+ templates + tips)</h2>
+            <p>Placeholder: posting rhythm, angles, hooks, templates folder, repurposing. Drop your real modules in later.</p>
+            <div class="lp-callout">
+                <div class="lp-callout-label">By the end of this section</div>
+                <p>They have a repeatable way to draft and ship—not random bursts of motivation.</p>
             </div>
 
-            <h1 class="product-title">The Personal Branding System</h1>
-            
-            <p class="product-description">
-                This will be your best friend if you are a beginner on building a personal brand. Step-by-step process I've used to build my LinkedIn account to 15K, on X to 4.2K followers, 550 followers on Threads, and a Substack newsletter with 900+ subscribers.
-            </p>
+            <h2>3) Networking</h2>
+            <p>Placeholder: DMs, comments, warm intros, community—how you want them to think about relationships.</p>
 
-            <div class="product-form-wrapper">
-                <form id="productForm" class="product-form">
-                    <input 
-                        type="email" 
-                        id="productEmail" 
-                        class="product-email-input" 
-                        placeholder="Email Address"
-                        required
-                    >
-                    <button type="submit" class="product-submit-btn">
-                        Get The System
-                    </button>
-                </form>
-                <p class="product-privacy">
-                    We respect your privacy. Unsubscribe at any time.
-                </p>
-            </div>
+            <h2>4) Craft your offer</h2>
+            <p>Placeholder: packaging expertise, clarity on “who it’s for,” first offer or lead magnet.</p>
+
+            <h2>5) Bonuses</h2>
+            <p>Placeholder: spreadsheets, checklists, extra trainings, or partner perks—list what you’ll actually include.</p>
+        </article>
+    </div>
+
+    <!-- CTA -->
+    <div class="lp-cta-row">
+        <a class="lp-btn-peach lp-btn-peach--light-text" href="#enroll">🛒 I’m ready to enroll — placeholder CTA</a>
+    </div>
+
+    <!-- Testimonial band -->
+    <section class="lp-testimonial">
+        <img class="avatar" src="assets/andrei-lucian-headshot.png.jpg" alt="">
+        <blockquote>“Replace with a real testimonial when you have one. This band uses cream + serif to match the long-form sales pages you shared.”</blockquote>
+        <cite>
+            <span class="name">Name Surname</span>
+            <span class="title">Title or product name / social proof line</span>
+        </cite>
+    </section>
+
+    <!-- What's inside — dark -->
+    <section class="lp-band lp-band--dark">
+        <div class="lp-inner">
+            <p class="lp-kicker">What’s inside</p>
+            <h2 class="lp-headline">From scattered posts to a clear brand on X &amp; LinkedIn</h2>
+            <p class="lp-sub">A practical approach—swap this subtitle for your own promise.</p>
+        </div>
+    </section>
+
+    <div class="lp-paper-wrap">
+        <article class="lp-paper">
+            <p>Intro paragraph before the checklist: what they receive when they buy—files, Notion, videos, lifetime updates—<strong>you’ll edit this.</strong></p>
+            <ul>
+                <li><strong>Deliverable one</strong> — short description.</li>
+                <li><strong>Deliverable two</strong> — short description.</li>
+                <li><strong>Bonus marker</strong> — optional line with <strong>Bonus:</strong> prefix like the reference.</li>
+            </ul>
+        </article>
+    </div>
+
+    <section class="lp-guarantee-band" aria-labelledby="guarantee-kicker">
+        <div class="lp-guarantee-inner">
+            <p class="lp-guarantee-kicker" id="guarantee-kicker">Our guarantee</p>
+            <p class="lp-guarantee-text">If you use the playbook as written—profile, content rhythm, networking, and offer—and don’t feel clearer on how to grow on X and LinkedIn, reach out. We’ll make it right or refund you. <em>(Edit this line to match your real policy.)</em></p>
+        </div>
+    </section>
+
+    <div class="lp-cta-row">
+        <a class="lp-btn-peach lp-btn-peach--light-text" href="#enroll">🛒 Second CTA — edit copy</a>
+    </div>
+
+    <!-- Offer + form -->
+    <div class="lp-offer-wrap" id="enroll">
+        <div class="lp-offer-card">
+            <p class="offer-kicker">The Micro-Brand Playbook</p>
+            <p class="offer-sub">Grow Your Personal Brand</p>
+            <img class="offer-cover" src="assets/images/micro-brand-playbook-offer-cover.png?v=20260416" alt="The Micro-Brand Playbook cover" width="400" height="533">
+            <div class="offer-price">$197</div>
+            <p class="offer-tagline">This will be your playbook to <strong>Accelerate Your Growth on X &amp; LinkedIn</strong>.</p>
+            <ul class="lp-offer-list">
+                <li>Profile optimisation</li>
+                <li>Content Strategy (+Templates + Tips)</li>
+                <li>Networking</li>
+                <li>Craft Your Offer</li>
+                <li>Bonuses</li>
+            </ul>
+            <form id="productForm" class="lp-form" style="max-width: none;">
+                <input type="email" id="productEmail" name="email" placeholder="Email address" required autocomplete="email">
+                <button type="submit" class="lp-btn-peach lp-btn-peach--light-text" style="width:100%;">🛒 Continue to checkout</button>
+            </form>
+            <p style="font-size:12px;color:#666;margin-top:14px;">We respect your privacy. Unsubscribe anytime.</p>
         </div>
     </div>
 
-    <script src="script.js?v=2.0"></script>
+    <!-- FAQ -->
+    <section class="lp-faq">
+        <p class="lp-kicker">Got questions?</p>
+        <h2>I’ve got answers</h2>
+        <p class="lp-sub">Placeholder section—replace with your real objections.</p>
+
+        <div class="lp-faq-item">
+            <h3>Do I need a big following first?</h3>
+            <p>Placeholder answer. Explain who this is for and what “starting from zero” looks like.</p>
+        </div>
+        <div class="lp-faq-item">
+            <h3>Is this for X, LinkedIn, or both?</h3>
+            <p>Placeholder answer. Clarify platform focus and time commitment.</p>
+        </div>
+        <div class="lp-faq-item">
+            <h3>What format is this?</h3>
+            <p>Placeholder: PDF, Notion, videos, cohort, etc.—set expectations.</p>
+        </div>
+        <div class="lp-faq-item">
+            <h3>How do I get access?</h3>
+            <p>Placeholder: instant delivery, email, Gumroad link—mirror your real flow.</p>
+        </div>
+    </section>
+
+    <footer class="lp-footer">
+        © Andrei Lucian — replace with your legal/footer line
+    </footer>
+
     <script>
-        document.getElementById('productForm').addEventListener('submit', function(e) {
+        document.getElementById('productForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            const email = document.getElementById('productEmail').value;
-            const GUMROAD_URL = 'https://andreilucian.gumroad.com/l/cwzxly';
+            var GUMROAD_URL = 'https://andreilucian.gumroad.com/l/cwzxly';
             window.location.href = GUMROAD_URL;
         });
     </script>
 </body>
 </html>
-

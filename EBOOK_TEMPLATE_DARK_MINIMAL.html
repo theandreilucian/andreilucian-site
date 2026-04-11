@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The X Writing Playbook — Andrei Lucian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@400;600;700;800&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #b8b8b8;
+      --line: rgba(255, 255, 255, 0.85);
+      --good: #00d26a;
+      --bad: #ff3b3b;
+      --verify: #1d9bf0;
+      --cover-blue: #33a8ff;
+      --cover-blue-in: #2588d4;
+      --accent-gold: #c9a227;
+      --accent-gold-light: #f5e6a8;
+      --page-pad: clamp(36px, 6vw, 56px);
+      --content-max: 620px;
+      /* Avoid 100vw (scrollbar / file:// quirks); cap width inside padded page */
+      --cover-art-max: min(680px, 100%);
+      --total-pdf-pages: 26;
+      --leading-body: 1.78;
+      --leading-snug: 1.65;
+      --leading-post: 1.72;
+      --gap-paragraph: 1.35rem;
+      --gap-list-item: 0.55rem;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow-x: hidden;
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      padding-top: 3.35rem;
+      min-height: 100vh;
+      min-height: 100dvh;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #1a1a1a;
+      color: var(--text);
+      line-height: var(--leading-body);
+    }
+
+    /* Screen-only: download / print to PDF */
+    .ebook-pdf-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem 1rem;
+      padding: 0.7rem 1rem;
+      background: rgba(10, 10, 10, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .ebook-pdf-bar__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 100%;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .ebook-pdf-bar__label {
+        width: auto;
+        text-align: left;
+      }
+    }
+    .ebook-pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .ebook-pdf-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .ebook-pdf-btn--primary {
+      background: #00e040;
+      color: #000;
+      border-color: #00e040;
+      font-weight: 800;
+    }
+    .ebook-pdf-btn--primary:hover {
+      background: #00f048;
+      border-color: #00f048;
+      color: #000;
+    }
+
+    /* Each screen “page” — one section = one page in print/PDF */
+    .page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--bg);
+      color: var(--text);
+      padding: var(--page-pad);
+      /* Room for bottom-centered copyright + bottom-right page number */
+      padding-bottom: calc(var(--page-pad) + 4.25rem);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Running page numbers — matches print order */
+    .page[data-page]::after {
+      content: "Page " attr(data-page) " / " var(--total-pdf-pages);
+      position: absolute;
+      bottom: max(10px, calc(var(--page-pad) * 0.45));
+      right: var(--page-pad);
+      font-family: "Roboto Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(184, 184, 184, 0.85);
+      font-weight: 600;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Copyright — bottom center on every page (reference: bold caps + reserved line) */
+    .page-doc-footer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: max(10px, calc(var(--page-pad) * 0.45));
+      width: min(calc(100% - 2 * var(--page-pad)), 28rem);
+      z-index: 5;
+      text-align: center;
+      pointer-events: none;
+    }
+    .page-doc-footer__primary {
+      margin: 0;
+      font-size: clamp(0.65rem, 1.6vw, 0.76rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .page-doc-footer__sub {
+      margin: 0.5rem 0 0;
+      font-size: clamp(0.62rem, 1.45vw, 0.72rem);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+
+    .page-inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover {
+      text-align: center;
+      justify-content: center;
+      align-items: stretch;
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      min-height: 100svh;
+      padding-top: clamp(16px, 3vh, 40px);
+      padding-bottom: clamp(24px, 4vh, 48px);
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
+      width: min(100%, 720px);
+      height: min(70vh, 640px);
+      background: radial-gradient(ellipse 75% 55% at 50% 48%, rgba(90, 70, 120, 0.18) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cover .page-inner {
+      width: 100%;
+      max-width: var(--cover-art-max);
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 2 * var(--page-pad) - 3rem);
+      min-height: calc(100dvh - 2 * var(--page-pad) - 3rem);
+      position: relative;
+      z-index: 1;
+    }
+    .cover--full-art .page-inner {
+      max-width: var(--cover-art-max);
+    }
+    /*
+      Explicit frame size so flex layout cannot shrink the cover to a favicon.
+      Full column width × large viewport height = readable on all screens.
+    */
+    .cover-art-wrap.cover-art-full {
+      position: relative;
+      width: 100%;
+      max-width: var(--cover-art-max);
+      margin: 0 auto;
+      flex: 0 0 auto;
+      align-self: stretch;
+      box-sizing: border-box;
+      /* Stable box: width drives size; no 100vw shrink bugs (file:// / local preview) */
+      aspect-ratio: 4 / 5;
+      max-height: min(86vh, 900px);
+      max-height: min(86dvh, 900px);
+      min-height: 280px;
+    }
+    .cover-art-full img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: center center;
+      border-radius: clamp(8px, 1.2vw, 14px);
+      filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.55));
+    }
+    @media (max-width: 480px) {
+      .cover-art-wrap.cover-art-full {
+        max-height: min(72vh, 640px);
+        max-height: min(72dvh, 640px);
+        min-height: 240px;
+      }
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* —— Table of contents (rebuild: centred header + ruled list) —— */
+    .page--toc .page-inner,
+    .page-inner--toc {
+      width: 100%;
+      max-width: var(--content-max);
+    }
+    .toc-hero {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1.15rem;
+    }
+    h1.toc-header,
+    .toc-header {
+      text-align: center;
+      font-weight: 800;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1.12;
+      color: var(--text);
+    }
+    .toc-hero .toc-header {
+      margin-bottom: 0;
+    }
+    .toc-sub {
+      margin: 0.85rem auto 0;
+      max-width: 36rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      line-height: 1.72;
+    }
+    .toc-sub strong {
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 600;
+    }
+    .toc-block {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+    .toc-row {
+      display: grid;
+      grid-template-columns: minmax(2.25rem, 2.75rem) minmax(0, 1fr);
+      column-gap: 0.85rem;
+      align-items: baseline;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    .toc-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0.2rem;
+    }
+    .toc-num {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      font-size: 0.88rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .toc-title {
+      font-weight: 400;
+      font-size: clamp(0.82rem, 1.9vw, 0.94rem);
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .toc-footer {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 1.25rem;
+    }
+    .toc-footer strong {
+      display: block;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      margin-bottom: 0.25rem;
+    }
+    .toc-footer span {
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .ch-head {
+      position: relative;
+      padding-bottom: 1.15rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .ch-num {
+      font-weight: 400;
+      font-size: 0.95rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .ch-title {
+      font-weight: 700;
+      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+      text-align: center;
+      margin: 0;
+      padding: 0 2.5rem;
+      line-height: 1.25;
+    }
+
+    .prose {
+      line-height: var(--leading-body);
+    }
+    .prose p {
+      margin: 0 0 var(--gap-paragraph);
+      font-size: 0.98rem;
+      line-height: var(--leading-body);
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong, .prose b { font-weight: 700; }
+
+    .prose ul {
+      margin: 0.9rem 0 1.45rem;
+      padding-left: 1.2rem;
+    }
+    .prose ul li {
+      margin-bottom: var(--gap-list-item);
+      font-size: 0.98rem;
+      line-height: var(--leading-snug);
+    }
+    .prose ul li::marker {
+      color: var(--text);
+      font-size: 0.55em;
+    }
+    .prose ol {
+      margin: 0.9rem 0 1.45rem;
+      padding-left: 1.2rem;
+    }
+    .prose ol li {
+      margin-bottom: var(--gap-list-item);
+      line-height: var(--leading-snug);
+    }
+    .prose.compact {
+      line-height: var(--leading-snug);
+    }
+    .prose.compact p {
+      margin-bottom: 0.85rem;
+      line-height: var(--leading-snug);
+    }
+    .prose.compact li { margin-bottom: 0.4rem; font-size: 0.92rem; line-height: 1.58; }
+
+    .label-example {
+      font-weight: 700;
+      margin: 1.75rem 0 1.15rem;
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1.75rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .compare { grid-template-columns: 1fr; }
+    }
+    .compare-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .icon-good, .icon-bad {
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .icon-good { color: var(--good); }
+    .icon-bad { color: var(--bad); }
+
+    .post {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .post-head {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+    }
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #555, #222);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .post-meta { line-height: 1.25; }
+    .post-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .badge {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--verify);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: #fff;
+      line-height: 1;
+    }
+    .badge::after { content: "✓"; }
+    .post-handle {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+    }
+    .post-body {
+      font-size: 0.8rem;
+      line-height: var(--leading-post);
+      white-space: pre-wrap;
+    }
+
+    .formula-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem 1.35rem;
+      margin: 1.65rem 0;
+      font-size: 0.95rem;
+      line-height: var(--leading-snug);
+    }
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      line-height: 1.35;
+    }
+    .fraction .num { padding-bottom: 0.15rem; }
+    .fraction .bar {
+      width: 100%;
+      min-width: 180px;
+      height: 1px;
+      background: var(--line);
+    }
+    .fraction .den { padding-top: 0.25rem; }
+    .formula-tail { font-weight: 600; }
+
+    .img-placeholder {
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 8px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .img-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 3.5vw, 1.75rem);
+      width: 100%;
+      align-items: start;
+    }
+    .img-row > * {
+      min-width: 0;
+    }
+    @media (max-width: 640px) {
+      .img-row { grid-template-columns: 1fr; }
+    }
+
+    /* Ebook: real profile + banner shots (fluid, no horizontal overflow) */
+    .ebook-asset-frame {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #0a0a0a;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .ebook-asset-frame--avatar {
+      width: 100%;
+      max-width: min(320px, 100%);
+      margin: 0 auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+    }
+    .ebook-asset-frame--avatar img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+    .ebook-asset-frame--cover {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 1584 / 396;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .ebook-asset-frame--cover img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .ebook-asset-frame--cover {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    /* Page 4 — avatar + cover share the same box height (balanced row) */
+    .ebook-assets-row {
+      align-items: stretch;
+      --ebook-match: min(292px, 36vw);
+    }
+    @media (max-width: 640px) {
+      .ebook-assets-row {
+        --ebook-match: min(300px, 82vw);
+      }
+    }
+    .ebook-assets-col {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 0;
+    }
+    .ebook-assets-slot {
+      width: 100%;
+      height: var(--ebook-match);
+      min-height: var(--ebook-match);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+    .ebook-assets-row .ebook-asset-frame--avatar {
+      width: var(--ebook-match);
+      height: var(--ebook-match);
+      max-width: min(100%, var(--ebook-match));
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+    .ebook-assets-row .ebook-asset-frame--cover {
+      width: 100%;
+      height: 100%;
+      max-height: var(--ebook-match);
+      aspect-ratio: auto;
+      border-radius: 10px;
+    }
+    .ebook-assets-row .ebook-asset-frame--cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Crisp “GET PAID TO WRITE ONLINE” cover (vector-sharp at any size; replaces raster) */
+    .ebook-asset-frame--cover-clear {
+      padding: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .ebook-cover-banner-clear {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ebook-cover-banner-clear__box {
+      border: 1px solid #fff;
+      padding: clamp(0.4rem, 1.8vw, 0.85rem) clamp(0.45rem, 2.2vw, 1rem);
+      text-align: center;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .ebook-cover-banner-clear__line {
+      display: block;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      font-size: clamp(0.48rem, 2.6vw, 0.82rem);
+      color: #fff;
+      line-height: 1.22;
+      text-transform: uppercase;
+    }
+
+    .pull-quote {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 1.5rem 0;
+      line-height: 1.6;
+      color: var(--accent-gold-light);
+    }
+
+    .ch-head.lines-both {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      margin-top: 0.5rem;
+    }
+    .btn-cta {
+      display: inline-block;
+      margin: 2rem auto 0;
+      padding: 0.85rem 2.75rem;
+      border-radius: 999px;
+      background: #00e040;
+      color: #000;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      text-decoration: none;
+      border: none;
+      cursor: default;
+    }
+    .center { text-align: center; }
+
+    /* Last page — DM CTA + author photo */
+    .page--dm-cta .prose.center p {
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page--dm-cta .dm-cta-offer {
+      margin-bottom: 1.35rem;
+      line-height: var(--leading-snug);
+    }
+    .page--dm-cta .dm-cta-offer:last-child {
+      margin-bottom: 0;
+    }
+    .dm-cta-headshot {
+      margin: 0.5rem auto 1.75rem;
+      width: min(9.5rem, 42vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    .dm-cta-headshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    .page-foot-line {
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .muted-small {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .track-title {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      font-size: clamp(0.65rem, 1.5vw, 0.78rem);
+      text-transform: uppercase;
+      margin: 1.85rem 0 1.2rem;
+      line-height: 1.5;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 720px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    .col-head {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+      line-height: 1.45;
+    }
+    .grid-3 .post { font-size: 0.72rem; }
+    .grid-3 .post-body { font-size: 0.68rem; line-height: 1.62; }
+
+    /* Engagement page — equal-height example “feed” cards */
+    .engagement-examples {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 1.35rem 0 0;
+      align-items: stretch;
+    }
+    .engagement-examples > * {
+      min-width: 0;
+    }
+    @media (max-width: 900px) {
+      .engagement-examples { grid-template-columns: 1fr; }
+    }
+    .engagement-examples .post {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-height: 12rem;
+      font-size: 0.76rem;
+    }
+    .engagement-examples .post-body {
+      flex: 1;
+      font-size: 0.74rem;
+      line-height: 1.55;
+    }
+
+    .schedule-wrap {
+      overflow-x: auto;
+      margin: 1.45rem 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    .schedule {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.68rem;
+      min-width: 520px;
+      line-height: 1.55;
+    }
+    .schedule th,
+    .schedule td {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 0.62rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .schedule th {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.62rem;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    @media print {
+      body {
+        background: #000;
+        padding-top: 0 !important;
+      }
+      .ebook-pdf-bar {
+        display: none !important;
+      }
+      .page {
+        min-height: auto;
+        height: 100vh;
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child { page-break-after: auto; }
+      /* TOC: dense layout so all rows fit on one PDF page */
+      .page--toc {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding-top: 0.25rem !important;
+        /* Must keep same bottom band as .page — tiny padding stacks toc-footer + page-doc-footer */
+        padding-bottom: calc(var(--page-pad) + 4.25rem) !important;
+      }
+      /* Author / export hints — not for readers; keeps PDF footer band clear */
+      .ebook-editor-note {
+        display: none !important;
+      }
+      .page--toc .page-inner--toc {
+        flex: 0 1 auto !important;
+      }
+      .page--toc .toc-hero {
+        margin-bottom: 0.45rem !important;
+      }
+      .page--toc .toc-header {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.1em !important;
+      }
+      .page--toc .toc-row {
+        padding: 0.28rem 0 !important;
+        column-gap: 0.55rem !important;
+      }
+      .page--toc .toc-num {
+        font-size: 0.68rem !important;
+        line-height: 1.15 !important;
+      }
+      .page--toc .toc-title {
+        font-size: 0.66rem !important;
+        line-height: 1.22 !important;
+      }
+      .page--toc .toc-footer {
+        padding-top: 0.5rem !important;
+        margin-top: 0.35rem !important;
+      }
+      .page--toc .toc-footer span {
+        font-size: 0.58rem !important;
+      }
+      .cover .page-inner {
+        min-height: auto;
+        height: 100%;
+        justify-content: center;
+      }
+      .cover-art-wrap.cover-art-full {
+        width: 92%;
+        max-width: 680px;
+        margin: 0 auto;
+        aspect-ratio: 4 / 5;
+        max-height: 90vh;
+        min-height: 0;
+      }
+      .cover-art-full img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: contain;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ebook-pdf-bar" role="region" aria-label="PDF download">
+    <span class="ebook-pdf-bar__label">The X Writing Playbook</span>
+    <a
+      class="ebook-pdf-btn ebook-pdf-btn--primary"
+      href="assets/the-x-writing-playbook.pdf"
+      download="The-X-Writing-Playbook-Andrei-Lucian.pdf"
+    >Download PDF</a>
+    <button type="button" class="ebook-pdf-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <!-- PAGE 1 / 26 -->
+  <section class="page cover cover--full-art" aria-label="Cover" data-page="1">
+    <div class="page-inner">
+      <h1 class="visually-hidden">The X Writing Playbook — Andrei Lucian</h1>
+      <div class="cover-art-wrap cover-art-full">
+        <img
+          src="assets/ebook-cover-the-x-writing-playbook.png"
+          alt="The X Writing Playbook — How to Grow an Audience and Build a Brand in Public. Andrei Lucian."
+          width="800"
+          height="1000"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 2 / 26 -->
+  <section class="page page--toc" aria-label="Table of contents" data-page="2">
+    <div class="page-inner page-inner--toc">
+      <header class="toc-hero">
+        <h1 class="toc-header">Table of contents</h1>
+      </header>
+      <nav class="toc-block" aria-label="Sections in this document">
+        <div class="toc-row"><span class="toc-num">3</span><span class="toc-title">Profile optimisation</span></div>
+        <div class="toc-row"><span class="toc-num">4</span><span class="toc-title">Profile image &amp; cover</span></div>
+        <div class="toc-row"><span class="toc-num">5</span><span class="toc-title">Bio — the formula</span></div>
+        <div class="toc-row"><span class="toc-num">6</span><span class="toc-title">Example bio + social proof</span></div>
+        <div class="toc-row"><span class="toc-num">7</span><span class="toc-title">Writing simplified</span></div>
+        <div class="toc-row"><span class="toc-num">8</span><span class="toc-title">Rule of 3</span></div>
+        <div class="toc-row"><span class="toc-num">9</span><span class="toc-title">Simplicity</span></div>
+        <div class="toc-row"><span class="toc-num">10</span><span class="toc-title">Stairways</span></div>
+        <div class="toc-row"><span class="toc-num">11</span><span class="toc-title">Polarizing</span></div>
+        <div class="toc-row"><span class="toc-num">12</span><span class="toc-title">Repetition</span></div>
+        <div class="toc-row"><span class="toc-num">13</span><span class="toc-title">Bullet points</span></div>
+        <div class="toc-row"><span class="toc-num">14</span><span class="toc-title">White space</span></div>
+        <div class="toc-row"><span class="toc-num">15</span><span class="toc-title">Write as you speak · sentence length</span></div>
+        <div class="toc-row"><span class="toc-num">16</span><span class="toc-title">Inspirational content</span></div>
+        <div class="toc-row"><span class="toc-num">17</span><span class="toc-title">Educational content</span></div>
+        <div class="toc-row"><span class="toc-num">18</span><span class="toc-title">Entertainment content</span></div>
+        <div class="toc-row"><span class="toc-num">19</span><span class="toc-title">Practical gameplan</span></div>
+        <div class="toc-row"><span class="toc-num">20</span><span class="toc-title">Content strategy &amp; templates</span></div>
+        <div class="toc-row"><span class="toc-num">21</span><span class="toc-title">Engagement game</span></div>
+        <div class="toc-row"><span class="toc-num">22</span><span class="toc-title">DMs &amp; networking</span></div>
+        <div class="toc-row"><span class="toc-num">23</span><span class="toc-title">DM openers &amp; depth</span></div>
+        <div class="toc-row"><span class="toc-num">24</span><span class="toc-title">Creators, rhythm &amp; today</span></div>
+        <div class="toc-row"><span class="toc-num">25</span><span class="toc-title">If you’re stuck</span></div>
+        <div class="toc-row"><span class="toc-num">26</span><span class="toc-title">DM me</span></div>
+      </nav>
+      <footer class="toc-footer ebook-editor-note">
+        <span>Replace <code style="font-size:0.78rem">assets/</code> images in the HTML if you change your photo or banner.</span>
+      </footer>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 3 / 26 -->
+  <section class="page" aria-label="Chapter 3" data-page="3">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">3</span>
+        <h2 class="ch-title">1. Profile optimisation</h2>
+      </header>
+      <div class="prose">
+        <p>Before you chase reach, fix what people see when they click you: <strong>your profile</strong>. Photo, banner, and bio should answer in seconds: <em>who is this</em>, <em>what do they stand for</em>, and <em>why follow</em>.</p>
+        <p><strong>Checklist:</strong></p>
+        <ul>
+          <li><strong>Profile image (avatar)</strong> — <strong>Your face</strong>, plain and simple: well lit, in focus, easy to recognise at thumbnail size. Not a logo, not a tiny figure in a crowd. You can <strong>smile</strong> or stay <strong>serious</strong>; either works if your face is clearly visible.</li>
+          <li><strong>Cover image (banner)</strong> — Something you <strong>offer</strong> or promise: a result people want, a problem you own, or a reason they should <strong>follow you</strong>. One bold idea; no wallpaper noise.</li>
+          <li><strong>Bio</strong> — use the formula on the following pages; add proof last.</li>
+        </ul>
+        <p class="muted-small">Examples for photo and banner are on the next page.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 4 / 26 -->
+  <section class="page" aria-label="Chapter 4" data-page="4">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">4</span>
+        <h2 class="ch-title">Profile image &amp; cover</h2>
+      </header>
+      <div class="img-row ebook-assets-row">
+        <div class="ebook-assets-col">
+          <p class="label-example" style="margin-top:0">a) Profile image — your face, clearly</p>
+          <div class="ebook-assets-slot">
+            <div class="ebook-asset-frame ebook-asset-frame--avatar">
+              <img
+                src="assets/andrei-lucian-headshot.png.jpg"
+                alt="Andrei Lucian — profile photo, face clearly visible"
+                width="800"
+                height="800"
+                sizes="(max-width: 640px) 82vw, 292px"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="ebook-assets-col">
+          <p class="label-example" style="margin-top:0">b) Cover image — your offer / reason to follow</p>
+          <div class="ebook-assets-slot">
+            <div
+              class="ebook-asset-frame ebook-asset-frame--cover ebook-asset-frame--cover-clear"
+              role="img"
+              aria-label="Cover banner: GET PAID TO WRITE ONLINE"
+            >
+              <div class="ebook-cover-banner-clear">
+                <div class="ebook-cover-banner-clear__box">
+                  <span class="ebook-cover-banner-clear__line">GET PAID TO</span>
+                  <span class="ebook-cover-banner-clear__line">WRITE ONLINE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prose" style="margin-top:1.25rem">
+        <p><strong>Quick rules</strong></p>
+        <ul>
+          <li><strong>Avatar:</strong> Must be <strong>your face</strong> — close enough that people see <em>you</em> clearly (eyes, expression). Good light, simple background. Smile or serious is fine; avoid hiding behind hats, dark shadows, or busy crops.</li>
+          <li><strong>Cover:</strong> Say <strong>what you offer</strong> or what people <strong>gain</strong> by following you — a result, a belief, or a clear theme. Make it something they <strong>want</strong>, not decoration. Huge text, one idea, readable on mobile.</li>
+        </ul>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 5 / 26 -->
+  <section class="page" aria-label="Chapter 5" data-page="5">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">5</span>
+        <h2 class="ch-title">Bio — the formula</h2>
+      </header>
+      <div class="prose">
+        <p>Build your headline and about section around:</p>
+      </div>
+      <div class="formula-block" aria-label="Bio formula">
+        <span>I help <strong>X</strong></span>
+        <span class="formula-tail">doing <strong>Y</strong></span>
+        <span class="formula-tail">with <strong>Z</strong></span>
+      </div>
+      <div class="prose">
+        <ul>
+          <li><strong>X</strong> — who (niche / segment)</li>
+          <li><strong>Y</strong> — outcome they want</li>
+          <li><strong>Z</strong> — your mechanisms (how)</li>
+        </ul>
+        <p>Below is a filled example you can adapt — not a template to copy verbatim.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 6 / 26 -->
+  <section class="page" aria-label="Chapter 6" data-page="6">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">6</span>
+        <h2 class="ch-title">Example bio + social proof</h2>
+      </header>
+      <div class="post">
+        <div class="post-head">
+          <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+          <div class="post-meta">
+            <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+            <span class="post-handle">@theandreilucian</span>
+          </div>
+        </div>
+        <div class="post-body">I help B2B founders get noticed &amp; get leads with Personal Branding, Content Strategy &amp; B2B Growth.
+
+Social proof: 30+ clients · 8M+ views (swap for your numbers)</div>
+      </div>
+      <div class="prose" style="margin-top:1.25rem">
+        <p><strong>Map to the formula</strong></p>
+        <ul>
+          <li>I help <strong>X</strong> ⇒ B2B founders</li>
+          <li>doing <strong>Y</strong> ⇒ get noticed &amp; get leads</li>
+          <li>with <strong>Z</strong> ⇒ Personal Branding, Content Strategy, B2B Growth</li>
+        </ul>
+        <p>Social proof answers “why believe you?” — keep it one line.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 7 / 26 -->
+  <section class="page" aria-label="Chapter 7" data-page="7">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">7</span>
+        <h2 class="ch-title">Writing simplified</h2>
+      </header>
+      <div class="prose">
+        <p>Writing on social is simple (not easy).</p>
+        <p>You only need two things.</p>
+        <p>Your writing has to <strong>look good</strong> and <strong>be useful</strong>.</p>
+        <p>You make it <strong>useful</strong> with the <strong>content goals</strong>:</p>
+        <ul>
+          <li>Education</li>
+          <li>Inspiration</li>
+          <li>Entertainment</li>
+        </ul>
+        <p>You make it look good with <strong>aesthetic writing</strong> — easy to consume. It includes (but isn’t limited to):</p>
+        <ul>
+          <li>Rule of 3</li>
+          <li>Simplicity</li>
+          <li>Stairways</li>
+          <li>Polarizing</li>
+          <li>Repetition</li>
+          <li>Bullet points</li>
+          <li>White space</li>
+          <li>Write as you speak</li>
+          <li>Vary sentence length</li>
+        </ul>
+        <p>There’s more I teach clients — this is the 20% that gets most of the result. Let’s go.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 8 / 26 -->
+  <section class="page" aria-label="Chapter 8" data-page="8">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">8</span>
+        <h2 class="ch-title">Rule of 3</h2>
+      </header>
+      <div class="prose">
+        <p>The rule of 3 improves rhythm. More clarity, more persuasive, more memorable. It’s usually stronger than one or two items — use 3s in lists when you can.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Most founders:
+• Chase vanity
+• Copy trends
+• Ignore positioning
+
+Me:
+• Niche down
+• Ship proof
+• Own one story
+
+Pick a lane.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Most founders:
+• Chase vanity
+• Ignore positioning
+
+Me:
+• Niche down
+• Ship proof
+• Own one story
+• Post daily
+
+Pick a lane.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 9 / 26 -->
+  <section class="page" aria-label="Chapter 9" data-page="9">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">9</span>
+        <h2 class="ch-title">Simplicity</h2>
+      </header>
+      <div class="prose">
+        <p>Don’t use more words when fewer will do. People are busy. Write like it.</p>
+        <ul>
+          <li>Simple</li>
+          <li>Concise</li>
+          <li>Practical</li>
+        </ul>
+        <p>Simplicity reads like confidence.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">You don’t need more tactics.
+
+You need one offer people understand.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">You don’t necessarily need to keep adding tactics if you’re feeling overwhelmed; what you probably need is to simplify your offer so prospects actually understand what you do and why it matters.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 10 / 26 -->
+  <section class="page" aria-label="Chapter 10" data-page="10">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">10</span>
+        <h2 class="ch-title">Stairways</h2>
+      </header>
+      <div class="prose">
+        <p>Stairways make your writing look organised. It’s underrated.</p>
+        <ul>
+          <li>Stands out</li>
+          <li>Looks intentional</li>
+          <li>Easy to read</li>
+        </ul>
+        <p>Order lines by length so the eye travels down cleanly.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">The 1% creator:
+
+Stoic
+Writer
+Consistent
+Systems-first
+Boring on purpose</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">The 1% creator:
+
+Boring on purpose
+Stoic
+Systems-first
+Writer
+Consistent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 11 / 26 -->
+  <section class="page" aria-label="Chapter 11" data-page="11">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">11</span>
+        <h2 class="ch-title">Polarizing</h2>
+      </header>
+      <div class="prose">
+        <p>Dare to make clear statements. You’ll get some pushback — and you’ll attract the right people. Stand for what you believe.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">I’ll be happy once I hit the milestone.
+
+*Hits milestone*
+
+Still stressed.
+
+Why?
+
+Outcomes alone won’t fix how you operate.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">I’ll be happy once I hit the milestone. *Hits milestone* Still stressed. Why? Outcomes alone won’t fix how you operate.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 12 / 26 -->
+  <section class="page" aria-label="Chapter 12" data-page="12">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">12</span>
+        <h2 class="ch-title">Repetition</h2>
+      </header>
+      <div class="prose compact">
+        <p>Repetition improves readability. Use the same opener on list lines to create rhythm.</p>
+        <p><span class="icon-bad" style="font-size:1rem;vertical-align:middle">✕</span> Many posts · Lots of tweets · A lot of writing</p>
+        <p><span class="icon-good" style="font-size:1rem;vertical-align:middle">✓</span> Lots of posts · Lots of tweets · Lots of writing</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Building in public is hard.
+
+• Lots of doubt
+• Lots of drafts
+• Lots of silence
+
+Still better than hiding your work.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Building in public is hard.
+
+• Plenty of doubt
+• Many drafts
+• Endless silence
+
+Still better than hiding your work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 13 / 26 -->
+  <section class="page" aria-label="Chapter 13" data-page="13">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">13</span>
+        <h2 class="ch-title">Bullet points</h2>
+      </header>
+      <div class="prose">
+        <p>Bullet points have lots of benefits.</p>
+        <ul>
+          <li>Easier to read</li>
+          <li>Easier to notice</li>
+          <li>Easier to consume</li>
+        </ul>
+        <p>Pick <strong>•</strong> over <strong>-</strong> when you can. Use more bullets in feed posts.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Want inbound from LinkedIn?
+
+• Positioning
+• Proof
+• Consistent posts
+• Clear CTA
+
+Start with one.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Want inbound from LinkedIn? Positioning, proof, consistent posts, clear CTA — start with one.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 14 / 26 -->
+  <section class="page" aria-label="Chapter 14" data-page="14">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">14</span>
+        <h2 class="ch-title">White space</h2>
+      </header>
+      <div class="prose">
+        <p>White space is incredibly important.</p>
+        <ul>
+          <li>Easier to read</li>
+          <li>Easier to intrigue</li>
+          <li>Easier to understand</li>
+        </ul>
+        <p>It lowers the perceived effort to read your post — so more people finish it. Add space after short lines.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">I’ll be happy once I ship the launch.
+
+*Ships launch*
+
+Still anxious.
+
+Why?
+
+The next milestone won’t fix your habits.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">I’ll be happy once I ship the launch. *Ships launch* Still anxious. Why? The next milestone won’t fix your habits.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 15 / 26 -->
+  <section class="page" aria-label="Chapter 15" data-page="15">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">15</span>
+        <h2 class="ch-title">Write as you speak · sentence length</h2>
+      </header>
+      <div class="prose">
+        <p>You should write as you speak. Beginners try to sound smart — it backfires. If you wouldn’t say it out loud, don’t type it.</p>
+        <p><strong>Vary sentence length.</strong> Short. Then a longer line that carries one clear idea — then short again. Monotone length feels like a textbook.</p>
+      </div>
+      <p class="label-example">Example:</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">You don’t need a perfect plan.
+
+You need to post for 90 days and iterate.</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">One does not require an elaborate multi-quarter strategic roadmap prior to commencement of organic distribution efforts; one requires a sustained publishing cadence over a finite horizon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 16 / 26 -->
+  <section class="page" aria-label="Chapter 16" data-page="16">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">16</span>
+        <h2 class="ch-title">Inspirational content</h2>
+      </header>
+      <div class="prose">
+        <p><strong>Inspirational posts are great for growth.</strong> Focus on <strong>empathy</strong>, <strong>milestones</strong>, <strong>transformation</strong>. It builds trust, growth, and likeability.</p>
+      </div>
+      <p class="track-title">Inspirational content</p>
+      <div class="grid-3">
+        <div>
+          <p class="col-head">Empathy</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Client work is messy.
+
+Late nights. Quiet weeks. Doubt.
+
+Still beats pretending you have it figured out online.</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Milestone</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">90 days ago I restarted posting.
+
+Today: [your metric].
+
+Trust the reps.</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Transformation</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">2022: hiding behind “busy”
+2026: shipping in public
+
+Swap the story you tell yourself.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 17 / 26 -->
+  <section class="page" aria-label="Chapter 17" data-page="17">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">17</span>
+        <h2 class="ch-title">Educational content</h2>
+      </header>
+      <div class="prose">
+        <p>People want valuable information. Great educational posts maximise value per second. Focus on <strong>proof</strong>, <strong>insights</strong>, <strong>strategies</strong>. It increases trust and authority.</p>
+      </div>
+      <p class="track-title">Educational content</p>
+      <div class="grid-3">
+        <div>
+          <p class="col-head">Proof</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">We rewrote one founder’s headline + first line of posts.
+
+14 days later: 2× profile visits (example — use your real numbers).</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Niche insights</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Most LinkedIn bios fail for one reason:
+
+They describe a job title — not an outcome the reader wants.</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Strategies</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Weekly system:
+
+• 3 posts
+• 60 min engagement
+• 5 real DMs
+
+Repeat.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 18 / 26 -->
+  <section class="page" aria-label="Chapter 18" data-page="18">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">18</span>
+        <h2 class="ch-title">Entertainment content</h2>
+      </header>
+      <div class="prose">
+        <p>A lot of people just want to be entertained. You don’t need to become a comedian — just a bit more human. Focus on <strong>jokes</strong>, <strong>anecdotes</strong>, <strong>polarizing takes</strong>. It increases likeability and memorability.</p>
+      </div>
+      <p class="track-title">Entertainment content</p>
+      <div class="grid-3">
+        <div>
+          <p class="col-head">Polarizing takes</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Vanity metrics are a hobby.
+
+Pipeline is a business.</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Jokes</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">Personal branding is like going to the gym.
+
+You start for “credibility.”
+
+You stay for the weird DMs.</div>
+          </div>
+        </div>
+        <div>
+          <p class="col-head">Anecdotes</p>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Andrei Lucian <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@theandreilucian</span>
+              </div>
+            </div>
+            <div class="post-body">I once spent a week “optimising” a banner.
+
+Zero leads.
+
+Rewrote one line of the bio — replies came back.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 19 / 26 -->
+  <section class="page" aria-label="Chapter 19" data-page="19">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">19</span>
+        <h2 class="ch-title">Practical gameplan</h2>
+      </header>
+      <div class="prose compact">
+        <p>Batch hooks on Sunday. Ship 3–5 posts per week. Protect one engagement block daily.</p>
+      </div>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Content</th>
+              <th>Engage</th>
+              <th>DMs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mon</td>
+              <td>Draft / schedule 2 posts; pick templates</td>
+              <td>60 min (split: yours + niche feed)</td>
+              <td>5–10 thoughtful</td>
+            </tr>
+            <tr>
+              <td>Tue</td>
+              <td>Publish + one comment capture / story</td>
+              <td>60 min</td>
+              <td>5–10</td>
+            </tr>
+            <tr>
+              <td>Wed</td>
+              <td>How-to or framework post</td>
+              <td>60 min</td>
+              <td>5–10</td>
+            </tr>
+            <tr>
+              <td>Thu</td>
+              <td>Proof or opinion</td>
+              <td>60 min</td>
+              <td>5–10</td>
+            </tr>
+            <tr>
+              <td>Fri</td>
+              <td>Review saves / replies; steal your own format</td>
+              <td>45 min</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Sat–Sun</td>
+              <td>Batch next week’s hooks; optional carousel</td>
+              <td>Light / off</td>
+              <td>Off</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted-small">Adjust to your bandwidth — keep the <em>structure</em>, not every number.</p>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 20 / 26 -->
+  <section class="page" aria-label="Chapter 20" data-page="20">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">20</span>
+        <h2 class="ch-title">Content strategy &amp; templates</h2>
+      </header>
+      <div class="prose compact">
+        <p>Rotate formats so you never run out of ideas. <strong>Pillar mix:</strong> proof, opinion, how-to. Every post should make one idea stick.</p>
+        <p><strong>Templates 1–5</strong></p>
+        <ol style="margin:0.4rem 0 0.8rem;padding-left:1.1rem;font-size:0.92rem">
+          <li>Mistake → fix</li>
+          <li>List breakdown (3–5 bullets)</li>
+          <li>Story → lesson</li>
+          <li>Contrarian hook + nuance</li>
+          <li>Before / after</li>
+        </ol>
+        <p><strong>Templates 6–10</strong></p>
+        <ol start="6" style="margin:0.4rem 0 0;padding-left:1.1rem;font-size:0.92rem">
+          <li>Carousel / document</li>
+          <li>DM prompt (sparingly)</li>
+          <li>Comment capture + answer</li>
+          <li>Founder diary</li>
+          <li>Resource drop</li>
+        </ol>
+        <p class="muted-small">Cadence: e.g. Mon opinion · Wed how-to · Fri story — tune to you.</p>
+      </div>
+      <p class="label-example">Micro-example</p>
+      <div class="compare">
+        <div class="compare-col">
+          <span class="icon-good" aria-hidden="true">✓</span>
+          <div class="post"><div class="post-body">3 signs your LinkedIn bio is invisible:
+• No niche
+• No outcome
+• No proof
+
+Fix one today.</div></div>
+        </div>
+        <div class="compare-col">
+          <span class="icon-bad" aria-hidden="true">✕</span>
+          <div class="post"><div class="post-body">Here are some thoughts about branding and how it can be important for trust in various contexts.</div></div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 21 / 26 -->
+  <section class="page" aria-label="Chapter 21" data-page="21">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">21</span>
+        <h2 class="ch-title">Engagement game</h2>
+      </header>
+      <div class="prose">
+        <p><strong>60 minutes per day</strong> — budget this for real interaction (not doom-scrolling).</p>
+        <p><strong>A)</strong> Reply to people who engage on your posts. Don’t answer with one word like “yes”, “ye”, or “indeed” — use <strong>at least one full sentence</strong>, and add a question or next step when it fits.</p>
+        <div class="compare" style="margin-top:1rem">
+          <div class="compare-col">
+            <span class="icon-good">✓</span>
+            <div class="post"><div class="post-body">Makes sense — we saw the same after generic sequences. Are you fixing with better segmentation or turning automations off?</div></div>
+          </div>
+          <div class="compare-col">
+            <span class="icon-bad">✕</span>
+            <div class="post"><div class="post-body">yes</div></div>
+          </div>
+        </div>
+        <p style="margin-top:1rem"><strong>B)</strong> Leave <strong>30–100 comments per day</strong> on other people’s posts (pick a realistic range). Insight, not links — comments are borrowed distribution.</p>
+        <p class="label-example" style="margin-top:1.5rem;margin-bottom:0.75rem">Examples (feed-style lines you might comment under)</p>
+        <div class="engagement-examples">
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Creator <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@example</span>
+              </div>
+            </div>
+            <div class="post-body">The best teachers often share their journey while climbing, not just the view from the top.</div>
+          </div>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Creator <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@example</span>
+              </div>
+            </div>
+            <div class="post-body">The gap between starting messy and staying stuck in research mode is where most opportunities actually live.</div>
+          </div>
+          <div class="post">
+            <div class="post-head">
+              <div class="avatar"><img src="assets/andrei-lucian-headshot.png.jpg" alt="" /></div>
+              <div class="post-meta">
+                <span class="post-name">Creator <span class="badge" title="verified"></span></span>
+                <span class="post-handle">@example</span>
+              </div>
+            </div>
+            <div class="post-body">Learning to think for yourself is a skill most people skip.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 22 / 26 -->
+  <section class="page" aria-label="Chapter 22" data-page="22">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">22</span>
+        <h2 class="ch-title">DMs &amp; networking</h2>
+      </header>
+      <p class="pull-quote">“Your network is your net worth.”</p>
+      <div class="prose compact">
+        <p>Most people lead with taking. Flip it: <strong>curiosity → value → optional call</strong>. Target <strong>20–30 real DMs per day</strong> only to people you’d actually talk to.</p>
+        <p><strong>Mindset</strong></p>
+        <ul>
+          <li>Genuine interest in their work; value before asks</li>
+          <li>Reference something specific they posted</li>
+          <li>OK being ignored — not a verdict on you</li>
+        </ul>
+        <p><strong>Avoid</strong> “let’s connect” with no context, needy tone, “hi” with no hook, hollow reciprocity, giant voice notes.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 23 / 26 -->
+  <section class="page" aria-label="Chapter 23" data-page="23">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">23</span>
+        <h2 class="ch-title">DM openers &amp; depth</h2>
+      </header>
+      <div class="prose compact">
+        <p><strong>Steps 1–3</strong> — Find people through comments; follow + warm up; first message = why their post/bio hit (short).</p>
+      </div>
+      <div class="post" style="margin-top:0.75rem">
+        <div class="post-body">Hey [name] — your [post/bio] landed because [specific reason]. Optional: one question.</div>
+      </div>
+      <p class="muted-small center">Inspiration, not 30 copy-pastes.</p>
+      <div class="prose compact" style="margin-top:1rem">
+        <p><strong>Steps 4–5</strong> — Ask about what they’re building; offer a useful note or intro when it’s real (not manipulation).</p>
+        <p><strong>Steps 6–7</strong> — Short call if values align; move great fits to Telegram / email. Skip hollow pods.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 24 / 26 -->
+  <section class="page" aria-label="Chapter 24" data-page="24">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">24</span>
+        <h2 class="ch-title">Creators, rhythm &amp; today</h2>
+      </header>
+      <div class="prose compact">
+        <p><strong>Small vs big creators:</strong> bigger inboxes need a sharper reason to reply. Lead with value; stay non-needy; treat them as peers, not idols.</p>
+        <p><strong>Weekly rhythm</strong></p>
+        <ul>
+          <li>Mon — draft/schedule posts; refresh bio if needed</li>
+          <li>Tue–Thu — engagement + outbound DMs</li>
+          <li>Fri — review what earned saves/replies</li>
+          <li>Weekend — optional long-form or carousel</li>
+        </ul>
+        <p><strong>Signals you’re winning:</strong> strangers cite your themes; DMs get specific; you can predict saves vs comments.</p>
+        <p><strong>Today</strong></p>
+        <ol style="margin:0;padding-left:1.1rem">
+          <li>Photo, banner, bio (formula)</li>
+          <li>Schedule 3 posts from your templates</li>
+          <li>60 min: comments + replies</li>
+          <li>5 thoughtful DMs</li>
+        </ol>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 25 / 26 -->
+  <section class="page" aria-label="Chapter 25" data-page="25">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">25</span>
+        <h2 class="ch-title">If you’re stuck</h2>
+      </header>
+      <div class="prose">
+        <ul>
+          <li><strong>Low views?</strong> Fix the first two lines (hook).</li>
+          <li><strong>No DMs?</strong> Proof + CTA in bio; end posts with a question.</li>
+          <li><strong>Burnout?</strong> One post/day + keep the engagement block sacred.</li>
+        </ul>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 26 / 26 — last page: DM me -->
+  <section class="page page--dm-cta" aria-label="DM me" data-page="26">
+    <div class="page-inner" style="justify-content:center;text-align:center">
+      <header class="ch-head lines-both">
+        <span class="ch-num">26</span>
+        <h2 class="ch-title">DM me</h2>
+      </header>
+      <div class="dm-cta-headshot">
+        <img
+          src="assets/andrei-lucian-headshot.png.jpg"
+          alt="Andrei Lucian"
+          width="200"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="prose center">
+        <p class="dm-cta-offer"><strong>Ghostwriting</strong> — for B2B founders who want a repeatable system: positioning, hooks, and cadence — not guesswork.</p>
+        <p class="dm-cta-offer"><strong>Brand advising</strong> — for small creators who want to grow on X, build an audience, and monetize — from <strong>0 → 1000</strong> followers in the next <strong>120 days</strong>.</p>
+      </div>
+      <div class="center">
+        <a class="btn-cta" href="#" onclick="return false;">DM me</a>
+      </div>
+      <p class="muted-small ebook-editor-note" style="margin-top:2rem;font-size:0.78rem;max-width:26rem;margin-left:auto;margin-right:auto">The X Writing Playbook · export via Print → Save as PDF.</p>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+</body>
+</html>

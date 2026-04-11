@@ -292,6 +292,10 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
       display: block;
       visibility: visible;
     }
+    .slide-cover .right img.carousel-cover-art {
+      filter: none;
+      object-position: center center;
+    }
 
     .slide-body {
       display: flex;
@@ -665,7 +669,7 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
             <button type="button" class="pill">Swipe</button>
           </div>
           <div class="right">
-            <img data-carousel-headshot src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="800" alt="Andrei Lucian" />
+            <img class="carousel-cover-art" src="assets/ebook-cover-blueprint-fiction.png" width="600" height="800" alt="The Blueprint for Writing Fiction cover" />
           </div>
           <div class="slide-brand"><span class="slide-brand-name">Andrei Lucian</span><span class="slide-brand-handle">@theandreilucian</span></div>
         </div>
@@ -789,7 +793,7 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
             <button type="button" class="pill">Swipe</button>
           </div>
           <div class="right">
-            <img data-carousel-headshot src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="800" alt="Andrei Lucian" />
+            <img class="carousel-cover-art" src="assets/ebook-cover-blueprint-fiction.png" width="600" height="800" alt="The Blueprint for Writing Fiction cover" />
           </div>
           <div class="slide-brand"><span class="slide-brand-name">Andrei Lucian</span><span class="slide-brand-handle">@theandreilucian</span></div>
         </div>
@@ -901,7 +905,7 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
             <button type="button" class="pill">Swipe</button>
           </div>
           <div class="right">
-            <img data-carousel-headshot src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="800" alt="Andrei Lucian" />
+            <img class="carousel-cover-art" src="assets/ebook-cover-blueprint-fiction.png" width="600" height="800" alt="The Blueprint for Writing Fiction cover" />
           </div>
           <div class="slide-brand"><span class="slide-brand-name">Andrei Lucian</span><span class="slide-brand-handle">@theandreilucian</span></div>
         </div>
@@ -1018,7 +1022,7 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
             <button type="button" class="pill">Swipe</button>
           </div>
           <div class="right">
-            <img data-carousel-headshot src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="600" height="800" alt="Andrei Lucian" />
+            <img class="carousel-cover-art" src="assets/ebook-cover-blueprint-fiction.png" width="600" height="800" alt="The Blueprint for Writing Fiction cover" />
           </div>
           <div class="slide-brand"><span class="slide-brand-name">Andrei Lucian</span><span class="slide-brand-handle">@theandreilucian</span></div>
         </div>
@@ -1296,8 +1300,11 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
           allowTaint: false,
           logging: false,
           backgroundColor: "#050508",
-          /* Improves capture of filter/grayscale and some shadows in Chromium */
-          foreignObjectRendering: true,
+          /*
+           * Keep this OFF for reliability.
+           * On some Windows/Chromium setups, foreignObjectRendering can produce black JPEG exports.
+           */
+          foreignObjectRendering: false,
           onclone: function (clonedDoc) {
             var root = clonedDoc.getElementById(deckId);
             if (!root) return;
@@ -1348,13 +1355,19 @@ window.__INLINE_HEADSHOT_DATA_URL__='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA
               }
               try {
                 var a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
+                var objectUrl = URL.createObjectURL(blob);
+                a.href = objectUrl;
                 a.download = filename;
                 a.rel = "noopener";
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
-                URL.revokeObjectURL(a.href);
+                /* Revoke later so slower file systems/viewers can finish reading the blob */
+                setTimeout(function () {
+                  try {
+                    URL.revokeObjectURL(objectUrl);
+                  } catch (_) {}
+                }, 30000);
                 resolve(true);
               } catch (e) {
                 resolve(false);
