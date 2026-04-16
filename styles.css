@@ -2160,11 +2160,57 @@ a.resource-card--full-link:hover {
     flex-grow: 1;
 }
 
+.resource-price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 0 20px 18px;
+}
+
+.resource-price-row--free {
+    padding-bottom: 18px;
+}
+
+.resource-price-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.resource-price-old {
+    color: #dc2626;
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
+.resource-price-now {
+    color: #16a34a;
+    font-size: 17px;
+    font-weight: 800;
+}
+
 @media (max-width: 768px) {
     .resource-card p {
         font-size: 14.5px;
         line-height: 1.6;
         padding: 0 18px 18px;
+    }
+
+    .resource-price-row {
+        padding: 0 18px 16px;
+    }
+
+    .resource-price-row--free {
+        padding-bottom: 16px;
     }
 }
 
@@ -2173,6 +2219,23 @@ a.resource-card--full-link:hover {
         font-size: 14px;
         line-height: 1.6;
         padding: 0 16px 16px;
+    }
+
+    .resource-price-row {
+        gap: 8px;
+        padding: 0 16px 14px;
+    }
+
+    .resource-price-row--free {
+        padding-bottom: 14px;
+    }
+
+    .resource-price-old {
+        font-size: 14px;
+    }
+
+    .resource-price-now {
+        font-size: 16px;
     }
 }
 
