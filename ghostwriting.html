@@ -1682,9 +1682,30 @@
             min-height: 400px;
             max-width: 100% !important;
         }
+        .proof-image-card--profile {
+            grid-column: 1 / -1;
+            max-width: 820px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 16px 20px;
+        }
+        .proof-image--profile {
+            min-height: 0 !important;
+            max-height: 260px !important;
+            width: 100% !important;
+            object-fit: contain;
+            object-position: center top;
+        }
         @media (max-width: 768px) {
             .proof-image {
                 min-height: 0 !important;
+            }
+            .proof-image-card--profile {
+                max-width: 100%;
+                padding: 12px;
+            }
+            .proof-image--profile {
+                max-height: 200px !important;
             }
         }
         .proof-caption {
@@ -3890,32 +3911,20 @@
         <div style="margin-bottom: 60px;">
             <h3 style="font-size: 24px; color: #00ffff; margin-bottom: 30px;">X Examples</h3>
             <div class="proof-grid-large">
-                <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2026-06-08 113835.jpg" alt="X Profile — 5.1K followers" class="proof-image" loading="lazy">
+                <div class="proof-image-card proof-image-card--profile">
+                    <img src="assets/images/X/Screenshot 2026-06-08 113835.jpg" alt="X Profile — 5.1K followers" class="proof-image proof-image--profile" loading="lazy">
                 </div>
                 <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184157.jpg" alt="X Post Example" class="proof-image" loading="lazy">
+                    <img src="assets/images/X/Screenshot 2026-06-08 113356.jpg" alt="X Post Example" class="proof-image" loading="lazy">
                 </div>
                 <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184220.jpg" alt="X Post Example" class="proof-image" loading="lazy">
+                    <img src="assets/images/X/Screenshot 2026-06-08 114839.jpg" alt="X Post Example" class="proof-image" loading="lazy">
                 </div>
                 <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184237.jpg" alt="X Post Example" class="proof-image" loading="lazy">
+                    <img src="assets/images/X/Screenshot 2026-06-08 114854.jpg" alt="X Post Example" class="proof-image" loading="lazy">
                 </div>
                 <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184250.jpg" alt="X Post Example" class="proof-image" loading="lazy">
-                </div>
-                <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184311.jpg" alt="X Post Example" class="proof-image" loading="lazy">
-                </div>
-                <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184325.jpg" alt="X Post Example" class="proof-image" loading="lazy">
-                </div>
-                <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184337.jpg" alt="X Post Example" class="proof-image" loading="lazy">
-                </div>
-                <div class="proof-image-card">
-                    <img src="assets/images/X/Screenshot 2025-09-27 184347.jpg" alt="X Post Example" class="proof-image" loading="lazy">
+                    <img src="assets/images/X/Screenshot 2026-06-08 114907.jpg" alt="X Post Example" class="proof-image" loading="lazy">
                 </div>
             </div>
         </div>
@@ -3924,8 +3933,8 @@
         <div style="margin-bottom: 60px;">
             <h3 style="font-size: 24px; color: #00ffff; margin-bottom: 30px;">LinkedIn Examples</h3>
             <div class="proof-grid-large">
-                <div class="proof-image-card">
-                    <img src="assets/images/li/Screenshot 2026-06-08 113855.jpg" alt="LinkedIn Profile — 15.9K followers, 8M+ views" class="proof-image" loading="lazy">
+                <div class="proof-image-card proof-image-card--profile">
+                    <img src="assets/images/li/Screenshot 2026-06-08 113855.jpg" alt="LinkedIn Profile — 15.9K followers, 8M+ views" class="proof-image proof-image--profile" loading="lazy">
                 </div>
                 <div class="proof-image-card">
                     <img src="assets/images/li/Screenshot 2026-06-08 114005.jpg" alt="LinkedIn Post Example" class="proof-image" loading="lazy">
