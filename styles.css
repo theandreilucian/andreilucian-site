@@ -2069,6 +2069,16 @@ a.resource-card--full-link:hover {
 }
 
 /* WIP products: CTA shows “in building” + amber dashed outline */
+.resource-card--soon {
+    cursor: default;
+    pointer-events: none;
+}
+
+.resource-card--soon .resource-image-link {
+    cursor: default;
+    pointer-events: none;
+}
+
 .resource-card--soon .resource-button--wip {
     border: 1px dashed rgba(245, 158, 11, 0.7);
     box-shadow:

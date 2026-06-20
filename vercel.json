@@ -5,6 +5,18 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/0-to-1K-X-System",
+      "destination": "/",
+      "statusCode": 302
+    },
+    {
+      "source": "/0-to-1K-X-System/:path*",
+      "destination": "/",
+      "statusCode": 302
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
