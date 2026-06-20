@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The LinkedIn Writing Playbook — Andrei Lucian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@400;600;700;800&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #b8b8b8;
+      --line: rgba(255, 255, 255, 0.85);
+      --good: #00d26a;
+      --bad: #ff3b3b;
+      --verify: #1d9bf0;
+      --cover-blue: #33a8ff;
+      --cover-blue-in: #2588d4;
+      --accent-gold: #c9a227;
+      --accent-gold-light: #f5e6a8;
+      --page-pad: clamp(36px, 6vw, 56px);
+      --content-max: 620px;
+      /* Avoid 100vw (scrollbar / file:// quirks); cap width inside padded page */
+      --cover-art-max: min(680px, 100%);
+      --total-pdf-pages: 20;
+      --leading-body: 1.78;
+      --leading-snug: 1.65;
+      --leading-post: 1.72;
+      --gap-paragraph: 1.35rem;
+      --gap-list-item: 0.55rem;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow-x: hidden;
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      padding-top: 3.35rem;
+      min-height: 100vh;
+      min-height: 100dvh;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #1a1a1a;
+      color: var(--text);
+      line-height: var(--leading-body);
+    }
+
+    /* Screen-only: download / print to PDF */
+    .ebook-pdf-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem 1rem;
+      padding: 0.7rem 1rem;
+      background: rgba(10, 10, 10, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .ebook-pdf-bar__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 100%;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .ebook-pdf-bar__label {
+        width: auto;
+        text-align: left;
+      }
+    }
+    .ebook-pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .ebook-pdf-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .ebook-pdf-btn--primary {
+      background: #00e040;
+      color: #000;
+      border-color: #00e040;
+      font-weight: 800;
+    }
+    .ebook-pdf-btn--primary:hover {
+      background: #00f048;
+      border-color: #00f048;
+      color: #000;
+    }
+
+    /* Each screen “page” — one section = one page in print/PDF */
+    .page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--bg);
+      color: var(--text);
+      padding: var(--page-pad);
+      /* Room for bottom-centered copyright + bottom-right page number */
+      padding-bottom: calc(var(--page-pad) + 4.25rem);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Running page numbers — matches print order */
+    .page[data-page]::after {
+      content: "Page " attr(data-page) " / " var(--total-pdf-pages);
+      position: absolute;
+      bottom: max(10px, calc(var(--page-pad) * 0.45));
+      right: var(--page-pad);
+      font-family: "Roboto Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(184, 184, 184, 0.85);
+      font-weight: 600;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Copyright — bottom center on every page (reference: bold caps + reserved line) */
+    .page-doc-footer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: max(10px, calc(var(--page-pad) * 0.45));
+      width: min(calc(100% - 2 * var(--page-pad)), 28rem);
+      z-index: 5;
+      text-align: center;
+      pointer-events: none;
+    }
+    .page-doc-footer__primary {
+      margin: 0;
+      font-size: clamp(0.65rem, 1.6vw, 0.76rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .page-doc-footer__sub {
+      margin: 0.5rem 0 0;
+      font-size: clamp(0.62rem, 1.45vw, 0.72rem);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+
+    .page-inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover {
+      text-align: center;
+      justify-content: center;
+      align-items: stretch;
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      min-height: 100svh;
+      padding-top: clamp(16px, 3vh, 40px);
+      padding-bottom: clamp(24px, 4vh, 48px);
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
+      width: min(100%, 720px);
+      height: min(70vh, 640px);
+      background: radial-gradient(ellipse 75% 55% at 50% 48%, rgba(90, 70, 120, 0.18) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cover .page-inner {
+      width: 100%;
+      max-width: var(--cover-art-max);
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 2 * var(--page-pad) - 3rem);
+      min-height: calc(100dvh - 2 * var(--page-pad) - 3rem);
+      position: relative;
+      z-index: 1;
+    }
+    .cover--full-art .page-inner {
+      max-width: var(--cover-art-max);
+    }
+    /*
+      Explicit frame size so flex layout cannot shrink the cover to a favicon.
+      Full column width × large viewport height = readable on all screens.
+    */
+    .cover-art-wrap.cover-art-full {
+      position: relative;
+      width: 100%;
+      max-width: var(--cover-art-max);
+      margin: 0 auto;
+      flex: 0 0 auto;
+      align-self: stretch;
+      box-sizing: border-box;
+      /* Stable box: width drives size; no 100vw shrink bugs (file:// / local preview) */
+      aspect-ratio: 4 / 5;
+      max-height: min(86vh, 900px);
+      max-height: min(86dvh, 900px);
+      min-height: 280px;
+    }
+    .cover-art-full img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: center center;
+      border-radius: clamp(8px, 1.2vw, 14px);
+      filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.55));
+    }
+    @media (max-width: 480px) {
+      .cover-art-wrap.cover-art-full {
+        max-height: min(72vh, 640px);
+        max-height: min(72dvh, 640px);
+        min-height: 240px;
+      }
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* —— Table of contents (rebuild: centred header + ruled list) —— */
+    .page--toc .page-inner,
+    .page-inner--toc {
+      width: 100%;
+      max-width: var(--content-max);
+    }
+    .toc-hero {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1.15rem;
+    }
+    h1.toc-header,
+    .toc-header {
+      text-align: center;
+      font-weight: 800;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1.12;
+      color: var(--text);
+    }
+    .toc-hero .toc-header {
+      margin-bottom: 0;
+    }
+    .toc-sub {
+      margin: 0.85rem auto 0;
+      max-width: 36rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      line-height: 1.72;
+    }
+    .toc-sub strong {
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 600;
+    }
+    .toc-block {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+    .toc-row {
+      display: grid;
+      grid-template-columns: minmax(2.25rem, 2.75rem) minmax(0, 1fr);
+      column-gap: 0.85rem;
+      align-items: baseline;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    .toc-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0.2rem;
+    }
+    .toc-num {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      font-size: 0.88rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .toc-title {
+      font-weight: 400;
+      font-size: clamp(0.82rem, 1.9vw, 0.94rem);
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .toc-footer {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 1.25rem;
+    }
+    .toc-footer strong {
+      display: block;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      margin-bottom: 0.25rem;
+    }
+    .toc-footer span {
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .ch-head {
+      position: relative;
+      padding-bottom: 1.15rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .ch-num {
+      font-weight: 400;
+      font-size: 0.95rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .ch-title {
+      font-weight: 700;
+      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+      text-align: center;
+      margin: 0;
+      padding: 0 2.5rem;
+      line-height: 1.25;
+    }
+
+    .prose {
+      line-height: var(--leading-body);
+    }
+    .prose p {
+      margin: 0 0 var(--gap-paragraph);
+      font-size: 0.98rem;
+      line-height: var(--leading-body);
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong, .prose b { font-weight: 700; }
+
+    .prose ul {
+      margin: 0.9rem 0 1.45rem;
+      padding-left: 1.2rem;
+    }
+    .prose ul li {
+      margin-bottom: var(--gap-list-item);
+      font-size: 0.98rem;
+      line-height: var(--leading-snug);
+    }
+    .prose ul li::marker {
+      color: var(--text);
+      font-size: 0.55em;
+    }
+    .prose ol {
+      margin: 0.9rem 0 1.45rem;
+      padding-left: 1.2rem;
+    }
+    .prose ol li {
+      margin-bottom: var(--gap-list-item);
+      line-height: var(--leading-snug);
+    }
+    .prose.compact {
+      line-height: var(--leading-snug);
+    }
+    .prose.compact p {
+      margin-bottom: 0.85rem;
+      line-height: var(--leading-snug);
+    }
+    .prose.compact li { margin-bottom: 0.4rem; font-size: 0.92rem; line-height: 1.58; }
+
+    /* Content templates (screenshot-style dark cards) */
+    .template-library {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-top: 0.35rem;
+    }
+    .template-card {
+      background: #121318;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.9rem 0.95rem;
+    }
+    .template-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.02rem;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .template-card .tpl-kicker {
+      color: #ff9f3f;
+      font-weight: 700;
+      margin: 0 0 0.45rem;
+      font-size: 0.9rem;
+    }
+    .template-card p {
+      margin: 0 0 0.45rem;
+      font-size: 0.86rem;
+      line-height: 1.48;
+    }
+    .template-card ul,
+    .template-card ol {
+      margin: 0.3rem 0 0.55rem;
+      padding-left: 1.05rem;
+    }
+    .template-card li {
+      font-size: 0.84rem;
+      line-height: 1.42;
+      margin-bottom: 0.22rem;
+    }
+
+    /* Networking visual blocks */
+    .network-block {
+      background: #11141b;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.9rem;
+    }
+    .network-block h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.98rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .network-block p {
+      margin: 0 0 0.5rem;
+      font-size: 0.91rem;
+      line-height: 1.6;
+    }
+    .network-templates {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+    .network-template-card {
+      background: #12151d;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.75rem 0.8rem;
+    }
+    .network-template-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .network-template-card p,
+    .network-template-card li {
+      font-size: 0.85rem;
+      line-height: 1.55;
+      margin: 0 0 0.45rem;
+    }
+    .network-template-card ul {
+      margin: 0.35rem 0 0.2rem;
+      padding-left: 1rem;
+    }
+    @media (max-width: 760px) {
+      .network-templates { grid-template-columns: 1fr; }
+    }
+
+    /* Craft offer visual system */
+    .offer-hero {
+      background: linear-gradient(160deg, rgba(0, 224, 64, 0.14), rgba(0, 140, 255, 0.08));
+      border: 1px solid rgba(0, 224, 64, 0.28);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .offer-hero p {
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    .offer-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem 0.6rem;
+      margin: 0.7rem 0 0.2rem;
+      padding: 0;
+      list-style: none;
+    }
+    .offer-checklist li {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 0.42rem 0.55rem;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+    .offer-copy-box {
+      background: #0f1218;
+      border: 1px dashed rgba(255, 255, 255, 0.26);
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .offer-copy-box p {
+      margin: 0 0 0.45rem;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+    .offer-copy-box p:last-child { margin-bottom: 0; }
+    @media (max-width: 760px) {
+      .offer-checklist { grid-template-columns: 1fr; }
+    }
+
+    .label-example {
+      font-weight: 700;
+      margin: 1.75rem 0 1.15rem;
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1.75rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .compare { grid-template-columns: 1fr; }
+    }
+    .compare-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .icon-good, .icon-bad {
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .icon-good { color: var(--good); }
+    .icon-bad { color: var(--bad); }
+
+    .post {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .post-head {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+    }
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #555, #222);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .post-meta { line-height: 1.25; }
+    .post-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .badge {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--verify);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: #fff;
+      line-height: 1;
+    }
+    .badge::after { content: "✓"; }
+    .post-handle {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+    }
+    .post-body {
+      font-size: 0.8rem;
+      line-height: var(--leading-post);
+      white-space: pre-wrap;
+    }
+
+    .formula-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem 1.35rem;
+      margin: 1.65rem 0;
+      font-size: 0.95rem;
+      line-height: var(--leading-snug);
+    }
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      line-height: 1.35;
+    }
+    .fraction .num { padding-bottom: 0.15rem; }
+    .fraction .bar {
+      width: 100%;
+      min-width: 180px;
+      height: 1px;
+      background: var(--line);
+    }
+    .fraction .den { padding-top: 0.25rem; }
+    .formula-tail { font-weight: 600; }
+
+    .img-placeholder {
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      border-radius: 8px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .img-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 3.5vw, 1.75rem);
+      width: 100%;
+      align-items: start;
+    }
+    .img-row > * {
+      min-width: 0;
+    }
+    @media (max-width: 640px) {
+      .img-row { grid-template-columns: 1fr; }
+    }
+
+    /* Ebook: real profile + banner shots (fluid, no horizontal overflow) */
+    .ebook-asset-frame {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #0a0a0a;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .ebook-asset-frame--avatar {
+      width: 100%;
+      max-width: min(320px, 100%);
+      margin: 0 auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+    }
+    .ebook-asset-frame--avatar img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+    .ebook-asset-frame--cover {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 1584 / 396;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .ebook-asset-frame--cover img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .ebook-asset-frame--cover {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    /* Page 4 — avatar + cover share the same box height (balanced row) */
+    .ebook-assets-row {
+      align-items: stretch;
+      --ebook-match: min(292px, 36vw);
+    }
+    @media (max-width: 640px) {
+      .ebook-assets-row {
+        --ebook-match: min(300px, 82vw);
+      }
+    }
+    .ebook-assets-col {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 0;
+    }
+    .ebook-assets-slot {
+      width: 100%;
+      height: var(--ebook-match);
+      min-height: var(--ebook-match);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+    .ebook-assets-row .ebook-asset-frame--avatar {
+      width: var(--ebook-match);
+      height: var(--ebook-match);
+      max-width: min(100%, var(--ebook-match));
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+    .ebook-assets-row .ebook-asset-frame--cover {
+      width: 100%;
+      height: 100%;
+      max-height: var(--ebook-match);
+      aspect-ratio: auto;
+      border-radius: 10px;
+    }
+    .ebook-assets-row .ebook-asset-frame--cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Crisp “GET PAID TO WRITE ONLINE” cover (vector-sharp at any size; replaces raster) */
+    .ebook-asset-frame--cover-clear {
+      padding: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .ebook-cover-banner-clear {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ebook-cover-banner-clear__box {
+      border: 1px solid #fff;
+      padding: clamp(0.4rem, 1.8vw, 0.85rem) clamp(0.45rem, 2.2vw, 1rem);
+      text-align: center;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .ebook-cover-banner-clear__line {
+      display: block;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      font-size: clamp(0.48rem, 2.6vw, 0.82rem);
+      color: #fff;
+      line-height: 1.22;
+      text-transform: uppercase;
+    }
+
+    .pull-quote {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 1.5rem 0;
+      line-height: 1.6;
+      color: var(--accent-gold-light);
+    }
+
+    .ch-head.lines-both {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      margin-top: 0.5rem;
+    }
+    .btn-cta {
+      display: inline-block;
+      margin: 2rem auto 0;
+      padding: 0.85rem 2.75rem;
+      border-radius: 999px;
+      background: #00e040;
+      color: #000;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      text-decoration: none;
+      border: none;
+      cursor: default;
+    }
+    .center { text-align: center; }
+
+    /* Last page — DM CTA + author photo */
+    .page--dm-cta .prose.center p {
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page--dm-cta .dm-cta-offer {
+      margin-bottom: 1.35rem;
+      line-height: var(--leading-snug);
+    }
+    .page--dm-cta .dm-cta-offer:last-child {
+      margin-bottom: 0;
+    }
+    .dm-cta-headshot {
+      margin: 0.5rem auto 1.75rem;
+      width: min(9.5rem, 42vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+    .dm-cta-headshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    .page-foot-line {
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .muted-small {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .track-title {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      font-size: clamp(0.65rem, 1.5vw, 0.78rem);
+      text-transform: uppercase;
+      margin: 1.85rem 0 1.2rem;
+      line-height: 1.5;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 720px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    .col-head {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+      line-height: 1.45;
+    }
+    .grid-3 .post { font-size: 0.72rem; }
+    .grid-3 .post-body { font-size: 0.68rem; line-height: 1.62; }
+
+    /* Engagement page — equal-height example “feed” cards */
+    .engagement-examples {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 1.35rem 0 0;
+      align-items: stretch;
+    }
+    .engagement-examples > * {
+      min-width: 0;
+    }
+    @media (max-width: 900px) {
+      .engagement-examples { grid-template-columns: 1fr; }
+    }
+    .engagement-examples .post {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-height: 12rem;
+      font-size: 0.76rem;
+    }
+    .engagement-examples .post-body {
+      flex: 1;
+      font-size: 0.74rem;
+      line-height: 1.55;
+    }
+
+    .schedule-wrap {
+      overflow-x: auto;
+      margin: 1.45rem 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    .schedule {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.68rem;
+      min-width: 520px;
+      line-height: 1.55;
+    }
+    .schedule th,
+    .schedule td {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 0.62rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .schedule th {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.62rem;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    @media print {
+      body {
+        background: #000;
+        padding-top: 0 !important;
+      }
+      .ebook-pdf-bar {
+        display: none !important;
+      }
+      .page {
+        min-height: auto;
+        height: 100vh;
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child { page-break-after: auto; }
+      /* TOC: dense layout so all rows fit on one PDF page */
+      .page--toc {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        overflow: hidden !important;
+        padding-top: 0.25rem !important;
+        /* Must keep same bottom band as .page — tiny padding stacks toc-footer + page-doc-footer */
+        padding-bottom: calc(var(--page-pad) + 4.25rem) !important;
+      }
+      /* Author / export hints — not for readers; keeps PDF footer band clear */
+      .ebook-editor-note {
+        display: none !important;
+      }
+      .page--toc .page-inner--toc {
+        flex: 1 1 auto !important;
+        min-height: 100% !important;
+        justify-content: center !important;
+      }
+      .page--toc .toc-hero {
+        margin-bottom: 0.45rem !important;
+      }
+      .page--toc .toc-block {
+        margin: 0 auto !important;
+      }
+      .page--toc .toc-header {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.1em !important;
+      }
+      .page--toc .toc-row {
+        padding: 0.28rem 0 !important;
+        column-gap: 0.55rem !important;
+      }
+      .page--toc .toc-num {
+        font-size: 0.68rem !important;
+        line-height: 1.15 !important;
+      }
+      .page--toc .toc-title {
+        font-size: 0.66rem !important;
+        line-height: 1.22 !important;
+      }
+      .page--toc .toc-footer {
+        padding-top: 0.5rem !important;
+        margin-top: 0.35rem !important;
+      }
+      .page--toc .toc-footer span {
+        font-size: 0.58rem !important;
+      }
+      .cover .page-inner {
+        min-height: auto;
+        height: 100%;
+        justify-content: center;
+      }
+      .cover-art-wrap.cover-art-full {
+        width: 92%;
+        max-width: 680px;
+        margin: 0 auto;
+        aspect-ratio: 4 / 5;
+        max-height: 90vh;
+        min-height: 0;
+      }
+      .cover-art-full img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: contain;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ebook-pdf-bar" role="region" aria-label="PDF download">
+    <span class="ebook-pdf-bar__label">The LinkedIn Writing Playbook</span>
+    <a
+      class="ebook-pdf-btn ebook-pdf-btn--primary"
+      href="assets/the-linkedin-writing-playbook.pdf"
+      download="The-LinkedIn-Writing-Playbook-Andrei-Lucian.pdf"
+    >Download PDF</a>
+    <button type="button" class="ebook-pdf-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <!-- PAGE 1 / 26 -->
+  <section class="page cover cover--full-art" aria-label="Cover" data-page="1">
+    <div class="page-inner">
+      <h1 class="visually-hidden">The LinkedIn Writing Playbook — Andrei Lucian</h1>
+      <div class="cover-art-wrap cover-art-full">
+        <img
+          src="assets/ebook-cover-linkedin-playbook.png"
+          alt="The LinkedIn Writing Playbook cover with Andrei Lucian portrait."
+          width="800"
+          height="1000"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 2 / 26 -->
+  <section class="page page--toc" aria-label="Table of contents" data-page="2">
+    <div class="page-inner page-inner--toc">
+      <header class="toc-hero">
+        <h1 class="toc-header">Table of contents</h1>
+      </header>
+      <nav class="toc-block" aria-label="Sections in this document">
+                <div class="toc-row"><span class="toc-num">3</span><span class="toc-title">Intro about LinkedIn</span></div>
+        <div class="toc-row"><span class="toc-num">4</span><span class="toc-title">1. Profile Optimisation</span></div>
+        <div class="toc-row"><span class="toc-num">5</span><span class="toc-title">2. Content Strategy</span></div>
+        <div class="toc-row"><span class="toc-num">11</span><span class="toc-title">3. Networking</span></div>
+        <div class="toc-row"><span class="toc-num">12</span><span class="toc-title">Networking — industry titans</span></div>
+        <div class="toc-row"><span class="toc-num">13</span><span class="toc-title">Networking — connection process</span></div>
+        <div class="toc-row"><span class="toc-num">14</span><span class="toc-title">Networking — audience boosting interactions</span></div>
+        <div class="toc-row"><span class="toc-num">16</span><span class="toc-title">4. Craft your offer</span></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="toc-row"><span class="toc-num">19</span><span class="toc-title">Bonuses — My Pack Of Tools I Use</span></div>
+        <div class="toc-row"><span class="toc-num">20</span><span class="toc-title">DM me</span></div>
+      </nav>
+      <footer class="toc-footer ebook-editor-note">
+        <span>Replace <code style="font-size:0.78rem">assets/</code> images in the HTML if you change your photo or banner.</span>
+      </footer>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+    <!-- PAGE 3 / 26 -->
+  <section class="page" aria-label="Chapter 3" data-page="3">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">3</span>
+        <h2 class="ch-title">Intro about LinkedIn</h2>
+      </header>
+      <div class="prose">
+        <p>LinkedIn is the best platform for building authority, trust, and inbound opportunities if you use it with consistency.</p>
+        <p>This playbook is focused on one outcome: help you look credible, publish useful content, grow your network, and turn attention into opportunities.</p>
+        <p>We keep this simple: profile first, then content, then networking, then offer.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 4 / 26 -->
+  <section class="page" aria-label="Chapter 4" data-page="4">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">4</span>
+        <h2 class="ch-title">1. Profile Optimisation</h2>
+      </header>
+      <div class="prose">
+        <p>Your profile should answer in 5 seconds:</p>
+        <ul>
+          <li>Who you help</li>
+          <li>What result you help them get</li>
+          <li>Why they should trust you</li>
+        </ul>
+        <p>Focus on headline, banner, profile photo, and about section. Keep your message specific and proof-based.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 5 / 26 -->
+  <section class="page" aria-label="Chapter 5" data-page="5">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">5</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 1-2</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>1. Simplify</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>People overcomplicate {thing}</p>
+          <p>Listen, if you're a {experience level}:</p>
+          <p>Avoid:</p>
+          <ul><li>{thing they should avoid}</li><li>{thing they should avoid}</li><li>{thing they should avoid}</li><li>{thing they should avoid}</li></ul>
+          <p>Instead:</p>
+          <ul><li>{thing they should do}</li><li>{thing they should do}</li><li>{thing they should do}</li></ul>
+          <p>Focus on this for the first {time frame}. Build from there.</p>
+        </article>
+        <article class="template-card">
+          <h3>2. Generate ideas For Hooks</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>How you think you should {action} on {social media platform}:</p>
+          <ul><li>{Wrong practice}</li><li>{Wrong practice}</li><li>{Wrong practice}</li></ul>
+          <p>How you actually {action} on {social media platform}:</p>
+          <ul><li>Educational content around {pain point}</li><li>Free resources to solve {pain point}</li><li>Consistent value and {proof}</li></ul>
+          <p>Strong CTA's are good but strong brands are better. Make people WANT to {action} from you. Don't force them.</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 6 / 26 -->
+  <section class="page" aria-label="Chapter 6" data-page="6">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">6</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 3-4</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>3. A transformation</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>{Time frame} ago, I stopped {action}. {Context}.</p>
+          <p>And no:</p>
+          <ul><li>{Misconception 1}</li><li>{Misconception 2}</li><li>{Misconception 3}</li></ul>
+          <p>In fact, since I stopped {action}:</p>
+          <ul><li>{Achievement 1}</li><li>{Achievement 2}</li><li>{Achievement 3}</li></ul>
+          <p>{Sassy statement}</p><p>And {time frame} later, I've never been clearer on my reasons to never {action} again. {Result}</p>
+        </article>
+        <article class="template-card">
+          <h3>4. Comparative Timeline</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>Year one: bad result with no action</p>
+          <p>Year two: positive outcome of action</p>
+          <p>Stop doing {opposite of action}</p>
+          <p>Start doing {action}</p>
+          <p>I did this for {add your time frame}</p>
+          <p>What's stopping you?</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 7 / 26 -->
+  <section class="page" aria-label="Chapter 7" data-page="7">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">7</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 5-6</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>5. Struggles</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>There's too many "I made {success}"</p>
+          <p>But not enough "I struggled doing xyz"</p>
+          <p>This year I've:</p>
+          <ul><li>{fail}</li><li>{fail}</li><li>{fail}</li></ul>
+          <p>That's the reality of being {who you are}... {Describe the failure}</p>
+          <p>It's not all black and white... remind people that not everything's perfect.</p>
+        </article>
+        <article class="template-card">
+          <h3>6. Essentials Tip</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>How I managed to build a {thing} in &lt; {time frame}:</p>
+          <p>(100% of {target group} I know agree with this tip)</p>
+          <p>{your tip/unique insight}</p>
+          <ol><li>{Tip pointer #1}</li><li>{Tip pointer #2}</li><li>{Tip pointer #3}</li></ol>
+          <p>Stop {what does not work}, start {what works}. Earn your dopamine release, do the thing first.</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 8 / 26 -->
+  <section class="page" aria-label="Chapter 8" data-page="8">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">8</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 7-8</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>7. Proven Tip About Your Niche</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>Want to build a powerful {goal/objective}?</p>
+          <p>{Proven tip I used to build my achievement}</p>
+          <ul><li>{tip #1}</li><li>{tip #2}</li><li>{tip #3}</li><li>{Action} consistently for {duration}</li></ul>
+          <p>Here's a quick {platform/niche} framework: {Add your framework here}</p>
+          <p>Learn -> Implement -> Teach through {content/work}.</p>
+        </article>
+        <article class="template-card">
+          <h3>8. Stop Overcomplicating</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>How to stop overcomplicating your {desired outcome}</p>
+          <p>(and create the {ideal process})</p>
+          <p>Turn your {negative perspective} into {something positive}.</p>
+          <p>Here's how I did it:</p>
+          <ol><li>{Tip #1}</li><li>{Tip #2}</li><li>{Tip #3}</li><li>{Tip #4}</li></ol>
+          <p>Swap from "Why them?" to "How can I."</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 9 / 26 -->
+  <section class="page" aria-label="Chapter 9" data-page="9">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">9</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 9-10</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>9. 60 Second Masterclass</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>60-second {Your Expertise} Masterclass</p>
+          <p>(From someone who's {your credibility})</p>
+          <ol><li>Cut the fluff, focus on {what works}</li><li>{What works}, not {common misconception}</li><li>{Your actionable tip #1}</li><li>{Your actionable tip #2}</li><li>{Your actionable tip #3}</li><li>{Your actionable tip #4}</li><li>{Your actionable tip #5}</li></ol>
+          <p>Take the {end user} from point A -> B {ideal way}.</p>
+        </article>
+        <article class="template-card">
+          <h3>10. Overnight Success</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>I failed [number] [attempts/ventures] before landing on [platform/niche].</p>
+          <p>Here's my [timeframe] "overnight success":</p>
+          <ul><li>[Year]: I failed at [first attempt].</li><li>[Year]: I failed at [second attempt].</li><li>[Year]: I failed at [third attempt].</li><li>[Year]: I failed at [fourth attempt].</li><li>[Year]: I found success in [current venture].</li><li>[Year]: Building my [goal/dream].</li></ul>
+          <p>You don't lack [skill/attribute], just consistency.</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 10 / 26 -->
+  <section class="page" aria-label="Chapter 10" data-page="10">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">10</span>
+        <h2 class="ch-title">2. Content Strategy — Templates 11-12</h2>
+      </header>
+      <div class="template-library" aria-label="Content template cards">
+        <article class="template-card">
+          <h3>11. Where Did You Start From</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>[Add an image]</p>
+          <p>This is my [old place/start point] where it all began.</p>
+          <p>[What did you had at that time], [challenge/hardships], late nights, and obsessing over [focus area].</p>
+          <p>I was [context/situation] at the time. That same year, I made my first [milestone].</p>
+          <p>One year of [action you took] can put you decades ahead.</p>
+        </article>
+        <article class="template-card">
+          <h3>12. Challenging Beliefs</h3>
+          <p class="tpl-kicker">Template</p>
+          <p>[Challenge a commonly accepted idea]</p>
+          <p>[your contrasting idea #1]</p>
+          <p>[your contrasting idea #2]</p>
+          <p>[your contrasting idea #3]</p>
+          <p>To become a [desired outcome or identity], you embrace it all.</p>
+          <p>[action step #1] [action step #2] [action step #3]</p>
+          <p>Do it for [timeframe], watch your life change completely.</p>
+        </article>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 11 / 26 -->
+  <section class="page" aria-label="Chapter 11" data-page="11">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">11</span>
+        <h2 class="ch-title">3. Networking</h2>
+      </header>
+      <div class="prose">
+        <p>Networking on LinkedIn works best when you add value before asking for anything.</p>
+        <ul>
+          <li>Build a target list of people in your niche</li>
+          <li>Comment meaningfully on their posts consistently</li>
+          <li>Connect after real interaction, not cold pitching</li>
+          <li>Reply to every quality interaction on your own posts</li>
+        </ul>
+        <p>This builds trust, visibility, and warm inbound conversations over time.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 12 / 26 -->
+  <section class="page" aria-label="Chapter 12" data-page="12">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">12</span>
+        <h2 class="ch-title">Adding Industry Titans</h2>
+      </header>
+      <div class="prose">
+        <p><strong>Create a Target List</strong></p>
+        <p>Who are 5-10 industry titans that you want to connect with? Put them in a Google Sheet and start the process below.</p>
+        <p><strong>Step 1: Stay OUT of their inbox</strong></p>
+        <p>There is nothing worse than getting a LinkedIn message or InMail from someone you have zero interaction with, and they are asking for a favor. Do not do this.</p>
+        <p><strong>Step 2: Routinely interact with their content</strong></p>
+        <p>To play it safe, respect people's time and respect their inbox. If they are a titan in your industry, it's likely they get 30-40 messages every single day. Be different by respecting their inbox.</p>
+        <p>Before asking them to connect, interact meaningfully with at least 10 pieces of their content. Meaningful interaction is a thoughtful, professional comment that furthers the discussion.</p>
+        <p>Most comments on LinkedIn are generic, so you'll stand out and have a better chance of being selected as "top comment". This will help get you noticed.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 13 / 26 -->
+  <section class="page" aria-label="Chapter 13" data-page="13">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">13</span>
+        <h2 class="ch-title">Networking — connection process</h2>
+      </header>
+      <div class="prose">
+        <p><strong>Step 3: Create a "solo recognition" post</strong></p>
+        <p>This typically will get flagged by LinkedIn as spam and also won't win you any points with those titans if you make spammy posts tagging too many people.</p>
+        <p>I often see people on LinkedIn create a spammy post where they ask a question and then tag 20 titans in their industry.</p>
+        <p>Instead, when you find a post that really resonates with you, create your own post and call out that ONE titan. Tell them how much their post helped, and tag only them. This is the fastest way to a connection.</p>
+        <p><strong>Step 4: Connect meaningfully</strong></p>
+        <p>If you have stayed out of someone's inbox, interacted with their posts regularly, and created a "solo recognition" post, then it could be the right time to connect. When you send a connection, make it custom.</p>
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section>
+
+  <!-- PAGE 14 / 26 -->
+  <section class="page" aria-label="Chapter 14" data-page="14">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">14</span>
+        <h2 class="ch-title">Audience Boosting Interactions</h2>
+      </header>
+      <div class="prose">
+        <div class="network-block">
+          <h3>Use the "top" and "recent" sort function</h3>
+          <p>The automatic sorting of your LinkedIn feed is set to "top" where you'll see top posts from your network. The "recent" view helps you find new posts early and increase your odds of becoming a top comment.</p>
+          <p>When you're one of the first thoughtful commenters, you can earn more likes, profile views, and followers from that thread.</p>
+        </div>
+        <div class="network-block">
+          <h3>Daily interaction baseline</h3>
+          <p>Leave 5 thoughtful comments per day on people in your niche. Build a spreadsheet of creators you follow and comment before publishing your own post.</p>
+          <p>TIP: post visibility improves when your own post gets 30 interactions and 10 comments in the first hour.</p>
+        </div>
+        <div class="network-templates">
+          <article class="network-template-card">
+            <h4>5 comment examples</h4>
+            <ul>
+              <li>"Great point on {topic}. We tested similar and saw {result}. Have you seen this in {context}?"</li>
+              <li>"Strong take. Most people skip {step}. Your line on {specific line} explains why results stall."</li>
+              <li>"I like this framing of {idea}. For early-stage creators I'd add {practical step} first."</li>
+              <li>"Big takeaway: {one takeaway}. This alone can save months of trial and error."</li>
+              <li>"Agree on {point}. One respectful challenge: {counterpoint}. Curious on your view."</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section>
+
+  <!-- PAGE 15 / 26 -->
+  <section class="page" aria-label="Chapter 15" data-page="15">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">15</span>
+        <h2 class="ch-title">Audience Boosting Interactions — DM Playbook</h2>
+      </header>
+      <div class="prose">
+        <div class="network-templates">
+          <article class="network-template-card">
+            <h4>5 DM opener examples</h4>
+            <ul>
+              <li>"Hey {name}, your post on {topic} was excellent — especially {detail}. Helped me a lot."</li>
+              <li>"{Name}, your {post/carousel} on {topic} gave me clarity on {pain point}. Thank you."</li>
+              <li>"Quick one — your point on {specific point} changed how I'm approaching {activity}."</li>
+              <li>"Loved your take on {topic}. I'm building in {niche}, and {detail} was super useful."</li>
+              <li>"Thanks for posting {title/topic}. Rare to see this much signal on LinkedIn."</li>
+            </ul>
+          </article>
+          <article class="network-template-card">
+            <h4>DM funnel template (copy/paste)</h4>
+            <p><strong>1.</strong> Warm opener: "Hey {name}, enjoyed your post about {topic}. {detail} stood out."</p>
+            <p><strong>2.</strong> Context: "I'm working with {audience} on {outcome}, solving {pain point}."</p>
+            <p><strong>3.</strong> Micro-value: "One quick idea that might help: {insight}."</p>
+            <p><strong>4.</strong> Permission question: "Open to a quick thought on improving {specific area}?"</p>
+            <p><strong>5.</strong> Soft CTA: "If useful, happy to send a 3-point breakdown here — no pitch."</p>
+            <p><strong>6.</strong> Optional call: "If relevant, we can do a quick 15-min call. No pressure."</p>
+          </article>
+          <article class="network-template-card">
+            <h4>Follow-up cadence</h4>
+            <p><strong>Day 0:</strong> opener</p>
+            <p><strong>Day 3:</strong> value follow-up with one useful note</p>
+            <p><strong>Day 7:</strong> final check-in</p>
+            <p>Then stop. Keep the relationship warm through comments.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section>
+
+  <!-- PAGE 16 / 26 -->
+  <section class="page" aria-label="Chapter 16" data-page="16">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">16</span>
+        <h2 class="ch-title">4. Craft your offer</h2>
+      </header>
+      <div class="prose">
+        <div class="offer-hero">
+          <p><strong>Positioning rule:</strong> A weak offer says "I do content." A strong offer says "I help {who} get {outcome} in {timeframe} with {mechanism}."</p>
+        </div>
+
+        <div class="network-block">
+          <h3>Offer building framework</h3>
+          <p>Great offers are specific. If your offer is vague, people delay. If your offer is clear, people decide.</p>
+          <ul class="offer-checklist">
+            <li><strong>Who:</strong> exact audience</li>
+            <li><strong>Outcome:</strong> measurable result</li>
+            <li><strong>Mechanism:</strong> your process</li>
+            <li><strong>Timeline:</strong> clear timeframe</li>
+            <li><strong>Scope:</strong> included + excluded</li>
+            <li><strong>Proof:</strong> case studies / testimonials</li>
+            <li><strong>Guarantee:</strong> risk reversal</li>
+            <li><strong>CTA:</strong> next action to start</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section>
+
+  <!-- PAGE 17 / 26 -->
+  <section class="page" aria-label="Chapter 17" data-page="17">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">17</span>
+        <h2 class="ch-title">4. Craft your offer — examples 1-2</h2>
+      </header>
+      <div class="prose">
+        <div class="network-templates">
+          <article class="network-template-card">
+            <h4>Example 1 — Ghostwriting (Done-for-you)</h4>
+            <p><strong>Who:</strong> B2B founders and consultants</p>
+            <p><strong>Offer:</strong> LinkedIn ghostwriting system to grow authority and inbound demand.</p>
+            <p><strong>Mechanism:</strong> positioning doc -> content pillars -> weekly post calendar -> writing + posting support -> monthly optimization.</p>
+            <p><strong>Deliverables (30 days):</strong></p>
+            <ul>
+              <li>12 posts written + revisions</li>
+              <li>Profile headline + About rewrite</li>
+              <li>Content strategy dashboard</li>
+              <li>Weekly performance report</li>
+            </ul>
+            <p><strong>CTA:</strong> "Message me 'GHOST' for a custom plan."</p>
+          </article>
+
+          <article class="network-template-card">
+            <h4>Example 2 — Brand Advising (1:1 coaching)</h4>
+            <p><strong>Who:</strong> small accounts (0-2k followers)</p>
+            <p><strong>Offer:</strong> 1:1 brand advising to clarify niche, message, and growth system.</p>
+            <p><strong>Mechanism:</strong> 90-minute strategy session + weekly check-ins + accountability.</p>
+            <p><strong>Deliverables (4 weeks):</strong></p>
+            <ul>
+              <li>Niche and positioning statement</li>
+              <li>Offer messaging and CTA scripts</li>
+              <li>15 post hooks + 10 post templates</li>
+              <li>Networking and DM process</li>
+            </ul>
+            <p><strong>CTA:</strong> "Book a 15-min fit call."</p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section>
+
+  <!-- PAGE 18 / 26 -->
+  <section class="page" aria-label="Chapter 18" data-page="18">
+    <div class="page-inner">
+      <header class="ch-head">
+        <span class="ch-num">18</span>
+        <h2 class="ch-title">4. Craft your offer — continued</h2>
+      </header>
+      <div class="prose">
+        <div class="network-templates">
+          <article class="network-template-card">
+            <h4>Example 3 — Growth Sprint (Guarantee model)</h4>
+            <p><strong>Who:</strong> founders starting from scratch</p>
+            <p><strong>Offer:</strong> Grow your X account from 0 to 1000 followers in 120 days, or money back.</p>
+            <p><strong>Mechanism:</strong> profile optimization + daily content cadence + comment engine + DM funnel.</p>
+            <p><strong>Minimum client actions required:</strong></p>
+            <ul>
+              <li>Approve content daily</li>
+              <li>Post consistently for 120 days</li>
+              <li>Reply to inbound engagement</li>
+            </ul>
+            <p><strong>Guarantee:</strong> If targets and execution are met, and 1000 is not reached, refund applies.</p>
+          </article>
+
+          <article class="network-template-card">
+            <h4>Offer copy template (fill-in)</h4>
+            <p>I help <strong>{who}</strong> get <strong>{outcome}</strong> in <strong>{timeframe}</strong> using my <strong>{mechanism}</strong>.</p>
+            <p>What you get:</p>
+            <ul>
+              <li>{deliverable 1}</li>
+              <li>{deliverable 2}</li>
+              <li>{deliverable 3}</li>
+              <li>{deliverable 4}</li>
+            </ul>
+            <p>Investment: {price} | Guarantee: {guarantee}</p>
+          </article>
+        </div>
+
+        <div class="offer-copy-box">
+          <p><strong>Paste-ready offer line:</strong></p>
+          <p>"I help {audience} get {result} in {timeframe} through {mechanism}. You get {deliverable 1}, {deliverable 2}, {deliverable 3}. If we don't hit {target under agreed conditions}, {guarantee}."</p>
+        </div>
+      </div>
+    </div>
+    <footer class="page-doc-footer"><p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p><p class="page-doc-footer__sub">All rights reserved.</p></footer>
+  </section><!-- PAGE 19 / 20 — bonuses -->
+  <section class="page page--dm-cta" aria-label="Bonuses" data-page="19">
+    <div class="page-inner">
+      <header class="ch-head lines-both">
+        <span class="ch-num">19</span>
+        <h2 class="ch-title">Bonuses: My Pack Of Tools I Use</h2>
+      </header>
+      <div class="prose">
+        <p>These are the core tools I use weekly to create content, run distribution, and monetize:</p>
+        <ul>
+          <li><strong>Hypefury</strong> — schedule posts, manage publishing consistency, and keep daily output organized.</li>
+          <li><strong>qura.ai</strong> — generate smarter engagement ideas and comment angles faster.</li>
+          <li><strong>Canva</strong> — design visuals, carousels, and simple branded assets quickly.</li>
+          <li><strong>Notion</strong> — content database, pipeline tracking, and operating system for ideas.</li>
+          <li><strong>ChatGPT</strong> — ideation, structure drafts, and first-pass rewrites for speed.</li>
+          <li><strong>Gumroad</strong> — sell digital products and capture payments with simple checkout.</li>
+          <li><strong>Cursor.ai</strong> — build pages, edit files, and move fast on technical tasks.</li>
+          <li><strong>Kit</strong> — newsletter growth, subscriber management, and broadcast emails.</li>
+          <li><strong>Hemingway</strong> — tighten writing clarity, reduce fluff, and improve readability.</li>
+        </ul>
+        <p>Use fewer tools, but use them deeply. Stack them into one repeatable workflow and execute daily.</p>
+      </div>
+      <p class="muted-small ebook-editor-note" style="margin-top:2rem;font-size:0.78rem;max-width:26rem;margin-left:auto;margin-right:auto">The LinkedIn Writing Playbook · export via Print → Save as PDF.</p>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+  <!-- PAGE 20 / 20 — last page: DM me -->
+  <section class="page page--dm-cta" aria-label="DM me" data-page="20">
+    <div class="page-inner" style="justify-content:center;text-align:center">
+      <header class="ch-head lines-both">
+        <span class="ch-num">20</span>
+        <h2 class="ch-title">DM me</h2>
+      </header>
+      <div class="dm-cta-headshot">
+        <img
+          src="assets/andrei-lucian-headshot.png.jpg"
+          alt="Andrei Lucian"
+          width="200"
+          height="200"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="prose center">
+        <p class="dm-cta-offer"><strong>Ghostwriting</strong> — for B2B founders who want a repeatable system: positioning, hooks, and cadence — not guesswork.</p>
+        <p class="dm-cta-offer"><strong>Brand advising</strong> — for small creators who want to grow on LinkedIn, build authority, and monetize with clear positioning and consistent writing.</p>
+      </div>
+      <div class="center">
+        <a class="btn-cta" href="#" onclick="return false;">DM me</a>
+      </div>
+    </div>
+    <footer class="page-doc-footer">
+      <p class="page-doc-footer__primary">Copyright © 2026 Andrei Lucian</p>
+      <p class="page-doc-footer__sub">All rights reserved.</p>
+    </footer>
+  </section>
+
+</body>
+</html>
+
+
+
+
+
