@@ -118,7 +118,7 @@
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (input.value === PASS) {
+      if (input.value.trim() === PASS) {
         unlock();
       } else {
         err.textContent = "Wrong password. Check your purchase email and try again.";

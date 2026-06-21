@@ -250,14 +250,15 @@ function isValidEmail(email) {
 document.addEventListener('DOMContentLoaded', function() {
     const resourceCards = document.querySelectorAll('.resource-card');
     resourceCards.forEach(card => {
+        // Password-gated product — handled separately
+        if (card.id === 'x-growth-access-card') return;
+
         const button = card.querySelector('.resource-button');
         const coverImage = card.querySelector('img');
         if (!button || !coverImage) return;
 
-        // Show it's clickable
         coverImage.style.cursor = 'pointer';
 
-        // Delegate image click to the card's primary button
         coverImage.addEventListener('click', function(e) {
             e.preventDefault();
             button.click();
@@ -367,7 +368,7 @@ if (document.readyState === 'loading') {
 }
 
 // X Growth Accelerator — password-gated access from homepage
-(function initProductAccess() {
+document.addEventListener('DOMContentLoaded', function initProductAccess() {
     const UNLOCK_KEY = 'x1k_product_unlock';
     const PASS = '160299';
     const PRODUCT_URL = '0-to-1K-X-System/INDEX.html';
@@ -383,16 +384,18 @@ if (document.readyState === 'loading') {
     function openModal() {
         modal.hidden = false;
         modal.setAttribute('aria-hidden', 'false');
-        error.textContent = '';
+        document.body.style.overflow = 'hidden';
+        if (error) error.textContent = '';
         if (input) {
             input.value = '';
-            setTimeout(() => input.focus(), 50);
+            setTimeout(function() { input.focus(); }, 50);
         }
     }
 
     function closeModal() {
         modal.hidden = true;
         modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
     }
 
     function goToProduct() {
@@ -400,21 +403,19 @@ if (document.readyState === 'loading') {
         window.location.href = PRODUCT_URL;
     }
 
-    card.addEventListener('click', function() {
-        if (localStorage.getItem(UNLOCK_KEY) === '1') {
-            goToProduct();
-            return;
-        }
+    // Always ask for password when clicking the card
+    card.addEventListener('click', function(e) {
+        e.preventDefault();
         openModal();
     });
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (!input) return;
-        if (input.value === PASS) {
+        if (input.value.trim() === PASS) {
             goToProduct();
         } else {
-            error.textContent = 'Wrong password. Check your purchase email and try again.';
+            if (error) error.textContent = 'Wrong password. Try again.';
             input.value = '';
             input.focus();
         }
@@ -427,4 +428,4 @@ if (document.readyState === 'loading') {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
-})();
+});
