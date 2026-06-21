@@ -365,16 +365,20 @@
             </div>
 
             <div class="resource-grid resource-grid-micro">
-                <div class="resource-card resource-card--soon" role="group" aria-label="The Micro-Brand Playbook — in progress, not available yet">
+                <button type="button" class="resource-card resource-card--product" id="x-growth-access-card" aria-label="X Growth Accelerator — enter password to access">
                     <span class="resource-image-link">
-                        <img src="assets/images/x-simplified-cover.png.png?v=20260420" alt="X Simplified cover" loading="lazy" decoding="async">
+                        <img src="assets/images/x-growth-system-playbook-cover.png?v=20260621" alt="X Growth Accelerator cover" loading="lazy" decoding="async">
                     </span>
-                    <h3>The Micro-Brand Playbook</h3>
-                    <p>A tight playbook for showing up consistently on X and LinkedIn: hooks, angles, and a simple weekly rhythm so you can grow your personal brand without drowning in content.</p>
-                    <span class="resource-button resource-button-course resource-button--wip" aria-disabled="true">
-                        <span class="resource-icon" aria-hidden="true">🎓</span> In progress · coming soon
+                    <h3>X Growth Accelerator</h3>
+                    <p>0 → 1,000 followers on X in 90 days. Daily checklist, 90+ copy-paste templates, reply bank, and follower tracker — the full system.</p>
+                    <span class="resource-price-row" aria-label="Paid product, 49 dollars">
+                        <span class="resource-price-pill">Paid</span>
+                        <span class="resource-price-now">$49</span>
                     </span>
-                </div>
+                    <span class="resource-button resource-button-course">
+                        <span class="resource-icon" aria-hidden="true">🔓</span> Access the system
+                    </span>
+                </button>
             </div>
         </section>
 
@@ -401,6 +405,21 @@
         </div>
     </section>
 
+    <!-- Product access modal -->
+    <div id="productAccessModal" class="product-access-modal" hidden aria-hidden="true">
+        <div class="product-access-backdrop" data-close-product-modal></div>
+        <div class="product-access-dialog" role="dialog" aria-modal="true" aria-labelledby="productAccessTitle">
+            <button type="button" class="product-access-close" data-close-product-modal aria-label="Close">&times;</button>
+            <h2 id="productAccessTitle">X Growth Accelerator</h2>
+            <p class="product-access-lead">Enter your access password to open the course.</p>
+            <form id="productAccessForm">
+                <input type="password" id="productAccessPassword" placeholder="Access password" autocomplete="off" required />
+                <button type="submit" class="submit-btn">Unlock →</button>
+            </form>
+            <p id="productAccessError" class="product-access-error" role="alert"></p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -425,7 +444,7 @@
         // Example: window.CONVERTKIT_REDIRECT_URL = 'https://yourname.gumroad.com/l/yourproduct';
         window.CONVERTKIT_REDIRECT_URL = null; // ⬅️ (Optional) Set redirect URL or leave as null
     </script>
-    <script src="script.js?v=20260401130000"></script>
+    <script src="script.js?v=20260621120000"></script>
 </body>
 </html>
 

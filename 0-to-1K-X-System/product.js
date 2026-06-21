@@ -25,7 +25,10 @@
   // Copy buttons
   document.querySelectorAll(".copy-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const ta = btn.previousElementSibling;
+      let ta = btn.previousElementSibling;
+      if (!ta || ta.tagName !== "TEXTAREA") {
+        ta = btn.closest(".copy-block, .template-card, section")?.querySelector("textarea.tpl, textarea.sales-copy");
+      }
       if (!ta || ta.tagName !== "TEXTAREA") return;
       navigator.clipboard.writeText(ta.value).then(() => {
         btn.textContent = "Copied!";
@@ -38,19 +41,173 @@
     });
   });
 
-  // Checklist persistence
+  function todayISO() {
+    const d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  function getChallengeDay() {
+    const val = localStorage.getItem(PREFIX + "start_date");
+    if (!val) return null;
+    const start = new Date(val + "T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const diff = Math.floor((today - start) / 86400000) + 1;
+    return Math.max(1, Math.min(90, diff));
+  }
+
+  function getPhase(day) {
+    if (day <= 14) return { name: "Foundation", tip: "Fix profile, learn the routine, build your 100-person list." };
+    if (day <= 60) return { name: "Momentum", tip: "Post daily, comment daily, ship 1 thread/week from day 15." };
+    return { name: "Push", tip: "Double down on winners, send DMs, add a lead magnet to bio." };
+  }
+
+  function getCompletedDates() {
+    try {
+      return JSON.parse(localStorage.getItem(PREFIX + "completed_dates") || "[]");
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCompletedDate(iso) {
+    const dates = getCompletedDates();
+    if (dates.includes(iso)) return;
+    dates.push(iso);
+    dates.sort();
+    localStorage.setItem(PREFIX + "completed_dates", JSON.stringify(dates));
+  }
+
+  function computeStreak() {
+    const dates = new Set(getCompletedDates());
+    if (!dates.size) return { count: 0, status: "none" };
+
+    const today = todayISO();
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayISO =
+      yesterday.getFullYear() +
+      "-" +
+      String(yesterday.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(yesterday.getDate()).padStart(2, "0");
+
+    let anchor = dates.has(today) ? today : dates.has(yesterdayISO) ? yesterdayISO : null;
+    if (!anchor) return { count: 0, status: "broken" };
+
+    let count = 0;
+    let cursor = new Date(anchor + "T00:00:00");
+    while (true) {
+      const iso =
+        cursor.getFullYear() +
+        "-" +
+        String(cursor.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(cursor.getDate()).padStart(2, "0");
+      if (!dates.has(iso)) break;
+      count++;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+
+    const status = dates.has(today) ? "active" : "at-risk";
+    return { count, status };
+  }
+
+  function updateDailyCompletion() {
+    const panel = document.getElementById("daily-checklist-panel");
+    if (!panel) return;
+    const boxes = panel.querySelectorAll('input[type="checkbox"]');
+    if (!boxes.length) return;
+
+    const allDone = [...boxes].every((cb) => cb.checked);
+    panel.classList.toggle("daily-complete", allDone);
+
+    const progressEl = document.getElementById("daily-progress");
+    if (progressEl) {
+      const done = [...boxes].filter((cb) => cb.checked).length;
+      progressEl.textContent = done + " / " + boxes.length + " done";
+    }
+
+    const iso = todayISO();
+    if (allDone) {
+      const wasNew = !getCompletedDates().includes(iso);
+      saveCompletedDate(iso);
+      if (wasNew) {
+        const streak = computeStreak();
+        showToast("✅ Day complete · " + streak.count + "-day streak!");
+      }
+    }
+
+    updateChallengeStatus();
+  }
+
+  function updateChallengeStatus() {
+    const day = getChallengeDay();
+    const phase = day ? getPhase(day) : null;
+    const streak = computeStreak();
+
+    document.querySelectorAll("[data-challenge-day]").forEach((el) => {
+      el.textContent = day ? String(day) : "—";
+    });
+    document.querySelectorAll("[data-challenge-phase]").forEach((el) => {
+      el.textContent = phase ? phase.name : "—";
+    });
+    document.querySelectorAll("[data-challenge-tip]").forEach((el) => {
+      el.textContent = phase ? phase.tip : "Set your 90-day start date to unlock phase guidance.";
+    });
+    document.querySelectorAll("[data-streak-count]").forEach((el) => {
+      el.textContent = String(streak.count);
+    });
+
+    document.querySelectorAll(".challenge-status").forEach((card) => {
+      card.hidden = !day;
+      card.classList.toggle("streak-active", streak.status === "active");
+      card.classList.toggle("streak-at-risk", streak.status === "at-risk");
+      card.classList.toggle("streak-broken", streak.status === "broken");
+    });
+
+    document.querySelectorAll(".cs-streak-note").forEach((streakNote) => {
+      if (streak.status === "active") streakNote.textContent = streak.count + "-day streak — keep it going.";
+      else if (streak.status === "at-risk") streakNote.textContent = streak.count + "-day streak — finish today to keep it.";
+      else if (streak.count === 0 && getCompletedDates().length)
+        streakNote.textContent = "Streak reset — check off today's list to start again.";
+      else streakNote.textContent = "Complete today's checklist to start your streak.";
+    });
+  }
+
+  // Checklist persistence (daily panel resets each calendar day)
   document.querySelectorAll(".checklist input[type=checkbox]").forEach((cb, i) => {
-    const key = PREFIX + "cb_" + pageFile() + "_" + i;
+    const dailyPanel = cb.closest("#daily-checklist-panel");
+    const isDaily = dailyPanel !== null;
+    const dailyIndex = isDaily
+      ? [...dailyPanel.querySelectorAll('input[type="checkbox"]')].indexOf(cb)
+      : i;
+    const key = isDaily
+      ? PREFIX + "daily_" + todayISO() + "_" + dailyIndex
+      : PREFIX + "cb_" + pageFile() + "_" + i;
     cb.checked = localStorage.getItem(key) === "1";
     cb.addEventListener("change", () => {
       localStorage.setItem(key, cb.checked ? "1" : "0");
       updateProgress();
+      if (isDaily) updateDailyCompletion();
     });
   });
 
+  updateDailyCompletion();
+  updateChallengeStatus();
+
+  const dailyDateLabel = document.getElementById("daily-date-label");
+  if (dailyDateLabel) {
+    dailyDateLabel.textContent = new Date().toLocaleDateString(undefined, {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+  }
+
   // Template drafts (editable)
   document.querySelectorAll("textarea.tpl").forEach((ta, i) => {
-    if (ta.id === "bio-preview") return;
+    if (ta.id === "bio-preview" || ta.classList.contains("ws-field")) return;
     const key = PREFIX + "tpl_" + pageFile() + "_" + i;
     const saved = localStorage.getItem(key);
     if (saved !== null) ta.value = saved;
@@ -98,7 +255,10 @@
       dayDisplay.textContent = String(day);
       dayDisplay.classList.toggle("done", day >= 90);
     };
-    startInput.addEventListener("change", updateDay);
+    startInput.addEventListener("change", () => {
+      updateDay();
+      updateChallengeStatus();
+    });
     updateDay();
   }
 
@@ -434,6 +594,16 @@
     });
   }
 
+  // Worksheet text fields by id
+  ["niche-who", "niche-problem", "niche-topics"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const key = PREFIX + id;
+    const saved = localStorage.getItem(key);
+    if (saved !== null) el.value = saved;
+    el.addEventListener("input", () => localStorage.setItem(key, el.value));
+  });
+
   // Bonus section jump nav
   const bonusJump = document.querySelector(".bonus-jump");
   if (bonusJump) {
@@ -449,4 +619,27 @@
     window.addEventListener("scroll", onBonusScroll, { passive: true });
     onBonusScroll();
   }
+
+  // Sticky quick nav (all pages)
+  const QUICK_LINKS = [
+    { href: "INDEX.html", label: "Hub", icon: "⌂", match: ["INDEX.html", ""] },
+    { href: "QUICK-WINS.html", label: "Day 1", icon: "1", match: ["QUICK-WINS.html"] },
+    { href: "06-Level-5-Breakthrough-90-Day.html", label: "Daily", icon: "✓", match: ["06-Level-5-Breakthrough-90-Day.html"] },
+    { href: "CHEATSHEET.html", label: "Cheat", icon: "▤", match: ["CHEATSHEET.html"] },
+  ];
+  const current = pageFile();
+  const qnav = document.createElement("nav");
+  qnav.className = "quick-nav no-print";
+  qnav.setAttribute("aria-label", "Quick navigation");
+  const inner = document.createElement("div");
+  inner.className = "quick-nav-inner";
+  QUICK_LINKS.forEach((item) => {
+    const a = document.createElement("a");
+    a.href = item.href;
+    a.innerHTML = `<span class="qn-icon" aria-hidden="true">${item.icon}</span>${item.label}`;
+    if (item.match.includes(current)) a.classList.add("active");
+    inner.appendChild(a);
+  });
+  qnav.appendChild(inner);
+  document.body.appendChild(qnav);
 })();

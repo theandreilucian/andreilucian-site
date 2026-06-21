@@ -18,7 +18,7 @@
   <h1>Your Daily Checklist</h1>
   <p class="sub">Do this every day for 90 days. Check off each box. That's how you hit 1,000 followers.</p>
 </header>
-<nav class="lesson-outline" aria-label="Lessons in this module"><a href="#daily-checklist"><span class="lo-num">1</span>Today's routine</a><a href="#engagement-tiers"><span class="lo-num">2</span>100 creator list</a><a href="#phases"><span class="lo-num">3</span>90-day timeline</a><a href="#diagnosis"><span class="lo-num">4</span>Stuck?</a><a href="#dms"><span class="lo-num">5</span>How to DM</a></nav>
+<nav class="lesson-outline" aria-label="Lessons in this module"><a href="#daily-checklist-panel"><span class="lo-num">★</span>Check off today</a><a href="#daily-checklist"><span class="lo-num">1</span>Today's routine</a><a href="#engagement-tiers"><span class="lo-num">2</span>100 creator list</a><a href="#phases"><span class="lo-num">3</span>90-day timeline</a><a href="#diagnosis"><span class="lo-num">4</span>Stuck?</a><a href="#dms"><span class="lo-num">5</span>How to DM</a></nav>
 <div class="tldr-box">
   <h2>Do this every single day</h2>
   <ul>
@@ -32,13 +32,40 @@
   <div>
     <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px">Today is</div>
     <div class="big-day" id="challenge-day">—</div>
-    <div style="font-size:0.85rem;color:var(--muted)">of 90</div>
+    <div style="font-size:0.85rem;color:var(--muted)">of 90 · <strong data-challenge-phase>—</strong></div>
   </div>
   <div>
     <label for="challenge-start">Challenge start date</label>
     <input type="date" id="challenge-start" />
   </div>
+  <div class="streak-badge streak-badge-inline"><span class="streak-fire">🔥</span><span data-streak-count>0</span><span class="streak-lbl">day streak</span></div>
 </div>
+
+<section class="block phase-focus" id="phase-focus">
+  <h2>Today's focus</h2>
+  <p data-challenge-tip>Set your 90-day start date above to unlock phase guidance.</p>
+</section>
+
+<section class="block checklist daily-panel" id="daily-checklist-panel">
+  <div class="daily-panel-head">
+    <h2>Check off today</h2>
+    <span class="daily-date"><span id="daily-date-label"></span> · <span id="daily-progress">0 / 6 done</span></span>
+  </div>
+  <p class="section-lead-simple">Resets every morning. Finish all 6 to count the day toward your streak.</p>
+  <div class="daily-quick-links no-print">
+    <a href="03-Level-2-Content-Arsenal.html">Post templates</a>
+    <a href="REPLY-BANK.html">Reply bank</a>
+    <a href="THREAD-STARTERS.html">Threads</a>
+    <a href="CHEATSHEET.html">Cheat sheet</a>
+  </div>
+  <label><input type="checkbox" /> Posted 3–5 times</label>
+  <label><input type="checkbox" /> 30 morning comments done</label>
+  <label><input type="checkbox" /> Replied to everyone on my posts</label>
+  <label><input type="checkbox" /> 30 evening comments done</label>
+  <label><input type="checkbox" /> Sent up to 10 DMs</label>
+  <label><input type="checkbox" /> Tomorrow's posts are ready</label>
+  <p class="cs-streak-note">Complete all boxes to start your streak.</p>
+</section>
 <div class="follower-tracker" id="page-follower-tracker">
   <h2>Track your followers</h2>
   <p class="tracker-sub">Same as the Hub — type your numbers, watch the bar move.</p>
@@ -133,27 +160,13 @@
 <li>Share something helpful if you can — don't beg for a follow or RT</li>
 </ol>
 <p>More detail → <a href="05-Level-4-Philosophy.html#networking">How to connect with people</a></p></section>
-<section class="block checklist">
-<h2>Check off today</h2>
-<label><input type="checkbox" /> Posted 3–5 times</label>
-<label><input type="checkbox" /> 30 morning comments done</label>
-<label><input type="checkbox" /> Replied to everyone on my posts</label>
-<label><input type="checkbox" /> 30 evening comments done</label>
-<label><input type="checkbox" /> Sent up to 10 DMs</label>
-<label><input type="checkbox" /> Tomorrow's posts are ready</label>
-</section>
 
 <nav class="page-nav" aria-label="Module navigation">
   <a href="04-Level-3-Content-Production.html" class="prev"><span class="nav-label">← Previous</span><span class="nav-title">Weekly Batch</span></a>
   <a href="07-Bonuses.html" class="next"><span class="nav-label">Next →</span><span class="nav-title">Bonus Vault</span></a>
 </nav>
-<footer class="product-footer">
-  <p><strong>X Growth Accelerator</strong> · Built by Andrei Lucian</p>
-  <p class="footer-sub">5.1K on X · 16.1K on LinkedIn · 2.5+ years building daily</p>
-  <p class="footer-links"><a href="INDEX.html">Hub</a><a href="QUICK-WINS.html">Quick Wins</a><a href="WORKSHEETS.html">Worksheets</a><a href="REPLY-BANK.html">Reply Bank</a><a href="CHEATSHEET.html">Cheat Sheet</a><a href="06-Level-5-Breakthrough-90-Day.html">Daily Center</a></p>
-  <p class="footer-copy">Copyright &copy; Andrei Lucian 2026</p>
-</footer>
 </div>
+<script src="product-gate.js"></script>
 <script src="product.js"></script>
 </body>
 </html>

@@ -365,3 +365,66 @@ if (document.readyState === 'loading') {
     setTimeout(removeUnwantedProductCards, 100);
     setTimeout(removeUnwantedProductCards, 500);
 }
+
+// X Growth Accelerator — password-gated access from homepage
+(function initProductAccess() {
+    const UNLOCK_KEY = 'x1k_product_unlock';
+    const PASS = '160299';
+    const PRODUCT_URL = '0-to-1K-X-System/INDEX.html';
+
+    const card = document.getElementById('x-growth-access-card');
+    const modal = document.getElementById('productAccessModal');
+    const form = document.getElementById('productAccessForm');
+    const input = document.getElementById('productAccessPassword');
+    const error = document.getElementById('productAccessError');
+
+    if (!card || !modal || !form) return;
+
+    function openModal() {
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        error.textContent = '';
+        if (input) {
+            input.value = '';
+            setTimeout(() => input.focus(), 50);
+        }
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function goToProduct() {
+        localStorage.setItem(UNLOCK_KEY, '1');
+        window.location.href = PRODUCT_URL;
+    }
+
+    card.addEventListener('click', function() {
+        if (localStorage.getItem(UNLOCK_KEY) === '1') {
+            goToProduct();
+            return;
+        }
+        openModal();
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!input) return;
+        if (input.value === PASS) {
+            goToProduct();
+        } else {
+            error.textContent = 'Wrong password. Check your purchase email and try again.';
+            input.value = '';
+            input.focus();
+        }
+    });
+
+    modal.querySelectorAll('[data-close-product-modal]').forEach(function(el) {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+})();
