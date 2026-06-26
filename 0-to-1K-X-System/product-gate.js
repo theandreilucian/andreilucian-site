@@ -1,10 +1,58 @@
 /* Password gate — buyers enter code from purchase email */
 (function () {
+  if (window.__X1K_GATE_LOADED__) return;
+  window.__X1K_GATE_LOADED__ = true;
+
   const UNLOCK_KEY = "x1k_product_unlock";
   const PASS = "160299";
   const page = location.pathname.split("/").pop() || "INDEX.html";
   if (page === "GUMROAD-SALES-PAGE.html") return;
-  if (localStorage.getItem(UNLOCK_KEY) === "1") return;
+
+  function persistUnlock() {
+    try {
+      localStorage.setItem(UNLOCK_KEY, "1");
+    } catch (e) {}
+    try {
+      sessionStorage.setItem(UNLOCK_KEY, "1");
+    } catch (e) {}
+  }
+
+  function cleanUrl() {
+    try {
+      var clean = location.href.split("#")[0].split("?")[0];
+      history.replaceState({}, "", clean);
+    } catch (e) {}
+  }
+
+  function isUnlocked() {
+    if (window.__X1K_UNLOCKED__) {
+      persistUnlock();
+      cleanUrl();
+      return true;
+    }
+    try {
+      if (localStorage.getItem(UNLOCK_KEY) === "1") return true;
+    } catch (e) {}
+    try {
+      if (sessionStorage.getItem(UNLOCK_KEY) === "1") return true;
+    } catch (e) {}
+    const params = new URLSearchParams(location.search);
+    const hash = location.hash.replace(/^#/, "").toLowerCase();
+    const fromRedirect =
+      params.get("unlocked") === "1" ||
+      hash === "unlocked" ||
+      hash.startsWith("unlocked=") ||
+      hash === "access=" + PASS;
+    if (fromRedirect) {
+      window.__X1K_UNLOCKED__ = true;
+      persistUnlock();
+      cleanUrl();
+      return true;
+    }
+    return false;
+  }
+
+  if (isUnlocked()) return;
 
   const style = document.createElement("style");
   style.textContent = `
@@ -92,7 +140,7 @@
   document.head.appendChild(style);
 
   function unlock() {
-    localStorage.setItem(UNLOCK_KEY, "1");
+    persistUnlock();
     document.getElementById("x1k-gate-overlay")?.remove();
   }
 

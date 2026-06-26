@@ -371,7 +371,13 @@ if (document.readyState === 'loading') {
 document.addEventListener('DOMContentLoaded', function initProductAccess() {
     const UNLOCK_KEY = 'x1k_product_unlock';
     const PASS = '160299';
-    const PRODUCT_URL = '0-to-1K-X-System/INDEX.html';
+
+    function getProductUrl() {
+        if (location.protocol === 'file:') {
+            return 'file:///D:/Website/0-to-1K-X-System/INDEX.html';
+        }
+        return (location.origin || '') + '/0-to-1K-X-System/INDEX.html';
+    }
 
     const card = document.getElementById('x-growth-access-card');
     const modal = document.getElementById('productAccessModal');
@@ -398,9 +404,29 @@ document.addEventListener('DOMContentLoaded', function initProductAccess() {
         document.body.style.overflow = '';
     }
 
+    function persistUnlock() {
+        try {
+            localStorage.setItem(UNLOCK_KEY, '1');
+        } catch (e) {}
+        try {
+            sessionStorage.setItem(UNLOCK_KEY, '1');
+        } catch (e) {}
+    }
+
     function goToProduct() {
-        localStorage.setItem(UNLOCK_KEY, '1');
-        window.location.href = PRODUCT_URL;
+        persistUnlock();
+        closeModal();
+        window.location.replace(getProductUrl() + '#access=' + PASS);
+    }
+
+    // Backup: Unlock button click (in case form submit is blocked)
+    var unlockBtn = form.querySelector('button[type="submit"]');
+    if (unlockBtn) {
+        unlockBtn.addEventListener('click', function(e) {
+            if (!input || input.value.trim() !== PASS) return;
+            e.preventDefault();
+            goToProduct();
+        });
     }
 
     // Always ask for password when clicking the card

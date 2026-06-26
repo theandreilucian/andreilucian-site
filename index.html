@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="version" content="20260620120000">
+    <meta name="version" content="20260626233000">
     <title>Home - Andrei Lucian</title>
     
     <!-- Canonical URL -->
@@ -35,7 +35,7 @@
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
     <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="stylesheet" href="styles.css?v=20260620120000">
+    <link rel="stylesheet" href="styles.css?v=20260626170000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -329,7 +329,7 @@
                         <img src="assets/images/blueprint-and-sales-preview-cover.png?v=20260412" alt="" loading="eager" decoding="async">
                     </span>
                     <h3>The X Writing Playbook</h3>
-                    <p>Built for X: how to grow an audience and build a brand in public—hooks, posting rhythm, and clarity on what to ship. The same kind of system I used to grow on X to 5.1K+ followers without chasing trends or burning out.</p>
+                    <p>Built for X: how to grow an audience and build a brand in public—hooks, posting rhythm, and clarity on what to ship. The same kind of system I used to grow on X to 5.3K+ followers without chasing trends or burning out.</p>
                     <span class="resource-price-row" aria-label="Paid product, now 19 dollars, previously 27 dollars">
                         <span class="resource-price-pill">Paid</span>
                         <span class="resource-price-old">$27</span>
@@ -371,9 +371,9 @@
                     </span>
                     <h3>X Growth Accelerator</h3>
                     <p>0 → 1,000 followers on X in 90 days. Daily checklist, 90+ copy-paste templates, reply bank, and follower tracker — the full system.</p>
-                    <span class="resource-price-row" aria-label="Paid product, 49 dollars">
+                    <span class="resource-price-row" aria-label="Paid product, 97 dollars">
                         <span class="resource-price-pill">Paid</span>
-                        <span class="resource-price-now">$49</span>
+                        <span class="resource-price-now">$97</span>
                     </span>
                     <span class="resource-button resource-button-course">
                         <span class="resource-icon" aria-hidden="true">🔓</span> Access the system
@@ -444,7 +444,75 @@
         // Example: window.CONVERTKIT_REDIRECT_URL = 'https://yourname.gumroad.com/l/yourproduct';
         window.CONVERTKIT_REDIRECT_URL = null; // ⬅️ (Optional) Set redirect URL or leave as null
     </script>
-    <script src="script.js?v=20260621180000"></script>
+    <script>
+    /* Product unlock — inline so it always runs (file:// + live site) */
+    (function () {
+        var PASS = '160299';
+        var KEY = 'x1k_product_unlock';
+
+        function getProductUrl() {
+            if (location.protocol === 'file:') {
+                return 'file:///D:/Website/0-to-1K-X-System/INDEX.html';
+            }
+            return (location.origin || '') + '/0-to-1K-X-System/INDEX.html';
+        }
+
+        function goToProduct() {
+            window.__X1K_UNLOCKED__ = true;
+            try { localStorage.setItem(KEY, '1'); } catch (e) {}
+            try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+            window.location.href = getProductUrl() + '#access=' + PASS;
+        }
+
+        function init() {
+            var card = document.getElementById('x-growth-access-card');
+            var modal = document.getElementById('productAccessModal');
+            var form = document.getElementById('productAccessForm');
+            var input = document.getElementById('productAccessPassword');
+            var error = document.getElementById('productAccessError');
+            if (!card || !modal || !form || !input) return;
+
+            card.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                modal.hidden = false;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                if (error) error.textContent = '';
+                input.value = '';
+                input.focus();
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (input.value.trim() === PASS) {
+                    modal.hidden = true;
+                    document.body.style.overflow = '';
+                    goToProduct();
+                } else if (error) {
+                    error.textContent = 'Wrong password. Try again.';
+                    input.value = '';
+                    input.focus();
+                }
+            });
+
+            modal.querySelectorAll('[data-close-product-modal]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    modal.hidden = true;
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+    <script src="script.js?v=20260626233000"></script>
 </body>
 </html>
 

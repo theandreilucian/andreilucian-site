@@ -5,7 +5,7 @@ OPEN FIRST: INDEX.html
 
 PRODUCT: X Growth Accelerator
 TAGLINE: 0 → 1,000 Followers in 90 Days
-PRICE: $49 launch · $79 full price · $367+ value
+PRICE: $97 · $367+ value
 
 3-STEP PATH (tell every buyer)
 ------------------------------
@@ -20,7 +20,7 @@ BONUS VAULT → 07-Bonuses.html
 GUMROAD SETUP
 -------------
   • Product name: X Growth Accelerator
-  • Price: $49 (launch) → $79 after 50 sales
+  • Price: $97
   • Copy from: GUMROAD-SALES-PAGE.html
 
 Rebuild: node scripts/build_0_to_1k_product.mjs
