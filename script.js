@@ -374,9 +374,9 @@ document.addEventListener('DOMContentLoaded', function initProductAccess() {
 
     function getProductUrl() {
         if (location.protocol === 'file:') {
-            return 'file:///D:/Website/0-to-1K-X-System/INDEX.html';
+            return 'file:///D:/Website/0-to-1K-X-System/LANDING.html';
         }
-        return (location.origin || '') + '/0-to-1K-X-System/INDEX.html';
+        return (location.origin || '') + '/0-to-1K-X-System/LANDING.html';
     }
 
     const card = document.getElementById('x-growth-access-card');
