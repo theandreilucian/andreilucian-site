@@ -26,7 +26,7 @@
         els.hours.textContent = "00";
         els.mins.textContent = "00";
         els.secs.textContent = "00";
-        if (els.label) els.label.textContent = "Launch price has ended — full price applies";
+        if (els.label) els.label.textContent = "Launch price has ended";
         return;
       }
       var d = Math.floor(diff / 86400000);
@@ -42,47 +42,9 @@
     setInterval(tick, 1000);
   }
 
-  function initFaq() {
-    document.querySelectorAll(".lp-faq-q").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var item = btn.closest(".lp-faq-item");
-        var wasOpen = item.classList.contains("open");
-        document.querySelectorAll(".lp-faq-item.open").forEach(function (el) {
-          el.classList.remove("open");
-          el.querySelector(".lp-faq-q").setAttribute("aria-expanded", "false");
-        });
-        if (!wasOpen) {
-          item.classList.add("open");
-          btn.setAttribute("aria-expanded", "true");
-        }
-      });
-    });
-  }
-
-  function initStickyCta() {
-    var sticky = document.getElementById("sticky-cta");
-    var hero = document.querySelector(".lp-hero");
-    if (!sticky || !hero) return;
-
-    document.body.classList.add("has-sticky-cta");
-
-    function onScroll() {
-      var past = hero.getBoundingClientRect().bottom < 0;
-      sticky.classList.toggle("visible", past);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
-
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      initCountdown();
-      initFaq();
-      initStickyCta();
-    });
+    document.addEventListener("DOMContentLoaded", initCountdown);
   } else {
     initCountdown();
-    initFaq();
-    initStickyCta();
   }
 })();
