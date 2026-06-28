@@ -42,8 +42,25 @@
     setInterval(tick, 1000);
   }
 
+  function initPricing() {
+    var cfg = window.X1K_CHECKOUT || {};
+    if (!cfg.price) return;
+    var was = cfg.priceWas || 197;
+    var els = {
+      heroWas: document.getElementById("lp-price-was"),
+      heroNow: document.getElementById("lp-price-now"),
+      tierWas: document.getElementById("lp-tier-was"),
+      tierNow: document.getElementById("lp-tier-now"),
+    };
+    if (els.heroWas) els.heroWas.textContent = "$" + was;
+    if (els.heroNow) els.heroNow.textContent = "$" + cfg.price;
+    if (els.tierWas) els.tierWas.textContent = "$" + was + " value";
+    if (els.tierNow) els.tierNow.textContent = "$" + cfg.price;
+  }
+
   function init() {
     initCountdown();
+    initPricing();
   }
 
   if (document.readyState === "loading") {

@@ -10,14 +10,16 @@ export const PRODUCT = {
   author: "Andrei Lucian",
   proof: "5.3K on X · 16.2K on LinkedIn · 2.5+ years building daily",
 
-  // Pricing (vs market: playbooks $39–49, courses $49–129)
-  priceLaunch: 97,
+  // Pricing (Dan Koe ladder: entry trust product — launch low, raise later)
+  priceLaunch: 47,
   priceStandard: 79,
-  priceAnchor: 367,
+  priceAnchor: 197,
   priceLaunchLabel: "Launch · first 50 buyers",
-  priceStandardLabel: "Full price",
+  priceStandardLabel: "Standard price",
 
-  checkoutUrl: "https://andreilucian.gumroad.com/l/0to1kx",
+  checkoutProvider: "stripe",
+  stripePaymentLink: "https://buy.stripe.com/YOUR_LINK_HERE",
+  checkoutUrl: "https://buy.stripe.com/YOUR_LINK_HERE",
   checkoutDirect: true,
 
   bundleNote: "2 playbooks + 4 ebooks + 90+ templates — one payment, no upsells",

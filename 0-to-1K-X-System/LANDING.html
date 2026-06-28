@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260627250000" />
+  <link rel="stylesheet" href="landing-styles.css?v=20260628100000" />
+  <script src="product-checkout.js?v=20260628100000"></script>
   <script src="product-unlock-bootstrap.js?v=20260626220000"></script>
 </head>
 <body>
@@ -31,14 +32,14 @@
 <!-- 2. Hero — centered dark -->
 <header class="lp-band lp-band--dark lp-hero">
   <div class="lp-inner">
-    <h1 class="lp-headline">Hit 1,000 Followers on X in 90 Days</h1>
-    <p class="lp-sub lp-sub--hero">A simple 3-step system to go from 0 → 1,000 followers on X — without guessing what to post or who to reply to.</p>
-    <p class="lp-roi">Even if it only gets you to 500 followers 3 months faster, that's still more than a 5× ROI on your time.</p>
+    <h1 class="lp-headline">Become Visible on X in 90 Days</h1>
+    <p class="lp-sub lp-sub--hero">Not another course to watch — a daily command center. Post, reply, repeat. Hit 1,000 followers without guessing what to do tomorrow.</p>
+    <p class="lp-roi">5.3K on X · 16.3K on LinkedIn · built from zero with daily reps, not hacks.</p>
     <div class="lp-price-block">
-      <p class="lp-price-label">Get it today for only:</p>
+      <p class="lp-price-label">Launch price — first 50 buyers:</p>
       <div class="lp-price-row">
-        <span class="lp-price-was">$367+</span>
-        <span class="lp-price-now">$97</span>
+        <span class="lp-price-was" id="lp-price-was">$197</span>
+        <span class="lp-price-now" id="lp-price-now">$47</span>
       </div>
     </div>
     <a class="lp-btn-peach" href="CHECKOUT.html">Instant access →</a>
@@ -70,7 +71,7 @@
       <li>You're willing to post + reply daily for 90 days</li>
     </ul>
     <p class="lp-checklist-note">If so, this system is for you.</p>
-    <p class="lp-checklist-cta">Click below to checkout securely on Gumroad.</p>
+    <p class="lp-checklist-cta">Click Instant access for secure card checkout.</p>
   </article>
 </div>
 
@@ -78,7 +79,36 @@
   <a class="lp-btn-peach" href="CHECKOUT.html">Instant access →</a>
 </div>
 
-<!-- 5. Introducing — dark band -->
+<!-- 5b. Transformation — Dan Koe identity layer -->
+<section class="lp-transform-band">
+  <div class="lp-inner">
+    <p class="lp-kicker">The shift</p>
+    <h2 class="lp-headline" style="font-size:clamp(24px,3.5vw,34px);">You're not buying templates.<br>You’re buying a daily identity.</h2>
+    <div class="lp-transform-grid">
+      <div class="lp-transform-col lp-transform-before">
+        <p class="lp-transform-label">Before</p>
+        <ul>
+          <li>Post when you feel like it</li>
+          <li>Generic replies nobody notices</li>
+          <li>Profile visitors bounce</li>
+          <li>Stuck under 1K for months</li>
+        </ul>
+      </div>
+      <div class="lp-transform-col lp-transform-after">
+        <p class="lp-transform-label">After 90 days</p>
+        <ul>
+          <li>Same routine every morning</li>
+          <li>Strategic replies that get seen</li>
+          <li>Bio that converts visitors</li>
+          <li>1,000 followers — realistic target</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lp-sub" style="margin-top:24px;">Dan Koe teaches you to productize yourself. I teach you the boring daily reps that make growth inevitable. That's the whole game.</p>
+  </div>
+</section>
+
+<!-- 6. Introducing — dark band -->
 <section class="lp-band lp-band--dark">
   <div class="lp-inner">
     <p class="lp-kicker">Introducing</p>
@@ -178,11 +208,11 @@
       <div class="tier-label">Full system</div>
       <div class="tier-name">0 → 1,000 Followers in 90 Days<br>Lifetime access</div>
       <div class="tier-price">
-        <span class="was">$367+ value</span>
-        $97
+        <span class="was" id="lp-tier-was">$197 value</span>
+        <span id="lp-tier-now">$47</span>
       </div>
       <a class="lp-btn-peach" href="CHECKOUT.html">Instant access →</a>
-      <p class="lp-secure-note">Secure checkout via Gumroad · Visa · Mastercard · PayPal</p>
+      <p class="lp-secure-note">Secure card checkout · Visa · Mastercard · Amex · Stripe</p>
     </div>
   </div>
 </section>
@@ -207,7 +237,7 @@
     <details class="lp-faq-item" open>
       <summary>When do I get access?</summary>
       <div class="lp-faq-body">
-        <p>Immediately after payment. Gumroad emails your receipt, access link, and password within minutes — then you start Day 1 the same day.</p>
+        <p>Immediately after payment. You'll get your receipt and access link by email — then start Day 1 the same day.</p>
         <a class="lp-faq-link" href="CHECKOUT.html">Instant access →</a>
       </div>
     </details>
@@ -243,7 +273,7 @@
     <details class="lp-faq-item">
       <summary>Is payment secure?</summary>
       <div class="lp-faq-body">
-        <p>Yes. Checkout is processed by Gumroad — Visa, Mastercard, Amex, and PayPal. Your card details never touch this site.</p>
+        <p>Yes. Checkout runs on Stripe — Visa, Mastercard, Amex, and Apple Pay. Your card details never touch this site.</p>
       </div>
     </details>
 

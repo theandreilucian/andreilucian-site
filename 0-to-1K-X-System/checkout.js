@@ -1,41 +1,99 @@
 (function () {
   var cfg = window.X1K_CHECKOUT || {};
-  var url = window.X1K_getCheckoutUrl ? window.X1K_getCheckoutUrl() : "";
+  var processor = window.X1K_getProcessorLabel ? window.X1K_getProcessorLabel() : "Stripe";
 
-  var nameEl = document.getElementById("ck-product-name");
-  var tagEl = document.getElementById("ck-tagline");
-  var wasEl = document.getElementById("ck-price-was");
-  var nowEl = document.getElementById("ck-price-now");
-  var btn = document.getElementById("checkout-go");
+  var form = document.getElementById("checkout-form");
   var err = document.getElementById("ck-error");
-  var status = document.getElementById("ck-status");
+  var submitBtn = document.getElementById("checkout-submit");
 
-  if (nameEl && cfg.productName) nameEl.textContent = cfg.productName;
-  if (tagEl && cfg.tagline) tagEl.textContent = cfg.tagline;
-  if (wasEl && cfg.priceWas) wasEl.textContent = "$" + cfg.priceWas + "+";
-  if (nowEl && cfg.price) nowEl.textContent = "$" + cfg.price;
+  function $(id) { return document.getElementById(id); }
 
-  if (!url) {
-    if (status) status.textContent = "Checkout link not configured yet.";
-    if (err) {
-      err.textContent =
-        "Add your Gumroad product URL in product-checkout.js (url field), then reload this page.";
-      err.classList.add("visible");
-    }
-    if (btn) {
-      btn.textContent = "← Back to sales page";
-      btn.href = "LANDING.html";
-    }
-    return;
+  function showError(msg) {
+    if (!err) return;
+    err.textContent = msg;
+    err.hidden = false;
   }
 
-  if (btn) btn.href = url;
-
-  if (status) {
-    status.textContent = "Redirecting to secure card checkout…";
+  function hideError() {
+    if (err) err.hidden = true;
   }
 
-  setTimeout(function () {
-    window.location.replace(url);
-  }, 700);
+  function initSummary() {
+    var price = cfg.price || 47;
+    var was = cfg.priceWas || 197;
+    var discount = was - price;
+
+    if ($("ck-product-name") && cfg.productName) $("ck-product-name").textContent = cfg.productName;
+    if ($("ck-tagline") && cfg.tagline) $("ck-tagline").textContent = cfg.tagline;
+    if ($("ck-subtotal")) $("ck-subtotal").textContent = "$" + was;
+    if ($("ck-discount")) $("ck-discount").textContent = "−$" + discount;
+    if ($("ck-price-was")) $("ck-price-was").textContent = "$" + was;
+    if ($("ck-price-now")) $("ck-price-now").textContent = "$" + price;
+    if ($("ck-btn-price")) $("ck-btn-price").textContent = "$" + price;
+    if ($("ck-processor")) $("ck-processor").textContent = processor;
+
+    var savedEmail = localStorage.getItem("x1k_checkout_email");
+    if (savedEmail && $("ck-email")) $("ck-email").value = savedEmail;
+  }
+
+  function buildPaymentUrl(base, email) {
+    if (!base) return "";
+    var sep = base.indexOf("?") === -1 ? "?" : "&";
+    if (email) {
+      return base + sep + "prefilled_email=" + encodeURIComponent(email);
+    }
+    return base;
+  }
+
+  function getPaymentUrl(email) {
+    return buildPaymentUrl(window.X1K_getCheckoutUrl ? window.X1K_getCheckoutUrl() : "", email);
+  }
+
+  initSummary();
+
+  if (!getPaymentUrl("")) {
+    showError(
+      "Payment link not set up yet. Add your Stripe Payment Link in product-checkout.js → stripePaymentLink, then try again."
+    );
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    hideError();
+
+    var name = ($("ck-name") && $("ck-name").value.trim()) || "";
+    var email = ($("ck-email") && $("ck-email").value.trim()) || "";
+
+    if (!name) {
+      showError("Please enter your name.");
+      $("ck-name") && $("ck-name").focus();
+      return;
+    }
+    if (!email || email.indexOf("@") === -1) {
+      showError("Please enter a valid email address.");
+      $("ck-email") && $("ck-email").focus();
+      return;
+    }
+
+    var payUrl = getPaymentUrl(email);
+    if (!payUrl) {
+      showError("Payment is not configured. Contact support or try again later.");
+      return;
+    }
+
+    try {
+      localStorage.setItem("x1k_checkout_email", email);
+      localStorage.setItem("x1k_checkout_name", name);
+    } catch (ex) {}
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Redirecting to secure payment…";
+    }
+
+    window.location.href = payUrl;
+  });
 })();
