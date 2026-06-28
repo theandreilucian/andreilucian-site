@@ -7,6 +7,8 @@
   const PASS = "160299";
   const page = location.pathname.split("/").pop() || "INDEX.html";
   if (page === "GUMROAD-SALES-PAGE.html") return;
+  if (page === "LANDING.html") return;
+  if (page === "CHECKOUT.html") return;
 
   function persistUnlock() {
     try {
@@ -149,7 +151,7 @@
     overlay.id = "x1k-gate-overlay";
     overlay.innerHTML =
       '<div id="x1k-gate-card">' +
-      "<h2>X Growth Accelerator</h2>" +
+      "<h2>The 0 to 1K X System</h2>" +
       "<p>Enter the password from your purchase email to access the course.</p>" +
       '<form id="x1k-gate-form">' +
       '<input type="password" id="x1k-gate-input" placeholder="Access password" autocomplete="off" required />' +

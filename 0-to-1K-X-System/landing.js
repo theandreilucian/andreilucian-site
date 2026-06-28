@@ -42,9 +42,13 @@
     setInterval(tick, 1000);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCountdown);
-  } else {
+  function init() {
     initCountdown();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 })();

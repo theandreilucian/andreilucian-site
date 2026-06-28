@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds the X Growth Accelerator product (HTML hub + 7 modules).
+ * Builds The 0 to 1K X System product (HTML hub + 7 modules).
  * Run: node scripts/build_0_to_1k_product.mjs
  */
 import fs from "fs";
@@ -23,6 +23,7 @@ import {
 import { REPLY_TEMPLATES, THREAD_STARTERS, replyCard, threadCard } from "./product-extras.mjs";
 import { engagementWritingSections } from "./product-engagement-writing.mjs";
 import { bonusesPageBody } from "./product-bonuses.mjs";
+import { stackWeaponsTableHtml } from "./product-stack.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, "..");
@@ -46,11 +47,7 @@ function headMeta(desc = PRODUCT.metaDescription) {
 }
 
 function footer() {
-  return `<footer class="product-footer">
-  <p><strong>${PRODUCT.name}</strong> · Built by ${PRODUCT.author}</p>
-  <p class="footer-sub">${PRODUCT.proof}</p>
-  <p class="footer-links"><a href="INDEX.html">Hub</a><a href="QUICK-WINS.html">Quick Wins</a><a href="WORKSHEETS.html">Worksheets</a><a href="REPLY-BANK.html">Reply Bank</a><a href="CHEATSHEET.html">Cheat Sheet</a><a href="06-Level-5-Breakthrough-90-Day.html">Daily Center</a></p>
-</footer>`;
+  return "";
 }
 
 function cheatsheetBody() {
@@ -182,8 +179,6 @@ const CURRICULUM = [
     lessons: [
       { id: "toolkit", title: "Execution Toolkit" },
       { id: "playbooks", title: "Writing Playbooks" },
-      { id: "ebooks", title: "Ebooks & Mindset" },
-      { id: "when-to-open", title: "When To Open What" },
     ],
   },
 ];
@@ -540,8 +535,8 @@ ${lessonNav("01-Start-Here.html")}
   <h2>About me — why listen</h2>
   <p>I'm <strong>Andrei Lucian</strong>. I've been building in public and growing my personal brand for <strong>over 2.5 years</strong>. Not from a lucky viral moment — from showing up daily, testing what works, and refining systems.</p>
   <div class="stat-grid">
-    <div class="stat-card"><div class="num">5.1K</div><div class="label">Followers on X</div></div>
-    <div class="stat-card"><div class="num">16.1K</div><div class="label">Followers on LinkedIn</div></div>
+    <div class="stat-card"><div class="num">5.3K</div><div class="label">Followers on X</div></div>
+    <div class="stat-card"><div class="num">16.2K</div><div class="label">Followers on LinkedIn</div></div>
     <div class="stat-card"><div class="num">2.5+</div><div class="label">Years building daily</div></div>
   </div>
   <p>I built this system for creators <strong>stuck below 1,000 on X</strong> — because that's where every journey starts. I remember posting into the void, fixing my bio for the 10th time, and wondering if replies even mattered.</p>
@@ -593,17 +588,7 @@ ${lessonNav("01-Start-Here.html")}
 </table>
 <h3>My tool stack (FREE + PAID)</h3>
 <p>This is the exact stack I use. Start with the <strong>FREE</strong> tools — add paid when you're posting daily and need speed.</p>
-<table class="simple"><tr><th>Tool</th><th>Cost</th><th>What it does in this system</th><th>Priority</th></tr>
-<tr><td><strong>X</strong></td><td><span class="cost-tag free">Free</span></td><td>Your platform — post, reply, threads, analytics, DMs</td><td>Required</td></tr>
-<tr><td><strong>Notion</strong></td><td><span class="cost-tag free">Free</span></td><td>90-day planner · idea bank · GAP tags · winners vault</td><td>Required</td></tr>
-<tr><td><strong>ChatGPT</strong></td><td><span class="cost-tag free">Free</span></td><td>Hook variations · outlines · template remixes</td><td>Recommended</td></tr>
-<tr><td><strong>Claude</strong></td><td><span class="cost-tag free">Free</span></td><td>Thread outlines · long-form edits · second opinion on hooks</td><td>Recommended</td></tr>
-<tr><td><strong>Substack</strong></td><td><span class="cost-tag free">Free</span></td><td>My newsletter — capture emails, own your audience (after 500+)</td><td>Optional</td></tr>
-<tr><td><strong>Qura AI</strong></td><td><span class="cost-tag paid">Paid</span></td><td>Engagement — reply drafts for your 30–50 daily replies (always personalize)</td><td>Recommended</td></tr>
-<tr><td><strong>Hypefury</strong></td><td><span class="cost-tag paid">Paid</span></td><td>Schedule posts · queue 7–14 days · creator engagement lists</td><td>Highly recommended</td></tr>
-<tr><td><strong>X Premium</strong></td><td><span class="cost-tag paid">Paid</span></td><td>Blue badge · longer posts · edit button · algorithm boost</td><td>Optional</td></tr>
-<tr><td><strong>Cursor</strong></td><td><span class="cost-tag paid">Paid</span></td><td>Batch content · build assets · ebooks &amp; products faster</td><td>Optional</td></tr>
-</table>
+${stackWeaponsTableHtml({ withHeading: false })}
 <div class="callout"><strong>Minimum to start (all free):</strong> X + Notion + ChatGPT or Claude. Add Hypefury + Qura when you're serious about the 90-day run.</div>
 ${diagramToolStack}
 <h3>Course map</h3>

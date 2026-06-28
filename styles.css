@@ -2116,6 +2116,23 @@ button.resource-card.resource-card--product:focus-visible {
     outline-offset: 3px;
 }
 
+.resource-unlock-note {
+    grid-column: 1 / -1;
+    margin: -8px 0 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.resource-unlock-note a {
+    color: #8b7355;
+    text-decoration: none;
+}
+
+.resource-unlock-note a:hover {
+    color: #A0785A;
+    text-decoration: underline;
+}
+
 /* Product access modal */
 .product-access-modal {
     position: fixed;

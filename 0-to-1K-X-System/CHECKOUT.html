@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — The 0 to 1K X System</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="product-icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="checkout-styles.css?v=20260627240000" />
+  <script src="product-checkout.js?v=20260627240000"></script>
+</head>
+<body>
+  <div class="ck-wrap">
+    <a href="LANDING.html" class="ck-back">← Back</a>
+    <div class="ck-card">
+      <p class="ck-kicker">Secure checkout</p>
+      <h1 id="ck-product-name">The 0 to 1K X System</h1>
+      <p class="ck-tagline" id="ck-tagline">0 → 1,000 followers on X in 90 days</p>
+      <div class="ck-price-row">
+        <span class="ck-price-was" id="ck-price-was">$367+</span>
+        <span class="ck-price-now" id="ck-price-now">$97</span>
+      </div>
+      <div class="ck-spinner" aria-hidden="true"></div>
+      <p class="ck-status" id="ck-status">Redirecting to secure card checkout…</p>
+      <a class="ck-btn" id="checkout-go" href="#">Continue to payment →</a>
+      <p class="ck-secure">Visa · Mastercard · Amex · PayPal · processed by Gumroad</p>
+      <div class="ck-error" id="ck-error" role="alert"></div>
+    </div>
+  </div>
+  <script src="checkout.js?v=20260627240000"></script>
+</body>
+</html>
