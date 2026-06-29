@@ -269,6 +269,7 @@ function patchEbookLanding(html, filename) {
 
   return html
     .replace(/assets\/images\/playing-to-win-cover\.png\.jpg/g, cover)
+    .replace(/assets\/images\/playing-to-win-ebook-cover\.jpg/g, cover)
     .replace(/assets\/images\/x-simplified-cover\.png\.png/g, cover)
     .replace(/href="index\.html"/g, 'href="../../INDEX.html"')
     .replace(
