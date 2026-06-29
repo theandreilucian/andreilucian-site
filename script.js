@@ -111,6 +111,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function getConvertKitRedirectUrl(email) {
+    const redirectUrl = (typeof window !== 'undefined' && window.CONVERTKIT_REDIRECT_URL) || null;
+    if (!redirectUrl) return null;
+
+    try {
+        const url = new URL(redirectUrl);
+        if (email) {
+            url.searchParams.set('email', email);
+        }
+        return url.toString();
+    } catch (error) {
+        return redirectUrl;
+    }
+}
+
+function isKitLandingRedirect(url) {
+    if (!url) return false;
+
+    try {
+        const hostname = new URL(url).hostname;
+        return hostname.endsWith('kit.com') || hostname.includes('convertkit.com');
+    } catch (error) {
+        return false;
+    }
+}
+
 // Handle ConvertKit form submission
 function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) {
     const email = emailInput.value.trim();
@@ -122,6 +148,19 @@ function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) 
     
     if (!isValidEmail(email)) {
         showMessage(messageElement, 'Please enter a valid email address.', 'error');
+        return;
+    }
+
+    const redirectUrl = getConvertKitRedirectUrl(email);
+
+    // Kit landing pages handle subscription + lead magnet delivery
+    if (redirectUrl && isKitLandingRedirect(redirectUrl)) {
+        localStorage.setItem('andrei_subscriber', 'true');
+        showMessage(messageElement, 'Taking you to your free ebook...', 'success');
+        emailInput.disabled = true;
+        setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 400);
         return;
     }
     
@@ -163,11 +202,8 @@ function handleConvertKitSubmission(emailInput, messageElement, formId, apiKey) 
             showMessage(messageElement, 'Thank you for subscribing! Redirecting...', 'success');
             emailInput.value = '';
             
-            // Check if there's a redirect URL configured (e.g., Gumroad link)
-            const redirectUrl = (typeof window !== 'undefined' && window.CONVERTKIT_REDIRECT_URL) || null;
-            
             if (redirectUrl) {
-                // Redirect to Gumroad or thank you page after 1.5 seconds
+                // Redirect to thank-you page or lead magnet after 1.5 seconds
                 setTimeout(() => {
                     window.location.href = redirectUrl;
                 }, 1500);
