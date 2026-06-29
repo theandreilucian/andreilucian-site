@@ -10,8 +10,13 @@ export function bonusCard(item) {
     : "";
   const meta = [item.pages && `${item.pages} pages`, item.format].filter(Boolean).join(" · ");
 
+  const cardHref = item.pdf || item.file;
+  const cardAttrs = item.pdf
+    ? ` download="${item.downloadName || ""}"`
+    : ` target="_blank" rel="noopener"`;
+
   return `<div class="bonus-card ${tierClass}">
-  <a class="bonus-card-link" href="${item.file}" target="_blank" rel="noopener">
+  <a class="bonus-card-link" href="${cardHref}"${cardAttrs}>
     <div class="bonus-cover"><img src="${item.cover}" alt="${item.title} cover" loading="lazy" /></div>
     <div class="bonus-body">
       <div class="bonus-type">${item.badge}</div>
@@ -37,6 +42,7 @@ export const PLAYBOOKS = [
     desc: "Hooks, threads, and posting rhythm — the writing system behind 5.3K on X without burning out.",
     file: "07-Bonuses/includes/x-writing-playbook.html",
     pdf: "07-Bonuses/includes/the-x-writing-playbook.pdf",
+    downloadName: "The-X-Writing-Playbook.pdf",
     cover: "07-Bonuses/covers/x-writing-playbook.png",
     badge: "Playbook",
     tier: "paid",
@@ -50,6 +56,7 @@ export const PLAYBOOKS = [
     desc: "Authority posts, profile, DMs — repurpose X wins on LinkedIn (16.2K followers).",
     file: "07-Bonuses/includes/linkedin-writing-playbook.html",
     pdf: "07-Bonuses/includes/the-linkedin-writing-playbook.pdf",
+    downloadName: "The-LinkedIn-Writing-Playbook.pdf",
     cover: "07-Bonuses/covers/linkedin-writing-playbook.png",
     badge: "Playbook",
     tier: "paid",
