@@ -46,21 +46,89 @@
     var cfg = window.X1K_CHECKOUT || {};
     if (!cfg.price) return;
     var was = cfg.priceWas || 197;
-    var els = {
-      heroWas: document.getElementById("lp-price-was"),
-      heroNow: document.getElementById("lp-price-now"),
-      tierWas: document.getElementById("lp-tier-was"),
-      tierNow: document.getElementById("lp-tier-now"),
+    var price = cfg.price;
+    var priceLabel = "$" + price;
+
+    var ids = {
+      heroWas: "lp-price-was",
+      heroNow: "lp-price-now",
+      tierWas: "lp-tier-was",
+      tierNow: "lp-tier-now",
+      heroCta: "lp-hero-cta-price",
+      stackTotal: "lp-stack-total",
+      stackNow: "lp-stack-now",
+      stickyWas: "lp-sticky-was",
+      stickyNow: "lp-sticky-now",
     };
-    if (els.heroWas) els.heroWas.textContent = "$" + was;
-    if (els.heroNow) els.heroNow.textContent = "$" + cfg.price;
-    if (els.tierWas) els.tierWas.textContent = "$" + was + " value";
-    if (els.tierNow) els.tierNow.textContent = "$" + cfg.price;
+
+    var heroWas = document.getElementById(ids.heroWas);
+    var heroNow = document.getElementById(ids.heroNow);
+    var tierWas = document.getElementById(ids.tierWas);
+    var tierNow = document.getElementById(ids.tierNow);
+    var heroCta = document.getElementById(ids.heroCta);
+    var stackTotal = document.getElementById(ids.stackTotal);
+    var stackNow = document.getElementById(ids.stackNow);
+    var stickyWas = document.getElementById(ids.stickyWas);
+    var stickyNow = document.getElementById(ids.stickyNow);
+
+    if (heroWas) heroWas.textContent = "$" + was;
+    if (heroNow) heroNow.textContent = priceLabel;
+    if (tierWas) tierWas.textContent = "$" + was + " value";
+    if (tierNow) tierNow.textContent = priceLabel;
+    if (heroCta) heroCta.textContent = priceLabel;
+    if (stackTotal) stackTotal.textContent = "$" + was;
+    if (stackNow) stackNow.textContent = priceLabel;
+    if (stickyWas) stickyWas.textContent = "$" + was;
+    if (stickyNow) stickyNow.textContent = priceLabel;
+
+    document.querySelectorAll(".lp-tier-cta-price").forEach(function (el) {
+      el.textContent = priceLabel;
+    });
+  }
+
+  function initStripeCheckout() {
+    var cfg = window.X1K_CHECKOUT || {};
+    var ready = window.X1K_isCheckoutReady && window.X1K_isCheckoutReady();
+    if (!ready || cfg.directStripe === false) return;
+
+    var stripeUrl = window.X1K_getCheckoutUrl({});
+    if (!stripeUrl) return;
+
+    document.querySelectorAll('a[href="CHECKOUT.html"]').forEach(function (a) {
+      a.href = stripeUrl;
+      a.setAttribute("rel", "noopener");
+    });
+  }
+
+  function initStickyCta() {
+    var bar = document.getElementById("lp-sticky-cta");
+    if (!bar) return;
+
+    bar.hidden = false;
+    document.body.classList.add("has-sticky-cta");
+
+    function onScroll() {
+      if (window.innerWidth >= 768) {
+        bar.classList.remove("is-visible");
+        return;
+      }
+      if (window.scrollY > 480) {
+        bar.classList.add("is-visible");
+      } else {
+        bar.classList.remove("is-visible");
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
   }
 
   function init() {
     initCountdown();
     initPricing();
+    initStripeCheckout();
+    initStickyCta();
   }
 
   if (document.readyState === "loading") {
