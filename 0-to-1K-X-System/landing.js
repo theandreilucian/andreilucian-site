@@ -76,7 +76,7 @@
 
     if (heroWas) heroWas.textContent = "$" + was;
     if (heroNow) heroNow.textContent = priceLabel;
-    if (tierWas) tierWas.textContent = "$" + was + " value";
+    if (tierWas) tierWas.textContent = "$" + was;
     if (tierNow) tierNow.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
     if (authorCta) authorCta.textContent = priceLabel;
