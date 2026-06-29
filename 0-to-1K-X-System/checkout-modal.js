@@ -2,7 +2,7 @@
   var cfg = window.X1K_CHECKOUT || {};
   var bumpSelected = false;
   var COVER =
-    "../assets/images/x-growth-system-playbook-cover.png?v=20260627230000";
+    "../assets/images/x-growth-system-playbook-cover.png?v=20260629900000";
   var BUMP_COVER = "07-Bonuses/covers/x-writing-playbook.png";
 
   function $(sel, root) {

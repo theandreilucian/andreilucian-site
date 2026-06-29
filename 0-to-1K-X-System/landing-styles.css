@@ -1158,7 +1158,8 @@ body.has-sticky-cta { padding-bottom: 72px; }
 
 .lp-cover-img--hero {
   width: 100%;
-  max-width: 240px;
+  max-width: 280px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.45);
 }
