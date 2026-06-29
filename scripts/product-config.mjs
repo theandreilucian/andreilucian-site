@@ -20,7 +20,7 @@ export const PRODUCT = {
   priceAnchor: 197,
   currency: "EUR",
   currencySymbol: "€",
-  priceLaunchLabel: "Launch · first 50 buyers",
+  priceLaunchLabel: "Launch · 5 days only",
   priceStandardLabel: "Standard price",
 
   checkoutProvider: "gumroad",

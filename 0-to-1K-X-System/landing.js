@@ -1,6 +1,6 @@
 (function () {
-  var LAUNCH_KEY = "x1k_launch_end";
-  var LAUNCH_HOURS = 72;
+  var LAUNCH_KEY = "x1k_launch_end_5d";
+  var LAUNCH_HOURS = 120;
 
   function formatPrice(amount) {
     if (window.X1K_formatPrice) return window.X1K_formatPrice(amount);
@@ -60,7 +60,6 @@
     var heroNow = document.getElementById("lp-price-now");
     var tierWas = document.getElementById("lp-tier-was");
     var tierNow = document.getElementById("lp-tier-now");
-    var tierNowAlt = document.getElementById("lp-tier-now-alt");
     var heroCta = document.getElementById("lp-hero-cta-price");
     var stackTotal = document.getElementById("lp-stack-total");
     var stackNow = document.getElementById("lp-stack-now");
@@ -72,7 +71,6 @@
     if (heroNow) heroNow.textContent = priceLabel;
     if (tierWas) tierWas.textContent = wasLabel;
     if (tierNow) tierNow.textContent = priceLabel;
-    if (tierNowAlt) tierNowAlt.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
     if (stackTotal) stackTotal.textContent = wasLabel;
     if (stackNow) stackNow.textContent = priceLabel;
