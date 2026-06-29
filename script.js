@@ -367,7 +367,7 @@ if (document.readyState === 'loading') {
     setTimeout(removeUnwantedProductCards, 500);
 }
 
-// The 0 to 1K X System — product card → sales landing or course hub if unlocked
+// The 0 to 1K X System — product card always opens sales landing
 document.addEventListener('DOMContentLoaded', function initProductAccess() {
     function getLandingUrl() {
         if (location.protocol === 'file:') {
@@ -376,31 +376,11 @@ document.addEventListener('DOMContentLoaded', function initProductAccess() {
         return (location.origin || '') + '/0-to-1K-X-System/LANDING.html';
     }
 
-    function getHubUrl() {
-        if (location.protocol === 'file:') {
-            return 'file:///D:/Website/0-to-1K-X-System/INDEX.html?unlocked=1';
-        }
-        return (location.origin || '') + '/0-to-1K-X-System/INDEX.html?unlocked=1';
-    }
-
-    function isUnlocked() {
-        if (window.__X1K_UNLOCKED__) return true;
-        try {
-            if (localStorage.getItem('x1k_product_unlock') === '1') return true;
-        } catch (e) {}
-        try {
-            if (sessionStorage.getItem('x1k_product_unlock') === '1') return true;
-        } catch (e) {}
-        return false;
-    }
-
     const card = document.getElementById('x-growth-access-card');
     if (!card) return;
 
     card.addEventListener('click', function(e) {
-        if (isUnlocked()) {
-            e.preventDefault();
-            window.location.href = getHubUrl();
-        }
+        e.preventDefault();
+        window.location.href = getLandingUrl();
     });
 });
