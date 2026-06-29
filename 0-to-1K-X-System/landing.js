@@ -55,6 +55,7 @@
       tierWas: "lp-tier-was",
       tierNow: "lp-tier-now",
       heroCta: "lp-hero-cta-price",
+      authorCta: "lp-author-cta-price",
       stackTotal: "lp-stack-total",
       stackNow: "lp-stack-now",
       stickyWas: "lp-sticky-was",
@@ -66,6 +67,7 @@
     var tierWas = document.getElementById(ids.tierWas);
     var tierNow = document.getElementById(ids.tierNow);
     var heroCta = document.getElementById(ids.heroCta);
+    var authorCta = document.getElementById(ids.authorCta);
     var stackTotal = document.getElementById(ids.stackTotal);
     var stackNow = document.getElementById(ids.stackNow);
     var stickyWas = document.getElementById(ids.stickyWas);
@@ -76,6 +78,7 @@
     if (tierWas) tierWas.textContent = "$" + was + " value";
     if (tierNow) tierNow.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
+    if (authorCta) authorCta.textContent = priceLabel;
     if (stackTotal) stackTotal.textContent = "$" + was;
     if (stackNow) stackNow.textContent = priceLabel;
     if (stickyWas) stickyWas.textContent = "$" + was;
@@ -86,16 +89,16 @@
     });
   }
 
-  function initStripeCheckout() {
+  function initCheckoutLinks() {
     var cfg = window.X1K_CHECKOUT || {};
     var ready = window.X1K_isCheckoutReady && window.X1K_isCheckoutReady();
-    if (!ready || cfg.directStripe === false) return;
+    if (!ready || cfg.directCheckout === false) return;
 
-    var stripeUrl = window.X1K_getCheckoutUrl({});
-    if (!stripeUrl) return;
+    var checkoutUrl = window.X1K_getCheckoutUrl({});
+    if (!checkoutUrl) return;
 
     document.querySelectorAll('a[href="CHECKOUT.html"]').forEach(function (a) {
-      a.href = stripeUrl;
+      a.href = checkoutUrl;
       a.setAttribute("rel", "noopener");
     });
   }
@@ -127,7 +130,7 @@
   function init() {
     initCountdown();
     initPricing();
-    initStripeCheckout();
+    initCheckoutLinks();
     initStickyCta();
   }
 

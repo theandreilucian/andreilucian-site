@@ -3,120 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Checkout — The 0 to 1K X System</title>
+  <title>Checkout — The X System</title>
   <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#f5f5f5" />
+  <meta name="theme-color" content="#000000" />
   <link rel="icon" href="product-icon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="checkout-styles.css?v=20260628120000" />
-  <script src="product-checkout.js?v=20260628120000"></script>
+  <script src="product-checkout.js?v=20260629320000"></script>
+  <script>
+  (function () {
+    var url = window.X1K_getCheckoutUrl && window.X1K_getCheckoutUrl({});
+    if (url) {
+      window.location.replace(url);
+    }
+  })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: Inter, system-ui, sans-serif;
+      background: #050505;
+      color: #f5f5f5;
+      text-align: center;
+    }
+    a { color: #1d9bf0; }
+    p { color: #8b8b8b; max-width: 420px; line-height: 1.6; }
+  </style>
 </head>
 <body>
-  <header class="ck-header">
-    <a href="LANDING.html" class="ck-back">← Back to course page</a>
-  </header>
-
-  <main class="ck-layout">
-    <!-- Order summary -->
-    <aside class="ck-summary">
-      <div class="ck-summary-card">
-        <p class="ck-summary-label">Order summary</p>
-        <h1 id="ck-product-name">The 0 to 1K X System</h1>
-        <p class="ck-tagline" id="ck-tagline">0 → 1,000 followers on X in 90 days</p>
-        <ul class="ck-summary-perks">
-          <li>Lifetime access to the full system</li>
-          <li>Daily command center + 90+ templates</li>
-          <li>Bonus playbook vault included</li>
-        </ul>
-        <div class="ck-line-items">
-          <div class="ck-line">
-            <span>Subtotal</span>
-            <span id="ck-subtotal">$197</span>
-          </div>
-          <div class="ck-line ck-line-discount">
-            <span>Launch discount</span>
-            <span id="ck-discount">−$150</span>
-          </div>
-          <div class="ck-line ck-line-total">
-            <span>Total</span>
-            <span><s id="ck-price-was">$197</s> <strong id="ck-price-now">$47</strong></span>
-          </div>
-        </div>
-      </div>
-      <p class="ck-trust">🔒 100% secure · Card details entered on the next step</p>
-    </aside>
-
-    <!-- Checkout form -->
-    <section class="ck-form-panel">
-      <form id="checkout-form" class="ck-form" novalidate>
-        <fieldset class="ck-fieldset">
-          <legend>Contact information</legend>
-          <label class="ck-field">
-            <span>Your name</span>
-            <input type="text" id="ck-name" name="name" placeholder="First and last name" autocomplete="name" required />
-          </label>
-          <label class="ck-field">
-            <span>Your email address</span>
-            <input type="email" id="ck-email" name="email" placeholder="you@email.com" autocomplete="email" required />
-          </label>
-        </fieldset>
-
-        <fieldset class="ck-fieldset">
-          <legend>Billing address</legend>
-          <label class="ck-field">
-            <span>Country</span>
-            <select id="ck-country" name="country" autocomplete="country-name">
-              <option value="RO" selected>Romania</option>
-              <option value="US">United States</option>
-              <option value="GB">United Kingdom</option>
-              <option value="DE">Germany</option>
-              <option value="FR">France</option>
-              <option value="CA">Canada</option>
-              <option value="AU">Australia</option>
-              <option value="OTHER">Other</option>
-            </select>
-          </label>
-          <label class="ck-field">
-            <span>State / region</span>
-            <input type="text" id="ck-state" name="state" placeholder="State or region" autocomplete="address-level1" />
-          </label>
-          <label class="ck-field">
-            <span>Street address</span>
-            <input type="text" id="ck-street" name="street" placeholder="Your street address" autocomplete="street-address" />
-          </label>
-          <div class="ck-field-row">
-            <label class="ck-field">
-              <span>City</span>
-              <input type="text" id="ck-city" name="city" placeholder="Your city" autocomplete="address-level2" />
-            </label>
-            <label class="ck-field">
-              <span>ZIP / postal code</span>
-              <input type="text" id="ck-zip" name="zip" placeholder="ZIP" autocomplete="postal-code" />
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset class="ck-fieldset ck-payment-info">
-          <legend>Payment</legend>
-          <p class="ck-payment-note">On the next secure page you'll enter your card or bank details. We use <strong id="ck-processor">Stripe</strong> — your payment goes directly to Andrei Lucian.</p>
-          <div class="ck-card-icons" aria-hidden="true">
-            <span>VISA</span><span>MC</span><span>AMEX</span><span>Apple Pay</span>
-          </div>
-        </fieldset>
-
-        <div class="ck-error" id="ck-error" role="alert" hidden></div>
-
-        <button type="submit" class="ck-btn-pay" id="checkout-submit">
-          Complete order — <span id="ck-btn-price">$47</span>
-        </button>
-
-        <p class="ck-secure" id="ck-secure">Secure checkout · encrypted payment · instant access after purchase</p>
-      </form>
-    </section>
-  </main>
-
-  <script src="checkout.js?v=20260628120000"></script>
+  <div>
+    <p>Redirecting to secure checkout on Gumroad…</p>
+    <p>If nothing happens, <a href="LANDING.html">go back</a> or paste your Gumroad link in <code>product-checkout.js</code>.</p>
+  </div>
 </body>
 </html>

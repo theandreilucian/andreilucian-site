@@ -5,7 +5,9 @@
   "main": "convert-to-jpeg.js",
   "scripts": {
     "convert": "node convert-to-jpeg.js",
-    "export-carousels": "node export-carousel-slides.js"
+    "export-carousels": "node export-carousel-slides.js",
+    "build:x-system": "node scripts/build_0_to_1k_product.mjs",
+    "build:x-zip": "node scripts/build_product_zip.mjs"
   },
   "dependencies": {
     "puppeteer": "^21.0.0"

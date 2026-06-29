@@ -1,41 +1,70 @@
-/** Checkout — Stripe Payment Link (primary) or Gumroad (fallback) */
+/** Checkout — Gumroad (ZIP delivery + buyer email handled by Gumroad) */
 window.X1K_CHECKOUT = {
-  /** "stripe" = direct to your Stripe account (~2.9% + 30¢). "gumroad" = ~10% + 50¢ */
-  provider: "stripe",
+  checkoutProvider: "gumroad",
 
-  /** Create at: Stripe Dashboard → Payment Links → paste URL here */
-  stripePaymentLink: "https://buy.stripe.com/YOUR_LINK_HERE",
+  /**
+   * Paste your Gumroad product link after you create the product.
+   * Gumroad → Products → The X System → Share → copy link
+   */
+  gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK",
 
-  /** Fallback / legacy — playbooks stay on Gumroad */
-  gumroadUrl: "https://andreilucian.gumroad.com/l/0to1kx",
+  /** true = buy buttons go straight to Gumroad (skip CHECKOUT.html) */
   directCheckout: true,
 
-  productName: "The 0 to 1K X System",
-  tagline: "0 → 1,000 followers on X in 90 days",
+  productName: "The X System",
+  tagline: "0 → 1K Followers in 90 Days",
   price: 47,
   priceStandard: 79,
   priceWas: 197,
+
+  /** Optional hub link to paste in Gumroad confirmation email */
+  hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
+  zipUrl:
+    "https://andreilucian.com/0-to-1K-X-System/downloads/The-X-System.zip",
 };
 
-window.X1K_getCheckoutUrl = function () {
+function X1K_gumroadLinkReady(link) {
+  link = (link || "").trim();
+  return (
+    link.indexOf("gumroad.com/l/") !== -1 &&
+    link.indexOf("YOUR_") === -1
+  );
+}
+
+/**
+ * @param {{ email?: string }} [options]
+ */
+window.X1K_getCheckoutUrl = function (options) {
+  options = options || {};
   var cfg = window.X1K_CHECKOUT || {};
-  var provider = (cfg.provider || "stripe").toLowerCase();
+  var link = (cfg.gumroadProductUrl || "").trim();
+  if (!X1K_gumroadLinkReady(link)) return "";
 
-  if (provider === "stripe") {
-    var stripe = (cfg.stripePaymentLink || "").trim();
-    if (!stripe || stripe.indexOf("YOUR_LINK") !== -1) return "";
-    return stripe;
+  try {
+    var url = new URL(link);
+    if (options.email) url.searchParams.set("email", options.email);
+    return url.toString();
+  } catch (e) {
+    return link;
   }
-
-  var url = (cfg.gumroadUrl || cfg.url || "").trim();
-  if (!url || url.indexOf("YOUR_") !== -1) return "";
-  if (cfg.directCheckout !== false && url.indexOf("wanted=") === -1) {
-    url += (url.indexOf("?") === -1 ? "?" : "&") + "wanted=true";
-  }
-  return url;
 };
 
 window.X1K_getProcessorLabel = function () {
-  var cfg = window.X1K_CHECKOUT || {};
-  return (cfg.provider || "stripe").toLowerCase() === "stripe" ? "Stripe" : "Gumroad";
+  return "Gumroad";
 };
+
+window.X1K_isCheckoutReady = function () {
+  return !!window.X1K_getCheckoutUrl({});
+};
+
+window.X1K_goToCheckout = function (options) {
+  var url = window.X1K_getCheckoutUrl(options || {});
+  if (!url) {
+    window.location.href = "CHECKOUT.html";
+    return;
+  }
+  window.location.href = url;
+};
+
+/** @deprecated use X1K_goToCheckout */
+window.X1K_goToStripe = window.X1K_goToCheckout;

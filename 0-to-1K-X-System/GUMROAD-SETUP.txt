@@ -1,0 +1,61 @@
+Gumroad setup — The X System (ZIP delivery)
+===========================================
+
+FLOW
+----
+  Your landing page (andreilucian.com) → Gumroad checkout → email with ZIP
+
+  Landing: .../0-to-1K-X-System/LANDING.html
+  Buy buttons redirect to your Gumroad product URL (set in product-checkout.js)
+
+
+STEP 1 — Build the ZIP (on your computer)
+-----------------------------------------
+  node scripts/build_product_zip.mjs
+
+  Output: 0-to-1K-X-System/downloads/The-X-System.zip
+
+
+STEP 2 — Create product on Gumroad
+----------------------------------
+  1. Gumroad → Products → New product
+  2. Name: The X System
+  3. Price: $47 USD (one-time)
+  4. Description: copy from GUMROAD-SALES-PAGE.html or LANDING.html
+  5. Cover: use x-growth-system-playbook-cover or product art
+  6. Content → Upload file: downloads/The-X-System.zip
+  7. Enable: "I will email my customers" (default — Gumroad sends receipt + download)
+
+
+STEP 3 — Paste link on your site
+--------------------------------
+  Gumroad → Share → copy product link (andreilucian.gumroad.com/l/xxxxx)
+
+  Open: 0-to-1K-X-System/product-checkout.js
+  Replace:
+    gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK"
+  With your real link.
+
+
+STEP 4 — Optional: add hub link in Gumroad email
+------------------------------------------------
+  In Gumroad product → Settings → Email confirmation, add:
+
+  "Online hub (browser): https://andreilucian.com/0-to-1K-X-System/INDEX.html
+   Folder guide: https://andreilucian.com/0-to-1K-X-System/OPEN-FIRST.html"
+
+  Buyers get ZIP in email + can use the hub online anytime.
+
+
+STEP 5 — Test
+-------------
+  1. Open LANDING.html → click Get The X System
+  2. Complete test purchase on Gumroad
+  3. Confirm email arrives with ZIP download
+  4. Unzip → open OPEN-FIRST.html or INDEX.html inside
+
+
+REBUILD ZIP AFTER UPDATES
+-------------------------
+  node scripts/build_product_zip.mjs
+  Re-upload The-X-System.zip on Gumroad (Products → Content → replace file)
