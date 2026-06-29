@@ -1950,6 +1950,27 @@ img {
     margin-right: auto;
 }
 
+.x-app-symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45em;
+    height: 1.45em;
+    margin-left: 0.12em;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 900;
+    font-size: 0.78em;
+    line-height: 1;
+    border-radius: 0.28em;
+    vertical-align: -0.08em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.resources-section .section-title-micro-sub .x-app-symbol {
+    font-size: 0.72em;
+}
+
 .resource-grid-micro {
     display: grid;
     grid-template-columns: 1fr;
@@ -2245,6 +2266,14 @@ button.resource-card.resource-card--product:focus-visible {
     color: #dc2626;
     text-decoration: line-through;
     font-size: 15px;
+}
+
+.resource-price-soon {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .resource-price-now {
