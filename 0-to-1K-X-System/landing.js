@@ -1,6 +1,6 @@
 (function () {
   var LAUNCH_KEY = "x1k_launch_end";
-  var LAUNCH_HOURS = 48;
+  var LAUNCH_HOURS = 72;
 
   function initCountdown() {
     var end = localStorage.getItem(LAUNCH_KEY);
@@ -17,17 +17,16 @@
       secs: document.getElementById("cd-secs"),
       label: document.getElementById("countdown-label"),
     };
+    var bar = document.getElementById("launch-countdown");
     if (!els.days) return;
 
     function tick() {
       var diff = end - Date.now();
       if (diff <= 0) {
-        els.days.textContent = "00";
-        els.hours.textContent = "00";
-        els.mins.textContent = "00";
-        els.secs.textContent = "00";
-        if (els.label) els.label.textContent = "Launch price has ended";
-        return;
+        end = Date.now() + LAUNCH_HOURS * 60 * 60 * 1000;
+        localStorage.setItem(LAUNCH_KEY, String(end));
+        diff = end - Date.now();
+        if (bar) bar.classList.add("is-ended");
       }
       var d = Math.floor(diff / 86400000);
       var h = Math.floor((diff % 86400000) / 3600000);
@@ -49,36 +48,21 @@
     var price = cfg.price;
     var priceLabel = "$" + price;
 
-    var ids = {
-      heroWas: "lp-price-was",
-      heroNow: "lp-price-now",
-      tierWas: "lp-tier-was",
-      tierNow: "lp-tier-now",
-      heroCta: "lp-hero-cta-price",
-      authorCta: "lp-author-cta-price",
-      stackTotal: "lp-stack-total",
-      stackNow: "lp-stack-now",
-      stickyWas: "lp-sticky-was",
-      stickyNow: "lp-sticky-now",
-    };
-
-    var heroWas = document.getElementById(ids.heroWas);
-    var heroNow = document.getElementById(ids.heroNow);
-    var tierWas = document.getElementById(ids.tierWas);
-    var tierNow = document.getElementById(ids.tierNow);
-    var heroCta = document.getElementById(ids.heroCta);
-    var authorCta = document.getElementById(ids.authorCta);
-    var stackTotal = document.getElementById(ids.stackTotal);
-    var stackNow = document.getElementById(ids.stackNow);
-    var stickyWas = document.getElementById(ids.stickyWas);
-    var stickyNow = document.getElementById(ids.stickyNow);
+    var heroWas = document.getElementById("lp-price-was");
+    var heroNow = document.getElementById("lp-price-now");
+    var tierWas = document.getElementById("lp-tier-was");
+    var tierNow = document.getElementById("lp-tier-now");
+    var heroCta = document.getElementById("lp-hero-cta-price");
+    var stackTotal = document.getElementById("lp-stack-total");
+    var stackNow = document.getElementById("lp-stack-now");
+    var stickyWas = document.getElementById("lp-sticky-was");
+    var stickyNow = document.getElementById("lp-sticky-now");
 
     if (heroWas) heroWas.textContent = "$" + was;
     if (heroNow) heroNow.textContent = priceLabel;
     if (tierWas) tierWas.textContent = "$" + was;
     if (tierNow) tierNow.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
-    if (authorCta) authorCta.textContent = priceLabel;
     if (stackTotal) stackTotal.textContent = "$" + was;
     if (stackNow) stackNow.textContent = priceLabel;
     if (stickyWas) stickyWas.textContent = "$" + was;
@@ -112,11 +96,9 @@
     document.body.classList.add("has-sticky-cta");
 
     function onScroll() {
-      if (window.innerWidth >= 768) {
-        bar.classList.remove("is-visible");
-        return;
-      }
-      if (window.scrollY > 480) {
+      var checkout = document.getElementById("checkout");
+      var checkoutTop = checkout ? checkout.offsetTop : 99999;
+      if (window.scrollY > 520 && window.scrollY < checkoutTop - 80) {
         bar.classList.add("is-visible");
       } else {
         bar.classList.remove("is-visible");

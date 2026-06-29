@@ -10,6 +10,8 @@
   --lp-gold-dim: #9a7d45;
   --lp-peach: #e8b86d;
   --lp-peach-hover: #d9a85a;
+  --lp-blue: #00a8e8;
+  --lp-blue-dim: #0088c2;
   --lp-red-soft: #ff9a9a;
   --lp-wrap: 920px;
   --lp-radius: 14px;
@@ -39,7 +41,7 @@ html { scroll-behavior: smooth; }
 
 .lp-back {
   position: fixed;
-  top: 18px;
+  top: 52px;
   left: 18px;
   z-index: 60;
   font-size: 13px;
@@ -1093,7 +1095,17 @@ html { scroll-behavior: smooth; }
 body.has-sticky-cta { padding-bottom: 72px; }
 
 @media (min-width: 768px) {
-  .lp-sticky-cta { display: none !important; }
+  .lp-sticky-cta {
+    display: block !important;
+    max-width: 420px;
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    border-radius: 14px;
+    border: 1px solid #2a2a2a;
+    transform: translateY(120%);
+  }
+  .lp-sticky-cta.is-visible { transform: translateY(0); }
   body.has-sticky-cta { padding-bottom: 0; }
 }
 
@@ -1495,3 +1507,308 @@ body.has-sticky-cta { padding-bottom: 72px; }
 }
 
 .lp-guarantee-inline--dark span { color: var(--lp-muted); }
+
+/* —— Landing v3 conversion polish —— */
+
+.lp-urgency-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 28px;
+}
+
+.lp-urgency-inner .lp-countdown-grid { margin: 0; }
+
+.lp-hero .lp-price-now { color: var(--lp-peach); }
+
+.lp-highlight {
+  color: var(--lp-blue);
+  text-shadow: 0 0 40px rgba(0, 168, 232, 0.25);
+}
+
+.lp-hero-grid .lp-hero-copy { text-align: left; }
+
+.lp-trust-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+}
+
+.lp-trust-inner span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+
+.lp-trust-inner strong {
+  color: var(--lp-text);
+  font-weight: 800;
+}
+
+.lp-story-grid {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 800px) {
+  .lp-story-grid { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.lp-story-copy .lp-title em {
+  font-style: normal;
+  color: var(--lp-gold-dim);
+}
+
+.lp-steps-inline {
+  margin: 16px 0 20px;
+  padding-left: 1.25rem;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.lp-quote-card--boxed {
+  background: #fff;
+  border: 1px solid #e5dcc8;
+  border-radius: var(--lp-radius);
+  padding: 24px 20px;
+  text-align: left;
+}
+
+.lp-section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 36px;
+}
+
+.lp-pillar-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 700px) {
+  .lp-pillar-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.lp-pillar {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--lp-radius-sm);
+  padding: 22px 18px;
+}
+
+.lp-pillar-icon {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.lp-pillar h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.lp-pillar p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--lp-muted);
+}
+
+.lp-folders-panel {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--lp-radius);
+  padding: 20px 18px;
+}
+
+.lp-folders-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lp-gold);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.lp-folders--grid {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .lp-folders--grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.lp-bonus-inline {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--lp-muted);
+}
+
+.lp-bonus-inline li::before {
+  content: "✓ ";
+  color: var(--lp-gold);
+  font-weight: 700;
+}
+
+.lp-reviews-heading {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 36px 0 16px;
+  text-align: center;
+  color: var(--lp-text);
+}
+
+.lp-reviews--compact {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 800px) {
+  .lp-reviews--compact { grid-template-columns: repeat(4, 1fr); }
+}
+
+.lp-reviews--compact .lp-review {
+  padding: 16px 14px;
+}
+
+.lp-reviews--compact blockquote {
+  font-size: 13px;
+}
+
+.lp-pricing-single {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lp-pricing-hero .lp-offer-card {
+  background: linear-gradient(165deg, #141414 0%, #0a0a0a 100%);
+  border: 2px solid rgba(0, 168, 232, 0.35);
+  border-radius: var(--lp-radius);
+  padding: 28px 22px;
+  margin-top: 28px;
+  text-align: left;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 60px rgba(0, 168, 232, 0.06);
+}
+
+.lp-offer-top { margin-bottom: 20px; text-align: center; }
+
+.lp-offer-price-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lp-offer-was {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.lp-offer-now {
+  font-size: clamp(40px, 8vw, 52px);
+  font-weight: 800;
+  color: var(--lp-peach);
+  letter-spacing: -0.03em;
+}
+
+.lp-offer-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: rgba(0, 168, 232, 0.15);
+  color: var(--lp-blue);
+  border-radius: 6px;
+}
+
+.lp-offer-sub {
+  font-size: 13px;
+  color: var(--lp-muted);
+  margin-top: 6px;
+}
+
+.lp-offer-includes {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.lp-offer-includes li {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  padding-left: 22px;
+}
+
+.lp-offer-includes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--lp-gold);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.lp-value-list--inline {
+  margin-bottom: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.lp-value-total-line {
+  text-align: center;
+  font-size: 15px;
+  color: var(--lp-muted);
+  margin-bottom: 20px;
+}
+
+.lp-value-total-line strong {
+  color: var(--lp-peach);
+  font-size: 18px;
+}
+
+.lp-pricing-hero .lp-offer-secure {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 12px;
+}
+
+.lp-hero-proof-meta {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 4px;
+}
+
+.lp-urgency.is-ended .lp-countdown-grid { display: none; }
+
+.lp-urgency.is-ended .lp-urgency-text::after {
+  content: " — grab launch price before it goes to $79";
+}
+
+@media (max-width: 600px) {
+  .lp-back { top: 48px; left: 12px; }
+  .lp-hero-grid .lp-hero-copy { text-align: center; }
+  .lp-hero-checks { text-align: left; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .lp-price-box { text-align: center; }
+  .lp-btn--xl { max-width: 100%; }
+}
+
