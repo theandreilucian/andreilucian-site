@@ -1055,34 +1055,58 @@ body.has-sticky-cta {
   color: var(--lp-gold-dim);
 }
 
-/* Author band — dark */
+.lp-cta-row--compact {
+  padding: 28px 20px 36px;
+}
+
+/* Bottom funnel — shared centered column */
+.lp-bottom-wrap {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Author band — centered card */
 .lp-author-band {
   background: var(--lp-black);
-  padding: clamp(48px, 7vw, 80px) 24px;
+  padding: clamp(40px, 6vw, 64px) 0 clamp(32px, 5vw, 48px);
   border-top: 1px solid #1a1a1a;
 }
 
-.lp-author-inner {
-  max-width: 680px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(24px, 4vw, 36px);
-  align-items: start;
+.lp-author-card {
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: clamp(28px, 4vw, 40px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
-.lp-author-visual {
-  position: relative;
+.lp-author-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .lp-author-photo {
   display: block;
-  width: 112px;
-  height: 112px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--lp-gold);
   box-shadow: 0 0 0 6px rgba(201, 169, 98, 0.12), 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.lp-author-header-text h2 {
+  margin: 0 0 10px;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .lp-author-kicker {
@@ -1094,26 +1118,21 @@ body.has-sticky-cta {
   margin-bottom: 8px;
 }
 
-.lp-author-text h2 {
-  margin: 0 0 10px;
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.lp-author-text .role {
+.lp-author-header-text .role {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.88);
-  margin-bottom: 16px;
+  margin: 0;
   line-height: 1.5;
   font-weight: 500;
+  max-width: 480px;
 }
 
 .lp-author-stats {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .lp-author-stat {
@@ -1126,6 +1145,11 @@ body.has-sticky-cta {
   border: 1px solid rgba(201, 169, 98, 0.28);
   padding: 6px 12px;
   border-radius: 999px;
+}
+
+.lp-author-body {
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .lp-author-story {
@@ -1141,25 +1165,56 @@ body.has-sticky-cta {
   font-weight: 500;
 }
 
-/* Pricing — Stijn GET INSTANT ACCESS */
+.lp-author-footer {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.lp-author-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lp-black);
+  background: var(--lp-peach);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.lp-author-cta:hover {
+  background: var(--lp-peach-hover);
+  transform: translateY(-1px);
+}
+
+/* Pricing — centered card */
 .lp-pricing-band {
   background: var(--lp-black);
-  padding: clamp(40px, 6vw, 72px) 24px 80px;
+  padding: clamp(32px, 5vw, 48px) 0 clamp(48px, 7vw, 72px);
   text-align: center;
 }
 
-.lp-pricing-band .lp-kicker { margin-bottom: 12px; }
+.lp-pricing-head {
+  margin-bottom: 28px;
+}
 
-.lp-pricing-band h2 {
+.lp-pricing-head .lp-kicker {
+  margin-bottom: 12px;
+}
+
+.lp-pricing-head h2 {
   font-size: clamp(26px, 4vw, 36px);
   font-weight: 800;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .lp-pricing-tagline {
   font-size: 15px;
   color: var(--lp-muted);
-  margin: 0 auto 32px;
+  margin: 0 auto;
   max-width: 420px;
   line-height: 1.5;
 }
@@ -1172,46 +1227,22 @@ body.has-sticky-cta {
   text-align: center;
 }
 
-.lp-author-cta {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 20px;
-  padding: 12px 22px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--lp-black);
-  background: var(--lp-peach);
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.lp-author-cta:hover {
-  background: var(--lp-peach-hover);
-  transform: translateY(-1px);
-}
-
 .lp-pricing-grid {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  max-width: 480px;
   margin: 0 auto;
 }
 
 .lp-pricing-card {
-  flex: 1;
-  min-width: 260px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 440px;
   background: var(--lp-white);
   color: var(--lp-text);
   border: 2px solid var(--lp-gold);
-  border-radius: 2px;
-  padding: 28px 24px 24px;
+  border-radius: 12px;
+  padding: 32px 28px 28px;
   text-align: center;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
 }
 
 .lp-pricing-card .tier-label {
@@ -1508,13 +1539,12 @@ body.has-sticky-cta {
 /* FAQ — dark accordion */
 .lp-faq {
   background: var(--lp-black);
-  padding: clamp(48px, 7vw, 88px) 24px 72px;
+  padding: clamp(48px, 7vw, 80px) 0 56px;
   border-top: 1px solid #1a1a1a;
 }
 
 .lp-faq-head {
-  max-width: 560px;
-  margin: 0 auto 36px;
+  margin-bottom: 32px;
   text-align: center;
 }
 
@@ -1529,15 +1559,14 @@ body.has-sticky-cta {
 }
 
 .lp-faq-lead {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 480px;
   font-size: 16px;
   color: var(--lp-muted);
   line-height: 1.5;
 }
 
 .lp-faq-list {
-  max-width: 640px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1623,10 +1652,11 @@ body.has-sticky-cta {
 
 .lp-footer {
   text-align: center;
-  padding: 24px 20px 48px;
+  padding: 32px 24px 56px;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.45);
   background: var(--lp-black);
+  border-top: 1px solid #1a1a1a;
 }
 
 /* Folder list — white paper column (WinRAR-style) */
@@ -1725,10 +1755,7 @@ body.has-sticky-cta {
 @media (max-width: 600px) {
   .lp-back { top: 14px; left: 14px; font-size: 13px; }
   .lp-paper p, .lp-paper li, .lp-hero-list li { font-size: 16px; }
-  .lp-author-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .lp-author-visual { display: flex; justify-content: center; }
-  .lp-author-stats { justify-content: center; }
+  .lp-bottom-wrap { padding: 0 20px; }
+  .lp-author-card { padding: 24px 20px; }
+  .lp-pricing-card { padding: 28px 22px 24px; }
 }

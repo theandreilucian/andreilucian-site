@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260629380000" />
+  <link rel="stylesheet" href="landing-styles.css?v=20260629390000" />
   <link rel="stylesheet" href="checkout-modal.css?v=20260628140000" />
   <script src="product-checkout.js?v=20260629320000"></script>
   <script src="product-unlock-bootstrap.js?v=20260629200000"></script>
@@ -428,39 +428,48 @@
   </article>
 </div>
 
-<div class="lp-cta-row">
+<div class="lp-cta-row lp-cta-row--compact">
   <a class="lp-btn-peach" href="CHECKOUT.html">Get The X System →</a>
 </div>
 
 <!-- 10. Author band -->
-<section class="lp-author-band">
-  <div class="lp-author-inner">
-    <div class="lp-author-visual">
-      <img class="lp-author-photo" src="../assets/andrei-lucian-headshot.png.jpg" width="120" height="120" alt="Andrei Lucian" loading="lazy" />
-    </div>
-    <div class="lp-author-text">
-      <p class="lp-author-kicker">Who built this</p>
-      <h2>Hey, I'm Andrei</h2>
-      <p class="role">I help creators go from 0 to 1,000 followers on X — with a daily routine, not random tips.</p>
+<section class="lp-author-band" aria-labelledby="lp-author-heading">
+  <div class="lp-bottom-wrap">
+    <article class="lp-author-card">
+      <header class="lp-author-header">
+        <img class="lp-author-photo" src="../assets/andrei-lucian-headshot.png.jpg" width="120" height="120" alt="Andrei Lucian" loading="lazy" />
+        <div class="lp-author-header-text">
+          <p class="lp-author-kicker">Who built this</p>
+          <h2 id="lp-author-heading">Hey, I'm Andrei</h2>
+          <p class="role">I help creators go from 0 to 1,000 followers on X — with a daily routine, not random tips.</p>
+        </div>
+      </header>
       <div class="lp-author-stats">
         <span class="lp-author-stat">5.3K on X</span>
         <span class="lp-author-stat">16.2K on LinkedIn</span>
         <span class="lp-author-stat">2.5+ yrs daily</span>
       </div>
-      <p class="lp-author-story">My first year on X felt like shouting into an empty room. I posted when I felt like it, replied when I remembered, and watched bigger accounts grow while I stayed stuck.</p>
-      <p class="lp-author-story">Everything changed when I stopped chasing hacks and committed to one boring routine for 90 days. The follower count moved — because the behavior did.</p>
-      <p class="lp-author-story lp-author-story--last">I built <strong>The X System</strong> for creators in that 0–1K grind. Not more information — a daily routine you'll actually follow. ZIP download + online hub. Same folders, same steps, every day.</p>
-      <a class="lp-author-cta" href="CHECKOUT.html">Get The X System — <span id="lp-author-cta-price">$47</span> →</a>
-    </div>
+      <div class="lp-author-body">
+        <p class="lp-author-story">My first year on X felt like shouting into an empty room. I posted when I felt like it, replied when I remembered, and watched bigger accounts grow while I stayed stuck.</p>
+        <p class="lp-author-story">Everything changed when I stopped chasing hacks and committed to one boring routine for 90 days. The follower count moved — because the behavior did.</p>
+        <p class="lp-author-story lp-author-story--last">I built <strong>The X System</strong> for creators in that 0–1K grind. Not more information — a daily routine you'll actually follow. ZIP download + online hub. Same folders, same steps, every day.</p>
+      </div>
+      <footer class="lp-author-footer">
+        <a class="lp-author-cta" href="CHECKOUT.html">Get The X System — <span id="lp-author-cta-price">$47</span> →</a>
+      </footer>
+    </article>
   </div>
 </section>
 
 <!-- 11. Pricing -->
-<section class="lp-pricing-band">
-  <p class="lp-kicker">Get The X System</p>
-  <h2>The X System</h2>
-  <p class="lp-pricing-tagline">0 → 1,000 followers in 90 days · lifetime access</p>
-  <div class="lp-pricing-grid">
+<section class="lp-pricing-band" aria-labelledby="lp-pricing-heading">
+  <div class="lp-bottom-wrap">
+    <header class="lp-pricing-head">
+      <p class="lp-kicker">Get The X System</p>
+      <h2 id="lp-pricing-heading">The X System</h2>
+      <p class="lp-pricing-tagline">0 → 1,000 followers in 90 days · lifetime access</p>
+    </header>
+    <div class="lp-pricing-grid">
     <div class="lp-pricing-card">
       <div class="tier-label">Full system · ZIP + online hub</div>
       <div class="tier-name">Daily command center, 90+ templates,<br>reply bank &amp; bonus vault</div>
@@ -481,6 +490,7 @@
       <p class="lp-pricing-delivery">After payment: check email → download ZIP → open <strong>OPEN-FIRST.html</strong> inside the folder.</p>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- 12. Guarantee -->
@@ -492,13 +502,14 @@
 </section>
 
 <!-- 13. FAQ — dark -->
-<section class="lp-faq">
-  <div class="lp-faq-head">
-    <p class="lp-kicker">Questions</p>
-    <h2>FAQ</h2>
-    <p class="lp-faq-lead">Everything you need to know before you checkout.</p>
-  </div>
-  <div class="lp-faq-list">
+<section class="lp-faq" aria-labelledby="lp-faq-heading">
+  <div class="lp-bottom-wrap">
+    <div class="lp-faq-head">
+      <p class="lp-kicker">Questions</p>
+      <h2 id="lp-faq-heading">FAQ</h2>
+      <p class="lp-faq-lead">Everything you need to know before you checkout.</p>
+    </div>
+    <div class="lp-faq-list">
 
     <details class="lp-faq-item" open>
       <summary>When do I get access?</summary>
@@ -571,6 +582,7 @@
       </div>
     </details>
 
+  </div>
   </div>
 </section>
 
