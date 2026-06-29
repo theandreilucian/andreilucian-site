@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260629950000" />
+  <link rel="stylesheet" href="landing-styles.css?v=20260629980000" />
   <script src="product-checkout.js?v=20260629960000"></script>
   <script src="product-unlock-bootstrap.js?v=20260629200000"></script>
 </head>
@@ -61,6 +61,9 @@
       <div class="lp-cover-frame">
         <img class="lp-cover-img" src="../assets/images/x-growth-system-playbook-cover.png?v=20260629900000" alt="The X System — 0 to 1K Followers in 90 Days" width="280" height="420" loading="eager" />
         <span class="lp-cover-chip">0 → 1K · 90 days</span>
+      </div>
+      <div class="lp-x-money-visual">
+        <img src="../assets/images/x-logo-money-pile.png?v=20260629980000" alt="Grow your audience and income on X" width="400" height="400" loading="eager" decoding="async" />
       </div>
       <div class="lp-hero-proof">
         <span class="lp-hero-proof-stars">★★★★★</span>
@@ -197,37 +200,63 @@
     <h2 id="lp-pricing-title" class="lp-title lp-title--light">Get The X System</h2>
     <p class="lp-lead lp-lead--light">Instant access · delivered to your email after Gumroad checkout</p>
 
-    <div class="lp-offer-card">
-      <div class="lp-offer-top">
-        <div class="lp-offer-price-block">
-          <span class="lp-offer-was" id="lp-tier-was">€197</span>
-          <span class="lp-offer-now" id="lp-tier-now">€47</span>
-          <span class="lp-offer-badge">Launch price</span>
+    <div class="lp-iphone-proto">
+      <div class="lp-iphone-frame">
+        <div class="lp-iphone-btn lp-iphone-btn--silent" aria-hidden="true"></div>
+        <div class="lp-iphone-btn lp-iphone-btn--volume-up" aria-hidden="true"></div>
+        <div class="lp-iphone-btn lp-iphone-btn--volume-down" aria-hidden="true"></div>
+        <div class="lp-iphone-btn lp-iphone-btn--power" aria-hidden="true"></div>
+
+        <div class="lp-iphone-screen">
+          <div class="lp-iphone-island" aria-hidden="true"></div>
+          <div class="lp-iphone-status" aria-hidden="true">
+            <time>9:41</time>
+            <span class="lp-iphone-status-icons">
+              <svg class="lp-iphone-icon" width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path fill="currentColor" d="M1 10h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-5h2v11h-2z"/></svg>
+              <svg class="lp-iphone-icon" width="15" height="12" viewBox="0 0 24 18" aria-hidden="true"><path fill="currentColor" d="M12 3C8.5 3 5.2 4.4 2.7 7l1.4 1.4C5.4 6.2 8.5 5 12 5s6.6 1.2 9.3 3.4L20.7 7C18.2 4.4 14.9 3 12 3zm0 4c-2.5 0-4.7 1-6.4 2.6L5.1 12c1.4-1.4 3.4-2.2 5.5-2.2s4.1.8 5.5 2.2l-2.5-2.4C14.7 8 12.5 7 12 7zm0 4c-1.2 0-2.3.5-3.1 1.3L12 16l3.1-3.7C14.3 11.5 13.2 11 12 11z"/></svg>
+              <svg class="lp-iphone-icon lp-iphone-battery" width="22" height="12" viewBox="0 0 27 13" aria-hidden="true"><rect x="0.5" y="0.5" width="21" height="12" rx="3" fill="none" stroke="currentColor"/><rect x="2" y="2" width="16" height="9" rx="1.5" fill="currentColor"/><path fill="currentColor" d="M23 4.5v4a2 2 0 0 0 0-4z"/></svg>
+            </span>
+          </div>
+
+          <div class="lp-iphone-scroll">
+            <div class="lp-offer-card lp-offer-card--phone">
+              <div class="lp-offer-top">
+                <div class="lp-offer-price-block">
+                  <span class="lp-offer-was" id="lp-tier-was">€197</span>
+                  <span class="lp-offer-now" id="lp-tier-now">€47</span>
+                  <span class="lp-offer-badge">Launch price</span>
+                </div>
+                <p class="lp-offer-sub" id="lp-offer-sub">Then €79 · lifetime · no subscription</p>
+              </div>
+
+              <ul class="lp-offer-includes">
+                <li>The X System — 8 folders + hub access</li>
+                <li>90-day daily command center</li>
+                <li>90+ templates + strategic reply bank</li>
+                <li>X + LinkedIn playbooks (PDF)</li>
+                <li>4 bonus ebooks + worksheets</li>
+              </ul>
+
+              <ul class="lp-value-list lp-value-list--inline" aria-label="Value breakdown">
+                <li><span>Command center + 90-day plan</span><span>€97</span></li>
+                <li><span>Templates + reply bank</span><span>€49</span></li>
+                <li><span>Playbooks + ebooks</span><span>€49</span></li>
+              </ul>
+              <p class="lp-value-total-line">Total value <span id="lp-stack-total">€197</span> → Today <strong id="lp-stack-now">€47</strong></p>
+
+              <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block" href="CHECKOUT.html">Get Instant Access — <span class="lp-tier-cta-price">€47</span></a>
+              <p class="lp-offer-secure">🔒 Secure checkout on Gumroad · Card · PayPal</p>
+              <div class="lp-guarantee-inline lp-guarantee-inline--dark">
+                <strong>30-day execution guarantee</strong>
+                <span>Show up daily for 30 days. No progress? Email me.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lp-iphone-home" aria-hidden="true"></div>
         </div>
-        <p class="lp-offer-sub" id="lp-offer-sub">Then €79 · lifetime · no subscription</p>
       </div>
-
-      <ul class="lp-offer-includes">
-        <li>The X System — 8 folders + hub access</li>
-        <li>90-day daily command center</li>
-        <li>90+ templates + strategic reply bank</li>
-        <li>X + LinkedIn playbooks (PDF)</li>
-        <li>4 bonus ebooks + worksheets</li>
-      </ul>
-
-      <ul class="lp-value-list lp-value-list--inline" aria-label="Value breakdown">
-        <li><span>Command center + 90-day plan</span><span>€97</span></li>
-        <li><span>Templates + reply bank</span><span>€49</span></li>
-        <li><span>Playbooks + ebooks</span><span>€49</span></li>
-      </ul>
-      <p class="lp-value-total-line">Total value <span id="lp-stack-total">€197</span> → Today <strong id="lp-stack-now">€47</strong></p>
-
-      <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block" href="CHECKOUT.html">Get Instant Access — <span class="lp-tier-cta-price">€47</span></a>
-      <p class="lp-offer-secure">🔒 Secure checkout on Gumroad · Card · PayPal</p>
-      <div class="lp-guarantee-inline lp-guarantee-inline--dark">
-        <strong>30-day execution guarantee</strong>
-        <span>Show up daily for 30 days. No progress? Email me.</span>
-      </div>
+      <p class="lp-iphone-caption">Preview · what you get after checkout</p>
     </div>
   </div>
 </section>

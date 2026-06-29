@@ -40,8 +40,8 @@ export const PLAYBOOKS = [
     cover: "07-Bonuses/covers/x-writing-playbook.png",
     badge: "Playbook",
     tier: "paid",
-    wasPrice: "€27",
-    nowPrice: "€19",
+    wasPrice: "€19",
+    nowPrice: "€10",
     format: "HTML + PDF",
   },
   {
@@ -140,7 +140,7 @@ ${lessonNavHtml}
 </div></section>
 <section class="block" id="playbooks">
   <h2>Writing playbooks <span class="section-tag">Normally paid · yours free</span></h2>
-  <p class="section-lead">These sell on Gumroad for €19 and €10. Included in ${PRODUCT.name} — open in browser or download PDF.</p>
+  <p class="section-lead">These sell on Gumroad for €10 each. Included in ${PRODUCT.name} — open in browser or download PDF.</p>
   ${bonusGrid(PLAYBOOKS)}
 </section>`;
 }
