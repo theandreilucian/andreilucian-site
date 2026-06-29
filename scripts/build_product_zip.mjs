@@ -306,6 +306,8 @@ function build() {
     if (fs.existsSync(bonusHub)) {
       let html = fs.readFileSync(bonusHub, "utf8");
       html = patchHtml(html, "08-Bonuses");
+      html = html.replace(/07-Bonuses\/covers\//g, "covers/");
+      html = html.replace(/07-Bonuses\/includes\//g, "includes/");
       fs.writeFileSync(bonusHub, html);
     }
   }
