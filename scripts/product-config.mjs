@@ -16,15 +16,15 @@ export const PRODUCT = {
   proof: "5.3K on X · 16.3K on LinkedIn · 2.5+ years building daily",
 
   priceLaunch: 47,
-  priceStandard: 79,
-  priceAnchor: 197,
+  priceStandard: 147,
+  priceAnchor: 147,
   currency: "EUR",
   currencySymbol: "€",
   priceLaunchLabel: "Launch · 5 days only",
   priceStandardLabel: "Standard price",
 
   checkoutProvider: "gumroad",
-  gumroadProductUrl: "https://andreilucian.gumroad.com/l/glctvz",
+  gumroadProductUrl: "https://andreilucian.gumroad.com/l/thexsystem",
   directCheckout: true,
   hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
   zipUrl:

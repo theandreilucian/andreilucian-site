@@ -10,7 +10,7 @@ window.X1K_CHECKOUT = {
   checkoutProvider: "gumroad",
 
   /** Gumroad → Products → The X System → Share → copy link */
-  gumroadProductUrl: "https://andreilucian.gumroad.com/l/glctvz",
+  gumroadProductUrl: "https://andreilucian.gumroad.com/l/thexsystem",
 
   /** true = all buy buttons open Gumroad directly (recommended) */
   directCheckout: true,
