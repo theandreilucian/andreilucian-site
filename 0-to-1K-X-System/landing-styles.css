@@ -3338,21 +3338,48 @@ body.has-sticky-cta { padding-bottom: 72px; }
 
 .lp-offer-covers {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 720px) {
+  .lp-offer-covers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .lp-offer-cover--main {
+    grid-column: 1 / -1;
+    max-width: 140px;
+    margin: 0 auto 4px;
+  }
 }
 
 @media (max-width: 520px) {
   .lp-offer-covers {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+  }
+
+  .lp-offer-cover--main {
+    max-width: 130px;
   }
 }
 
 .lp-offer-cover {
   margin: 0;
   text-align: center;
+}
+
+.lp-offer-cover--main img {
+  border-color: var(--lp-gold);
+  box-shadow: 0 8px 28px rgba(201, 169, 98, 0.3);
+}
+
+.lp-offer-cover--main figcaption {
+  color: var(--lp-gold);
+  font-weight: 800;
+  font-size: 11px;
 }
 
 .lp-offer-cover img {
