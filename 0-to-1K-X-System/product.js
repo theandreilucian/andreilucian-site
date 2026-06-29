@@ -1,4 +1,4 @@
-/* The 0 to 1K X System — shared interactions */
+﻿/* The X System — shared interactions */
 (function () {
   const PREFIX = "x1k_";
   const LESSON_PREFIX = PREFIX + "lesson_";

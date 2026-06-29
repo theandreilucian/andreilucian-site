@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var cfg = window.X1K_CHECKOUT || {};
   var bumpSelected = false;
   var COVER =
@@ -32,14 +32,14 @@
       '<div class="co-product-row">' +
       '<img class="co-product-thumb" src="' +
       COVER +
-      '" alt="The 0 to 1K X System" width="56" height="72" />' +
+      '" alt="The X System" width="56" height="72" />' +
       '<div class="co-product-info">' +
-      '<h2 id="co-product-title">The 0 to 1K X System</h2>' +
+      '<h2 id="co-product-title">The X System</h2>' +
       '<p class="co-product-price" id="co-product-price">USD $47.00</p>' +
       "</div></div>" +
       bumpBlock +
       '<div class="co-totals">' +
-      '<div class="co-total-line"><span id="co-product-title-line">The 0 to 1K X System</span><span id="co-subtotal-val">USD $47.00</span></div>' +
+      '<div class="co-total-line"><span id="co-product-title-line">The X System</span><span id="co-subtotal-val">USD $47.00</span></div>' +
       '<div class="co-total-line" id="co-bump-line" hidden><span id="co-bump-line-label">Order bump</span><span id="co-bump-val"></span></div>' +
       '<div class="co-total-line"><span>Taxes</span><span>Calculated at payment</span></div>' +
       '<div class="co-total-line grand"><span>Total</span><span id="co-grand-total">USD $47.00</span></div>' +
@@ -141,7 +141,7 @@
     var price = cfg.price || 47;
     var bumpPrice = cfg.orderBump ? cfg.orderBump.price || 10 : 0;
     var total = getTotal();
-    var name = cfg.productName || "The 0 to 1K X System";
+    var name = cfg.productName || "The X System";
 
     var sub = $("#co-subtotal-val", root);
     var bumpLine = $("#co-bump-line", root);
@@ -163,7 +163,7 @@
   function initCheckoutRoot(root) {
     if (!root) return;
 
-    var name = cfg.productName || "The 0 to 1K X System";
+    var name = cfg.productName || "The X System";
     var el;
 
     el = $("#co-product-title", root);
