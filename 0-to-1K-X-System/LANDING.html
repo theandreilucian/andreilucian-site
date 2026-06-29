@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260629200000" />
+  <link rel="stylesheet" href="landing-styles.css?v=20260629210000" />
   <script src="product-checkout.js?v=20260630180000"></script>
   <script src="product-unlock-bootstrap.js?v=20260629200000"></script>
 </head>
@@ -55,7 +55,7 @@
       </div>
       <p class="lp-price-vat">Excl. VAT if applicable.</p>
       <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
-      <p class="lp-micro lp-micro--center">Secure Gumroad checkout · Card &amp; PayPal · 30-day guarantee</p>
+      <p class="lp-micro lp-micro--center">Secure Gumroad checkout · Card &amp; PayPal · Instant delivery</p>
     </div>
   </div>
 </section>
@@ -103,46 +103,96 @@
   </div>
 </section>
 
-<!-- 5. What's inside — 3 modules -->
-<section class="lp-section lp-section--cream lp-modules-section" id="inside" aria-labelledby="lp-modules-title">
-  <div class="lp-wrap lp-wrap--narrow">
-    <h2 id="lp-modules-title" class="lp-title lp-title--section lp-modules-heading">What's Inside:</h2>
+<!-- 5. What's inside — 3 modules (visual) -->
+<section class="lp-section lp-section--dark lp-modules-section lp-modules-section--visual" id="inside" aria-labelledby="lp-modules-title">
+  <div class="lp-wrap lp-wrap--wide">
+    <h2 id="lp-modules-title" class="lp-title lp-title--light lp-title--section lp-modules-heading">What's Inside:</h2>
 
-    <article class="lp-module">
-      <span class="lp-module-label">Module 1</span>
-      <h3>Profile &amp; Positioning</h3>
-      <p>Growth starts when strangers know who you are and why to follow. That's why you'll learn:</p>
-      <ul class="lp-module-list">
-        <li>How to set up your profile, bio, and pin so visitors follow in one click.</li>
-        <li>The 3 positioning mistakes that keep 99% of creators stuck under 1K.</li>
-        <li>How to pick a niche angle you can post about for 90 days without burning out.</li>
-      </ul>
-      <p class="lp-module-end">You get folders 01–03 plus worksheets. After this, your profile sells the follow before your content has to.</p>
-    </article>
+    <div class="lp-module-rows">
+      <article class="lp-module-row">
+        <div class="lp-module-visual" aria-hidden="true">
+          <div class="lp-module-diagram lp-module-diagram--table">
+            <div class="lp-diagram-title">Profile Stack</div>
+            <table class="lp-diagram-table">
+              <tbody>
+                <tr><th scope="row">Banner</th><td>First impression</td></tr>
+                <tr><th scope="row">Bio</th><td>Who + promise</td></tr>
+                <tr><th scope="row">Pin</th><td>Proof thread</td></tr>
+                <tr><th scope="row">Niche</th><td>One clear angle</td></tr>
+              </tbody>
+            </table>
+            <div class="lp-diagram-foot">Folders 01–03 + worksheets</div>
+          </div>
+        </div>
+        <div class="lp-module-card">
+          <span class="lp-module-label">Module 1</span>
+          <h3>Profile &amp; Positioning</h3>
+          <p>Growth starts when strangers know who you are and why to follow. That's why you'll learn:</p>
+          <ul class="lp-module-list lp-module-list--checks">
+            <li>How to set up your profile, bio, and pin so visitors follow in one click.</li>
+            <li>The 3 positioning mistakes that keep 99% of creators stuck under 1K.</li>
+            <li>How to pick a niche angle you can post about for 90 days without burning out.</li>
+          </ul>
+          <p class="lp-module-end">You get folders 01–03 plus worksheets. After this, your profile sells the follow before your content has to.</p>
+        </div>
+      </article>
 
-    <article class="lp-module">
-      <span class="lp-module-label">Module 2</span>
-      <h3>Content That Grows</h3>
-      <p>Once your profile is clear, you need posts that get reach. That's why you'll learn:</p>
-      <ul class="lp-module-list">
-        <li>90+ copy-paste templates for growth, authority, personality, and threads.</li>
-        <li>Which content types to rotate so you never run out of ideas.</li>
-        <li>How to batch and queue so you're never posting from a blank screen.</li>
-      </ul>
-      <p class="lp-module-end">You get folder 04 + the content playbook. After this, you'll have a full library to ship 2 posts every day.</p>
-    </article>
+      <article class="lp-module-row">
+        <div class="lp-module-visual" aria-hidden="true">
+          <div class="lp-module-diagram lp-module-diagram--flow">
+            <div class="lp-diagram-title">Content Pipeline</div>
+            <div class="lp-flow-stack">
+              <div class="lp-flow-node">90+ Templates</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node">2 Posts / Day</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node">Growth · Authority · Personality</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node lp-flow-node--highlight">Reach + Follows</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-module-card">
+          <span class="lp-module-label">Module 2</span>
+          <h3>Content That Grows</h3>
+          <p>Once your profile is clear, you need posts that get reach. That's why you'll learn:</p>
+          <ul class="lp-module-list lp-module-list--checks">
+            <li>90+ copy-paste templates for growth, authority, personality, and threads.</li>
+            <li>Which content types to rotate so you never run out of ideas.</li>
+            <li>How to batch and queue so you're never posting from a blank screen.</li>
+          </ul>
+          <p class="lp-module-end">You get folder 04 + the content playbook. After this, you'll have a full library to ship 2 posts every day.</p>
+        </div>
+      </article>
 
-    <article class="lp-module">
-      <span class="lp-module-label">Module 3</span>
-      <h3>The 90-Day Command Center</h3>
-      <p>Templates alone don't grow you — daily execution does. That's why you'll learn:</p>
-      <ul class="lp-module-list">
-        <li>My exact daily workflow: morning block, evening block, 60 strategic replies.</li>
-        <li>The reply bank — what to say on big accounts without sounding like a bot.</li>
-        <li>How to track 90 days in one command center you pin and open every morning.</li>
-      </ul>
-      <p class="lp-module-end">You get folders 05–08, the 90-day hub, growth fundamentals, and bonus vault. After this, you'll have the full system — profile, content, and daily execution — to hit 1K in 90 days.</p>
-    </article>
+      <article class="lp-module-row">
+        <div class="lp-module-visual" aria-hidden="true">
+          <div class="lp-module-diagram lp-module-diagram--flow">
+            <div class="lp-diagram-title">Daily Command Center</div>
+            <div class="lp-flow-stack">
+              <div class="lp-flow-node">Morning Checklist</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node">60 Strategic Replies</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node">Evening Block + DMs</div>
+              <div class="lp-flow-arrow" aria-hidden="true">↓</div>
+              <div class="lp-flow-node lp-flow-node--highlight">90-Day Tracker → 1K</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-module-card">
+          <span class="lp-module-label">Module 3</span>
+          <h3>The 90-Day Command Center</h3>
+          <p>Templates alone don't grow you — daily execution does. That's why you'll learn:</p>
+          <ul class="lp-module-list lp-module-list--checks">
+            <li>My exact daily workflow: morning block, evening block, 60 strategic replies.</li>
+            <li>The reply bank — what to say on big accounts without sounding like a bot.</li>
+            <li>How to track 90 days in one command center you pin and open every morning.</li>
+          </ul>
+          <p class="lp-module-end">You get folders 05–08, the 90-day hub, growth fundamentals, and bonus vault. After this, you'll have the full system — profile, content, and daily execution — to hit 1K in 90 days.</p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -300,7 +350,7 @@
 
     <div class="lp-testimonials-cta">
       <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
-      <p class="lp-micro lp-micro--center">Secure Gumroad checkout · Card &amp; PayPal · 30-day guarantee</p>
+      <p class="lp-micro lp-micro--center">Secure Gumroad checkout · Card &amp; PayPal · Instant delivery</p>
     </div>
   </div>
 </section>
@@ -327,7 +377,7 @@
           <li><span>X Writing Playbook (PDF)</span><span>€10</span></li>
           <li><span>LinkedIn Writing Playbook (PDF)</span><span>€10</span></li>
           <li><span>4 bonus ebooks + growth guides</span><span>€19</span></li>
-          <li><span>30-day execution guarantee</span><span class="lp-value-included">Included</span></li>
+          <li><span>Lifetime access — you keep every folder &amp; PDF</span><span class="lp-value-included">Included</span></li>
         </ul>
 
         <div class="lp-value-stack-summary">
@@ -371,7 +421,7 @@
       </details>
       <details class="lp-faq-item">
         <summary>Are there refunds?</summary>
-        <div class="lp-faq-body"><p>Execute daily for 30 days. Still stuck? Email me under the execution guarantee — I'll help you get unstuck or refund you.</p></div>
+        <div class="lp-faq-body"><p>No. This system is 3 years of my experience on 𝕏 — templates, reply bank, workflows, and mistakes — packaged into files you download and keep. Once you have access, you can't give the knowledge back, and I can't take the resources back. If you're not sure it's for you, read the fit check above and don't buy yet.</p></div>
       </details>
       <details class="lp-faq-item">
         <summary>How do I know if this is for me?</summary>

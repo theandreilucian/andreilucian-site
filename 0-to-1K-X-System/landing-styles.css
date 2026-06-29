@@ -2490,6 +2490,196 @@ body.has-sticky-cta { padding-bottom: 72px; }
   margin-top: 8px;
 }
 
+/* —— What's Inside — visual module rows —— */
+
+.lp-modules-section--visual {
+  padding: clamp(48px, 7vw, 88px) 0;
+}
+
+.lp-modules-section--visual .lp-modules-heading {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.lp-module-rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.lp-module-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .lp-module-row {
+    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+.lp-module-visual {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .lp-module-visual {
+    justify-content: flex-end;
+  }
+}
+
+.lp-module-diagram {
+  width: 100%;
+  max-width: 260px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  border-radius: 16px;
+  padding: 16px 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.lp-diagram-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lp-peach);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.lp-diagram-foot {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.lp-diagram-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.lp-diagram-table th,
+.lp-diagram-table td {
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.lp-diagram-table th {
+  width: 38%;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(201, 169, 98, 0.12);
+}
+
+.lp-diagram-table td {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.lp-flow-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+.lp-flow-node {
+  padding: 10px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  color: #fff;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.lp-flow-node--highlight {
+  color: var(--lp-bg);
+  background: linear-gradient(135deg, var(--lp-peach) 0%, var(--lp-gold) 100%);
+  border-color: transparent;
+}
+
+.lp-flow-arrow {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 4px 0;
+  color: var(--lp-peach);
+}
+
+.lp-module-card {
+  background: #fff;
+  border: 1px solid #e8dfc8;
+  border-radius: 16px;
+  padding: clamp(22px, 3vw, 28px) clamp(20px, 3vw, 26px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.lp-module-card .lp-module-label {
+  color: var(--lp-gold-dim);
+}
+
+.lp-module-card h3 {
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--lp-text);
+  margin-bottom: 10px;
+}
+
+.lp-module-card > p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #555;
+}
+
+.lp-module-list--checks {
+  list-style: none;
+  padding-left: 0;
+  margin: 14px 0 0;
+}
+
+.lp-module-list--checks li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.lp-module-list--checks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  font-weight: 800;
+  color: var(--lp-gold-dim);
+}
+
+.lp-module-card .lp-module-end {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--lp-gold-dim);
+  font-weight: 600;
+}
+
 .lp-pricing-stijn {
   text-align: center;
 }
