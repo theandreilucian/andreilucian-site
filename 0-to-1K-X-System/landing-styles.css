@@ -3200,6 +3200,25 @@ body.has-sticky-cta { padding-bottom: 72px; }
   }
 }
 
+.lp-fit-cta {
+  margin-top: 36px;
+  text-align: center;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lp-fit-cta .lp-btn {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 320px;
+}
+
+.lp-fit-cta .lp-micro {
+  margin-top: 12px;
+}
+
 /* —— Bonus ebooks grid —— */
 
 .lp-bonus-section {
