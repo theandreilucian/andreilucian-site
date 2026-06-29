@@ -3338,11 +3338,13 @@ body.has-sticky-cta { padding-bottom: 72px; }
 
 .lp-offer-visual {
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(201, 169, 98, 0.2);
 }
 
 .lp-offer-cover--main {
-  max-width: 200px;
+  max-width: 220px;
   margin: 0 auto 10px;
 }
 
@@ -3428,6 +3430,101 @@ body.has-sticky-cta { padding-bottom: 72px; }
 .lp-offer-covers-tag strong {
   color: var(--lp-gold);
   font-weight: 800;
+}
+
+
+.lp-offer-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lp-gold);
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.lp-offer-section-tag {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 600;
+}
+
+.lp-offer-system-block {
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lp-offer-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-offer-feature-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lp-offer-feature-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lp-offer-feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lp-offer-feature-body strong {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.lp-offer-feature-body span {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.lp-offer-feature-value {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.lp-offer-bonus-block {
+  margin-bottom: 20px;
+}
+
+.lp-offer-bonus-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-offer-bonus-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.4;
+}
+
+.lp-offer-bonus-list li:last-child {
+  border-bottom: none;
 }
 
 .lp-value-stack-group {
