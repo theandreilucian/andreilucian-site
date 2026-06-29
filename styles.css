@@ -1951,24 +1951,14 @@ img {
 }
 
 .x-app-symbol {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.45em;
-    height: 1.45em;
-    margin-left: 0.12em;
-    background: #ffffff;
-    color: #000000;
-    font-weight: 900;
-    font-size: 0.78em;
-    line-height: 1;
-    border-radius: 0.28em;
-    vertical-align: -0.08em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-.resources-section .section-title-micro-sub .x-app-symbol {
-    font-size: 0.72em;
+    display: inline;
+    margin-left: 0.06em;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05em;
+    font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols2", inherit;
+    line-height: inherit;
+    vertical-align: baseline;
 }
 
 .resource-grid-micro {
@@ -2109,8 +2099,9 @@ a.resource-card--full-link:hover {
     letter-spacing: 0.02em;
 }
 
-/* Live micro-product — password-gated access */
-button.resource-card.resource-card--product {
+/* Live micro-product — card links to sales landing (CTAs on landing → Gumroad) */
+button.resource-card.resource-card--product,
+a.resource-card.resource-card--product {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -2126,13 +2117,15 @@ button.resource-card.resource-card--product {
     -webkit-appearance: none;
 }
 
-button.resource-card.resource-card--product:hover {
+button.resource-card.resource-card--product:hover,
+a.resource-card.resource-card--product:hover {
     box-shadow: 0 22px 48px rgba(18, 18, 18, 0.12);
     border-color: #dcd4c4;
     transform: translateY(-2px);
 }
 
-button.resource-card.resource-card--product:focus-visible {
+button.resource-card.resource-card--product:focus-visible,
+a.resource-card.resource-card--product:focus-visible {
     outline: 2px solid #A0785A;
     outline-offset: 3px;
 }

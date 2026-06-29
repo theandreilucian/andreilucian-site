@@ -49,9 +49,9 @@
   function initPricing() {
     var cfg = window.X1K_CHECKOUT || {};
     if (!cfg.price) return;
-    var was = cfg.priceWas || 197;
+    var was = cfg.priceWas || 147;
     var price = cfg.price;
-    var standard = cfg.priceStandard || 79;
+    var standard = cfg.priceStandard || 147;
     var priceLabel = formatPrice(price);
     var wasLabel = formatPrice(was);
     var standardLabel = formatPrice(standard);
@@ -76,7 +76,7 @@
     if (stackNow) stackNow.textContent = priceLabel;
     if (stickyWas) stickyWas.textContent = wasLabel;
     if (stickyNow) stickyNow.textContent = priceLabel;
-    if (offerSub) offerSub.textContent = "Then " + standardLabel + " · lifetime · no subscription";
+    if (offerSub) offerSub.textContent = "Soon " + standardLabel + " · lifetime access · one payment";
 
     document.querySelectorAll(".lp-tier-cta-price").forEach(function (el) {
       el.textContent = priceLabel;
@@ -91,7 +91,7 @@
     var checkoutUrl = window.X1K_getCheckoutUrl({});
     if (!checkoutUrl) return;
 
-    document.querySelectorAll('a[href="CHECKOUT.html"]').forEach(function (a) {
+    document.querySelectorAll('a[href="CHECKOUT.html"], a[data-checkout="gumroad"]').forEach(function (a) {
       a.href = checkoutUrl;
       a.setAttribute("rel", "noopener sponsored");
       a.setAttribute("target", "_self");

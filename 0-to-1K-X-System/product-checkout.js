@@ -18,8 +18,8 @@ window.X1K_CHECKOUT = {
   productName: "The X System",
   tagline: "0 → 1K Followers in 90 Days",
   price: 47,
-  priceStandard: 79,
-  priceWas: 197,
+  priceStandard: 147,
+  priceWas: 147,
   currency: "EUR",
   currencySymbol: "€",
 

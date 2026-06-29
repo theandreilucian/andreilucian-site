@@ -398,7 +398,9 @@ document.addEventListener('DOMContentLoaded', function initProductAccess() {
     if (!card) return;
 
     card.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = isUnlocked() ? getHubUrl() : getLandingUrl();
+        if (isUnlocked()) {
+            e.preventDefault();
+            window.location.href = getHubUrl();
+        }
     });
 });

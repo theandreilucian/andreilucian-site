@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260630170000" />
-  <script src="product-checkout.js?v=20260629960000"></script>
+  <link rel="stylesheet" href="landing-styles.css?v=20260630180000" />
+  <script src="product-checkout.js?v=20260630180000"></script>
   <script src="product-unlock-bootstrap.js?v=20260629200000"></script>
 </head>
 <body class="lp-page lp-page--stijn">
@@ -23,7 +23,7 @@
 
 <div class="lp-urgency" id="launch-countdown">
   <div class="lp-urgency-inner">
-    <p class="lp-urgency-text"><strong>Launch price</strong> — 5 days only · then €79</p>
+    <p class="lp-urgency-text"><strong>Launch price</strong> — 5 days only · then €147</p>
     <div class="lp-countdown-grid" aria-label="Time remaining">
       <div class="lp-countdown-unit"><div class="lp-countdown-num" id="cd-days">00</div><div class="lp-countdown-lbl">Days</div></div>
       <div class="lp-countdown-unit"><div class="lp-countdown-num" id="cd-hours">00</div><div class="lp-countdown-lbl">Hours</div></div>
@@ -50,7 +50,7 @@
     <div class="lp-hero-buy">
       <p class="lp-price-label-top">Get It Today For Only:</p>
       <div class="lp-hero-price-display">
-        <span class="lp-price-was lp-price-was--hero" id="lp-price-was">€197</span>
+        <span class="lp-price-was lp-price-was--hero" id="lp-price-was">€147</span>
         <span class="lp-price-now lp-price-now--hero" id="lp-price-now">€47</span>
       </div>
       <p class="lp-price-vat">Excl. VAT if applicable.</p>
@@ -65,8 +65,8 @@
   <div class="lp-wrap lp-wrap--narrow">
     <article class="lp-quote-card">
       <div class="lp-stars">★ ★ ★ ★ ★</div>
-      <blockquote>"Stuck at 340 for months. Week 2 I followed the daily plan. Hit 890 eleven weeks later."</blockquote>
-      <footer><strong>Marcus L.</strong> · 340 → 890 followers</footer>
+      <blockquote>"I gained +800 followers in less than 24 hours."</blockquote>
+      <footer><strong>Andrei Lucian</strong> · +800 in 24 hours</footer>
     </article>
   </div>
 </div>
@@ -184,22 +184,38 @@
     <div class="lp-pricing-cards lp-pricing-cards--single">
       <article class="lp-pricing-card lp-pricing-card--featured">
         <h3 class="lp-pricing-card-tier">Complete System</h3>
-        <div class="lp-pricing-card-price" id="lp-tier-now">€47</div>
-        <ul class="lp-pricing-card-includes">
-          <li>8 folders + browser hub access</li>
-          <li>90-day daily command center</li>
-          <li>90+ templates + reply bank</li>
-          <li>X + LinkedIn playbooks (PDF)</li>
-          <li>4 bonus ebooks + worksheets</li>
-          <li>30-day execution guarantee</li>
+        <p class="lp-pricing-card-lead">Everything below — one payment today. No upsells.</p>
+
+        <ul class="lp-value-stack-list" aria-label="What you get and real value">
+          <li><span>90-Day Command Center + browser hub</span><span>€44</span></li>
+          <li><span>90+ post &amp; thread templates (Content Arsenal)</span><span>€32</span></li>
+          <li><span>Strategic reply bank + thread starters</span><span>€22</span></li>
+          <li><span>Profile, positioning &amp; bio worksheets</span><span>€18</span></li>
+          <li><span>8 step folders (Start → Bonuses)</span><span>€12</span></li>
+          <li><span>X Writing Playbook (PDF)</span><span>€10</span></li>
+          <li><span>LinkedIn Writing Playbook (PDF)</span><span>€10</span></li>
+          <li><span>4 bonus ebooks + growth guides</span><span>€19</span></li>
+          <li><span>30-day execution guarantee</span><span class="lp-value-included">Included</span></li>
         </ul>
+
+        <div class="lp-value-stack-summary">
+          <div class="lp-value-stack-row">
+            <span>Total if bought separately</span>
+            <span class="lp-strike" id="lp-stack-total">€147</span>
+          </div>
+          <div class="lp-value-stack-row lp-value-stack-row--pay">
+            <span>You pay today</span>
+            <span class="lp-pricing-card-price" id="lp-tier-now">€47</span>
+          </div>
+        </div>
+
         <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
-        <p class="lp-pricing-card-note" id="lp-offer-sub">Then €79 · lifetime · no subscription</p>
+        <p class="lp-pricing-card-note" id="lp-offer-sub">Soon €147 · lifetime access · one payment</p>
       </article>
     </div>
 
     <p class="lp-pricing-anchor">
-      <span class="lp-strike" id="lp-tier-was">€197</span> total value → today <strong id="lp-stack-now">€47</strong>
+      Launch ends in 5 days — then back to <strong id="lp-tier-was">€147</strong>. Today only <strong id="lp-stack-now">€47</strong>.
     </p>
   </div>
 </section>
@@ -254,12 +270,12 @@
   <div class="lp-sticky-inner">
     <div class="lp-sticky-copy">
       <span class="lp-sticky-title">The X System</span>
-      <span class="lp-sticky-price"><span class="lp-sticky-was" id="lp-sticky-was">€197</span> <span id="lp-sticky-now">€47</span></span>
+      <span class="lp-sticky-price"><span class="lp-sticky-was" id="lp-sticky-was">€147</span> <span id="lp-sticky-now">€47</span></span>
     </div>
     <a class="lp-btn lp-btn--primary lp-btn--sticky" href="CHECKOUT.html">Get access →</a>
   </div>
 </div>
 
-<script src="landing.js?v=20260630150000"></script>
+<script src="landing.js?v=20260629120000"></script>
 </body>
 </html>

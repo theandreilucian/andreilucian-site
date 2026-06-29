@@ -24,7 +24,7 @@
 
   function initSummary() {
     var price = cfg.price || 47;
-    var was = cfg.priceWas || 197;
+    var was = cfg.priceWas || 147;
     var discount = was - price;
 
     if ($("ck-product-name") && cfg.productName) $("ck-product-name").textContent = cfg.productName;

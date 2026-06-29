@@ -2267,7 +2267,7 @@ body.has-sticky-cta { padding-bottom: 72px; }
 .lp-urgency.is-ended .lp-countdown-grid { display: none; }
 
 .lp-urgency.is-ended .lp-urgency-text::after {
-  content: " — grab launch price before it goes to €79";
+  content: " — grab launch price before it goes to €147";
 }
 
 @media (max-width: 600px) {
@@ -2506,7 +2506,77 @@ body.has-sticky-cta { padding-bottom: 72px; }
 }
 
 .lp-pricing-cards--single {
-  max-width: 400px;
+  max-width: 480px;
+}
+
+.lp-pricing-card-lead {
+  font-size: 14px;
+  color: var(--lp-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.lp-value-stack-list {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 4px;
+}
+
+.lp-value-stack-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.4;
+}
+
+.lp-value-stack-list li span:last-child {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.lp-value-included {
+  color: var(--lp-gold) !important;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lp-value-stack-summary {
+  margin-bottom: 20px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(201, 169, 98, 0.25);
+}
+
+.lp-value-stack-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--lp-muted);
+  padding: 6px 0;
+}
+
+.lp-value-stack-row--pay {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  color: #fff;
+}
+
+.lp-value-stack-row--pay .lp-pricing-card-price {
+  font-size: clamp(36px, 7vw, 44px);
+  margin: 0;
+  color: var(--lp-peach);
 }
 
 .lp-pricing-card {
