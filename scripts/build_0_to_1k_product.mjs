@@ -368,7 +368,7 @@ const AUTHORITY_TEMPLATES = [
   ["Before/After Results", "2×3 timeline with your numbers", "Day 1:\n• 12 followers\n• No bio\n• No queue\n\nDay 90:\n• 1,047 followers\n• Pinned thread\n• Gumroad live\n\nSystems work."],
   ["Competence List", "Skills that matter in [niche]", "Skills that matter on X in 2026:\n• Hooks\n• Replies\n• Batching\n• Pattern recognition\n• Shipping daily\n\nPick one. Master it this week."],
   ["Mistakes List", "N mistakes I made + lesson", "5 mistakes that kept me under 500 followers:\n• Posting without replying\n• Generic hooks\n• No pinned tweet\n• Ignoring analytics\n• Quitting after 2 weeks\n\nDon't repeat mine.", "N mistakes that [held you back]:\n• [mistake]\n• [mistake]\n• [mistake]\n\n[Lesson]."],
-  ["Tool Stack", "Tools I use for [outcome] + why each", "My 0→1K tool stack:\n• X (free) — the platform\n• Notion (free) — ideas + winners\n• ChatGPT (free) — hooks\n• Qura AI (paid) — reply drafts\n• Hypefury (paid) — scheduling\n\nStack beats talent.", "My [outcome] tool stack:\n• [tool] — [why]\n• [tool] — [why]\n• [tool] — [why]\n\n[Closer]."],
+  ["Tool Stack", "Tools I use for [outcome] + why each", "My 0→1K tool stack:\n• X (free) — the platform\n• Notion (free) — ideas + winners\n• ChatGPT (free) — hooks + reply angles\n• Hypefury (paid) — scheduling + engagement lists\n\nStack beats talent.", "My [outcome] tool stack:\n• [tool] — [why]\n• [tool] — [why]\n• [tool] — [why]\n\n[Closer]."],
   ["Myth Buster", "Everyone says X → what actually works", "Everyone says \"post more.\"\n\nWhat actually worked:\n3 quality posts + 40 replies daily.\n\nVolume without conversation is noise.", "Everyone says \"[common advice].\"\n\nWhat actually worked:\n[your approach].\n\n[Takeaway]."],
 ];
 
@@ -589,7 +589,7 @@ ${lessonNav("01-Start-Here.html")}
 <h3>My tool stack (FREE + PAID)</h3>
 <p>This is the exact stack I use. Start with the <strong>FREE</strong> tools — add paid when you're posting daily and need speed.</p>
 ${stackWeaponsTableHtml({ withHeading: false })}
-<div class="callout"><strong>Minimum to start (all free):</strong> X + Notion + ChatGPT or Claude. Add Hypefury + Qura when you're serious about the 90-day run.</div>
+<div class="callout"><strong>Minimum to start (all free):</strong> X + Notion + ChatGPT or Claude. Add Hypefury or Typefully when you're serious about the 90-day run.</div>
 ${diagramToolStack}
 <h3>Course map</h3>
 <ol>
@@ -886,7 +886,7 @@ ${diagramDaily}</section>
 <tr><td>2</td><td>10K-50K</td><td>15-20</td><td>Daily</td></tr>
 <tr><td>3</td><td>1K-10K</td><td>20-30</td><td>Daily, build peer relationships</td></tr>
 </table>
-<p>Build your list in Hypefury. Use Qura for drafts — always personalize.</p>
+<p>Build your list in Hypefury. Use the Reply Bank in Module 02 for angles — always personalize before you post.</p>
 ${diagramEngagementTiers}</section>
 <section class="block" id="phases"><h2>90-day phases</h2>
 ${diagram90Phases}
@@ -900,7 +900,7 @@ ${diagram90Phases}
 <tr><td>Low impressions</td><td>More Growth templates, stronger hooks</td></tr>
 <tr><td>Impressions but no follows</td><td>Fix bio + pinned tweet (Module 3)</td></tr>
 <tr><td>Follows stalled</td><td>Increase replies to Tier 2/3</td></tr>
-<tr><td>Generic replies</td><td>Cut to 30 quality, use Qura + edit</td></tr>
+<tr><td>Generic replies</td><td>Cut to 30 quality — use Reply Bank templates + your own edit</td></tr>
 <tr><td>Burnout</td><td>Batch Sundays, reduce to 2 posts</td></tr>
 </table>
 <h3>Milestones</h3>
@@ -1175,7 +1175,7 @@ ${competitorTableHtml()}
 <p class="value-note" style="margin-top:14px">Set Gumroad to <strong>$${PRODUCT.priceLaunch}</strong> at launch. Raise to $${PRODUCT.priceStandard} after 50 sales or 30 days — still underpriced vs competitors.</p></section>
 <section class="block"><h2>FAQ (for sales page)</h2>
 <div class="faq-item"><h3>Is this for complete beginners?</h3><p>Yes — if you're below 1,000 followers and willing to post + reply daily for 90 days.</p></div>
-<div class="faq-item"><h3>Do I need paid tools?</h3><p>No to start. X + Notion + ChatGPT/Claude (all free) is enough for week 1. Hypefury + Qura AI speed things up once you're posting daily.</p></div>
+<div class="faq-item"><h3>Do I need paid tools?</h3><p>No to start. X + Notion + ChatGPT/Claude (all free) is enough for week 1. Hypefury or Typefully speed things up once you're posting daily.</p></div>
 <div class="faq-item"><h3>How is this different from free X tips?</h3><p>Tips without a system don't compound. This is a daily operating system — templates, tiers, batch workflow, and a 90-day calendar.</p></div>
 <div class="faq-item"><h3>Will this work in my niche?</h3><p>The templates are fill-in-the-blank. GAP framework works for any topic — you bring your niche, the system brings the structure.</p></div>
 </section>
