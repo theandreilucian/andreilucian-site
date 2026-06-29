@@ -34,7 +34,7 @@ export const PLAYBOOKS = [
   {
     id: "x-writing",
     title: "The X Writing Playbook",
-    desc: "Hooks, threads, and posting rhythm — the writing system behind 5.1K on X without burning out.",
+    desc: "Hooks, threads, and posting rhythm — the writing system behind 5.3K on X without burning out.",
     file: "07-Bonuses/includes/x-writing-playbook.html",
     pdf: "07-Bonuses/includes/the-x-writing-playbook.pdf",
     cover: "07-Bonuses/covers/x-writing-playbook.png",
@@ -47,7 +47,7 @@ export const PLAYBOOKS = [
   {
     id: "linkedin-writing",
     title: "The LinkedIn Writing Playbook",
-    desc: "Authority posts, profile, DMs — repurpose X wins on LinkedIn (16.1K followers).",
+    desc: "Authority posts, profile, DMs — repurpose X wins on LinkedIn (16.2K followers).",
     file: "07-Bonuses/includes/linkedin-writing-playbook.html",
     pdf: "07-Bonuses/includes/the-linkedin-writing-playbook.pdf",
     cover: "07-Bonuses/covers/linkedin-writing-playbook.png",
@@ -113,24 +113,22 @@ export const EBOOKS_EXTRA = [
   },
 ];
 
-export const BONUS_VAULT_VALUE = "$63+";
+export const BONUS_VAULT_VALUE = "$29+";
 
 export function bonusesPageBody(lessonNavHtml = "") {
   return `
 <header class="hero bonuses-hero">
   <div class="badge">Module 7 · Included free</div>
   <h1>Bonuses &amp; Resources</h1>
-  <p class="sub">My free ebooks + paid playbooks — all yours with this system. Don't open everything day 1.</p>
+  <p class="sub">Paid playbooks + extra tools — all yours with this system.</p>
   <div class="vault-banner">
-    <strong>${BONUS_VAULT_VALUE} retail value</strong> · 2 playbooks + 2 ebooks · bundled at no extra cost
+    <strong>${BONUS_VAULT_VALUE} retail value</strong> · 2 playbooks · bundled at no extra cost
   </div>
 </header>
 ${lessonNavHtml}
 <nav class="bonus-jump" aria-label="Resource sections">
   <a href="#toolkit">Toolkit</a>
   <a href="#playbooks">Writing Playbooks</a>
-  <a href="#ebooks">Ebooks &amp; Mindset</a>
-  <a href="#when-to-open">When To Open</a>
 </nav>
 <section class="block" id="toolkit"><h2>Execution toolkit (included)</h2>
 <div class="toolkit-grid">
@@ -144,18 +142,5 @@ ${lessonNavHtml}
   <h2>Writing playbooks <span class="section-tag">Normally paid · yours free</span></h2>
   <p class="section-lead">These sell on Gumroad for $19 and $10. Included in ${PRODUCT.name} — open in browser or download PDF.</p>
   ${bonusGrid(PLAYBOOKS)}
-</section>
-<section class="block" id="ebooks">
-  <h2>Ebooks &amp; mindset <span class="section-tag">Free list-builders · yours free</span></h2>
-  <p class="section-lead">My free ebooks — normally gated behind email. Full access here, no signup required.</p>
-  ${bonusGrid(EBOOKS_FREE)}
-</section>
-<section class="block" id="when-to-open"><h2>When to open what</h2>
-<table class="simple"><tr><th>Week</th><th>Open</th></tr>
-<tr><td>1</td><td>X Simplified · Playing to Win</td></tr>
-<tr><td>2–12</td><td>X Writing Playbook (reference while posting daily)</td></tr>
-<tr><td>250+ followers</td><td>LinkedIn Playbook</td></tr>
-<tr><td>Anytime</td><td>Playing to Win (re-read)</td></tr>
-<tr><td>After 1K</td><td>LinkedIn path · scale what worked on X</td></tr>
-</table></section>`;
+</section>`;
 }

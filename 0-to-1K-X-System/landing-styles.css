@@ -50,47 +50,6 @@ html { scroll-behavior: smooth; }
 }
 .lp-back:hover { color: #fff; }
 
-.lp-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(8, 8, 8, 0.88);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-}
-
-.lp-nav-inner {
-  max-width: var(--lp-wrap);
-  margin: 0 auto;
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.lp-nav-brand {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--lp-gold);
-}
-
-.lp-nav-cta {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--lp-text);
-  background: var(--lp-peach);
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-}
-.lp-nav-cta:hover { background: var(--lp-peach-hover); transform: translateY(-1px); }
-
 .lp-countdown {
   background: #0c0c0c;
   border-bottom: 1px solid #1a1a1a;
@@ -1141,34 +1100,10 @@ body.has-sticky-cta { padding-bottom: 72px; }
 @media (max-width: 600px) {
   .lp-back { top: 12px; left: 12px; }
   .lp-wrap { padding: 0 20px; }
-  .lp-nav-links { display: none; }
   .lp-hero-visual-row { flex-direction: column; }
 }
 
 /* —— Stijn / 2hourwriter inspired layout —— */
-
-.lp-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-  justify-content: center;
-}
-
-.lp-nav-links a {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.lp-nav-links a:hover { color: #fff; }
-
-.lp-nav-brand {
-  text-decoration: none;
-  color: var(--lp-gold);
-}
 
 .lp-urgency {
   background: #0c0c0c;

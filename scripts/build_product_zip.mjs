@@ -7,7 +7,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
-import { PRODUCT, DELIVERY_MODULES, fileLocationMap } from "./product-config.mjs";
+import { PRODUCT, DELIVERY_MODULES, fileLocationMap, AFFILIATE_LINKS } from "./product-config.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.join(__dirname, "..");
@@ -86,6 +86,23 @@ function copyDir(src, dest) {
   }
 }
 
+function affiliateToolsHtml() {
+  const cards = AFFILIATE_LINKS.map(
+    (t) =>
+      `<article class="paid-tool-card" style="margin-bottom:12px">
+  <h3><a href="${t.url}" target="_blank" rel="noopener sponsored" class="stack-affiliate-inline">${t.name} ↗</a></h3>
+  <p class="paid-tool-when"><strong>When:</strong> ${t.when}</p>
+  <p>${t.line1} ${t.line2}</p>
+</article>`
+  ).join("");
+  return `<section class="block" id="paid-tool-picks" style="margin-top:28px">
+  <h2 style="font-size:1.1rem;margin-bottom:8px">Paid tools I use <span style="color:#8b8b8b;font-size:0.85rem">↗ affiliate</span></h2>
+  <p class="lead" style="margin-bottom:16px">Free stack is enough to start. Full breakdown → <a href="02-Level 0 - Engagement Weapons/TOOL-STACK.html">Tool Stack</a></p>
+  ${cards}
+  <p style="font-size:0.8rem;color:#8b8b8b;margin-top:12px"><em>Links may be affiliate — no extra cost to you. I only recommend tools I use weekly.</em></p>
+</section>`;
+}
+
 function writeOpenFirst() {
   const rows = DELIVERY_MODULES.map((mod) => {
     const links = mod.items
@@ -119,11 +136,26 @@ function writeOpenFirst() {
     .mod li { margin: 4px 0; }
     .mod a { color: #e8e8e8; }
     .cta { display: inline-block; margin-top: 20px; padding: 14px 28px; background: #1d9bf0; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 700; }
+    .tools-box { border: 1px solid #262626; border-radius: 12px; padding: 18px 20px; margin: 24px 0; background: #121212; }
+    .tools-box h2 { font-size: 1rem; margin: 0 0 12px; color: #f5f5f5; }
+    .tools-box p { font-size: 0.88rem; color: #8b8b8b; margin: 0 0 10px; line-height: 1.55; }
+    .tools-box a { color: #1d9bf0; }
+    .tools-box .tool-row { margin-bottom: 14px; }
+    .tools-box .tool-row:last-child { margin-bottom: 0; }
   </style>
 </head>
 <body>
   <h1>${PRODUCT.fullName}</h1>
-  <p class="lead"><strong>Start here.</strong> Open <a href="INDEX.html">INDEX.html</a> for the online hub, or browse each folder below — same structure as your ZIP download.</p>
+  <p class="lead"><strong>Start here.</strong> Open <a href="INDEX.html">INDEX.html</a> for the command center, or browse each folder below.</p>
+  <div class="tools-box">
+    <h2>Paid tools I use (affiliate links)</h2>
+    <p>Start with free tools. Add these in Week 2+ — or when you're building a product/site.</p>
+    ${AFFILIATE_LINKS.map(
+      (t) =>
+        `<div class="tool-row"><strong><a href="${t.url}" target="_blank" rel="noopener sponsored">${t.name} ↗</a></strong><br>${t.line1} ${t.line2}</div>`
+    ).join("")}
+    <p style="margin-top:12px">Also see <a href="PAID-TOOLS.txt">PAID-TOOLS.txt</a> · <a href="02-Level 0 - Engagement Weapons/TOOL-STACK.html">full tool guide</a></p>
+  </div>
   ${rows}
   <a class="cta" href="INDEX.html">Open command center →</a>
 </body>
@@ -131,7 +163,78 @@ function writeOpenFirst() {
   fs.writeFileSync(path.join(STAGE_ROOT, "OPEN-FIRST.html"), html);
 }
 
+function writeStartHereNote() {
+  const toolLines = AFFILIATE_LINKS.flatMap((t) => [
+    "",
+    `${t.name} (${t.when})`,
+    `  ${t.url}`,
+    `  ${t.line1}`,
+    `  ${t.line2}`,
+  ]);
+  const lines = [
+    `${PRODUCT.fullName}`,
+    `${PRODUCT.tagline}`,
+    "",
+    "START HERE:",
+    "  1. Open OPEN-FIRST.html (folder map) or INDEX.html (command center)",
+    "  2. Read 01-Start-Here.html in this folder",
+    "  3. Then follow folders 02 → 08 in order",
+    "",
+    "PAID TOOLS (affiliate links — see PAID-TOOLS.txt at ZIP root):",
+    ...toolLines,
+    "",
+    `— ${PRODUCT.author}`,
+  ];
+  fs.writeFileSync(
+    path.join(STAGE_ROOT, "01-Start Here", "START HERE.txt"),
+    lines.join("\n")
+  );
+}
+
+function writeFolderMap() {
+  const lines = [
+    `${PRODUCT.fullName} — folder map`,
+    "",
+    ...DELIVERY_MODULES.map((m) => `${m.folder}`),
+    "",
+    "OPEN-FIRST.html  → start here",
+    "INDEX.html       → online-style hub (works offline in this ZIP)",
+    "README.txt       → quick instructions",
+    "PAID-TOOLS.txt   → Hypefury + Cursor affiliate links",
+  ];
+  fs.writeFileSync(path.join(STAGE_ROOT, "FOLDER MAP.txt"), lines.join("\n"));
+}
+
+function writePaidToolsTxt() {
+  const blocks = AFFILIATE_LINKS.map(
+    (t) =>
+      [
+        `${t.name.toUpperCase()} — ${t.when}`,
+        t.url,
+        t.line1,
+        t.line2,
+        "",
+      ].join("\n")
+  );
+  const lines = [
+    `${PRODUCT.fullName} — Paid tools (affiliate links)`,
+    "================================================",
+    "",
+    "I only list tools I use weekly. Links may be affiliate — no extra cost to you.",
+    "",
+    ...blocks,
+    "FULL GUIDE (all free + paid tools):",
+    "  02-Level 0 - Engagement Weapons/TOOL-STACK.html",
+    "",
+    `— ${PRODUCT.author}`,
+  ];
+  fs.writeFileSync(path.join(STAGE_ROOT, "PAID-TOOLS.txt"), lines.join("\n"));
+}
+
 function writeReadme() {
+  const toolLines = AFFILIATE_LINKS.flatMap((t) => [
+    `  ${t.name}: ${t.url}`,
+  ]);
   const lines = [
     `${PRODUCT.fullName}`,
     `${PRODUCT.tagline}`,
@@ -140,6 +243,9 @@ function writeReadme() {
     "",
     "FOLDER MAP:",
     ...DELIVERY_MODULES.map((m) => `  ${m.folder}/ — ${m.title}`),
+    "",
+    "PAID TOOLS (affiliate — details in PAID-TOOLS.txt):",
+    ...toolLines,
     "",
     "HOW TO USE:",
     "  1. Double-click OPEN-FIRST.html or INDEX.html",
@@ -205,15 +311,28 @@ function build() {
   }
 
   writeOpenFirst();
+  writeStartHereNote();
+  writeFolderMap();
+  writePaidToolsTxt();
   writeReadme();
 
+  // Inject paid-tool affiliate section into offline hub (ZIP root INDEX.html)
+  const indexPath = path.join(STAGE_ROOT, "INDEX.html");
+  if (fs.existsSync(indexPath)) {
+    let indexHtml = fs.readFileSync(indexPath, "utf8");
+    const marker = "<section class=\"block\">\n  <h2>The daily routine</h2>";
+    if (indexHtml.includes(marker) && !indexHtml.includes("id=\"paid-tool-picks\"")) {
+      indexHtml = indexHtml.replace(marker, affiliateToolsHtml() + "\n\n" + marker);
+      fs.writeFileSync(indexPath, indexHtml);
+    }
+  }
+
   rmDir(ZIP_OUT);
-  const parent = path.dirname(STAGE_ROOT);
-  const folderName = path.basename(STAGE_ROOT);
   try {
+    // Stijn-style ZIP: 01–08 folders at archive root (not nested in a parent folder)
     execSync(
-      `powershell -NoProfile -Command "Compress-Archive -Path '${folderName}' -DestinationPath '${ZIP_OUT.replace(/'/g, "''")}' -Force"`,
-      { cwd: parent, stdio: "inherit" }
+      `powershell -NoProfile -Command "Compress-Archive -Path '*' -DestinationPath '${ZIP_OUT.replace(/'/g, "''")}' -Force"`,
+      { cwd: STAGE_ROOT, stdio: "inherit" }
     );
   } catch (e) {
     console.error("ZIP failed — folder staged at:", STAGE_ROOT);

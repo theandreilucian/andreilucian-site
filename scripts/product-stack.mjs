@@ -5,10 +5,8 @@
 
 /** @type {Record<string, string>} Replace values with your affiliate / referral URLs */
 export const AFFILIATE = {
-  hypefury: "",
-  cursor: "",
-  salesNavigator: "",
-  kit: "",
+  hypefury: "https://hypefury.com/?via=andrei57",
+  cursor: "https://cursor.com/referral?code=Y99TRRGTXDPE",
 };
 
 export const STACK_WEAPONS = [
@@ -56,24 +54,6 @@ export const STACK_WEAPONS = [
     desc: "Batch content · build pages · ship products faster",
     siteUrl: "https://cursor.com",
     affiliateKey: "cursor",
-  },
-  {
-    id: "kit",
-    name: "Kit",
-    cost: "paid",
-    priority: "Optional",
-    desc: "Newsletter · lead magnets · email list (after 250+ followers)",
-    siteUrl: "https://kit.com",
-    affiliateKey: "kit",
-  },
-  {
-    id: "sales-navigator",
-    name: "Sales Navigator",
-    cost: "paid",
-    priority: "Optional",
-    desc: "Find founders on LinkedIn · cold DMs · B2B outreach",
-    siteUrl: "https://business.linkedin.com/sales-solutions/sales-navigator",
-    affiliateKey: "salesNavigator",
   },
 ];
 

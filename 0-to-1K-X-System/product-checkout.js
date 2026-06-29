@@ -1,14 +1,18 @@
-/** Checkout — Gumroad (ZIP delivery + buyer email handled by Gumroad) */
+/** Checkout — Gumroad only (landing → Gumroad → email ZIP)
+ *
+ * AUTOMATION FLOW:
+ *   LANDING.html (andreilucian.com) → Gumroad checkout → buyer email with ZIP
+ *
+ * Setup: paste your Gumroad product link below. All "Get Instant Access"
+ * buttons on the landing page auto-redirect to this URL.
+ */
 window.X1K_CHECKOUT = {
   checkoutProvider: "gumroad",
 
-  /**
-   * Paste your Gumroad product link after you create the product.
-   * Gumroad → Products → The X System → Share → copy link
-   */
+  /** Gumroad → Products → The X System → Share → copy link */
   gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK",
 
-  /** true = buy buttons go straight to Gumroad (skip CHECKOUT.html) */
+  /** true = all buy buttons open Gumroad directly (recommended) */
   directCheckout: true,
 
   productName: "The X System",
@@ -20,7 +24,7 @@ window.X1K_CHECKOUT = {
   /** Optional hub link to paste in Gumroad confirmation email */
   hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
   zipUrl:
-    "https://andreilucian.com/0-to-1K-X-System/downloads/The-X-System.zip",
+    "https://andreilucian.com/0-to-1K-X-System/downloads/Andrei%20Lucian%20-%20The%20X%20System.zip",
 };
 
 function X1K_gumroadLinkReady(link) {

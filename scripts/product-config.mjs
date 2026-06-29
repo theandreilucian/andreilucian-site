@@ -5,7 +5,7 @@ export const PRODUCT = {
   shortName: "X System",
   fullName: "Andrei Lucian — The X System",
   zipFolderName: "Andrei Lucian - The X System",
-  zipFileName: "The-X-System.zip",
+  zipFileName: "Andrei Lucian - The X System.zip",
   tagline: "0 → 1K Followers in 90 Days",
   hook: "Stop being invisible on X.",
   pitch:
@@ -25,10 +25,31 @@ export const PRODUCT = {
   gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK",
   directCheckout: true,
   hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
-  zipUrl: "https://andreilucian.com/0-to-1K-X-System/downloads/The-X-System.zip",
+  zipUrl:
+    "https://andreilucian.com/0-to-1K-X-System/downloads/Andrei%20Lucian%20-%20The%20X%20System.zip",
 
   bundleNote: "2 playbooks + 4 ebooks + 90+ templates — one payment, no upsells",
 };
+
+/** Affiliate URLs + copy — used in ZIP text files and hub */
+export const AFFILIATE_LINKS = [
+  {
+    name: "Hypefury",
+    url: "https://hypefury.com/?via=andrei57",
+    when: "Week 2+ when you're posting daily",
+    line1:
+      "Schedules your posts so you batch once a week and never stare at a blank publish button.",
+    line2: "Engagement lists pull up the accounts you reply to every morning.",
+  },
+  {
+    name: "Cursor",
+    url: "https://cursor.com/referral?code=Y99TRRGTXDPE",
+    when: "When building a landing page, product, or site alongside X",
+    line1: "AI code editor that edits your project files directly.",
+    line2:
+      "Build landing pages, product hubs, and Gumroad ZIP packages without hiring a developer.",
+  },
+];
 
 /** WinRAR-style folder map — used for ZIP packaging + hub explorer */
 export const DELIVERY_MODULES = [

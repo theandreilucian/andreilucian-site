@@ -1,0 +1,84 @@
+Stripe checkout setup — The 0 to 1K X System
+============================================
+
+Your Stripe account: acct_1Ss1DnKBPLQhhr3n
+Dashboard: https://dashboard.stripe.com/acct_1Ss1DnKBPLQhhr3n/dashboard
+
+This site uses Stripe Payment Links only — no Gumroad on this product.
+Checkout → Stripe → course hub (auto-unlocked).
+
+
+ONE-TIME SETUP (about 10 minutes)
+-----------------------------------
+
+1. Log in to Stripe
+   https://dashboard.stripe.com/acct_1Ss1DnKBPLQhhr3n/dashboard
+
+2. Create the product
+   • Go to Product catalog → Add product
+   • Name: The 0 to 1K X System
+   • Description: 0 → 1,000 followers on X in 90 days
+   • Price: $47.00 USD · One time
+   • Save
+
+3. Create the Payment Link ($47)
+   • Go to Payment Links → New
+   • Select: The 0 to 1K X System ($47)
+   • After payment → Redirect to a custom URL:
+     https://andreilucian.com/0-to-1K-X-System/INDEX.html?unlocked=1
+   • Enable: Collect email addresses (recommended)
+   • Optional: Apple Pay, Google Pay, Link
+   • Create link → Copy the URL (looks like https://buy.stripe.com/XXXXXX)
+
+4. Paste the link in your site
+   Open: 0-to-1K-X-System/product-checkout.js
+   Replace:
+     stripePaymentLink: "https://buy.stripe.com/YOUR_LINK_HERE"
+   With your real link:
+     stripePaymentLink: "https://buy.stripe.com/XXXXXX"
+
+5. (Optional) Order bump bundle at $57
+   • Create second product OR duplicate price at $57
+   • Name: The 0 to 1K X System + X Writing Playbook
+   • Create another Payment Link → same success URL
+   • Paste into stripePaymentLinkWithBump in product-checkout.js
+
+6. Test
+   • Open LANDING.html → Instant access → Complete order
+   • Use Stripe test mode first (toggle in dashboard)
+   • Test card: 4242 4242 4242 4242 · any future expiry · any CVC
+   • After payment you should land on the course hub (unlocked)
+
+
+HOW THE FLOW WORKS
+------------------
+
+  Homepage / Landing page
+        ↓
+  CHECKOUT.html (email + name form on your site)
+        ↓
+  Stripe Payment Link (secure card entry on stripe.com)
+        ↓
+  Success URL → INDEX.html?unlocked=1 (course hub, auto-unlocked)
+
+
+AFTER PURCHASE EMAIL (ConvertKit / manual)
+------------------------------------------
+
+Send buyers:
+  • Course link: https://andreilucian.com/0-to-1K-X-System/INDEX.html
+  • Backup password: 160299 (same as product-gate.js)
+  • Start here: 01-Start-Here.html
+
+
+SWITCH BACK TO GUMROAD
+----------------------
+Not recommended — Gumroad takes ~10% + $0.50 per sale.
+This product is Stripe-only in product-checkout.js.
+
+
+STRIPE FEES (approx.)
+---------------------
+
+$47 sale → you keep ~$45.34 (2.9% + $0.30)
+vs Gumroad ~$41.80 on the same price

@@ -68,7 +68,6 @@
     var tierNow = document.getElementById(ids.tierNow);
     var heroCta = document.getElementById(ids.heroCta);
     var authorCta = document.getElementById(ids.authorCta);
-    var navPrice = document.getElementById("lp-nav-price");
     var stackTotal = document.getElementById(ids.stackTotal);
     var stackNow = document.getElementById(ids.stackNow);
     var stickyWas = document.getElementById(ids.stickyWas);
@@ -80,7 +79,6 @@
     if (tierNow) tierNow.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
     if (authorCta) authorCta.textContent = priceLabel;
-    if (navPrice) navPrice.textContent = priceLabel;
     if (stackTotal) stackTotal.textContent = "$" + was;
     if (stackNow) stackNow.textContent = priceLabel;
     if (stickyWas) stickyWas.textContent = "$" + was;
@@ -101,7 +99,8 @@
 
     document.querySelectorAll('a[href="CHECKOUT.html"]').forEach(function (a) {
       a.href = checkoutUrl;
-      a.setAttribute("rel", "noopener");
+      a.setAttribute("rel", "noopener sponsored");
+      a.setAttribute("target", "_self");
     });
   }
 
