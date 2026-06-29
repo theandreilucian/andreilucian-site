@@ -66,7 +66,7 @@ export const EBOOKS_FREE = [
     title: "Playing to Win",
     desc: "21-page mindset guide — improve your life without overthinking. Zero fluff.",
     file: "07-Bonuses/includes/playing-to-win.html",
-    cover: "07-Bonuses/covers/playing-to-win.png",
+    cover: "07-Bonuses/covers/playing-to-win.jpg",
     badge: "Ebook · Mindset",
     tier: "free",
     pages: "21",

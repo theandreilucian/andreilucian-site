@@ -237,7 +237,8 @@ function copyBonuses() {
   const covers = [
     ["assets/ebook-cover-the-x-writing-playbook.png", "x-writing-playbook.png"],
     ["assets/ebook-cover-linkedin-playbook.png", "linkedin-writing-playbook.png"],
-    ["assets/ebook-cover-playing-to-win.png", "playing-to-win.png"],
+    ["assets/images/playing-to-win-cover.png.jpg", "playing-to-win.jpg"],
+    ["assets/images/playing-to-win-cover.png.jpg", "playing-to-win.png"],
     ["assets/ebook-cover-x-playbook.png", "x-simplified.png"],
     ["assets/ebook-cover-center.png", "personal-branding-system.png"],
     ["assets/ebook-cover-blueprint-fiction.png", "120-followers.png"],
@@ -263,7 +264,7 @@ function patchEbookLanding(html, filename) {
       ? "https://andreilucian.gumroad.com/l/smyhyb"
       : "https://andreilucian.gumroad.com/l/fjaid";
   const cover =
-    filename === "playing-to-win.html" ? "../covers/playing-to-win.png" : "../covers/x-simplified.png";
+    filename === "playing-to-win.html" ? "../covers/playing-to-win.jpg" : "../covers/x-simplified.png";
 
   return html
     .replace(/assets\/images\/playing-to-win-cover\.png\.jpg/g, cover)
