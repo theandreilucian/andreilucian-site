@@ -3337,14 +3337,19 @@ body.has-sticky-cta { padding-bottom: 72px; }
 }
 
 .lp-offer-product-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: 22px;
   padding-bottom: 22px;
   border-bottom: 1px solid rgba(201, 169, 98, 0.25);
 }
 
-.lp-offer-cover--main {
-  max-width: 240px;
+.lp-offer-cover.lp-offer-cover--main {
+  width: 100%;
+  max-width: 260px;
   margin: 0 auto;
 }
 
@@ -3405,8 +3410,8 @@ body.has-sticky-cta { padding-bottom: 72px; }
     gap: 12px;
   }
 
-  .lp-offer-cover--main {
-    max-width: 160px;
+  .lp-offer-cover.lp-offer-cover--main {
+    max-width: 200px;
   }
 }
 
@@ -3416,6 +3421,8 @@ body.has-sticky-cta { padding-bottom: 72px; }
 }
 
 .lp-offer-cover--main img {
+  display: block;
+  margin: 0 auto;
   border-color: var(--lp-gold);
   box-shadow: 0 8px 28px rgba(201, 169, 98, 0.3);
 }
