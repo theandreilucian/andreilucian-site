@@ -35,7 +35,7 @@
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
     <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="stylesheet" href="styles.css?v=20260626170000">
+    <link rel="stylesheet" href="styles.css?v=20260629510000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -365,12 +365,12 @@
             </div>
 
             <div class="resource-grid resource-grid-micro">
-                <button type="button" class="resource-card resource-card--product" id="x-growth-access-card" aria-label="The 0 to 1K X System — view sales page">
+                <button type="button" class="resource-card resource-card--product" id="x-growth-access-card" aria-label="The 0→1K Daily System — view sales page">
                     <span class="resource-image-link">
-                        <img src="assets/images/x-growth-system-playbook-cover.png?v=20260627230000" alt="The 0 to 1K X System cover" loading="lazy" decoding="async">
+                        <img src="assets/images/x-growth-system-playbook-cover.png?v=20260627230000" alt="The 0→1K Daily System cover" loading="lazy" decoding="async">
                     </span>
-                    <h3>The 0 to 1K X System</h3>
-                    <p>0 → 1,000 followers on X in 90 days. Daily checklist, 90+ copy-paste templates, reply bank, and follower tracker — the full system.</p>
+                    <h3>The 0→1K Daily System</h3>
+                    <p>Stuck under 1K? Hit 1,000 followers in 90 days — daily checklist, 90+ copy-paste templates, reply bank, and follower tracker.</p>
                     <span class="resource-price-row" aria-label="Paid product, 97 dollars">
                         <span class="resource-price-pill">Paid</span>
                         <span class="resource-price-now">$47</span>
@@ -379,7 +379,6 @@
                         <span class="resource-icon" aria-hidden="true">→</span> View &amp; buy
                     </span>
                 </button>
-                <p class="resource-unlock-note"><a href="#" id="x-growth-unlock-link">Already purchased? Enter your password →</a></p>
             </div>
         </section>
 
@@ -406,25 +405,10 @@
         </div>
     </section>
 
-    <!-- Product access modal -->
-    <div id="productAccessModal" class="product-access-modal" hidden aria-hidden="true">
-        <div class="product-access-backdrop" data-close-product-modal></div>
-        <div class="product-access-dialog" role="dialog" aria-modal="true" aria-labelledby="productAccessTitle">
-            <button type="button" class="product-access-close" data-close-product-modal aria-label="Close">&times;</button>
-            <h2 id="productAccessTitle">The 0 to 1K X System</h2>
-            <p class="product-access-lead">Enter the password from your Gumroad purchase email.</p>
-            <form id="productAccessForm">
-                <input type="password" id="productAccessPassword" placeholder="Access password" autocomplete="off" required />
-                <button type="submit" class="submit-btn">Unlock →</button>
-            </form>
-            <p id="productAccessError" class="product-access-error" role="alert"></p>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">© All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Andrei Lucian. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -444,74 +428,6 @@
         // Set this to your Gumroad product link, thank you page, or leave as null
         // Example: window.CONVERTKIT_REDIRECT_URL = 'https://yourname.gumroad.com/l/yourproduct';
         window.CONVERTKIT_REDIRECT_URL = null; // ⬅️ (Optional) Set redirect URL or leave as null
-    </script>
-    <script>
-    /* Product unlock — inline so it always runs (file:// + live site) */
-    (function () {
-        var PASS = '160299';
-        var KEY = 'x1k_product_unlock';
-
-        function getProductUrl() {
-            if (location.protocol === 'file:') {
-                return 'file:///D:/Website/0-to-1K-X-System/INDEX.html';
-            }
-            return (location.origin || '') + '/0-to-1K-X-System/INDEX.html';
-        }
-
-        function goToProduct() {
-            window.__X1K_UNLOCKED__ = true;
-            try { localStorage.setItem(KEY, '1'); } catch (e) {}
-            try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-            window.location.href = getProductUrl() + '#access=' + PASS;
-        }
-
-        function init() {
-            var card = document.getElementById('x-growth-access-card');
-            var modal = document.getElementById('productAccessModal');
-            var form = document.getElementById('productAccessForm');
-            var input = document.getElementById('productAccessPassword');
-            var error = document.getElementById('productAccessError');
-            if (!card || !modal || !form || !input) return;
-
-            card.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                modal.hidden = false;
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                if (error) error.textContent = '';
-                input.value = '';
-                input.focus();
-            });
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                if (input.value.trim() === PASS) {
-                    modal.hidden = true;
-                    document.body.style.overflow = '';
-                    goToProduct();
-                } else if (error) {
-                    error.textContent = 'Wrong password. Try again.';
-                    input.value = '';
-                    input.focus();
-                }
-            });
-
-            modal.querySelectorAll('[data-close-product-modal]').forEach(function (el) {
-                el.addEventListener('click', function () {
-                    modal.hidden = true;
-                    modal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-        } else {
-            init();
-        }
-    })();
     </script>
     <script src="script.js?v=20260627010000"></script>
 </body>
