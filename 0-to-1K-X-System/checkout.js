@@ -18,6 +18,10 @@
     if (err) err.hidden = true;
   }
 
+  function fmt(amount) {
+    return window.X1K_formatPrice ? window.X1K_formatPrice(amount) : "€" + amount;
+  }
+
   function initSummary() {
     var price = cfg.price || 47;
     var was = cfg.priceWas || 197;
@@ -25,11 +29,11 @@
 
     if ($("ck-product-name") && cfg.productName) $("ck-product-name").textContent = cfg.productName;
     if ($("ck-tagline") && cfg.tagline) $("ck-tagline").textContent = cfg.tagline;
-    if ($("ck-subtotal")) $("ck-subtotal").textContent = "$" + was;
-    if ($("ck-discount")) $("ck-discount").textContent = "−$" + discount;
-    if ($("ck-price-was")) $("ck-price-was").textContent = "$" + was;
-    if ($("ck-price-now")) $("ck-price-now").textContent = "$" + price;
-    if ($("ck-btn-price")) $("ck-btn-price").textContent = "$" + price;
+    if ($("ck-subtotal")) $("ck-subtotal").textContent = fmt(was);
+    if ($("ck-discount")) $("ck-discount").textContent = "−" + fmt(discount);
+    if ($("ck-price-was")) $("ck-price-was").textContent = fmt(was);
+    if ($("ck-price-now")) $("ck-price-now").textContent = fmt(price);
+    if ($("ck-btn-price")) $("ck-btn-price").textContent = fmt(price);
     if ($("ck-processor")) $("ck-processor").textContent = processor;
 
     var savedEmail = localStorage.getItem("x1k_checkout_email");

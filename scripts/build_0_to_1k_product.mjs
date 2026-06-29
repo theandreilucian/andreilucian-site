@@ -6,7 +6,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { PRODUCT, threeStepPathHtml, competitorTableHtml } from "./product-config.mjs";
+import { PRODUCT, threeStepPathHtml, competitorTableHtml, formatPrice } from "./product-config.mjs";
 import {
   diagramDomainMastery,
   diagramGAP,
@@ -419,7 +419,7 @@ fs.writeFileSync(path.join(ROOT, "INDEX.html"), page("Hub", "INDEX.html", `
     <div class="hub-stat"><div class="val">3</div><div class="lbl">Simple steps</div></div>
     <div class="hub-stat"><div class="val">90+</div><div class="lbl">Copy-paste posts</div></div>
     <div class="hub-stat"><div class="val">90</div><div class="lbl">Day plan</div></div>
-    <div class="hub-stat"><div class="val">$${PRODUCT.priceLaunch}</div><div class="lbl">Launch price</div></div>
+    <div class="hub-stat"><div class="val">${formatPrice(PRODUCT.priceLaunch)}</div><div class="lbl">Launch price</div></div>
   </div>
   <div class="cta-row">
     <a class="btn-primary" href="QUICK-WINS.html">Start Day 1 →</a>
@@ -427,7 +427,7 @@ fs.writeFileSync(path.join(ROOT, "INDEX.html"), page("Hub", "INDEX.html", `
   </div>
 </header>
 <div class="wow-banner">
-  <strong>${PRODUCT.bundleNote}.</strong> Worth $${PRODUCT.priceAnchor}+ · you paid $${PRODUCT.priceLaunch}.
+  <strong>${PRODUCT.bundleNote}.</strong> Worth ${formatPrice(PRODUCT.priceAnchor)}+ · you paid ${formatPrice(PRODUCT.priceLaunch)}.
 </div>
 ${threeStepPathHtml()}
 <div id="resume-card" class="resume-card" hidden>
@@ -459,13 +459,12 @@ ${threeStepPathHtml()}
 <section class="block">
   <h2>What's included</h2>
   <div class="value-stack value-stack-simple">
-    <div class="value-item"><span>90-day system + daily command center</span><span>$97</span></div>
-    <div class="value-item"><span>90+ templates (posts, replies, threads)</span><span>$93</span></div>
-    <div class="value-item"><span>Worksheets + follower tracker</span><span>$47</span></div>
-    <div class="value-item"><span>2 playbooks + 4 ebooks (bonus vault)</span><span>$91</span></div>
+    <div class="value-item"><span>Command center + 90-day plan</span><span>${formatPrice(97)}</span></div>
+    <div class="value-item"><span>Templates + reply bank</span><span>${formatPrice(49)}</span></div>
+    <div class="value-item"><span>Playbooks + ebooks (bonus vault)</span><span>${formatPrice(49)}</span></div>
   </div>
-  <div class="value-total"><span>Total value</span><span class="amount">$${PRODUCT.priceAnchor}+</span></div>
-  <p class="value-note">Competitors charge $39–49 for a playbook alone. You get the full stack for $${PRODUCT.priceLaunch}.</p>
+  <div class="value-total"><span>Total value</span><span class="amount">${formatPrice(PRODUCT.priceAnchor)}+</span></div>
+  <p class="value-note">Competitors charge €39–49 for a playbook alone. You get the full stack for ${formatPrice(PRODUCT.priceLaunch)}.</p>
 </section>
 <section class="block">
   <h2>Power tools (use daily)</h2>
@@ -1083,25 +1082,25 @@ fs.writeFileSync(path.join(ROOT, "WORKSHEETS.html"), page("Worksheets", "WORKSHE
 // Gumroad sales page (seller reference — not in buyer nav)
 const SALES_SHORT = `${PRODUCT.name} — ${PRODUCT.tagline}.
 
-Simple 3-step system: fix profile · copy-paste posts & replies · execute daily for 90 days. Includes 90+ templates, follower tracker, and $91+ bonus vault (2 playbooks + 4 ebooks). By ${PRODUCT.author} (${PRODUCT.proof}).`;
+Simple 3-step system: fix profile · copy-paste posts & replies · execute daily for 90 days. Includes 90+ templates, follower tracker, and ${formatPrice(91)}+ bonus vault (2 playbooks + 4 ebooks). By ${PRODUCT.author} (${PRODUCT.proof}).`;
 
 const SALES_LONG = `You're posting. You're showing up. But you're stuck below 1,000 followers.
 
-${PRODUCT.name} is the simple system I wish I had at 0 followers — not another $49 playbook with no daily routine.
+${PRODUCT.name} is the simple system I wish I had at 0 followers — not another ${formatPrice(49)} playbook with no daily routine.
 
 3 STEPS:
 1. SETUP (Day 1) — bio, profile, first posts
 2. CONTENT (Week 1-2) — 90+ copy-paste templates + reply bank
 3. EXECUTE (90 days) — daily command center: 2 posts + 30 replies
 
-WHAT'S INCLUDED ($${PRODUCT.priceAnchor}+ value):
+WHAT'S INCLUDED (${formatPrice(PRODUCT.priceAnchor)}+ value):
 → 90-day command center + follower tracker
 → 45 post templates + 22 structures + reply & thread banks
 → Worksheets + bio builder
 → X Writing Playbook + LinkedIn Playbook (PDF included)
 → 4 bonus ebooks (Playing to Win, X Simplified, and more)
 
-PRICE: $${PRODUCT.priceLaunch} launch (${PRODUCT.priceLaunchLabel}) · then $${PRODUCT.priceStandard}
+PRICE: ${formatPrice(PRODUCT.priceLaunch)} launch (${PRODUCT.priceLaunchLabel}) · then ${formatPrice(PRODUCT.priceStandard)}
 
 WHO THIS IS FOR:
 • 0–1,000 followers on X
@@ -1130,8 +1129,8 @@ fs.writeFileSync(path.join(ROOT, "GUMROAD-SALES-PAGE.html"), `<!DOCTYPE html>
   <p class="sub">${PRODUCT.tagline} — without guessing what to post or who to reply to.</p>
   <p class="proof-line">Built by <strong>${PRODUCT.author}</strong> · ${PRODUCT.proof}</p>
   <div class="price-hero">
-    <div class="price-hero-amount">$${PRODUCT.priceLaunch}</div>
-    <div class="price-hero-note">${PRODUCT.priceLaunchLabel} · then $${PRODUCT.priceStandard} · worth $${PRODUCT.priceAnchor}+</div>
+    <div class="price-hero-amount">${formatPrice(PRODUCT.priceLaunch)}</div>
+    <div class="price-hero-note">${PRODUCT.priceLaunchLabel} · then ${formatPrice(PRODUCT.priceStandard)} · worth ${formatPrice(PRODUCT.priceAnchor)}+</div>
   </div>
 </header>
 <section class="block">
@@ -1156,23 +1155,22 @@ fs.writeFileSync(path.join(ROOT, "GUMROAD-SALES-PAGE.html"), `<!DOCTYPE html>
   <ul><li>3-step path — no overwhelm</li><li>90+ copy-paste templates</li><li>30/60/120-min daily routines</li><li>Follower tracker to 1K</li><li>2 playbooks + 4 ebooks included</li><li>Command Center you open daily</li></ul></div>
 </div></section>
 <section class="block"><h2>How we compare</h2>
-<p class="section-lead">Top products charge $39–49 for a playbook alone. This is a full system at launch price.</p>
+<p class="section-lead">Top products charge €39–49 for a playbook alone. This is a full system at launch price.</p>
 ${competitorTableHtml()}
 </section>
 <section class="block"><h2>What you get</h2>
 <div class="value-stack value-stack-simple">
-  <div class="value-item"><span>90-day system + command center</span><span>$97</span></div>
-  <div class="value-item"><span>90+ templates (posts, replies, threads)</span><span>$93</span></div>
-  <div class="value-item"><span>Worksheets + follower tracker</span><span>$47</span></div>
-  <div class="value-item"><span>2 playbooks + 4 ebooks</span><span>$91</span></div>
+  <div class="value-item"><span>Command center + 90-day plan</span><span>${formatPrice(97)}</span></div>
+  <div class="value-item"><span>Templates + reply bank</span><span>${formatPrice(49)}</span></div>
+  <div class="value-item"><span>Playbooks + ebooks</span><span>${formatPrice(49)}</span></div>
 </div>
-<div class="value-total"><span>Total value</span><span class="amount">$${PRODUCT.priceAnchor}+</span></div></section>
+<div class="value-total"><span>Total value</span><span class="amount">${formatPrice(PRODUCT.priceAnchor)}+</span></div></section>
 <section class="block"><h2>Pricing (Gumroad)</h2>
 <div class="price-grid price-grid-simple">
-  <div class="price-card featured"><div class="amount">$${PRODUCT.priceLaunch}</div><div class="tier">${PRODUCT.priceLaunchLabel}</div></div>
-  <div class="price-card"><div class="amount">$${PRODUCT.priceStandard}</div><div class="tier">${PRODUCT.priceStandardLabel}</div></div>
+  <div class="price-card featured"><div class="amount">${formatPrice(PRODUCT.priceLaunch)}</div><div class="tier">${PRODUCT.priceLaunchLabel}</div></div>
+  <div class="price-card"><div class="amount">${formatPrice(PRODUCT.priceStandard)}</div><div class="tier">${PRODUCT.priceStandardLabel}</div></div>
 </div>
-<p class="value-note" style="margin-top:14px">Set Gumroad to <strong>$${PRODUCT.priceLaunch}</strong> at launch. Raise to $${PRODUCT.priceStandard} after 50 sales or 30 days — still underpriced vs competitors.</p></section>
+<p class="value-note" style="margin-top:14px">Set Gumroad to <strong>${formatPrice(PRODUCT.priceLaunch)} EUR</strong> at launch. Raise to ${formatPrice(PRODUCT.priceStandard)} after 50 sales or 30 days — still underpriced vs competitors.</p></section>
 <section class="block"><h2>FAQ (for sales page)</h2>
 <div class="faq-item"><h3>Is this for complete beginners?</h3><p>Yes — if you're below 1,000 followers and willing to post + reply daily for 90 days.</p></div>
 <div class="faq-item"><h3>Do I need paid tools?</h3><p>No to start. X + Notion + ChatGPT/Claude (all free) is enough for week 1. Hypefury or Typefully speed things up once you're posting daily.</p></div>

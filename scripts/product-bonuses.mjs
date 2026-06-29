@@ -40,8 +40,8 @@ export const PLAYBOOKS = [
     cover: "07-Bonuses/covers/x-writing-playbook.png",
     badge: "Playbook",
     tier: "paid",
-    wasPrice: "$27",
-    nowPrice: "$19",
+    wasPrice: "€27",
+    nowPrice: "€19",
     format: "HTML + PDF",
   },
   {
@@ -53,8 +53,8 @@ export const PLAYBOOKS = [
     cover: "07-Bonuses/covers/linkedin-writing-playbook.png",
     badge: "Playbook",
     tier: "paid",
-    wasPrice: "$19",
-    nowPrice: "$10",
+    wasPrice: "€19",
+    nowPrice: "€10",
     format: "HTML + PDF",
   },
 ];
@@ -95,8 +95,8 @@ export const EBOOKS_EXTRA = [
     cover: "07-Bonuses/covers/personal-branding-system.png",
     badge: "Ebook · Brand",
     tier: "paid",
-    wasPrice: "$29",
-    nowPrice: "$19",
+    wasPrice: "€29",
+    nowPrice: "€19",
     format: "HTML",
   },
   {
@@ -107,13 +107,13 @@ export const EBOOKS_EXTRA = [
     cover: "07-Bonuses/covers/120-followers.png",
     badge: "Ebook · Growth",
     tier: "paid",
-    wasPrice: "$17",
-    nowPrice: "$9",
+    wasPrice: "€17",
+    nowPrice: "€9",
     format: "HTML",
   },
 ];
 
-export const BONUS_VAULT_VALUE = "$29+";
+export const BONUS_VAULT_VALUE = "€29+";
 
 export function bonusesPageBody(lessonNavHtml = "") {
   return `
@@ -140,7 +140,7 @@ ${lessonNavHtml}
 </div></section>
 <section class="block" id="playbooks">
   <h2>Writing playbooks <span class="section-tag">Normally paid · yours free</span></h2>
-  <p class="section-lead">These sell on Gumroad for $19 and $10. Included in ${PRODUCT.name} — open in browser or download PDF.</p>
+  <p class="section-lead">These sell on Gumroad for €19 and €10. Included in ${PRODUCT.name} — open in browser or download PDF.</p>
   ${bonusGrid(PLAYBOOKS)}
 </section>`;
 }

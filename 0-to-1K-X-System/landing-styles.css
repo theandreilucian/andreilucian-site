@@ -1801,7 +1801,7 @@ body.has-sticky-cta { padding-bottom: 72px; }
 .lp-urgency.is-ended .lp-countdown-grid { display: none; }
 
 .lp-urgency.is-ended .lp-urgency-text::after {
-  content: " — grab launch price before it goes to $79";
+  content: " — grab launch price before it goes to €79";
 }
 
 @media (max-width: 600px) {

@@ -5,7 +5,7 @@ OPEN FIRST: INDEX.html (online hub) or OPEN-FIRST.html (folder map)
 
 PRODUCT: The X System
 TAGLINE: 0 → 1K Followers in 90 Days
-PRICE: $47 launch · $79 standard
+PRICE: €47 launch · €79 standard
 
 SALES FLOW
 ----------

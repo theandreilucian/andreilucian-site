@@ -33,7 +33,7 @@ ONE-TIME SETUP CHECKLIST
 
 □ Gumroad → Products → New product
   • Name: The X System
-  • Price: $47 (one-time USD)
+  • Price: €47 (one-time EUR)
   • Description: copy from GUMROAD-SALES-PAGE.html
   • Cover image: assets/images/x-growth-system-playbook-cover.png
   • Content tab → Upload: Andrei Lucian - The X System.zip

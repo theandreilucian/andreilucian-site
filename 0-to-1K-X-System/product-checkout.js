@@ -10,7 +10,7 @@ window.X1K_CHECKOUT = {
   checkoutProvider: "gumroad",
 
   /** Gumroad → Products → The X System → Share → copy link */
-  gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK",
+  gumroadProductUrl: "https://andreilucian.gumroad.com/l/glctvz",
 
   /** true = all buy buttons open Gumroad directly (recommended) */
   directCheckout: true,
@@ -20,11 +20,19 @@ window.X1K_CHECKOUT = {
   price: 47,
   priceStandard: 79,
   priceWas: 197,
+  currency: "EUR",
+  currencySymbol: "€",
 
   /** Optional hub link to paste in Gumroad confirmation email */
   hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
   zipUrl:
     "https://andreilucian.com/0-to-1K-X-System/downloads/Andrei%20Lucian%20-%20The%20X%20System.zip",
+};
+
+/** @param {number} amount */
+window.X1K_formatPrice = function (amount) {
+  var cfg = window.X1K_CHECKOUT || {};
+  return (cfg.currencySymbol || "€") + amount;
 };
 
 function X1K_gumroadLinkReady(link) {

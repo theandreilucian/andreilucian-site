@@ -18,12 +18,12 @@ ONE-TIME SETUP (about 10 minutes)
    • Go to Product catalog → Add product
    • Name: The 0 to 1K X System
    • Description: 0 → 1,000 followers on X in 90 days
-   • Price: $47.00 USD · One time
+   • Price: €47.00 EUR · One time
    • Save
 
-3. Create the Payment Link ($47)
+3. Create the Payment Link (€47)
    • Go to Payment Links → New
-   • Select: The 0 to 1K X System ($47)
+   • Select: The 0 to 1K X System (€47)
    • After payment → Redirect to a custom URL:
      https://andreilucian.com/0-to-1K-X-System/INDEX.html?unlocked=1
    • Enable: Collect email addresses (recommended)
@@ -80,5 +80,5 @@ This product is Stripe-only in product-checkout.js.
 STRIPE FEES (approx.)
 ---------------------
 
-$47 sale → you keep ~$45.34 (2.9% + $0.30)
+€47 sale → you keep ~€45.34 (2.9% + €0.30)
 vs Gumroad ~$41.80 on the same price

@@ -18,11 +18,13 @@ export const PRODUCT = {
   priceLaunch: 47,
   priceStandard: 79,
   priceAnchor: 197,
+  currency: "EUR",
+  currencySymbol: "€",
   priceLaunchLabel: "Launch · first 50 buyers",
   priceStandardLabel: "Standard price",
 
   checkoutProvider: "gumroad",
-  gumroadProductUrl: "https://andreilucian.gumroad.com/l/YOUR_X_SYSTEM_LINK",
+  gumroadProductUrl: "https://andreilucian.gumroad.com/l/glctvz",
   directCheckout: true,
   hubUrl: "https://andreilucian.com/0-to-1K-X-System/INDEX.html",
   zipUrl:
@@ -30,6 +32,11 @@ export const PRODUCT = {
 
   bundleNote: "2 playbooks + 4 ebooks + 90+ templates — one payment, no upsells",
 };
+
+/** Format product price in EUR */
+export function formatPrice(amount) {
+  return `€${amount}`;
+}
 
 /** Affiliate URLs + copy — used in ZIP text files and hub */
 export const AFFILIATE_LINKS = [
@@ -172,7 +179,7 @@ export function competitorTableHtml() {
   return `<table class="simple compare-table">
 <tr><th>Product</th><th>Price</th><th>You get</th><th>Missing</th></tr>
 ${rows}
-<tr class="you-row"><td><strong>${PRODUCT.name}</strong></td><td><strong>$${PRODUCT.priceLaunch}</strong></td><td>Full system + 90+ assets + $91 bonus vault</td><td class="good">Nothing — it's all here</td></tr>
+<tr class="you-row"><td><strong>${PRODUCT.name}</strong></td><td><strong>${formatPrice(PRODUCT.priceLaunch)}</strong></td><td>Full system + 90+ assets + €91 bonus vault</td><td class="good">Nothing — it's all here</td></tr>
 </table>`;
 }
 

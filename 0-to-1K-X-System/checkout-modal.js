@@ -9,6 +9,16 @@
     return (root || document).querySelector(sel);
   }
 
+  function money(amount) {
+    var sym = cfg.currencySymbol || "€";
+    return sym + amount.toFixed(2);
+  }
+
+  function priceShort(amount) {
+    if (window.X1K_formatPrice) return window.X1K_formatPrice(amount);
+    return (cfg.currencySymbol || "€") + amount;
+  }
+
   function checkoutBodyMarkup() {
     var bumpBlock = cfg.orderBump
       ? (
@@ -20,7 +30,7 @@
           '" alt="" width="40" height="52" />' +
           '<div class="co-bump-text">' +
           '<h3 id="co-bump-title">The X Writing Playbook</h3>' +
-          '<div class="co-bump-prices"><s id="co-bump-was">$19</s> <span class="sale" id="co-bump-now">+$10</span></div>' +
+          '<div class="co-bump-prices"><s id="co-bump-was">€19</s> <span class="sale" id="co-bump-now">+€10</span></div>' +
           '<p class="co-bump-desc" id="co-bump-desc"></p>' +
           "</div></div>"
         )
@@ -35,14 +45,14 @@
       '" alt="The X System" width="56" height="72" />' +
       '<div class="co-product-info">' +
       '<h2 id="co-product-title">The X System</h2>' +
-      '<p class="co-product-price" id="co-product-price">USD $47.00</p>' +
+      '<p class="co-product-price" id="co-product-price">€47.00</p>' +
       "</div></div>" +
       bumpBlock +
       '<div class="co-totals">' +
-      '<div class="co-total-line"><span id="co-product-title-line">The X System</span><span id="co-subtotal-val">USD $47.00</span></div>' +
+      '<div class="co-total-line"><span id="co-product-title-line">The X System</span><span id="co-subtotal-val">€47.00</span></div>' +
       '<div class="co-total-line" id="co-bump-line" hidden><span id="co-bump-line-label">Order bump</span><span id="co-bump-val"></span></div>' +
       '<div class="co-total-line"><span>Taxes</span><span>Calculated at payment</span></div>' +
-      '<div class="co-total-line grand"><span>Total</span><span id="co-grand-total">USD $47.00</span></div>' +
+      '<div class="co-total-line grand"><span>Total</span><span id="co-grand-total">€47.00</span></div>' +
       "</div></aside>" +
       '<div class="co-form-wrap">' +
       '<form id="co-form" novalidate>' +
@@ -69,7 +79,7 @@
       '<div class="co-pay-panel" id="co-pay-panel">You\'ll enter your card details on the secure Stripe checkout page — encrypted and PCI compliant.</div>' +
       '<div class="co-pay-icons" aria-hidden="true"><span>VISA</span><span>MC</span><span>AMEX</span><span>Apple Pay</span></div>' +
       '<div class="co-error" id="co-error" role="alert" hidden></div>' +
-      '<button type="submit" class="co-btn-pay" id="co-submit">Pay with Stripe — <span id="co-btn-price">$47</span></button>' +
+      '<button type="submit" class="co-btn-pay" id="co-submit">Pay with Stripe — <span id="co-btn-price">€47</span></button>' +
       '<p class="co-foot-note">Secure payment on Stripe · instant course access after purchase</p>' +
       "</form></div></div>"
     );
@@ -152,12 +162,12 @@
     var titleLine = $("#co-product-title-line", root);
 
     if (titleLine) titleLine.textContent = name;
-    if (sub) sub.textContent = "USD $" + price.toFixed(2);
+    if (sub) sub.textContent = money(price);
     if (bumpLine) bumpLine.hidden = !bumpSelected;
     if (bumpLabel && cfg.orderBump) bumpLabel.textContent = cfg.orderBump.title || "Order bump";
-    if (bumpVal && bumpSelected) bumpVal.textContent = "USD $" + bumpPrice.toFixed(2);
-    if (grand) grand.textContent = "USD $" + total.toFixed(2);
-    if (btnPrice) btnPrice.textContent = "$" + total.toFixed(2);
+    if (bumpVal && bumpSelected) bumpVal.textContent = money(bumpPrice);
+    if (grand) grand.textContent = money(total);
+    if (btnPrice) btnPrice.textContent = priceShort(total);
   }
 
   function initCheckoutRoot(root) {
@@ -169,15 +179,15 @@
     el = $("#co-product-title", root);
     if (el) el.textContent = name;
     el = $("#co-product-price", root);
-    if (el) el.textContent = "USD $" + (cfg.price || 47).toFixed(2);
+    if (el) el.textContent = money(cfg.price || 47);
 
     if (cfg.orderBump) {
       el = $("#co-bump-title", root);
       if (el) el.textContent = cfg.orderBump.title || "Order bump";
       el = $("#co-bump-was", root);
-      if (el) el.textContent = "$" + (cfg.orderBump.was || 19);
+      if (el) el.textContent = priceShort(cfg.orderBump.was || 19);
       el = $("#co-bump-now", root);
-      if (el) el.textContent = "+$" + (cfg.orderBump.price || 10);
+      if (el) el.textContent = "+" + priceShort(cfg.orderBump.price || 10);
       el = $("#co-bump-desc", root);
       if (el) el.textContent = cfg.orderBump.description || "";
     }

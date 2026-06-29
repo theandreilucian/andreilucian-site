@@ -2,6 +2,11 @@
   var LAUNCH_KEY = "x1k_launch_end";
   var LAUNCH_HOURS = 72;
 
+  function formatPrice(amount) {
+    if (window.X1K_formatPrice) return window.X1K_formatPrice(amount);
+    return "€" + amount;
+  }
+
   function initCountdown() {
     var end = localStorage.getItem(LAUNCH_KEY);
     if (!end) {
@@ -46,7 +51,10 @@
     if (!cfg.price) return;
     var was = cfg.priceWas || 197;
     var price = cfg.price;
-    var priceLabel = "$" + price;
+    var standard = cfg.priceStandard || 79;
+    var priceLabel = formatPrice(price);
+    var wasLabel = formatPrice(was);
+    var standardLabel = formatPrice(standard);
 
     var heroWas = document.getElementById("lp-price-was");
     var heroNow = document.getElementById("lp-price-now");
@@ -57,16 +65,18 @@
     var stackNow = document.getElementById("lp-stack-now");
     var stickyWas = document.getElementById("lp-sticky-was");
     var stickyNow = document.getElementById("lp-sticky-now");
+    var offerSub = document.getElementById("lp-offer-sub");
 
-    if (heroWas) heroWas.textContent = "$" + was;
+    if (heroWas) heroWas.textContent = wasLabel;
     if (heroNow) heroNow.textContent = priceLabel;
-    if (tierWas) tierWas.textContent = "$" + was;
+    if (tierWas) tierWas.textContent = wasLabel;
     if (tierNow) tierNow.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
-    if (stackTotal) stackTotal.textContent = "$" + was;
+    if (stackTotal) stackTotal.textContent = wasLabel;
     if (stackNow) stackNow.textContent = priceLabel;
-    if (stickyWas) stickyWas.textContent = "$" + was;
+    if (stickyWas) stickyWas.textContent = wasLabel;
     if (stickyNow) stickyNow.textContent = priceLabel;
+    if (offerSub) offerSub.textContent = "Then " + standardLabel + " · lifetime · no subscription";
 
     document.querySelectorAll(".lp-tier-cta-price").forEach(function (el) {
       el.textContent = priceLabel;

@@ -367,11 +367,8 @@ if (document.readyState === 'loading') {
     setTimeout(removeUnwantedProductCards, 500);
 }
 
-// The 0 to 1K X System — sales page + buyer unlock from homepage
+// The 0 to 1K X System — product card → sales landing or course hub if unlocked
 document.addEventListener('DOMContentLoaded', function initProductAccess() {
-    const UNLOCK_KEY = 'x1k_product_unlock';
-    const PASS = '160299';
-
     function getLandingUrl() {
         if (location.protocol === 'file:') {
             return 'file:///D:/Website/0-to-1K-X-System/LANDING.html';
@@ -381,97 +378,27 @@ document.addEventListener('DOMContentLoaded', function initProductAccess() {
 
     function getHubUrl() {
         if (location.protocol === 'file:') {
-            return 'file:///D:/Website/0-to-1K-X-System/INDEX.html';
+            return 'file:///D:/Website/0-to-1K-X-System/INDEX.html?unlocked=1';
         }
-        return (location.origin || '') + '/0-to-1K-X-System/INDEX.html';
+        return (location.origin || '') + '/0-to-1K-X-System/INDEX.html?unlocked=1';
+    }
+
+    function isUnlocked() {
+        if (window.__X1K_UNLOCKED__) return true;
+        try {
+            if (localStorage.getItem('x1k_product_unlock') === '1') return true;
+        } catch (e) {}
+        try {
+            if (sessionStorage.getItem('x1k_product_unlock') === '1') return true;
+        } catch (e) {}
+        return false;
     }
 
     const card = document.getElementById('x-growth-access-card');
-    const modal = document.getElementById('productAccessModal');
-    const form = document.getElementById('productAccessForm');
-    const input = document.getElementById('productAccessPassword');
-    const error = document.getElementById('productAccessError');
-    const unlockLink = document.getElementById('x-growth-unlock-link');
-
     if (!card) return;
 
-    function openModal() {
-        if (!modal || !form) return;
-        modal.hidden = false;
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        if (error) error.textContent = '';
-        if (input) {
-            input.value = '';
-            setTimeout(function() { input.focus(); }, 50);
-        }
-    }
-
-    function closeModal() {
-        if (!modal) return;
-        modal.hidden = true;
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-
-    function persistUnlock() {
-        try {
-            localStorage.setItem(UNLOCK_KEY, '1');
-        } catch (e) {}
-        try {
-            sessionStorage.setItem(UNLOCK_KEY, '1');
-        } catch (e) {}
-    }
-
-    function goToHub() {
-        persistUnlock();
-        closeModal();
-        window.location.replace(getHubUrl() + '#access=' + PASS);
-    }
-
-    // Product card → sales landing (Gumroad checkout from there)
     card.addEventListener('click', function(e) {
         e.preventDefault();
-        window.location.href = getLandingUrl();
+        window.location.href = isUnlocked() ? getHubUrl() : getLandingUrl();
     });
-
-    if (unlockLink) {
-        unlockLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal();
-        });
-    }
-
-    if (!modal || !form) return;
-
-    var unlockBtn = form.querySelector('button[type="submit"]');
-    if (unlockBtn) {
-        unlockBtn.addEventListener('click', function(e) {
-            if (!input || input.value.trim() !== PASS) return;
-            e.preventDefault();
-            goToHub();
-        });
-    }
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (!input) return;
-        if (input.value.trim() === PASS) {
-            goToHub();
-        } else {
-            if (error) error.textContent = 'Wrong password. Check your purchase email and try again.';
-            input.value = '';
-            input.focus();
-        }
-    });
-
-    if (modal) {
-        modal.querySelectorAll('[data-close-product-modal]').forEach(function(el) {
-            el.addEventListener('click', closeModal);
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !modal.hidden) closeModal();
-        });
-    }
 });
