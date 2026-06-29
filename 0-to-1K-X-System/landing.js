@@ -124,7 +124,6 @@
     initCountdown();
     initPricing();
     initCheckoutLinks();
-    initStickyCta();
   }
 
   if (document.readyState === "loading") {
