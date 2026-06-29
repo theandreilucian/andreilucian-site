@@ -13,11 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="landing-styles.css?v=20260630002000" />
+  <link rel="stylesheet" href="landing-styles.css?v=20260630120000" />
   <script src="product-checkout.js?v=20260629960000"></script>
   <script src="product-unlock-bootstrap.js?v=20260629200000"></script>
 </head>
-<body class="lp-page">
+<body class="lp-page lp-page--stijn">
 
 <a href="../index.html" class="lp-back">← Home</a>
 
@@ -34,267 +34,202 @@
   <span class="lp-urgency-hidden" id="countdown-label"></span>
 </div>
 
-<!-- Hero -->
-<section class="lp-hero" aria-labelledby="lp-hero-title">
-  <div class="lp-wrap lp-wrap--hero lp-hero-grid">
-    <div class="lp-hero-copy">
-      <p class="lp-eyebrow">Daily system · not a video course</p>
-      <h1 id="lp-hero-title" class="lp-title lp-title--hero">Go from <span class="lp-highlight">0 → 1,000 followers</span> on <span class="x-app-symbol x-app-symbol--hero" aria-label="X">𝕏</span> in 90 days</h1>
-      <p class="lp-hero-sub">The same command center I use today: <strong>2 posts + 60 strategic replies</strong> in ~90 minutes. Templates, reply bank, and a morning checklist — no guessing.</p>
-      <ul class="lp-hero-checks">
-        <li>90+ copy-paste post &amp; thread templates</li>
-        <li>Daily command center you open every morning</li>
-        <li>8 folders · playbooks · bonus vault included</li>
-      </ul>
-      <div class="lp-hero-offer">
-        <div class="lp-price-box">
-          <span class="lp-price-badge">Launch · limited spots</span>
-          <div class="lp-price-row">
-            <span class="lp-price-was" id="lp-price-was">€197</span>
-            <span class="lp-price-now" id="lp-price-now">€47</span>
-          </div>
-          <p class="lp-price-note">Lifetime access · delivered to your email</p>
-        </div>
-        <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block" href="CHECKOUT.html">Get Instant Access — <span id="lp-hero-cta-price">€47</span></a>
-        <p class="lp-micro">Secure Gumroad checkout · Card &amp; PayPal · 30-day guarantee</p>
+<!-- 1. Hero — centered, price + CTA above the fold -->
+<section class="lp-hero lp-hero--stijn" aria-labelledby="lp-hero-title">
+  <div class="lp-wrap lp-wrap--narrow">
+    <h1 id="lp-hero-title" class="lp-title lp-title--mega">Hit <span class="lp-highlight">1,000 followers</span> on <span class="x-app-symbol x-app-symbol--hero" aria-label="X">𝕏</span> without guessing what to post</h1>
+    <p class="lp-hero-sub lp-hero-sub--lead">Learn the daily command center I use today: <strong>2 posts + 60 strategic replies</strong> in ~90 minutes — in 5 simple folders you open every morning.</p>
+    <p class="lp-hero-desc">This system teaches you how to grow from 0 → 1K in 90 days without random posting. You get:</p>
+    <ul class="lp-hero-checks lp-hero-checks--center">
+      <li>Daily command center you open every morning</li>
+      <li>90+ copy-paste post &amp; thread templates</li>
+      <li>Strategic reply bank — 60 comments/day on the right accounts</li>
+    </ul>
+    <p class="lp-roi-line">Even if you only gain 200 followers in 90 days, €47 is cheaper than another year of posting into the void.</p>
+
+    <div class="lp-hero-buy">
+      <p class="lp-price-label-top">Get It Today For Only:</p>
+      <div class="lp-hero-price-display">
+        <span class="lp-price-was lp-price-was--hero" id="lp-price-was">€197</span>
+        <span class="lp-price-now lp-price-now--hero" id="lp-price-now">€47</span>
       </div>
-    </div>
-    <div class="lp-hero-media">
-      <div class="lp-hero-visuals">
-        <div class="lp-cover-frame">
-          <img class="lp-cover-img" src="../assets/images/x-growth-system-playbook-cover.png?v=20260629900000" alt="The X System — 0 to 1K Followers in 90 Days" width="280" height="420" loading="eager" />
-          <span class="lp-cover-chip">0 → 1K · 90 days</span>
-        </div>
-        <div class="lp-x-money-visual lp-x-money-visual--hero">
-          <img src="../assets/images/x-logo-money-pile.png?v=20260629980000" alt="Grow your audience and income on X" width="400" height="400" loading="eager" decoding="async" />
-        </div>
-      </div>
-      <div class="lp-hero-proof-card">
-        <span class="lp-hero-proof-stars">★★★★★</span>
-        <p class="lp-hero-proof-quote">"Finally a system I open without dread."</p>
-        <span class="lp-hero-proof-meta">Andrei Lucian · 5.3K on 𝕏 · 16.3K LinkedIn</span>
-      </div>
+      <p class="lp-price-vat">Excl. VAT if applicable.</p>
+      <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
+      <p class="lp-micro lp-micro--center">Secure Gumroad checkout · Card &amp; PayPal · 30-day guarantee</p>
     </div>
   </div>
 </section>
 
-<div class="lp-trust-bar" aria-label="Product highlights">
-  <div class="lp-wrap lp-trust-inner">
-    <div class="lp-trust-item"><strong>8</strong><span>step folders</span></div>
-    <div class="lp-trust-item"><strong>90+</strong><span>templates</span></div>
-    <div class="lp-trust-item"><strong>60</strong><span>replies/day</span></div>
-    <div class="lp-trust-item"><strong>90</strong><span>day plan</span></div>
-    <div class="lp-trust-item"><strong>€91+</strong><span>bonuses</span></div>
+<!-- 2. Social proof — directly under hero -->
+<div class="lp-quote-band">
+  <div class="lp-wrap lp-wrap--narrow">
+    <article class="lp-quote-card">
+      <div class="lp-stars">★ ★ ★ ★ ★</div>
+      <blockquote>"Stuck at 340 for months. Week 2 I followed the daily plan. Hit 890 eleven weeks later."</blockquote>
+      <footer><strong>Marcus L.</strong> · 340 → 890 followers</footer>
+    </article>
   </div>
 </div>
 
-<!-- Problem -->
-<section class="lp-section lp-section--cream" aria-labelledby="lp-story-title">
-  <div class="lp-wrap lp-story-grid">
-    <div class="lp-story-copy">
-      <p class="lp-eyebrow lp-eyebrow--dark">Why you're stuck under 1K</p>
-      <h2 id="lp-story-title" class="lp-title">You don't have a content problem. You have a <em>system</em> problem.</h2>
-      <p>Posting when inspired and replying when you remember doesn't compound. Gurus say "post more" — but never give you a <strong>repeatable morning routine</strong>.</p>
-      <p>The fix is boring and it works:</p>
-      <ol class="lp-steps-inline">
-        <li><strong>Post</strong> — 2× daily from templates</li>
-        <li><strong>Reply</strong> — 60 strategic comments</li>
-        <li><strong>Repeat</strong> — same checklist for 90 days</li>
-      </ol>
-      <p>I packaged that into <strong>The X System</strong> — folders 01→08, offline or in your browser hub.</p>
-    </div>
-    <aside class="lp-story-aside">
-      <div class="lp-quote-card lp-quote-card--boxed">
-        <div class="lp-stars">★ ★ ★ ★ ★</div>
-        <blockquote>"Stuck at 340 for months. Week 2 I followed the daily plan. Hit 890 eleven weeks later."</blockquote>
-        <footer><strong>Marcus L.</strong> · <span class="lp-review-result">340 → 890</span></footer>
-      </div>
-    </aside>
-  </div>
-</section>
-
-<!-- What's inside -->
-<section class="lp-section lp-section--dark" id="inside" aria-labelledby="lp-modules-title">
-  <div class="lp-wrap">
-    <div class="lp-section-head">
-      <p class="lp-eyebrow">What's inside</p>
-      <h2 id="lp-modules-title" class="lp-title lp-title--light">Everything you need — one payment</h2>
-      <p class="lp-lead lp-lead--light">Checklists and copy-paste assets. Built to execute, not binge-watch.</p>
-    </div>
-
-    <div class="lp-pillar-grid">
-      <article class="lp-pillar">
-        <span class="lp-pillar-icon">📋</span>
-        <h3>Daily Command Center</h3>
-        <p>Morning + evening blocks. Open it every day — that's the habit that moves the number.</p>
-      </article>
-      <article class="lp-pillar">
-        <span class="lp-pillar-icon">✍️</span>
-        <h3>90+ Templates</h3>
-        <p>Growth, authority, personality, threads. Fill blanks, edit in your voice, ship.</p>
-      </article>
-      <article class="lp-pillar">
-        <span class="lp-pillar-icon">💬</span>
-        <h3>Reply Bank</h3>
-        <p>60 comments/day on the right accounts — not "great post!" spam.</p>
-      </article>
-    </div>
-
-    <div class="lp-folders-panel">
-      <h3 class="lp-folders-title">8 folders · start at 01, finish at 08</h3>
-      <ul class="lp-folders lp-folders--grid" aria-label="Course folders">
-        <li><span class="lp-f-num">01</span><div><strong>Start Here</strong><span>Day 1 · cheat sheet</span></div></li>
-        <li><span class="lp-f-num">02</span><div><strong>Engagement Weapons</strong><span>Replies · tools</span></div></li>
-        <li><span class="lp-f-num">03</span><div><strong>Profile &amp; Positioning</strong><span>Bio · pin</span></div></li>
-        <li><span class="lp-f-num">04</span><div><strong>Content Playbook</strong><span>90+ templates</span></div></li>
-        <li><span class="lp-f-num">05</span><div><strong>Daily Workflow</strong><span>Batch · queue</span></div></li>
-        <li><span class="lp-f-num">06</span><div><strong>Growth Fundamentals</strong><span>What works</span></div></li>
-        <li class="lp-folders--pin"><span class="lp-f-num">07</span><div><strong>90-Day Command Center</strong><span>Pin daily</span></div></li>
-        <li><span class="lp-f-num">08</span><div><strong>Bonuses</strong><span>Playbooks · PDFs</span></div></li>
-      </ul>
-    </div>
-
-    <ul class="lp-bonus-inline">
-      <li>X + LinkedIn Writing Playbooks</li>
-      <li>4 bonus ebooks (€91+ value)</li>
-      <li>Worksheets + bio builder</li>
+<!-- 3. Does this sound like you? -->
+<section class="lp-section lp-section--cream lp-pain-section" aria-labelledby="lp-pain-title">
+  <div class="lp-wrap lp-wrap--narrow">
+    <h2 id="lp-pain-title" class="lp-title lp-title--section">Does This Sound Like You?</h2>
+    <ul class="lp-pain-list">
+      <li>You post when inspired — and your follower count stays flat.</li>
+      <li>You dread opening <span class="x-app-symbol" aria-label="X">𝕏</span> because you don't know what to do first.</li>
+      <li>Gurus say "post more" but never give you a repeatable morning routine.</li>
+      <li>You reply sometimes — but not 60 strategic comments on the right accounts.</li>
+      <li>You're under 1,000 followers and tired of watching others compound.</li>
+      <li>You want templates — not another 40-hour video course.</li>
+      <li>You'd rather execute from a checklist than binge content.</li>
+      <li>You have valuable ideas but no system to ship them daily.</li>
+      <li>You want growth without hacks, pods, or engagement bait.</li>
+      <li>You're willing to work ~90 minutes a day if someone tells you exactly what to do.</li>
     </ul>
+    <p class="lp-pain-close">If so, this system is for you.</p>
+    <p class="lp-pain-cta-text">Click the button below to get the daily command center so you can hit 1,000 followers in 90 days.</p>
+    <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
   </div>
 </section>
 
-<!-- Who -->
-<section class="lp-section lp-section--cream" id="results">
-  <div class="lp-wrap">
-    <p class="lp-eyebrow lp-eyebrow--dark">Is this for you?</p>
-    <h2 class="lp-title">Built for creators under 1K</h2>
-    <div class="lp-who-grid">
-      <article class="lp-who lp-who--yes">
-        <h3>✓ Perfect if</h3>
-        <ul>
-          <li>You're stuck under 1,000 followers on X</li>
-          <li>You want a daily routine — not another course</li>
-          <li>You'll post + reply daily for 90 days</li>
-          <li>You want templates and a clear checklist</li>
-        </ul>
-      </article>
-      <article class="lp-who lp-who--no">
-        <h3>✗ Skip if</h3>
-        <ul>
-          <li>You want results without daily reps</li>
-          <li>You only want to watch videos</li>
-          <li>You won't reply strategically every day</li>
-        </ul>
-      </article>
+<!-- 4. Introducing + product visual -->
+<section class="lp-section lp-section--dark lp-intro-section" aria-labelledby="lp-intro-title">
+  <div class="lp-wrap lp-wrap--narrow">
+    <header class="lp-intro-head">
+      <p class="lp-eyebrow lp-eyebrow--center">Introducing</p>
+      <h2 id="lp-intro-title" class="lp-title lp-title--light lp-title--section">The X System</h2>
+    </header>
+
+    <div class="lp-intro-visual">
+      <img class="lp-cover-img lp-cover-img--intro" src="../assets/images/x-growth-system-playbook-cover.png?v=20260629900000" alt="The X System — 0 to 1K Followers in 90 Days" width="320" height="480" loading="lazy" />
     </div>
 
-    <h3 class="lp-reviews-heading">Creators who stopped guessing</h3>
-    <div class="lp-reviews lp-reviews--compact">
-      <article class="lp-review"><div class="lp-stars">★★★★★</div><blockquote>"One thing every morning. The number finally moved."</blockquote><footer><strong>Priya S.</strong> · <span class="lp-review-result">127 → 1,040</span></footer></article>
-      <article class="lp-review"><div class="lp-stars">★★★★★</div><blockquote>"Reply bank changed everything."</blockquote><footer><strong>Jordan K.</strong> · <span class="lp-review-result">89 → 612</span></footer></article>
-      <article class="lp-review"><div class="lp-stars">★★★★★</div><blockquote>"Command center made it stupid simple."</blockquote><footer><strong>Tyler M.</strong> · <span class="lp-review-result">52 → 423</span></footer></article>
-      <article class="lp-review"><div class="lp-stars">★★★★★</div><blockquote>"Templates forced me to ship."</blockquote><footer><strong>Nina P.</strong> · <span class="lp-review-result">190 → 820</span></footer></article>
-    </div>
+    <p class="lp-intro-lead">This system teaches you everything you need to grow on <span class="x-app-symbol" aria-label="X">𝕏</span> using a boring daily routine that compounds.</p>
+    <p class="lp-outcomes-label">You'll learn how to:</p>
+    <ul class="lp-outcomes lp-outcomes--light">
+      <li>Post 2× daily from templates — no blank-screen panic</li>
+      <li>Reply 60× daily on accounts that actually move your number</li>
+      <li>Run the same morning checklist for 90 days straight</li>
+    </ul>
+    <p class="lp-intro-tagline">No random posting, no engagement pods, no guessing.<br>Just a checklist, copy-paste assets, and daily reps.</p>
+    <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
   </div>
 </section>
 
-<!-- Pricing -->
-<section class="lp-section lp-section--dark lp-pricing-hero" id="checkout" aria-labelledby="lp-pricing-title">
-  <div class="lp-wrap lp-pricing-single">
-    <p class="lp-eyebrow">Enroll today</p>
-    <h2 id="lp-pricing-title" class="lp-title lp-title--light">Get The X System</h2>
-    <p class="lp-lead lp-lead--light">Instant access · delivered to your email after Gumroad checkout</p>
+<!-- 5. What's inside — 3 modules -->
+<section class="lp-section lp-section--cream lp-modules-section" id="inside" aria-labelledby="lp-modules-title">
+  <div class="lp-wrap lp-wrap--narrow">
+    <h2 id="lp-modules-title" class="lp-title lp-title--section lp-modules-heading">What's Inside:</h2>
 
-    <div class="lp-iphone-proto">
-      <div class="lp-iphone-frame">
-        <div class="lp-iphone-btn lp-iphone-btn--silent" aria-hidden="true"></div>
-        <div class="lp-iphone-btn lp-iphone-btn--volume-up" aria-hidden="true"></div>
-        <div class="lp-iphone-btn lp-iphone-btn--volume-down" aria-hidden="true"></div>
-        <div class="lp-iphone-btn lp-iphone-btn--power" aria-hidden="true"></div>
+    <article class="lp-module">
+      <span class="lp-module-label">Module 1</span>
+      <h3>Profile &amp; Positioning</h3>
+      <p>Growth starts when strangers know who you are and why to follow. That's why you'll learn:</p>
+      <ul class="lp-module-list">
+        <li>How to set up your profile, bio, and pin so visitors follow in one click.</li>
+        <li>The 3 positioning mistakes that keep 99% of creators stuck under 1K.</li>
+        <li>How to pick a niche angle you can post about for 90 days without burning out.</li>
+      </ul>
+      <p class="lp-module-end">You get folders 01–03 plus worksheets. After this, your profile sells the follow before your content has to.</p>
+    </article>
 
-        <div class="lp-iphone-screen">
-          <div class="lp-iphone-island" aria-hidden="true"></div>
-          <div class="lp-iphone-status" aria-hidden="true">
-            <time>9:41</time>
-            <span class="lp-iphone-status-icons">
-              <svg class="lp-iphone-icon" width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path fill="currentColor" d="M1 10h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-5h2v11h-2z"/></svg>
-              <svg class="lp-iphone-icon" width="15" height="12" viewBox="0 0 24 18" aria-hidden="true"><path fill="currentColor" d="M12 3C8.5 3 5.2 4.4 2.7 7l1.4 1.4C5.4 6.2 8.5 5 12 5s6.6 1.2 9.3 3.4L20.7 7C18.2 4.4 14.9 3 12 3zm0 4c-2.5 0-4.7 1-6.4 2.6L5.1 12c1.4-1.4 3.4-2.2 5.5-2.2s4.1.8 5.5 2.2l-2.5-2.4C14.7 8 12.5 7 12 7zm0 4c-1.2 0-2.3.5-3.1 1.3L12 16l3.1-3.7C14.3 11.5 13.2 11 12 11z"/></svg>
-              <svg class="lp-iphone-icon lp-iphone-battery" width="22" height="12" viewBox="0 0 27 13" aria-hidden="true"><rect x="0.5" y="0.5" width="21" height="12" rx="3" fill="none" stroke="currentColor"/><rect x="2" y="2" width="16" height="9" rx="1.5" fill="currentColor"/><path fill="currentColor" d="M23 4.5v4a2 2 0 0 0 0-4z"/></svg>
-            </span>
-          </div>
+    <article class="lp-module">
+      <span class="lp-module-label">Module 2</span>
+      <h3>Content That Grows</h3>
+      <p>Once your profile is clear, you need posts that get reach. That's why you'll learn:</p>
+      <ul class="lp-module-list">
+        <li>90+ copy-paste templates for growth, authority, personality, and threads.</li>
+        <li>Which content types to rotate so you never run out of ideas.</li>
+        <li>How to batch and queue so you're never posting from a blank screen.</li>
+      </ul>
+      <p class="lp-module-end">You get folder 04 + the content playbook. After this, you'll have a full library to ship 2 posts every day.</p>
+    </article>
 
-          <div class="lp-iphone-scroll">
-            <div class="lp-offer-card lp-offer-card--phone">
-              <div class="lp-offer-top">
-                <div class="lp-offer-price-block">
-                  <span class="lp-offer-was" id="lp-tier-was">€197</span>
-                  <span class="lp-offer-now" id="lp-tier-now">€47</span>
-                  <span class="lp-offer-badge">Launch price</span>
-                </div>
-                <p class="lp-offer-sub" id="lp-offer-sub">Then €79 · lifetime · no subscription</p>
-              </div>
+    <article class="lp-module">
+      <span class="lp-module-label">Module 3</span>
+      <h3>The 90-Day Command Center</h3>
+      <p>Templates alone don't grow you — daily execution does. That's why you'll learn:</p>
+      <ul class="lp-module-list">
+        <li>My exact daily workflow: morning block, evening block, 60 strategic replies.</li>
+        <li>The reply bank — what to say on big accounts without sounding like a bot.</li>
+        <li>How to track 90 days in one command center you pin and open every morning.</li>
+      </ul>
+      <p class="lp-module-end">You get folders 05–08, the 90-day hub, growth fundamentals, and bonus vault. After this, you'll have the full system — profile, content, and daily execution — to hit 1K in 90 days.</p>
+    </article>
 
-              <ul class="lp-offer-includes">
-                <li>The X System — 8 folders + hub access</li>
-                <li>90-day daily command center</li>
-                <li>90+ templates + strategic reply bank</li>
-                <li>X + LinkedIn playbooks (PDF)</li>
-                <li>4 bonus ebooks + worksheets</li>
-              </ul>
-
-              <ul class="lp-value-list lp-value-list--inline" aria-label="Value breakdown">
-                <li><span>Command center + 90-day plan</span><span>€97</span></li>
-                <li><span>Templates + reply bank</span><span>€49</span></li>
-                <li><span>Playbooks + ebooks</span><span>€49</span></li>
-              </ul>
-              <p class="lp-value-total-line">Total value <span id="lp-stack-total">€197</span> → Today <strong id="lp-stack-now">€47</strong></p>
-
-              <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block" href="CHECKOUT.html">Get Instant Access — <span class="lp-tier-cta-price">€47</span></a>
-              <p class="lp-offer-secure">🔒 Secure checkout on Gumroad · Card · PayPal</p>
-              <div class="lp-guarantee-inline lp-guarantee-inline--dark">
-                <strong>30-day execution guarantee</strong>
-                <span>Show up daily for 30 days. No progress? Email me.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="lp-iphone-home" aria-hidden="true"></div>
-        </div>
-      </div>
-      <p class="lp-iphone-caption">Preview · what you get after checkout</p>
-    </div>
+    <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow lp-modules-cta" href="CHECKOUT.html">Instant Access →</a>
   </div>
 </section>
 
-<!-- Author -->
-<section class="lp-section lp-section--cream lp-author-section" aria-labelledby="lp-author-heading">
-  <div class="lp-wrap">
-    <article class="lp-author-card">
-      <div class="lp-author-media">
-        <img class="lp-author-img" src="../assets/andrei-lucian-headshot.png.jpg" width="112" height="112" alt="Andrei Lucian" loading="lazy" />
-        <span class="lp-author-badge">Creator · 2.5+ years daily</span>
-      </div>
-      <div class="lp-author-copy">
-        <p class="lp-eyebrow">Hey, I'm Andrei</p>
-        <h2 id="lp-author-heading" class="lp-title lp-title--light lp-author-title">I built this from the 0–1K grind</h2>
-        <p class="lp-author-lead">No hacks — a boring routine that compounds. The X System is the daily command center I actually use.</p>
-        <ul class="lp-author-stats" aria-label="Social proof">
-          <li class="lp-author-stat"><span class="lp-author-stat-val">5.3K</span> on <span class="x-app-symbol" aria-label="X">𝕏</span></li>
-          <li class="lp-author-stat"><span class="lp-author-stat-val">16.3K</span> LinkedIn</li>
-          <li class="lp-author-stat"><span class="lp-author-stat-val">90</span> day plan</li>
-        </ul>
-      </div>
+<!-- 6. Mid-page testimonial -->
+<div class="lp-quote-band lp-quote-band--dark">
+  <div class="lp-wrap lp-wrap--narrow">
+    <article class="lp-quote-card lp-quote-card--dark">
+      <div class="lp-stars">★ ★ ★ ★ ★</div>
+      <blockquote>"One thing every morning. The number finally moved."</blockquote>
+      <footer><strong>Priya S.</strong> · 127 → 1,040 followers</footer>
     </article>
   </div>
+</div>
+
+<!-- 7. Pricing -->
+<section class="lp-section lp-section--dark lp-pricing-stijn" id="checkout" aria-labelledby="lp-pricing-title">
+  <div class="lp-wrap lp-wrap--narrow">
+    <header class="lp-pricing-stijn-head">
+      <p class="lp-eyebrow lp-eyebrow--center">Get Instant Access</p>
+      <h2 id="lp-pricing-title" class="lp-title lp-title--light lp-title--section">The X System</h2>
+    </header>
+
+    <div class="lp-pricing-cards">
+      <article class="lp-pricing-card lp-pricing-card--featured">
+        <h3 class="lp-pricing-card-tier">Complete System</h3>
+        <div class="lp-pricing-card-price" id="lp-tier-now">€47</div>
+        <ul class="lp-pricing-card-includes">
+          <li>8 folders + browser hub access</li>
+          <li>90-day daily command center</li>
+          <li>90+ templates + reply bank</li>
+          <li>X + LinkedIn playbooks (PDF)</li>
+          <li>4 bonus ebooks + worksheets</li>
+        </ul>
+        <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
+        <p class="lp-pricing-card-note" id="lp-offer-sub">Then €79 · lifetime · no subscription</p>
+      </article>
+
+      <article class="lp-pricing-card lp-pricing-card--alt">
+        <h3 class="lp-pricing-card-tier">Launch Bundle</h3>
+        <div class="lp-pricing-card-price lp-pricing-card-price--alt" id="lp-tier-now-alt">€47</div>
+        <ul class="lp-pricing-card-includes">
+          <li>Everything in Complete System</li>
+          <li>30-day execution guarantee</li>
+          <li>Priority email if you're stuck on Day 1</li>
+        </ul>
+        <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block lp-btn--arrow" href="CHECKOUT.html">Instant Access →</a>
+        <p class="lp-pricing-card-note">Same product · launch pricing · limited spots</p>
+      </article>
+    </div>
+
+    <p class="lp-pricing-anchor">
+      <span class="lp-strike" id="lp-tier-was">€197</span> total value → today <strong id="lp-stack-now">€47</strong>
+    </p>
+  </div>
 </section>
 
-<!-- FAQ -->
-<section class="lp-section lp-section--dark lp-faq" id="faq" aria-labelledby="lp-faq-heading">
-  <div class="lp-wrap lp-faq-wrap">
-    <header class="lp-faq-head">
-      <p class="lp-eyebrow">FAQ</p>
-      <h2 id="lp-faq-heading" class="lp-title lp-title--light lp-faq-title">Before you buy</h2>
-      <p class="lp-faq-lead">Five quick answers — so you know exactly what you’re getting.</p>
-    </header>
+<!-- 8. Final testimonial -->
+<div class="lp-quote-band">
+  <div class="lp-wrap lp-wrap--narrow">
+    <article class="lp-quote-card">
+      <div class="lp-stars">★ ★ ★ ★ ★</div>
+      <blockquote>"Reply bank changed everything. I finally knew what to say on big accounts."</blockquote>
+      <footer><strong>Jordan K.</strong> · 89 → 612 followers</footer>
+    </article>
+  </div>
+</div>
+
+<!-- 9. FAQ -->
+<section class="lp-section lp-section--dark lp-faq lp-faq--stijn" id="faq" aria-labelledby="lp-faq-heading">
+  <div class="lp-wrap lp-wrap--narrow lp-faq-wrap">
+    <h2 id="lp-faq-heading" class="lp-title lp-title--light lp-title--section lp-faq-title--stijn">FAQ</h2>
     <div class="lp-faq-list">
       <details class="lp-faq-item">
         <summary>When do I get access?</summary>
@@ -309,25 +244,17 @@
         <div class="lp-faq-body"><p>No. Checklists and copy-paste assets — built to execute, not watch.</p></div>
       </details>
       <details class="lp-faq-item">
-        <summary>Do I need paid tools?</summary>
-        <div class="lp-faq-body"><p>No to start. X + Notion + ChatGPT (free) is enough. Optional: <a href="https://hypefury.com/?via=andrei57" target="_blank" rel="noopener sponsored">Hypefury</a> for scheduling, <a href="https://cursor.com/referral?code=Y99TRRGTXDPE" target="_blank" rel="noopener sponsored">Cursor</a> if you're building a site.</p></div>
+        <summary>Are there refunds?</summary>
+        <div class="lp-faq-body"><p>Execute daily for 30 days. Still stuck? Email me under the execution guarantee — I'll help you get unstuck or refund you.</p></div>
       </details>
       <details class="lp-faq-item">
-        <summary>What if I don't see progress?</summary>
-        <div class="lp-faq-body"><p>Execute daily for 30 days. Still stuck? Email under the guarantee.</p></div>
+        <summary>How do I know if this is for me?</summary>
+        <div class="lp-faq-body"><p>This is for you if you want a daily system on <span class="x-app-symbol" aria-label="X">𝕏</span> and you're willing to post + reply every day for 90 days. Skip it if you only want to watch videos or won't do the daily reps.</p></div>
       </details>
-    </div>
-  </div>
-</section>
-
-<section class="lp-final-cta">
-  <div class="lp-wrap">
-    <div class="lp-final-card">
-      <p class="lp-eyebrow lp-eyebrow--center">Ready when you are</p>
-      <h2 class="lp-title lp-title--light lp-final-title">One routine · 90 days · 1,000 followers</h2>
-      <p class="lp-lead lp-lead--light lp-final-lead">Stop guessing what to post tomorrow.</p>
-      <a class="lp-btn lp-btn--primary lp-btn--xl lp-btn--block" href="CHECKOUT.html">Get Instant Access — <span class="lp-tier-cta-price">€47</span></a>
-      <p class="lp-final-note">🔒 Gumroad checkout · Instant email delivery · 30-day guarantee</p>
+      <details class="lp-faq-item">
+        <summary>Do I need paid tools?</summary>
+        <div class="lp-faq-body"><p>No to start. X + Notion + ChatGPT (free) is enough. Optional: <a href="https://hypefury.com/?via=andrei57" target="_blank" rel="noopener sponsored">Hypefury</a> for scheduling.</p></div>
+      </details>
     </div>
   </div>
 </section>
@@ -344,6 +271,6 @@
   </div>
 </div>
 
-<script src="landing.js?v=20260629960000"></script>
+<script src="landing.js?v=20260630120000"></script>
 </body>
 </html>

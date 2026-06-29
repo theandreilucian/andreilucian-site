@@ -60,6 +60,7 @@
     var heroNow = document.getElementById("lp-price-now");
     var tierWas = document.getElementById("lp-tier-was");
     var tierNow = document.getElementById("lp-tier-now");
+    var tierNowAlt = document.getElementById("lp-tier-now-alt");
     var heroCta = document.getElementById("lp-hero-cta-price");
     var stackTotal = document.getElementById("lp-stack-total");
     var stackNow = document.getElementById("lp-stack-now");
@@ -71,6 +72,7 @@
     if (heroNow) heroNow.textContent = priceLabel;
     if (tierWas) tierWas.textContent = wasLabel;
     if (tierNow) tierNow.textContent = priceLabel;
+    if (tierNowAlt) tierNowAlt.textContent = priceLabel;
     if (heroCta) heroCta.textContent = priceLabel;
     if (stackTotal) stackTotal.textContent = wasLabel;
     if (stackNow) stackNow.textContent = priceLabel;
