@@ -3394,9 +3394,15 @@ body.has-sticky-cta { padding-bottom: 72px; }
 }
 
 .lp-offer-bundle-card .lp-btn {
-  margin-top: 4px;
+  display: flex;
+  margin: 4px auto 0;
+  width: 100%;
+  max-width: 320px;
 }
 
 .lp-offer-bundle-card .lp-pricing-card-note {
   text-align: center;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
