@@ -835,9 +835,9 @@ img {
 
 @media (max-width: 768px) {
     .home-hero-avatar {
-        width: 84px !important;
-        height: 84px !important;
-        max-width: 84px !important;
+        width: 88px !important;
+        height: 88px !important;
+        max-width: 88px !important;
         object-fit: cover !important;
     }
 }
