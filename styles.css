@@ -669,9 +669,9 @@ img {
 }
 
 .home-hero-avatar {
-    width: 88px;
-    height: 88px;
-    max-width: 88px;
+    width: 96px;
+    height: 96px;
+    max-width: 96px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
@@ -835,9 +835,9 @@ img {
 
 @media (max-width: 768px) {
     .home-hero-avatar {
-        width: 88px !important;
-        height: 88px !important;
-        max-width: 88px !important;
+        width: 96px !important;
+        height: 96px !important;
+        max-width: 96px !important;
         object-fit: cover !important;
     }
 }
@@ -848,9 +848,9 @@ img {
     }
 
     .home-hero-avatar {
-        width: 80px !important;
-        height: 80px !important;
-        max-width: 80px !important;
+        width: 88px !important;
+        height: 88px !important;
+        max-width: 88px !important;
         margin-bottom: 20px;
     }
 
