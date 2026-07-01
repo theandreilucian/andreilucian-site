@@ -14,6 +14,8 @@ import {
   HOMEPAGE_SIGNUP_MARKER,
   HOMEPAGE_SIGNUP_END,
 } from "./homepage-hero.mjs";
+import { ARCHIVE_HEADER_HTML } from "./homepage-join-band.mjs";
+import { execSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -28,13 +30,7 @@ const SIGNUP_SECTION = renderHomepageHero() + "\n";
 
 const ARCHIVE_SECTION = `    ${ARCHIVE_MARKER}
     <section class="koe-archive-section" id="newsletters">
-        <div class="koe-archive-header">
-            <p class="koe-archive-eyebrow">The Letters</p>
-            <h2 class="koe-archive-title-main">Explore Your Curiosity</h2>
-            <p class="koe-archive-sub">
-                Deep dives on writing, audience growth, and building a one-person business online.
-            </p>
-        </div>
+${ARCHIVE_HEADER_HTML}
 
         <div class="koe-archive-grid-wrap">
             <div class="koe-archive-grid" id="letterArchiveGrid">
@@ -151,6 +147,12 @@ html = ensureSignupSection(html);
 html = ensureArchiveSection(html);
 html = replaceBetween(html, GRID_START, GRID_END, renderCombinedGrid());
 fs.writeFileSync(INDEX, html, "utf8");
+
+try {
+  execSync("node scripts/sync_site_footer.mjs", { cwd: ROOT, stdio: "inherit" });
+} catch {
+  console.warn("Could not sync footer — run: node scripts/sync_site_footer.mjs");
+}
 
 const total = getDanKoeEmails().length + LEGACY_NEWSLETTER_ARTICLES.length;
 console.log(`Updated index.html: ${total} archive cards with Read Full Post links`);

@@ -30,15 +30,12 @@ export function renderHomepageHero() {
                     <a href="https://www.instagram.com/theandreilucian/" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2.5c2.76 0 3.08.01 4.17.06.98.04 1.51.18 1.86.3.47.15.8.33 1.15.68.35.35.53.68.68 1.15.12.35.26.88.3 1.86.05 1.09.06 1.41.06 4.17s-.01 3.08-.06 4.17c-.04.98-.18 1.51-.3 1.86-.15.47-.33.8-.68 1.15-.35.35-.68.53-1.15.68-.35.12-.88.26-1.86.3-1.09.05-1.41.06-4.17.06s-3.08-.01-4.17-.06c-.98-.04-1.51-.18-1.86-.3-.47-.15-.8-.33-1.15-.68-.35-.35-.53-.68-.68-1.15-.12-.35-.26-.88-.3-1.86-.05-1.09-.06-1.41-.06-4.17s.01-3.08.06-4.17c.04-.98.18-1.51.3-1.86.15-.47.33-.8.68-1.15.35-.35.68-.53 1.15-.68.35-.12.88-.26 1.86-.3 1.09-.05 1.41-.06 4.17-.06zm0-2.5C7.24 0 6.92.01 5.83.06 4.85.1 4.32.24 3.97.36 3.5.51 3.17.69 2.82 1.04 2.47 1.39 2.29 1.72 2.14 2.19 2.02 2.66 1.98 3.64 1.93 4.73 1.92 5.05 1.92 7.81 1.92 10.57s.01 5.52.06 6.61c.04.98.18 1.51.3 1.86.15.47.33.8.68 1.15.35.35.68.53 1.15.68.35.12.88.26 1.86.3 1.09.05 1.41.06 4.17.06s3.08-.01 4.17-.06c.98-.04 1.51-.18 1.86-.3.47-.15.8-.33 1.15-.68.35-.35.53-.68.68-1.15.12-.35.26-.88.3-1.86.05-1.09.06-1.41.06-4.17s-.01-3.08-.06-4.17c-.04-.98-.18-1.51-.3-1.86-.15-.47-.33-.8-.68-1.15-.35-.35-.68-.53-1.15-.68-.35-.12-.88-.26-1.86-.3-1.09-.05-1.41-.06-4.17-.06z"/><path d="M10 5.38c-2.55 0-4.62 2.07-4.62 4.62s2.07 4.62 4.62 4.62 4.62-2.07 4.62-4.62-2.07-4.62-4.62-4.62zm0 7.62c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6.25-7.5c-.6 0-1.08.48-1.08 1.08s.48 1.08 1.08 1.08 1.08-.48 1.08-1.08-.48-1.08-1.08-1.08z"/></svg>
                     </a>
-                    <a href="https://www.threads.com/@theandreilucian" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="Threads">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S3.5 13.59 3.5 10 6.41 3.5 10 3.5z"/><path d="M10 6.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5S11.93 6.5 10 6.5zm0 5.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/><circle cx="10" cy="10" r="1"/></svg>
-                    </a>
                 </div>
             </div>
             <aside class="home-hero-aside" aria-label="Ghostwriting">
                 <p class="home-hero-aside-eyebrow">Done-for-you writing</p>
                 <h2 class="home-hero-aside-title">Need a Ghostwriter?</h2>
-                <p class="home-hero-aside-lead">I write your 𝕏 threads, LinkedIn posts, and newsletters in your voice — so you grow while you build the product.</p>
+                <p class="home-hero-aside-lead">I write your 𝕏 posts, LinkedIn posts, and newsletters in your voice — so you grow while you build the product.</p>
                 <ul class="home-hero-aside-list">
                     <li>Content systems, not one-off posts</li>
                     <li>Your voice — not generic AI slop</li>

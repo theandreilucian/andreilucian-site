@@ -29,6 +29,34 @@ const DIAGRAM_DIR = path.join(HERO_DIR, "diagrams");
 const OUT_HTML = path.join(ROOT, "substack-12-emails-dan-koe-style.html");
 const PASTE_HTML = path.join(ROOT, "substack-12-emails-paste-kit.html");
 const GALLERY_HTML = path.join(ROOT, "newsletter-graphics-gallery.html");
+const PASTE_LETTER_12 = path.join(ROOT, "substack-letter-12-paste.html");
+
+function fileToDataUrl(absPath, mime = "image/png") {
+  if (!absPath || !fs.existsSync(absPath)) return null;
+  return `data:${mime};base64,${fs.readFileSync(absPath).toString("base64")}`;
+}
+
+function heroSrcForPaste(e) {
+  const abs = path.join(ROOT, e.heroRel);
+  return fileToDataUrl(abs) || e.heroRel;
+}
+
+function letterBodyForPaste(htmlBody) {
+  return htmlBody
+    .replace(/<aside class="koe-product-cta">[\s\S]*?<\/aside>/g, "")
+    .replace(/<p>Thank you for reading\.<\/p>\s*/gi, "")
+    .trim();
+}
+
+function letterArticleHtmlForPaste(e) {
+  return `<article class="letter" data-letter-root>
+      <h1>${escHtml(e.subject)}</h1>
+      <p class="subtitle">${escHtml(e.preheader)}</p>
+      <div class="letter-body">
+        ${letterBodyForPaste(e.htmlBody)}
+      </div>
+    </article>`;
+}
 
 function buildEmails() {
   const topics = getDanKoeEmails();
@@ -227,14 +255,8 @@ ${cards}
 </div></body></html>`;
 }
 
-function renderPasteKit(emails) {
-  const nav = emails
-    .map((e) => `<a href="#paste-${e.num}">#${String(e.num).padStart(2, "0")}</a>`)
-    .join("");
-
-  const cards = emails
-    .map(
-      (e) => `<section class="card paste-section" id="paste-${e.num}">
+function renderPasteCard(e) {
+  return `<section class="card paste-section" id="paste-${e.num}">
   <header class="head">
     <span class="idx">#${String(e.num).padStart(2, "0")}</span>
     <div>
@@ -246,7 +268,7 @@ function renderPasteKit(emails) {
     <div class="paste-head">
       <span>One-click paste</span>
     </div>
-    <p class="substack-hint">Copies <strong>hero + title + subtitle + body + diagram</strong> as rich HTML. In Substack → click <em>Start writing…</em> → Ctrl+V</p>
+    <p class="substack-hint">Copies <strong>hero + title + subtitle + body + diagram</strong> as rich HTML. In Substack → click <em>Start writing…</em> → <strong>Ctrl+V</strong></p>
     <div class="copy-row">
       <button type="button" class="btn primary" data-copy-rich="paste-${e.num}" data-label="Copy full post">Copy full post (images + text)</button>
       <button type="button" class="btn" data-copy="subject${e.num}" data-label="Copy subject">Subject only</button>
@@ -256,19 +278,19 @@ function renderPasteKit(emails) {
     <textarea id="preheader${e.num}" class="sr-only" readonly aria-hidden="true">${escHtml(e.preheader)}</textarea>
   </div>
   <div class="rich-source" aria-hidden="true">
-    <img data-hero-img src="${escHtml(e.heroRel)}" alt="" crossorigin="anonymous" />
-    ${letterArticleHtml(e)}
+    <img data-hero-img src="${escHtml(heroSrcForPaste(e))}" alt="" />
+    ${letterArticleHtmlForPaste(e)}
   </div>
-</section>`
-    )
-    .join("\n");
+</section>`;
+}
 
+function renderPasteKitShell({ title, lead, nav, cards, backLink }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Substack Paste Kit — 12 Premium Newsletters</title>
+  <title>${escHtml(title)}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root { --bg:#08090c; --card:#111318; --border:#252a35; --text:#eaecf0; --muted:#8b939f; --accent:#e8e4dc; --accent2:#c9a227; }
@@ -289,51 +311,67 @@ function renderPasteKit(emails) {
     .idx { font-size:0.65rem; font-weight:700; color:var(--muted); background:var(--bg); border:1px solid var(--border); padding:4px 7px; border-radius:5px; height:fit-content; }
     .head h2 { font-size:0.92rem; font-weight:700; }
     .meta { font-size:0.74rem; color:var(--muted); margin-top:2px; }
-    .visuals { padding:12px 16px 0; }
-    .visual-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:8px; }
-    .visual-grid { display:grid; gap:12px; }
-    .visual-card { background:#f6f4ef; border:1px solid var(--border); border-radius:10px; overflow:hidden; }
-    .visual-card img { width:100%; display:block; }
-    .visual-actions { display:flex; flex-wrap:wrap; gap:6px; padding:10px 12px; background:#0a0c10; border-top:1px solid var(--border); }
-    .visual-caption { font-size:0.72rem; color:var(--muted); padding:8px 12px 10px; border-top:1px solid var(--border); background:var(--bg); }
     .substack-box { margin:14px 16px 16px; padding:14px; background:#0a0c10; border:2px solid var(--accent2); border-radius:12px; }
     .substack-hint { font-size:0.78rem; color:var(--muted); margin:8px 0 10px; line-height:1.55; }
     .substack-hint strong { color:#fff; font-weight:600; }
     .copy-row { display:flex; flex-wrap:wrap; gap:6px; }
-    .substack-area { min-height:280px; border-color:#3a4555; font-family:Inter,system-ui,sans-serif; font-size:0.92rem; line-height:1.65; }
     .paste-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; flex-wrap:wrap; }
     .paste-head > span { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent2); }
-    .paste-area { width:100%; min-height:320px; padding:14px; background:#060708; border:2px solid var(--accent2); border-radius:10px; color:#f4f5f7; font-family:Inter,system-ui,sans-serif; font-size:0.92rem; line-height:1.65; resize:vertical; white-space:pre-wrap; }
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
     .btn { padding:7px 12px; border-radius:7px; border:1px solid var(--border); background:#1a1e26; color:var(--text); font-weight:600; font-size:0.78rem; cursor:pointer; text-decoration:none; display:inline-block; }
     .btn:hover { border-color:#555; }
     .btn.primary { background:var(--accent); color:#0c0c0c; border-color:var(--accent); }
-    .btn.ghost { background:transparent; }
     .btn.ok { background:#1a4d3a; border-color:#2d6b52; color:#a8e6c7; }
     .rich-source { position:absolute; left:-9999px; width:720px; opacity:0; pointer-events:none; }
-    .substack-hint strong { color:#fff; }
     .top-links { margin-bottom:16px; font-size:0.82rem; }
     .top-links a { color:var(--muted); margin-right:12px; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <p class="top-links"><a href="substack-12-emails-dan-koe-style.html">← Preview newsletters</a><a href="newsletter-graphics-gallery.html">Graphics gallery</a></p>
-    <h1>Substack paste kit</h1>
-    <p class="lead">One button per newsletter — copies hero image, title, subtitle, body, and inline diagram together.</p>
+    <p class="top-links">${backLink}</p>
+    <h1>${title}</h1>
+    <p class="lead">${lead}</p>
     <div class="hero">
       <strong>How to use</strong><br />
       1. Click <strong>Copy full post (images + text)</strong><br />
-      2. In Substack → click <em>Start writing…</em> → <strong>Ctrl+V</strong><br />
-      3. Optional: copy <strong>Subject only</strong> / <strong>Subtitle only</strong> into Substack header fields<br /><br />
-      Use Chrome or Edge. If paste fails, open via <code>npx serve .</code> → localhost.
+      2. In Substack → New post → click in the body → <strong>Ctrl+V</strong><br />
+      3. Paste <strong>Subject only</strong> into Substack <strong>Title</strong><br />
+      4. Paste <strong>Subtitle only</strong> into Substack <strong>Subtitle</strong><br /><br />
+      Images are embedded — works from your computer. Use <strong>Chrome or Edge</strong>.
     </div>
-    <nav class="nav">${nav}</nav>
+    ${nav}
     ${cards}
   </div>
   <script>${CLIPBOARD_JS}</script>
 </body>
 </html>`;
+}
+
+function renderSinglePastePage(e) {
+  return renderPasteKitShell({
+    title: `Letter #${String(e.num).padStart(2, "0")} — Substack paste`,
+    lead: "One button copies hero image, title, subtitle, body, and inline diagram into Substack.",
+    nav: "",
+    cards: renderPasteCard(e),
+    backLink: `<a href="substack-12-emails-paste-kit.html">← All 12 letters</a><a href="substack-12-emails-dan-koe-style.html">Preview</a>`,
+  });
+}
+
+function renderPasteKit(emails) {
+  const nav = emails.length > 1
+    ? `<nav class="nav">${emails.map((e) => `<a href="#paste-${e.num}">#${String(e.num).padStart(2, "0")}</a>`).join("")}</nav>`
+    : "";
+
+  const cards = emails.map((e) => renderPasteCard(e)).join("\n");
+
+  return renderPasteKitShell({
+    title: "Substack paste kit",
+    lead: "One button per newsletter — copies hero image, title, subtitle, body, and inline diagram together.",
+    nav,
+    cards,
+    backLink: `<a href="substack-12-emails-dan-koe-style.html">← Preview newsletters</a><a href="newsletter-graphics-gallery.html">Graphics gallery</a>`,
+  });
 }
 
 const emails = buildEmails();
@@ -350,11 +388,14 @@ try {
 }
 fs.writeFileSync(OUT_HTML, renderIndex(emails), "utf8");
 fs.writeFileSync(PASTE_HTML, renderPasteKit(emails), "utf8");
+const letter12 = emails.find((e) => e.num === 12);
+if (letter12) fs.writeFileSync(PASTE_LETTER_12, renderSinglePastePage(letter12), "utf8");
 fs.writeFileSync(GALLERY_HTML, renderGallery(emails), "utf8");
 
 const summary = emails.map((e) => `#${e.num} ${e.words}w ${e.inRange ? "OK" : "LOW"} — ${e.subject}`).join("\n");
 console.log(`Wrote ${OUT_HTML}`);
 console.log(`Wrote ${PASTE_HTML}`);
+if (letter12) console.log(`Wrote ${PASTE_LETTER_12}`);
 console.log(`Wrote ${GALLERY_HTML}`);
 console.log(`Heroes: ${HERO_DIR}`);
 console.log(`PNG heroes: ${PNG_DIR}`);
