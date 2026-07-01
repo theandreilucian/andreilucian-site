@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260">
+  <defs>
+    <pattern id="d12-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#141414" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="d12-stipple" width="5" height="5" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="0.8" fill="#141414" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec"/>
+  
+    <path d="M120 260 H200 V300 H120" fill="none" stroke="#141414" stroke-width="2"/><path d="M220 238 H300 V278 H220" fill="none" stroke="#141414" stroke-width="2"/><path d="M320 216 H400 V256 H320" fill="none" stroke="#141414" stroke-width="2"/><path d="M420 194 H500 V234 H420" fill="none" stroke="#141414" stroke-width="2"/><path d="M520 172 H600 V212 H520" fill="none" stroke="#141414" stroke-width="2"/><path d="M620 150 H700 V190 H620" fill="none" stroke="#141414" stroke-width="2"/><path d="M720 128 H800 V168 H720" fill="none" stroke="#141414" stroke-width="2"/>
+    <text x="450" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#5a5a5a" font-style="italic">boring on the way up</text>
+</svg>

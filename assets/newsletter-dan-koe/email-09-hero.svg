@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <pattern id="wc9-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc9-hatch2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc9-stipple" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#141414" opacity="0.45"/>
+      <circle cx="5" cy="4" r="0.7" fill="#141414" opacity="0.3"/>
+    </pattern>
+    <filter id="wc9-paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.045"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="n" mode="multiply"/>
+    </filter>
+    <mask id="wc9-fade"><rect width="1920" height="1080" fill="white"/>
+      <rect x="0" y="900" width="1920" height="180" fill="url(#wc9-grad)"/>
+    </mask>
+    <linearGradient id="wc9-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec" filter="url(#wc9-paper)"/>
+  <text x="960" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#5a5a5a" letter-spacing="8">FIELD REPORT</text>
+  <text x="960" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#141414" font-weight="700">50 Replies</text>
+  <text x="960" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#5a5a5a" font-style="italic">7 days in the threads</text>
+  <g mask="url(#wc9-fade)">
+    <path d="M520 780 L540 660 L570 690 L590 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M650 780 L670 625 L700 655 L720 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M780 780 L800 590 L830 620 L850 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M910 780 L930 555 L960 585 L980 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M915 595 L955 605 L965 760 L925 770 Z" fill="url(#wc9-hatch)"/><path d="M915 595 L955 605 L965 760 L925 770 Z" fill="url(#wc9-hatch2)" opacity="0.5"/><path d="M1040 780 L1060 520 L1090 550 L1110 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M1045 560 L1085 570 L1095 760 L1055 770 Z" fill="url(#wc9-hatch)"/><path d="M1045 560 L1085 570 L1095 760 L1055 770 Z" fill="url(#wc9-hatch2)" opacity="0.5"/><path d="M1170 780 L1190 485 L1220 515 L1240 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M1175 525 L1215 535 L1225 760 L1185 770 Z" fill="url(#wc9-hatch)"/><path d="M1175 525 L1215 535 L1225 760 L1185 770 Z" fill="url(#wc9-hatch2)" opacity="0.5"/><path d="M1300 780 L1320 450 L1350 480 L1370 780 Z" fill="none" stroke="#141414" stroke-width="2"/>
+      <path d="M1305 490 L1345 500 L1355 760 L1315 770 Z" fill="url(#wc9-hatch)"/><path d="M1305 490 L1345 500 L1355 760 L1315 770 Z" fill="url(#wc9-hatch2)" opacity="0.5"/>
+    <text x="960" y="850" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#141414" font-style="italic">awkward → pattern → DMs</text></g>
+  <text x="960" y="1045" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#999" letter-spacing="4">ANDREI LUCIAN &#183; NEWSLETTER</text>
+</svg>

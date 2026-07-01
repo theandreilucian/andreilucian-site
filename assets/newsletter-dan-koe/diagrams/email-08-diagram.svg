@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <pattern id="d8-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#141414" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="d8-stipple" width="5" height="5" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="0.8" fill="#141414" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec"/>
+  
+    <rect x="150" y="210" width="600" height="40" fill="none" stroke="#141414" stroke-width="1.5"/>
+    <text x="450" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#5a5a5a">"post more"</text>
+    <rect x="190" y="160" width="520" height="40" fill="none" stroke="#141414" stroke-width="1.5"/>
+    <text x="450" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#141414">"3x/day"</text>
+    <rect x="230" y="110" width="440" height="40" fill="none" stroke="#141414" stroke-width="1.5"/>
+    <text x="450" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#141414">"50 replies"</text>
+    <rect x="270" y="60" width="360" height="40" fill="none" stroke="#141414" stroke-width="2.5"/>
+    <path d="M270 60 H630 V100 H270 Z" fill="url(#d8-hatch)"/><path d="M270 60 H630 V100 H270 Z" fill="url(#d8-hatch2)" opacity="0.5"/>
+    <text x="450" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#141414">"$223 month 3"</text>
+</svg>

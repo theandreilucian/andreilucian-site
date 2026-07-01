@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <pattern id="wc11-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc11-hatch2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc11-stipple" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#141414" opacity="0.45"/>
+      <circle cx="5" cy="4" r="0.7" fill="#141414" opacity="0.3"/>
+    </pattern>
+    <filter id="wc11-paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.045"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="n" mode="multiply"/>
+    </filter>
+    <mask id="wc11-fade"><rect width="1920" height="1080" fill="white"/>
+      <rect x="0" y="900" width="1920" height="180" fill="url(#wc11-grad)"/>
+    </mask>
+    <linearGradient id="wc11-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec" filter="url(#wc11-paper)"/>
+  <text x="960" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#5a5a5a" letter-spacing="8">NEWSLETTER</text>
+  <text x="960" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#141414" font-weight="700">Trust</text>
+  <text x="960" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#5a5a5a" font-style="italic">they open because they know you</text>
+  <g mask="url(#wc11-fade)">
+    <!-- left hand -->
+    <path d="M620 760 Q680 480 780 520 Q860 560 900 640 Q860 760 760 800 Q660 800 620 760" fill="none" stroke="#141414" stroke-width="3.5"/>
+    <path d="M620 760 Q680 480 780 520 Q860 560 900 640 Q860 760 760 800 Q660 800 620 760" fill="url(#wc11-hatch)"/><path d="M620 760 Q680 480 780 520 Q860 560 900 640 Q860 760 760 800 Q660 800 620 760" fill="url(#wc11-hatch2)" opacity="0.5"/>
+    <path d="M660 600 Q740 560 820 600 Q860 660 780 700 Q700 680 660 600" fill="url(#wc11-stipple)"/>
+    <!-- right hand -->
+    <path d="M1300 760 Q1240 480 1140 520 Q1060 560 1020 640 Q1060 760 1160 800 Q1260 800 1300 760" fill="none" stroke="#141414" stroke-width="3.5"/>
+    <path d="M1300 760 Q1240 480 1140 520 Q1060 560 1020 640 Q1060 760 1160 800 Q1260 800 1300 760" fill="url(#wc11-hatch)"/><path d="M1300 760 Q1240 480 1140 520 Q1060 560 1020 640 Q1060 760 1160 800 Q1260 800 1300 760" fill="url(#wc11-hatch2)" opacity="0.5"/>
+    <path d="M1260 600 Q1180 560 1100 600 Q1060 660 1140 700 Q1220 680 1260 600" fill="url(#wc11-stipple)"/>
+    <!-- light rays / offering -->
+    <line x1="960" y1="380" x2="960" y2="480" stroke="#141414" stroke-width="1" opacity="0.3"/>
+    <line x1="900" y1="400" x2="940" y2="490" stroke="#141414" stroke-width="1" opacity="0.25"/>
+    <line x1="1020" y1="400" x2="980" y2="490" stroke="#141414" stroke-width="1" opacity="0.25"/>
+    <text x="960" y="880" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#141414">1,100+ subscribers</text></g>
+  <text x="960" y="1045" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#999" letter-spacing="4">ANDREI LUCIAN &#183; NEWSLETTER</text>
+</svg>

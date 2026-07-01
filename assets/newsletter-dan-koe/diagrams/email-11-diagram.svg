@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260">
+  <defs>
+    <pattern id="d11-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#141414" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="d11-stipple" width="5" height="5" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="0.8" fill="#141414" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec"/>
+  
+    <path d="M200 180 Q300 80 450 180 Q600 80 700 180" fill="none" stroke="#141414" stroke-width="2"/>
+    <text x="350" y="210" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#5a5a5a">attention</text>
+    <path d="M500 180 Q600 100 700 180 Q800 100 900 180" fill="none" stroke="#141414" stroke-width="2.5"/>
+    <path d="M580 140 Q700 120 820 160 L800 180 Q700 200 580 180 Z" fill="url(#d11-hatch)"/><path d="M580 140 Q700 120 820 160 L800 180 Q700 200 580 180 Z" fill="url(#d11-hatch2)" opacity="0.5"/>
+    <text x="700" y="210" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#141414">trust</text>
+</svg>

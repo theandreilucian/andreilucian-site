@@ -5584,3 +5584,195 @@ body.article-page .footer-text {
         padding: 12px;
     }
 }
+
+/* Dan Koe woodcut newsletter grid (homepage) — premium full-bleed */
+.newsletter-articles-section--premium {
+    background-color: #050505;
+    margin-top: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.newsletter-articles-section--premium .newsletter-header-section--premium {
+    background-color: #050505 !important;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 72px 40px 48px !important;
+}
+
+.newsletter-articles-section--premium .section-label-container {
+    display: none;
+}
+
+.newsletter-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.newsletter-articles-section--premium .section-subtitle {
+    font-family: "Instrument Serif", Georgia, serif !important;
+    font-size: clamp(2rem, 5vw, 2.75rem) !important;
+    font-weight: 400 !important;
+    color: #f6f4ef !important;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.newsletter-articles-section--premium .section-description {
+    color: #888 !important;
+    font-size: 1rem !important;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6 !important;
+}
+
+.newsletter-grid-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #666;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 4px;
+}
+
+.newsletter-articles-section--premium .articles-grid-wrapper--woodcut {
+    background-color: #050505 !important;
+    padding: 8px 40px 56px !important;
+}
+
+.newsletter-articles-section--premium .articles-grid--woodcut {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 !important;
+}
+
+.more-newsletters-wrapper--woodcut {
+    background-color: #050505 !important;
+    padding: 0 40px 72px !important;
+    margin-bottom: 0;
+}
+
+.more-newsletters-btn--woodcut {
+    background: transparent !important;
+    border: 1px solid #3d3d3d !important;
+    color: #c9a227 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.04em;
+    padding: 12px 28px !important;
+    border-radius: 6px !important;
+}
+
+.more-newsletters-btn--woodcut:hover {
+    border-color: #c9a227 !important;
+    background: rgba(201, 162, 39, 0.08) !important;
+    box-shadow: none !important;
+    transform: translateY(-1px);
+}
+
+.newsletter-articles-section--premium .article-preview-card--woodcut {
+    background: #111 !important;
+    border: 1px solid #222 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.newsletter-articles-section--premium .article-preview-card--woodcut:hover {
+    border-color: #444 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+}
+
+.newsletter-articles-section--premium .article-visual--woodcut {
+    aspect-ratio: 16 / 9 !important;
+    background: #f6f4ef !important;
+    padding: 0 !important;
+    min-height: unset !important;
+    max-height: none !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.newsletter-articles-section--premium .article-visual--woodcut img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.newsletter-articles-section--premium .article-preview-body {
+    padding: 16px 18px 18px !important;
+}
+
+.newsletter-articles-section--premium .article-preview-num {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.newsletter-articles-section--premium .article-preview-title {
+    font-family: "Instrument Serif", Georgia, serif !important;
+    font-size: 1.08rem !important;
+    font-weight: 400 !important;
+    line-height: 1.32 !important;
+    color: #f6f4ef !important;
+    margin-bottom: 8px !important;
+    text-transform: none !important;
+}
+
+.newsletter-articles-section--premium .article-preview-excerpt {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    color: #888 !important;
+    margin-bottom: 10px !important;
+}
+
+.newsletter-articles-section--premium .article-preview-meta {
+    display: block;
+    font-size: 0.7rem;
+    color: #555;
+    margin-bottom: 12px;
+    font-family: Inter, system-ui, sans-serif;
+}
+
+.newsletter-articles-section--premium .article-read-link {
+    color: #c9a227 !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+    .newsletter-articles-section--premium .articles-grid--woodcut {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .newsletter-articles-section--premium .newsletter-header-section--premium {
+        padding: 48px 20px 32px !important;
+    }
+    .newsletter-articles-section--premium .articles-grid-wrapper--woodcut {
+        padding: 8px 16px 40px !important;
+    }
+    .newsletter-articles-section--premium .articles-grid--woodcut {
+        grid-template-columns: 1fr !important;
+    }
+    .more-newsletters-wrapper--woodcut {
+        padding: 0 16px 48px !important;
+    }
+}

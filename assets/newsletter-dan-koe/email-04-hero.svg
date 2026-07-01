@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <pattern id="wc4-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc4-hatch2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc4-stipple" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#141414" opacity="0.45"/>
+      <circle cx="5" cy="4" r="0.7" fill="#141414" opacity="0.3"/>
+    </pattern>
+    <filter id="wc4-paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.045"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="n" mode="multiply"/>
+    </filter>
+    <mask id="wc4-fade"><rect width="1920" height="1080" fill="white"/>
+      <rect x="0" y="900" width="1920" height="180" fill="url(#wc4-grad)"/>
+    </mask>
+    <linearGradient id="wc4-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec" filter="url(#wc4-paper)"/>
+  <text x="960" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#5a5a5a" letter-spacing="8">DECISION</text>
+  <text x="960" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#141414" font-weight="700">One Metric</text>
+  <text x="960" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#5a5a5a" font-style="italic">90 days · no switching</text>
+  <g mask="url(#wc4-fade)">
+    <path d="M960 780 L960 480" stroke="#141414" stroke-width="4"/>
+    <path d="M960 580 L700 720" stroke="#141414" stroke-width="2" opacity="0.25" stroke-dasharray="8"/>
+    <path d="M960 580 L1220 720" stroke="#141414" stroke-width="2" opacity="0.25" stroke-dasharray="8"/>
+    <path d="M960 580 L960 350" stroke="#141414" stroke-width="4"/>
+    <!-- figure -->
+    <circle cx="960" cy="420" r="35" fill="none" stroke="#141414" stroke-width="2.5"/>
+    <path d="M945 405 a30 32 0 1 1 30 0" fill="url(#wc4-hatch)"/><path d="M945 405 a30 32 0 1 1 30 0" fill="url(#wc4-hatch2)" opacity="0.5"/>
+    <path d="M930 455 L920 560 L940 560 L950 455 Z M970 455 L980 560 L1000 560 L990 455 Z" fill="none" stroke="#141414" stroke-width="2"/>
+    <path d="M930 455 L950 455 L940 560 Z" fill="url(#wc4-hatch)"/><path d="M930 455 L950 455 L940 560 Z" fill="url(#wc4-hatch2)" opacity="0.5"/>
+    <rect x="880" y="300" width="160" height="44" fill="none" stroke="#141414" stroke-width="2"/>
+    <text x="960" y="330" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#141414" font-weight="700">REPLIES</text></g>
+  <text x="960" y="1045" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#999" letter-spacing="4">ANDREI LUCIAN &#183; NEWSLETTER</text>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <pattern id="d2-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#141414" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="d2-stipple" width="5" height="5" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="0.8" fill="#141414" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec"/>
+  
+    <rect x="80" y="50" width="740" height="180" fill="none" stroke="#141414" stroke-width="2"/>
+    <path d="M80 50 H820 V90 H80 Z" fill="url(#d2-hatch)"/><path d="M80 50 H820 V90 H80 Z" fill="url(#d2-hatch2)" opacity="0.5"/>
+    <text x="200" y="78" font-family="Inter,sans-serif" font-size="11" fill="#5a5a5a" font-weight="600">INPUTS</text>
+    <text x="450" y="78" font-family="Inter,sans-serif" font-size="11" fill="#5a5a5a" font-weight="600">WEEK 4</text>
+    <text x="680" y="78" font-family="Inter,sans-serif" font-size="11" fill="#5a5a5a" font-weight="600">DELTA</text>
+    <text x="200" y="140" font-family="Georgia,serif" font-size="24" fill="#141414">47 replies/day</text>
+    <text x="450" y="140" font-family="Georgia,serif" font-size="24" fill="#141414">3 posts/day</text>
+    <text x="680" y="140" font-family="Georgia,serif" font-size="24" fill="#141414">+38</text>
+    <text x="450" y="230" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#5a5a5a" font-style="italic">track inputs · ignore mood</text>
+</svg>

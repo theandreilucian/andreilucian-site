@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <pattern id="wc12-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc12-hatch2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#141414" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <pattern id="wc12-stipple" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#141414" opacity="0.45"/>
+      <circle cx="5" cy="4" r="0.7" fill="#141414" opacity="0.3"/>
+    </pattern>
+    <filter id="wc12-paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.045"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="n" mode="multiply"/>
+    </filter>
+    <mask id="wc12-fade"><rect width="1920" height="1080" fill="white"/>
+      <rect x="0" y="900" width="1920" height="180" fill="url(#wc12-grad)"/>
+    </mask>
+    <linearGradient id="wc12-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="black" stop-opacity="0"/>
+      <stop offset="100%" stop-color="black" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f3f1ec" filter="url(#wc12-paper)"/>
+  <text x="960" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#5a5a5a" letter-spacing="8">CASE STUDY</text>
+  <text x="960" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#141414" font-weight="700">5.3K Organic</text>
+  <text x="960" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#5a5a5a" font-style="italic">zero viral posts</text>
+  <g mask="url(#wc12-fade)">
+    <path d="M400 780 H500 V830 H400" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M510 735 H610 V785 H510" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M512 737 H608 V783 H512 Z" fill="url(#wc12-stipple)"/><path d="M620 690 H720 V740 H620" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M730 645 H830 V695 H730" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M732 647 H828 V693 H732 Z" fill="url(#wc12-stipple)"/><path d="M840 600 H940 V650 H840" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M950 555 H1050 V605 H950" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M952 557 H1048 V603 H952 Z" fill="url(#wc12-stipple)"/><path d="M1060 510 H1160 V560 H1060" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M1170 465 H1270 V515 H1170" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M1172 467 H1268 V513 H1172 Z" fill="url(#wc12-stipple)"/><path d="M1280 420 H1380 V470 H1280" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M1390 375 H1490 V425 H1390" fill="none" stroke="#141414" stroke-width="2.5"/>
+      <path d="M1392 377 H1488 V423 H1392 Z" fill="url(#wc12-stipple)"/>
+    <!-- small figure climbing -->
+    <circle cx="520" cy="700" r="16" fill="none" stroke="#141414" stroke-width="2"/>
+    <path d="M508 716 L508 760 M520 716 L532 760" stroke="#141414" stroke-width="2"/>
+    <text x="960" y="860" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#5a5a5a" font-style="italic">3 years · daily reps · no lottery</text></g>
+  <text x="960" y="1045" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#999" letter-spacing="4">ANDREI LUCIAN &#183; NEWSLETTER</text>
+</svg>
