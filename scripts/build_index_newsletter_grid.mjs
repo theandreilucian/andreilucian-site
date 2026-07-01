@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { getDanKoeEmails } from "./substack-dan-koe-topics.mjs";
+import { build3DaySchedule } from "./substack-3day-schedule.mjs";
 import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
 import { CLASSIC_HERO_MAP, CLASSIC_DATE_MAP } from "./newsletter-hero-map.mjs";
 import { getPremiumLetterDates, formatLetterDateShort } from "./letter-dates.mjs";
@@ -76,9 +77,23 @@ function renderArchiveCard({ href, img, title, excerpt, dateLabel, index }) {
                 </article>`;
 }
 
+function renderJulAugCards() {
+  return build3DaySchedule().map((e, i) =>
+    renderArchiveCard({
+      href: e.pageHref,
+      img: e.heroRel,
+      title: e.subject,
+      excerpt: e.preheader,
+      dateLabel: e.dateShort,
+      index: i,
+    })
+  );
+}
+
 function renderPremiumCards() {
   const letters = getDanKoeEmails();
   const dates = getPremiumLetterDates(letters.length);
+  const offset = build3DaySchedule().length;
 
   return letters.map((e, i) => {
     const p = String(e.num).padStart(2, "0");
@@ -88,12 +103,13 @@ function renderPremiumCards() {
       title: e.subject,
       excerpt: e.preheader,
       dateLabel: formatLetterDateShort(dates[i]),
-      index: i,
+      index: offset + i,
     });
   });
 }
 
 function renderClassicCards() {
+  const offset = build3DaySchedule().length + getDanKoeEmails().length;
   return LEGACY_NEWSLETTER_ARTICLES.map((a, i) =>
     renderArchiveCard({
       href: a.href,
@@ -101,13 +117,13 @@ function renderClassicCards() {
       title: a.title,
       excerpt: a.excerpt,
       dateLabel: CLASSIC_DATE_MAP[a.href] || "",
-      index: getDanKoeEmails().length + i,
+      index: offset + i,
     })
   );
 }
 
 function renderCombinedGrid() {
-  return [...renderPremiumCards(), ...renderClassicCards()].join("\n\n");
+  return [...renderJulAugCards(), ...renderPremiumCards(), ...renderClassicCards()].join("\n\n");
 }
 
 function ensureSignupSection(html) {
@@ -203,5 +219,5 @@ try {
   console.warn("Could not sync nav — run: node scripts/sync_site_nav.mjs");
 }
 
-const total = getDanKoeEmails().length + LEGACY_NEWSLETTER_ARTICLES.length;
+const total = build3DaySchedule().length + getDanKoeEmails().length + LEGACY_NEWSLETTER_ARTICLES.length;
 console.log(`Updated index.html: ${total} archive cards with Read Full Post links`);

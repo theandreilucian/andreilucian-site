@@ -6,8 +6,8 @@ export const CLASSIC_HERO_MAP = {
   "article-book-full-time.html": "assets/newsletter-dan-koe/png/email-05-hero-woodcut.png",
   "article-authority-offer.html": "assets/newsletter-dan-koe/png/email-08-hero-woodcut.png",
   "article-twitter-audience.html": "assets/newsletter-dan-koe/png/email-10-hero-woodcut.png",
-  "article-story-hooks.html": "assets/newsletter-dan-koe/png/email-01-hero-woodcut.png",
-  "article-consistency-penalty.html": "assets/newsletter-dan-koe/png/email-03-hero-woodcut.png",
+  "article-story-hooks.html": "assets/newsletter-dan-koe/png/email-07-hero-woodcut.png",
+  "article-consistency-penalty.html": "assets/newsletter-dan-koe/png/email-06-hero-woodcut.png",
   "article-value-first.html": "assets/newsletter-dan-koe/png/email-11-hero-woodcut.png",
 };
 
