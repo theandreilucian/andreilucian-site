@@ -7149,6 +7149,30 @@ body.koe-letter-page .navbar {
     font-weight: 700;
 }
 
+.koe-author-bio-note {
+    margin-top: 1.35em !important;
+    margin-bottom: 0 !important;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.koe-author-bio-note strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.koe-author-bio-note a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.koe-author-bio-note a:hover {
+    color: #fff;
+}
+
 .koe-author-bio-cta {
     margin-top: 1.5em !important;
     margin-bottom: 0 !important;

@@ -13,11 +13,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 
 const NAV_RE = /<nav class="navbar koe-nav">[\s\S]*?<\/nav>/;
-const ARTICLE_NAV_RE = /<nav class="article-nav[^"]*">[\s\S]*?<\/nav>/;
+const ARTICLE_NAV_RE = /<nav class="article-nav[^"]*"[^>]*>[\s\S]*?<\/nav>\s*/g;
+
+function stripArticleNavs(html) {
+  return html.replace(ARTICLE_NAV_RE, "");
+}
 
 function syncNav(relPath, assetPrefix = "") {
   const abs = path.join(ROOT, relPath);
-  if (!fs.existsSync(abs)) return null;
+  if (!abs || !fs.existsSync(abs)) return null;
 
   let html = fs.readFileSync(abs, "utf8");
   const before = html;
@@ -42,10 +46,12 @@ function syncArticleNav(relPath, assetPrefix = "") {
   const before = html;
   const bar = renderArticleNav(assetPrefix).trim();
 
-  if (ARTICLE_NAV_RE.test(html)) {
-    html = html.replace(ARTICLE_NAV_RE, bar);
-  } else if (/<footer class="koe-footer">/.test(html)) {
+  html = stripArticleNavs(html);
+
+  if (/<footer class="koe-footer">/.test(html)) {
     html = html.replace(/<footer class="koe-footer">/, `${bar}\n\n    <footer class="koe-footer">`);
+  } else if (/<\/body>/i.test(html)) {
+    html = html.replace(/<\/body>/i, `\n  ${bar}\n</body>`);
   }
 
   if (html !== before) {
