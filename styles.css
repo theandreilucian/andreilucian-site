@@ -5756,6 +5756,257 @@ body.article-page .footer-text {
     text-decoration: none;
 }
 
+.newsletter-grid-label--spaced {
+    margin-top: 40px;
+}
+
+.newsletter-articles-section--premium .article-visual--classic {
+    aspect-ratio: 1 !important;
+    background: #000 !important;
+    padding: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.newsletter-articles-section--premium .article-visual--classic .visual-venn,
+.newsletter-articles-section--premium .article-visual--classic .visual-diagram,
+.newsletter-articles-section--premium .article-visual--classic .visual-pyramid {
+    transform: scale(0.85);
+}
+
+/* Standalone premium letter pages */
+body.newsletter-letter-page {
+    background: #050505;
+    color: #eee;
+    font-family: Inter, system-ui, sans-serif;
+}
+
+body.newsletter-letter-page .navbar {
+    background: rgba(5, 5, 5, 0.95);
+    border-bottom: 1px solid #1a1a1a;
+}
+
+body.newsletter-letter-page .brand,
+body.newsletter-letter-page .nav-link {
+    color: #ccc;
+}
+
+body.newsletter-letter-page .nav-link:hover {
+    color: #fff;
+}
+
+.newsletter-letter-layout {
+    max-width: 720px;
+    margin: 88px auto 80px;
+    padding: 0 16px;
+}
+
+.newsletter-letter-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.78rem;
+}
+
+.letter-nav-link {
+    color: #888;
+    text-decoration: none;
+}
+
+.letter-nav-link:hover {
+    color: #c9a227;
+}
+
+.letter-nav-home {
+    color: #666;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.letter-nav-home:hover {
+    color: #fff;
+}
+
+.substack-guide--letter {
+    background: #0a0a08;
+    border: 1px solid #3d4a2a;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.substack-guide--letter .substack-next {
+    font-size: 0.82rem;
+    color: #b8c4a8;
+    margin-bottom: 12px;
+}
+
+.substack-guide--letter .copy-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.substack-guide--letter .btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #eee;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.substack-guide--letter .btn-primary {
+    background: #f6f4ef;
+    color: #0c0c0c;
+    border-color: #f6f4ef;
+}
+
+.newsletter-letter-stage .hero-wrap {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.newsletter-letter-stage .hero-wrap img {
+    width: 100%;
+    display: block;
+}
+
+.newsletter-letter-stage .letter {
+    background: #f6f4ef;
+    padding: 48px 44px 56px;
+    color: #0c0c0c;
+    border-radius: 0 0 4px 4px;
+}
+
+.newsletter-letter-stage .letter-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #6b6560;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d4cfc6;
+}
+
+.newsletter-letter-stage .letter-meta .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #6b6560;
+}
+
+.newsletter-letter-stage h1 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.12;
+    margin-bottom: 12px;
+}
+
+.newsletter-letter-stage .subtitle {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #6b6560;
+    margin-bottom: 36px;
+}
+
+.newsletter-letter-stage .letter-body {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.125rem;
+    line-height: 1.82;
+}
+
+.newsletter-letter-stage .letter-body p {
+    margin-bottom: 1.35em;
+}
+
+.newsletter-letter-stage .letter-body h2 {
+    font-family: Inter, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b6560;
+    margin: 2.8em 0 1em;
+}
+
+.newsletter-letter-stage .letter-body blockquote {
+    margin: 2em 0;
+    padding: 24px 28px;
+    background: #ebe8e1;
+    border-left: 3px solid #1a1a1a;
+    font-style: italic;
+}
+
+.newsletter-letter-stage .letter-body .inline-diagram {
+    margin: 2em 0;
+    border: 1px solid #d4cfc6;
+    background: #f3f1ec;
+    overflow: hidden;
+}
+
+.newsletter-letter-stage .letter-body .inline-diagram svg {
+    width: 100%;
+    display: block;
+}
+
+.newsletter-letter-stage .letter-body .diagram-cap {
+    font-family: Inter, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6560;
+    text-align: center;
+    padding: 10px;
+    background: #ebe8e1;
+}
+
+.newsletter-letter-stage .cta-block {
+    margin-top: 2.5em;
+    padding: 24px 28px;
+    background: #0c0c0c;
+    color: #e8e4dc;
+    border-radius: 4px;
+}
+
+.newsletter-letter-stage .cta-block a {
+    color: #f6f4ef;
+    font-weight: 600;
+}
+
+.newsletter-letter-page .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.newsletter-letter-stage .word-count {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.72rem;
+    color: #555;
+}
+
+@media (max-width: 640px) {
+    .newsletter-letter-stage .letter {
+        padding: 32px 22px 40px;
+    }
+}
+
 @media (max-width: 1024px) {
     .newsletter-articles-section--premium .articles-grid--woodcut {
         grid-template-columns: repeat(2, 1fr) !important;

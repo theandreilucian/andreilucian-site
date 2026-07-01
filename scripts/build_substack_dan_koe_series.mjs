@@ -5,6 +5,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 import { getDanKoeEmails } from "./substack-dan-koe-topics.mjs";
 import {
   formatDanKoeLetter,
@@ -15,6 +16,7 @@ import {
 import { getHeroSvg, getHeroCaption } from "./substack-dan-koe-heroes.mjs";
 import { getDiagramExport, getDiagramCaption } from "./substack-dan-koe-diagrams.mjs";
 import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
+import { buildLetterPages } from "./build_newsletter_letter_pages.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -152,7 +154,7 @@ function letterArticleHtml(e) {
 function renderIndex(emails) {
   const cards = emails
     .map(
-      (e) => `<a class="index-card" href="#email-${e.num}">
+      (e) => `<a class="index-card" href="newsletters/letter-${String(e.num).padStart(2, "0")}.html">
   <div class="index-thumb"><img src="${escHtml(e.heroRel)}" alt="" loading="lazy" /></div>
   <div class="index-meta">
     <span class="index-num">#${String(e.num).padStart(2, "0")}</span>
@@ -531,6 +533,12 @@ function renderPasteKit(emails) {
 }
 
 const emails = buildEmails();
+buildLetterPages();
+try {
+  execSync("node scripts/build_index_newsletter_grid.mjs", { cwd: ROOT, stdio: "inherit" });
+} catch {
+  console.warn("Could not refresh index.html grid — run: node scripts/build_index_newsletter_grid.mjs");
+}
 fs.writeFileSync(OUT_HTML, renderIndex(emails), "utf8");
 fs.writeFileSync(PASTE_HTML, renderPasteKit(emails), "utf8");
 fs.writeFileSync(GALLERY_HTML, renderGallery(emails), "utf8");

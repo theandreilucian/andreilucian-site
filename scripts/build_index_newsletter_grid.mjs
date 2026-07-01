@@ -1,5 +1,5 @@
 /**
- * Regenerate homepage newsletter grid — Dan Koe woodcut style.
+ * Regenerate homepage newsletter grids — classic + premium woodcut letters.
  * Run: node scripts/build_index_newsletter_grid.mjs
  */
 import fs from "fs";
@@ -7,13 +7,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { getDanKoeEmails } from "./substack-dan-koe-topics.mjs";
 import { formatDanKoeLetter } from "./substack-dan-koe-format.mjs";
+import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const INDEX = path.join(ROOT, "index.html");
 
-const START = "<!-- NEWSLETTER_GRID_START -->";
-const END = "<!-- NEWSLETTER_GRID_END -->";
+const LEGACY_START = "<!-- LEGACY_GRID_START -->";
+const LEGACY_END = "<!-- LEGACY_GRID_END -->";
+const LETTERS_START = "<!-- NEWSLETTER_GRID_START -->";
+const LETTERS_END = "<!-- NEWSLETTER_GRID_END -->";
 
 const RANGE_START = new Date(2026, 6, 3);
 
@@ -35,7 +38,24 @@ function escHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
-function renderGrid() {
+function renderLegacyGrid() {
+  return LEGACY_NEWSLETTER_ARTICLES.map(
+    (a) => `                <a href="${escHtml(a.href)}" class="article-preview-card article-preview-card--woodcut">
+                    <div class="article-visual article-visual--classic">
+                        ${a.visual}
+                    </div>
+                    <div class="article-preview-body">
+                        <span class="article-preview-num">Classic</span>
+                        <h4 class="article-preview-title">${escHtml(a.title)}</h4>
+                        <p class="article-preview-excerpt">${escHtml(a.excerpt)}</p>
+                        <span class="article-preview-meta">${escHtml(a.meta)}</span>
+                        <span class="article-read-link">Read full post</span>
+                    </div>
+                </a>`
+  ).join("\n\n");
+}
+
+function renderLettersGrid() {
   const letters = getDanKoeEmails();
   const dates = biweeklyFridays(RANGE_START, letters.length);
 
@@ -43,7 +63,7 @@ function renderGrid() {
     .map((e, i) => {
       const formatted = formatDanKoeLetter(e);
       const p = String(e.num).padStart(2, "0");
-      const href = `substack-12-emails-dan-koe-style.html#email-${e.num}`;
+      const href = `newsletters/letter-${p}.html`;
       const img = `assets/newsletter-dan-koe/png/email-${p}-hero-woodcut.png`;
       const dateStr = dates[i].toLocaleDateString("en-US", {
         weekday: "short",
@@ -67,20 +87,20 @@ function renderGrid() {
     .join("\n\n");
 }
 
-const html = fs.readFileSync(INDEX, "utf8");
-const start = html.indexOf(START);
-const end = html.indexOf(END);
-
-if (start === -1 || end === -1) {
-  throw new Error(`Markers ${START} / ${END} not found in index.html`);
+function replaceBetween(html, startMark, endMark, content) {
+  const start = html.indexOf(startMark);
+  const end = html.indexOf(endMark);
+  if (start === -1 || end === -1) {
+    throw new Error(`Markers ${startMark} / ${endMark} not found in index.html`);
+  }
+  return html.slice(0, start + startMark.length) + "\n" + content + "\n                " + html.slice(end);
 }
 
-const next =
-  html.slice(0, start + START.length) +
-  "\n" +
-  renderGrid() +
-  "\n                " +
-  html.slice(end);
+let html = fs.readFileSync(INDEX, "utf8");
+html = replaceBetween(html, LEGACY_START, LEGACY_END, renderLegacyGrid());
+html = replaceBetween(html, LETTERS_START, LETTERS_END, renderLettersGrid());
+fs.writeFileSync(INDEX, html, "utf8");
 
-fs.writeFileSync(INDEX, next, "utf8");
-console.log(`Updated newsletter grid in ${INDEX} (${getDanKoeEmails().length} woodcut cards)`);
+console.log(
+  `Updated index.html: ${LEGACY_NEWSLETTER_ARTICLES.length} classic + ${getDanKoeEmails().length} premium letter cards`
+);
