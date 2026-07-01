@@ -113,6 +113,12 @@
             width: 100%;
             box-sizing: border-box;
         }
+        .nav-container.koe-nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            max-width: 1200px;
+            gap: 24px;
+        }
         .brand {
             font-size: 20px;
             font-weight: 800;
@@ -3728,15 +3734,16 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar koe-nav">
-        <div class="nav-container koe-nav-container">
-            <a href="index.html" class="nav-monogram" aria-label="Andrei Lucian home">AL</a>
-            <a href="index.html" class="nav-center-name">A N D R E I&nbsp;&nbsp;L U C I A N</a>
-            <div class="nav-links nav-links-right">
-                <a href="index.html#newsletters" class="nav-link">Read My Letters</a>
-                <a href="ghostwriting.html" class="nav-link">Need a Ghostwriter?</a>
-            </div>
-        </div>
-    </nav>
+    <div class="nav-container koe-nav-container">
+      <a href="index.html" class="nav-monogram" aria-label="Andrei Lucian home">AL</a>
+      <a href="index.html" class="nav-center-name">A N D R E I&nbsp;&nbsp;L U C I A N</a>
+      <div class="nav-links nav-links-right koe-nav-actions">
+        <a href="index.html#newsletters" class="nav-link">Read The Letters</a>
+        <span class="koe-nav-sep" aria-hidden="true">·</span>
+        <a href="ghostwriting.html" class="nav-link">Need a Ghostwriter?</a>
+      </div>
+    </div>
+  </nav>
 
     <!-- Hero Section -->
     <section class="hero-split">
@@ -4499,6 +4506,34 @@
     </section>
 
     <!-- Footer -->
+    <nav class="article-nav koe-article-nav-bar" aria-label="Site links">
+    <div class="article-nav-container">
+      <a href="index.html#newsletters" class="article-nav-link">Read The Letters</a>
+      <a href="ghostwriting.html" class="article-nav-link">Need a Ghostwriter?</a>
+    </div>
+  </nav>
+
+    <nav class="article-nav koe-article-nav-bar" aria-label="Site links">
+    <div class="article-nav-container">
+      <a href="index.html#newsletters" class="article-nav-link">Read The Letters</a>
+      <a href="ghostwriting.html" class="article-nav-link">Need a Ghostwriter?</a>
+    </div>
+  </nav>
+
+    <nav class="article-nav koe-article-nav-bar" aria-label="Site links">
+    <div class="article-nav-container">
+      <a href="index.html#newsletters" class="article-nav-link">Read The Letters</a>
+      <a href="ghostwriting.html" class="article-nav-link">Need a Ghostwriter?</a>
+    </div>
+  </nav>
+
+    <nav class="article-nav koe-article-nav-bar" aria-label="Site links">
+    <div class="article-nav-container">
+      <a href="index.html#newsletters" class="article-nav-link">Read The Letters</a>
+      <a href="ghostwriting.html" class="article-nav-link">Need a Ghostwriter?</a>
+    </div>
+  </nav>
+
     <footer class="koe-footer">
     <p class="koe-footer-copy">© All Rights Reserved.</p>
   </footer>

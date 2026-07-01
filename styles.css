@@ -268,6 +268,28 @@ img {
     gap: 32px;
 }
 
+.koe-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.koe-nav-sep {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 14px;
+    line-height: 1;
+    user-select: none;
+}
+
+.navbar.koe-nav .nav-container.koe-nav-container {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+}
+
 .koe-nav .nav-links-right .nav-link {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.92);
@@ -291,6 +313,10 @@ img {
 
     .koe-nav .nav-links-right {
         gap: 16px;
+    }
+
+    .koe-nav-actions {
+        gap: 12px;
     }
 
     .koe-nav .nav-links-right .nav-link,
@@ -643,12 +669,14 @@ img {
 }
 
 .home-hero-avatar {
-    width: 72px;
-    height: 72px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    object-position: center top;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    flex-shrink: 0;
 }
 
 .home-hero-eyebrow {
@@ -3440,10 +3468,20 @@ a.resource-card.resource-card--product:focus-visible {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-end;
-    gap: 60px;
+    justify-content: center;
+    gap: 48px;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.koe-article-nav-bar {
+    padding: 44px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
+}
+
+.koe-article-nav-bar .article-nav-container {
+    gap: 40px;
 }
 
 .article-nav-link {
@@ -7042,11 +7080,11 @@ body.koe-letter-page .navbar {
 }
 
 .koe-author-bio-grid {
-    max-width: 920px;
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 56px;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
     align-items: start;
 }
 
@@ -7058,12 +7096,13 @@ body.koe-letter-page .navbar {
 }
 
 .koe-author-bio-avatar {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center top;
     display: block;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     filter: grayscale(100%);
 }
 
@@ -7146,8 +7185,8 @@ body.koe-letter-page .navbar {
     }
 
     .koe-author-bio-avatar {
-        width: 160px;
-        height: 160px;
+        width: 220px;
+        height: 220px;
     }
 }
 
@@ -7507,6 +7546,16 @@ body.koe-letter-page .sr-only {
     text-align: center;
     padding: 80px 24px 56px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.koe-resources-header {
+    background: #000;
+    border-bottom: none;
+    margin: 0;
+}
+
+.resources-section .koe-resources-header .koe-archive-sub {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .koe-join-eyebrow {

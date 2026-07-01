@@ -4,10 +4,13 @@
 import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
 import { escHtml } from "./substack-dan-koe-format.mjs";
 import { renderKoeSubscribeTop, renderKoeAuthorBio } from "./dan-koe-public-ui.mjs";
+import { renderLetterPageJoinBand } from "./homepage-join-band.mjs";
+import { renderConvertKitScripts } from "./convertkit-snippet.mjs";
 import { renderSiteNav } from "./site-nav.mjs";
 import { renderSiteFooter } from "./site-footer.mjs";
+import { renderArticleNav } from "./article-nav.mjs";
 
-export { escHtml, renderSiteNav, renderSiteFooter };
+export { escHtml, renderSiteNav, renderSiteFooter, renderArticleNav };
 
 const COPY_JS = `
 function flashBtn(btn, okText) {
@@ -127,8 +130,13 @@ export function renderDanKoeLetterPage(opts) {
 
   ${renderKoeAuthorBio({ assetPrefix: p, signupHref })}
 
+  ${renderLetterPageJoinBand()}
+
+  ${renderArticleNav(p)}
+
   ${renderSiteFooter(p)}
 
+  ${renderConvertKitScripts(p)}
   ${!readerMode || opts.copy ? `<script>${COPY_JS}</script>` : ""}
 </body>
 </html>`;

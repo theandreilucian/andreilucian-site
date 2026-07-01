@@ -12,7 +12,7 @@
         <div class="nav-container">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="brand"><?php bloginfo('name'); ?></a>
             <div class="nav-links">
-                <a href="<?php echo esc_url(home_url('/#newsletter-signup')); ?>" class="nav-link">Newsletters</a>
+                <a href="<?php echo esc_url(home_url('/#newsletters')); ?>" class="nav-link">Read The Letters</a>
                 <a href="<?php echo esc_url(home_url('/ghostwriting')); ?>" class="nav-link">Need a Ghostwriter?</a>
             </div>
         </div>

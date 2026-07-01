@@ -2,7 +2,7 @@
     <?php if (is_single() || is_page()) : ?>
     <nav class="article-nav">
         <div class="article-nav-container">
-            <a href="<?php echo esc_url(home_url('/#newsletter-signup')); ?>" class="article-nav-link">Newsletters</a>
+            <a href="<?php echo esc_url(home_url('/#newsletters')); ?>" class="article-nav-link">Read The Letters</a>
             <a href="<?php echo esc_url(home_url('/ghostwriting')); ?>" class="article-nav-link">Need a Ghostwriter?</a>
         </div>
     </nav>

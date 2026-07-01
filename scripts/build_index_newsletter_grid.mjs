@@ -14,13 +14,17 @@ import {
   HOMEPAGE_SIGNUP_MARKER,
   HOMEPAGE_SIGNUP_END,
 } from "./homepage-hero.mjs";
-import { ARCHIVE_HEADER_HTML } from "./homepage-join-band.mjs";
+import { ARCHIVE_HEADER_HTML, RESOURCES_HEADER_HTML, renderHomepageJoinBand } from "./homepage-join-band.mjs";
 import { execSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const INDEX = path.join(ROOT, "index.html");
 
+const JOIN_BAND_START = "<!-- JOIN_BAND_START -->";
+const JOIN_BAND_END = "<!-- JOIN_BAND_END -->";
+const RESOURCES_HEADER_START = "<!-- RESOURCES_HEADER_START -->";
+const RESOURCES_HEADER_END = "<!-- RESOURCES_HEADER_END -->";
 const GRID_START = "<!-- LETTER_ARCHIVE_GRID_START -->";
 const GRID_END = "<!-- LETTER_ARCHIVE_GRID_END -->";
 const ARCHIVE_MARKER = "<!-- Newsletter — Dan Koe letter archive -->";
@@ -139,19 +143,64 @@ function replaceBetween(html, startMark, endMark, content) {
   if (start === -1 || end === -1) {
     throw new Error(`Markers ${startMark} / ${endMark} not found in index.html`);
   }
+  return html.slice(0, start + startMark.length) + "\n" + content + "\n    " + html.slice(end);
+}
+
+function ensureJoinBand(html) {
+  const start = html.indexOf(JOIN_BAND_START);
+  const end = html.indexOf(JOIN_BAND_END);
+  if (start !== -1 && end !== -1) {
+    const band = renderHomepageJoinBand()
+      .split("\n")
+      .map((line) => (line ? `    ${line}` : line))
+      .join("\n");
+    return replaceBetween(html, JOIN_BAND_START, JOIN_BAND_END, band);
+  }
+  return html.replace(
+    /<section class="koe-join-band"[\s\S]*?<\/section>/,
+    renderHomepageJoinBand().trim()
+  );
+}
+
+function ensureResourcesHeader(html) {
+  const start = html.indexOf(RESOURCES_HEADER_START);
+  const end = html.indexOf(RESOURCES_HEADER_END);
+  if (start !== -1 && end !== -1) {
+    return replaceBetween(html, RESOURCES_HEADER_START, RESOURCES_HEADER_END, RESOURCES_HEADER_HTML);
+  }
+  return html.replace(
+    /<div class="section-header">[\s\S]*?<\/div>/,
+    RESOURCES_HEADER_HTML.trim()
+  );
+}
+
+function replaceBetweenGrid(html, startMark, endMark, content) {
+  const start = html.indexOf(startMark);
+  const end = html.indexOf(endMark);
+  if (start === -1 || end === -1) {
+    throw new Error(`Markers ${startMark} / ${endMark} not found in index.html`);
+  }
   return html.slice(0, start + startMark.length) + "\n" + content + "\n                " + html.slice(end);
 }
 
 let html = fs.readFileSync(INDEX, "utf8");
 html = ensureSignupSection(html);
 html = ensureArchiveSection(html);
-html = replaceBetween(html, GRID_START, GRID_END, renderCombinedGrid());
+html = replaceBetweenGrid(html, GRID_START, GRID_END, renderCombinedGrid());
+html = ensureJoinBand(html);
+html = ensureResourcesHeader(html);
 fs.writeFileSync(INDEX, html, "utf8");
 
 try {
   execSync("node scripts/sync_site_footer.mjs", { cwd: ROOT, stdio: "inherit" });
 } catch {
   console.warn("Could not sync footer — run: node scripts/sync_site_footer.mjs");
+}
+
+try {
+  execSync("node scripts/sync_site_nav.mjs", { cwd: ROOT, stdio: "inherit" });
+} catch {
+  console.warn("Could not sync nav — run: node scripts/sync_site_nav.mjs");
 }
 
 const total = getDanKoeEmails().length + LEGACY_NEWSLETTER_ARTICLES.length;

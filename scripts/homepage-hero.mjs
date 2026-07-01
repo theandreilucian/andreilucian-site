@@ -7,7 +7,7 @@ export function renderHomepageHero() {
     <section class="home-hero" id="newsletter-signup">
         <div class="home-hero-inner">
             <div class="home-hero-main">
-                <img src="assets/andrei-lucian-headshot.png.jpg" alt="Andrei Lucian" class="home-hero-avatar" loading="eager" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
+                <img src="assets/andrei-lucian-headshot.png.jpg" alt="Andrei Lucian" class="home-hero-avatar" width="88" height="88" loading="eager" onerror="this.src='assets/images/logo.png'; this.onerror=null;">
                 <p class="home-hero-eyebrow">A N D R E I&nbsp;&nbsp;L U C I A N</p>
                 <h1 class="home-hero-title">Write With Proof.<br>Grow Online.<br>Build Income.</h1>
                 <p class="home-hero-lead">Join <strong>1,100+ creators</strong> getting weekly letters on writing, audience growth, and building in public — blunt proof, no guru noise.</p>

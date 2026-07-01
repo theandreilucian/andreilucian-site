@@ -19,7 +19,7 @@ import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
 import { buildLetterPages } from "./build_newsletter_letter_pages.mjs";
 import { renderSiteNav } from "./dan-koe-letter-page.mjs";
 import { renderLetterProductCta } from "./letter-product-cta.mjs";
-import { biweeklyFridays, PREMIUM_RANGE_START } from "./letter-dates.mjs";
+import { getPremiumLetterDates } from "./letter-dates.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -60,7 +60,7 @@ function letterArticleHtmlForPaste(e) {
 
 function buildEmails() {
   const topics = getDanKoeEmails();
-  const dates = biweeklyFridays(PREMIUM_RANGE_START, topics.length);
+  const dates = getPremiumLetterDates(topics.length);
 
   return topics.map((topic, i) => {
     const formatted = formatDanKoeLetter(topic);

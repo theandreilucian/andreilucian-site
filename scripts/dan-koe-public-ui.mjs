@@ -38,7 +38,7 @@ export function renderKoeAuthorBio(opts = {}) {
     </div>
     <div class="koe-author-bio-grid">
       <div class="koe-author-bio-visual">
-        <img src="${p}assets/andrei-lucian-headshot.png.jpg" alt="Andrei Lucian" class="koe-author-bio-avatar" loading="lazy" onerror="this.src='${p}assets/images/logo.png'; this.onerror=null;">
+        <img src="${p}assets/andrei-lucian-headshot.png.jpg" alt="Andrei Lucian" class="koe-author-bio-avatar" width="280" height="280" loading="lazy" onerror="this.src='${p}assets/images/logo.png'; this.onerror=null;">
         ${renderAuthorSocialLinks()}
       </div>
       <div class="koe-author-bio-copy">
