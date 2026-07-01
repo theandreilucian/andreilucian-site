@@ -79,6 +79,7 @@ function renderArchiveCard({ href, img, title, excerpt, dateLabel, index }) {
 }
 
 function renderJulAugCards() {
+  const offset = getDanKoeEmails().length;
   return build3DaySchedule().map((e, i) =>
     renderArchiveCard({
       href: e.pageHref,
@@ -86,7 +87,7 @@ function renderJulAugCards() {
       title: e.subject,
       excerpt: e.preheader,
       dateLabel: e.dateShort,
-      index: i,
+      index: offset + i,
     })
   );
 }
@@ -94,27 +95,26 @@ function renderJulAugCards() {
 function renderPremiumCards() {
   const letters = getDanKoeEmails();
   const dates = getPremiumLetterDates(letters.length);
-  const offset = build3DaySchedule().length;
 
   return letters.map((e, i) => {
     const p = String(e.num).padStart(2, "0");
     return renderArchiveCard({
       href: `newsletters/letter-${p}.html`,
-      img: `assets/newsletter-dan-koe/png/email-${p}-hero-woodcut.png`,
+      img: coverPath(e.num),
       title: e.subject,
       excerpt: e.preheader,
       dateLabel: formatLetterDateShort(dates[i]),
-      index: offset + i,
+      index: i,
     });
   });
 }
 
 function renderClassicCards() {
-  const offset = build3DaySchedule().length + getDanKoeEmails().length;
+  const offset = getDanKoeEmails().length + build3DaySchedule().length;
   return LEGACY_NEWSLETTER_ARTICLES.map((a, i) =>
     renderArchiveCard({
       href: a.href,
-      img: CLASSIC_HERO_MAP[a.href] || "assets/newsletter-dan-koe/png/email-01-hero-woodcut.png",
+      img: CLASSIC_HERO_MAP[a.href] || coverPath(1),
       title: a.title,
       excerpt: a.excerpt,
       dateLabel: CLASSIC_DATE_MAP[a.href] || "",
@@ -124,7 +124,7 @@ function renderClassicCards() {
 }
 
 function renderCombinedGrid() {
-  return [...renderJulAugCards(), ...renderPremiumCards(), ...renderClassicCards()].join("\n\n");
+  return [...renderPremiumCards(), ...renderJulAugCards(), ...renderClassicCards()].join("\n\n");
 }
 
 function ensureSignupSection(html) {

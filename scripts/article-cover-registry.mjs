@@ -1,53 +1,41 @@
 /**
- * Unique cover art per article — no image reused across the public archive.
- * Covers 01–12: premium letters · 13–29: Jul–Aug series · 30–38: classic articles
+ * Article cover art — all use the original woodcut PNG heroes (01–12).
+ * Premium letters own 01–12; Jul–Aug + classics rotate through the same pool.
  */
 export const COVER_DIR = "assets/newsletter-dan-koe/png";
-export const COVER_SVG_DIR = "assets/newsletter-dan-koe";
 
 export function coverPath(id) {
-  const p = String(id).padStart(2, "0");
-  if (id <= 12) {
-    return `${COVER_DIR}/email-${p}-hero-woodcut.png`;
-  }
-  return `${COVER_SVG_DIR}/email-${p}-hero.svg`;
+  const n = ((Number(id) - 1) % 12) + 1;
+  return `${COVER_DIR}/email-${String(n).padStart(2, "0")}-hero-woodcut.png`;
 }
 
-/** Jul–Aug 2026 letters (17) → covers 13–29 */
-export const JUL_AUG_COVER_IDS = Array.from({ length: 17 }, (_, i) => i + 13);
-
-/** Premium letters 01–12 → covers 01–12 (matches letter number) */
+/** Premium letters 01–12 → matching PNG woodcut */
 export function premiumCoverId(letterNum) {
   return letterNum;
 }
 
-/** Classic evergreen articles → covers 30–38 */
+/** Jul–Aug: offset rotation so cards differ from premium 01–12 next to them */
+export function julAugCoverId(emailNum) {
+  return ((emailNum + 4) % 12) + 1;
+}
+
+/** Classic articles — semantic match to original detailed woodcuts */
 export const CLASSIC_COVER_MAP = {
-  "article-one-person-business.html": 30,
-  "article-11-steps-freedom.html": 31,
-  "article-24-lessons.html": 32,
-  "article-book-full-time.html": 33,
-  "article-authority-offer.html": 34,
-  "article-twitter-audience.html": 35,
-  "article-story-hooks.html": 36,
-  "article-consistency-penalty.html": 37,
-  "article-value-first.html": 38,
+  "article-one-person-business.html": 4,
+  "article-11-steps-freedom.html": 12,
+  "article-24-lessons.html": 2,
+  "article-book-full-time.html": 5,
+  "article-authority-offer.html": 8,
+  "article-twitter-audience.html": 10,
+  "article-story-hooks.html": 7,
+  "article-consistency-penalty.html": 6,
+  "article-value-first.html": 11,
 };
 
-export function julAugCoverId(emailNum) {
-  return JUL_AUG_COVER_IDS[emailNum - 1];
+export function classicCoverId(href) {
+  return CLASSIC_COVER_MAP[href] || 1;
 }
 
 export function classicCoverPath(href) {
-  const id = CLASSIC_COVER_MAP[href];
-  if (!id) return coverPath(1);
-  return coverPath(id);
-}
-
-export function allCoverIds() {
-  return [
-    ...Array.from({ length: 12 }, (_, i) => i + 1),
-    ...JUL_AUG_COVER_IDS,
-    ...Object.values(CLASSIC_COVER_MAP),
-  ];
+  return coverPath(classicCoverId(href));
 }
