@@ -58,6 +58,7 @@ const articles = LEGACY_NEWSLETTER_ARTICLES.map((a, i) => {
     homeHref: "index.html#newsletters",
     prev: prev ? { href: prev.href, label: slugLabel(prev.href) } : null,
     next: next ? { href: next.href, label: slugLabel(next.href) } : null,
+    readerMode: true,
   });
 
   fs.writeFileSync(filePath, page, "utf8");

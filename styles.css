@@ -6816,6 +6816,15 @@ body.koe-letter-page--reader .koe-footer {
     padding-top: 16px;
 }
 
+/* Hide author-only Substack paste UI on public letter pages */
+body.koe-letter-page--reader .substack-guide,
+body.koe-letter-page--reader .koe-author-tools,
+body.koe-letter-page--reader .substack-box,
+body.koe-letter-page--reader .koe-subscribe-top,
+body.koe-letter-page--reader .koe-subscribe {
+    display: none !important;
+}
+
 body.koe-letter-page--reader .koe-article-nav {
     margin-bottom: 32px;
 }

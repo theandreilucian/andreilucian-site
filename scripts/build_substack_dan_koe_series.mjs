@@ -188,7 +188,7 @@ function renderIndex(emails) {
     <div class="koe-archive-grid-wrap">
       <div class="koe-archive-grid">${cards}</div>
     </div>
-    <p class="koe-archive-foot"><a href="index.html#newsletter-signup">Subscribe free</a> · <a href="substack-12-emails-paste-kit.html">Copy for Substack</a></p>
+    <p class="koe-archive-foot"><a href="index.html#newsletter-signup">Subscribe free</a></p>
   </section>
 </body>
 </html>`;

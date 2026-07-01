@@ -34,7 +34,7 @@ const ARCHIVE_SECTION = `    <!-- Newsletter — Dan Koe letter archive -->
         </div>
     </section>
 
-    <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">`;
+`;
 
 function escHtml(s) {
   return String(s)
@@ -87,15 +87,14 @@ function renderCombinedGrid() {
 }
 
 function ensureArchiveSection(html) {
-  if (!html.includes("<!-- Newsletter")) {
-    return html;
-  }
-  const start = html.indexOf("<!-- Newsletter");
-  const end = html.indexOf('<div class="more-newsletters-wrapper');
+  const startMarker = "<!-- Newsletter";
+  const endMarker = '<div class="container">';
+  const start = html.indexOf(startMarker);
+  const end = html.indexOf(endMarker);
   if (start === -1 || end === -1) {
     throw new Error("Could not find newsletter section in index.html");
   }
-  return html.slice(0, start) + ARCHIVE_SECTION + "\n        " + html.slice(end);
+  return html.slice(0, start) + ARCHIVE_SECTION + "\n\n    " + html.slice(end);
 }
 
 function replaceBetween(html, startMark, endMark, content) {
