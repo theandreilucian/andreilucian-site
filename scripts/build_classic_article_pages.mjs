@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
+import { CLASSIC_ARTICLE_BODIES } from "./classic-article-content.mjs";
 import { CLASSIC_HERO_MAP, CLASSIC_DATE_MAP } from "./newsletter-hero-map.mjs";
 import { renderDanKoeLetterPage } from "./dan-koe-letter-page.mjs";
 import { renderLetterProductCta } from "./letter-product-cta.mjs";
@@ -48,8 +49,8 @@ function slugLabel(href) {
 
 const articles = LEGACY_NEWSLETTER_ARTICLES.map((a, i) => {
   const filePath = path.join(ROOT, a.href);
-  const raw = fs.readFileSync(filePath, "utf8");
-  const bodyHtml = extractBody(raw);
+  const bodyHtml =
+    CLASSIC_ARTICLE_BODIES[a.href] || extractBody(fs.readFileSync(filePath, "utf8"));
   const prev = i > 0 ? LEGACY_NEWSLETTER_ARTICLES[i - 1] : null;
   const next = i < LEGACY_NEWSLETTER_ARTICLES.length - 1 ? LEGACY_NEWSLETTER_ARTICLES[i + 1] : null;
 

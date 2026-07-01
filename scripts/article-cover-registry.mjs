@@ -1,5 +1,5 @@
 /**
- * Article cover art — all use the original woodcut PNG heroes (01–12).
+ * Article cover art — all use the original detailed woodcut PNG heroes (01–12).
  * Premium letters own 01–12; Jul–Aug + classics rotate through the same pool.
  */
 export const COVER_DIR = "assets/newsletter-dan-koe/png";
@@ -19,7 +19,7 @@ export function julAugCoverId(emailNum) {
   return ((emailNum + 4) % 12) + 1;
 }
 
-/** Classic articles — semantic match to original detailed woodcuts */
+/** Classic articles — semantic match to detailed woodcuts */
 export const CLASSIC_COVER_MAP = {
   "article-one-person-business.html": 4,
   "article-11-steps-freedom.html": 12,
@@ -38,4 +38,8 @@ export function classicCoverId(href) {
 
 export function classicCoverPath(href) {
   return coverPath(classicCoverId(href));
+}
+
+export function allCoverIds() {
+  return Array.from({ length: 12 }, (_, i) => i + 1);
 }
