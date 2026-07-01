@@ -7113,9 +7113,9 @@ body.koe-letter-page .navbar {
 }
 
 .koe-author-bio-avatar {
-    width: 280px;
-    height: 280px;
-    max-width: 280px;
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
@@ -7227,18 +7227,18 @@ body.koe-letter-page .navbar {
     }
 
     .koe-author-bio-avatar {
-        width: min(220px, 52vw) !important;
-        height: min(220px, 52vw) !important;
-        max-width: 220px !important;
+        width: min(240px, 54vw) !important;
+        height: min(240px, 54vw) !important;
+        max-width: 240px !important;
         object-fit: cover !important;
     }
 }
 
 @media (max-width: 480px) {
     .koe-author-bio-avatar {
-        width: min(200px, 48vw) !important;
-        height: min(200px, 48vw) !important;
-        max-width: 200px !important;
+        width: min(220px, 50vw) !important;
+        height: min(220px, 50vw) !important;
+        max-width: 220px !important;
     }
 }
 
