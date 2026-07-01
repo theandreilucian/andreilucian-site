@@ -176,6 +176,189 @@ const HEROES = {
     <circle cx="520" cy="700" r="16" fill="none" stroke="${INK}" stroke-width="2"/>
     <path d="M508 716 L508 760 M520 716 L532 760" stroke="${INK}" stroke-width="2"/>
     <text x="960" y="860" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="${MUTED}" font-style="italic">3 years · daily reps · no lottery</text>`),
+
+  // 13 — Void / empty feed
+  13: () => woodcutShell(13, "STORY", "The Quiet Month", "nobody claps · you ship anyway", (p) => `
+    <circle cx="960" cy="560" r="220" fill="none" stroke="${INK}" stroke-width="2.5" opacity="0.35"/>
+    <circle cx="960" cy="560" r="120" fill="none" stroke="${INK}" stroke-width="2" stroke-dasharray="8"/>
+    <path d="M820 560 H1100" stroke="${INK}" stroke-width="2" opacity="0.25"/>
+    <text x="960" y="570" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="${MUTED}" font-style="italic">silence</text>
+    <path d="M900 720 L960 640 L1020 720" fill="none" stroke="${INK}" stroke-width="2.5"/>`),
+
+  // 14 — Morning checklist
+  14: () => woodcutShell(14, "PRODUCT", "Tomorrow Morning", "open the folder · run the list", (p) => `
+    <rect x="700" y="420" width="520" height="360" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M700 420 H1220 V500 H700 Z")}
+    ${[0, 1, 2, 3, 4].map((i) => `<line x1="740" y1="${540 + i * 48}" x2="1180" y2="${540 + i * 48}" stroke="${INK}" stroke-width="1.5" opacity="0.35"/>`).join("")}
+    <rect x="740" y="548" width="28" height="28" fill="none" stroke="${INK}" stroke-width="2"/>
+    <path d="M748 562 L756 570 L770 552" fill="none" stroke="${INK}" stroke-width="2"/>`),
+
+  // 15 — Platform fork
+  15: () => woodcutShell(15, "EDUCATE", "Pick One Room", "𝕏 or LinkedIn · not both day one", (p) => `
+    <path d="M960 780 L960 460" stroke="${INK}" stroke-width="4"/>
+    <path d="M960 560 L720 700" stroke="${INK}" stroke-width="3"/>
+    <path d="M960 560 L1200 700" stroke="${INK}" stroke-width="3"/>
+    <text x="700" y="740" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="${INK}">𝕏</text>
+    <text x="1220" y="740" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="${INK}">LINKEDIN</text>`),
+
+  // 16 — Bio / positioning
+  16: () => woodcutShell(16, "EDUCATE", "One-Line Bio", "who you help · what changes", (p) => `
+    <rect x="560" y="480" width="800" height="220" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${stipple(p, "M580 500 H1340 V680 H580 Z")}
+    <line x1="620" y1="560" x2="1180" y2="560" stroke="${INK}" stroke-width="2"/>
+    <line x1="620" y1="610" x2="980" y2="610" stroke="${INK}" stroke-width="1.5" opacity="0.5"/>`),
+
+  // 17 — Reply bank
+  17: () => woodcutShell(17, "EDUCATE", "Reply Bank", "100 openers · zero blank box", (p) => `
+    <rect x="640" y="400" width="640" height="400" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${[0, 1, 2, 3, 4, 5].map((i) => `<rect x="680" y="${440 + i * 58}" width="560" height="40" fill="none" stroke="${INK}" stroke-width="1.5"/>`).join("")}
+    <circle cx="710" cy="460" r="8" fill="${INK}"/>`),
+
+  // 18 — Sunday review
+  18: () => woodcutShell(18, "STORY", "Sunday Night", "honest eyes · one adjustment", (p) => `
+    <circle cx="960" cy="520" r="90" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M900 520 A60 60 0 1 1 1020 520 A90 90 0 0 1 900 520 Z")}
+    <line x1="960" y1="520" x2="960" y2="460" stroke="${INK}" stroke-width="3"/>
+    <line x1="960" y1="520" x2="1010" y2="550" stroke="${INK}" stroke-width="2.5"/>`),
+
+  // 19 — First DM
+  19: () => woodcutShell(19, "STORY", "First Real DM", "proof the wall moved", (p) => `
+    <rect x="680" y="440" width="560" height="320" rx="8" fill="none" stroke="${INK}" stroke-width="3"/>
+    <path d="M720 500 Q820 470 900 500 T1080 500" fill="none" stroke="${INK}" stroke-width="2"/>
+    <rect x="720" y="560" width="420" height="56" fill="none" stroke="${INK}" stroke-width="2"/>
+    <text x="740" y="595" font-family="Georgia,serif" font-size="18" fill="${INK}" font-style="italic">this helped me</text>`),
+
+  // 20 — Gym / health
+  20: () => woodcutShell(20, "STORY", "Body First", "clear head · better drafts", (p) => `
+    <path d="M900 760 L920 620 L940 580 L980 560 L1000 580 L1020 620 L1040 760" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M920 620 L980 560 L1000 580 L940 620 Z")}
+    <circle cx="980" cy="520" r="30" fill="none" stroke="${INK}" stroke-width="2.5"/>
+  <rect x="860" y="700" width="240" height="20" fill="none" stroke="${INK}" stroke-width="2"/>`),
+
+  // 21 — Comparison trap
+  21: () => woodcutShell(21, "STORY", "Their Month Two", "invisible · before the screenshot", (p) => `
+    <rect x="620" y="460" width="280" height="360" fill="none" stroke="${INK}" stroke-width="2" opacity="0.35"/>
+    <rect x="1020" y="460" width="280" height="360" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M1020 460 H1300 V560 H1020 Z")}
+    <text x="760" y="560" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="${MUTED}">their highlight</text>
+    <text x="1160" y="560" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="${INK}">your reality</text>`),
+
+  // 22 — Revenue arc
+  22: () => woodcutShell(22, "STORY", "$0 → $223", "lag · then the bend", (p) => `
+    <path d="M560 720 L1360 720" stroke="${INK}" stroke-width="3"/>
+    <path d="M560 720 L560 420 Q760 420 860 560 T1160 480 L1360 400" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${stipple(p, "M560 720 L560 420 Q760 420 860 560 T1160 480 L1360 400 L1360 720 Z")}
+    <text x="620" y="700" font-family="Georgia,serif" font-size="18" fill="${MUTED}">M2</text>
+    <text x="1120" y="440" font-family="Georgia,serif" font-size="18" fill="${INK}">M3</text>`),
+
+  // 23 — Voice note / idea
+  23: () => woodcutShell(23, "STORY", "Walk Home", "one idea · ship tonight", (p) => `
+    <path d="M560 760 Q700 640 860 680 T1160 620 Q1300 580 1360 520" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <circle cx="1360" cy="520" r="24" fill="none" stroke="${INK}" stroke-width="2"/>
+    <path d="M1340 500 Q1360 470 1385 500" fill="none" stroke="${INK}" stroke-width="2"/>`),
+
+  // 24 — Stubbornness
+  24: () => woodcutShell(24, "STORY", "Stubborn", "not braver · still here", (p) => `
+    <path d="M900 760 L900 560 L940 520 L980 500 L1020 520 L1060 560 L1060 760" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M900 560 L980 500 L1060 560 L1020 620 L940 620 Z")}
+    <line x1="860" y1="760" x2="1100" y2="760" stroke="${INK}" stroke-width="4"/>`),
+
+  // 25 — Arena
+  25: () => woodcutShell(25, "STORY", "Stay In", "the arena · boring Tuesdays", (p) => `
+    <ellipse cx="960" cy="700" rx="380" ry="80" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <path d="M700 700 Q960 520 1220 700" fill="none" stroke="${INK}" stroke-width="2"/>
+    <circle cx="960" cy="600" r="28" fill="none" stroke="${INK}" stroke-width="2.5"/>`),
+
+  // 26 — Client inbound
+  26: () => woodcutShell(26, "EDUCATE", "Inbound", "found you in public", (p) => `
+    <path d="M640 560 H1280" stroke="${INK}" stroke-width="2"/>
+    <path d="M1280 560 L1240 540 M1280 560 L1240 580" stroke="${INK}" stroke-width="2"/>
+    <rect x="700" y="480" width="200" height="120" fill="none" stroke="${INK}" stroke-width="2"/>
+    <rect x="1020" y="480" width="200" height="120" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M1020 480 H1220 V600 H1020 Z")}`),
+
+  // 27 — Repurpose
+  27: () => woodcutShell(27, "EDUCATE", "One Idea", "three rooms · same proof", (p) => `
+    <circle cx="760" cy="580" r="70" fill="none" stroke="${INK}" stroke-width="2"/>
+    <circle cx="960" cy="580" r="70" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <circle cx="1160" cy="580" r="70" fill="none" stroke="${INK}" stroke-width="2"/>
+    <line x1="830" y1="580" x2="890" y2="580" stroke="${INK}" stroke-width="2"/>
+    <line x1="1030" y1="580" x2="1090" y2="580" stroke="${INK}" stroke-width="2"/>`),
+
+  // 28 — Audit
+  28: () => woodcutShell(28, "STORY", "Weekly Audit", "winners · flops · one fix", (p) => `
+    <rect x="680" y="440" width="260" height="320" fill="none" stroke="${INK}" stroke-width="2"/>
+    <rect x="980" y="440" width="260" height="320" fill="none" stroke="${INK}" stroke-width="2"/>
+    <text x="810" y="500" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="${INK}">W</text>
+    <text x="1110" y="500" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="${MUTED}">F</text>`),
+
+  // 29 — Compound close
+  29: () => woodcutShell(29, "PRODUCT", "90 Days", "reps stack · trust follows", (p) => `
+    ${[0, 1, 2, 3, 4].map((i) => `<rect x="${720 + i * 100}" y="${680 - i * 50}" width="80" height="${80 + i * 50}" fill="none" stroke="${INK}" stroke-width="2.5"/>`).join("")}
+    <text x="960" y="820" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="${INK}">1K</text>`),
+
+  // 30 — One-person business
+  30: () => woodcutShell(30, "CLASSIC", "Personal Brand", "one person · one offer", (p) => `
+    <circle cx="760" cy="560" r="100" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <circle cx="1160" cy="560" r="100" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <ellipse cx="960" cy="560" rx="90" ry="100" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M900 500 Q960 460 1020 500 Q1040 560 960 620 Q880 560 900 500 Z")}
+    <text x="960" y="570" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="${INK}">$</text>`),
+
+  // 31 — Freedom steps
+  31: () => woodcutShell(31, "CLASSIC", "Seven Steps", "niche → freedom", (p) => `
+    ${[0, 1, 2, 3, 4, 5, 6].map((i) => `<rect x="${640 + i * 90}" y="${720 - i * 45}" width="120" height="36" fill="none" stroke="${INK}" stroke-width="2"/>`).join("")}
+    <path d="M700 760 L1240 500" stroke="${INK}" stroke-width="1.5" stroke-dasharray="6" opacity="0.4"/>`),
+
+  // 32 — 24 lessons
+  32: () => woodcutShell(32, "CLASSIC", "24 Lessons", "two years · one list", (p) => `
+    <rect x="700" y="420" width="520" height="380" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M700 420 H1220 V500 H700 Z")}
+    ${Array.from({ length: 8 }, (_, i) => `<text x="740" y="${540 + i * 36}" font-family="Georgia,serif" font-size="16" fill="${INK}">${i + 1}.</text>`).join("")}`),
+
+  // 33 — Book / Naval
+  33: () => woodcutShell(33, "CLASSIC", "One Book", "mindset shift · full-time path", (p) => `
+    <rect x="820" y="440" width="280" height="360" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${stipple(p, "M840 460 H1080 V780 H840 Z")}
+    <line x1="960" y1="440" x2="960" y2="800" stroke="${INK}" stroke-width="2"/>
+    <text x="900" y="560" font-family="Georgia,serif" font-size="22" fill="${INK}" font-style="italic">read</text>`),
+
+  // 34 — Authority offer
+  34: () => woodcutShell(34, "CLASSIC", "Authority Offer", "expertise · pain · process", (p) => `
+    <rect x="640" y="520" width="200" height="200" fill="none" stroke="${INK}" stroke-width="2"/>
+    <text x="740" y="630" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="${INK}">+</text>
+    <rect x="860" y="520" width="200" height="200" fill="none" stroke="${INK}" stroke-width="2"/>
+    <text x="1060" y="630" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="${INK}">=</text>
+    <rect x="1080" y="500" width="220" height="240" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M1080 500 H1300 V580 H1080 Z")}`),
+
+  // 35 — Monetization
+  35: () => woodcutShell(35, "CLASSIC", "Monetize", "content → income", (p) => `
+    <path d="M560 620 L760 620 L860 520 L1060 520 L1160 620 L1360 620" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${stipple(p, "M760 620 L860 520 L1060 520 L1160 620 Z")}
+    <text x="960" y="580" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="${INK}">$</text>`),
+
+  // 36 — Story hooks (quill)
+  36: () => woodcutShell(36, "CLASSIC", "Stop The Scroll", "line one · everything", (p) => `
+    <line x1="1240" y1="480" x2="880" y2="720" stroke="${INK}" stroke-width="3"/>
+    <path d="M860 700 L900 760 L940 720 Z" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    ${shade(p, "M860 700 L900 760 L920 740 Z")}
+    <path d="M700 760 Q820 700 900 740 T1060 760" fill="none" stroke="${INK}" stroke-width="2"/>
+    <text x="720" y="640" font-family="Georgia,serif" font-size="20" fill="${INK}" font-style="italic">Hook</text>`),
+
+  // 37 — Consistency / inactive penalty
+  37: () => woodcutShell(37, "CLASSIC", "The Penalty", "absence costs followers", (p) => `
+    <path d="M560 720 L1360 720" stroke="${INK}" stroke-width="3"/>
+    <path d="M560 720 Q760 520 960 560 T1360 400" fill="none" stroke="${INK}" stroke-width="3"/>
+    <path d="M960 560 Q1000 720 1100 720" fill="none" stroke="${INK}" stroke-width="2" stroke-dasharray="8"/>
+    <text x="1040" y="700" font-family="Georgia,serif" font-size="16" fill="${MUTED}" font-style="italic">vacation dip</text>`),
+
+  // 38 — Value first
+  38: () => woodcutShell(38, "CLASSIC", "Value First", "trust · then income", (p) => `
+    <path d="M760 700 Q960 480 1160 700" fill="none" stroke="${INK}" stroke-width="3"/>
+    ${shade(p, "M760 700 Q960 480 1160 700 L1160 760 L760 760 Z")}
+    <text x="960" y="620" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="${INK}">give</text>
+    <text x="960" y="820" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="${MUTED}" font-style="italic">income follows</text>`),
 };
 
 export function getHeroSvg(num) {
@@ -196,6 +379,32 @@ export function getHeroCaption(num) {
     10: "Two doors — 𝕏 and LinkedIn",
     11: "Open hands — newsletter trust",
     12: "The long climb — compound growth",
+    13: "The quiet month — shouting into a void",
+    14: "Tomorrow morning — open the folder",
+    15: "Pick one platform room",
+    16: "One-line bio — who you help",
+    17: "Reply bank — zero blank box",
+    18: "Sunday night audit",
+    19: "First real DM — proof the wall moved",
+    20: "Body first — clearer drafts",
+    21: "Their highlight vs your reality",
+    22: "Revenue arc — $0 to $223",
+    23: "Walk home — ship tonight",
+    24: "Stubborn — still showing up",
+    25: "Stay in the arena",
+    26: "Inbound — found you in public",
+    27: "One idea — three rooms",
+    28: "Weekly audit — winners and flops",
+    29: "90 days — reps stack",
+    30: "Personal brand — one person business",
+    31: "Seven steps to freedom",
+    32: "24 lessons — two years",
+    33: "One book — full-time path",
+    34: "Authority offer blueprint",
+    35: "Content monetization",
+    36: "Story hooks — stop the scroll",
+    37: "Inactivity penalty — follower dip",
+    38: "Value first — income follows",
   };
   return caps[num] || "";
 }

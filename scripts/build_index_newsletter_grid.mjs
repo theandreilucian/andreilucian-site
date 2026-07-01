@@ -9,6 +9,7 @@ import { getDanKoeEmails } from "./substack-dan-koe-topics.mjs";
 import { build3DaySchedule } from "./substack-3day-schedule.mjs";
 import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
 import { CLASSIC_HERO_MAP, CLASSIC_DATE_MAP } from "./newsletter-hero-map.mjs";
+import { coverPath, julAugCoverId } from "./article-cover-registry.mjs";
 import { getPremiumLetterDates, formatLetterDateShort } from "./letter-dates.mjs";
 import {
   renderHomepageHero,
@@ -81,7 +82,7 @@ function renderJulAugCards() {
   return build3DaySchedule().map((e, i) =>
     renderArchiveCard({
       href: e.pageHref,
-      img: e.heroRel,
+      img: coverPath(julAugCoverId(e.num)),
       title: e.subject,
       excerpt: e.preheader,
       dateLabel: e.dateShort,

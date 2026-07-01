@@ -4,6 +4,7 @@
 import { format3DayEmail } from "./substack-3day-format.mjs";
 import { getTopicsByDay } from "./substack-3day-topics.mjs";
 import { buildWoodcutEmailVisuals } from "./substack-woodcut-email-graphics.mjs";
+import { coverPath, julAugCoverId } from "./article-cover-registry.mjs";
 
 export const RANGE_START = new Date(2026, 6, 1);
 export const RANGE_END = new Date(2026, 7, 8);
@@ -62,6 +63,8 @@ export function build3DaySchedule() {
     const formatted = format3DayEmail(topic, i);
     const visuals = buildWoodcutEmailVisuals(topic, num, role);
     const dateObj = slot.date;
+    const coverId = julAugCoverId(num);
+    const heroRel = coverPath(coverId);
 
     return {
       num,
@@ -85,11 +88,12 @@ export function build3DaySchedule() {
       substackBody: formatted.body,
       words: formatted.words,
       inRange: formatted.inRange,
+      coverId,
       pageFile: `letter-${String(num).padStart(2, "0")}.html`,
       pageHref: `newsletters/jul-aug/letter-${String(num).padStart(2, "0")}.html`,
-      heroRel: visuals.heroRel,
+      heroRel,
       diagramRel: visuals.diagramRel,
-      heroPageRel: `../../${visuals.heroRel}`,
+      heroPageRel: `../../${heroRel}`,
       diagramPageRel: `../../${visuals.diagramRel}`,
       captionA: visuals.captionA,
       captionB: visuals.captionB,
