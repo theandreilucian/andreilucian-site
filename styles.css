@@ -215,6 +215,89 @@ img {
     opacity: 0.7;
 }
 
+/* Dan Koe–style nav: AL · centered name · right link */
+.koe-nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    max-width: 1200px;
+    gap: 24px;
+}
+
+.nav-monogram {
+    justify-self: start;
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--text-white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.3s ease;
+}
+
+.nav-monogram:hover {
+    opacity: 0.75;
+}
+
+.nav-center-name {
+    justify-self: center;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.nav-center-name:hover {
+    color: #ffffff;
+}
+
+.nav-link-right {
+    justify-self: end;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .koe-nav-container {
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .nav-monogram {
+        font-size: 30px;
+    }
+
+    .nav-center-name {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+    }
+
+    .nav-link-right {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav-center-name {
+        display: none;
+    }
+
+    .koe-nav-container {
+        grid-template-columns: auto 1fr;
+    }
+
+    .nav-link-right {
+        justify-self: end;
+    }
+}
+
 .nav-icons {
     display: flex;
     gap: 12px;
@@ -515,6 +598,212 @@ img {
 .form-message.loading {
     color: #a78bfa;
     font-style: italic;
+}
+
+/* Homepage hero — Dan Koe layout + ghostwriter aside */
+.home-hero {
+    background-color: #000000;
+    padding: 120px 40px 72px;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.home-hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 56px;
+    align-items: center;
+}
+
+.home-hero-main {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-hero-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.home-hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0 0 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-lead {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-lead strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.home-hero-form {
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.home-hero-form .submit-btn {
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 14px 20px;
+}
+
+.home-hero-letters-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s ease;
+}
+
+.home-hero-letters-link:hover {
+    color: #ffffff;
+}
+
+.home-hero-social {
+    margin-top: 28px;
+    justify-content: center;
+}
+
+.home-hero-aside {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    text-align: left;
+}
+
+.home-hero-aside-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0 0 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-aside-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px;
+    line-height: 1.2;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-aside-lead {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-aside-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.home-hero-aside-list li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 6px 0 6px 16px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-hero-aside-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.home-hero-aside-btn {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s ease;
+}
+
+.home-hero-aside-btn:hover {
+    opacity: 0.75;
+}
+
+@media (max-width: 960px) {
+    .home-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 560px;
+    }
+
+    .home-hero-aside {
+        order: 2;
+    }
+
+    .home-hero {
+        padding: 100px 24px 56px;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero {
+        padding: 90px 16px 48px;
+    }
+
+    .home-hero-form {
+        flex-direction: column;
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .home-hero-form .email-input,
+    .home-hero-form .submit-btn {
+        width: 100%;
+    }
 }
 
 /* Newsletter Signup Section */
@@ -6119,6 +6408,28 @@ body.koe-letter-page .navbar {
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
+.koe-meta-list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 0.8rem;
+    color: #6b6560;
+}
+
+.koe-meta-list li {
+    position: relative;
+}
+
+.koe-meta-list li + li::before {
+    content: "·";
+    position: absolute;
+    left: -11px;
+    color: #9a948c;
+}
+
 .koe-meta {
     font-size: 0.75rem;
     color: #6b6560;
@@ -6526,6 +6837,513 @@ body.koe-letter-page .navbar {
     border-radius: 4px;
 }
 
+/* End-of-letter product CTA — matches landing page offer */
+.koe-thanks {
+    margin: 2.5em 0 0.35em;
+    font-size: 1rem;
+    color: #0c0c0c;
+}
+
+.koe-signoff {
+    margin: 0 0 0;
+    font-size: 1rem;
+    color: #6b6560;
+    font-style: italic;
+}
+
+/* Dan Koe "When You're Ready" product band — outside cream sheet */
+.koe-ready-cta {
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    padding: 56px 24px 64px;
+}
+
+.koe-ready-cta-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.koe-ready-cta-heading {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+    font-weight: 400;
+    color: #f6f4ef;
+    margin: 0 0 28px;
+    line-height: 1.25;
+}
+
+.koe-ready-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 24px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 6px;
+}
+
+.koe-ready-card-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.koe-ready-card-title {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #fff;
+    margin: 0 0 10px;
+    line-height: 1.2;
+}
+
+.koe-ready-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #aaa;
+    margin: 0 0 14px;
+}
+
+.koe-ready-card-desc strong {
+    color: #eee;
+    font-weight: 600;
+}
+
+.koe-ready-card-price {
+    margin: 0 0 16px;
+    font-size: 1rem;
+}
+
+.koe-ready-card-was {
+    color: #666;
+    text-decoration: line-through;
+    margin-right: 8px;
+}
+
+.koe-ready-card-now {
+    color: #c9a227;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+.koe-ready-card-btn {
+    display: inline-block;
+    padding: 11px 22px;
+    background: #f6f4ef;
+    color: #0c0c0c;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+}
+
+.koe-ready-card-btn:hover {
+    background: #fff;
+}
+
+.koe-subscribe-top--public {
+    max-width: 720px;
+    margin: 0 auto 0;
+    padding: 32px 24px 28px;
+    text-align: center;
+    background: #050505;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.koe-subscribe-top--public .koe-subscribe-top-label {
+    font-family: Inter, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.koe-subscribe-top--public .koe-subscribe-top-lead {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0 auto 18px;
+    max-width: 520px;
+}
+
+.koe-subscribe-top--public .koe-subscribe-top-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #f6f4ef;
+    color: #0c0c0c;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.koe-subscribe-top--public .koe-subscribe-top-btn:hover {
+    background: #fff;
+}
+
+.koe-author-bio {
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 64px 24px 80px;
+}
+
+.koe-author-bio-card {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 32px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+.koe-author-bio-avatar-wrap {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    padding: 3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9a227 0%, rgba(201, 162, 39, 0.25) 50%, rgba(255, 255, 255, 0.15) 100%);
+}
+
+.koe-author-bio-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid #000;
+}
+
+.koe-author-bio-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.koe-author-bio-title {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    font-weight: 400;
+    color: #fff;
+    margin: 0 0 16px;
+    line-height: 1.15;
+}
+
+.koe-author-bio-lead {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.koe-author-bio-stats {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 0 0 24px;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.koe-author-bio-stats li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.koe-author-bio-stats li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.koe-author-bio-stat-num {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+}
+
+.koe-author-bio-stat-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.koe-author-bio-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 28px;
+    font-family: 'Inter', sans-serif;
+}
+
+.koe-author-bio-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.koe-author-bio-btn {
+    display: inline-block;
+    padding: 14px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.koe-author-bio-btn--primary {
+    background: #c9a227;
+    color: #000;
+}
+
+.koe-author-bio-btn--primary:hover {
+    background: #fff;
+    color: #000;
+}
+
+.koe-author-bio-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.koe-author-bio-links a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.koe-author-bio-links a:hover {
+    color: #fff;
+    border-color: rgba(201, 162, 39, 0.5);
+    background: rgba(201, 162, 39, 0.08);
+}
+
+@media (max-width: 480px) {
+    .koe-author-bio {
+        padding: 48px 16px 64px;
+    }
+
+    .koe-author-bio-card {
+        padding: 32px 20px 28px;
+    }
+
+    .koe-author-bio-stats li {
+        padding: 0 14px;
+    }
+
+    .koe-author-bio-stat-num {
+        font-size: 1.1rem;
+    }
+}
+
+.koe-body .koe-product-cta {
+    margin-top: 2.75em;
+    padding: 32px 28px 28px;
+    background: #080808;
+    color: #f6f4ef;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.koe-body .koe-product-cta-eyebrow {
+    font-family: Inter, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c9a227;
+    margin-bottom: 14px;
+}
+
+.koe-body .koe-product-cta-cover {
+    display: block;
+    width: fit-content;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.koe-body .koe-product-cta-cover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+.koe-body .koe-product-cta-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.koe-body .koe-product-cta-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.koe-body .koe-product-cta-highlight {
+    color: #c9a227;
+}
+
+.koe-body .koe-product-cta-lead {
+    font-family: Inter, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #c8c4bc;
+    margin-bottom: 18px;
+    max-width: 36em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.koe-body .koe-product-cta-checks {
+    list-style: none;
+    margin: 0 auto 20px;
+    padding: 0;
+    max-width: 28em;
+    text-align: left;
+}
+
+.koe-body .koe-product-cta-checks li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.55em;
+    font-family: Inter, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #e0ddd6;
+}
+
+.koe-body .koe-product-cta-checks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #c9a227;
+    font-weight: 700;
+}
+
+.koe-body .koe-product-cta-roi {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #b8b4ac;
+    margin-bottom: 22px;
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.koe-body .koe-product-cta-buy {
+    padding-top: 8px;
+}
+
+.koe-body .koe-product-cta-price-label {
+    font-family: Inter, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.koe-body .koe-product-cta-prices {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.koe-body .koe-product-cta-was {
+    font-family: Inter, sans-serif;
+    font-size: 1.1rem;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.koe-body .koe-product-cta-now {
+    font-family: Inter, sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #c9a227;
+    letter-spacing: -0.02em;
+}
+
+.koe-body .koe-product-cta-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #f6f4ef;
+    color: #0c0c0c;
+    font-family: Inter, sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.koe-body .koe-product-cta-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+.koe-body .koe-product-cta-micro {
+    font-family: Inter, sans-serif;
+    font-size: 0.68rem;
+    color: #666;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
 .koe-body .cta-block p {
     font-family: Inter, sans-serif;
     font-size: 0.88rem;
@@ -6668,10 +7486,79 @@ body.koe-letter-page .navbar {
 }
 
 .koe-footer {
+    background: #000;
     text-align: center;
-    padding: 32px 20px 48px;
-    font-size: 0.72rem;
-    color: #444;
+    padding: 36px 40px 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.koe-footer-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 24px;
+}
+
+.koe-footer-center {
+    justify-self: center;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+}
+
+.koe-footer-monogram {
+    justify-self: start;
+    font-size: 28px;
+}
+
+.koe-footer-link {
+    justify-self: end;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.koe-footer-link:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+@media (max-width: 640px) {
+    .koe-footer {
+        padding: 28px 16px 40px;
+    }
+
+    .koe-footer-container {
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+    }
+
+    .koe-footer-center {
+        font-size: 10px;
+        letter-spacing: 0.02em;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .koe-footer-monogram {
+        font-size: 24px;
+    }
+
+    .koe-footer-link {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 400px) {
+    .koe-footer-center {
+        font-size: 9px;
+    }
 }
 
 body.koe-letter-page .sr-only {
@@ -6788,12 +7675,53 @@ body.koe-letter-page .sr-only {
     color: #c9a227;
 }
 
-.koe-archive-meta {
-    margin: 0;
-    padding-top: 14px;
-    border-top: 1px solid #222;
+.koe-archive-byline {
+    margin: 12px 0 0;
     font-size: 0.78rem;
     color: #666;
+    font-family: Inter, sans-serif;
+}
+
+.koe-archive-card--extra {
+    display: none;
+}
+
+.koe-archive-grid.is-expanded .koe-archive-card--extra {
+    display: flex;
+}
+
+.koe-archive-load-wrap {
+    text-align: center;
+    padding: 8px 0 16px;
+}
+
+.koe-archive-load-more {
+    display: inline-block;
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #ccc;
+    font-family: Inter, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.koe-archive-load-more:hover {
+    border-color: #c9a227;
+    color: #fff;
+}
+
+/* Public site — no date/word-count/format stats for readers */
+.koe-archive-meta,
+.article-preview-meta,
+.koe-letter-page .article-meta,
+.koe-letter-page .koe-body .article-meta,
+.newsletter-articles-section .article-preview-meta {
+    display: none !important;
 }
 
 .koe-archive-foot {
@@ -6820,8 +7748,7 @@ body.koe-letter-page--reader .koe-footer {
 body.koe-letter-page--reader .substack-guide,
 body.koe-letter-page--reader .koe-author-tools,
 body.koe-letter-page--reader .substack-box,
-body.koe-letter-page--reader .koe-subscribe-top,
-body.koe-letter-page--reader .koe-subscribe {
+body.koe-letter-page--reader .koe-subscribe:not(.koe-subscribe-top--public) {
     display: none !important;
 }
 
@@ -6930,5 +7857,16 @@ body.koe-letter-page .koe-featured img {
     }
     .koe-archive-grid-wrap {
         padding: 28px 16px 40px;
+    }
+    .koe-ready-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .koe-ready-card-cover {
+        max-width: 160px;
+        margin: 0 auto;
+    }
+    .koe-sheet {
+        padding: 36px 22px 44px;
     }
 }

@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
 import { CLASSIC_HERO_MAP, CLASSIC_DATE_MAP } from "./newsletter-hero-map.mjs";
 import { renderDanKoeLetterPage } from "./dan-koe-letter-page.mjs";
+import { renderLetterProductCta } from "./letter-product-cta.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -19,6 +20,11 @@ function stripArticleExtras(body) {
   return body
     .replace(/<figure class="article-feature">[\s\S]*?<\/figure>/g, "")
     .replace(/<section class="article-help">[\s\S]*?<\/section>/g, "")
+    .replace(/<div class="cta-block">[\s\S]*?<\/div>/g, "")
+    .replace(/<aside class="koe-product-cta">[\s\S]*?<\/aside>/g, "")
+    .replace(/<section class="koe-ready-cta">[\s\S]*?<\/section>/g, "")
+    .replace(/<div class="article-meta">[\s\S]*?<\/div>/g, "")
+    .replace(/<p>Thank you for reading\.<\/p>\s*/gi, "")
     .trim();
 }
 
@@ -54,6 +60,7 @@ const articles = LEGACY_NEWSLETTER_ARTICLES.map((a, i) => {
     tag: a.meta.split("·")[0]?.trim() || "Letter",
     heroSrc: HERO_MAP[a.href] || "assets/newsletter-dan-koe/png/email-01-hero-woodcut.png",
     bodyHtml,
+    productCtaHtml: renderLetterProductCta({ href: "0-to-1K-X-System/LANDING.html" }),
     assetPrefix: "",
     homeHref: "index.html#newsletters",
     prev: prev ? { href: prev.href, label: slugLabel(prev.href) } : null,

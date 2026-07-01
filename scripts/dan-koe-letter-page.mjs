@@ -1,15 +1,13 @@
 /**
- * Dan Koe–style letter page — featured woodcut + cream reading sheet (article only).
+ * Dan Koe–style letter page — featured hero + cream reading sheet.
  */
 import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
+import { escHtml } from "./substack-dan-koe-format.mjs";
+import { renderKoeSubscribeTop, renderKoeAuthorBio } from "./dan-koe-public-ui.mjs";
+import { renderSiteNav } from "./site-nav.mjs";
+import { renderSiteFooter } from "./site-footer.mjs";
 
-export function escHtml(s) {
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
+export { escHtml, renderSiteNav, renderSiteFooter };
 
 const COPY_JS = `
 function flashBtn(btn, okText) {
@@ -28,27 +26,15 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
 ${RICH_PASTE_JS}
 `;
 
-export function renderSiteNav(assetPrefix = "") {
-  const p = assetPrefix;
-  return `<nav class="navbar">
-    <div class="nav-container">
-      <a href="${p}index.html" class="brand">Andrei Lucian</a>
-      <div class="nav-links">
-        <a href="${p}index.html#newsletter-signup" class="nav-link">Newsletters</a>
-        <a href="${p}ghostwriting.html" class="nav-link">Need a Ghostwriter?</a>
-      </div>
-    </div>
-  </nav>`;
-}
-
 /**
  * @param {object} opts
- * @param {boolean} [opts.readerMode=true] - public page: article only, no paste/subscribe chrome
+ * @param {boolean} [opts.readerMode=true] - public page: article only, no paste chrome
  */
 export function renderDanKoeLetterPage(opts) {
   const p = opts.assetPrefix || "";
   const home = opts.homeHref || `${p}index.html#newsletters`;
   const readerMode = opts.readerMode !== false;
+  const signupHref = opts.signupHref || `${p}index.html#newsletter-signup`;
 
   const navPrev = opts.prev
     ? `<a class="koe-nav-link" href="${escHtml(opts.prev.href)}">← ${escHtml(opts.prev.label)}</a>`
@@ -73,29 +59,27 @@ export function renderDanKoeLetterPage(opts) {
 
   const richRoot = !readerMode && opts.copy?.richId ? ` id="${escHtml(opts.copy.richId)}"` : "";
 
-  const metaParts = !readerMode ? [opts.dateLabel, "Andrei Lucian"].filter(Boolean) : [];
-
   const metaLine =
-    metaParts.length > 0
-      ? `<p class="koe-meta">${metaParts.map((x) => escHtml(x)).join(" · ")}</p>`
+    opts.dateLabel
+      ? `<ul class="koe-meta-list">
+    <li>${escHtml(opts.dateLabel)}</li>
+    <li>Andrei Lucian</li>
+  </ul>`
       : "";
 
-  const subscribeTop =
-    readerMode
-      ? ""
-      : `<aside class="koe-subscribe-top">
-    <p class="koe-subscribe-top-label">Not subscribed yet?</p>
-    <p class="koe-subscribe-top-lead">Get letters on building your audience, writing with proof, and turning ideas into income.</p>
-    <a class="koe-subscribe-top-btn" href="${escHtml(home.replace("#newsletters", "#newsletter-signup"))}">Subscribe free</a>
-  </aside>`;
+  const subscribeTop = readerMode
+    ? renderKoeSubscribeTop({ assetPrefix: p, signupHref })
+    : renderKoeSubscribeTop({ assetPrefix: p, signupHref });
 
   const subscribeBottom = readerMode
     ? ""
     : `<section class="koe-subscribe">
       <p class="koe-subscribe-label">The Andrei Lucian Letters</p>
       <p class="koe-subscribe-lead">Discover how you can use your ideas to bring clarity, readers, and income online.</p>
-      <a class="koe-subscribe-btn" href="${escHtml(home.replace("#newsletters", "#newsletter-signup"))}">Subscribe free</a>
+      <a class="koe-subscribe-btn" href="${escHtml(signupHref)}">Subscribe free</a>
     </section>`;
+
+  const productCta = opts.productCtaHtml || "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -104,14 +88,14 @@ export function renderDanKoeLetterPage(opts) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escHtml(opts.title)} | Andrei Lucian Letters</title>
   <link rel="stylesheet" href="${p}styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class="koe-letter-page${readerMode ? " koe-letter-page--reader" : ""}">
   ${renderSiteNav(p)}
 
-  ${subscribeTop}
-
   <article class="koe-article"${richRoot}>
+    ${subscribeTop}
+
     <figure class="koe-featured">
       <img data-hero-img src="${escHtml(opts.heroSrc)}" alt="" />
     </figure>
@@ -124,9 +108,12 @@ export function renderDanKoeLetterPage(opts) {
         <div class="koe-body" data-letter-root>
           ${opts.bodyHtml}
         </div>
-        <p class="koe-signoff">— Andrei</p>
+        <p class="koe-thanks">Thank you for reading.</p>
+        <p class="koe-signoff">– Andrei</p>
       </div>
     </div>
+
+    ${productCta}
 
     <nav class="koe-article-nav">
       ${navPrev}
@@ -138,9 +125,9 @@ export function renderDanKoeLetterPage(opts) {
     ${subscribeBottom}
   </article>
 
-  <footer class="koe-footer">
-    <p>© ${new Date().getFullYear()} Andrei Lucian</p>
-  </footer>
+  ${renderKoeAuthorBio({ assetPrefix: p, signupHref })}
+
+  ${renderSiteFooter(p)}
 
   ${!readerMode || opts.copy ? `<script>${COPY_JS}</script>` : ""}
 </body>

@@ -11,11 +11,12 @@ import {
   formatDanKoeLetter,
   sectionsToHtml,
   escHtml,
-  CLOSINGS,
 } from "./substack-dan-koe-format.mjs";
 import { getHeroSvg, getHeroCaption } from "./substack-dan-koe-heroes.mjs";
 import { getDiagramExport, getDiagramCaption } from "./substack-dan-koe-diagrams.mjs";
 import { renderDanKoeLetterPage } from "./dan-koe-letter-page.mjs";
+import { renderLetterProductCta } from "./letter-product-cta.mjs";
+import { getPremiumLetterDates, formatLetterDate } from "./letter-dates.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -24,21 +25,16 @@ const PNG_DIR = path.join(HERO_DIR, "png");
 const DIAGRAM_DIR = path.join(HERO_DIR, "diagrams");
 const LETTERS_DIR = path.join(ROOT, "newsletters");
 
-const RANGE_START = new Date(2026, 6, 3);
-
-function biweeklyFridays(start, count) {
-  const dates = [];
-  const d = new Date(start);
-  while (dates.length < count) {
-    if (d.getDay() === 5) dates.push(new Date(d));
-    d.setDate(d.getDate() + 1);
-  }
-  return dates;
+function stripPublicClosing(html) {
+  return html
+    .replace(/<aside class="koe-product-cta">[\s\S]*?<\/aside>/g, "")
+    .replace(/<p>Thank you for reading\.<\/p>\s*/gi, "")
+    .trim();
 }
 
 function buildEmails() {
   const topics = getDanKoeEmails();
-  const dates = biweeklyFridays(RANGE_START, topics.length);
+  const dates = getPremiumLetterDates(topics.length);
 
   return topics.map((topic, i) => {
     const formatted = formatDanKoeLetter(topic);
@@ -49,12 +45,7 @@ function buildEmails() {
     return {
       ...topic,
       ...formatted,
-      date: dates[i].toLocaleDateString("en-US", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
+      date: formatLetterDate(dates[i]),
       heroRel,
       pageFile,
       pageHref: `newsletters/${pageFile}`,
@@ -66,13 +57,7 @@ function buildEmails() {
 }
 
 function renderLetterPage(e, prev, next) {
-  const closing = CLOSINGS[e.format] || "That's it.";
-  const bodyHtml = `${e.htmlBody}
-<p>${escHtml(closing)}</p>
-<div class="cta-block">
-  <p>When your system is sharp enough to ship daily —</p>
-  <p><a href="https://andreilucian.com/0-to-1K-X-System/LANDING.html">The X System → 0 to 1K followers in 90 days</a></p>
-</div>`;
+  const bodyHtml = stripPublicClosing(e.htmlBody);
 
   return renderDanKoeLetterPage({
     title: e.subject,
@@ -80,6 +65,7 @@ function renderLetterPage(e, prev, next) {
     dateLabel: e.date,
     heroSrc: e.heroRel,
     bodyHtml,
+    productCtaHtml: renderLetterProductCta({ href: "0-to-1K-X-System/LANDING.html", assetPrefix: "../" }),
     assetPrefix: "../",
     homeHref: "../index.html#newsletters",
     prev: prev ? { href: prev.pageFile, label: `#${String(prev.num).padStart(2, "0")}` } : null,

@@ -58,6 +58,20 @@ document.addEventListener('DOMContentLoaded', function() {
         unlockArticleBody();
     }
 
+    // Dan Koe-style "Load more" on homepage letter archive
+    const loadMoreBtn = document.getElementById('loadMoreLetters');
+    const archiveGrid = document.getElementById('letterArchiveGrid');
+    if (loadMoreBtn && archiveGrid) {
+        const extraCards = archiveGrid.querySelectorAll('[data-archive-extra]');
+        if (extraCards.length > 0) {
+            loadMoreBtn.hidden = false;
+            loadMoreBtn.addEventListener('click', function() {
+                archiveGrid.classList.add('is-expanded');
+                loadMoreBtn.hidden = true;
+            });
+        }
+    }
+
     if (articleUnlockForm) {
         articleUnlockForm.addEventListener('submit', function(e) {
             e.preventDefault();

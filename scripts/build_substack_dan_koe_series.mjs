@@ -18,6 +18,8 @@ import { getDiagramExport, getDiagramCaption } from "./substack-dan-koe-diagrams
 import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
 import { buildLetterPages } from "./build_newsletter_letter_pages.mjs";
 import { renderSiteNav } from "./dan-koe-letter-page.mjs";
+import { renderLetterProductCta } from "./letter-product-cta.mjs";
+import { biweeklyFridays, PREMIUM_RANGE_START } from "./letter-dates.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -28,21 +30,9 @@ const OUT_HTML = path.join(ROOT, "substack-12-emails-dan-koe-style.html");
 const PASTE_HTML = path.join(ROOT, "substack-12-emails-paste-kit.html");
 const GALLERY_HTML = path.join(ROOT, "newsletter-graphics-gallery.html");
 
-const RANGE_START = new Date(2026, 6, 3); // Fri Jul 3, 2026 — biweekly
-
-function biweeklyFridays(start, count) {
-  const dates = [];
-  const d = new Date(start);
-  while (dates.length < count) {
-    if (d.getDay() === 5) dates.push(new Date(d));
-    d.setDate(d.getDate() + 1);
-  }
-  return dates;
-}
-
 function buildEmails() {
   const topics = getDanKoeEmails();
-  const dates = biweeklyFridays(RANGE_START, topics.length);
+  const dates = biweeklyFridays(PREMIUM_RANGE_START, topics.length);
 
   return topics.map((topic, i) => {
     const formatted = formatDanKoeLetter(topic);
@@ -144,10 +134,7 @@ function letterArticleHtml(e) {
       <p class="subtitle">${escHtml(e.preheader)}</p>
       <div class="letter-body">
         ${e.htmlBody}
-        <div class="cta-block">
-          <p>When your system is sharp enough to ship daily —</p>
-          <p><a href="https://andreilucian.com/0-to-1K-X-System/LANDING.html">The X System → 0 to 1K followers in 90 days</a></p>
-        </div>
+        ${renderLetterProductCta({ href: "0-to-1K-X-System/LANDING.html" })}
       </div>
     </article>`;
 }
@@ -181,7 +168,6 @@ function renderIndex(emails) {
 
   <section class="koe-archive-section">
     <div class="koe-archive-header">
-      <p class="koe-archive-eyebrow">The Letters</p>
       <h1 class="koe-archive-title-main">The Andrei Lucian Letters</h1>
       <p class="koe-archive-sub">Long-form letters on writing, growth, and building in public — vintage woodcut visuals, blunt proof, no guru noise.</p>
     </div>

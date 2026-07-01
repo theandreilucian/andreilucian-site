@@ -1,14 +1,11 @@
 /**
  * Long-form newsletter formatter — varied section types + unique visuals
  */
-import { X_LANDING } from "./substack-3day-format.mjs";
+import { SOFT_CTA_PLAIN } from "./letter-product-cta.mjs";
 
 export const WORD_TARGETS = { min: 1400, max: 3200 };
 
-export const SOFT_CTA = `When your system is sharp enough to ship daily:
-
-The X System → 0 to 1K followers in 90 days
-${X_LANDING}`;
+export const SOFT_CTA = SOFT_CTA_PLAIN;
 
 export const CLOSINGS = {
   essay: "Thank you for reading.",
