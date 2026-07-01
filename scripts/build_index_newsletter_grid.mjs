@@ -1,34 +1,40 @@
 /**
- * Regenerate homepage newsletter grids — classic + premium woodcut letters.
+ * Regenerate homepage letter archive — Dan Koe grid with Read Full Post links.
  * Run: node scripts/build_index_newsletter_grid.mjs
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { getDanKoeEmails } from "./substack-dan-koe-topics.mjs";
-import { formatDanKoeLetter } from "./substack-dan-koe-format.mjs";
 import { LEGACY_NEWSLETTER_ARTICLES } from "./legacy-newsletter-articles.mjs";
+import { CLASSIC_HERO_MAP } from "./newsletter-hero-map.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const INDEX = path.join(ROOT, "index.html");
 
-const LEGACY_START = "<!-- LEGACY_GRID_START -->";
-const LEGACY_END = "<!-- LEGACY_GRID_END -->";
-const LETTERS_START = "<!-- NEWSLETTER_GRID_START -->";
-const LETTERS_END = "<!-- NEWSLETTER_GRID_END -->";
+const GRID_START = "<!-- LETTER_ARCHIVE_GRID_START -->";
+const GRID_END = "<!-- LETTER_ARCHIVE_GRID_END -->";
 
-const RANGE_START = new Date(2026, 6, 3);
+const ARCHIVE_SECTION = `    <!-- Newsletter — Dan Koe letter archive -->
+    <section class="koe-archive-section" id="newsletters">
+        <div class="koe-archive-header">
+            <p class="koe-archive-eyebrow">The Letters</p>
+            <h2 class="koe-archive-title-main">The Andrei Lucian Letters</h2>
+            <p class="koe-archive-sub">
+                Deep dives on writing, audience growth, and building a one-person business online.
+            </p>
+        </div>
 
-function biweeklyFridays(start, count) {
-  const dates = [];
-  const d = new Date(start);
-  while (dates.length < count) {
-    if (d.getDay() === 5) dates.push(new Date(d));
-    d.setDate(d.getDate() + 1);
-  }
-  return dates;
-}
+        <div class="koe-archive-grid-wrap">
+            <div class="koe-archive-grid">
+                ${GRID_START}
+                ${GRID_END}
+            </div>
+        </div>
+    </section>
+
+    <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">`;
 
 function escHtml(s) {
   return String(s)
@@ -38,53 +44,58 @@ function escHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
-function renderLegacyGrid() {
-  return LEGACY_NEWSLETTER_ARTICLES.map(
-    (a) => `                <a href="${escHtml(a.href)}" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        ${a.visual}
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">${escHtml(a.title)}</h4>
-                        <p class="article-preview-excerpt">${escHtml(a.excerpt)}</p>
-                        <span class="article-preview-meta">${escHtml(a.meta)}</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>`
-  ).join("\n\n");
+function renderArchiveCard({ href, img, title, excerpt }) {
+  return `                <article class="koe-archive-card">
+                    <a href="${escHtml(href)}" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="${escHtml(img)}" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="${escHtml(href)}">${escHtml(title)}</a></h3>
+                    <p class="koe-archive-excerpt">${escHtml(excerpt)}</p>
+                    <a href="${escHtml(href)}" class="koe-archive-read">Read Full Post</a>
+                </article>`;
 }
 
-function renderLettersGrid() {
+function renderPremiumCards() {
   const letters = getDanKoeEmails();
-  const dates = biweeklyFridays(RANGE_START, letters.length);
 
-  return letters
-    .map((e, i) => {
-      const formatted = formatDanKoeLetter(e);
-      const p = String(e.num).padStart(2, "0");
-      const href = `newsletters/letter-${p}.html`;
-      const img = `assets/newsletter-dan-koe/png/email-${p}-hero-woodcut.png`;
-      const dateStr = dates[i].toLocaleDateString("en-US", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      });
-      return `                <a href="${href}" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="${img}" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#${p}</span>
-                        <h4 class="article-preview-title">${escHtml(e.subject)}</h4>
-                        <p class="article-preview-excerpt">${escHtml(e.preheader)}</p>
-                        <span class="article-preview-meta">${dateStr} · ${formatted.words} words · ${escHtml(e.format || "essay")}</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>`;
+  return letters.map((e) => {
+    const p = String(e.num).padStart(2, "0");
+    return renderArchiveCard({
+      href: `newsletters/letter-${p}.html`,
+      img: `assets/newsletter-dan-koe/png/email-${p}-hero-woodcut.png`,
+      title: e.subject,
+      excerpt: e.preheader,
+    });
+  });
+}
+
+function renderClassicCards() {
+  return LEGACY_NEWSLETTER_ARTICLES.map((a) =>
+    renderArchiveCard({
+      href: a.href,
+      img: CLASSIC_HERO_MAP[a.href] || "assets/newsletter-dan-koe/png/email-01-hero-woodcut.png",
+      title: a.title,
+      excerpt: a.excerpt,
     })
-    .join("\n\n");
+  );
+}
+
+function renderCombinedGrid() {
+  return [...renderPremiumCards(), ...renderClassicCards()].join("\n\n");
+}
+
+function ensureArchiveSection(html) {
+  if (!html.includes("<!-- Newsletter")) {
+    return html;
+  }
+  const start = html.indexOf("<!-- Newsletter");
+  const end = html.indexOf('<div class="more-newsletters-wrapper');
+  if (start === -1 || end === -1) {
+    throw new Error("Could not find newsletter section in index.html");
+  }
+  return html.slice(0, start) + ARCHIVE_SECTION + "\n        " + html.slice(end);
 }
 
 function replaceBetween(html, startMark, endMark, content) {
@@ -97,10 +108,9 @@ function replaceBetween(html, startMark, endMark, content) {
 }
 
 let html = fs.readFileSync(INDEX, "utf8");
-html = replaceBetween(html, LEGACY_START, LEGACY_END, renderLegacyGrid());
-html = replaceBetween(html, LETTERS_START, LETTERS_END, renderLettersGrid());
+html = ensureArchiveSection(html);
+html = replaceBetween(html, GRID_START, GRID_END, renderCombinedGrid());
 fs.writeFileSync(INDEX, html, "utf8");
 
-console.log(
-  `Updated index.html: ${LEGACY_NEWSLETTER_ARTICLES.length} classic + ${getDanKoeEmails().length} premium letter cards`
-);
+const total = getDanKoeEmails().length + LEGACY_NEWSLETTER_ARTICLES.length;
+console.log(`Updated index.html: ${total} archive cards with Read Full Post links`);

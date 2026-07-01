@@ -52,414 +52,274 @@
         </div>
     </nav>
 
-    <!-- Newsletter Signup Section -->
-    <section class="newsletter-signup" id="newsletter-signup">
-        <div class="signup-content">
-            <img src="assets/images/logo.png" alt="Andrei Lucian" class="signup-author-photo" loading="eager" onerror="this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1'; this.style.backgroundColor='#1a1a1a'; this.style.border='2px solid #A0785A';">
-            <div class="signup-label">Not A Subscriber Yet?</div>
-            <p class="signup-subtitle">
-                Join <strong>1000+ creators</strong> who get weekly strategies on digital writing, personal branding, and turning their writing into real income.
+                                                                        <!-- Newsletter — Dan Koe letter archive -->
+    <section class="koe-archive-section" id="newsletters">
+        <div class="koe-archive-header">
+            <p class="koe-archive-eyebrow">The Letters</p>
+            <h2 class="koe-archive-title-main">The Andrei Lucian Letters</h2>
+            <p class="koe-archive-sub">
+                Deep dives on writing, audience growth, and building a one-person business online.
             </p>
-            <form id="newsletterForm" class="newsletter-form">
-                <input 
-                    type="email" 
-                    id="emailInput" 
-                    class="email-input" 
-                    placeholder="Your Email"
-                    required
-                >
-                <button type="submit" class="submit-btn">Read For Free</button>
-            </form>
-            <div id="formMessage" class="form-message"></div>
-            <div class="signup-social-links">
-                <a href="https://x.com/theandreilucian" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="X (Twitter)">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M15.5 2h2.5l-5.5 6.25L18 15h-4.5l-3.5-4.5L6 15H2l5-5.75L2 2h4.5l3 4L13 2h2.5z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/andrei-lucian-0498901b8/" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M4.5 2C3.67 2 3 2.67 3 3.5v13c0 .83.67 1.5 1.5 1.5h13c.83 0 1.5-.67 1.5-1.5v-13c0-.83-.67-1.5-1.5-1.5h-13zM7 7h2v8H7V7zm1-2a1 1 0 1 1 0 2 1 1 0 0 1-2 0zm3 2h1.5v8H11V7zm2.5 0H15v5.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V7h1.5v8H17v-3.5c0-1.38-1.12-2.5-2.5-2.5S12 10.12 12 11.5V15h-1V7z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/theandreilucian/" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10 2.5c2.76 0 3.08.01 4.17.06.98.04 1.51.18 1.86.3.47.15.8.33 1.15.68.35.35.53.68.68 1.15.12.35.26.88.3 1.86.05 1.09.06 1.41.06 4.17s-.01 3.08-.06 4.17c-.04.98-.18 1.51-.3 1.86-.15.47-.33.8-.68 1.15-.35.35-.68.53-1.15.68-.35.12-.88.26-1.86.3-1.09.05-1.41.06-4.17.06s-3.08-.01-4.17-.06c-.98-.04-1.51-.18-1.86-.3-.47-.15-.8-.33-1.15-.68-.35-.35-.53-.68-.68-1.15-.12-.35-.26-.88-.3-1.86-.05-1.09-.06-1.41-.06-4.17s.01-3.08.06-4.17c.04-.98.18-1.51.3-1.86.15-.47.33-.8.68-1.15.35-.35.68-.53 1.15-.68.35-.12.88-.26 1.86-.3 1.09-.05 1.41-.06 4.17-.06zm0-2.5C7.24 0 6.92.01 5.83.06 4.85.1 4.32.24 3.97.36 3.5.51 3.17.69 2.82 1.04 2.47 1.39 2.29 1.72 2.14 2.19 2.02 2.66 1.98 3.64 1.93 4.73 1.92 5.05 1.92 7.81 1.92 10.57s.01 5.52.06 6.61c.04.98.18 1.51.3 1.86.15.47.33.8.68 1.15.35.35.68.53 1.15.68.35.12.88.26 1.86.3 1.09.05 1.41.06 4.17.06s3.08-.01 4.17-.06c.98-.04 1.51-.18 1.86-.3.47-.15.8-.33 1.15-.68.35-.35.53-.68.68-1.15.12-.35.26-.88.3-1.86.05-1.09.06-1.41.06-4.17s-.01-3.08-.06-4.17c-.04-.98-.18-1.51-.3-1.86-.15-.47-.33-.8-.68-1.15-.35-.35-.68-.53-1.15-.68-.35-.12-.88-.26-1.86-.3-1.09-.05-1.41-.06-4.17-.06z"/>
-                        <path d="M10 5.38c-2.55 0-4.62 2.07-4.62 4.62s2.07 4.62 4.62 4.62 4.62-2.07 4.62-4.62-2.07-4.62-4.62-4.62zm0 7.62c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6.25-7.5c-.6 0-1.08.48-1.08 1.08s.48 1.08 1.08 1.08 1.08-.48 1.08-1.08-.48-1.08-1.08-1.08z"/>
-                    </svg>
-                </a>
-                <a href="https://www.threads.com/@theandreilucian?xmt=AQF08f4BPsoVluADTOnwVUCo6OOm_cbEfWUj0e_bLGcqes0" target="_blank" rel="noopener noreferrer" class="signup-social-link" aria-label="Threads">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 1.5c3.59 0 6.5 2.91 6.5 6.5s-2.91 6.5-6.5 6.5S3.5 13.59 3.5 10 6.41 3.5 10 3.5z"/>
-                        <path d="M10 6.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5S11.93 6.5 10 6.5zm0 5.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                        <circle cx="10" cy="10" r="1"/>
-                    </svg>
-                </a>
+        </div>
+
+        <div class="koe-archive-grid-wrap">
+            <div class="koe-archive-grid">
+                <!-- LETTER_ARCHIVE_GRID_START -->
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-01.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-01-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-01.html">Your posts sound like everyone else's (and the algorithm knows)</a></h3>
+                    <p class="koe-archive-excerpt">Generic content dies in the feed. Here's how I fixed mine.</p>
+                    <a href="newsletters/letter-01.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-02.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-02-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-02.html">I tracked every input for 30 days — here's the spreadsheet</a></h3>
+                    <p class="koe-archive-excerpt">Posts, replies, DMs. Not vibes.</p>
+                    <a href="newsletters/letter-02.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-03.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-03-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-03.html">The 7 months nobody was watching (and why I'm glad)</a></h3>
+                    <p class="koe-archive-excerpt">Flat graph · loud doubt · quiet reps</p>
+                    <a href="newsletters/letter-03.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-04.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-04-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-04.html">Stop optimizing hooks. Pick one metric for 90 days.</a></h3>
+                    <p class="koe-archive-excerpt">Confused creators chase everything. Clear ones count one thing.</p>
+                    <a href="newsletters/letter-04.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-05.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-05-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-05.html">A letter to me at 200 followers</a></h3>
+                    <p class="koe-archive-excerpt">What I'd tell the guy about to quit in month 4</p>
+                    <a href="newsletters/letter-05.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-06.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-06-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-06.html">The machine I run every morning (before coffee, before doubt)</a></h3>
+                    <p class="koe-archive-excerpt">Inputs → lag → output. No inspiration required.</p>
+                    <a href="newsletters/letter-06.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-07.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-07-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-07.html">One post. 11 likes. 4 DMs. The one I almost deleted.</a></h3>
+                    <p class="koe-archive-excerpt">A post-mortem on a post that wasn't a hit</p>
+                    <a href="newsletters/letter-07.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-08.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-08-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-08.html">Guru post vs my post — only one got saved</a></h3>
+                    <p class="koe-archive-excerpt">Specificity is the whole game in 2026</p>
+                    <a href="newsletters/letter-08.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-09.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-09-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-09.html">50 replies a day for 7 days — field report</a></h3>
+                    <p class="koe-archive-excerpt">Awkward → pattern → DMs. The log.</p>
+                    <a href="newsletters/letter-09.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-10.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-10-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-10.html">I posted the same lesson on 𝕏 and LinkedIn — different results</a></h3>
+                    <p class="koe-archive-excerpt">Two platforms. Two games. One idea.</p>
+                    <a href="newsletters/letter-10.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-11.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-11-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-11.html">Why 47 people open every email (and it's not the subject line)</a></h3>
+                    <p class="koe-archive-excerpt">Trust compounds slower than hooks — and lasts longer</p>
+                    <a href="newsletters/letter-11.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="newsletters/letter-12.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-12-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="newsletters/letter-12.html">5.3K followers, zero viral posts — the full honest log</a></h3>
+                    <p class="koe-archive-excerpt">3 years · daily reps · no lottery ticket</p>
+                    <a href="newsletters/letter-12.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-one-person-business.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-04-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-one-person-business.html">Best One-Person Business To Start In 2025</a></h3>
+                    <p class="koe-archive-excerpt">The best one-person business to start in 2025 is a personal brand. This article explains why that is and exactly how you can do it to get freedom.</p>
+                    <a href="article-one-person-business.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-11-steps-freedom.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-04-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-11-steps-freedom.html">7 Steps To Freedom</a></h3>
+                    <p class="koe-archive-excerpt">I built a digital business that gave me time and financial freedom. Here are the 7 exact steps I took to get there.</p>
+                    <a href="article-11-steps-freedom.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-24-lessons.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-12-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-24-lessons.html">24 Lessons After 2 Years Of Creating Content</a></h3>
+                    <p class="koe-archive-excerpt">After 2 years of creating content online, here are the 24 most important lessons I've learned about building an audience and monetizing your expertise.</p>
+                    <a href="article-24-lessons.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-book-full-time.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-05-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-book-full-time.html">This Book Made Me A Full-Time Creator</a></h3>
+                    <p class="koe-archive-excerpt">One book changed everything about how I think about building a personal brand and creating income online. Here's what I learned.</p>
+                    <a href="article-book-full-time.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-authority-offer.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-08-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-authority-offer.html">The Authority Offer Blueprint</a></h3>
+                    <p class="koe-archive-excerpt">Positioning, pricing, and delivery frameworks to make &quot;yes&quot; the easiest answer for founders.</p>
+                    <a href="article-authority-offer.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-twitter-audience.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-10-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-twitter-audience.html">The Content Monetization Framework</a></h3>
+                    <p class="koe-archive-excerpt">How to turn your content into a sustainable income stream. The exact framework I used to go from $0 to 5-figures in 19 months.</p>
+                    <a href="article-twitter-audience.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-story-hooks.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-01-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-story-hooks.html">How To Write Story Hooks That Stop The Scroll</a></h3>
+                    <p class="koe-archive-excerpt">The first line determines if someone reads the rest. Learn the exact framework I use to write hooks that stop the scroll and drive engagement.</p>
+                    <a href="article-story-hooks.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-consistency-penalty.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-03-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-consistency-penalty.html">Why Platforms Punish Inactive Creators</a></h3>
+                    <p class="koe-archive-excerpt">I had 3,000 followers. Then I took a vacation and lost 300 followers. This is proof that platforms reward consistency and punish inactivity.</p>
+                    <a href="article-consistency-penalty.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+
+                <article class="koe-archive-card">
+                    <a href="article-value-first.html" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+                        <div class="koe-archive-thumb">
+                            <img src="assets/newsletter-dan-koe/png/email-11-hero-woodcut.png" alt="" loading="lazy" />
+                        </div>
+                    </a>
+                    <h3 class="koe-archive-title"><a href="article-value-first.html">Value First, Income Second</a></h3>
+                    <p class="koe-archive-excerpt">Most creators try to monetize too early. Focus on value first, build trust, and income will follow naturally.</p>
+                    <a href="article-value-first.html" class="koe-archive-read">Read Full Post</a>
+                </article>
+                <!-- LETTER_ARCHIVE_GRID_END -->
             </div>
         </div>
     </section>
 
-    <!-- Newsletter — full-bleed premium woodcut grid -->
-    <section class="newsletter-articles-section newsletter-articles-section--premium" id="newsletters">
-            <div class="newsletter-header-section newsletter-header-section--premium">
-                <div class="section-header">
-                    <p class="newsletter-eyebrow">Premium visual · Biweekly · Jul–Dec 2026</p>
-                    <h2 class="section-subtitle">The Andrei Lucian Newsletter</h2>
-                    <p class="section-description">
-                        Long-form letters on writing, growth, and building in public — vintage woodcut visuals, blunt proof, no guru noise.
-                    </p>
-                </div>
-            </div>
-
-            <div class="articles-grid-wrapper articles-grid-wrapper--woodcut">
-                <h3 class="newsletter-grid-label">Classic newsletters</h3>
-                <div class="articles-grid articles-grid--woodcut">
-                <!-- LEGACY_GRID_START -->
-                <a href="article-one-person-business.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-venn">
-                            <div class="venn-circle left">SOMETHING<br>TO SELL</div>
-                            <div class="venn-circle right">PEOPLE<br>TO SELL TO</div>
-                            <div class="venn-overlap">$</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">Best One-Person Business To Start In 2025</h4>
-                        <p class="article-preview-excerpt">The best one-person business to start in 2025 is a personal brand. This article explains why that is and exactly how you can do it to get freedom.</p>
-                        <span class="article-preview-meta">Classic · framework</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-11-steps-freedom.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-diagram">
-                            <div class="diagram-item">Pick Niche</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-row">
-                                <div class="diagram-item">Optimize Profile</div>
-                                <div class="diagram-item">Content System</div>
-                            </div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item">Offer Creation</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item highlight">Freedom</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">7 Steps To Freedom</h4>
-                        <p class="article-preview-excerpt">I built a digital business that gave me time and financial freedom. Here are the 7 exact steps I took to get there.</p>
-                        <span class="article-preview-meta">Classic · roadmap</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-24-lessons.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-pyramid">
-                            <div class="pyramid-layer top">GOALS</div>
-                            <div class="pyramid-layer">MENTORS</div>
-                            <div class="pyramid-layer">SKILLS</div>
-                            <div class="pyramid-layer">HABITS</div>
-                            <div class="pyramid-layer bottom">ACTIONS</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">24 Lessons After 2 Years Of Creating Content</h4>
-                        <p class="article-preview-excerpt">After 2 years of creating content online, here are the 24 most important lessons I've learned about building an audience and monetizing your expertise.</p>
-                        <span class="article-preview-meta">Classic · lessons</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-book-full-time.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-venn">
-                            <div class="venn-circle left">SKILLS</div>
-                            <div class="venn-circle right">NETWORK</div>
-                            <div class="venn-overlap">$</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">This Book Made Me A Full-Time Creator</h4>
-                        <p class="article-preview-excerpt">One book changed everything about how I think about building a personal brand and creating income online. Here's what I learned.</p>
-                        <span class="article-preview-meta">Classic · mindset</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-authority-offer.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-diagram">
-                            <div class="diagram-item">Expertise</div>
-                            <div class="diagram-arrow">+</div>
-                            <div class="diagram-item">Pain Point</div>
-                            <div class="diagram-arrow">+</div>
-                            <div class="diagram-item">Unique Process</div>
-                            <div class="diagram-arrow">=</div>
-                            <div class="diagram-item highlight">Authority Offer</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">The Authority Offer Blueprint</h4>
-                        <p class="article-preview-excerpt">Positioning, pricing, and delivery frameworks to make &quot;yes&quot; the easiest answer for founders.</p>
-                        <span class="article-preview-meta">Classic · offers</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-twitter-audience.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-pyramid">
-                            <div class="pyramid-layer top">AUDIENCE</div>
-                            <div class="pyramid-layer">CONTENT</div>
-                            <div class="pyramid-layer">AUTHORITY</div>
-                            <div class="pyramid-layer">OFFERS</div>
-                            <div class="pyramid-layer bottom highlight">INCOME</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">The Content Monetization Framework</h4>
-                        <p class="article-preview-excerpt">How to turn your content into a sustainable income stream. The exact framework I used to go from $0 to 5-figures in 19 months.</p>
-                        <span class="article-preview-meta">Classic · monetization</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-story-hooks.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-diagram">
-                            <div class="diagram-item">Hook</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-row">
-                                <div class="diagram-item">Story</div>
-                                <div class="diagram-item">Value</div>
-                            </div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item highlight">Engagement</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">How To Write Story Hooks That Stop The Scroll</h4>
-                        <p class="article-preview-excerpt">The first line determines if someone reads the rest. Learn the exact framework I use to write hooks that stop the scroll and drive engagement.</p>
-                        <span class="article-preview-meta">Classic · writing</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-consistency-penalty.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-diagram">
-                            <div class="diagram-item">Active</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item">Growth</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item highlight">Reward</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">Why Platforms Punish Inactive Creators</h4>
-                        <p class="article-preview-excerpt">I had 3,000 followers. Then I took a vacation and lost 300 followers. This is proof that platforms reward consistency and punish inactivity.</p>
-                        <span class="article-preview-meta">Classic · growth</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-
-                <a href="article-value-first.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--classic">
-                        <div class="visual-diagram">
-                            <div class="diagram-item">Value</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item">Trust</div>
-                            <div class="diagram-arrow">↓</div>
-                            <div class="diagram-item highlight">Income</div>
-                        </div>
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">Classic</span>
-                        <h4 class="article-preview-title">Value First, Income Second</h4>
-                        <p class="article-preview-excerpt">Most creators try to monetize too early. Focus on value first, build trust, and income will follow naturally.</p>
-                        <span class="article-preview-meta">Classic · strategy</span>
-                        <span class="article-read-link">Read full post</span>
-                    </div>
-                </a>
-                <!-- LEGACY_GRID_END -->
-                </div>
-
-                <h3 class="newsletter-grid-label newsletter-grid-label--spaced">Premium letters · 2026</h3>
-                <div class="articles-grid articles-grid--woodcut">
-                <!-- NEWSLETTER_GRID_START -->
-                <a href="newsletters/letter-01.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-01-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#01</span>
-                        <h4 class="article-preview-title">Your posts sound like everyone else's (and the algorithm knows)</h4>
-                        <p class="article-preview-excerpt">Generic content dies in the feed. Here's how I fixed mine.</p>
-                        <span class="article-preview-meta">Fri, Jul 3, 2026 · 397 words · essay</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-02.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-02-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#02</span>
-                        <h4 class="article-preview-title">I tracked every input for 30 days — here's the spreadsheet</h4>
-                        <p class="article-preview-excerpt">Posts, replies, DMs. Not vibes.</p>
-                        <span class="article-preview-meta">Fri, Jul 10, 2026 · 361 words · experiment</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-03.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-03-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#03</span>
-                        <h4 class="article-preview-title">The 7 months nobody was watching (and why I'm glad)</h4>
-                        <p class="article-preview-excerpt">Flat graph · loud doubt · quiet reps</p>
-                        <span class="article-preview-meta">Fri, Jul 17, 2026 · 363 words · timeline</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-04.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-04-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#04</span>
-                        <h4 class="article-preview-title">Stop optimizing hooks. Pick one metric for 90 days.</h4>
-                        <p class="article-preview-excerpt">Confused creators chase everything. Clear ones count one thing.</p>
-                        <span class="article-preview-meta">Fri, Jul 24, 2026 · 292 words · decision</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-05.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-05-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#05</span>
-                        <h4 class="article-preview-title">A letter to me at 200 followers</h4>
-                        <p class="article-preview-excerpt">What I'd tell the guy about to quit in month 4</p>
-                        <span class="article-preview-meta">Fri, Jul 31, 2026 · 309 words · epistle</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-06.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-06-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#06</span>
-                        <h4 class="article-preview-title">The machine I run every morning (before coffee, before doubt)</h4>
-                        <p class="article-preview-excerpt">Inputs → lag → output. No inspiration required.</p>
-                        <span class="article-preview-meta">Fri, Aug 7, 2026 · 292 words · manual</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-07.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-07-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#07</span>
-                        <h4 class="article-preview-title">One post. 11 likes. 4 DMs. The one I almost deleted.</h4>
-                        <p class="article-preview-excerpt">A post-mortem on a post that wasn't a hit</p>
-                        <span class="article-preview-meta">Fri, Aug 14, 2026 · 278 words · autopsy</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-08.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-08-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#08</span>
-                        <h4 class="article-preview-title">Guru post vs my post — only one got saved</h4>
-                        <p class="article-preview-excerpt">Specificity is the whole game in 2026</p>
-                        <span class="article-preview-meta">Fri, Aug 21, 2026 · 254 words · contrast</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-09.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-09-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#09</span>
-                        <h4 class="article-preview-title">50 replies a day for 7 days — field report</h4>
-                        <p class="article-preview-excerpt">Awkward → pattern → DMs. The log.</p>
-                        <span class="article-preview-meta">Fri, Aug 28, 2026 · 313 words · diary</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-10.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-10-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#10</span>
-                        <h4 class="article-preview-title">I posted the same lesson on 𝕏 and LinkedIn — different results</h4>
-                        <p class="article-preview-excerpt">Two platforms. Two games. One idea.</p>
-                        <span class="article-preview-meta">Fri, Sep 4, 2026 · 264 words · split-test</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-11.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-11-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#11</span>
-                        <h4 class="article-preview-title">Why 47 people open every email (and it's not the subject line)</h4>
-                        <p class="article-preview-excerpt">Trust compounds slower than hooks — and lasts longer</p>
-                        <span class="article-preview-meta">Fri, Sep 11, 2026 · 283 words · essay</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-
-                <a href="newsletters/letter-12.html" class="article-preview-card article-preview-card--woodcut">
-                    <div class="article-visual article-visual--woodcut">
-                        <img src="assets/newsletter-dan-koe/png/email-12-hero-woodcut.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="article-preview-body">
-                        <span class="article-preview-num">#12</span>
-                        <h4 class="article-preview-title">5.3K followers, zero viral posts — the full honest log</h4>
-                        <p class="article-preview-excerpt">3 years · daily reps · no lottery ticket</p>
-                        <span class="article-preview-meta">Fri, Sep 18, 2026 · 298 words · case-study</span>
-                        <span class="article-read-link">Read letter</span>
-                    </div>
-                </a>
-                <!-- NEWSLETTER_GRID_END -->
-            </div>
-            </div>
-        </section>
-
+    <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
         <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
-            <a href="substack-12-emails-dan-koe-style.html" class="more-newsletters-btn more-newsletters-btn--woodcut">Open all 12 letters</a>
-        </div>
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <div class="more-newsletters-wrapper more-newsletters-wrapper--woodcut">
+        <a href="substack-12-emails-dan-koe-style.html" class="more-newsletters-btn more-newsletters-btn--woodcut">Open all 12 letters</a>
+    </div>
 
     <div class="container">
 

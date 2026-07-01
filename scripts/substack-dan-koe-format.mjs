@@ -3,25 +3,25 @@
  */
 import { X_LANDING } from "./substack-3day-format.mjs";
 
-export const WORD_TARGETS = { min: 250, max: 2200 };
+export const WORD_TARGETS = { min: 1400, max: 3200 };
 
 export const SOFT_CTA = `When your system is sharp enough to ship daily:
 
 The X System → 0 to 1K followers in 90 days
 ${X_LANDING}`;
 
-const CLOSINGS = {
-  essay: "That's the work.",
-  experiment: "Run the experiment. Report back.",
-  timeline: "The flat ends. Keep walking.",
-  decision: "Pick. Write it down. Execute.",
-  epistle: "Don't quit. — Andrei",
-  manual: "Build the machine. Trust the lag.",
-  autopsy: "Ship the scary one.",
-  contrast: "Write receipts, not tips.",
-  diary: "Log it. Adjust. Repeat.",
-  "split-test": "Two weeks. One platform. Go.",
-  "case-study": "Boring wins. Don't quit.",
+export const CLOSINGS = {
+  essay: "Thank you for reading.",
+  experiment: "Thank you for reading.",
+  timeline: "Thank you for reading.",
+  decision: "Thank you for reading.",
+  epistle: "Thank you for reading.",
+  manual: "Thank you for reading.",
+  autopsy: "Thank you for reading.",
+  contrast: "Thank you for reading.",
+  diary: "Thank you for reading.",
+  "split-test": "Thank you for reading.",
+  "case-study": "Thank you for reading.",
 };
 
 export function wordCount(text) {
@@ -36,6 +36,18 @@ function sectionToPlain(s) {
   switch (s.type) {
     case "h2":
       return `\n### ${s.text}\n`;
+    case "h3":
+      return `\n## ${s.text}\n`;
+    case "insight":
+      return `\n*${stripHtml(s.text)}*\n`;
+    case "mechanism":
+      return `\n${s.items.map((item) => `> ${stripHtml(item)}`).join("\n")}\n`;
+    case "limbo":
+      return `\n${s.items.map((item) => `· ${stripHtml(item)}`).join("\n")}\n`;
+    case "objection":
+      return `\n**${stripHtml(s.voice)}** ${stripHtml(s.reply)}\n`;
+    case "steps":
+      return `\n**${s.title}**\n\n${s.items.map((item, i) => `**${stripHtml(item.bold || `Step ${i + 1}`)}** ${stripHtml(item.text)}`).join("\n\n")}\n`;
     case "quote":
       return `\n> ${stripHtml(s.text)}${s.cite ? ` — ${s.cite}` : ""}\n`;
     case "pull":
@@ -99,6 +111,18 @@ export function sectionsToHtml(sections) {
       switch (s.type) {
         case "h2":
           return `<h2>${escHtml(s.text)}</h2>`;
+        case "h3":
+          return `<h3 class="koe-beat">${escHtml(s.text)}</h3>`;
+        case "insight":
+          return `<p class="insight">${s.text}</p>`;
+        case "mechanism":
+          return `<div class="mechanism">${s.items.map((item) => `<p class="mechanism-line">→ ${item}</p>`).join("")}</div>`;
+        case "limbo":
+          return `<ul class="limbo-list">${s.items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+        case "objection":
+          return `<p class="objection"><strong>${escHtml(s.voice)}</strong> ${s.reply}</p>`;
+        case "steps":
+          return `<div class="steps-framework"><h2 class="steps-title">${escHtml(s.title)}</h2>${s.items.map((item) => `<div class="step-row"><strong>${item.bold}</strong><p>${item.text}</p></div>`).join("")}</div>`;
         case "quote":
           return `<blockquote>${s.text}${s.cite ? `<cite>— ${escHtml(s.cite)}</cite>` : ""}</blockquote>`;
         case "pull":

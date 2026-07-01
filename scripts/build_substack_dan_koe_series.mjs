@@ -17,6 +17,7 @@ import { getHeroSvg, getHeroCaption } from "./substack-dan-koe-heroes.mjs";
 import { getDiagramExport, getDiagramCaption } from "./substack-dan-koe-diagrams.mjs";
 import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
 import { buildLetterPages } from "./build_newsletter_letter_pages.mjs";
+import { renderSiteNav } from "./dan-koe-letter-page.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -153,50 +154,17 @@ function letterArticleHtml(e) {
 
 function renderIndex(emails) {
   const cards = emails
-    .map(
-      (e) => `<a class="index-card" href="newsletters/letter-${String(e.num).padStart(2, "0")}.html">
-  <div class="index-thumb"><img src="${escHtml(e.heroRel)}" alt="" loading="lazy" /></div>
-  <div class="index-meta">
-    <span class="index-num">#${String(e.num).padStart(2, "0")}</span>
-    <h3>${escHtml(e.subject)}</h3>
-    <p>${escHtml(e.preheader)}</p>
-    <span class="index-date">${escHtml(e.date)} · ${e.words} words · ${escHtml(e.format || "essay")}</span>
-  </div>
-</a>`
-    )
-    .join("\n");
-
-  const letters = emails
-    .map(
-      (e) => `<section class="email-section" id="email-${e.num}">
-  <div class="email-toolbar">
-    <a class="back-link" href="#top">↑ All 12</a>
-  </div>
-  <div class="substack-guide">
-    <div class="substack-guide-head">
-      <span class="substack-tag">One-click Substack paste</span>
-      <p class="substack-next">Copies <strong>hero image + title + subtitle + full body + inline diagram</strong> — paste once into Substack with Ctrl+V</p>
-    </div>
-    <div class="copy-row substack-copy-row">
-      <button type="button" class="btn btn-primary btn-lg" data-copy-rich="email-${e.num}" data-label="Copy full post">Copy full post (images + text)</button>
-      <button type="button" class="btn" data-copy="subject${e.num}" data-label="Copy subject only">Subject only</button>
-      <button type="button" class="btn" data-copy="preheader${e.num}" data-label="Copy subtitle only">Subtitle only</button>
-    </div>
-    <p class="substack-foot">In Substack: paste in the editor (<em>Start writing…</em>). Title + subtitle are included in the paste — delete those lines at the top if Substack already has them in the header fields.</p>
-  </div>
-  <div class="stage">
-    <div class="hero-wrap">
-      <img id="hero-preview-${e.num}" data-hero-img src="${escHtml(e.heroRel)}" alt="${escHtml(e.subject)}" crossorigin="anonymous" />
-    </div>
-    ${letterArticleHtml(e)}
-    <p class="word-count">${e.words} words${e.inRange ? "" : " · outside target"} · Week ${e.week}</p>
-  </div>
-  <textarea id="body${e.num}" class="sr-only" readonly>${escHtml(e.body)}</textarea>
-  <textarea id="subject${e.num}" class="sr-only" readonly>${escHtml(e.subject)}</textarea>
-  <textarea id="preheader${e.num}" class="sr-only" readonly>${escHtml(e.preheader)}</textarea>
-  <textarea id="full${e.num}" class="sr-only" readonly>${escHtml(e.pasteBlock)}</textarea>
-</section>`
-    )
+    .map((e) => {
+      const href = `newsletters/letter-${String(e.num).padStart(2, "0")}.html`;
+      return `<article class="koe-archive-card">
+  <a href="${escHtml(href)}" class="koe-archive-thumb-link" tabindex="-1" aria-hidden="true">
+    <div class="koe-archive-thumb"><img src="${escHtml(e.heroRel)}" alt="" loading="lazy" /></div>
+  </a>
+  <h3 class="koe-archive-title"><a href="${escHtml(href)}">${escHtml(e.subject)}</a></h3>
+  <p class="koe-archive-excerpt">${escHtml(e.preheader)}</p>
+  <a href="${escHtml(href)}" class="koe-archive-read">Read Full Post</a>
+</article>`;
+    })
     .join("\n");
 
   return `<!DOCTYPE html>
@@ -204,174 +172,24 @@ function renderIndex(emails) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12 Premium Newsletters — Andrei Lucian</title>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --ink: #0c0c0c; --paper: #f6f4ef; --paper-dark: #ebe8e1;
-      --muted: #6b6560; --rule: #d4cfc6; --bg: #050505;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: #eee; }
-    .top-bar {
-      position: sticky; top: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; flex-wrap: wrap; padding: 12px 20px;
-      background: rgba(12,12,12,0.95); backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222;
-    }
-    .top-bar h1 { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888; }
-    .top-bar h1 span { color: #fff; }
-    .analysis { max-width: 960px; margin: 0 auto; padding: 40px 20px 24px; }
-    .analysis h2 { font-family: "Instrument Serif", Georgia, serif; font-size: 2rem; font-weight: 400; color: #f6f4ef; margin-bottom: 8px; }
-    .analysis .lead { color: #888; font-size: 0.95rem; line-height: 1.6; max-width: 640px; margin-bottom: 24px; }
-    .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
-    .analysis-card { background: #111; border: 1px solid #222; border-radius: 6px; padding: 16px; }
-    .analysis-card h4 { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #666; margin-bottom: 6px; }
-    .analysis-card p { font-size: 0.85rem; color: #ccc; line-height: 1.5; }
-    .index { max-width: 960px; margin: 0 auto; padding: 0 20px 48px; }
-    .index h3 { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #666; margin-bottom: 16px; }
-    .index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .index-card {
-      display: block; text-decoration: none; color: inherit;
-      background: #111; border: 1px solid #222; border-radius: 6px; overflow: hidden;
-      transition: border-color 0.15s;
-    }
-    .index-card:hover { border-color: #444; }
-    .index-thumb { aspect-ratio: 16/9; overflow: hidden; background: #1a1a1a; }
-    .index-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .index-meta { padding: 14px 16px; }
-    .index-num { font-size: 0.65rem; letter-spacing: 0.1em; color: #666; }
-    .index-meta h3 { font-family: "Instrument Serif", Georgia, serif; font-size: 1.1rem; color: #f6f4ef; margin: 6px 0; line-height: 1.3; font-weight: 400; }
-    .index-meta p { font-size: 0.8rem; color: #888; line-height: 1.4; margin-bottom: 8px; }
-    .index-date { font-size: 0.72rem; color: #555; }
-    .email-section { border-top: 1px solid #1a1a1a; padding-top: 8px; }
-    .email-toolbar {
-      max-width: 720px; margin: 0 auto; padding: 16px 16px 0;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    }
-    .back-link { font-size: 0.78rem; color: #888; text-decoration: none; }
-    .back-link:hover { color: #fff; }
-    .copy-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn {
-      padding: 8px 14px; border-radius: 6px; border: 1px solid #333;
-      background: #1a1a1a; color: #eee; font-size: 0.78rem; font-weight: 600;
-      cursor: pointer;
-    }
-    .btn:hover { border-color: #555; }
-    .btn-primary { background: #f6f4ef; color: #0c0c0c; border-color: #f6f4ef; }
-    .btn.ok { background: #1a4d3a; border-color: #2d6b52; color: #a8e6c7; }
-    .btn-lg { padding: 10px 18px; font-size: 0.85rem; }
-    .substack-guide {
-      max-width: 720px; margin: 0 auto 0; padding: 0 16px 16px;
-      background: linear-gradient(180deg, #12150f 0%, #0a0c08 100%);
-      border: 1px solid #3d4a2a; border-radius: 8px;
-      box-shadow: 0 0 0 1px #1a1f14 inset;
-    }
-    .email-section .substack-guide { margin-top: 8px; margin-bottom: 8px; padding: 16px 18px; }
-    .substack-guide-head { margin-bottom: 12px; }
-    .substack-tag {
-      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #c9a227; margin-bottom: 6px;
-    }
-    .substack-next { font-size: 0.82rem; color: #b8c4a8; line-height: 1.5; }
-    .substack-next strong { color: #f6f4ef; }
-    .substack-next em { color: #c9a227; font-style: normal; }
-    .substack-steps {
-      margin: 0 0 14px 1.1em; font-size: 0.78rem; color: #888; line-height: 1.7;
-    }
-    .substack-steps li { margin-bottom: 2px; }
-    .substack-steps .step-active { color: #e8e4dc; font-weight: 600; }
-    .substack-steps .step-label {
-      display: inline-block; min-width: 52px; font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase; color: #666; margin-right: 4px;
-    }
-    .substack-steps .step-active .step-label { color: #c9a227; }
-    .substack-copy-row { gap: 8px; }
-    .substack-foot { font-size: 0.72rem; color: #666; margin-top: 12px; line-height: 1.55; }
-    .substack-foot em { color: #888; font-style: normal; }
-    .stage { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
-    .hero-wrap { border-radius: 4px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
-    .hero-wrap img { width: 100%; display: block; }
-    .letter { background: var(--paper); border-radius: 0 0 4px 4px; padding: 48px 44px 56px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); color: var(--ink); }
-    @media (max-width: 600px) { .letter { padding: 32px 22px 40px; } }
-    .letter-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.75rem; color: var(--muted); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
-    .letter-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
-    .letter h1 { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 400; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 12px; }
-    .subtitle { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--muted); margin-bottom: 36px; line-height: 1.5; }
-    .letter-body { font-family: "Instrument Serif", Georgia, serif; font-size: 1.125rem; line-height: 1.82; color: #1a1816; }
-    .letter-body p { margin-bottom: 1.35em; }
-    .letter-body p.lead { font-size: 1.2rem; line-height: 1.75; }
-    .letter-body h2 { font-family: Inter, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 2.8em 0 1em; }
-    .letter-body blockquote { margin: 2em 0; padding: 24px 28px; background: var(--paper-dark); border-left: 3px solid #1a1a1a; font-style: italic; font-size: 1.15rem; line-height: 1.65; }
-    .letter-body blockquote cite { display: block; margin-top: 12px; font-style: normal; font-family: Inter, sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .letter-body ul, .letter-body ol { margin: 0 0 1.35em 1.2em; }
-    .letter-body li { margin-bottom: 0.5em; }
-    .letter-body .pull { font-size: 1.3rem; font-style: italic; text-align: center; color: #3a3530; margin: 2em 0; padding: 0 1em; line-height: 1.6; }
-    .letter-body .divider { border: none; border-top: 1px solid var(--rule); margin: 2.5em 0; }
-    .framework { background: var(--paper-dark); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 28px; margin: 2em 0; }
-    .framework-title { font-family: Inter, sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-    .framework ol { margin: 0; padding-left: 1.2em; font-family: Inter, sans-serif; font-size: 0.92rem; line-height: 1.7; }
-    .inline-diagram { margin: 2em 0; border-radius: 2px; overflow: hidden; border: 1px solid var(--rule); background: #f3f1ec; }
-    .inline-diagram svg { width: 100%; display: block; }
-    .diagram-cap { font-family: Inter, sans-serif; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; padding: 10px; background: var(--paper-dark); border-top: 1px solid var(--rule); }
-    .log-block { margin: 2em 0; border-left: 3px solid var(--ink); padding-left: 20px; font-family: Inter, sans-serif; font-size: 0.92rem; line-height: 1.8; }
-    .log-row { margin-bottom: 12px; color: #2a2622; }
-    .timeline { margin: 2em 0; padding-left: 8px; }
-    .tl-row { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
-    .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); margin-top: 8px; flex-shrink: 0; }
-    .tl-text { font-family: Inter, sans-serif; font-size: 0.95rem; line-height: 1.65; color: #2a2622; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2em 0; }
-    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-    .stat-card { background: var(--paper-dark); border: 1px solid var(--rule); border-radius: 4px; padding: 16px; text-align: center; }
-    .stat-val { display: block; font-family: Inter, sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .stat-label { font-family: Inter, sans-serif; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-    .compare-grid { display: grid; gap: 12px; margin: 2em 0; }
-    .compare-card { background: var(--paper-dark); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 22px; }
-    .compare-card h4 { font-family: Inter, sans-serif; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .compare-card .good { font-size: 0.92rem; color: #2a4a3a; margin-bottom: 6px; font-family: Inter, sans-serif; }
-    .compare-card .bad { font-size: 0.92rem; color: #6b4545; font-family: Inter, sans-serif; }
-    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2em 0; }
-    @media (max-width: 600px) { .split-grid { grid-template-columns: 1fr; } }
-    .split-col { background: #f0eeea; border: 1px solid var(--rule); border-radius: 4px; padding: 20px; }
-    .split-col.accent { background: #fff; border-color: var(--ink); border-width: 2px; }
-    .split-col h4 { font-family: Inter, sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .split-col p { font-family: Inter, sans-serif; font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; color: #2a2622; }
-    .cta-block { margin-top: 2.5em; padding: 24px 28px; background: #0c0c0c; color: #e8e4dc; border-radius: 4px; }
-    .cta-block p { font-family: Inter, sans-serif; font-size: 0.88rem; line-height: 1.65; margin-bottom: 12px; color: #aaa; }
-    .cta-block a { color: #f6f4ef; font-weight: 600; text-decoration: none; border-bottom: 1px solid #555; }
-    .word-count { text-align: center; margin-top: 24px; font-size: 0.72rem; color: #555; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-  </style>
+  <title>The Andrei Lucian Letters</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body id="top">
-  <div class="top-bar">
-    <h1><span>12 Newsletters</span> · Premium Visual · Andrei Lucian</h1>
-    <span style="font-size:0.75rem;color:#555">Biweekly · Jul–Dec 2026 · <a href="substack-12-emails-paste-kit.html" style="color:#c9a227">Paste kit →</a></span>
-  </div>
+<body>
+  ${renderSiteNav("")}
 
-  <div class="analysis">
-    <h2>12 formats · woodcut visuals · your voice</h2>
-    <p class="lead">Premium long-form letters — vintage black &amp; white engravings like top creator blogs. Hand-inked metaphors, cream paper texture, original Andrei proof.</p>
-    <div class="analysis-grid">
-      <div class="analysis-card"><h4>Formats</h4><p>Essay · experiment log · timeline · letter · autopsy · split-test · case study</p></div>
-      <div class="analysis-card"><h4>Visual</h4><p>Woodcut engraving style · B&amp;W ink · stippling · symbolic metaphors</p></div>
-      <div class="analysis-card"><h4>Voice</h4><p>Blunt, numeric, anti-guru — 5.3K 𝕏 · 16.2K LinkedIn · 1,100+ subs</p></div>
-      <div class="analysis-card"><h4>Length</h4><p>${WORD_TARGETS.min}–${WORD_TARGETS.max} words · 6–8 min read each</p></div>
-      <div class="analysis-card"><h4>Cadence</h4><p>Biweekly Fridays · Jul–Dec 2026</p></div>
-      <div class="analysis-card"><h4>Workflow</h4><p><strong>Copy full post</strong> → paste once in Substack (hero + text + diagrams)</p></div>
+  <section class="koe-archive-section">
+    <div class="koe-archive-header">
+      <p class="koe-archive-eyebrow">The Letters</p>
+      <h1 class="koe-archive-title-main">The Andrei Lucian Letters</h1>
+      <p class="koe-archive-sub">Long-form letters on writing, growth, and building in public — vintage woodcut visuals, blunt proof, no guru noise.</p>
     </div>
-  </div>
-
-  <div class="index">
-    <h3>All 12 newsletters</h3>
-    <div class="index-grid">${cards}</div>
-  </div>
-
-  ${letters}
-
-  <script>${CLIPBOARD_JS}</script>
+    <div class="koe-archive-grid-wrap">
+      <div class="koe-archive-grid">${cards}</div>
+    </div>
+    <p class="koe-archive-foot"><a href="index.html#newsletter-signup">Subscribe free</a> · <a href="substack-12-emails-paste-kit.html">Copy for Substack</a></p>
+  </section>
 </body>
 </html>`;
 }
@@ -534,6 +352,11 @@ function renderPasteKit(emails) {
 
 const emails = buildEmails();
 buildLetterPages();
+try {
+  execSync("node scripts/build_classic_article_pages.mjs", { cwd: ROOT, stdio: "inherit" });
+} catch {
+  console.warn("Could not rebuild classic articles — run: node scripts/build_classic_article_pages.mjs");
+}
 try {
   execSync("node scripts/build_index_newsletter_grid.mjs", { cwd: ROOT, stdio: "inherit" });
 } catch {

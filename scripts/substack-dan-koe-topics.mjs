@@ -4,7 +4,10 @@
  */
 import { ORIGIN_STORY, GROWTH_PLAYBOOK, INCOME_ARC } from "./substack-tweet-voice.mjs";
 import { injectDiagrams } from "./substack-dan-koe-diagrams.mjs";
+import { mergeExpansions } from "./substack-dan-koe-expansions.mjs";
+import { mergeLongform } from "./substack-dan-koe-longform.mjs";
 import { addDepth } from "./substack-dan-koe-depth.mjs";
+import { applyDanKoeBeats } from "./substack-dan-koe-beats.mjs";
 
 export function getDanKoeEmails() {
   return [
@@ -20,7 +23,12 @@ export function getDanKoeEmails() {
     letter10(),
     letter11(),
     letter12(),
-  ].map(injectDiagrams).map(addDepth);
+  ]
+    .map(injectDiagrams)
+    .map(mergeExpansions)
+    .map(mergeLongform)
+    .map(addDepth)
+    .map(applyDanKoeBeats);
 }
 
 /** #1 — Essay: voice & identity */

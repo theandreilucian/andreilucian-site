@@ -11,10 +11,11 @@ import {
   formatDanKoeLetter,
   sectionsToHtml,
   escHtml,
+  CLOSINGS,
 } from "./substack-dan-koe-format.mjs";
 import { getHeroSvg, getHeroCaption } from "./substack-dan-koe-heroes.mjs";
 import { getDiagramExport, getDiagramCaption } from "./substack-dan-koe-diagrams.mjs";
-import { RICH_PASTE_JS } from "./substack-dan-koe-rich-paste.mjs";
+import { renderDanKoeLetterPage } from "./dan-koe-letter-page.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -64,101 +65,27 @@ function buildEmails() {
   });
 }
 
-const CLIPBOARD_JS = `
-function flashBtn(btn, okText) {
-  const orig = btn.dataset.label || btn.textContent;
-  btn.textContent = okText || 'Copied!';
-  btn.classList.add('ok');
-  setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 1600);
-}
-document.querySelectorAll('[data-copy]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const el = document.getElementById(btn.dataset.copy);
-    if (!el) return;
-    navigator.clipboard.writeText(el.value).then(() => flashBtn(btn)).catch(() => alert('Copy failed'));
-  });
-});
-${RICH_PASTE_JS}
-`;
-
 function renderLetterPage(e, prev, next) {
-  const navPrev = prev
-    ? `<a class="letter-nav-link" href="${prev.pageFile}">← #${String(prev.num).padStart(2, "0")}</a>`
-    : `<span class="letter-nav-link disabled"></span>`;
-  const navNext = next
-    ? `<a class="letter-nav-link" href="${next.pageFile}">#${String(next.num).padStart(2, "0")} →</a>`
-    : `<span class="letter-nav-link disabled"></span>`;
+  const closing = CLOSINGS[e.format] || "That's it.";
+  const bodyHtml = `${e.htmlBody}
+<p>${escHtml(closing)}</p>
+<div class="cta-block">
+  <p>When your system is sharp enough to ship daily —</p>
+  <p><a href="https://andreilucian.com/0-to-1K-X-System/LANDING.html">The X System → 0 to 1K followers in 90 days</a></p>
+</div>`;
 
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${escHtml(e.subject)} | Andrei Lucian</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body class="newsletter-letter-page" id="letter-${e.num}">
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="../index.html#newsletters" class="brand">Andrei Lucian</a>
-      <div class="nav-links">
-        <a href="../index.html#newsletters" class="nav-link">All newsletters</a>
-        <a href="../substack-12-emails-paste-kit.html#paste-${e.num}" class="nav-link">Paste kit</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="newsletter-letter-layout" id="email-${e.num}">
-    <div class="newsletter-letter-toolbar">
-      ${navPrev}
-      <a class="letter-nav-home" href="../index.html#newsletters">All newsletters</a>
-      ${navNext}
-    </div>
-
-    <div class="substack-guide substack-guide--letter">
-      <p class="substack-next">Copy <strong>full post</strong> (hero + text + diagram) → paste in Substack with Ctrl+V</p>
-      <div class="copy-row">
-        <button type="button" class="btn btn-primary" data-copy-rich="email-${e.num}" data-label="Copy full post">Copy full post</button>
-        <button type="button" class="btn" data-copy="subject${e.num}" data-label="Copy subject">Subject</button>
-        <button type="button" class="btn" data-copy="preheader${e.num}" data-label="Copy subtitle">Subtitle</button>
-      </div>
-    </div>
-
-    <div class="newsletter-letter-stage">
-      <div class="hero-wrap">
-        <img data-hero-img src="${escHtml(e.heroRel)}" alt="${escHtml(e.subject)}" crossorigin="anonymous" />
-      </div>
-      <article class="letter" data-letter-root>
-        <div class="letter-meta">
-          <span>Andrei Lucian</span>
-          <span class="dot"></span>
-          <span>${e.readMin} min read</span>
-          <span class="dot"></span>
-          <span>${escHtml(e.tag)}</span>
-          <span class="dot"></span>
-          <span>${escHtml(e.date)}</span>
-        </div>
-        <h1>${escHtml(e.subject)}</h1>
-        <p class="subtitle">${escHtml(e.preheader)}</p>
-        <div class="letter-body">
-          ${e.htmlBody}
-          <div class="cta-block">
-            <p>When your system is sharp enough to ship daily —</p>
-            <p><a href="https://andreilucian.com/0-to-1K-X-System/LANDING.html">The X System → 0 to 1K followers in 90 days</a></p>
-          </div>
-        </div>
-      </article>
-      <p class="word-count">${e.words} words · ${escHtml(e.format || "essay")}</p>
-    </div>
-
-    <textarea id="subject${e.num}" class="sr-only" readonly>${escHtml(e.subject)}</textarea>
-    <textarea id="preheader${e.num}" class="sr-only" readonly>${escHtml(e.preheader)}</textarea>
-  </main>
-
-  <script>${CLIPBOARD_JS}</script>
-</body>
-</html>`;
+  return renderDanKoeLetterPage({
+    title: e.subject,
+    deck: e.preheader,
+    dateLabel: e.date,
+    heroSrc: e.heroRel,
+    bodyHtml,
+    assetPrefix: "../",
+    homeHref: "../index.html#newsletters",
+    prev: prev ? { href: prev.pageFile, label: `#${String(prev.num).padStart(2, "0")}` } : null,
+    next: next ? { href: next.pageFile, label: `#${String(next.num).padStart(2, "0")}` } : null,
+    readerMode: true,
+  });
 }
 
 export function buildLetterPages() {
