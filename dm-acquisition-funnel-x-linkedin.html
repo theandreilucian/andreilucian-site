@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DM Funnel (Natural) | LinkedIn + X | Andrei Lucian</title>
+  <title>DM Funnel · 10 messages | LinkedIn + X | Andrei Lucian</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -61,12 +61,15 @@
     }
     .panel[data-platform="linkedin"] .copy-full-btn { background: #0a66c2; }
     .copy-full-btn.copied { background: #00ba7c; }
-    .flow-diagram {
-      background: #16181c; border: 1px dashed #2f3336; border-radius: 10px;
-      padding: 14px 16px; font-size: 0.8rem; color: #8b98a5; margin-bottom: 18px; line-height: 1.7;
+    .map {
+      background: #16181c; border: 1px solid #2f3336; border-radius: 12px;
+      padding: 14px 16px; margin-bottom: 18px; font-size: 0.8rem; color: #8b98a5; overflow-x: auto;
     }
-    .flow-diagram em { color: #ff9500; font-style: normal; font-weight: 600; }
-    .panel[data-platform="linkedin"] .flow-diagram em { color: #0a66c2; }
+    .map table { width: 100%; border-collapse: collapse; }
+    .map th, .map td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #2f3336; }
+    .map th { color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .map .n { color: #ff9500; font-weight: 700; width: 28px; }
+    .panel[data-platform="linkedin"] .map .n { color: #0a66c2; }
     .step-group {
       border: 1px solid #2f3336; border-radius: 14px; padding: 16px; margin-bottom: 18px; background: #111;
     }
@@ -89,10 +92,9 @@
     .msg-tag { font-size: 0.68rem; padding: 3px 8px; border-radius: 4px; background: #2f3336; color: #8b98a5; }
     .msg-tag.warm { background: #00ba7c22; color: #00ba7c; }
     .msg-tag.followup { background: #71767b22; color: #e7e9ea; }
-    .msg-tag.public { background: #ff950022; color: #ff9500; }
     .msg-tag.price { background: #00ba7c22; color: #00ba7c; }
     .msg-text {
-      display: block; width: 100%; min-height: 80px; background: transparent; border: none;
+      display: block; width: 100%; min-height: 72px; background: transparent; border: none;
       color: #e7e9ea; font-family: inherit; font-size: 0.94rem; line-height: 1.5;
       resize: vertical; outline: none; white-space: pre-wrap;
     }
@@ -108,287 +110,101 @@
 </head>
 <body>
   <div class="page">
-    <h1>DM Funnel (natural, no dashes)</h1>
-    <p class="subtitle">Warm · human · copy paste ready</p>
+    <h1>DM Funnel · 10 messages</h1>
+    <p class="subtitle">Copy paste in order · skip ahead when they reply · max 10 DMs</p>
 
     <div class="offers">
       <div class="offer-card li">
         <div class="plat">LinkedIn</div>
-        <strong>Ghostwriting from scratch</strong>
-        <p>Quiet founders · personal brand</p>
+        <strong>Ghostwriting · quiet founders</strong>
+        <p>10 DMs · from scratch</p>
         <div class="price">€1,500 → €2,000/mo</div>
       </div>
       <div class="offer-card x">
         <div class="plat">X</div>
-        <strong>1:1 coaching</strong>
-        <p>Small accounts · personal brand</p>
+        <strong>Coaching · small accounts</strong>
+        <p>10 DMs · personal brand</p>
         <div class="price">€150 · €500 / 4 calls</div>
       </div>
     </div>
 
     <div class="rule">
-      <strong>Rule:</strong> No em dashes in copy. Warm openers. Pitch only after they lean in.
+      <strong>Paths:</strong> No reply = DM 1→2→9→10 then stop. Conversation = DM 1→2→3→4→5→6→7 (8 only if price asked).
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-tab="when">When to send</button>
-      <button class="tab li" data-tab="li">LinkedIn</button>
-      <button class="tab" data-tab="x">X</button>
-      <button class="tab" data-tab="price">Prices</button>
+      <button class="tab li active" data-tab="li">LinkedIn · 10</button>
+      <button class="tab" data-tab="x">X · 10</button>
     </div>
 
-    <div id="when" class="panel active" data-platform="x" data-funnel-name="WHEN TO SEND FORMULA">
+    <!-- LINKEDIN -->
+    <div id="li" class="panel active" data-platform="linkedin" data-funnel-name="LINKEDIN 10 DM FUNNEL">
       <div class="section">
-        <h2>When to send (simple formula)</h2>
-        <p class="desc">If they reply anytime, stop the follow-up clock and answer same day.</p>
-        <div class="copy-full-bar">
-          <p><strong>Copy full timing formula</strong></p>
-          <button type="button" class="copy-full-btn" data-panel="when">Copy Formula</button>
-        </div>
-        <div class="step-group">
-          <h3>LinkedIn clock</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Full LI timeline</span><span class="msg-tag warm">Print</span></div>
-            <textarea class="msg-text" readonly>DAY 0 .......... Send CONNECTION REQUEST (pick 1 of 3)
-                 Wait until they accept
-
-DAY they accept  Do NOTHING (wait 1 to 2 days)
-
-DAY +2 ......... Send OPENER DM (pick 1 of 3)
-
-No reply?
-DAY +5 ......... Send FU1  (+3 days after opener)
-
-Still no reply?
-DAY +12 ........ Send FU2  (+7 days after FU1) then STOP
-
-They reply anytime?
-→ Answer same day (or next morning). Do not keep the follow-up clock.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">LI cheat card</span></div>
-            <textarea class="msg-text" readonly>Day 0 = Connection request
-Accept day = Wait
-+2 days = Opener DM
-+3 days after opener (no reply) = FU1
-+7 days after FU1 (no reply) = FU2 then STOP
-They reply = Diagnose → Mirror → Help → Page/Call
-Price = Only if asked or on call
-
-Daily: 10 connection requests
-Max silent follow-ups: 2</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-        <div class="step-group">
-          <h3>X clock</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Full X timeline</span><span class="msg-tag warm">Print</span></div>
-            <textarea class="msg-text" readonly>DAY 0 .......... VALUE REPLY on their post (no pitch)
-
-They reply / follow / engage again?
-Same day or +1 ... Send WARM DM (pick 1 of 3)
-
-No DM reply?
-+3 days ......... Send FU1
-
-Still no reply?
-+7 days after FU1 Send FU2 then STOP
-
-They reply?
-→ Diagnose → Bridge → Calendly same day
-
-Never cold DM on X. Reply first.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">X cheat card</span></div>
-            <textarea class="msg-text" readonly>Day 0 = Public reply
-Warm signal = DM opener (same day or +1)
-+3 days no reply = FU1
-+7 days after FU1 = FU2 then STOP
-They reply = Diagnose → coaching bridge → call
-Price = €500 default or €150 single (when asked / on call)
-
-Daily: 15 to 25 replies · 5 to 10 warm DMs</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-        <div class="step-group">
-          <h3>If they go quiet mid conversation</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Bump · +2 days</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! No rush. Curious if any of that was useful, or should I leave it for now?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">Last bump · +5 days more</span><span class="msg-tag followup">Stop after</span></div>
-            <textarea class="msg-text" readonly>All good. I’ll close the loop on my side. If LinkedIn becomes a priority later, I’m around.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-        <div class="step-group">
-          <h3>Sheet</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Columns</span></div>
-            <textarea class="msg-text" readonly>Name | Company | Day 0 connect | Accepted on | Opener sent | FU1 due | FU2 due | Status | Next action
-
-Statuses:
-Waiting accept → Opener due → Waiting reply → Talking → Call booked → Won / Dead</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="li" class="panel" data-platform="linkedin" data-funnel-name="LINKEDIN DM FUNNEL">
-      <div class="section">
-        <h2>LinkedIn</h2>
-        <p class="desc">Quiet founders. Meet humans first.</p>
+        <h2>LinkedIn · 10 DMs</h2>
+        <p class="desc">Quiet founders · ghostwriting from scratch</p>
 
         <div class="copy-full-bar">
-          <p><strong>Copy full LinkedIn funnel</strong></p>
+          <p><strong>Copy all 10 LinkedIn DMs</strong></p>
           <button type="button" class="copy-full-btn" data-panel="li">Copy Full LI</button>
         </div>
 
-        <div class="flow-diagram">
-          Them first (Braun/Welsh) → <em>easy question</em> → deposit → help → call → €1,500 → €2,000
-        </div>
-        <div class="cadence" style="background:#16181c;border-radius:10px;padding:12px 14px;font-size:0.78rem;color:#8b98a5;margin-bottom:18px;line-height:1.75">
-          <strong style="color:#fff">Style borrowed from:</strong> Josh Braun (them first, easy Q) · Justin Welsh (passive, no pitch) · Lavender/Will Allred (short, easy reply) · Chris Donnelly (specific observation)<br />
-          <strong style="color:#fff">Timing:</strong> wait 1 to 3 days after accept before first DM
+        <div class="map">
+          <table>
+            <tr><th>#</th><th>When</th><th>Name</th></tr>
+            <tr><td class="n">1</td><td>Day 0</td><td>Connection request</td></tr>
+            <tr><td class="n">2</td><td>+2 days after accept</td><td>Opener</td></tr>
+            <tr><td class="n">3</td><td>Same day they reply</td><td>Diagnose</td></tr>
+            <tr><td class="n">4</td><td>After #3</td><td>Mirror</td></tr>
+            <tr><td class="n">5</td><td>After #4</td><td>Soft how you help</td></tr>
+            <tr><td class="n">6</td><td>They lean in</td><td>Website</td></tr>
+            <tr><td class="n">7</td><td>Ready</td><td>Calendly</td></tr>
+            <tr><td class="n">8</td><td>If asked / on call</td><td>Price</td></tr>
+            <tr><td class="n">9</td><td>No reply to #2 · +3 days</td><td>Follow-up 1</td></tr>
+            <tr><td class="n">10</td><td>+7 days after #9</td><td>Follow-up 2 · STOP</td></tr>
+          </table>
         </div>
 
         <div class="step-group">
-          <h3>Connection request (3)</h3>
+          <h3>Happy path · DM 1 to 8</h3>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">1 · company first (Welsh)</span><span class="msg-tag warm">Best</span></div>
+            <div class="msg-header"><span class="msg-label">DM 1 · Connection · Day 0</span><span class="msg-tag warm">1</span></div>
             <textarea class="msg-text" readonly>Hey [Name]! Quick note… I came across [Company] and liked what you're building.
 
 I spend a lot of time around founders on LinkedIn and always enjoy connecting with people running real businesses. Would love to connect.</textarea>
-            <div class="copy-row"><span class="hint">About them · no pitch</span><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">2 · observation (Braun)</span></div>
-            <textarea class="msg-text" readonly>Hi [Name]! Saw you're leading [Company] and figured I'd reach out.
-
-I like meeting founders who are deep in the business side of things. Happy to connect if you're open to it.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">3 · warm network</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! Came across your profile while looking at founders behind companies like [Company].
-
-Always glad to meet new people here who care about building something long term. Would be great to connect and stay in each other's network.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>After accept openers (3)</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">1 · easy yes/no (Braun)</span><span class="msg-tag warm">Best</span></div>
+            <div class="msg-header"><span class="msg-label">DM 2 · Opener · +2 after accept</span><span class="msg-tag warm">2</span></div>
             <textarea class="msg-text" readonly>Hey [Name]! Thanks for connecting.
 
 Saw you're running [Company]. Curious… is LinkedIn something you're actively using for the business this year, or have you mostly left it alone?</textarea>
-            <div class="copy-row"><span class="hint">Goal = reply, not meeting</span><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">2 · them + brand</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! Appreciate you accepting.
-
-[Company] looks like a real business, not just a LinkedIn hobby project. A lot of founders I meet are in the same spot: strong company, quiet personal brand.
-
-Is growing your presence here something you want this year, or not really on the list right now?</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">3 · deposit first (Braun)</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! Thanks for connecting.
-
-I looked at [Company] for a minute and drafted 3 simple LinkedIn angles that could fit your world (just ideas, nothing salesy).
-
-Want me to send them over?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">FU1 · +3d</span><span class="msg-tag followup">No reply</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! No worries if timing’s off.
-
-Quick yes/no… is personal brand on LinkedIn even on your radar this year?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">FU2 · +7d</span><span class="msg-tag followup">Breakup</span></div>
-            <textarea class="msg-text" readonly>All good. I’ll leave it here. If you ever want those 3 post angles for [Company], just say the word.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>If they engage (quiet poke)</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">They care</span></div>
+            <div class="msg-header"><span class="msg-label">DM 3 · Diagnose · same day reply</span><span class="msg-tag warm">3</span></div>
             <textarea class="msg-text" readonly>Nice.
 
 How are you handling LinkedIn content right now? Writing it yourself when you can, or has it mostly stayed on the back burner?</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Never started</span></div>
-            <textarea class="msg-text" readonly>Got it. That’s more common than people admit.
-
-What’s usually in the way… time, not knowing what to say, or it just never felt urgent enough?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Easy binary</span></div>
-            <textarea class="msg-text" readonly>Quick one… if LinkedIn brought inbound for [Company] without you writing the posts, would that actually matter this year?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Not a focus</span></div>
-            <textarea class="msg-text" readonly>Totally fair. Running [Company] comes first.
-
-If that ever shifts, happy to share what I’m seeing work for founders starting from a quiet profile.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>Mirror + how you help</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Mirror</span></div>
+            <div class="msg-header"><span class="msg-label">DM 4 · Mirror</span><span class="msg-tag warm">4</span></div>
             <textarea class="msg-text" readonly>Yeah, I hear that a lot.
 
 It's rarely that founders don't care. They're just deep in the business, so LinkedIn stays empty for months.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">How you help</span></div>
-            <textarea class="msg-text" readonly>Yeah, that's actually what I help founders with.
+            <div class="msg-header"><span class="msg-label">DM 5 · Soft help · no price</span><span class="msg-tag warm">5</span></div>
+            <textarea class="msg-text" readonly>Yeah, that's actually the gap I help with.
 
-I work with people who want a personal brand on LinkedIn but don't have the time (or desire) to write everything themselves. We start from scratch: positioning, voice, then I turn their ideas into posts so they stay visible.
+I work with founders who have a strong business but almost nothing on LinkedIn yet. We start from scratch: positioning, voice, then I turn their ideas into posts so they stay visible.
 
-If you want, I can show you how that works. No pressure at all.</textarea>
+If useful, I can show you how it works. No pressure.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Shorter</span></div>
-            <textarea class="msg-text" readonly>I help founders build their LinkedIn presence from scratch. Mostly people who have a strong business but almost nothing online yet.
-
-You send ideas or voice notes. I handle the posts and the rhythm.
-
-Want me to send a quick overview of how it works?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>Page · call · wedge</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Page</span></div>
+            <div class="msg-header"><span class="msg-label">DM 6 · Website</span><span class="msg-tag warm">6</span></div>
             <textarea class="msg-text" readonly>Here's a simple page that explains it:
 
 https://www.andreilucian.com/ghostwriting
@@ -397,140 +213,16 @@ If anything's unclear, just ask me here.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Call</span></div>
-            <textarea class="msg-text" readonly>If it'd help, we can also jump on a quick 15 min call and I'll map what starting from scratch would look like for you / [Company].
+            <div class="msg-header"><span class="msg-label">DM 7 · Calendly</span><span class="msg-tag warm">7</span></div>
+            <textarea class="msg-text" readonly>If it'd help, we can jump on a quick 15 min call and I'll map what starting from scratch would look like for [Company].
 
 https://calendly.com/theandreilucian/discovery-call
 
-Only if it's useful. No pitch deck, just a clear picture.</textarea>
+Only if useful. No deck. Just a clear picture.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Wedge</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! I took a quick look at [Company].
-
-Your LinkedIn is pretty much a blank slate, which is actually a good place to start.
-
-I sketched 3 simple first post angles that would fit your world. Want me to drop them here? No pitch, just ideas.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="x" class="panel" data-platform="x" data-funnel-name="X DM FUNNEL">
-      <div class="section">
-        <h2>X</h2>
-        <p class="desc">Value reply first. Warm DM. Coaching €500 / €150.</p>
-
-        <div class="copy-full-bar">
-          <p><strong>Copy full X funnel</strong></p>
-          <button type="button" class="copy-full-btn" data-panel="x">Copy Full X</button>
-        </div>
-
-        <div class="flow-diagram">
-          Reply → <em>warm DM</em> → chat → map call → €500 or €150
-        </div>
-
-        <div class="step-group">
-          <h3>Public replies</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">No time</span><span class="msg-tag public">Reply</span></div>
-            <textarea class="msg-text" readonly>That's usually the real bottleneck.
-
-Not more ideas. A simple system you can stick to on days you don't feel like posting.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Stuck</span><span class="msg-tag public">Reply</span></div>
-            <textarea class="msg-text" readonly>Small accounts usually don't need another tactic.
-
-Clear message + daily reps. Most people quit right before it starts working.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">No ideas</span><span class="msg-tag public">Reply</span></div>
-            <textarea class="msg-text" readonly>You probably don't need more ideas.
-
-One clear audience pain + 10 ways to say it beats a big content calendar.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>Warm DM openers (3)</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">1 · after reply</span><span class="msg-tag warm">Best</span></div>
-            <textarea class="msg-text" readonly>Hey! Liked your take on [topic].
-
-Always cool meeting people who are actually trying to grow their personal brand on here.
-
-Where are you at with it right now? Pushing hard, or kind of stuck?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">2 · engaged your post</span></div>
-            <textarea class="msg-text" readonly>Hey! Saw you on my [topic] post. Appreciate that.
-
-I love talking to people who want to grow on X but feel stuck somewhere.
-
-What's been the hardest part for you lately?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">3 · small account</span></div>
-            <textarea class="msg-text" readonly>Hey! Quick one.
-
-I like meeting people who are under a few thousand and actually trying to break through (not just lurk).
-
-Is growing your personal brand a real priority for you this year, or more of a side thing?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">FU1 · +3d</span><span class="msg-tag followup">No reply</span></div>
-            <textarea class="msg-text" readonly>Hey! No pressure at all.
-
-Still curious what you're stuck on most: consistency, what to post, or turning attention into clients?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="step-group">
-          <h3>Bridge to coaching</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Continue</span></div>
-            <textarea class="msg-text" readonly>Makes sense. What's been hardest? Knowing what to say, staying consistent, or getting people to care?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">Bridge</span></div>
-            <textarea class="msg-text" readonly>I coach small accounts 1:1 on personal brand growth: positioning, content system, daily reps, turning posts into conversations.
-
-Some people do one session. Most do a month (4 calls) so we can actually build something.
-
-Want me to hop on a quick 15 min map and tell you what I'd fix first on your account?
-
-https://calendly.com/theandreilucian/discovery-call</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="price" class="panel" data-platform="x" data-funnel-name="PRICE SCRIPTS">
-      <div class="section">
-        <h2>Prices</h2>
-        <p class="desc">Only when asked or on the call.</p>
-
-        <div class="copy-full-bar">
-          <p><strong>Copy all prices</strong></p>
-          <button type="button" class="copy-full-btn" data-panel="price">Copy Prices</button>
-        </div>
-
-        <div class="step-group">
-          <h3>LinkedIn</h3>
           <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">How much?</span><span class="msg-tag price">€</span></div>
+            <div class="msg-header"><span class="msg-label">DM 8 · Price · only if asked</span><span class="msg-tag price">8</span></div>
             <textarea class="msg-text" readonly>Standard is €2,000 a month.
 
 For the first month I do €1,500. We build everything from scratch (positioning, voice, the weekly system). Then it goes to €2,000.
@@ -540,25 +232,101 @@ Easiest if we hop on a short call so I can see if it's even a fit:
 https://calendly.com/theandreilucian/discovery-call</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">On call</span><span class="msg-tag price">€</span></div>
-            <textarea class="msg-text" readonly>Here's the simple version.
-
-Month one is €1,500. We lock your positioning and voice, then I start shipping posts from your ideas / voice notes.
-
-From month two it's €2,000/month.
-
-You stay out of the blank page. I run the content side.
-
-If that feels right, we can start this week.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
         </div>
 
         <div class="step-group">
-          <h3>X coaching</h3>
+          <h3>No reply path · DM 9 to 10</h3>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +3 after opener</span><span class="msg-tag followup">9</span></div>
+            <textarea class="msg-text" readonly>Hey [Name]! No worries if timing's off.
+
+Quick yes/no… is personal brand on LinkedIn even on your radar this year?</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · +7 after #9 · STOP</span><span class="msg-tag followup">10</span></div>
+            <textarea class="msg-text" readonly>All good. I'll leave it here. If you ever want 3 post angles for [Company], just say the word.</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- X -->
+    <div id="x" class="panel" data-platform="x" data-funnel-name="X 10 DM FUNNEL">
+      <div class="section">
+        <h2>X · 10 DMs</h2>
+        <p class="desc">Small accounts · coaching €150 / €500</p>
+
+        <div class="copy-full-bar">
+          <p><strong>Copy all 10 X DMs</strong></p>
+          <button type="button" class="copy-full-btn" data-panel="x">Copy Full X</button>
+        </div>
+
+        <div class="map">
+          <table>
+            <tr><th>#</th><th>When</th><th>Name</th></tr>
+            <tr><td class="n">1</td><td>Day 0</td><td>Public value reply</td></tr>
+            <tr><td class="n">2</td><td>Same day or +1 (warm)</td><td>Warm DM opener</td></tr>
+            <tr><td class="n">3</td><td>Same day they reply</td><td>Diagnose</td></tr>
+            <tr><td class="n">4</td><td>After #3</td><td>Mirror</td></tr>
+            <tr><td class="n">5</td><td>After #4</td><td>Coaching bridge</td></tr>
+            <tr><td class="n">6</td><td>Interested</td><td>Calendly</td></tr>
+            <tr><td class="n">7</td><td>If asked / on call</td><td>Price</td></tr>
+            <tr><td class="n">8</td><td>Not ready</td><td>DIY exit</td></tr>
+            <tr><td class="n">9</td><td>No reply to #2 · +3 days</td><td>Follow-up 1</td></tr>
+            <tr><td class="n">10</td><td>+7 days after #9</td><td>Follow-up 2 · STOP</td></tr>
+          </table>
+        </div>
+
+        <div class="step-group">
+          <h3>Happy path · DM 1 to 8</h3>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 1 · Public reply · Day 0</span><span class="msg-tag warm">1</span></div>
+            <textarea class="msg-text" readonly>That's usually the real bottleneck.
+
+Not more ideas. A simple system you can stick to on days you don't feel like posting.</textarea>
+            <div class="copy-row"><span class="hint">Not a DM · reply on their post</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 2 · Warm opener</span><span class="msg-tag warm">2</span></div>
+            <textarea class="msg-text" readonly>Hey! Liked your take on [topic].
+
+Always cool meeting people who are actually trying to grow their personal brand on here.
+
+Where are you at with it right now? Pushing hard, or kind of stuck?</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 3 · Diagnose</span><span class="msg-tag warm">3</span></div>
+            <textarea class="msg-text" readonly>Makes sense. What's been hardest? Knowing what to say, staying consistent, or getting people to care?</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 4 · Mirror</span><span class="msg-tag warm">4</span></div>
+            <textarea class="msg-text" readonly>Got it. That usually isn't a motivation problem. It's missing a simple system + someone to correct the loop.</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 5 · Coaching bridge</span><span class="msg-tag warm">5</span></div>
+            <textarea class="msg-text" readonly>I coach small accounts 1:1 on personal brand growth: positioning, content system, daily reps, turning posts into conversations.
+
+Some people do one session. Most do a month (4 calls) so we can actually build something.
+
+Want me to hop on a quick 15 min map and tell you what I'd fix first on your account?</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 6 · Calendly</span><span class="msg-tag warm">6</span></div>
+            <textarea class="msg-text" readonly>Grab any time here:
+
+https://calendly.com/theandreilucian/discovery-call
+
+I'll come with 2 to 3 specific fixes for your account.</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
           <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">How much?</span><span class="msg-tag price">€</span></div>
+            <div class="msg-header"><span class="msg-label">DM 7 · Price</span><span class="msg-tag price">7</span></div>
             <textarea class="msg-text" readonly>One session is €150.
 
 Most people do the month: 4 calls for €500. Better value, and we can build a real system instead of one random tip dump.
@@ -568,15 +336,28 @@ Happy to start with a free 15 min map so you see if it's even useful:
 https://calendly.com/theandreilucian/discovery-call</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">On call · €500</span><span class="msg-tag price">€</span></div>
-            <textarea class="msg-text" readonly>Here's how I'd think about it.
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 8 · DIY exit</span><span class="msg-tag followup">8</span></div>
+            <textarea class="msg-text" readonly>All good. DIY option: X playbook ($10)
+https://andreilucian.gumroad.com/l/cwzxly
 
-€150 = one clear session if you want a single fix.
+Free notes: https://theandreilucian.substack.com</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+        </div>
 
-€500 = 4 calls over a month. Usually better for small accounts, because we lock positioning + system + weekly rhythm.
+        <div class="step-group">
+          <h3>No reply path · DM 9 to 10</h3>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +3 after opener</span><span class="msg-tag followup">9</span></div>
+            <textarea class="msg-text" readonly>Hey! No pressure at all.
 
-If that feels right, we can start this week.</textarea>
+Still curious what you're stuck on most: consistency, what to post, or turning attention into clients?</textarea>
+            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · STOP</span><span class="msg-tag followup">10</span></div>
+            <textarea class="msg-text" readonly>All good. If growth becomes a priority later, happy to share what I'd fix first on an account like yours.</textarea>
             <div class="copy-row"><button class="copy-btn">Copy</button></div>
           </div>
         </div>
