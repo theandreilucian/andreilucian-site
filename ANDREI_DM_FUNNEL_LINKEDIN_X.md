@@ -134,7 +134,7 @@ Hey [Name]! No rush. Curious if any of that was useful, or should I leave it for
 
 # X · 10 DMs
 
-People who **comment / engage on your posts** → free guide → **0→1K X System (€47)**.
+People who **comment / engage on your posts** → free guide → **0→1K X System (€47)** → **1:1 coaching** if they want more help.
 
 | # | When | Name |
 |---|---|---|
@@ -144,13 +144,13 @@ People who **comment / engage on your posts** → free guide → **0→1K X Syst
 | 4 | After #3 | Soft system bridge |
 | 5 | They lean in | Landing page |
 | 6 | Curious / asked | Offer + price |
-| 7 | Silent after landing | Nudge (€47 → €147) |
+| 7 | Want more help | 1:1 coaching upsell |
 | 8 | Not ready | Soft exit |
 | 9 | No reply to #1: +2 days | Follow-up 1 |
 | 10 | Still silent: +5 days after #9 | Follow-up 2 (STOP) |
 
 **If they never reply in DM:** **1 → 9 → 10** then stop.  
-**If conversation flows:** **1 → 2 → 3 → 4 → 5 → 6** (then **7** or **8**).
+**If conversation flows:** **1 → 2 → 3 → 4 → 5 → 6** (then **7** if they want more help, or **8** if not ready).
 
 ---
 
@@ -212,15 +212,15 @@ www.andreilucian.com/0-to-1K-X-System/LANDING
 It's only €47 now — soon €147.
 ```
 
-### DM 7 · Nudge (if silent after landing)
+### DM 7 · 1:1 coaching upsell (if they want more help)
 ```
-No rush at all.
+If you want more help, I'm opening 1:1 coaching — to grow your personal brand and get clients as well.
 
-Just a heads up — the €47 launch price won't stay. It goes to €147 soon.
+The €47 system is the DIY path. Coaching is if you want me in your corner fixing your account with you.
 
-If you're stuck under 1K and want a daily system instead of guessing, the page is here:
+Happy to hop on a quick call and map what I'd fix first:
 
-www.andreilucian.com/0-to-1K-X-System/LANDING
+https://calendly.com/theandreilucian/discovery-call
 ```
 
 ### DM 8 · Soft exit (not ready)
@@ -229,9 +229,11 @@ All good. Keep the free guide — that's enough to start:
 
 andreilucian.kit.com/xsimplified
 
-If growth becomes a priority later, the system is here whenever you need it:
+If you want the DIY system later:
 
 www.andreilucian.com/0-to-1K-X-System/LANDING
+
+And if you ever want 1:1 help growing your personal brand + getting clients, just say the word.
 ```
 
 ### DM 9 · Follow-up 1 (+2 days, no reply to free guide)
