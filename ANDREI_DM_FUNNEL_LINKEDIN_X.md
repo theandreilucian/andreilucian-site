@@ -1,16 +1,16 @@
 # Andrei Lucian DM Funnel · 10 messages
 
 **LinkedIn** → ghostwriting · quiet founders · **€1,500 → €2,000/mo**  
-**X** → coaching · small accounts · **€150** / **€500** (4 calls)
+**X** → 0→1K System · people who engage on your posts · **€47** (soon **€147**)
 
 **Rule:** Each platform = **10 DMs max**. If they go quiet, you only send the follow-ups marked below. If they reply, skip ahead to the next conversation step (same day).
 
 **Links**  
 Ghostwriting https://www.andreilucian.com/ghostwriting  
+0→1K X System https://www.andreilucian.com/0-to-1K-X-System/LANDING  
+Free guide (Kit) https://andreilucian.kit.com/xsimplified  
 Calendly https://calendly.com/theandreilucian/discovery-call  
-Newsletter https://theandreilucian.substack.com  
-X Playbook https://andreilucian.gumroad.com/l/cwzxly  
-LI Playbook https://andreilucian.gumroad.com/l/raosal
+Newsletter https://theandreilucian.substack.com
 
 ---
 
@@ -134,108 +134,122 @@ Hey [Name]! No rush. Curious if any of that was useful, or should I leave it for
 
 # X · 10 DMs
 
+People who **comment / engage on your posts** → free guide → **0→1K X System (€47)**.
+
 | # | When | Name |
 |---|---|---|
-| 1 | Day 0 | Public value reply (not a DM, but step 1) |
-| 2 | Same day or +1 (after they engage) | Warm DM opener |
-| 3 | Same day they reply | Diagnose |
-| 4 | After they answer | Mirror |
-| 5 | After #4 | Soft coaching bridge |
-| 6 | When interested | Calendly |
-| 7 | Only if asked / on call | Price |
-| 8 | Soft DIY exit if not ready | Playbook / newsletter |
-| 9 | No reply to #2: +3 days | Follow-up 1 |
-| 10 | Still silent: +7 days after #9 | Follow-up 2 (STOP) |
+| 1 | Same day they engage | Free guide opener |
+| 2 | Same day they reply | Diagnose |
+| 3 | After #2 | Mirror |
+| 4 | After #3 | Soft system bridge |
+| 5 | They lean in | Landing page |
+| 6 | Curious / asked | Offer + price |
+| 7 | Silent after landing | Nudge (€47 → €147) |
+| 8 | Not ready | Soft exit |
+| 9 | No reply to #1: +2 days | Follow-up 1 |
+| 10 | Still silent: +5 days after #9 | Follow-up 2 (STOP) |
 
-**If they never reply in DM:** **1 → 2 → 9 → 10** then stop.  
+**If they never reply in DM:** **1 → 9 → 10** then stop.  
 **If conversation flows:** **1 → 2 → 3 → 4 → 5 → 6** (then **7** or **8**).
 
 ---
 
-### DM 1 · Public reply (Day 0 · no pitch)
+### DM 1 · Free guide opener (same day they engage)
 ```
-That's usually the real bottleneck.
+Hey friend,
 
-Not more ideas. A simple system you can stick to on days you don't feel like posting.
-```
+Thank you for engaging with my post.
 
-### DM 2 · Warm opener (same day or +1 after they engage)
-```
-Hey! Liked your take on [topic].
+Here's your free guide:
 
-Always cool meeting people who are actually trying to grow their personal brand on here.
+andreilucian.kit.com/xsimplified
 
-Where are you at with it right now? Pushing hard, or kind of stuck?
+I hope you find it valuable.
 ```
 
-### DM 3 · Diagnose
+### DM 2 · Diagnose (same day they reply)
 ```
-Makes sense. What's been hardest? Knowing what to say, staying consistent, or getting people to care?
-```
+Glad it helped.
 
-### DM 4 · Mirror
-```
-Got it. That usually isn't a motivation problem. It's missing a simple system + someone to correct the loop.
+Quick one — where are you at on 𝕏 right now? Just starting, stuck under a few hundred, or posting but the graph isn't moving?
 ```
 
-### DM 5 · Soft coaching bridge
+### DM 3 · Mirror
 ```
-I coach small accounts 1:1 on personal brand growth: positioning, content system, daily reps, turning posts into conversations.
+Yeah, that's super common.
 
-Some people do one session. Most do a month (4 calls) so we can actually build something.
-
-Want me to hop on a quick 15 min map and tell you what I'd fix first on your account?
+Usually it's not motivation. It's missing a simple daily system — what to post, who to engage, and how to stick to it when you don't feel like it.
 ```
 
-### DM 6 · Calendly
+### DM 4 · Soft system bridge
 ```
-Grab any time here:
+That's actually why I built a simple system for beginners to grow from 0 → 1K on 𝕏.
 
-https://calendly.com/theandreilucian/discovery-call
+Daily plan, copy-paste templates, engagement scripts — so you stop guessing every morning.
 
-I'll come with 2 to 3 specific fixes for your account.
-```
-
-### DM 7 · Price (only if asked / on call)
-```
-One session is €150.
-
-Most people do the month: 4 calls for €500. Better value, and we can build a real system instead of one random tip dump.
-
-Happy to start with a free 15 min map so you see if it's even useful:
-
-https://calendly.com/theandreilucian/discovery-call
+Want me to send the page?
 ```
 
-**On call:**
+### DM 5 · Landing page
 ```
-Here's how I'd think about it.
+Here you go:
 
-€150 = one clear session if you want a single fix.
+www.andreilucian.com/0-to-1K-X-System/LANDING
 
-€500 = 4 calls over a month. Usually better for small accounts, because we lock positioning + system + weekly rhythm.
+It's only €47 now — soon €147.
 
-If that feels right, we can start this week.
-```
-
-### DM 8 · Not ready / DIY exit
-```
-All good. DIY option: X playbook ($10)
-https://andreilucian.gumroad.com/l/cwzxly
-
-Free notes: https://theandreilucian.substack.com
+If anything's unclear, just ask me here.
 ```
 
-### DM 9 · Follow-up 1 (+3 days, no reply to opener)
+### DM 6 · Offer + price (if they ask / lean in)
 ```
-Hey! No pressure at all.
+Hey! I made a simple system for beginners to grow from 0 → 1K on 𝕏.
 
-Still curious what you're stuck on most: consistency, what to post, or turning attention into clients?
+If you know someone struggling to grow, send this to them:
+
+www.andreilucian.com/0-to-1K-X-System/LANDING
+
+It's only €47 now — soon €147.
 ```
 
-### DM 10 · Follow-up 2 / last (+7 days after DM 9 · STOP)
+### DM 7 · Nudge (if silent after landing)
 ```
-All good. If growth becomes a priority later, happy to share what I'd fix first on an account like yours.
+No rush at all.
+
+Just a heads up — the €47 launch price won't stay. It goes to €147 soon.
+
+If you're stuck under 1K and want a daily system instead of guessing, the page is here:
+
+www.andreilucian.com/0-to-1K-X-System/LANDING
+```
+
+### DM 8 · Soft exit (not ready)
+```
+All good. Keep the free guide — that's enough to start:
+
+andreilucian.kit.com/xsimplified
+
+If growth becomes a priority later, the system is here whenever you need it:
+
+www.andreilucian.com/0-to-1K-X-System/LANDING
+```
+
+### DM 9 · Follow-up 1 (+2 days, no reply to free guide)
+```
+Hey! Just checking you got the guide.
+
+andreilucian.kit.com/xsimplified
+
+Any of it useful so far, or are you more stuck on what to post vs staying consistent?
+```
+
+### DM 10 · Follow-up 2 / last (+5 days after DM 9 · STOP)
+```
+All good — I'll leave it here.
+
+If you ever want the full 0 → 1K daily system, it's here (still €47 for now):
+
+www.andreilucian.com/0-to-1K-X-System/LANDING
 ```
 
 ---
@@ -245,7 +259,7 @@ All good. If growth becomes a priority later, happy to share what I'd fix first 
 | Platform | Every day |
 |---|---|
 | LinkedIn | 10 connection requests (DM 1) · work open conversations |
-| X | 15 to 25 public replies (DM 1) · 5 to 10 warm DMs (DM 2) |
+| X | DM everyone who comments / engages · free guide first (DM 1) · work open conversations toward €47 |
 
 ---
 
@@ -253,6 +267,6 @@ All good. If growth becomes a priority later, happy to share what I'd fix first 
 
 `Name | Platform | DM # last sent | Date | Next DM # | Next date | Status`
 
-Statuses: `1 sent → 2 due → Talking → Call · Won · Dead`
+Statuses: `1 sent → 2 due → Talking → Bought · Dead`
 
 **That's the whole funnel: 10 DMs. No more.**
