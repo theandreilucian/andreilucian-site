@@ -605,7 +605,7 @@ footer a:hover { color: var(--text); }
   .final-panel { padding: 32px 16px !important; }
   .final h2 { font-size: clamp(28px, 8vw, 40px) !important; }
   .hero { padding: 22px 0 18px !important; }
-  footer { padding: 20px 0 calc(96px + env(safe-area-inset-bottom)) !important; }
+  footer { padding: 20px 0 calc(88px + env(safe-area-inset-bottom)) !important; }
 }
 
 @media (max-width: 900px) {
@@ -671,6 +671,11 @@ footer a:hover { color: var(--text); }
     max-width: 96vw !important;
   }
   #proof { padding-bottom: 32px !important; }
+
+  .nav-cta { display: none !important; }
+  .mid-cta { display: none !important; }
+  .offer-bar .btn-primary { display: none !important; }
+  .hero-copy .btn-ghost { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
