@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ghostwriting for X or LinkedIn | Andrei Lucian</title>
   <meta name="description" content="Done-for-you ghostwriting for X or LinkedIn — separately. Your voice. Consistent shipping. I guarantee the work, not fairy-tale metrics.">
   <meta name="theme-color" content="#070708">
@@ -1869,22 +1869,61 @@
       .result-story .media.portrait { height: min(68vh, 620px); }
       .nav-links .hide-sm { display: none; }
     }
+    @media (max-width: 700px) {
+      .btn-row { flex-direction: column; align-items: stretch; }
+      .btn-row .btn,
+      .mid-cta .btn,
+      .package .btn,
+      .offer-bar .btn,
+      .final-split .btn { width: 100%; min-width: 0; }
+      .final-split { flex-direction: column; }
+      .hero-note {
+        display: block;
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.45;
+        border-radius: 14px;
+        padding: 10px 12px;
+      }
+      .offer-bar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+      }
+      .offer-bar .ob-item { min-width: 0; }
+      .flag-quote p { font-size: clamp(22px, 6vw, 28px); }
+      .package { padding: 22px 18px; }
+    }
     @media (max-width: 560px) {
-      .wrap { width: min(100% - 28px, var(--max)); }
+      .wrap { width: min(100% - 24px, var(--max)); }
       .ops-grid, .proof-grid, .video-grid, .shot-grid, .shot-grid-3,
       .trio-grid, .review-grid { grid-template-columns: 1fr; }
-      .process-overview { gap: 6px; margin-bottom: 40px; }
-      .process-orb { width: 64px; height: 64px; }
-      .process-orb svg { width: 24px; height: 24px; }
-      .process-node .label { font-size: 16px; }
-      .process-card { padding: 28px 20px 24px; }
-      .process-card .step-mark { top: -22px; left: 6px; }
-      .hero { padding-top: 48px; }
+      .process-overview {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 36px;
+      }
+      .process-overview::before,
+      .process-node::after { display: none; }
+      .process-orb { width: 56px; height: 56px; }
+      .process-orb svg { width: 22px; height: 22px; }
+      .process-node .label { font-size: 18px; }
+      .process-card { padding: 24px 18px 20px; }
+      .process-card .step-mark { top: -20px; left: 6px; }
+      .hero { padding-top: 36px; padding-bottom: 36px; }
+      .hero h1 { font-size: clamp(30px, 8.6vw, 40px); }
       .stat-row { grid-template-columns: 1fr; }
       .shot-card img { max-height: none; height: auto; }
       .case-wall { gap: 22px; }
       .proof-block { margin-top: 48px; padding-top: 36px; }
       .result-story .media.portrait video { max-height: none; }
+      .sticky-apply {
+        bottom: max(10px, env(safe-area-inset-bottom));
+        width: calc(100% - 16px);
+        justify-content: center;
+      }
+      .sticky-apply .btn { flex: 1; }
+      footer { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
     }
   </style>
 </head>

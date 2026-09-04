@@ -440,17 +440,51 @@ footer a:hover { color: var(--text); }
 @media (max-width: 900px) {
   .hero {
     min-height: auto !important;
-    padding: 64px 0 48px !important;
+    padding: 56px 0 40px !important;
   }
-  .hero-grid { grid-template-columns: 1fr !important; }
-  .final-panel { padding: 48px 24px; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .final-panel { padding: 40px 20px !important; }
+}
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: clamp(30px, 8.6vw, 42px) !important; line-height: 1.12 !important; }
+  .hero-lead { font-size: 16px !important; }
+  .hero-note {
+    display: block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.45 !important;
+    border-radius: 14px !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+  .btn-row { flex-direction: column !important; align-items: stretch !important; }
+  .btn-row .btn,
+  .mid-cta .btn,
+  .package .btn,
+  .offer-bar .btn,
+  .final-split .btn {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .final-split { flex-direction: column !important; }
+  .offer-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .offer-bar .btn-primary { white-space: normal !important; }
+  .package .price { font-size: 36px !important; }
+  section { padding: 56px 0 !important; }
 }
 
 @media (max-width: 560px) {
-  .wrap { width: min(100% - 28px, var(--max)); }
-  section { padding: 64px 0 !important; }
-  .final { padding: 40px 0 24px !important; }
-  .final-panel { padding: 40px 20px; }
+  .wrap { width: min(100% - 24px, var(--max)) !important; }
+  section { padding: 48px 0 !important; }
+  .final { padding: 32px 0 16px !important; }
+  .final-panel { padding: 32px 16px !important; }
+  .final h2 { font-size: clamp(28px, 8vw, 40px) !important; }
+  .hero { padding: 32px 0 36px !important; }
+  footer { padding: 20px 0 calc(96px + env(safe-area-inset-bottom)) !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
