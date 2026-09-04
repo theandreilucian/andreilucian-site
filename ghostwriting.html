@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20260904">
+  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20260904m2">
   <style>
     :root {
       --bg: #070708;
@@ -164,6 +164,31 @@
     .hero-note {
       font-size: 14px; color: var(--accent); font-weight: 600;
       margin-bottom: 22px;
+    }
+    .hero-id { display: none; }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+    .hero-chips li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(94,234,212,0.28);
+      background: rgba(94,234,212,0.08);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .hero-chips strong {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
     }
     .hero-trust {
       margin: 14px 0 0;
@@ -1880,19 +1905,16 @@
       .final-split .btn { width: 100%; min-width: 0; }
       .final-split { flex-direction: column; }
       .hero-note {
-        display: block;
-        max-width: 100%;
-        white-space: normal;
-        line-height: 1.45;
-        border-radius: 14px;
-        padding: 10px 12px;
+        display: none;
       }
       .offer-bar {
-        flex-direction: column;
-        align-items: stretch;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         text-align: left;
       }
       .offer-bar .ob-item { min-width: 0; }
+      .offer-bar .btn { grid-column: 1 / -1; }
       .flag-quote p { font-size: clamp(22px, 6vw, 28px); }
       .package { padding: 22px 18px; }
     }
@@ -1912,9 +1934,9 @@
       .process-node .label { font-size: 18px; }
       .process-card { padding: 24px 18px 20px; }
       .process-card .step-mark { top: -20px; left: 6px; }
-      .hero { padding-top: 36px; padding-bottom: 36px; }
-      .hero h1 { font-size: clamp(30px, 8.6vw, 40px); }
-      .stat-row { grid-template-columns: 1fr; }
+      .hero { padding-top: 24px; padding-bottom: 20px; }
+      .hero h1 { font-size: clamp(34px, 9.4vw, 44px); }
+      .hero-card .stat-row { grid-template-columns: 1fr 1fr; }
       .shot-card img { max-height: none; height: auto; }
       .case-wall { gap: 22px; }
       .proof-block { margin-top: 48px; padding-top: 36px; }
@@ -1947,14 +1969,25 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
+          <div class="hero-id">
+            <img src="assets/images/andrei-linkedin-headshot.png" alt="" width="52" height="52" onerror="this.src='assets/images/logo.png'">
+            <div>
+              <b>Andrei Lucian</b>
+              <span>Ghostwriter · X or LinkedIn</span>
+            </div>
+          </div>
           <span class="eyebrow">Ghostwriter for busy founders</span>
-          <h1 class="display">Your X <em>or</em> LinkedIn — written like you. Shipped without you.</h1>
+          <h1 class="display">Your X <em>or</em> LinkedIn — <span class="brk">written like you.</span> <span class="brk">Shipped without you.</span></h1>
           <p class="hero-lead">
             You're building the company. The account goes quiet. I lock your voice, write the posts, you approve, I publish.
             One platform. That's the whole job.
           </p>
-          <p class="hero-note">€1,500 month one → €2,000/mo · per platform · work guaranteed, not fantasy metrics</p>
+          <ul class="hero-chips">
+            <li><strong>€1,500</strong> month one</li>
+            <li><strong>€2,000</strong> per month</li>
+            <li><strong>One</strong> platform</li>
+          </ul>
           <div class="btn-row">
             <a class="btn btn-primary" href="#contact">Apply to work with me →</a>
             <a class="btn btn-ghost" href="#proof">See the results</a>
