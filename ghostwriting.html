@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20260904cta">
+  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20260904proof">
   <style>
     :root {
       --bg: #070708;
@@ -3430,7 +3430,9 @@
     var sections = document.querySelectorAll('main > section');
     sections.forEach(function (s, i) {
       s.classList.add('reveal');
-      if (i <= 2 || i === sections.length - 1) s.classList.add('in');
+      if (i <= 2 || i === sections.length - 1 || s.id === 'proof' || s.id === 'for' || s.id === 'packages') {
+        s.classList.add('in');
+      }
     });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -3439,7 +3441,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+    }, { threshold: 0, rootMargin: '80px 0px' });
     document.querySelectorAll('.reveal:not(.in)').forEach(function (el) { io.observe(el); });
 
     (function () {
