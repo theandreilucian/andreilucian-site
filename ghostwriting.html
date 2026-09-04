@@ -1776,110 +1776,15 @@
     }
     .final-split {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 16px;
+      margin-top: 8px;
     }
     .final-split .btn {
-      min-width: 120px;
-      padding: 11px 18px;
-      font-size: 13px;
-    }
-    .final-dm {
-      margin-top: 22px !important;
-      font-size: 14px !important;
-      color: #8f929c !important;
-    }
-    .final-dm a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 650;
-    }
-    .final-dm a:hover { text-decoration: underline; }
-
-    .apply-form {
-      text-align: left;
-      max-width: 520px;
-      margin: 0 auto 8px;
-      display: grid;
-      gap: 12px;
-    }
-    .apply-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .apply-form label,
-    .apply-form legend {
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #c9cbd4;
-      margin-bottom: 6px;
-    }
-    .apply-form input[type="text"],
-    .apply-form input[type="email"],
-    .apply-form textarea {
-      width: 100%;
-      margin-top: 6px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.35);
-      color: var(--text);
-      font: inherit;
+      min-width: min(100%, 240px);
+      padding: 16px 22px;
       font-size: 15px;
-    }
-    .apply-form textarea { min-height: 88px; resize: vertical; }
-    .apply-form input:focus,
-    .apply-form textarea:focus {
-      outline: none;
-      border-color: rgba(94,234,212,0.55);
-    }
-    .apply-plats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
-    .apply-plats legend {
-      grid-column: 1 / -1;
-      margin-bottom: 0;
-    }
-    .apply-plats label {
-      flex: 1;
-      margin: 0;
-      text-transform: none;
-      letter-spacing: 0;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.28);
-    }
-    .apply-plats input { accent-color: var(--accent); }
-    .apply-form .btn-final { width: 100%; margin-top: 6px; }
-    .apply-status {
-      display: none;
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--accent);
-      text-align: center;
-    }
-    .apply-status.show { display: block; }
-    @media (max-width: 560px) {
-      .apply-row { grid-template-columns: 1fr; }
     }
 
     .sticky-apply[hidden] { display: none !important; }
@@ -2077,7 +1982,7 @@
               <li>I schedule + publish for you</li>
               <li>Monthly review on what’s working</li>
             </ul>
-            <a class="btn btn-x js-apply" href="#contact" data-platform="X">Apply for X →</a>
+            <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">Message me on X →</a>
           </article>
           <article class="package" id="pkg-li">
             <div class="platform">For founders on LinkedIn</div>
@@ -2093,7 +1998,7 @@
               <li>I schedule + publish for you</li>
               <li>Monthly review on what’s working</li>
             </ul>
-            <a class="btn btn-li js-apply" href="#contact" data-platform="LinkedIn">Apply for LinkedIn →</a>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=andrei-lucian-0498901b8" target="_blank" rel="noopener">Message me on LinkedIn →</a>
           </article>
         </div>
 
@@ -3377,42 +3282,13 @@
           <span class="final-pill">Apply</span>
           <h2 class="display">If you've read this far, you already <em>know.</em></h2>
           <p>
-            One platform. Your voice. Done-for-you shipping.
-            Pick X or LinkedIn, say what you sell, and the goal. If it fits, we start month one. If it doesn’t, I’ll say so.
+            Pick the platform. I’ll open a message on that one — X or LinkedIn.
+            Tell me what you sell and the goal. If it fits, we start. If it doesn’t, I’ll say so.
           </p>
-          <form class="apply-form" id="applyForm">
-            <div class="apply-row">
-              <label>Name
-                <input type="text" name="name" autocomplete="name" required>
-              </label>
-              <label>Email
-                <input type="email" name="email" autocomplete="email" required>
-              </label>
-            </div>
-            <fieldset class="apply-plats">
-              <legend>Platform</legend>
-              <label><input type="radio" name="platform" value="X" required> X</label>
-              <label><input type="radio" name="platform" value="LinkedIn"> LinkedIn</label>
-            </fieldset>
-            <label>What you sell
-              <input type="text" name="offer" required placeholder="SaaS, coaching, agency…">
-            </label>
-            <label>The goal
-              <textarea name="goal" required placeholder="Inbound, authority with buyers, hiring…"></textarea>
-            </label>
-            <button type="submit" class="btn btn-final">Send application →</button>
-          </form>
-          <p class="apply-status" id="applyStatus" hidden>If your email app didn’t open, send that to <a href="mailto:andrei@andreilucian.com">andrei@andreilucian.com</a>.</p>
-          <div class="final-split">
-            <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">X</a>
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=andrei-lucian-0498901b8" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="final-split dm-pick">
+            <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">Message me on X →</a>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=andrei-lucian-0498901b8" target="_blank" rel="noopener">Message me on LinkedIn →</a>
           </div>
-          <p class="final-dm">
-            Or DM me ·
-            <a href="https://x.com/theandreilucian" target="_blank" rel="noopener">X</a>
-            ·
-            <a href="https://www.linkedin.com/messaging/compose/?recipient=andrei-lucian-0498901b8" target="_blank" rel="noopener">LinkedIn</a>
-          </p>
         </div>
       </div>
     </section>
@@ -3607,40 +3483,6 @@
             if (other !== vid) other.pause();
           });
         });
-      });
-    })();
-
-    (function () {
-      function setPlatform(value) {
-        if (!value) return;
-        var radio = document.querySelector('#applyForm input[name="platform"][value="' + value + '"]');
-        if (radio) radio.checked = true;
-      }
-      document.querySelectorAll('.js-apply').forEach(function (el) {
-        el.addEventListener('click', function () {
-          setPlatform(el.getAttribute('data-platform'));
-        });
-      });
-      var form = document.getElementById('applyForm');
-      var status = document.getElementById('applyStatus');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var d = new FormData(form);
-        var platform = d.get('platform') || '';
-        var subject = encodeURIComponent((platform ? platform + ' ' : '') + 'ghostwriting application');
-        var body = encodeURIComponent(
-          'Name: ' + (d.get('name') || '') + '\n' +
-          'Email: ' + (d.get('email') || '') + '\n' +
-          'Platform: ' + platform + '\n' +
-          'What I sell: ' + (d.get('offer') || '') + '\n' +
-          'Goal: ' + (d.get('goal') || '')
-        );
-        window.location.href = 'mailto:andrei@andreilucian.com?subject=' + subject + '&body=' + body;
-        if (status) {
-          status.hidden = false;
-          status.classList.add('show');
-        }
       });
     })();
   </script>
