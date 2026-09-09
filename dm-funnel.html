@@ -32,9 +32,13 @@
     .offer-card .price { color: #fff; font-weight: 700; margin-top: 8px; font-size: 0.84rem; }
     .rule {
       background: #1a1208; border: 1px solid #ff950044; border-radius: 10px;
-      padding: 12px 14px; margin-bottom: 18px; font-size: 0.84rem;
+      padding: 12px 14px; margin-bottom: 12px; font-size: 0.84rem;
     }
     .rule strong { color: #ff9500; }
+    .rule ul { margin: 8px 0 0 18px; }
+    .rule li { margin-bottom: 4px; }
+    .panel[data-platform="linkedin"] .rule { background: #071018; border-color: #0a66c244; }
+    .panel[data-platform="linkedin"] .rule strong { color: #0a66c2; }
     .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
     .tab {
       padding: 10px 16px; background: #16181c; border: 1px solid #2f3336;
@@ -61,48 +65,59 @@
     }
     .panel[data-platform="linkedin"] .copy-full-btn { background: #0a66c2; }
     .copy-full-btn.copied { background: #00ba7c; }
-    .map {
+    .map, .skip {
       background: #16181c; border: 1px solid #2f3336; border-radius: 12px;
       padding: 14px 16px; margin-bottom: 18px; font-size: 0.8rem; color: #8b98a5; overflow-x: auto;
     }
-    .map table { width: 100%; border-collapse: collapse; }
-    .map th, .map td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #2f3336; }
-    .map th { color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .map table, .skip table { width: 100%; border-collapse: collapse; }
+    .map th, .map td, .skip th, .skip td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #2f3336; }
+    .map th, .skip th { color: #fff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
     .map .n { color: #ff9500; font-weight: 700; width: 28px; }
     .panel[data-platform="linkedin"] .map .n { color: #0a66c2; }
+    .map .nopitch { color: #8b98a5; }
+    .map .ispitch { color: #00ba7c; font-weight: 600; }
+    .skip td:last-child { color: #e7e9ea; font-weight: 600; }
+    .skip-title { color: #fff; font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
     .step-group {
       border: 1px solid #2f3336; border-radius: 14px; padding: 16px; margin-bottom: 18px; background: #111;
     }
+    .step-group.pitch-zone { border-color: #00ba7c44; }
     .step-group > h3 {
       font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: #fff; margin-bottom: 12px;
+      letter-spacing: 0.06em; color: #fff; margin-bottom: 4px;
     }
+    .step-group > .why { font-size: 0.78rem; color: #71767b; margin-bottom: 12px; }
     .msg-card {
       background: #16181c; border: 2px solid #2f3336; border-radius: 12px;
       padding: 16px; margin-bottom: 12px;
     }
     .msg-card.main { border-color: #ff950066; }
     .panel[data-platform="linkedin"] .msg-card.main { border-color: #0a66c266; }
+    .msg-card.pre { border-color: #2f3336; }
     .msg-card.followup { border-style: dashed; }
     .msg-card.price { border-color: #00ba7c66; }
     .msg-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
     .msg-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #ff9500; }
     .panel[data-platform="linkedin"] .msg-label { color: #0a66c2; }
     .msg-card.price .msg-label { color: #00ba7c; }
+    .msg-card.pre .msg-label { color: #8b98a5; }
     .msg-tag { font-size: 0.68rem; padding: 3px 8px; border-radius: 4px; background: #2f3336; color: #8b98a5; }
     .msg-tag.warm { background: #00ba7c22; color: #00ba7c; }
+    .msg-tag.pre { background: #2f3336; color: #8b98a5; }
     .msg-tag.followup { background: #71767b22; color: #e7e9ea; }
     .msg-tag.price { background: #00ba7c22; color: #00ba7c; }
+    .msg-tag.pitch { background: #ff950022; color: #ff9500; }
+    .panel[data-platform="linkedin"] .msg-tag.pitch { background: #0a66c222; color: #0a66c2; }
     .msg-text {
-      display: block; width: 100%; min-height: 72px; background: transparent; border: none;
+      display: block; width: 100%; min-height: 88px; background: transparent; border: none;
       color: #e7e9ea; font-family: inherit; font-size: 0.94rem; line-height: 1.5;
       resize: vertical; outline: none; white-space: pre-wrap;
     }
-    .copy-row { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid #2f3336; }
+    .copy-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #2f3336; }
     .hint { font-size: 0.74rem; color: #71767b; }
     .copy-btn {
       padding: 8px 16px; background: #ff9500; color: #fff; border: none;
-      border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex-shrink: 0;
     }
     .panel[data-platform="linkedin"] .copy-btn { background: #0a66c2; }
     .copy-btn.copied, .copy-full-btn.copied { background: #00ba7c; }
@@ -110,280 +125,396 @@
 </head>
 <body>
   <div class="page">
-    <h1>DM Funnel · 10 messages</h1>
-    <p class="subtitle">Copy paste in order · skip ahead when they reply · max 10 DMs</p>
+    <h1>DM Funnel · trust first, then one close</h1>
+    <p class="subtitle">4–5 DMs before the offer · 4 follow-ups that never sell · skip ahead the second they lean in</p>
 
     <div class="offers">
       <div class="offer-card li">
         <div class="plat">LinkedIn</div>
         <strong>Ghostwriting · quiet founders</strong>
-        <p>10 DMs · from scratch</p>
+        <p>5 DMs before pitch · then one call · 4 no-sell follow-ups</p>
         <div class="price">€1,500 → €2,000/mo</div>
       </div>
       <div class="offer-card x">
         <div class="plat">X</div>
         <strong>0→1K X System · beginners</strong>
-        <p>10 DMs · free guide → system → 1:1 coaching</p>
-        <div class="price">€47 now · soon €147 · coaching upsell</div>
+        <p>4 DMs before pitch · then the page · 4 no-sell follow-ups</p>
+        <div class="price">€47 now · soon €147 · coaching only if they ask</div>
       </div>
     </div>
 
     <div class="rule">
-      <strong>Paths:</strong> LI no reply = 1→2→9→10. X no reply = 1→9→10. Conversation = keep going in order (skip ahead when they reply). X #8 only if not buying.
+      <strong>How this closes faster:</strong>
+      <ul>
+        <li>Pre-pitch DMs make them say the pain. You only pitch warm people.</li>
+        <li>One CTA when you pitch. Never stack page + price + call + coaching in one message.</li>
+        <li>Follow-ups restart the chat. They do not mention the offer, the price, or “just checking in.”</li>
+        <li>The second they ask how / price / help — jump to the pitch. Do not finish the sequence.</li>
+      </ul>
     </div>
 
     <div class="tabs">
-      <button class="tab" data-tab="li">LinkedIn · 10</button>
-      <button class="tab active" data-tab="x">X · 10</button>
+      <button class="tab li" data-tab="li">LinkedIn · 5 then pitch</button>
+      <button class="tab active" data-tab="x">X · 4 then pitch</button>
     </div>
 
     <!-- LINKEDIN -->
-    <div id="li" class="panel" data-platform="linkedin" data-funnel-name="LINKEDIN 10 DM FUNNEL">
+    <div id="li" class="panel" data-platform="linkedin" data-funnel-name="LINKEDIN DM FUNNEL · 5 BEFORE PITCH · 4 NO-SELL FOLLOW-UPS">
       <div class="section">
-        <h2>LinkedIn · 10 DMs</h2>
-        <p class="desc">Quiet founders · ghostwriting from scratch</p>
+        <h2>LinkedIn · 5 DMs, then the offer</h2>
+        <p class="desc">Quiet founders · ghostwriting from scratch. No ghostwriting / website / Calendly until DM 6.</p>
 
         <div class="copy-full-bar">
-          <p><strong>Copy all 10 LinkedIn DMs</strong></p>
+          <p><strong>Copy all LinkedIn DMs</strong><span>Happy path + follow-ups</span></p>
           <button type="button" class="copy-full-btn" data-panel="li">Copy Full LI</button>
+        </div>
+
+        <div class="rule">
+          <strong>Paths:</strong>
+          <ul>
+            <li>No reply after accept = 2 → FU1 → FU2 → FU3 → FU4 · STOP</li>
+            <li>They reply = stay in 2→3→4→5. Pitch only at 6 — unless they ask how you help, then jump to 6 now.</li>
+            <li>They ask price at any time = jump to 8.</li>
+            <li>They want a page first = 7, then back to the call.</li>
+            <li>Reply to any follow-up = jump to 3 (diagnose), not the pitch.</li>
+          </ul>
+        </div>
+
+        <div class="skip">
+          <div class="skip-title">Skip ahead · this is how you close faster</div>
+          <table>
+            <tr><th>They say</th><th>Jump to</th></tr>
+            <tr><td>How much / rates</td><td>DM 8 · Price</td></tr>
+            <tr><td>How does it work / send info</td><td>DM 6 · Pitch + call (skip the website)</td></tr>
+            <tr><td>I don't have time / page is dead</td><td>DM 4 then DM 6</td></tr>
+            <tr><td>I don't want to be the face / live on the app</td><td>DM 6 · that's the offer</td></tr>
+            <tr><td>Reply to a follow-up</td><td>DM 3 · diagnose</td></tr>
+            <tr><td>Not interested / bad timing</td><td>FU4 · STOP</td></tr>
+          </table>
         </div>
 
         <div class="map">
           <table>
-            <tr><th>#</th><th>When</th><th>Name</th></tr>
-            <tr><td class="n">1</td><td>Day 0</td><td>Connection request</td></tr>
-            <tr><td class="n">2</td><td>+2 days after accept</td><td>Opener</td></tr>
-            <tr><td class="n">3</td><td>Same day they reply</td><td>Diagnose</td></tr>
-            <tr><td class="n">4</td><td>After #3</td><td>Mirror</td></tr>
-            <tr><td class="n">5</td><td>After #4</td><td>Soft how you help</td></tr>
-            <tr><td class="n">6</td><td>They lean in</td><td>Website</td></tr>
-            <tr><td class="n">7</td><td>Ready</td><td>Calendly</td></tr>
-            <tr><td class="n">8</td><td>If asked / on call</td><td>Price</td></tr>
-            <tr><td class="n">9</td><td>No reply to #2 · +3 days</td><td>Follow-up 1</td></tr>
-            <tr><td class="n">10</td><td>+7 days after #9</td><td>Follow-up 2 · STOP</td></tr>
+            <tr><th>#</th><th>When</th><th>Name</th><th>Offer?</th></tr>
+            <tr><td class="n">1</td><td>Day 0</td><td>Connection request</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">2</td><td>+2 days after accept</td><td>Opener</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">3</td><td>Same day they reply</td><td>Diagnose</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">4</td><td>After #3</td><td>Insight</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">5</td><td>After #4</td><td>Qualify</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">6</td><td>They say yes / maybe</td><td>Pitch + Calendly</td><td class="ispitch">First pitch</td></tr>
+            <tr><td class="n">7</td><td>Only if they want a page</td><td>Website</td><td class="ispitch">Optional</td></tr>
+            <tr><td class="n">8</td><td>Only if they ask</td><td>Price</td><td class="ispitch">If asked</td></tr>
+            <tr><td class="n">9</td><td>No reply to #2 · +3 days</td><td>Follow-up 1 · observation</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">10</td><td>+4 days after #9</td><td>Follow-up 2 · gift an angle</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">11</td><td>+5 days after #10</td><td>Follow-up 3 · face vs alive</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">12</td><td>+7 days after #11</td><td>Follow-up 4 · STOP</td><td class="nopitch">No</td></tr>
           </table>
         </div>
 
         <div class="step-group">
-          <h3>Happy path · DM 1 to 8</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 1 · Connection · Day 0</span><span class="msg-tag warm">1</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! Quick note… I came across [Company] and liked what you're building.
+          <h3>No pitch zone · DM 1 to 5</h3>
+          <p class="why">Connection, question, diagnosis, teach, then they tell you if LinkedIn is even worth it. Do not name ghostwriting.</p>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 1 · Connection · Day 0</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Hey [Name] — came across [Company] and liked what you're building. Always good to connect with people running a real business.</textarea>
+            <div class="copy-row"><span class="hint">Connection note. Short. No ghostwriting.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 2 · Opener · +2 after accept</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Hey [Name], thanks for connecting.
 
-I spend a lot of time around founders on LinkedIn and always enjoy connecting with people running real businesses. Would love to connect.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Saw you're running [Company]. Curious — is LinkedIn something you're using for the business this year, or have you mostly left it alone?</textarea>
+            <div class="copy-row"><span class="hint">One question. Wait. If they ignore → FU1.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 3 · Diagnose · same day they reply</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Makes sense.
+
+How are you handling content on there right now? Writing it yourself when you can, or has it mostly stayed on the back burner?</textarea>
+            <div class="copy-row"><span class="hint">Make them name the gap. Also the jump-back after any follow-up reply.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 4 · Insight · after #3</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Yeah. That's the usual pattern.
+
+It's not that founders don't care. They're in the business all day, so the page goes quiet for months. Then posting feels weird, so it stays dead.
+
+The fix isn't posting more. It's a weekly machine so the page stays alive without you living on LinkedIn.</textarea>
+            <div class="copy-row"><span class="hint">Teach. No “I help with.” If they ask how → jump to DM 6.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 5 · Qualify · after #4</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Quick one — if LinkedIn brought [Company] 2–3 real conversations a month, would that actually matter right now?
+
+Or is it noise compared to everything else on your plate?</textarea>
+            <div class="copy-row"><span class="hint">Yes / maybe → DM 6. Noise → don't pitch. Saves weeks of chasing cold people.</span><button class="copy-btn">Copy</button></div>
+          </div>
+        </div>
+
+        <div class="step-group pitch-zone">
+          <h3>Pitch zone · DM 6 to 8</h3>
+          <p class="why">One close: the call. Website only if they ask for a page. Price only if they ask.</p>
+          <div class="msg-card main">
+            <div class="msg-header"><span class="msg-label">DM 6 · Pitch + call · they leaned in</span><span class="msg-tag pitch">First pitch</span></div>
+            <textarea class="msg-text" readonly>Got it.
+
+I write LinkedIn for founders in that exact spot — strong business, almost nothing on the page yet. We start from scratch: positioning, voice, then I turn their ideas into posts so the page stays alive without them living on it.
+
+Easiest next step is 15 min. I'll map what starting from scratch looks like for [Company]. No deck.
+
+https://calendly.com/theandreilucian/discovery-call</textarea>
+            <div class="copy-row"><span class="hint">Skip the website. Call is the close. If they want a page first → DM 7.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 2 · Opener · +2 after accept</span><span class="msg-tag warm">2</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! Thanks for connecting.
-
-Saw you're running [Company]. Curious… is LinkedIn something you're actively using for the business this year, or have you mostly left it alone?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 3 · Diagnose · same day reply</span><span class="msg-tag warm">3</span></div>
-            <textarea class="msg-text" readonly>Nice.
-
-How are you handling LinkedIn content right now? Writing it yourself when you can, or has it mostly stayed on the back burner?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 4 · Mirror</span><span class="msg-tag warm">4</span></div>
-            <textarea class="msg-text" readonly>Yeah, I hear that a lot.
-
-It's rarely that founders don't care. They're just deep in the business, so LinkedIn stays empty for months.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 5 · Soft help · no price</span><span class="msg-tag warm">5</span></div>
-            <textarea class="msg-text" readonly>Yeah, that's actually the gap I help with.
-
-I work with founders who have a strong business but almost nothing on LinkedIn yet. We start from scratch: positioning, voice, then I turn their ideas into posts so they stay visible.
-
-If useful, I can show you how it works. No pressure.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 6 · Website</span><span class="msg-tag warm">6</span></div>
-            <textarea class="msg-text" readonly>Here's a simple page that explains it:
+            <div class="msg-header"><span class="msg-label">DM 7 · Website · only if they want a page</span><span class="msg-tag pitch">Optional</span></div>
+            <textarea class="msg-text" readonly>If you want to see it on a page first:
 
 https://www.andreilucian.com/ghostwriting
 
-If anything's unclear, just ask me here.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
-          </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 7 · Calendly</span><span class="msg-tag warm">7</span></div>
-            <textarea class="msg-text" readonly>If it'd help, we can jump on a quick 15 min call and I'll map what starting from scratch would look like for [Company].
-
-https://calendly.com/theandreilucian/discovery-call
-
-Only if useful. No deck. Just a clear picture.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Then we can still do the 15 min if it's useful.</textarea>
+            <div class="copy-row"><span class="hint">Do not send this by default. Extra step = slower close.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">DM 8 · Price · only if asked</span><span class="msg-tag price">8</span></div>
+            <div class="msg-header"><span class="msg-label">DM 8 · Price · only if asked</span><span class="msg-tag price">If asked</span></div>
             <textarea class="msg-text" readonly>Standard is €2,000 a month.
 
-For the first month I do €1,500. We build everything from scratch (positioning, voice, the weekly system). Then it goes to €2,000.
+First month is €1,500 — we build everything from scratch (positioning, voice, the weekly system). Then it goes to €2,000.
 
 Easiest if we hop on a short call so I can see if it's even a fit:
 
 https://calendly.com/theandreilucian/discovery-call</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+            <div class="copy-row"><span class="hint">Price in chat still ends on the call. Don't negotiate in DMs.</span><button class="copy-btn">Copy</button></div>
           </div>
         </div>
 
         <div class="step-group">
-          <h3>No reply path · DM 9 to 10</h3>
+          <h3>No-sell follow-ups · DM 9 to 12</h3>
+          <p class="why">Never mention ghostwriting, Calendly, price, or “is this on your radar.” Get a reply, then go back to DM 3.</p>
           <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +3 after opener</span><span class="msg-tag followup">9</span></div>
-            <textarea class="msg-text" readonly>Hey [Name]! No worries if timing's off.
+            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +3 after opener</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>Hey [Name],
 
-Quick yes/no… is personal brand on LinkedIn even on your radar this year?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Quick thought on [Company] — a lot of businesses in your space have a solid site and a quiet LinkedIn. So if someone looks you up, there's no proof the company's moving.
+
+Have you noticed that, or have you just been heads-down?</textarea>
+            <div class="copy-row"><span class="hint">Observation + question. Not “are you interested.”</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · +7 after #9 · STOP</span><span class="msg-tag followup">10</span></div>
-            <textarea class="msg-text" readonly>All good. I'll leave it here. If you ever want 3 post angles for [Company], just say the word.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · +4 after #9</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>One angle that would actually fit [Company]:
+
+Most people in your space post about what they do.
+The posts that work post about what the client no longer has to think about.
+
+For you that's whatever [Company] takes off their plate.
+
+Steal it if useful.</textarea>
+            <div class="copy-row"><span class="hint">Give the gift. Do not add “want me to write 3 more.”</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 11 · FU3 · +5 after #10</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>Random one — do you even want to be the face of [Company] on LinkedIn?
+
+Or would you rather the company just look alive without you living on the app?</textarea>
+            <div class="copy-row"><span class="hint">If they don't want to live on the app → that's the offer. Jump to DM 6.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 12 · FU4 · +7 after #11 · STOP</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>I'll leave it here, [Name].
+
+If LinkedIn ever becomes useful for [Company], you know where I am.</textarea>
+            <div class="copy-row"><span class="hint">Door open. No Calendly. No “3 post angles.” Stop.</span><button class="copy-btn">Copy</button></div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- X -->
-    <div id="x" class="panel active" data-platform="x" data-funnel-name="X 10 DM FUNNEL · 0→1K SYSTEM">
+    <div id="x" class="panel active" data-platform="x" data-funnel-name="X DM FUNNEL · 4 BEFORE PITCH · 4 NO-SELL FOLLOW-UPS">
       <div class="section">
-        <h2>X · 10 DMs</h2>
-        <p class="desc">People who comment / engage · free guide → 0→1K System €47 → 1:1 coaching if they want more help</p>
+        <h2>X · 4 DMs, then the offer</h2>
+        <p class="desc">People who comment / engage · free guide first · 0→1K System only after they name the stuck point.</p>
 
         <div class="copy-full-bar">
-          <p><strong>Copy all 10 X DMs</strong></p>
+          <p><strong>Copy all X DMs</strong><span>Happy path + follow-ups</span></p>
           <button type="button" class="copy-full-btn" data-panel="x">Copy Full X</button>
+        </div>
+
+        <div class="rule">
+          <strong>Paths:</strong>
+          <ul>
+            <li>No reply after the guide = FU1 → FU2 → FU3 → FU4 · STOP</li>
+            <li>They reply = 2→3→4. Pitch only at 5 — unless they ask for the system / page, then jump to 5 now.</li>
+            <li>They ask price = jump to 6.</li>
+            <li>They ask for 1:1 / “can you help me” = jump to 7.</li>
+            <li>Reply to any follow-up = jump to 2 (diagnose), not the landing page.</li>
+          </ul>
+        </div>
+
+        <div class="skip">
+          <div class="skip-title">Skip ahead · this is how you close faster</div>
+          <table>
+            <tr><th>They say</th><th>Jump to</th></tr>
+            <tr><td>Send the page / what do you sell / how much</td><td>DM 5 then DM 6</td></tr>
+            <tr><td>I can't stay consistent / I skip days</td><td>DM 5 · that's the product</td></tr>
+            <tr><td>I want help / can you look at my account</td><td>DM 7 · coaching</td></tr>
+            <tr><td>Reply to a follow-up</td><td>DM 2 · diagnose</td></tr>
+            <tr><td>Not now / I'll think about it</td><td>DM 8 · soft exit</td></tr>
+          </table>
         </div>
 
         <div class="map">
           <table>
-            <tr><th>#</th><th>When</th><th>Name</th></tr>
-            <tr><td class="n">1</td><td>Same day they engage</td><td>Free guide opener</td></tr>
-            <tr><td class="n">2</td><td>Same day they reply</td><td>Diagnose</td></tr>
-            <tr><td class="n">3</td><td>After #2</td><td>Mirror</td></tr>
-            <tr><td class="n">4</td><td>After #3</td><td>Soft system bridge</td></tr>
-            <tr><td class="n">5</td><td>They lean in</td><td>Landing page</td></tr>
-            <tr><td class="n">6</td><td>Curious / asked</td><td>Offer + price</td></tr>
-            <tr><td class="n">7</td><td>Want more help</td><td>1:1 coaching upsell</td></tr>
-            <tr><td class="n">8</td><td>Not ready</td><td>Soft exit</td></tr>
-            <tr><td class="n">9</td><td>No reply to #1 · +2 days</td><td>Follow-up 1</td></tr>
-            <tr><td class="n">10</td><td>+5 days after #9</td><td>Follow-up 2 · STOP</td></tr>
+            <tr><th>#</th><th>When</th><th>Name</th><th>Offer?</th></tr>
+            <tr><td class="n">1</td><td>Same day they engage</td><td>Free guide</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">2</td><td>Same day they reply</td><td>Diagnose</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">3</td><td>After #2</td><td>Insight · 3 numbers</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">4</td><td>After #3</td><td>Proof · where they drop off</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">5</td><td>They lean in / can't stay consistent</td><td>Landing page</td><td class="ispitch">First pitch</td></tr>
+            <tr><td class="n">6</td><td>They ask / stall after the page</td><td>Price · DIY close</td><td class="ispitch">If asked</td></tr>
+            <tr><td class="n">7</td><td>Only if they want more help</td><td>1:1 coaching</td><td class="ispitch">If asked</td></tr>
+            <tr><td class="n">8</td><td>Not ready</td><td>Soft exit</td><td class="nopitch">No offer links</td></tr>
+            <tr><td class="n">9</td><td>No reply to #1 · +2 days</td><td>Follow-up 1 · did it land</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">10</td><td>+3 days after #9</td><td>Follow-up 2 · gift the 3 numbers</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">11</td><td>+4 days after #10</td><td>Follow-up 3 · origin</td><td class="nopitch">No</td></tr>
+            <tr><td class="n">12</td><td>+5 days after #11</td><td>Follow-up 4 · STOP</td><td class="nopitch">No</td></tr>
           </table>
         </div>
 
         <div class="step-group">
-          <h3>Happy path · DM 1 to 8</h3>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 1 · Free guide · same day they engage</span><span class="msg-tag warm">1</span></div>
-            <textarea class="msg-text" readonly>Hey friend,
+          <h3>No pitch zone · DM 1 to 4</h3>
+          <p class="why">Give the guide. Make them name where they're stuck. Give the 3 numbers. Tell your story. Do not name the €47 system.</p>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 1 · Free guide · same day they engage</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Hey,
 
-Thank you for engaging with my post.
+Thanks for jumping on the post.
 
-Here's your free guide:
+Here's the free guide:
 
-andreilucian.kit.com/xsimplified
-
-I hope you find it valuable.</textarea>
-            <div class="copy-row"><span class="hint">Open DM for comments / engagement</span><button class="copy-btn">Copy</button></div>
+andreilucian.kit.com/xsimplified</textarea>
+            <div class="copy-row"><span class="hint">Value only. No system. No price. No “I hope you find it valuable.”</span><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 2 · Diagnose · same day they reply</span><span class="msg-tag warm">2</span></div>
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 2 · Diagnose · same day they reply</span><span class="msg-tag pre">No pitch</span></div>
             <textarea class="msg-text" readonly>Glad it helped.
 
-Quick one — where are you at on 𝕏 right now? Just starting, stuck under a few hundred, or posting but the graph isn't moving?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Where are you at on X right now — just starting, stuck under a few hundred, or posting but the graph isn't moving?</textarea>
+            <div class="copy-row"><span class="hint">Also the jump-back after any follow-up reply.</span><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 3 · Mirror</span><span class="msg-tag warm">3</span></div>
-            <textarea class="msg-text" readonly>Yeah, that's super common.
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 3 · Insight · after #2</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>Yeah. Super common.
 
-Usually it's not motivation. It's missing a simple daily system — what to post, who to engage, and how to stick to it when you don't feel like it.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+It's usually not motivation. There's no daily number, so you guess every morning, then skip days.
+
+Simple fix. Pick 3 numbers and don't negotiate:
+
+- 3 posts
+- 50 comments
+- 20 DMs
+
+Do that for 30 days. The graph starts moving.</textarea>
+            <div class="copy-row"><span class="hint">This is the public playbook, not the product. Product is the templates + daily system.</span><button class="copy-btn">Copy</button></div>
           </div>
-          <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 4 · Soft system bridge</span><span class="msg-tag warm">4</span></div>
-            <textarea class="msg-text" readonly>That's actually why I built a simple system for beginners to grow from 0 → 1K on 𝕏.
+          <div class="msg-card pre">
+            <div class="msg-header"><span class="msg-label">DM 4 · Proof · after #3</span><span class="msg-tag pre">No pitch</span></div>
+            <textarea class="msg-text" readonly>When I started, nobody replied. I was tweeting at the wall for months.
 
-Daily plan, copy-paste templates, engagement scripts — so you stop guessing every morning.
+I stuck with those 3 numbers. 3,000 → 4,380 in 90 days. Then it became a 4-figure business.
 
-Want me to send the page?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Where do you usually drop off — posting, commenting, or DMs?</textarea>
+            <div class="copy-row"><span class="hint">They name the leak. If they say consistency / skip days → jump to DM 5.</span><button class="copy-btn">Copy</button></div>
           </div>
+        </div>
+
+        <div class="step-group pitch-zone">
+          <h3>Pitch zone · DM 5 to 8</h3>
+          <p class="why">Page first. Price second. Coaching only if they ask. Soft exit has no paid link.</p>
           <div class="msg-card main">
-            <div class="msg-header"><span class="msg-label">DM 5 · Landing page</span><span class="msg-tag warm">5</span></div>
-            <textarea class="msg-text" readonly>Here you go:
+            <div class="msg-header"><span class="msg-label">DM 5 · Landing · first mention of the system</span><span class="msg-tag pitch">First pitch</span></div>
+            <textarea class="msg-text" readonly>If you want it in one place so you don't rebuild it every week, I put the daily plan + templates into a simple system.
 
 www.andreilucian.com/0-to-1K-X-System/LANDING
 
-It's only €47 now — soon €147.
-
-If anything's unclear, just ask me here.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Want me to tell you what to do first after you open it?</textarea>
+            <div class="copy-row"><span class="hint">No price in this message. Last line gets a reply + a click.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">DM 6 · Offer · if they ask / lean in</span><span class="msg-tag price">6</span></div>
-            <textarea class="msg-text" readonly>Hey! I made a simple system for beginners to grow from 0 → 1K on 𝕏.
+            <div class="msg-header"><span class="msg-label">DM 6 · Price · if they ask or stall</span><span class="msg-tag price">If asked</span></div>
+            <textarea class="msg-text" readonly>It's €47 right now. Goes to €147 later.
 
-If you know someone struggling to grow, send this to them:
+That's the DIY path. You run it for 90 days.
 
-www.andreilucian.com/0-to-1K-X-System/LANDING
+Link's here:
 
-It's only €47 now — soon €147.</textarea>
-            <div class="copy-row"><span class="hint">Use as offer / shareable pitch</span><button class="copy-btn">Copy</button></div>
+www.andreilucian.com/0-to-1K-X-System/LANDING</textarea>
+            <div class="copy-row"><span class="hint">One CTA. Do not add coaching here. Do not ask them to forward it to a friend.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card price">
-            <div class="msg-header"><span class="msg-label">DM 7 · 1:1 coaching · if they want more help</span><span class="msg-tag price">7</span></div>
-            <textarea class="msg-text" readonly>If you want more help, I'm opening 1:1 coaching — to grow your personal brand and get clients as well.
+            <div class="msg-header"><span class="msg-label">DM 7 · 1:1 · only if they want more help</span><span class="msg-tag price">If asked</span></div>
+            <textarea class="msg-text" readonly>If you want me in your corner on the account, that's 1:1.
 
-The €47 system is the DIY path. Coaching is if you want me in your corner fixing your account with you.
+The €47 system is DIY. Coaching is if you want me fixing it with you — personal brand + clients.
 
-Happy to hop on a quick call and map what I'd fix first:
+Quick call, I'll map what I'd fix first:
 
 https://calendly.com/theandreilucian/discovery-call</textarea>
-            <div class="copy-row"><span class="hint">After system · or if they ask for personal help</span><button class="copy-btn">Copy</button></div>
+            <div class="copy-row"><span class="hint">Never send this in the main path. Only if they ask for personal help.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">DM 8 · Soft exit · not ready</span><span class="msg-tag followup">8</span></div>
+            <div class="msg-header"><span class="msg-label">DM 8 · Soft exit · not ready</span><span class="msg-tag followup">No-sell</span></div>
             <textarea class="msg-text" readonly>All good. Keep the free guide — that's enough to start:
 
 andreilucian.kit.com/xsimplified
 
-If you want the DIY system later:
-
-www.andreilucian.com/0-to-1K-X-System/LANDING
-
-And if you ever want 1:1 help growing your personal brand + getting clients, just say the word.</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+If you want the exact daily plan later, just ping me.</textarea>
+            <div class="copy-row"><span class="hint">No landing. No €47. No coaching. If they ping later → DM 5.</span><button class="copy-btn">Copy</button></div>
           </div>
         </div>
 
         <div class="step-group">
-          <h3>No reply path · DM 9 to 10</h3>
+          <h3>No-sell follow-ups · DM 9 to 12</h3>
+          <p class="why">Never send the landing page or the price. Gift + story + question. Reply → go back to DM 2.</p>
           <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +2 after free guide</span><span class="msg-tag followup">9</span></div>
-            <textarea class="msg-text" readonly>Hey! Just checking you got the guide.
+            <div class="msg-header"><span class="msg-label">DM 9 · FU1 · +2 after the guide</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>Hey — did the guide actually land, or did it get buried?
 
-andreilucian.kit.com/xsimplified
-
-Any of it useful so far, or are you more stuck on what to post vs staying consistent?</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+Curious where you're more stuck: what to post, or sticking to it when you don't feel like it?</textarea>
+            <div class="copy-row"><span class="hint">Binary question. Easy to answer. No product link.</span><button class="copy-btn">Copy</button></div>
           </div>
           <div class="msg-card followup">
-            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · STOP</span><span class="msg-tag followup">10</span></div>
-            <textarea class="msg-text" readonly>All good — I'll leave it here.
+            <div class="msg-header"><span class="msg-label">DM 10 · FU2 · +3 after #9</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>One thing that helped me when I was stuck:
 
-If you ever want the full 0 → 1K daily system, it's here (still €47 for now):
+Stop deciding every morning. Same 3 numbers, every day.
 
-www.andreilucian.com/0-to-1K-X-System/LANDING</textarea>
-            <div class="copy-row"><button class="copy-btn">Copy</button></div>
+3 posts. 50 comments. 20 DMs.
+
+That's it.</textarea>
+            <div class="copy-row"><span class="hint">Gift. No “want the full system.” If they ask how to stick to it → DM 5.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 11 · FU3 · +4 after #10</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>When I first started on X:
+
+- Nobody DMed me back
+- Nobody liked anything I posted
+- I was tweeting at the wall for months
+
+I stuck with it. Don't quit 10% in.
+
+You still posting, or did you pause?</textarea>
+            <div class="copy-row"><span class="hint">They self-identify. Question at the end is the hook, not the product.</span><button class="copy-btn">Copy</button></div>
+          </div>
+          <div class="msg-card followup">
+            <div class="msg-header"><span class="msg-label">DM 12 · FU4 · +5 after #11 · STOP</span><span class="msg-tag followup">No-sell</span></div>
+            <textarea class="msg-text" readonly>I'll leave it here.
+
+If you want the exact daily plan later, ping me. Guide's still here:
+
+andreilucian.kit.com/xsimplified</textarea>
+            <div class="copy-row"><span class="hint">Door open. Free guide only. No €47. Stop.</span><button class="copy-btn">Copy</button></div>
           </div>
         </div>
       </div>
