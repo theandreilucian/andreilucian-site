@@ -6,10 +6,10 @@
 
 | # | Keyword | Page |
 |---|---------|------|
-| 1 | `TEMPLATES` | https://andreilucian.com/giveaway-10-templates.html |
-| 2 | `DMS` | https://andreilucian.com/giveaway-dms.html |
-| 3 | `GROW` | https://andreilucian.com/giveaway-how-i-grew.html |
-| 4 | `CLIENT` | https://andreilucian.com/giveaway-first-client.html |
+| 1 | `TEMPLATES` | https://andreilucian.com/giveaway-10-templates |
+| 2 | `DMS` | https://andreilucian.com/giveaway-dms |
+| 3 | `GROW` | https://andreilucian.com/giveaway-how-i-grew |
+| 4 | `CLIENT` | https://andreilucian.com/giveaway-first-client |
 
 Sit 90 min. DM everyone who followed + used the word.
 
@@ -43,7 +43,7 @@ I steal from a list of 10 templates
 that already printed on this account.
 
 Stop / start.
-3,000 → 4,380.
+3,000 → 5,600.
 $0 → $7,502.
 Wall tweets.
 Lists that get comments.
@@ -115,30 +115,24 @@ Reply DMS
 
 ---
 
-## 3 — How I grew 3,000 → 4,380
+## 3 — How I grew 3,000 → 5,600
 
 ```
-3,000 → 4,380.
+3,000 → 5,600.
 
-Not a thread that "blew up."
-Not luck.
-Not a new personality.
+6 months.
+Same thing every day.
 
-90 days of the same three things:
+10 templates.
+30 comments.
+5 DMs.
+Reply to all.
 
-3 posts.
-50 comments.
-20 DMs.
+No new tactic.
+No new personality.
 
-I tweeted at a wall for months before that.
-Nobody talked to me.
-
-Imagine if I quit at 3,000.
-
-I'm giving away the one page
-for 48 hours.
-
-Then I stop DMing it.
+I'm sending the page for 48 hours.
+Then I stop.
 
 1. Follow me (so I can DM you)
 2. Reply GROW
@@ -151,7 +145,7 @@ Run it.
 ```
 12 hours.
 
-How I grew 3,000 → 4,380.
+How I grew 3,000 → 5,600.
 Then I stop.
 
 Follow
