@@ -6,7 +6,7 @@
 
 | # | Keyword | Page |
 |---|---------|------|
-| 1 | `TEMPLATES` | https://andreilucian.com/giveaway-10-templates |
+| 1 | `TEMPLATES` | https://andreilucian.com/giveaway-10-templates (GAP · 3×3 examples) |
 | 2 | `DMS` | https://andreilucian.com/giveaway-dms |
 | 3 | `GROW` | https://andreilucian.com/giveaway-how-i-grew |
 | 4 | `CLIENT` | https://andreilucian.com/giveaway-first-client |
@@ -28,7 +28,7 @@ Scarcity is honest: **48 hours, then you stop DMing.** Don’t fake “only 7 sp
 
 ---
 
-## 1 — Steal my 10 templates
+## 1 — 3 posts a day (GAP)
 
 ```
 I used to stare at a blank box for an hour.
@@ -39,15 +39,15 @@ Then I'd feel stupid.
 
 I don't do that anymore.
 
-I steal from a list of 10 templates
-that already printed on this account.
+I post 3 times a day.
 
-Stop / start.
-3,000 → 5,600.
-$0 → $7,502.
-Wall tweets.
-Lists that get comments.
+Growth.
+Authority.
+Personality.
 
+That's GAP.
+
+3 examples of each.
 You swap the numbers.
 You post.
 
@@ -65,7 +65,7 @@ that's on you.
 ```
 12 hours.
 
-Then I stop sending the 10 templates.
+Then I stop sending GAP.
 
 Follow
 Reply TEMPLATES
@@ -123,7 +123,7 @@ Reply DMS
 6 months.
 Same thing every day.
 
-10 templates.
+3 posts (GAP).
 30 comments.
 5 DMs.
 Reply to all.
