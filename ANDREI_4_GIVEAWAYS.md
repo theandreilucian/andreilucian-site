@@ -160,23 +160,22 @@ Reply GROW
 You don't need 10K followers
 to get paid.
 
-I had $223 in month 3.
+You need 1,000.
+Good content.
+Good engagement.
 
-Iordan got $100 writing posts.
-George got his first coaching client
-from the content.
+Then you work for free.
+You collect 5 testimonials.
 
-The whole "first client" thing is:
+Then you find paid clients two ways:
 
-A post they actually finish
-+ a DM after they already talked.
+Inbound — comments + DMs they start.
+Outbound — you study accounts in other people's posts and reach out.
 
-Not a funnel.
-Not a webinar.
-Not "value for 11 months."
+That's the whole path.
 
 I'm sending the page for 48 hours.
-After that, you're on your own.
+Then I stop.
 
 1. Follow me (so I can DM you)
 2. Reply CLIENT
@@ -189,8 +188,8 @@ you're hiding.
 ```
 12 hours.
 
-How to land your first client from X.
-Then I stop sending it.
+How to land your first client.
+Then I stop.
 
 Follow
 Reply CLIENT
