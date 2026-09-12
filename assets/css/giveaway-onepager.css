@@ -53,9 +53,24 @@ h1 {
 }
 .example {
   white-space: pre-line;
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 1.02rem;
+  line-height: 1.7;
   color: #e7e9ea;
+  font-weight: 500;
+}
+.card .job {
+  font-size: 0.84rem;
+  color: #8b98a5;
+  margin: 0 0 12px;
+}
+.blank {
+  color: #7dd3fc;
+  font-weight: 800;
+  background: rgba(29, 155, 240, 0.16);
+  border: 1px dashed rgba(29, 155, 240, 0.45);
+  padding: 0 6px;
+  border-radius: 5px;
+  white-space: nowrap;
 }
 .part { margin: 36px 0; }
 .part > h2 {
