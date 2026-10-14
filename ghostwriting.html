@@ -511,10 +511,10 @@
       letter-spacing: -0.02em;
       margin: 0;
       font-family: "Instrument Serif", Georgia, serif;
-      order: 2;
+      order: 1;
     }
     .result-story .outcome {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.55;
       color: #b8c5c7;
       margin: 0;
@@ -569,28 +569,53 @@
       color: #e8eeef;
     }
     .result-story .media {
-      order: 1;
+      order: 2;
       margin: 0;
       border-radius: 20px;
       overflow: hidden;
-      background: #000;
+      background: #0a0b0e;
       border: 1px solid rgba(94,234,212,0.22);
+      position: relative;
     }
+    .result-story .media::after {
+      content: "▶";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(94,234,212,0.92);
+      color: #041714;
+      font-size: 18px;
+      pointer-events: none;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      opacity: 0.95;
+      transition: opacity .2s ease;
+      z-index: 2;
+    }
+    .result-story .media.is-playing::after,
+    .result-story .media.has-frame:hover::after { opacity: 0.35; }
+    .result-story .media.is-playing::after { opacity: 0; }
     .result-story .media video {
       width: 100%;
       display: block;
-      background: #000;
+      background: #0a0b0e;
     }
     .result-story .media.portrait {
       width: 100%;
-      height: min(72vh, 680px);
+      height: min(58vh, 520px);
       aspect-ratio: 9 / 16;
     }
     .result-story .media.portrait video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      background: #000;
+      object-fit: cover;
+      object-position: center top;
+      background: #0a0b0e;
     }
 
     .flag-quote {
@@ -2363,6 +2388,30 @@
       border: 1px solid rgba(94,234,212,0.22);
       box-shadow: 0 16px 50px rgba(0,0,0,0.45), 0 0 40px rgba(94,234,212,0.08);
     }
+    .dm-script {
+      max-width: 640px;
+      margin: 28px auto 0;
+      padding: 22px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(94,234,212,0.3);
+      background: linear-gradient(180deg, rgba(94,234,212,0.1), rgba(0,0,0,0.2));
+      text-align: center;
+    }
+    .dm-script-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .dm-script p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #f0f0f2;
+      margin: 0 0 16px;
+    }
+    .dm-script .btn { min-width: 200px; }
 
     /* —— Premium surfaces: process / guarantee / ops / solve / FAQ —— */
     .process-card {
@@ -2583,14 +2632,14 @@
           <p class="hero-brand"><span>Personal brand systems · 2026</span>Andrei Lucian</p>
           <h1 class="display">A personal brand that sells — <span class="brk">without you living on the feed.</span></h1>
           <p class="hero-lead">
-            Ghostwriting or brand advising for founders on X and LinkedIn.
-            Your voice. Your standards. Built for inbound — not noise.
+            Done-for-you ghostwriting — or brand advising while you stay the writer.
+            X, LinkedIn, or both. Built for inbound founders, not content hobbies.
           </p>
           <div class="btn-row">
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me on LinkedIn →</a>
-            <a class="btn btn-ghost" href="#packages">Compare offers</a>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST on LinkedIn →</a>
+            <a class="btn btn-ghost" href="#packages">See offers &amp; pricing path</a>
           </div>
-          <p class="hero-trust">Send <strong>GHOST</strong> or <strong>ADVISE</strong> · fit first · pricing second</p>
+          <p class="hero-trust">Copy this: <strong>GHOST — I sell [offer]. Goal in 90 days: [result].</strong></p>
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
@@ -2657,7 +2706,7 @@
         <div class="section-head center reveal">
           <span class="eyebrow">The offers</span>
           <h2 class="display">Two paths. One standard.</h2>
-          <p>Same quality bar. Different involvement. No public price list — if you’re interested in the price, send me a DM.</p>
+          <p>Same quality bar. Different involvement. Want the price? Send a DM with <strong>GHOST</strong> or <strong>ADVISE</strong> — I’ll share numbers after fit.</p>
         </div>
         <div class="packages reveal">
           <article class="package featured" id="pkg-ghost">
@@ -2726,7 +2775,7 @@
         <div class="start-path reveal">
           <article class="start-step">
             <h3>Send a DM</h3>
-            <p>LinkedIn or X. Write <strong>GHOST</strong> or <strong>ADVISE</strong> plus what you sell.</p>
+            <p>Paste: <strong>GHOST — I sell [offer]. Goal in 90 days: [result].</strong> (or <strong>ADVISE</strong>)</p>
           </article>
           <article class="start-step">
             <h3>We check fit</h3>
@@ -2734,8 +2783,13 @@
           </article>
           <article class="start-step">
             <h3>Pricing &amp; start</h3>
-            <p>Numbers after fit. Then we install the system and begin the 90-day loop.</p>
+            <p>Interested in price? Ask in the same DM. Numbers after fit. Then we start.</p>
           </article>
+        </div>
+        <div class="dm-script reveal" id="dmScript">
+          <div class="dm-script-label">Exact message to send</div>
+          <p id="dmScriptText">GHOST — I sell [your offer]. Goal in 90 days: [what winning looks like]. Interested in pricing if it’s a fit.</p>
+          <button type="button" class="btn btn-primary" id="copyDmBtn">Copy message →</button>
         </div>
         <div class="cta-band reveal">
           <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Open LinkedIn DM →</a>
@@ -3333,82 +3387,66 @@
           <div class="section-head center" style="margin-top:72px;">
             <span class="eyebrow">Video proof</span>
             <h2 class="display">Client videos</h2>
-            <p>Swipe or use the arrows. Play any clip full-size.</p>
+            <p>Tap play. Swipe for more. Real clients, real results.</p>
           </div>
 
         <div class="video-rail-wrap">
         <div class="result-stories" id="voicesGrid">
           <article class="result-story">
             <h3>Cristi</h3>
-            <p class="outcome">Mindset coach who used the system to show up consistently and sound like himself.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Cristi%20Ghidu%20testimonial.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Cristi%20Ghidu%20testimonial.mp4"></video>
             </div>
+            <p class="outcome">Mindset coach who used the system to show up consistently and sound like himself.</p>
           </article>
           <article class="result-story">
             <h3>Darius</h3>
-            <p class="outcome">From 60 to 340 followers in 2 weeks — the first real momentum on X.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4"></video>
             </div>
+            <p class="outcome">From 60 to 340 followers in 2 weeks — the first real momentum on X.</p>
           </article>
           <article class="result-story">
             <h3>Iordan</h3>
-            <p class="outcome">Landed a first paid ghostwriting client from the posts — $100 writing on X.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Kardan%20testimonial%20.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Kardan%20testimonial%20.mp4"></video>
             </div>
+            <p class="outcome">Landed a first paid ghostwriting client from the posts — $100 writing on X.</p>
           </article>
           <article class="result-story">
             <h3>Faith</h3>
-            <p class="outcome">Digital writer who used the system to ship clearer hooks and stronger posts.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Faith%20-%20Digital%20Writer.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Faith%20-%20Digital%20Writer.mp4"></video>
             </div>
+            <p class="outcome">Digital writer who used the system to ship clearer hooks and stronger posts.</p>
           </article>
           <article class="result-story">
             <h3>Jeffery</h3>
-            <p class="outcome">Ghostwriter who tightened voice, hooks, and shipping rhythm with the system.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Jeffery%20-%20Ghoswriter.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Jeffery%20-%20Ghoswriter.mp4"></video>
             </div>
+            <p class="outcome">Ghostwriter who tightened voice, hooks, and shipping rhythm with the system.</p>
           </article>
           <article class="result-story">
             <h3>Yanina</h3>
-            <p class="outcome">Ghostwriter who used the framework to build clearer authority content.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Yanina%20-%20Ghostwriter-backup2.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Yanina%20-%20Ghostwriter-backup2.mp4"></video>
             </div>
+            <p class="outcome">Ghostwriter who used the framework to build clearer authority content.</p>
           </article>
           <article class="result-story">
             <h3>Kingsley</h3>
-            <p class="outcome">Digital writer using the same operating rhythm for clearer, more consistent content.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Kingsley%20-%20Digital%20Writer.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Kingsley%20-%20Digital%20Writer.mp4"></video>
             </div>
+            <p class="outcome">Digital writer using the same operating rhythm for clearer, more consistent content.</p>
           </article>
           <article class="result-story">
             <h3>Nyrus</h3>
-            <p class="outcome">Copywriter who applied the system to sharpen posting and positioning.</p>
             <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="none">
-                <source src="assets/images/video%20testimonial/Nyrus%20-%20Copywriter.mp4#t=0.1" type="video/mp4">
-              </video>
+              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Nyrus%20-%20Copywriter.mp4"></video>
             </div>
+            <p class="outcome">Copywriter who applied the system to sharpen posting and positioning.</p>
           </article>
         </div>
         <div class="video-nav">
@@ -4037,8 +4075,8 @@
           <span class="final-pill">Your next move</span>
           <h2 class="display">One DM. That’s the whole application.</h2>
           <p>
-            Pick a path. Tell me what you sell and what winning looks like in 90 days.
-            Fit first. Pricing second. If it’s not a match, I’ll say so.
+            Paste: <strong>GHOST — I sell [offer]. Goal in 90 days: [result].</strong>
+            Want pricing? Ask in the same message. Fit first. If it’s not a match, I’ll say so.
           </p>
           <div class="dm-lanes">
             <div class="dm-lane ghost">
@@ -4064,8 +4102,8 @@
   </main>
 
   <div class="sticky-apply" id="stickyApply" role="region" aria-label="Send a DM" hidden>
-    <div class="sa-copy">Ready? Send <strong>GHOST</strong> or <strong>ADVISE</strong></div>
-    <a class="btn btn-primary" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me →</a>
+    <div class="sa-copy">Paste <strong>GHOST + what you sell</strong> · pricing in DM</div>
+    <a class="btn btn-primary" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Open DM →</a>
   </div>
 
   <footer class="wrap">
@@ -4235,11 +4273,48 @@
       if (next) next.addEventListener('click', function () { rail.scrollBy({ left: step(), behavior: 'smooth' }); });
       var videos = rail.querySelectorAll('video');
       videos.forEach(function (vid) {
+        var wrap = vid.closest('.media');
+        function showFrame() {
+          if (!wrap || vid.readyState < 1) return;
+          try {
+            if (vid.currentTime < 0.05) vid.currentTime = 0.12;
+          } catch (e) {}
+          wrap.classList.add('has-frame');
+        }
+        vid.addEventListener('loadedmetadata', showFrame);
+        vid.addEventListener('loadeddata', showFrame);
+        vid.addEventListener('seeked', function () { if (wrap) wrap.classList.add('has-frame'); });
         vid.addEventListener('play', function () {
+          if (wrap) wrap.classList.add('is-playing');
           videos.forEach(function (other) {
             if (other !== vid) other.pause();
           });
         });
+        vid.addEventListener('pause', function () {
+          if (wrap && vid.paused) wrap.classList.remove('is-playing');
+        });
+        if (vid.readyState >= 1) showFrame();
+      });
+    })();
+
+    (function () {
+      var btn = document.getElementById('copyDmBtn');
+      var textEl = document.getElementById('dmScriptText');
+      if (!btn || !textEl) return;
+      btn.addEventListener('click', function () {
+        var text = textEl.textContent.trim();
+        function done() {
+          var old = btn.textContent;
+          btn.textContent = 'Copied — paste in DM';
+          setTimeout(function () { btn.textContent = old; }, 1800);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {
+            window.prompt('Copy this message:', text);
+          });
+        } else {
+          window.prompt('Copy this message:', text);
+        }
       });
     })();
 
