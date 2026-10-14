@@ -2501,13 +2501,23 @@
     }
 
     .start-path {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 14px;
       counter-reset: path;
+      width: 100%;
+    }
+    .start-path .start-step {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     @media (min-width: 901px) {
-      .start-path { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .start-path {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
     }
     .start-step {
       position: relative;
@@ -2860,6 +2870,22 @@
     #start .start-path {
       width: 100%;
       max-width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 901px) {
+      #outcomes .outcomes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      #packages .packages {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      #start .start-path {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     #outcomes .outcome {
       width: 100%;
@@ -3198,12 +3224,12 @@
         <div class="section-head center reveal">
           <span class="eyebrow">How to start</span>
           <h2 class="display">Three steps. No pitch deck.</h2>
-          <p>The whole next move is one message.</p>
+          <p>Send me a DM for ghostwriting or advising. That’s the whole next move.</p>
         </div>
         <div class="start-path reveal">
           <article class="start-step">
-            <h3>Send a DM</h3>
-            <p>Paste: <strong>GHOST — I sell [offer]. Goal in 90 days: [result].</strong> (or <strong>ADVISE</strong>)</p>
+            <h3>Send me a DM</h3>
+            <p>For ghostwriting or advising. Write <strong>GHOST</strong> or <strong>ADVISE</strong> — what you sell + your 90-day goal.</p>
           </article>
           <article class="start-step">
             <h3>We check fit</h3>
@@ -3211,7 +3237,7 @@
           </article>
           <article class="start-step">
             <h3>Pricing &amp; start</h3>
-            <p>Interested in price? Ask in the same DM. Numbers after fit. Then we start.</p>
+            <p>Ask for pricing in the same DM. Numbers after fit. Then we start.</p>
           </article>
         </div>
         <div class="cta-band reveal">
