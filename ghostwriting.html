@@ -2785,11 +2785,6 @@
             <p>Interested in price? Ask in the same DM. Numbers after fit. Then we start.</p>
           </article>
         </div>
-        <div class="dm-script reveal" id="dmScript">
-          <div class="dm-script-label">Exact message to send</div>
-          <p id="dmScriptText">GHOST — I sell [your offer]. Goal in 90 days: [what winning looks like]. Interested in pricing if it’s a fit.</p>
-          <button type="button" class="btn btn-primary" id="copyDmBtn">Copy message →</button>
-        </div>
         <div class="cta-band reveal">
           <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Open LinkedIn DM →</a>
           <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">Open X DM →</a>
@@ -4293,27 +4288,6 @@
           if (wrap && vid.paused) wrap.classList.remove('is-playing');
         });
         if (vid.readyState >= 1) showFrame();
-      });
-    })();
-
-    (function () {
-      var btn = document.getElementById('copyDmBtn');
-      var textEl = document.getElementById('dmScriptText');
-      if (!btn || !textEl) return;
-      btn.addEventListener('click', function () {
-        var text = textEl.textContent.trim();
-        function done() {
-          var old = btn.textContent;
-          btn.textContent = 'Copied — paste in DM';
-          setTimeout(function () { btn.textContent = old; }, 1800);
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done).catch(function () {
-            window.prompt('Copy this message:', text);
-          });
-        } else {
-          window.prompt('Copy this message:', text);
-        }
       });
     })();
 
