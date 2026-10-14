@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20261014v4">
+  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20261014v5">
   <style>
     :root {
       --bg: #040405;
@@ -2277,9 +2277,10 @@
       .hero-grid, .filter-grid, .packages, .quote-grid, .text-grid, .comm-grid,
       .solve-row, .authority-grid { grid-template-columns: 1fr; }
       .ops-grid, .trio-grid { grid-template-columns: 1fr 1fr; }
-      .process-overview { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .process-overview::before { left: 8%; right: 8%; }
+      .process-overview { grid-template-columns: 1fr; gap: 12px; }
+      .process-overview::before { display: none; }
       .proof-grid { grid-template-columns: 1fr 1fr; }
+      .outcomes, .start-path { grid-template-columns: 1fr; }
       .case-wall { grid-template-columns: 1fr; }
       .case-tile.wide { grid-column: auto; }
       .video-grid { grid-template-columns: 1fr 1fr; }
@@ -2805,8 +2806,168 @@
     }
     @media (max-width: 720px) {
       .g-panel { padding: 36px 20px 28px; }
-      .final-panel { padding: 48px 22px 40px; }
+      .final-panel { padding: 40px 20px 32px; }
       .process-card { padding: 28px 20px 24px; }
+    }
+
+    /* Phone layout — must stay last so it wins over later component CSS */
+    @media (max-width: 900px) {
+      .outcomes,
+      .start-path,
+      .packages,
+      .dm-lanes,
+      .g-paths,
+      .trust-rail,
+      .process-overview {
+        grid-template-columns: 1fr !important;
+      }
+      .process-overview {
+        gap: 20px !important;
+        margin-bottom: 36px !important;
+      }
+      .process-overview::before,
+      .process-node::after {
+        display: none !important;
+      }
+      .process-node {
+        flex-direction: row !important;
+        text-align: left !important;
+        align-items: center !important;
+        gap: 16px !important;
+        padding: 14px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.03);
+      }
+      .process-orb {
+        width: 56px !important;
+        height: 56px !important;
+        flex-shrink: 0;
+      }
+      .process-orb img {
+        width: 34px !important;
+        height: 34px !important;
+      }
+      .process-node .kicker {
+        margin: 0 0 2px;
+      }
+      .process-node .label {
+        font-size: 20px !important;
+        margin: 0;
+      }
+      .process-grid {
+        gap: 28px !important;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+      .hero-portrait-wrap {
+        max-width: min(320px, 100%) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .portrait {
+        max-height: min(46vh, 340px) !important;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .outcome {
+        padding: 22px 18px !important;
+        min-height: 0 !important;
+      }
+      .outcome h3 {
+        font-size: 24px !important;
+      }
+      .start-step {
+        padding: 20px 18px !important;
+      }
+      .package {
+        padding: 22px 18px !important;
+      }
+      .package .btn-row {
+        flex-direction: column !important;
+      }
+      .package .btn-row .btn {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        min-height: 48px;
+        padding: 14px 16px !important;
+        font-size: 14px !important;
+        border-radius: 14px !important;
+      }
+      .package .platform {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .package h3 {
+        font-size: 26px !important;
+        padding-right: 72px;
+      }
+      .mid-cta {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+      }
+      .mid-cta .btn {
+        width: 100% !important;
+      }
+      .flag-quote {
+        padding: 24px 18px !important;
+      }
+      .section-head p {
+        font-size: 15px !important;
+        max-width: 34em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .sticky-apply {
+        width: calc(100% - 16px) !important;
+        max-width: 420px !important;
+      }
+      footer {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 20px, var(--max)) !important;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 8.2vw, 40px) !important;
+      }
+      .display {
+        font-size: clamp(28px, 7.5vw, 38px);
+      }
+      .process-card .step-mark {
+        font-size: 36px !important;
+        top: -18px !important;
+        left: 8px !important;
+      }
+      .process-card {
+        padding: 26px 16px 20px !important;
+      }
+      .process-card h3 {
+        font-size: 22px !important;
+      }
+      .result-story {
+        flex: 0 0 min(84vw, 300px) !important;
+      }
+      .result-stories {
+        gap: 12px !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+      .shot-rail .shot-card,
+      .story-card {
+        flex: 0 0 min(86vw, 320px) !important;
+      }
     }
   </style>
 </head>

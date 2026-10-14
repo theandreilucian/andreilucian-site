@@ -761,3 +761,34 @@ footer a:hover { color: var(--text); }
   .reveal { opacity: 1; transform: none; transition: none; }
   .magnet, .magnet-panel::before { animation: none; }
 }
+
+/* Phone stack — last so it wins */
+@media (max-width: 900px) {
+  .outcomes,
+  .start-path,
+  .packages,
+  .dm-lanes,
+  .process-overview,
+  .trust-rail,
+  .g-paths {
+    grid-template-columns: 1fr !important;
+  }
+  .process-overview::before,
+  .process-node::after {
+    display: none !important;
+  }
+  .process-node {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    align-items: center !important;
+    gap: 14px !important;
+  }
+  .package .btn-row {
+    flex-direction: column !important;
+  }
+  .package .btn-row .btn {
+    width: 100% !important;
+    flex: none !important;
+  }
+}
