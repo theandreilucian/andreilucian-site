@@ -160,52 +160,61 @@
 
     /* Hero */
     .hero {
-      padding: 56px 0 48px;
+      padding: 64px 0 56px;
       position: relative;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 56px;
       align-items: center;
     }
     .hero-brand {
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(32px, 4.2vw, 44px);
       font-weight: 400;
       letter-spacing: -0.03em;
       line-height: 1;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: var(--text);
     }
-    .hero-brand span {
-      display: block;
-      font-family: "DM Sans", system-ui, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
     .hero h1 {
-      font-size: clamp(40px, 6.4vw, 68px);
+      font-size: clamp(38px, 5.8vw, 64px);
       margin-bottom: 18px;
       letter-spacing: -0.035em;
+      max-width: 11em;
     }
     .hero h1 .brk {
       display: block;
       font-style: italic;
-      color: #c9f7ee;
+      color: #b8f5e8;
+      margin-top: 0.08em;
     }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-lead {
-      font-size: clamp(17px, 2.1vw, 19px);
+      font-size: clamp(16px, 2vw, 18px);
       color: var(--muted);
-      max-width: 34em;
-      margin-bottom: 26px;
-      line-height: 1.6;
+      max-width: 28em;
+      margin-bottom: 28px;
+      line-height: 1.65;
     }
+    .hero-copy .btn-row { margin-bottom: 4px; }
+    .hero-copy .btn-li {
+      padding: 16px 26px;
+      font-size: 15px;
+      box-shadow: 0 12px 32px rgba(10, 102, 194, 0.35);
+    }
+    .hero-portrait-wrap {
+      max-width: 440px;
+      margin-left: auto;
+    }
+    .hero-trust {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.01em;
+    }
+    .hero-trust strong { color: #e8fffa; font-weight: 650; }
     .hero-note {
       font-size: 14px; color: var(--accent); font-weight: 600;
       margin-bottom: 22px;
@@ -2629,21 +2638,22 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
+          <p class="hero-brand">Andrei Lucian</p>
           <h1 class="display">A personal brand that sells — <span class="brk">without you living on the feed.</span></h1>
           <p class="hero-lead">
-            Done-for-you ghostwriting — or brand advising while you stay the writer.
-            X, LinkedIn, or both. Built for inbound founders, not content hobbies.
+            Ghostwriting or brand advising for founders on X and LinkedIn.
+            Your voice. Inbound — not noise.
           </p>
           <div class="btn-row">
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST on LinkedIn →</a>
-            <a class="btn btn-ghost" href="#packages">See offers &amp; pricing path</a>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me on LinkedIn →</a>
+            <a class="btn btn-ghost" href="#packages">See the offers</a>
           </div>
-          <p class="hero-trust">Copy this: <strong>GHOST — I sell [offer]. Goal in 90 days: [result].</strong></p>
+          <p class="hero-trust">Send <strong>GHOST</strong> or <strong>ADVISE</strong> · price after fit</p>
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
             <img class="portrait" src="assets/images/andrei-hero-cinematic.png" alt="Andrei Lucian" width="720" height="960" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
-            <span class="hero-portrait-tag">Andrei Lucian</span>
+            <span class="hero-portrait-tag">Ghostwriting · Brand advising</span>
           </div>
         </aside>
       </div>
