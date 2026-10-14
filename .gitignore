@@ -31,3 +31,6 @@ node_modules/
 *.avi
 assets/images/video testimonial/
 
+
+!assets/client-videos/
+!assets/client-videos/*.mp4
