@@ -549,6 +549,11 @@
       text-transform: uppercase; color: var(--accent);
     }
     .package h3 { font-size: 28px; }
+    .package .promise {
+      font-size: 18px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.35;
+      color: #f2f2f4;
+    }
+    .package .promise span { display: block; margin-top: 6px; font-size: 14px; font-weight: 500; color: var(--muted); }
     .package .price {
       font-size: 40px; font-weight: 800; letter-spacing: -0.03em;
     }
@@ -560,6 +565,16 @@
     .package .price-note {
       font-size: 13px; color: var(--accent); font-weight: 600; line-height: 1.45;
       margin-top: -4px;
+    }
+    .package .badge-row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .package .badge-row span {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px;
+    }
+    .package.featured .badge-row span {
+      border-color: rgba(94,234,212,0.28); color: #c9f7ee;
     }
     .package ul { list-style: none; display: grid; gap: 10px; flex: 1; }
     .package li {
@@ -2063,10 +2078,10 @@
       <div class="wrap">
         <div class="offer-bar">
           <div class="ob-item"><span>Platform</span><strong>X or LinkedIn</strong></div>
-          <div class="ob-item"><span>Model</span><strong>Done-for-you retainer</strong></div>
-          <div class="ob-item"><span>Pricing</span><strong>After we talk</strong></div>
+          <div class="ob-item"><span>Model</span><strong>Done-for-you</strong></div>
+          <div class="ob-item"><span>Next step</span><strong>DM GHOST</strong></div>
           <div class="ob-item"><span>Guarantee</span><strong>The work</strong></div>
-          <a class="btn btn-primary" href="#contact">Apply →</a>
+          <a class="btn btn-primary" href="#packages">See the offer →</a>
         </div>
       </div>
     </section>
@@ -2076,15 +2091,38 @@
       <div class="wrap">
         <div class="section-head center">
           <span class="eyebrow">The offer</span>
-          <h2 class="display">Choose X or LinkedIn. I ghostwrite that one.</h2>
-          <p>One platform. Done-for-you. Built as a <strong>3-month package</strong> — month-to-month billing, 90-day horizon. Pricing after we talk fit — so we don’t waste time if we’re not aligned.</p>
+          <h2 class="display">I write one platform. You stay in the business.</h2>
+          <p>Done-for-you ghostwriting for <strong>X or LinkedIn</strong> — not both watered down. Selective roster. You approve every post. We talk fit first; pricing comes after.</p>
         </div>
         <div class="packages">
-          <article class="package featured" id="pkg-x">
+          <article class="package featured" id="pkg-li">
+            <div class="platform">For B2B founders</div>
+            <h3 class="display">LinkedIn ghostwriting</h3>
+            <div class="promise">I write LinkedIn so you don’t have to. <span>Authority posts. Your voice. Buyers who already trust you before the call.</span></div>
+            <div class="badge-row">
+              <span>Done-for-you</span>
+              <span>You approve</span>
+              <span>90-day horizon</span>
+            </div>
+            <ul>
+              <li>Voice interview + writing rules locked</li>
+              <li>Done-for-you LinkedIn posts in your voice</li>
+              <li>Authority posts that build trust with buyers</li>
+              <li>You approve every post before it ships</li>
+              <li>I schedule + publish for you</li>
+              <li>Monthly review on what’s working</li>
+            </ul>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me GHOST on LinkedIn →</a>
+          </article>
+          <article class="package" id="pkg-x">
             <div class="platform">For founders on X</div>
             <h3 class="display">X ghostwriting</h3>
-            <div class="price">DM to talk <span>fit + pricing</span></div>
-            <p class="price-note">Month-to-month · you approve every post</p>
+            <div class="promise">Consistent X. Your voice. No living in the feed. <span>Hooks and short posts built for how X actually works.</span></div>
+            <div class="badge-row">
+              <span>Done-for-you</span>
+              <span>You approve</span>
+              <span>Month-to-month</span>
+            </div>
             <ul>
               <li>Voice interview + writing rules locked</li>
               <li>Done-for-you X posts in your voice</li>
@@ -2095,26 +2133,11 @@
             </ul>
             <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">Message me on X →</a>
           </article>
-          <article class="package" id="pkg-li">
-            <div class="platform">For founders on LinkedIn</div>
-            <h3 class="display">LinkedIn ghostwriting</h3>
-            <div class="price">DM “GHOST” <span>fit + pricing</span></div>
-            <p class="price-note">Month-to-month · you approve every post</p>
-            <ul>
-              <li>Voice interview + writing rules locked</li>
-              <li>Done-for-you LinkedIn posts in your voice</li>
-              <li>Authority posts that build trust with buyers</li>
-              <li>You approve every post before it ships</li>
-              <li>I schedule + publish for you</li>
-              <li>Monthly review on what’s working</li>
-            </ul>
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Message me on LinkedIn →</a>
-          </article>
         </div>
 
         <p class="bundle-note">
-          Billing is month-to-month. The work is built for <strong>90 days</strong>.
-          Anyone selling a finished brand in 30 days is lying. Want both platforms later? Two separate retainers — we price that on a call.
+          Month-to-month billing. Built for <strong>90 days</strong> — that’s when the system compounds.
+          Both platforms later? Two retainers. We’ll scope it on a call.
         </p>
         <div class="mid-cta" style="margin-top:22px;">
           <a class="btn btn-ghost" href="#proof">See client receipts →</a>
