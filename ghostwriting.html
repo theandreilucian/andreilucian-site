@@ -2363,6 +2363,202 @@
       border: 1px solid rgba(94,234,212,0.22);
       box-shadow: 0 16px 50px rgba(0,0,0,0.45), 0 0 40px rgba(94,234,212,0.08);
     }
+
+    /* —— Premium surfaces: process / guarantee / ops / solve / FAQ —— */
+    .process-card {
+      background:
+        linear-gradient(165deg, rgba(94,234,212,0.07), transparent 38%),
+        linear-gradient(180deg, #171a22 0%, #0f1116 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 36px 32px 30px;
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(94,234,212,0.35);
+      transform: translateY(-3px);
+      box-shadow:
+        0 36px 80px rgba(0,0,0,0.48),
+        0 0 48px rgba(94,234,212,0.06);
+    }
+    .process-card h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(26px, 3.4vw, 34px);
+      letter-spacing: -0.03em;
+      color: #f5f4f1;
+    }
+    .process-card ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .process-card li {
+      font-size: 15px;
+      color: #d8d8de;
+    }
+    .process-overview {
+      margin-bottom: 56px;
+      gap: 20px;
+    }
+    .process-orb {
+      box-shadow:
+        0 0 0 1px rgba(94,234,212,0.28),
+        0 18px 40px rgba(0,0,0,0.45),
+        0 0 36px rgba(94,234,212,0.12);
+    }
+
+    .g-panel {
+      padding: 48px 36px 40px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(600px 280px at 50% 0%, rgba(94,234,212,0.1), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow: 0 40px 100px rgba(0,0,0,0.35);
+    }
+    .g-path {
+      padding: 22px 24px;
+      border-radius: 18px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .g-path:hover { transform: translateY(-2px); }
+    .g-path span {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .g-alert {
+      border-radius: 16px;
+      padding: 18px 22px;
+      letter-spacing: -0.01em;
+    }
+    .g-reason {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 50%),
+        rgba(0,0,0,0.22);
+      border-radius: 22px;
+      padding: 28px 24px;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .g-reason:hover {
+      border-color: rgba(94,234,212,0.28);
+      transform: translateY(-2px);
+    }
+    .g-reason h3 { font-size: 26px; }
+
+    .solve-top,
+    .solve-card,
+    .ops-item,
+    .filter-card {
+      background:
+        linear-gradient(165deg, rgba(255,255,255,0.045), transparent 42%),
+        var(--bg-2);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      transition: border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+    }
+    .solve-top:hover,
+    .solve-card:hover,
+    .ops-item:hover,
+    .filter-card:hover {
+      border-color: rgba(94,234,212,0.28);
+      transform: translateY(-2px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.36);
+    }
+    .solve-top,
+    .solve-card { padding: 32px 28px; }
+    .solve-card h3,
+    .solve-top h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+      color: #f5f4f1;
+    }
+    .ops-item {
+      padding: 28px 24px 30px;
+      min-height: 220px;
+    }
+    .ops-item h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .ops-grid { gap: 16px; }
+
+    .filter-card {
+      padding: 30px 26px;
+    }
+    .filter-card h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    details.faq {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), transparent);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 18px 20px;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    details.faq:hover,
+    details.faq[open] {
+      border-color: rgba(94,234,212,0.28);
+      background: rgba(94,234,212,0.04);
+    }
+    details.faq summary {
+      font-size: 16px;
+      letter-spacing: -0.015em;
+    }
+    details.faq .a {
+      line-height: 1.7;
+      padding-top: 4px;
+    }
+
+    .final-panel {
+      padding: 72px 40px 60px;
+      border-radius: 36px;
+      border: 1px solid rgba(94,234,212,0.18);
+      background:
+        radial-gradient(560px 300px at 50% -10%, rgba(94,234,212,0.16), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012));
+      box-shadow:
+        0 50px 120px rgba(0,0,0,0.45),
+        0 0 80px rgba(94,234,212,0.06);
+    }
+    .dm-lane {
+      backdrop-filter: blur(8px);
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .dm-lane:hover {
+      transform: translateY(-2px);
+      border-color: rgba(94,234,212,0.4);
+    }
+
+    #process .section-head,
+    #guarantee .g-panel,
+    #ops .section-head,
+    #faq .section-head {
+      margin-bottom: 48px;
+    }
+    @media (max-width: 720px) {
+      .g-panel { padding: 36px 20px 28px; }
+      .final-panel { padding: 48px 22px 40px; }
+      .process-card { padding: 28px 20px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -3523,8 +3719,8 @@
           </article>
         </div>
 
-        <div class="mid-cta">
-          <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me →</a>
+          <div class="mid-cta">
+          <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me for pricing →</a>
           <a class="btn btn-ghost" href="#proof">See results</a>
         </div>
       </div>
@@ -3533,13 +3729,13 @@
     <!-- GUARANTEE -->
     <section id="guarantee">
       <div class="wrap">
-        <div class="g-panel">
+        <div class="g-panel reveal">
           <div class="g-mark" aria-hidden="true">
             <img src="assets/images/brand/ghost-mark.webp" alt="" width="72" height="72">
           </div>
           <span class="eyebrow">The deal</span>
           <h2 class="display">The Work Guarantee</h2>
-          <p class="deal">Two options. That’s it.</p>
+          <p class="deal">Two options. That’s it. Want the price? Send a DM.</p>
 
           <div class="g-paths">
             <div class="g-path yes"><strong>01</strong><span>Commit to the work.</span></div>
@@ -3831,9 +4027,9 @@
           <details class="faq">
             <summary>How does pricing work?</summary>
             <div class="a">
-              We talk first — fit, offer, channel, goal. Then I share pricing.
-              No public price list on purpose: fit first, number second.
-              If the number alone would scare you off before we talk, we’re probably not a fit anyway.
+              Interested in the price? <strong>Send me a DM</strong> — write <strong>GHOST</strong> or <strong>ADVISE</strong>.
+              We talk fit first (offer, channel, goal), then I share numbers.
+              No public price list on purpose: fit first, price second.
             </div>
           </details>
           <details class="faq">
