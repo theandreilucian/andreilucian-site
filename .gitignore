@@ -34,3 +34,5 @@ assets/images/video testimonial/
 
 !assets/client-videos/
 !assets/client-videos/*.mp4
+!assets/client-videos/posters/
+!assets/client-videos/posters/*.jpg
