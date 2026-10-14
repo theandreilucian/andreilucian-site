@@ -3,53 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Ghostwriting & Brand Advising | Andrei Lucian</title>
-  <meta name="description" content="Premium ghostwriting (X, LinkedIn, or both) and brand advising for founders. Your voice. Clear process. DM GHOST or ADVISE.">
+  <title>Andrei Lucian — Ghostwriting & Brand Advising for Founders</title>
+  <meta name="description" content="Premium personal brand systems for 2026. Ghostwriting or brand advising on X and LinkedIn. Your voice. Inbound without living on the feed. DM GHOST or ADVISE.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta name="theme-color" content="#070708">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ghostwriting & Brand Advising | Andrei Lucian">
-  <meta property="og:description" content="Ghostwriting on X, LinkedIn, or both — or brand advising while you stay the writer. DM GHOST or ADVISE.">
+  <meta property="og:title" content="Andrei Lucian — Ghostwriting & Brand Advising">
+  <meta property="og:description" content="A personal brand that sells — without you living on the feed. Ghostwriting or advising. DM GHOST or ADVISE.">
   <meta property="og:url" content="https://andreilucian.com/ghostwriting.html">
   <meta property="og:image" content="https://andreilucian.com/assets/images/andrei-hero-cinematic.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ghostwriting & Brand Advising | Andrei Lucian">
-  <meta name="twitter:description" content="Ghostwriting on X, LinkedIn, or both — or brand advising. DM GHOST or ADVISE.">
+  <meta name="twitter:title" content="Andrei Lucian — Ghostwriting & Brand Advising">
+  <meta name="twitter:description" content="Premium ghostwriting or brand advising on X & LinkedIn. DM GHOST or ADVISE.">
   <link rel="canonical" href="https://andreilucian.com/ghostwriting.html">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20260917hero">
+  <link rel="stylesheet" href="assets/css/ghostwriting-premium.css?v=20261014v2">
   <style>
     :root {
-      --bg: #050506;
-      --bg-2: #0e0f12;
-      --bg-3: #15171c;
-      --text: #f5f4f1;
-      --muted: #9b9ba5;
+      --bg: #040405;
+      --bg-2: #0c0d10;
+      --bg-3: #14161b;
+      --text: #f7f6f2;
+      --muted: #9a9aa4;
       --line: rgba(255,255,255,0.09);
       --accent: #5eead4;
       --accent-dim: rgba(94,234,212,0.12);
       --good: #6ee7a8;
       --bad: #f0a8a8;
       --radius: 16px;
-      --max: 1140px;
+      --max: 1160px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background:
-        radial-gradient(1100px 560px at 8% -8%, rgba(94,234,212,0.11), transparent 58%),
-        radial-gradient(800px 480px at 92% 0%, rgba(255,255,255,0.045), transparent 52%),
-        radial-gradient(700px 500px at 50% 100%, rgba(94,234,212,0.04), transparent 55%),
+        radial-gradient(1200px 640px at 6% -12%, rgba(94,234,212,0.14), transparent 58%),
+        radial-gradient(900px 520px at 96% 4%, rgba(255,255,255,0.05), transparent 50%),
+        radial-gradient(800px 560px at 50% 110%, rgba(94,234,212,0.05), transparent 55%),
         var(--bg);
       color: var(--text);
       font-family: "DM Sans", system-ui, sans-serif;
       line-height: 1.55;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     a { color: inherit; }
     img { max-width: 100%; display: block; }
@@ -150,24 +159,52 @@
     }
 
     /* Hero */
-    .hero { padding: 80px 0 64px; }
+    .hero {
+      padding: 56px 0 48px;
+      position: relative;
+    }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 56px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
       align-items: center;
     }
+    .hero-brand {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+    .hero-brand span {
+      display: block;
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
     .hero h1 {
-      font-size: clamp(44px, 7.2vw, 76px);
-      margin-bottom: 20px;
+      font-size: clamp(40px, 6.4vw, 68px);
+      margin-bottom: 18px;
       letter-spacing: -0.035em;
+    }
+    .hero h1 .brk {
+      display: block;
+      font-style: italic;
+      color: #c9f7ee;
     }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-lead {
-      font-size: clamp(17px, 2.2vw, 20px);
+      font-size: clamp(17px, 2.1vw, 19px);
       color: var(--muted);
-      max-width: 36em;
-      margin-bottom: 22px;
+      max-width: 34em;
+      margin-bottom: 26px;
+      line-height: 1.6;
     }
     .hero-note {
       font-size: 14px; color: var(--accent); font-weight: 600;
@@ -2149,6 +2186,182 @@
       }
       .sticky-apply .btn { flex: 1; }
       footer { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+      .hero-brand { font-size: 26px; }
+      .trust-rail { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .outcomes { grid-template-columns: 1fr; }
+      .dm-lanes { grid-template-columns: 1fr; }
+      .start-path { grid-template-columns: 1fr; }
+    }
+
+    /* —— 2026 premium conversion layer —— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    .trust-rail {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .trust-rail .t-item {
+      padding: 20px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    }
+    .trust-rail strong {
+      display: block;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .trust-rail span {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .outcome {
+      padding: 28px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(165deg, rgba(94,234,212,0.08), transparent 42%),
+        var(--bg-2);
+      min-height: 100%;
+    }
+    .outcome .n {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .outcome h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .outcome p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .start-path {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      counter-reset: path;
+    }
+    .start-step {
+      position: relative;
+      padding: 26px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+    }
+    .start-step::before {
+      counter-increment: path;
+      content: "0" counter(path);
+      display: block;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 32px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .start-step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .start-step p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .dm-lanes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px auto 0;
+      max-width: 720px;
+      text-align: left;
+    }
+    .dm-lane {
+      padding: 24px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.28);
+    }
+    .dm-lane.ghost {
+      border-color: rgba(94,234,212,0.35);
+      background: linear-gradient(180deg, rgba(94,234,212,0.1), rgba(0,0,0,0.2));
+    }
+    .dm-lane .kw {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .dm-lane p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .dm-lane .btn-row .btn {
+      flex: 1;
+      font-size: 13px;
+      padding: 12px 14px;
+    }
+
+    .package .outcome-line {
+      font-size: 14px;
+      color: #c9f7ee;
+      font-weight: 600;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(94,234,212,0.08);
+      border: 1px solid rgba(94,234,212,0.18);
+      line-height: 1.45;
+    }
+    .hero-card .hero-aside-copy { display: none; }
+    .hero-card .stat-row { display: none; }
+    .hero-portrait-wrap {
+      animation: heroFloat 7s ease-in-out infinite;
+    }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-portrait-wrap { animation: none; }
+    }
+    .sticky-apply {
+      border: 1px solid rgba(94,234,212,0.22);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.45), 0 0 40px rgba(94,234,212,0.08);
     }
   </style>
 </head>
@@ -2157,9 +2370,9 @@
     <div class="wrap nav-inner">
       <a class="brand" href="#top">Andrei Lucian</a>
       <nav class="nav-links" aria-label="Primary">
-        <a class="hide-sm" href="#packages">Offer</a>
+        <a class="hide-sm" href="#packages">Offers</a>
         <a class="hide-sm" href="#proof">Results</a>
-        <a class="hide-sm" href="#process">Process</a>
+        <a class="hide-sm" href="#start">Start</a>
         <a class="hide-sm" href="#faq">FAQ</a>
         <a class="nav-cta" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me</a>
       </nav>
@@ -2171,84 +2384,103 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="hero-id">
-            <img src="assets/images/andrei-linkedin-headshot.png" alt="" width="52" height="52" onerror="this.src='assets/images/logo.png'">
-            <div>
-              <b>Andrei Lucian</b>
-              <span>Ghostwriter · X or LinkedIn</span>
-            </div>
-          </div>
+          <p class="hero-brand"><span>Personal brand systems · 2026</span>Andrei Lucian</p>
           <h1 class="display">A personal brand that sells — <span class="brk">without you living on the feed.</span></h1>
           <p class="hero-lead">
-            Two ways to work: I ghostwrite for you, or I advise while you stay the writer.
-            X, LinkedIn, or both. Built for inbound — not noise.
+            Ghostwriting or brand advising for founders on X and LinkedIn.
+            Your voice. Your standards. Built for inbound — not noise.
           </p>
-          <ul class="hero-bullets">
-            <li>Ghostwriting: I write · you approve · I publish</li>
-            <li>Brand advising: positioning, weekly direction, draft feedback</li>
-            <li>90-day systems. Pricing after fit. DM to start.</li>
-          </ul>
           <div class="btn-row">
             <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me on LinkedIn →</a>
-            <a class="btn btn-ghost" href="#packages">See both offers</a>
+            <a class="btn btn-ghost" href="#packages">Compare offers</a>
           </div>
-          <p class="hero-trust">Send <strong>GHOST</strong> or <strong>ADVISE</strong>. If it’s not a fit, I’ll say so.</p>
+          <p class="hero-trust">Send <strong>GHOST</strong> or <strong>ADVISE</strong> · fit first · pricing second</p>
         </div>
-        <aside class="hero-card">
+        <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
             <img class="portrait" src="assets/images/andrei-hero-cinematic.png" alt="Andrei Lucian" width="720" height="960" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
             <span class="hero-portrait-tag">Andrei Lucian</span>
-          </div>
-          <h3>I write. You lead.</h3>
-          <p class="muted" style="font-size:15px; line-height:1.65;">
-            The same system behind my own brand — installed for founders who refuse to look amateur in public.
-          </p>
-          <div class="stat-row">
-            <div class="stat"><strong>17,3K</strong><span>LinkedIn · +1M impressions</span></div>
-            <div class="stat"><strong>5.6K</strong><span>X · +10M impressions</span></div>
-            <div class="stat"><strong>30+</strong><span>Founders served</span></div>
-            <div class="stat"><strong>You approve</strong><span>Every post before publish</span></div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- FLAGSHIP QUOTE -->
-    <section>
+    <section style="padding-top:0; padding-bottom:40px;">
       <div class="wrap">
-        <blockquote class="flag-quote">
+        <div class="trust-rail reveal">
+          <div class="t-item"><strong>17,3K</strong><span>LinkedIn · +1M impressions</span></div>
+          <div class="t-item"><strong>5.6K</strong><span>X · +10M impressions</span></div>
+          <div class="t-item"><strong>30+</strong><span>Founders served</span></div>
+          <div class="t-item"><strong>You approve</strong><span>Nothing ships without you</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP QUOTE -->
+    <section style="padding-top:24px;">
+      <div class="wrap">
+        <blockquote class="flag-quote reveal">
           <p>“Went from <span class="mark">100 → 1,000 followers</span> on X in 47 days. The content actually sounds like me, not like AI.”</p>
           <div class="who">Patanza · Digital Writer</div>
         </blockquote>
       </div>
     </section>
 
-    <section id="offer-strip">
+    <!-- 90-DAY OUTCOMES -->
+    <section id="outcomes">
       <div class="wrap">
-        <div class="offer-bar">
-          <div class="ob-item"><span>Offer 1</span><strong>Ghostwriting</strong></div>
-          <div class="ob-item"><span>Offer 2</span><strong>Brand advising</strong></div>
-          <div class="ob-item"><span>Channels</span><strong>X · LinkedIn · Both</strong></div>
-          <div class="ob-item"><span>Next step</span><strong>DM GHOST / ADVISE</strong></div>
-          <a class="btn btn-primary" href="#packages">Compare offers →</a>
+        <div class="section-head center reveal">
+          <span class="eyebrow">What changes</span>
+          <h2 class="display">In 90 days, the brand stops being a chore.</h2>
+          <p>Not vanity spikes. A system that compounds — so the right people find you while you run the business.</p>
+        </div>
+        <div class="outcomes reveal">
+          <article class="outcome">
+            <div class="n">01 · Clarity</div>
+            <h3>Positioning that sticks</h3>
+            <p>Who you’re for, what you stand for, and what every post is building toward. No more random content.</p>
+          </article>
+          <article class="outcome">
+            <div class="n">02 · Consistency</div>
+            <h3>A channel that doesn’t die</h3>
+            <p>Either I write and ship — or I direct while you write. The feed stays alive without eating your week.</p>
+          </article>
+          <article class="outcome">
+            <div class="n">03 · Inbound</div>
+            <h3>Trust before the pitch</h3>
+            <p>People who already know your thinking. DMs and opportunities from authority — not cold chase.</p>
+          </article>
         </div>
       </div>
     </section>
 
-<!-- PACKAGES -->
+    <section id="offer-strip" style="padding-top:20px; padding-bottom:20px;">
+      <div class="wrap">
+        <div class="offer-bar reveal">
+          <div class="ob-item"><span>Path A</span><strong>Ghostwriting</strong></div>
+          <div class="ob-item"><span>Path B</span><strong>Brand advising</strong></div>
+          <div class="ob-item"><span>Channels</span><strong>X · LinkedIn · Both</strong></div>
+          <div class="ob-item"><span>Next step</span><strong>One DM</strong></div>
+          <a class="btn btn-primary" href="#packages">Pick your path →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
     <section id="packages">
       <div class="wrap">
-        <div class="section-head center">
-          <span class="eyebrow">Two ways to work together</span>
-          <h2 class="display">Ghostwriting. Or brand advising.</h2>
-          <p>Same standard. Different involvement. Pricing after fit — so we only start if it’s the right move.</p>
+        <div class="section-head center reveal">
+          <span class="eyebrow">The offers</span>
+          <h2 class="display">Two paths. One standard.</h2>
+          <p>Same quality bar. Different involvement. Pricing only after we confirm fit — so we don’t waste each other’s time.</p>
         </div>
-        <div class="packages">
+        <div class="packages reveal">
           <article class="package featured" id="pkg-ghost">
             <span class="pkg-tag">Most requested</span>
             <div class="platform">Done-for-you</div>
             <h3 class="display">Ghostwriting</h3>
-            <div class="promise">I write. You approve. I publish. <span>X, LinkedIn, or both — your voice locked, nothing ships without you.</span></div>
+            <div class="promise">I write. You approve. I publish. <span>X, LinkedIn, or both — your voice locked. Nothing ships without you.</span></div>
+            <div class="outcome-line">Best if you’re too busy building to live in the content calendar.</div>
             <div class="badge-row">
               <span>X</span>
               <span>LinkedIn</span>
@@ -2257,12 +2489,12 @@
             <ul>
               <li>Voice interview + writing rules locked</li>
               <li>Done-for-you posts in your voice</li>
-              <li>Choose X, LinkedIn, or both platforms</li>
+              <li>Choose X, LinkedIn, or both</li>
               <li>You approve every post before it ships</li>
               <li>I schedule + publish for you</li>
               <li>Monthly review on what’s working</li>
             </ul>
-            <div class="btn-row" style="margin-top:auto;">
+            <div class="btn-row">
               <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST on LinkedIn →</a>
               <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">DM GHOST on X →</a>
             </div>
@@ -2270,11 +2502,12 @@
           <article class="package" id="pkg-advise">
             <div class="platform">You write · I direct</div>
             <h3 class="display">Brand advising</h3>
-            <div class="promise">I build the system. You stay the face. <span>Positioning, weekly direction, and feedback on X or LinkedIn — so every post pulls its weight.</span></div>
+            <div class="promise">I build the system. You stay the face. <span>Positioning, weekly direction, and draft feedback — so every post pulls weight.</span></div>
+            <div class="outcome-line">Best if you want to stay the writer — with a sharper system behind you.</div>
             <div class="badge-row">
               <span>X or LinkedIn</span>
-              <span>How it works</span>
               <span>Hands-on</span>
+              <span>Weekly</span>
             </div>
             <div class="how-works">
               <div class="hw-step"><span class="hw-n">1</span><p><strong>Audit</strong> — profile, offer, and what’s not converting</p></div>
@@ -2283,24 +2516,49 @@
               <div class="hw-step"><span class="hw-n">4</span><p><strong>Feedback loop</strong> — I review drafts before they go live</p></div>
             </div>
             <ul>
-              <li>Best if you want to stay the writer</li>
               <li>Clear playbook — no guessing what to say</li>
               <li>Accountability so the brand doesn’t die mid-week</li>
+              <li>You keep the craft. I keep the standard.</li>
             </ul>
-            <div class="btn-row" style="margin-top:auto;">
+            <div class="btn-row">
               <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE on LinkedIn →</a>
               <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">DM ADVISE on X →</a>
             </div>
           </article>
         </div>
 
-        <p class="bundle-note">
-          <strong>Ghostwriting</strong> = I ship the content. <strong>Advising</strong> = you ship, I steer.
-          Built for <strong>90 days</strong>. Pricing after we talk fit.
+        <p class="bundle-note reveal">
+          <strong>Ghostwriting</strong> = I ship. <strong>Advising</strong> = you ship, I steer.
+          Built for <strong>90 days</strong>. A few clients at a time.
         </p>
-        <div class="cta-band">
-          <a class="btn btn-primary" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Send a DM on LinkedIn →</a>
-          <a class="btn btn-ghost" href="#proof">See receipts first →</a>
+      </div>
+    </section>
+
+    <!-- HOW TO START -->
+    <section id="start">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">How to start</span>
+          <h2 class="display">Three steps. No pitch deck.</h2>
+          <p>The whole next move is one message.</p>
+        </div>
+        <div class="start-path reveal">
+          <article class="start-step">
+            <h3>Send a DM</h3>
+            <p>LinkedIn or X. Write <strong>GHOST</strong> or <strong>ADVISE</strong> plus what you sell.</p>
+          </article>
+          <article class="start-step">
+            <h3>We check fit</h3>
+            <p>Channel, goal, timeline. If it’s not right, I’ll say so — no pressure close.</p>
+          </article>
+          <article class="start-step">
+            <h3>Pricing &amp; start</h3>
+            <p>Numbers after fit. Then we install the system and begin the 90-day loop.</p>
+          </article>
+        </div>
+        <div class="cta-band reveal">
+          <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Open LinkedIn DM →</a>
+          <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">Open X DM →</a>
         </div>
       </div>
     </section>
@@ -2308,12 +2566,12 @@
     <!-- FILTER -->
     <section id="for">
       <div class="wrap">
-        <div class="section-head center">
+        <div class="section-head center reveal">
           <span class="eyebrow">Who this is for</span>
           <h2 class="display">Built for founders who take the brand <span class="mark">seriously</span>.</h2>
           <p>If you want shortcuts, this isn’t it. Better we find out now.</p>
         </div>
-        <div class="filter-grid">
+        <div class="filter-grid reveal">
           <div class="filter-card ready">
             <h3>You're ready if</h3>
             <ul>
@@ -3179,9 +3437,9 @@
     <section id="process">
       <div class="wrap">
         <div class="section-head center">
-          <span class="eyebrow">How it works</span>
-          <h2 class="display">How does <span class="mark">ghostwriting</span> work?</h2>
-          <p>Three simple steps — from the first call to posts going live.</p>
+          <span class="eyebrow">How ghostwriting works</span>
+          <h2 class="display">Interview. Create. <span class="mark">Ship.</span></h2>
+          <p>Three steps from the first call to posts going live — with you in control of every word.</p>
         </div>
 
         <div class="process-overview" aria-hidden="true">
@@ -3582,24 +3840,38 @@
     <!-- FINAL CTA -->
     <section class="final" id="contact">
       <div class="wrap">
-        <div class="final-panel">
-          <span class="final-pill">Send a DM</span>
-          <h2 class="display">Ready when you are.</h2>
+        <div class="final-panel reveal">
+          <span class="final-pill">Your next move</span>
+          <h2 class="display">One DM. That’s the whole application.</h2>
           <p>
-            Tell me which offer: <strong>GHOST</strong> (I write) or <strong>ADVISE</strong> (you write, I direct).
-            Add what you sell and what winning looks like in 90 days. Fit first. Pricing second.
+            Pick a path. Tell me what you sell and what winning looks like in 90 days.
+            Fit first. Pricing second. If it’s not a match, I’ll say so.
           </p>
-          <div class="final-split dm-pick">
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM on LinkedIn →</a>
-            <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">DM on X →</a>
+          <div class="dm-lanes">
+            <div class="dm-lane ghost">
+              <div class="kw">GHOST</div>
+              <p>I write. You approve. I publish.</p>
+              <div class="btn-row">
+                <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">LinkedIn →</a>
+                <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">X →</a>
+              </div>
+            </div>
+            <div class="dm-lane">
+              <div class="kw">ADVISE</div>
+              <p>You write. I direct the brand.</p>
+              <div class="btn-row">
+                <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">LinkedIn →</a>
+                <a class="btn btn-x" href="https://x.com/theandreilucian" target="_blank" rel="noopener">X →</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="sticky-apply" id="stickyApply" role="region" aria-label="Apply" hidden>
-    <div class="sa-copy">Ghostwriting or advising · <strong>DM GHOST / ADVISE</strong></div>
+  <div class="sticky-apply" id="stickyApply" role="region" aria-label="Send a DM" hidden>
+    <div class="sa-copy">Ready? Send <strong>GHOST</strong> or <strong>ADVISE</strong></div>
     <a class="btn btn-primary" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM me →</a>
   </div>
 
@@ -3776,6 +4048,24 @@
           });
         });
       });
+    })();
+
+    (function () {
+      var nodes = document.querySelectorAll('.reveal');
+      if (!nodes.length) return;
+      if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      nodes.forEach(function (el) { io.observe(el); });
     })();
   </script>
 </body>
