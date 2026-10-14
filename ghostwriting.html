@@ -1026,6 +1026,37 @@
       line-height: 1.45;
       margin: 0;
     }
+    .proof-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 36px;
+    }
+    @media (min-width: 760px) {
+      .proof-metrics { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    }
+    .proof-metric {
+      padding: 18px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(94,234,212,0.22);
+      background:
+        linear-gradient(165deg, rgba(94,234,212,0.1), transparent 50%),
+        rgba(255,255,255,0.03);
+    }
+    .proof-metric strong {
+      display: block;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: #f7f6f2;
+      margin-bottom: 4px;
+    }
+    .proof-metric span {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
     .story-card .meta .metric {
       display: inline-flex;
       margin-top: 8px;
@@ -3304,7 +3335,14 @@
         <div class="section-head center">
           <span class="eyebrow">Client results</span>
           <h2 class="display">Receipts from the work.</h2>
-          <p>My profiles first — then client screenshots. Click any image to enlarge.</p>
+          <p>Fresh X + LinkedIn analytics, then client screenshots. Click any image to enlarge.</p>
+        </div>
+
+        <div class="proof-metrics reveal" aria-label="Recent analytics highlights">
+          <div class="proof-metric"><strong>59.6K</strong><span>X impressions · +222%</span></div>
+          <div class="proof-metric"><strong>58.3K</strong><span>X impressions · +278%</span></div>
+          <div class="proof-metric"><strong>32.1K</strong><span>LinkedIn post impressions</span></div>
+          <div class="proof-metric"><strong>73K</strong><span>views on one X post</span></div>
         </div>
 
         <div class="own-case">
@@ -3653,6 +3691,69 @@
 
         <div class="stories-rail-wrap">
           <div class="stories-rail" id="storiesRail">
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-01.jpg" alt="X analytics — 59,645 impressions, +222% vs prior 28 days" loading="lazy">
+              <div class="meta">
+                <h3>X · 59.6K impressions</h3>
+                <span class="metric">+222% vs prior 28 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-02.jpg" alt="X analytics — 58,330 impressions, +278% vs prior 28 days" loading="lazy">
+              <div class="meta">
+                <h3>X · 58.3K impressions</h3>
+                <span class="metric">+278% vs prior 28 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-03.jpg" alt="LinkedIn analytics — 32,153 post impressions and 1,587 profile views" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 32.1K post impressions</h3>
+                <span class="metric">1,587 profile views · past 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-04.jpg" alt="X analytics — 23,661 impressions, +64% vs prior 7 days" loading="lazy">
+              <div class="meta">
+                <h3>X · 23.6K impressions</h3>
+                <span class="metric">+64% vs prior 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-05.jpg" alt="LinkedIn analytics — 22,100 post impressions and 1,550 profile views" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 22.1K post impressions</h3>
+                <span class="metric">1,550 profile views · past 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-06.jpg" alt="LinkedIn discovery — 30,242 impressions and 14,514 members reached" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 30.2K impressions</h3>
+                <span class="metric">14,514 members reached · 89% out-of-network</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-07.jpg" alt="X analytics — 21,188 impressions, +47% vs prior 7 days" loading="lazy">
+              <div class="meta">
+                <h3>X · 21.1K impressions</h3>
+                <span class="metric">+47% vs prior 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-08.jpg" alt="LinkedIn discovery — 14,397 impressions and 7,243 members reached" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 14.4K impressions</h3>
+                <span class="metric">7,243 members reached</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/analytics-09.jpg" alt="X post insights — 73,063 views with 1,042 likes" loading="lazy">
+              <div class="meta">
+                <h3>X post · 73K views</h3>
+                <span class="metric">1,042 likes · 135 reposts</span>
+              </div>
+            </article>
             <article class="story-card featured">
               <img src="assets/images/client-stories/story-kade-before-after-1900.jpg" alt="Blake M. before and after - 0 to 1,900 followers" loading="lazy">
               <div class="meta">
