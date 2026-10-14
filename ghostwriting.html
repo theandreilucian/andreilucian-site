@@ -521,7 +521,6 @@
       letter-spacing: -0.02em;
       margin: 0;
       font-family: "Instrument Serif", Georgia, serif;
-      order: 1;
     }
     .result-story .outcome {
       font-size: 15px;
@@ -529,7 +528,6 @@
       color: #b8c5c7;
       margin: 0;
       font-weight: 500;
-      order: 3;
     }
     .video-nav {
       display: flex;
@@ -579,53 +577,24 @@
       color: #e8eeef;
     }
     .result-story .media {
-      order: 2;
       margin: 0;
       border-radius: 20px;
       overflow: hidden;
-      background: #0a0b0e;
-      border: 1px solid rgba(94,234,212,0.22);
+      background: #111214;
+      border: 1px solid rgba(94,234,212,0.28);
       position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      min-height: 420px;
     }
-    .result-story .media::after {
-      content: "▶";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(94,234,212,0.92);
-      color: #041714;
-      font-size: 18px;
-      pointer-events: none;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      opacity: 0.95;
-      transition: opacity .2s ease;
-      z-index: 2;
-    }
-    .result-story .media.is-playing::after,
-    .result-story .media.has-frame:hover::after { opacity: 0.35; }
-    .result-story .media.is-playing::after { opacity: 0; }
     .result-story .media video {
       width: 100%;
-      display: block;
-      background: #0a0b0e;
-    }
-    .result-story .media.portrait {
-      width: 100%;
-      height: min(58vh, 520px);
-      aspect-ratio: 9 / 16;
-    }
-    .result-story .media.portrait video {
-      width: 100%;
       height: 100%;
+      display: block;
       object-fit: cover;
       object-position: center top;
-      background: #0a0b0e;
+      background: #111214;
+      vertical-align: top;
     }
 
     .flag-quote {
@@ -2165,7 +2134,7 @@
       .offer-bar { justify-content: center; text-align: center; }
       .offer-bar .ob-item { min-width: 40%; }
       .result-story { flex-basis: min(360px, 88vw); }
-      .result-story .media.portrait { height: min(68vh, 620px); }
+      .result-story .media { min-height: min(68vh, 620px); }
       .nav-links .hide-sm { display: none; }
     }
     @media (max-width: 700px) {
@@ -3398,59 +3367,59 @@
         <div class="result-stories" id="voicesGrid">
           <article class="result-story">
             <h3>Cristi</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Cristi%20Ghidu%20testimonial.mp4"></video>
-            </div>
             <p class="outcome">Mindset coach who used the system to show up consistently and sound like himself.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="auto" src="/assets/images/video%20testimonial/Cristi%20Ghidu%20testimonial.mp4#t=0.1"></video>
+            </div>
           </article>
           <article class="result-story">
             <h3>Darius</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4"></video>
+            <p class="outcome">From 60 to 340 followers in 2 weeks. The first real momentum on X.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="auto" src="/assets/images/video%20testimonial/f02cbb1b-71b5-4529-bcc2-5ccdad7ccb1f_XBnSYEoi.mp4#t=0.1"></video>
             </div>
-            <p class="outcome">From 60 to 340 followers in 2 weeks — the first real momentum on X.</p>
           </article>
           <article class="result-story">
             <h3>Iordan</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Kardan%20testimonial%20.mp4"></video>
+            <p class="outcome">Landed a first paid ghostwriting client from the posts. $100 writing on X.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Kardan%20testimonial%20.mp4#t=0.1"></video>
             </div>
-            <p class="outcome">Landed a first paid ghostwriting client from the posts — $100 writing on X.</p>
           </article>
           <article class="result-story">
             <h3>Faith</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Faith%20-%20Digital%20Writer.mp4"></video>
-            </div>
             <p class="outcome">Digital writer who used the system to ship clearer hooks and stronger posts.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Faith%20-%20Digital%20Writer.mp4#t=0.1"></video>
+            </div>
           </article>
           <article class="result-story">
             <h3>Jeffery</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Jeffery%20-%20Ghoswriter.mp4"></video>
-            </div>
             <p class="outcome">Ghostwriter who tightened voice, hooks, and shipping rhythm with the system.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Jeffery%20-%20Ghoswriter.mp4#t=0.1"></video>
+            </div>
           </article>
           <article class="result-story">
             <h3>Yanina</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Yanina%20-%20Ghostwriter-backup2.mp4"></video>
-            </div>
             <p class="outcome">Ghostwriter who used the framework to build clearer authority content.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Yanina%20-%20Ghostwriter-backup2.mp4#t=0.1"></video>
+            </div>
           </article>
           <article class="result-story">
             <h3>Kingsley</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Kingsley%20-%20Digital%20Writer.mp4"></video>
-            </div>
             <p class="outcome">Digital writer using the same operating rhythm for clearer, more consistent content.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Kingsley%20-%20Digital%20Writer.mp4#t=0.1"></video>
+            </div>
           </article>
           <article class="result-story">
             <h3>Nyrus</h3>
-            <div class="media portrait">
-              <video controls playsinline webkit-playsinline preload="metadata" src="assets/images/video%20testimonial/Nyrus%20-%20Copywriter.mp4"></video>
-            </div>
             <p class="outcome">Copywriter who applied the system to sharpen posting and positioning.</p>
+            <div class="media">
+              <video controls playsinline webkit-playsinline preload="metadata" src="/assets/images/video%20testimonial/Nyrus%20-%20Copywriter.mp4#t=0.1"></video>
+            </div>
           </article>
         </div>
         <div class="video-nav">
@@ -4277,25 +4246,21 @@
       if (next) next.addEventListener('click', function () { rail.scrollBy({ left: step(), behavior: 'smooth' }); });
       var videos = rail.querySelectorAll('video');
       videos.forEach(function (vid) {
-        var wrap = vid.closest('.media');
         function showFrame() {
-          if (!wrap || vid.readyState < 1) return;
           try {
-            if (vid.currentTime < 0.05) vid.currentTime = 0.12;
+            if (vid.currentTime < 0.05) vid.currentTime = 0.15;
           } catch (e) {}
-          wrap.classList.add('has-frame');
         }
         vid.addEventListener('loadedmetadata', showFrame);
         vid.addEventListener('loadeddata', showFrame);
-        vid.addEventListener('seeked', function () { if (wrap) wrap.classList.add('has-frame'); });
+        vid.addEventListener('error', function () {
+          var wrap = vid.closest('.media');
+          if (wrap) wrap.style.outline = '1px solid rgba(240,168,168,0.5)';
+        });
         vid.addEventListener('play', function () {
-          if (wrap) wrap.classList.add('is-playing');
           videos.forEach(function (other) {
             if (other !== vid) other.pause();
           });
-        });
-        vid.addEventListener('pause', function () {
-          if (wrap && vid.paused) wrap.classList.remove('is-playing');
         });
         if (vid.readyState >= 1) showFrame();
       });
