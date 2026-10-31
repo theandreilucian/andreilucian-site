@@ -12,10 +12,14 @@
   <meta property="og:title" content="Andrei Lucian — Ghostwriting & Brand Advising">
   <meta property="og:description" content="A personal brand that sells — without you living on the feed. Ghostwriting or advising. DM GHOST or ADVISE.">
   <meta property="og:url" content="https://andreilucian.com/ghostwriting.html">
-  <meta property="og:image" content="https://andreilucian.com/assets/images/andrei-hero-cinematic.png">
+  <meta property="og:image" content="https://andreilucian.com/assets/images/andrei-hero-headshot.jpg">
+  <meta property="og:image:width" content="958">
+  <meta property="og:image:height" content="958">
+  <meta property="og:image:alt" content="Andrei Lucian — black and white headshot">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Andrei Lucian — Ghostwriting & Brand Advising">
   <meta name="twitter:description" content="Premium ghostwriting or brand advising on X & LinkedIn. DM GHOST or ADVISE.">
+  <meta name="twitter:image" content="https://andreilucian.com/assets/images/andrei-hero-headshot.jpg">
   <link rel="canonical" href="https://andreilucian.com/ghostwriting.html">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -319,7 +323,7 @@
       max-height: min(72vh, 560px);
       border-radius: 0;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 18%;
       border: none;
       margin-bottom: 0;
       display: block;
@@ -1172,6 +1176,81 @@
     }
     @media (max-width: 800px) {
       .own-case-grid { grid-template-columns: 1fr; }
+    }
+
+    /* LinkedIn October results */
+    .li-results {
+      margin: 0 0 56px;
+      padding: 28px 0 8px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .li-results-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 28px;
+    }
+    .li-results-head h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+    .li-results-head p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .li-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 980px;
+      margin: 0 auto 28px;
+    }
+    .li-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .li-stat strong {
+      display: block;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .li-stat span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .li-stat em {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--good);
+    }
+    @media (max-width: 800px) {
+      .li-stat-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .li-stat-strip { grid-template-columns: 1fr; }
+    }
+    .li-results .stories-rail-wrap { margin-top: 4px; }
+    .li-results .story-card.featured { flex: 0 0 min(520px, 88vw); }
+    .li-results .story-card.featured img {
+      height: 320px;
+      background: #1b1f23;
+    }
+    @media (max-width: 700px) {
+      .li-results .story-card.featured img { height: 240px; }
     }
     .dead-grid {
       display: grid;
@@ -3097,7 +3176,7 @@
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
-            <img class="portrait" src="assets/images/andrei-hero-cinematic.png" alt="Andrei Lucian" width="720" height="960" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
+            <img class="portrait" src="assets/images/andrei-hero-headshot.jpg" alt="Andrei Lucian" width="1080" height="1080" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
             <span class="hero-portrait-tag">Andrei Lucian · Ghostwriter</span>
           </div>
         </aside>
@@ -3304,7 +3383,7 @@
         <div class="section-head center">
           <span class="eyebrow">Client results</span>
           <h2 class="display">Receipts from the work.</h2>
-          <p>Fresh X + LinkedIn analytics, then client screenshots. Click any image to enlarge.</p>
+          <p>Fresh LinkedIn October analytics first — then client screenshots. Click any image to enlarge.</p>
         </div>
 
         <div class="own-case">
@@ -3330,14 +3409,103 @@
               </figure>
               <div class="dead-copy">
                 <div class="who">Andrei Lucian · LinkedIn</div>
-                <h4>17,3k followers · +1M impressions</h4>
+                <h4>17,3k followers · 129K impressions / 90 days</h4>
                 <ul class="dead-lines">
-                  <li>Ghostwriting that opens real opportunities.</li>
-                  <li>Landing <strong>high-ticket clients</strong> from the profile.</li>
-                  <li>Same system I install for founders — on my own brand first.</li>
+                  <li><strong>+136%</strong> vs prior 90 days — same system, compounding.</li>
+                  <li><strong>25.8K</strong> impressions in 7 days · <strong>1,893</strong> profile views.</li>
+                  <li>Ghostwriting that opens real opportunities for founders.</li>
                 </ul>
               </div>
             </article>
+          </div>
+        </div>
+
+        <div class="li-results" id="linkedin-results">
+          <div class="li-results-head">
+            <span class="eyebrow">LinkedIn · October 2026</span>
+            <h3>Fresh LinkedIn receipts.</h3>
+            <p>My own account. Real analytics. Out-of-network reach doing the heavy lifting.</p>
+          </div>
+          <div class="li-stat-strip" aria-label="LinkedIn key metrics">
+            <div class="li-stat">
+              <strong>129,426</strong>
+              <span>Impressions · 90 days</span>
+              <em>▲ 136% vs prior</em>
+            </div>
+            <div class="li-stat">
+              <strong>64,306</strong>
+              <span>Impressions · 28 days</span>
+              <em>▲ 34% vs prior</em>
+            </div>
+            <div class="li-stat">
+              <strong>25,870</strong>
+              <span>Impressions · 7 days</span>
+              <em>▲ 93% vs prior</em>
+            </div>
+            <div class="li-stat">
+              <strong>1,893</strong>
+              <span>Profile views · 7 days</span>
+              <em>Inbound from the feed</em>
+            </div>
+          </div>
+          <div class="stories-rail-wrap">
+            <div class="stories-rail" id="liResultsRail">
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-impressions-90d.jpg" alt="LinkedIn analytics — 129,426 impressions, +136% vs prior 90 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 129.4K impressions</h3>
+                  <span class="metric">+136% vs prior 90 days · Aug–Oct</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-impressions-28d.jpg" alt="LinkedIn analytics — 64,306 impressions, +34% vs prior 28 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 64.3K impressions</h3>
+                  <span class="metric">+34% vs prior 28 days · October</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-impressions-14d.jpg" alt="LinkedIn analytics — 39,305 impressions, +57% vs prior 14 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 39.3K impressions</h3>
+                  <span class="metric">+57% vs prior 14 days</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-impressions-7d.jpg" alt="LinkedIn analytics — 25,870 impressions, +93% vs prior 7 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 25.8K impressions</h3>
+                  <span class="metric">+93% vs prior 7 days</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-profile-7d.jpg" alt="LinkedIn profile analytics — 1,893 profile views and 25,870 post impressions in past 7 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 1,893 profile views</h3>
+                  <span class="metric">25.8K post impressions · past 7 days</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-posts-reach-a.jpg" alt="LinkedIn post performance — breakout post 14,679 impressions with 93% out-of-network" loading="lazy">
+                <div class="meta">
+                  <h3>Breakout · 14.6K impressions</h3>
+                  <span class="metric">93% out-of-network · 9,011 reached</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-oct-posts-reach-b.jpg" alt="LinkedIn post performance — multiple posts over 8K–11K impressions with 87–91% out-of-network" loading="lazy">
+                <div class="meta">
+                  <h3>Posts · 8K–11K each</h3>
+                  <span class="metric">87–91% out-of-network reach</span>
+                </div>
+              </article>
+            </div>
+            <div class="stories-nav">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="liResultsPrev" aria-label="Previous LinkedIn result">‹</button>
+                <button type="button" class="stories-btn" id="liResultsNext" aria-label="Next LinkedIn result">›</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -3653,6 +3821,41 @@
 
         <div class="stories-rail-wrap">
           <div class="stories-rail" id="storiesRail">
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/li-oct-impressions-90d.jpg" alt="LinkedIn analytics — 129,426 impressions, +136% vs prior 90 days" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 129.4K impressions</h3>
+                <span class="metric">+136% vs prior 90 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/li-oct-impressions-28d.jpg" alt="LinkedIn analytics — 64,306 impressions, +34% vs prior 28 days" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 64.3K impressions</h3>
+                <span class="metric">+34% vs prior 28 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/li-oct-impressions-7d.jpg" alt="LinkedIn analytics — 25,870 impressions, +93% vs prior 7 days" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 25.8K impressions</h3>
+                <span class="metric">+93% vs prior 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/li-oct-profile-7d.jpg" alt="LinkedIn — 1,893 profile views and 25,870 post impressions" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn · 1,893 profile views</h3>
+                <span class="metric">Past 7 days</span>
+              </div>
+            </article>
+            <article class="story-card featured">
+              <img src="assets/images/proof-analytics/li-oct-posts-reach-a.jpg" alt="LinkedIn breakout — 14,679 impressions, 93% out-of-network" loading="lazy">
+              <div class="meta">
+                <h3>LinkedIn breakout · 14.6K</h3>
+                <span class="metric">93% out-of-network</span>
+              </div>
+            </article>
             <article class="story-card featured">
               <img src="assets/images/proof-analytics/analytics-01.jpg" alt="X analytics — 59,645 impressions, +222% vs prior 28 days" loading="lazy">
               <div class="meta">
@@ -4824,6 +5027,7 @@
       }
       bindRail('testimonialRail', 'testimonialRailPrev', 'testimonialRailNext');
       bindRail('beforeRail', 'beforeRailPrev', 'beforeRailNext');
+      bindRail('liResultsRail', 'liResultsPrev', 'liResultsNext');
     })();
 
     (function () {
