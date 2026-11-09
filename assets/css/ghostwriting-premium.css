@@ -114,7 +114,9 @@ main, .nav, footer { position: relative; z-index: 1; }
   padding: 96px 0 72px !important;
   min-height: min(88vh, 900px);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 }
 
 .hero-grid {
