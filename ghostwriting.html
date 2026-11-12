@@ -913,9 +913,9 @@
     }
     .proof-metric strong {
       display: block;
-      font-size: clamp(22px, 2.6vw, 30px);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      font-size: clamp(28px, 3.4vw, 40px);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
       margin-bottom: 6px;
     }
     .proof-metric span {
@@ -1147,9 +1147,29 @@
     .stories-nav {
       display: flex;
       justify-content: center;
-      margin-top: 4px;
+      margin-top: 12px;
+      margin-bottom: 4px;
     }
     .stories-nav .arrows { display: flex; gap: 10px; }
+    .shot-rail-wrap > .stories-nav {
+      position: relative;
+      z-index: 2;
+    }
+    .shot-rail-wrap > .stories-nav .stories-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .shot-rail-wrap > .stories-nav .stories-btn:hover {
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.08);
+    }
     .story-card {
       flex: 0 0 min(520px, 86vw);
       scroll-snap-align: start;
@@ -1249,6 +1269,13 @@
       font-size: 14px;
       color: #c5d0d2;
     }
+    .shot-rail .shot-card:has(img[src*="li-engage-"]) img,
+    .shot-rail .shot-card:has(img[src*="x-engage-"]) img {
+      height: 160px;
+      object-fit: contain;
+      object-position: center;
+      padding: 18px 12px;
+    }
     .shot-rail .shot-card .quote-read { display: none; }
     .proof-wall--shots .shot-card {
       flex: 0 0 min(520px, 86vw);
@@ -1296,8 +1323,49 @@
       color: var(--muted);
     }
     @media (max-width: 700px) {
+      .shot-rail .shot-card {
+        flex: 0 0 min(88vw, 420px);
+      }
       .shot-rail .shot-card img,
-      .proof-wall--shots .shot-card img { height: 320px; }
+      .proof-wall--shots .shot-card img { height: 280px; }
+      .shot-rail .shot-card:has(img[src*="li-engage-"]) img,
+      .shot-rail .shot-card:has(img[src*="x-engage-"]) img {
+        height: 110px;
+        padding: 12px 10px;
+      }
+      .shot-rail .shot-card figcaption {
+        font-size: 13px;
+        padding: 12px 14px 14px;
+        line-height: 1.35;
+      }
+      .shot-rail-wrap > .stories-nav .stories-btn {
+        width: 48px;
+        height: 48px;
+      }
+      .own-case-label { margin-top: 28px !important; }
+      .block-sub { font-size: 13px; line-height: 1.4; }
+      .mid-cta {
+        flex-direction: column;
+        gap: 14px !important;
+        padding: 18px 14px !important;
+        margin: 28px 0 4px !important;
+      }
+      .mid-cta .btn-row { width: 100%; justify-content: stretch; }
+      .mid-cta .btn { flex: 1; justify-content: center; }
+      .hero-proof-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .hero-proof-chip { width: 100%; }
+      .final-proof-row {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    @media (max-width: 420px) {
+      .shot-rail .shot-card { flex: 0 0 86vw; }
+      .shot-rail .shot-card img { height: 240px; }
+      .packages { gap: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .proof-track { animation: none !important; }
@@ -3503,12 +3571,11 @@
     <div class="wrap nav-inner">
       <a class="brand" href="#top">Andrei Lucian</a>
       <nav class="nav-links" aria-label="Primary">
-        <a class="hide-sm" href="#packages">Offers</a>
-        <a class="hide-sm" href="#proof">Results</a>
+        <a class="hide-sm" href="#packages">Offer</a>
         <a class="hide-sm" href="#process">How it works</a>
-        <a class="hide-sm" href="#for">Fit</a>
+        <a class="hide-sm" href="#proof">Proof</a>
         <a class="hide-sm" href="#faq">FAQ</a>
-        <a class="nav-cta" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">GHOST</a>
+        <a class="nav-cta" href="#contact">DM GHOST</a>
       </nav>
     </div>
   </header>
@@ -3534,11 +3601,11 @@
               <span>Ghostwriting &amp; coaching</span>
             </div>
             <div class="hero-proof-chip">
-              <strong>176K</strong>
+              <strong>236K</strong>
               <span>LinkedIn impressions · 28d</span>
             </div>
             <div class="hero-proof-chip">
-              <strong>93%</strong>
+              <strong>88%</strong>
               <span>Out-of-network reach</span>
             </div>
           </div>
@@ -3549,22 +3616,6 @@
             <span class="hero-portrait-tag">Andrei Lucian · Ghostwriter</span>
           </div>
         </aside>
-      </div>
-      <div class="wrap">
-        <div class="hero-quote-strip reveal" aria-label="Client proof">
-          <blockquote class="hero-mini-quote">
-            <p>“Went from 100 → 1,000 followers in 47 days. Sounds like me — not AI.”</p>
-            <div class="who">Patanza · Digital Writer</div>
-          </blockquote>
-          <blockquote class="hero-mini-quote">
-            <p>“Quiet account → findable. Comments and DMs started compounding.”</p>
-            <div class="who">Adrian M. · LinkedIn</div>
-          </blockquote>
-          <blockquote class="hero-mini-quote">
-            <p>“0 → 1,900 followers under 90 days. Multiple breakout posts.”</p>
-            <div class="who">Blake M. · X</div>
-          </blockquote>
-        </div>
       </div>
     </section>
 
@@ -3625,12 +3676,199 @@
     </section>
 
 
+    <!-- PROCESS · MECHANISM -->
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="eyebrow">How DFY ghostwriting works</span>
+          <h2 class="display">Interview. Create. <span class="mark">Ship.</span></h2>
+          <p>Three steps from the first call to posts going live — with you in control of every word.</p>
+        </div>
+
+        <div class="process-overview" aria-hidden="true">
+          <div class="process-node">
+            <div class="process-orb">
+              <img src="assets/images/icons/icon-3d-interview.png" alt="" width="58" height="58" loading="lazy">
+            </div>
+            <div class="kicker">Step 1</div>
+            <div class="label">Interview</div>
+          </div>
+          <div class="process-node">
+            <div class="process-orb">
+              <img src="assets/images/icons/icon-3d-pen.png" alt="" width="58" height="58" loading="lazy">
+            </div>
+            <div class="kicker">Step 2</div>
+            <div class="label">Create</div>
+          </div>
+          <div class="process-node">
+            <div class="process-orb">
+              <img src="assets/images/icons/icon-3d-calendar.png" alt="" width="58" height="58" loading="lazy">
+            </div>
+            <div class="kicker">Step 3</div>
+            <div class="label">Manage</div>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="step-mark">STEP 1</div>
+            <h3>We run a voice interview</h3>
+            <p class="lead">This is where <strong>you “write” the content without writing</strong>. A short call — like a podcast — so I capture how you think, sell, and talk.</p>
+            <ul>
+              <li>Your life &amp; stories</li>
+              <li>Your expertise</li>
+              <li>What you never want said</li>
+            </ul>
+            <p class="note">I record what matters, lock your voice rules, and turn that into a content system for X or LinkedIn.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step-mark">STEP 2</div>
+            <h3>I create the plan + posts</h3>
+            <p class="lead">I map the topics that fit your offer, then <strong>write the posts in your voice</strong> — not generic AI filler.</p>
+            <ul>
+              <li>Clear content pillars</li>
+              <li>Posts that sound like you</li>
+              <li>A rhythm you can keep</li>
+            </ul>
+            <p class="note">You get drafts ready to review. X, LinkedIn, or both — each channel run properly, not diluted.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="step-mark">STEP 3</div>
+            <h3>You approve. I manage the rest.</h3>
+            <p class="lead">Nothing goes live without you. After you say yes, <strong>I schedule, publish, and keep the channel moving</strong>.</p>
+            <ul>
+              <li>Approval before publish</li>
+              <li>Scheduling handled</li>
+              <li>Monthly review</li>
+            </ul>
+            <p class="note">You stay in control of the message. I handle the operating work so the account doesn’t go quiet between meetings.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROOF EARLY -->
+    <section id="proof">
+      <div class="wrap">
+        <div class="section-head center">
+          <span class="eyebrow">Proof · early</span>
+          <h2 class="display">I run the same system I sell.</h2>
+          <p>Own LinkedIn + X first. Client walls and notes come after the mechanism.</p>
+        </div>
+
+<div class="own-case">
+          <div class="own-case-label">My own case · LinkedIn · X</div>
+          <div class="own-case-grid">
+            <article class="own-channel">
+              <figure>
+                <img src="assets/images/proof-analytics/own-case-linkedin-profile-v2.jpg?v=20261112b" alt="Andrei Lucian LinkedIn profile — 18,123 followers, 2,432 profile views, 168,125 post impressions in 7 days" loading="eager">
+              </figure>
+              <div class="own-channel-copy">
+                <div class="channel">LinkedIn</div>
+                <h3>18.1K followers · inbound channel</h3>
+                <p>Ghostwriting offer live on the profile. The feed pulls views, DMs, and booked conversations.</p>
+                <div class="stats">
+                  <span>168.1K impressions · 7d</span>
+                  <span>2,432 profile views</span>
+                  <span>+35 clients</span>
+                </div>
+              </div>
+            </article>
+            <article class="own-channel">
+              <figure>
+                <img src="assets/images/proof-analytics/own-case-x-profile.jpg?v=20261109b" alt="Andrei Lucian X profile — 5,668 followers, personal brand on X" loading="lazy">
+              </figure>
+              <div class="own-channel-copy">
+                <div class="channel">X</div>
+                <h3>Personal brand that compounds</h3>
+                <p>Daily reps. Same voice. The channel that built the authority before LinkedIn scaled inbound.</p>
+                <div class="stats">
+                  <span>5,668 followers</span>
+                  <span>40+ clients</span>
+                  <span>Daily system</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="own-case-label" style="margin-top:8px;">LinkedIn windows</div>
+        <div class="proof-metric-strip" aria-label="LinkedIn key metrics">
+          <div class="proof-metric">
+            <strong>236,668</strong>
+            <span>Impressions · 28 days</span>
+            <em>▲ 298% vs prior</em>
+          </div>
+          <div class="proof-metric">
+            <strong>168,125</strong>
+            <span>Impressions · 7 days</span>
+            <em>▲ 340% vs prior</em>
+          </div>
+          <div class="proof-metric">
+            <strong>88%</strong>
+            <span>Out-of-network reach</span>
+            <em>119.6K members in 28 days</em>
+          </div>
+          <div class="proof-metric">
+            <strong>2,432</strong>
+            <span>Profile views · 7 days</span>
+            <em>Inbound from the feed</em>
+          </div>
+        </div>
+
+        <div class="li-results" id="linkedin-results">
+          <div class="stories-rail-wrap">
+            <div class="stories-rail" id="liResultsRail">
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-nov-impressions-28d.jpg?v=20261112d" alt="LinkedIn analytics — 236,668 impressions, +298% vs prior 28 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 236.7K impressions</h3>
+                  <span class="metric">+298% · 28 days · 88% out-of-network</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-nov-impressions-14d.jpg" alt="LinkedIn analytics — 154,514 impressions, +606% vs prior 14 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 154.5K impressions</h3>
+                  <span class="metric">+606% · 14 days · 90% out-of-network</span>
+                </div>
+              </article>
+              <article class="story-card featured">
+                <img src="assets/images/proof-analytics/li-nov-impressions-7d.jpg" alt="LinkedIn analytics — 125,878 impressions, +340% vs prior 7 days" loading="lazy">
+                <div class="meta">
+                  <h3>LinkedIn · 125.9K impressions</h3>
+                  <span class="metric">+340% · 7 days · 93% out-of-network</span>
+                </div>
+              </article>
+            </div>
+            <div class="stories-nav">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="liResultsPrev" aria-label="Previous LinkedIn result">‹</button>
+                <button type="button" class="stories-btn" id="liResultsNext" aria-label="Next LinkedIn result">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mid-cta reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:40px 0 8px;padding:22px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:16px;background:rgba(255,255,255,0.03);">
+          <p style="margin:0;color:var(--muted);font-size:14px;text-align:center;max-width:420px;">Want the same inbound engine on your LinkedIn?</p>
+          <div class="btn-row" style="margin:0;">
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">GHOST</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">ADVISE</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- VIDEOS -->
     <section id="videos">
       <div class="wrap">
         <div class="section-head center reveal">
-          <span class="eyebrow">Video proof</span>
-          <h2 class="display">Client videos</h2>
+          <span class="eyebrow">Client voices</span>
+          <h2 class="display">They say it better than I do.</h2>
           <p>Tap play. Real clients. Real results.</p>
         </div>
 
@@ -3749,114 +3987,13 @@
       </div>
     </section>
 
-    <!-- PROOF -->
-    <section id="proof">
+    <!-- PROOF MID -->
+    <section id="proof-mid">
       <div class="wrap">
         <div class="section-head center">
-          <span class="eyebrow">Receipts</span>
-          <h2 class="display">Proof that closes — not a museum.</h2>
-          <p>Own case + LinkedIn windows + client breakouts. Click any image to enlarge.</p>
-        </div>
-
-        <div class="own-case">
-          <div class="own-case-label">My own case · LinkedIn · X</div>
-          <div class="own-case-grid">
-            <article class="own-channel">
-              <figure>
-                <img src="assets/images/proof-analytics/own-case-linkedin-profile.jpg?v=20261109b" alt="Andrei Lucian LinkedIn profile — 17,968 followers, 2,236 profile views, 125,856 post impressions in 7 days" loading="eager">
-              </figure>
-              <div class="own-channel-copy">
-                <div class="channel">LinkedIn</div>
-                <h3>18K followers · inbound channel</h3>
-                <p>Ghostwriting offer live on the profile. The feed pulls views, DMs, and booked conversations.</p>
-                <div class="stats">
-                  <span>125.8K impressions · 7d</span>
-                  <span>2,236 profile views</span>
-                  <span>+35 clients</span>
-                </div>
-              </div>
-            </article>
-            <article class="own-channel">
-              <figure>
-                <img src="assets/images/proof-analytics/own-case-x-profile.jpg?v=20261109b" alt="Andrei Lucian X profile — 5,668 followers, personal brand on X" loading="lazy">
-              </figure>
-              <div class="own-channel-copy">
-                <div class="channel">X</div>
-                <h3>Personal brand that compounds</h3>
-                <p>Daily reps. Same voice. The channel that built the authority before LinkedIn scaled inbound.</p>
-                <div class="stats">
-                  <span>5,668 followers</span>
-                  <span>40+ clients</span>
-                  <span>Daily system</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="own-case-label" style="margin-top:8px;">LinkedIn windows</div>
-        <div class="proof-metric-strip" aria-label="LinkedIn key metrics">
-          <div class="proof-metric">
-            <strong>176,418</strong>
-            <span>Impressions · 28 days</span>
-            <em>▲ 195% vs prior</em>
-          </div>
-          <div class="proof-metric">
-            <strong>125,878</strong>
-            <span>Impressions · 7 days</span>
-            <em>▲ 340% vs prior</em>
-          </div>
-          <div class="proof-metric">
-            <strong>93%</strong>
-            <span>Out-of-network reach</span>
-            <em>74.5K members in 7 days</em>
-          </div>
-          <div class="proof-metric">
-            <strong>2,236</strong>
-            <span>Profile views · 7 days</span>
-            <em>Inbound from the feed</em>
-          </div>
-        </div>
-
-        <div class="li-results" id="linkedin-results">
-          <div class="stories-rail-wrap">
-            <div class="stories-rail" id="liResultsRail">
-              <article class="story-card featured">
-                <img src="assets/images/proof-analytics/li-nov-impressions-28d.jpg" alt="LinkedIn analytics — 176,418 impressions, +195% vs prior 28 days" loading="lazy">
-                <div class="meta">
-                  <h3>LinkedIn · 176.4K impressions</h3>
-                  <span class="metric">+195% · 28 days · 87% out-of-network</span>
-                </div>
-              </article>
-              <article class="story-card featured">
-                <img src="assets/images/proof-analytics/li-nov-impressions-14d.jpg" alt="LinkedIn analytics — 154,514 impressions, +606% vs prior 14 days" loading="lazy">
-                <div class="meta">
-                  <h3>LinkedIn · 154.5K impressions</h3>
-                  <span class="metric">+606% · 14 days · 90% out-of-network</span>
-                </div>
-              </article>
-              <article class="story-card featured">
-                <img src="assets/images/proof-analytics/li-nov-impressions-7d.jpg" alt="LinkedIn analytics — 125,878 impressions, +340% vs prior 7 days" loading="lazy">
-                <div class="meta">
-                  <h3>LinkedIn · 125.9K impressions</h3>
-                  <span class="metric">+340% · 7 days · 93% out-of-network</span>
-                </div>
-              </article>
-              <article class="story-card featured">
-                <img src="assets/images/proof-analytics/li-nov-profile-7d.jpg" alt="LinkedIn profile analytics — 2,236 profile views and 125,856 post impressions in 7 days" loading="lazy">
-                <div class="meta">
-                  <h3>Profile · 2,236 views</h3>
-                  <span class="metric">125.8K post impressions · 7 days</span>
-                </div>
-              </article>
-            </div>
-            <div class="stories-nav">
-              <div class="arrows">
-                <button type="button" class="stories-btn" id="liResultsPrev" aria-label="Previous LinkedIn result">‹</button>
-                <button type="button" class="stories-btn" id="liResultsNext" aria-label="Next LinkedIn result">›</button>
-              </div>
-            </div>
-          </div>
+          <span class="eyebrow">Proof · middle</span>
+          <h2 class="display">Client breakouts. Platform walls.</h2>
+          <p>Post spikes + LinkedIn/X receipts. Messages and the full wall close the page.</p>
         </div>
 
         <div class="own-case-label" style="margin-top:36px;">Breakout posts</div>
@@ -3866,20 +4003,20 @@
             <figcaption>51.8K impressions · 279 reactions · 98 comments</figcaption>
           </figure>
           <figure class="post-proof-card">
-            <img src="assets/images/proof-analytics/li-nov-post-15466.jpg" alt="LinkedIn post — 15,466 impressions, 145 reactions, 192 comments" loading="lazy">
-            <figcaption>15.5K impressions · 192 comments</figcaption>
+            <img src="assets/images/proof-analytics/li-nov-post-19619.jpg" alt="LinkedIn post — 19,619 impressions, 109 reactions, 28 comments" loading="lazy">
+            <figcaption>19.6K impressions · 109 reactions</figcaption>
           </figure>
           <figure class="post-proof-card">
             <img src="assets/images/proof-analytics/li-nov-post-16947.jpg" alt="LinkedIn post — 16,947 impressions, 223 reactions, 42 comments" loading="lazy">
             <figcaption>16.9K impressions · 223 reactions</figcaption>
           </figure>
           <figure class="post-proof-card">
-            <img src="assets/images/proof-analytics/li-nov-post-13553.jpg" alt="LinkedIn post — 13,553 impressions, 174 reactions, 162 comments" loading="lazy">
-            <figcaption>13.6K impressions · 162 comments</figcaption>
+            <img src="assets/images/proof-analytics/li-nov-post-15466.jpg" alt="LinkedIn post — 15,466 impressions, 145 reactions, 192 comments" loading="lazy">
+            <figcaption>15.5K impressions · 192 comments</figcaption>
           </figure>
           <figure class="post-proof-card">
-            <img src="assets/images/proof-analytics/li-nov-post-19619.jpg" alt="LinkedIn post — 19,619 impressions, 109 reactions, 28 comments" loading="lazy">
-            <figcaption>19.6K impressions · 109 reactions</figcaption>
+            <img src="assets/images/proof-analytics/li-nov-post-13553.jpg" alt="LinkedIn post — 13,553 impressions, 174 reactions, 162 comments" loading="lazy">
+            <figcaption>13.6K impressions · 162 comments</figcaption>
           </figure>
           <figure class="post-proof-card">
             <img src="assets/images/proof-analytics/li-nov-post-7993.jpg" alt="LinkedIn post — 7,993 impressions" loading="lazy">
@@ -3887,98 +4024,492 @@
           </figure>
         </div>
 
-        <div class="dead-revivals">
-          <div class="section-head center" style="margin-top:48px;">
-            <span class="eyebrow">Client outcomes</span>
-            <h2 class="display">Highlighted results</h2>
-            <p>Six clearest windows. Everything else lives in the receipt wall below.</p>
+
+
+        <div class="own-case-label" style="margin-top:36px;">LinkedIn receipts · biggest numbers</div>
+        <p class="block-sub" style="margin:0 0 12px; opacity:.72;">Biggest analytics first. Client wins close the rail — use the arrows to check all.</p>
+        <div class="proof-block proof-block--wall">
+          <div class="shot-rail-wrap">
+            <div class="shot-rail" id="liReceiptRail">
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-509k-365d.jpg?v=20261112c" alt="509K impressions · +51% · 365 days" loading="lazy">
+              <figcaption>509K impressions · +51% · 365 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-444k-365d.jpg?v=20261112c" alt="444.4K impressions · +208% · 365 days" loading="lazy">
+              <figcaption>444.4K impressions · +208% · 365 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-312k-90d.jpg?v=20261112c" alt="312.7K impressions · +479% · 90 days" loading="lazy">
+              <figcaption>312.7K impressions · +479% · 90 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-287k-14d.jpg?v=20261112c" alt="287.6K impressions · +1,150% · 14 days" loading="lazy">
+              <figcaption>287.6K impressions · +1,150% · 14 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-231k-28d.jpg?v=20261112c" alt="231.6K impressions · +287% · 28 days" loading="lazy">
+              <figcaption>231.6K impressions · +287% · 28 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-206k-14d.jpg?v=20261112c" alt="206.9K impressions · +740% · 14 days" loading="lazy">
+              <figcaption>206.9K impressions · +740% · 14 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-167k-7d.jpg?v=20261112c" alt="167.9K impressions · +330% · 7 days" loading="lazy">
+              <figcaption>167.9K impressions · +330% · 7 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-145k-365d.jpg?v=20261112c" alt="145.9K impressions · +2,008% · 365 days" loading="lazy">
+              <figcaption>145.9K impressions · +2,008% · 365 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-125k-90d.jpg?v=20261112c" alt="125.7K impressions · +281% · 90 days" loading="lazy">
+              <figcaption>125.7K impressions · +281% · 90 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-receipt-87k-90d.jpg?v=20261112c" alt="87.3K impressions · +375% · 90 days" loading="lazy">
+              <figcaption>87.3K impressions · +375% · 90 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-li-90day.png" alt="58.5K impressions · under 90 days" loading="lazy">
+              <figcaption>58.5K impressions · &lt;90 days</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-li-ladder.png" alt="243 → 1,042 engagements" loading="lazy">
+              <figcaption>243 → 1,042 engagements</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-li-spike.png" alt="Elena V. · 1,635 → 2,691 · LinkedIn engagements" loading="lazy">
+              <figcaption>Elena V. · 1,635 → 2,691 · LinkedIn engagements</figcaption>
+            </figure>
+            </div>
+            <div class="stories-nav" aria-label="Browse all LinkedIn receipts">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="liReceiptRailPrev" aria-label="Previous LinkedIn receipt">‹</button>
+                <button type="button" class="stories-btn" id="liReceiptRailNext" aria-label="Next LinkedIn receipt">›</button>
+              </div>
+            </div>
           </div>
-          <div class="dead-grid" id="deadGrid">
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-li-90day.png" alt="Adrian M. LinkedIn results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Adrian M. · LinkedIn</div>
-                <h4>58.5K impressions · &lt;90 days</h4>
-                <ul class="dead-lines">
-                  <li>Quiet account → findable authority.</li>
-                  <li><strong>17.6K members</strong> reached · <strong>50%</strong> out-of-network.</li>
-                  <li>Comments and DMs started compounding.</li>
-                </ul>
+        </div>
+
+        <div class="own-case-label" style="margin-top:36px;">LinkedIn engagement</div>
+        <p class="block-sub" style="margin:0 0 12px; opacity:.72;">Reactions · comments · reposts — highest first. Use the arrows to check all.</p>
+        <div class="proof-block proof-block--wall">
+          <div class="shot-rail-wrap">
+            <div class="shot-rail" id="liEngageRail">
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-352-225.jpg?v=20261112e" alt="352 reactions · 225 comments · 4 reposts" loading="lazy">
+              <figcaption>352 reactions · 225 comments · 4 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-287-103.jpg?v=20261112e" alt="287 reactions · 103 comments · 13 reposts" loading="lazy">
+              <figcaption>287 reactions · 103 comments · 13 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-239-43.jpg?v=20261112e" alt="239 reactions · 43 comments · 9 reposts" loading="lazy">
+              <figcaption>239 reactions · 43 comments · 9 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-205-69.jpg?v=20261112e" alt="205 reactions · 69 comments · 4 reposts" loading="lazy">
+              <figcaption>205 reactions · 69 comments · 4 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-174-162.jpg?v=20261112e" alt="174 reactions · 162 comments · 6 reposts" loading="lazy">
+              <figcaption>174 reactions · 162 comments · 6 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-157-70.jpg?v=20261112e" alt="157 reactions · 70 comments · 4 reposts" loading="lazy">
+              <figcaption>157 reactions · 70 comments · 4 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-145-192.jpg?v=20261112e" alt="145 reactions · 192 comments · 9 reposts" loading="lazy">
+              <figcaption>145 reactions · 192 comments · 9 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-112-30.jpg?v=20261112e" alt="112 reactions · 30 comments · 4 reposts" loading="lazy">
+              <figcaption>112 reactions · 30 comments · 4 reposts</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-engage-108-81.jpg?v=20261112e" alt="108 reactions · 81 comments · 4 reposts" loading="lazy">
+              <figcaption>108 reactions · 81 comments · 4 reposts</figcaption>
+            </figure>
+            </div>
+            <div class="stories-nav" aria-label="Browse LinkedIn engagement">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="liEngageRailPrev" aria-label="Previous engagement">‹</button>
+                <button type="button" class="stories-btn" id="liEngageRailNext" aria-label="Next engagement">›</button>
               </div>
-            </article>
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-li-ladder.png" alt="Sofia K. LinkedIn results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Sofia K. · LinkedIn</div>
-                <h4>243 → 1,042 engagements</h4>
-                <ul class="dead-lines">
-                  <li>Posts that used to die quietly started compounding.</li>
-                  <li>Breakout: <strong>4.8K impressions</strong>, <strong>76 comments</strong>, <strong>27 reposts</strong>.</li>
-                  <li>Out-of-network reach doing the heavy lifting.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-x-67-to-2k8.png" alt="Victor A. X results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Victor A. · X</div>
-                <h4>67 → 2.8K followers</h4>
-                <ul class="dead-lines">
-                  <li><strong>1.1M impressions</strong> · <strong>1.3K bookmarks</strong>.</li>
-                  <li>Small base → real distribution.</li>
-                  <li>Authority content, not random posting.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-x-spike.png" alt="Noah R. X results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Noah R. · X</div>
-                <h4>170 views → 345.1K impressions</h4>
-                <ul class="dead-lines">
-                  <li>Low-visibility posts became a high-reach window.</li>
-                  <li><strong>36.4K engagements</strong> at <strong>10.5% ER</strong>.</li>
-                  <li>Replies and likes scaled with the impression spike.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-engagement-breakout.png" alt="Jordan T. X results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Jordan T. · X</div>
-                <h4>~100 views → 1.6K</h4>
-                <ul class="dead-lines">
-                  <li>Posts that capped around 100 views flipped fast.</li>
-                  <li><strong>50+</strong> comments in 48 hours on the breakout.</li>
-                  <li>Account window hit <strong>906K impressions</strong>.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="dead-card">
-              <figure class="dead-media">
-                <img src="assets/images/client-stories/story-x-2k-1m.png" alt="Derek H. X results" loading="lazy">
-              </figure>
-              <div class="dead-copy">
-                <div class="who">Derek H. · X</div>
-                <h4>483.8K → 1M impressions</h4>
-                <ul class="dead-lines">
-                  <li>Million-impression window on a ~<strong>2K</strong> follower base.</li>
-                  <li>Engagements scaled <strong>28K → 64.7K</strong>.</li>
-                  <li>Reach up <strong>+244%</strong> without needing a huge following.</li>
-                </ul>
-              </div>
-            </article>
+            </div>
           </div>
+        </div>
+
+        <div class="own-case-label" style="margin-top:36px;">X receipts · biggest numbers first</div>
+        <p class="block-sub" style="margin:0 0 12px; opacity:.72;">53M → down. Highest windows lead. Drag or arrows · click to enlarge.</p>
+        <div class="proof-block proof-block--wall">
+          <div class="shot-rail-wrap">
+            <div class="shot-rail" id="xReceiptRail">
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-53m.jpg?v=20261112c" alt="53.3M impressions · +626%" loading="lazy">
+              <figcaption>53.3M impressions · +626%</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-6m.jpg?v=20261112c" alt="6M impressions · +363% · 3M" loading="lazy">
+              <figcaption>6M impressions · +363% · 3M</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-5m.jpg?v=20261112c" alt="5M impressions · +214% · 3M" loading="lazy">
+              <figcaption>5M impressions · +214% · 3M</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-2m8.jpg?v=20261112c" alt="2.8M impressions · Cold start window" loading="lazy">
+              <figcaption>2.8M impressions · Cold start window</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-2m3-183k.jpg?v=20261112c" alt="2.3M impressions · 183.9K followers window" loading="lazy">
+              <figcaption>2.3M impressions · 183.9K followers window</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-2m3-1k1.jpg?v=20261112c" alt="2.3M impressions · +212% · 1.1K base" loading="lazy">
+              <figcaption>2.3M impressions · +212% · 1.1K base</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-x-2k-1m.png" alt="483.8K → 1M impressions" loading="lazy">
+              <figcaption>483.8K → 1M impressions</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-x-67-to-2k8.png" alt="67 → 2.8K followers · 1.1M impressions" loading="lazy">
+              <figcaption>67 → 2.8K followers · 1.1M impressions</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-825k.jpg?v=20261112c" alt="825.5K impressions · +60%" loading="lazy">
+              <figcaption>825.5K impressions · +60%</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-x-spike.png" alt="170 views → 345.1K impressions" loading="lazy">
+              <figcaption>170 views → 345.1K impressions</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-327k.jpg?v=20261112c" alt="327.2K impressions · +45%" loading="lazy">
+              <figcaption>327.2K impressions · +45%</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-receipt-284k.jpg?v=20261112c" alt="284.8K impressions · Breakout window" loading="lazy">
+              <figcaption>284.8K impressions · Breakout window</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-engagement-breakout.png" alt="~100 views → 1.6K · breakout" loading="lazy">
+              <figcaption>~100 views → 1.6K · breakout</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-new-account-7k.png" alt="Marcus L. · 9 → 7K views · new account breakout" loading="lazy">
+              <figcaption>Marcus L. · 9 → 7K views · new account breakout</figcaption>
+            </figure>
+            </div>
+            <div class="stories-nav" aria-label="Browse all X receipts">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="xReceiptRailPrev" aria-label="Previous X receipt">‹</button>
+                <button type="button" class="stories-btn" id="xReceiptRailNext" aria-label="Next X receipt">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="own-case-label" style="margin-top:36px;">X engagement</div>
+        <p class="block-sub" style="margin:0 0 12px; opacity:.72;">Views · likes · replies — highest first. Use the arrows to check all.</p>
+        <div class="proof-block proof-block--wall">
+          <div class="shot-rail-wrap">
+            <div class="shot-rail" id="xEngageRail">
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-11k4.jpg?v=20261112f" alt="11.4K views · 349 likes · 141 replies" loading="lazy">
+              <figcaption>11.4K views · 349 likes · 141 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-11k2.jpg?v=20261112f" alt="11.2K views · 312 likes · 258 replies" loading="lazy">
+              <figcaption>11.2K views · 312 likes · 258 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-5957.jpg?v=20261112f" alt="5,957 views · 139 likes · 77 replies" loading="lazy">
+              <figcaption>5,957 views · 139 likes · 77 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-5410.jpg?v=20261112f" alt="5,410 views · 170 likes · 152 replies" loading="lazy">
+              <figcaption>5,410 views · 170 likes · 152 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-2061.jpg?v=20261112f" alt="2,061 views · 78 likes · 48 replies" loading="lazy">
+              <figcaption>2,061 views · 78 likes · 48 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-1985.jpg?v=20261112f" alt="1,985 views · 66 likes · 38 replies" loading="lazy">
+              <figcaption>1,985 views · 66 likes · 38 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-1573.jpg?v=20261112f" alt="1,573 views · 81 likes · 66 replies" loading="lazy">
+              <figcaption>1,573 views · 81 likes · 66 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-1407.jpg?v=20261112f" alt="1,407 views · 65 likes · 33 replies" loading="lazy">
+              <figcaption>1,407 views · 65 likes · 33 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-1170.jpg?v=20261112f" alt="1,170 views · 60 likes · 41 replies" loading="lazy">
+              <figcaption>1,170 views · 60 likes · 41 replies</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/x-engage-1003.jpg?v=20261112f" alt="1,003 views · 52 likes · 32 replies" loading="lazy">
+              <figcaption>1,003 views · 52 likes · 32 replies</figcaption>
+            </figure>
+            </div>
+            <div class="stories-nav" aria-label="Browse X engagement">
+              <div class="arrows">
+                <button type="button" class="stories-btn" id="xEngageRailPrev" aria-label="Previous X engagement">‹</button>
+                <button type="button" class="stories-btn" id="xEngageRailNext" aria-label="Next X engagement">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="mid-cta reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:40px 0 8px;padding:22px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:16px;background:rgba(255,255,255,0.03);">
+          <p style="margin:0;color:var(--muted);font-size:14px;text-align:center;max-width:420px;">Ready for DFY ghostwriting — or coaching while you write?</p>
+          <div class="btn-row" style="margin:0;">
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">GHOST</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">ADVISE</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FILTER -->
+    <section id="for">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Who this is for</span>
+          <h2 class="display">Built for founders who treat the brand like an <span class="mark">asset</span>.</h2>
+          <p>If you want shortcuts, this isn’t it. Better we find out now.</p>
+        </div>
+        <div class="filter-grid reveal">
+          <div class="filter-card ready">
+            <h3>You're ready if</h3>
+            <ul>
+              <li>You have a real offer and treat personal brand as a business asset</li>
+              <li>You’re too busy to write alone — or you write and want a sharper system</li>
+              <li>You’ll approve work (ghostwriting) or take direction (coaching)</li>
+              <li>You’ll give it 90 days so the loop can compound</li>
+              <li>You want content that sounds like you — not ChatGPT with a suit on</li>
+            </ul>
+          </div>
+          <div class="filter-card not">
+            <h3>Not for you if</h3>
+            <ul>
+              <li>You want overnight growth from a long-term channel</li>
+              <li>You’re shopping for the cheapest AI content package</li>
+              <li>You need guaranteed income or guaranteed virality</li>
+              <li>You want me to invent a personality you don’t have</li>
+              <li>You need a refund promise or “ROI or money back” deal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- HOW TO START -->
+    <section id="start">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">How to start</span>
+          <h2 class="display">Three steps. No pitch deck.</h2>
+          <p>One message. Fit check. Price. Start. No pitch deck.</p>
+        </div>
+        <div class="start-path reveal">
+          <article class="start-step">
+            <h3>1 · DM</h3>
+            <p>Send <strong>GHOST</strong> or <strong>ADVISE</strong>.</p>
+          </article>
+          <article class="start-step">
+            <h3>2 · Fit</h3>
+            <p>Channel, goal, timeline. If it’s not right, I’ll say so.</p>
+          </article>
+          <article class="start-step">
+            <h3>3 · Price</h3>
+            <p>Ask for pricing in the same DM. Numbers after fit. Then we start.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF END · CLIENT NOTES -->
+    <section id="notes">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Proof · close</span>
+          <h2 class="display">Inbox screenshots. Then the wall.</h2>
+          <p>Messages, reviews, before → after, then the full receipt rail. Drag or arrows · click to enlarge.</p>
+        </div>
+        <div class="proof-block proof-block--wall">
+          <div class="shot-rail-wrap">
+          <div class="shot-rail" id="testimonialRail">
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-nov-post-51821.jpg" alt="LinkedIn post — 51,821 impressions" loading="lazy">
+              <figcaption>51.8K impressions · 279 reactions · 98 comments</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-nov-post-19619.jpg" alt="LinkedIn post — 19,619 impressions" loading="lazy">
+              <figcaption>19.6K impressions · 109 reactions</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/proof-analytics/li-nov-post-16947.jpg" alt="LinkedIn post — 16,947 impressions" loading="lazy">
+              <figcaption>16.9K impressions · 223 reactions</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-li-spike.png" alt="Elena V. · 1,635 → 2,691" loading="lazy">
+              <figcaption>Elena V. · 1,635 → 2,691</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-new-account-7k.png" alt="Marcus L. · 9 → 7K views" loading="lazy">
+              <figcaption>Marcus L. · 9 → 7K views</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/story-x-high-er.png" alt="Priya N. · 11.5% ER · 69.2K" loading="lazy">
+              <figcaption>Priya N. · 11.5% ER · 69.2K</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Sean%20-%20LinkedIn%20Ghostwriting%20Testimonial.jpg" alt="Sean LinkedIn ghostwriting testimonial" loading="lazy">
+              <figcaption>Sean · LinkedIn Ghostwriting</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-02.jpg" alt="Patanza message" loading="lazy">
+              <figcaption>Patanza · 100 → 1,000</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Mike%20(2).jpg" alt="Mike testimonial" loading="lazy">
+              <figcaption>Mike · Personal Branding Coach</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Glenn.jpg" alt="Glenn testimonial" loading="lazy">
+              <figcaption>Glenn · Agency Owner</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Jack%20Moth.jpg" alt="Jack Moth testimonial" loading="lazy">
+              <figcaption>Jack Moth · Ghostwriting</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Alex.jpg" alt="Alex testimonial" loading="lazy">
+              <figcaption>Alex · Brand Strategist</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Alex%20Stefan.jpg" alt="Alex Stefan testimonial" loading="lazy">
+              <figcaption>Alex Stefan · Real Estate Investor</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Andrei%20Matei.jpg" alt="Andrei Matei testimonial" loading="lazy">
+              <figcaption>Andrei Matei · Digital Marketer</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Dan%20Munteanu.jpg" alt="Dan Munteanu testimonial" loading="lazy">
+              <figcaption>Dan Munteanu · Content Strategist</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/David.jpg" alt="David testimonial" loading="lazy">
+              <figcaption>David · Content Creator</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Ioanaa%20(2).jpg" alt="Ioana testimonial" loading="lazy">
+              <figcaption>Ioana · Ghostwriter on X</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Matei.jpg" alt="Matei testimonial" loading="lazy">
+              <figcaption>Matei · Ecommerce Founder</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Miguel.jpg" alt="Miguel testimonial" loading="lazy">
+              <figcaption>Miguel</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Patanzaa.jpg" alt="Patanzaa testimonial" loading="lazy">
+              <figcaption>Patanzaa · Digital Writer</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Roxana.jpg" alt="Roxana testimonial" loading="lazy">
+              <figcaption>Roxana</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Sava.jpg" alt="Sava testimonial" loading="lazy">
+              <figcaption>Sava</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Shahzod.jpg" alt="Shahzod testimonial" loading="lazy">
+              <figcaption>Shahzod · Growth Strategist</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Shahzodd.jpg" alt="Shahzodd testimonial" loading="lazy">
+              <figcaption>Shahzodd · Growth Strategist</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Upwork%20Project.jpg" alt="Upwork project case study" loading="lazy">
+              <figcaption>Upwork Project · Case Study</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-01.jpg" alt="Client message" loading="lazy">
+              <figcaption>Client message</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-03.jpg" alt="Sean LinkedIn message" loading="lazy">
+              <figcaption>Sean · LinkedIn message</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-04.jpg" alt="Mike message" loading="lazy">
+              <figcaption>Mike · Message</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-05.jpg" alt="Jack Moth message" loading="lazy">
+              <figcaption>Jack Moth · Message</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/client-stories/msg-06.jpg" alt="Glenn message" loading="lazy">
+              <figcaption>Glenn · Message</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/an.jpg" alt="Before after transformation" loading="lazy">
+              <figcaption>Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Andrei.jpg" alt="Andrei before after" loading="lazy">
+              <figcaption>Andrei · Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Ioana.jpg" alt="Ioana before after" loading="lazy">
+              <figcaption>Ioana · Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Jack.jpg" alt="Jack before after" loading="lazy">
+              <figcaption>Jack · Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Mike.jpg" alt="Mike before after" loading="lazy">
+              <figcaption>Mike · Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Patanza.jpg" alt="Patanza before after" loading="lazy">
+              <figcaption>Patanza · Before → after</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="assets/images/testimonials/Before%20-%20After%20transformation/Sultan.jpg" alt="Sultan before after" loading="lazy">
+              <figcaption>Sultan · Before → after</figcaption>
+            </figure>
+          </div>
+          <div class="stories-nav">
+            <div class="arrows">
+              <button type="button" class="stories-btn" id="testimonialRailPrev" aria-label="Previous">‹</button>
+              <button type="button" class="stories-btn" id="testimonialRailNext" aria-label="Next">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="dead-revivals">
 
           <div class="stories-head" id="stories" style="margin-top:64px;">
             <div class="pill">Receipt wall</div>
@@ -4648,302 +5179,6 @@
             </div>
           </div>
         </div>
-
-      </div>
-    </section>
-
-<!-- 3-STEP PROCESS -->
-    <section id="process">
-      <div class="wrap">
-        <div class="section-head center">
-          <span class="eyebrow">How DFY ghostwriting works</span>
-          <h2 class="display">Interview. Create. <span class="mark">Ship.</span></h2>
-          <p>Three steps from the first call to posts going live — with you in control of every word.</p>
-        </div>
-
-        <div class="process-overview" aria-hidden="true">
-          <div class="process-node">
-            <div class="process-orb">
-              <img src="assets/images/icons/icon-3d-interview.png" alt="" width="58" height="58" loading="lazy">
-            </div>
-            <div class="kicker">Step 1</div>
-            <div class="label">Interview</div>
-          </div>
-          <div class="process-node">
-            <div class="process-orb">
-              <img src="assets/images/icons/icon-3d-pen.png" alt="" width="58" height="58" loading="lazy">
-            </div>
-            <div class="kicker">Step 2</div>
-            <div class="label">Create</div>
-          </div>
-          <div class="process-node">
-            <div class="process-orb">
-              <img src="assets/images/icons/icon-3d-calendar.png" alt="" width="58" height="58" loading="lazy">
-            </div>
-            <div class="kicker">Step 3</div>
-            <div class="label">Manage</div>
-          </div>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-card">
-            <div class="step-mark">STEP 1</div>
-            <h3>We run a voice interview</h3>
-            <p class="lead">This is where <strong>you “write” the content without writing</strong>. A short call — like a podcast — so I capture how you think, sell, and talk.</p>
-            <ul>
-              <li>Your life &amp; stories</li>
-              <li>Your expertise</li>
-              <li>What you never want said</li>
-            </ul>
-            <p class="note">I record what matters, lock your voice rules, and turn that into a content system for X or LinkedIn.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step-mark">STEP 2</div>
-            <h3>I create the plan + posts</h3>
-            <p class="lead">I map the topics that fit your offer, then <strong>write the posts in your voice</strong> — not generic AI filler.</p>
-            <ul>
-              <li>Clear content pillars</li>
-              <li>Posts that sound like you</li>
-              <li>A rhythm you can keep</li>
-            </ul>
-            <p class="note">You get drafts ready to review. X, LinkedIn, or both — each channel run properly, not diluted.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="step-mark">STEP 3</div>
-            <h3>You approve. I manage the rest.</h3>
-            <p class="lead">Nothing goes live without you. After you say yes, <strong>I schedule, publish, and keep the channel moving</strong>.</p>
-            <ul>
-              <li>Approval before publish</li>
-              <li>Scheduling handled</li>
-              <li>Monthly review</li>
-            </ul>
-            <p class="note">You stay in control of the message. I handle the operating work so the account doesn’t go quiet between meetings.</p>
-          </article>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- HOW TO START -->
-    <section id="start">
-      <div class="wrap">
-        <div class="section-head center reveal">
-          <span class="eyebrow">How to start</span>
-          <h2 class="display">Three steps. No pitch deck.</h2>
-          <p>Send a DM for ghostwriting or coaching. That’s the whole next move.</p>
-        </div>
-        <div class="start-path reveal">
-          <article class="start-step">
-            <h3>1 · DM</h3>
-            <p>Send <strong>GHOST</strong> or <strong>ADVISE</strong>.</p>
-          </article>
-          <article class="start-step">
-            <h3>2 · Fit</h3>
-            <p>Channel, goal, timeline. If it’s not right, I’ll say so.</p>
-          </article>
-          <article class="start-step">
-            <h3>3 · Price</h3>
-            <p>Ask for pricing in the same DM. Numbers after fit. Then we start.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FILTER -->
-    <section id="for">
-      <div class="wrap">
-        <div class="section-head center reveal">
-          <span class="eyebrow">Who this is for</span>
-          <h2 class="display">Built for founders who take the brand <span class="mark">seriously</span>.</h2>
-          <p>If you want shortcuts, this isn’t it. Better we find out now.</p>
-        </div>
-        <div class="filter-grid reveal">
-          <div class="filter-card ready">
-            <h3>You're ready if</h3>
-            <ul>
-              <li>You have a real offer and treat personal brand as a business asset</li>
-              <li>You’re too busy to write alone — or you write and want a sharper system</li>
-              <li>You’ll approve work (ghostwriting) or take direction (coaching)</li>
-              <li>You’ll give it 90 days so the loop can compound</li>
-              <li>You want content that sounds like you — not ChatGPT with a suit on</li>
-            </ul>
-          </div>
-          <div class="filter-card not">
-            <h3>Not for you if</h3>
-            <ul>
-              <li>You want overnight growth from a long-term channel</li>
-              <li>You’re shopping for the cheapest AI content package</li>
-              <li>You need guaranteed income or guaranteed virality</li>
-              <li>You want me to invent a personality you don’t have</li>
-              <li>You need a refund promise or “ROI or money back” deal</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- CLIENT NOTES -->
-    <section id="notes">
-      <div class="wrap">
-        <div class="section-head center reveal">
-          <span class="eyebrow">Client notes</span>
-          <h2 class="display">What they send after the work.</h2>
-          <p>Every screenshot — drag or arrows. Click to enlarge.</p>
-        </div>
-        <div class="proof-block proof-block--wall">
-          <div class="shot-rail-wrap">
-          <div class="shot-rail" id="testimonialRail">
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Sean%20-%20LinkedIn%20Ghostwriting%20Testimonial.jpg" alt="Sean LinkedIn ghostwriting testimonial" loading="lazy">
-              <figcaption>Sean · LinkedIn Ghostwriting</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-02.jpg" alt="Patanza message" loading="lazy">
-              <figcaption>Patanza · 100 → 1,000</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Mike%20(2).jpg" alt="Mike testimonial" loading="lazy">
-              <figcaption>Mike · Personal Branding Coach</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Glenn.jpg" alt="Glenn testimonial" loading="lazy">
-              <figcaption>Glenn · Agency Owner</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Jack%20Moth.jpg" alt="Jack Moth testimonial" loading="lazy">
-              <figcaption>Jack Moth · Ghostwriting</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Alex.jpg" alt="Alex testimonial" loading="lazy">
-              <figcaption>Alex · Brand Strategist</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Alex%20Stefan.jpg" alt="Alex Stefan testimonial" loading="lazy">
-              <figcaption>Alex Stefan · Real Estate Investor</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Andrei%20Matei.jpg" alt="Andrei Matei testimonial" loading="lazy">
-              <figcaption>Andrei Matei · Digital Marketer</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Dan%20Munteanu.jpg" alt="Dan Munteanu testimonial" loading="lazy">
-              <figcaption>Dan Munteanu · Content Strategist</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/David.jpg" alt="David testimonial" loading="lazy">
-              <figcaption>David · Content Creator</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Ioanaa%20(2).jpg" alt="Ioana testimonial" loading="lazy">
-              <figcaption>Ioana · Ghostwriter on X</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Matei.jpg" alt="Matei testimonial" loading="lazy">
-              <figcaption>Matei · Ecommerce Founder</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Miguel.jpg" alt="Miguel testimonial" loading="lazy">
-              <figcaption>Miguel</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Patanzaa.jpg" alt="Patanzaa testimonial" loading="lazy">
-              <figcaption>Patanzaa · Digital Writer</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Roxana.jpg" alt="Roxana testimonial" loading="lazy">
-              <figcaption>Roxana</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Sava.jpg" alt="Sava testimonial" loading="lazy">
-              <figcaption>Sava</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Shahzod.jpg" alt="Shahzod testimonial" loading="lazy">
-              <figcaption>Shahzod · Growth Strategist</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Shahzodd.jpg" alt="Shahzodd testimonial" loading="lazy">
-              <figcaption>Shahzodd · Growth Strategist</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/testimonials/Upwork%20Project.jpg" alt="Upwork project case study" loading="lazy">
-              <figcaption>Upwork Project · Case Study</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-01.jpg" alt="Client message" loading="lazy">
-              <figcaption>Client message</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-03.jpg" alt="Sean LinkedIn message" loading="lazy">
-              <figcaption>Sean · LinkedIn message</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-04.jpg" alt="Mike message" loading="lazy">
-              <figcaption>Mike · Message</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-05.jpg" alt="Jack Moth message" loading="lazy">
-              <figcaption>Jack Moth · Message</figcaption>
-            </figure>
-            <figure class="shot-card">
-              <img src="assets/images/client-stories/msg-06.jpg" alt="Glenn message" loading="lazy">
-              <figcaption>Glenn · Message</figcaption>
-            </figure>
-          </div>
-          <div class="stories-nav">
-            <div class="arrows">
-              <button type="button" class="stories-btn" id="testimonialRailPrev" aria-label="Previous">‹</button>
-              <button type="button" class="stories-btn" id="testimonialRailNext" aria-label="Next">›</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proof-block proof-block--wall" style="border-top:1px solid rgba(255,255,255,0.1); margin-top:48px;">
-          <div class="block-label">Before → after transformations</div>
-          <p class="block-sub">Profile upgrades — drag or arrows. Click to enlarge.</p>
-          <div class="shot-rail-wrap">
-            <div class="shot-rail" id="beforeRail">
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/an.jpg" alt="Before after transformation" loading="lazy">
-                <figcaption>Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Andrei.jpg" alt="Andrei before after" loading="lazy">
-                <figcaption>Andrei · Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Ioana.jpg" alt="Ioana before after" loading="lazy">
-                <figcaption>Ioana · Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Jack.jpg" alt="Jack before after" loading="lazy">
-                <figcaption>Jack · Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Mike.jpg" alt="Mike before after" loading="lazy">
-                <figcaption>Mike · Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Patanza.jpg" alt="Patanza before after" loading="lazy">
-                <figcaption>Patanza · Before → after</figcaption>
-              </figure>
-              <figure class="shot-card">
-                <img src="assets/images/testimonials/Before%20-%20After%20transformation/Sultan.jpg" alt="Sultan before after" loading="lazy">
-                <figcaption>Sultan · Before → after</figcaption>
-              </figure>
-            </div>
-            <div class="stories-nav">
-              <div class="arrows">
-                <button type="button" class="stories-btn" id="beforeRailPrev" aria-label="Previous">‹</button>
-                <button type="button" class="stories-btn" id="beforeRailNext" aria-label="Next">›</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
     </section>
 
@@ -4954,7 +5189,7 @@
           <div class="g-mark" aria-hidden="true">
             <img src="assets/images/brand/ghost-mark.webp" alt="" width="72" height="72">
           </div>
-          <span class="eyebrow">The deal</span>
+          <span class="eyebrow">Risk filter</span>
           <h2 class="display">The Work Guarantee</h2>
           <p class="deal">Two options. That’s it. Want the price? Send a DM.</p>
 
@@ -4990,9 +5225,9 @@
     <section id="faq">
       <div class="wrap">
         <div class="section-head center">
-          <span class="eyebrow">FAQ</span>
-          <h2 class="display">Things founders ask before we start</h2>
-          <p>If yours isn't here, put it in the first message.</p>
+          <span class="eyebrow">Objections</span>
+          <h2 class="display">Straight answers.</h2>
+          <p>Price, voice, timelines, guarantees — the questions founders ask before they DM.</p>
         </div>
         <div class="faq-list">
           <details class="faq" open>
@@ -5077,6 +5312,11 @@
         <div class="final-panel reveal">
           <span class="final-pill">Your next move</span>
           <h2 class="display">One DM. <em>That’s the whole application.</em></h2>
+          <div class="hero-proof-row final-proof-row" aria-label="Closing proof" style="justify-content:center;margin:0 0 28px;">
+            <div class="hero-proof-chip"><strong>+35 clients</strong><span>Shipped</span></div>
+            <div class="hero-proof-chip"><strong>236K</strong><span>LI impressions · 28d</span></div>
+            <div class="hero-proof-chip"><strong>DM GHOST</strong><span>Price after fit</span></div>
+          </div>
           <p class="final-lead">
             Want pricing? Ask in the same message. Fit first — if it’s not a match, I’ll say so.
           </p>
@@ -5101,7 +5341,7 @@
         </div>
       </div>
     </section>
-  </main>
+ </main>
 
   <div class="sticky-apply" id="stickyApply" role="region" aria-label="Send a DM" hidden>
     <div class="sa-copy"><strong>GHOST</strong> or <strong>ADVISE</strong> · pricing after fit</div>
@@ -5265,7 +5505,10 @@
       }
       bindRail('testimonialRail', 'testimonialRailPrev', 'testimonialRailNext');
       bindRail('liResultsRail', 'liResultsPrev', 'liResultsNext');
-      bindRail('beforeRail', 'beforeRailPrev', 'beforeRailNext');
+      bindRail('liReceiptRail', 'liReceiptRailPrev', 'liReceiptRailNext');
+      bindRail('liEngageRail', 'liEngageRailPrev', 'liEngageRailNext');
+      bindRail('xReceiptRail', 'xReceiptRailPrev', 'xReceiptRailNext');
+      bindRail('xEngageRail', 'xEngageRailPrev', 'xEngageRailNext');
     })();
 
     (function () {
