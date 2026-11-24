@@ -8,6 +8,14 @@
   <meta property="og:title" content="Hydro-Emploi Congo" />
   <meta property="og:description" content="Global in vocation, Congolese by roots, African at heart. A trusted bridge for partnerships and talent." />
   <meta property="og:type" content="website" />
+  <script>
+    (function () {
+      var p = location.pathname;
+      var base = p.indexOf("/hydro-emploi-congo") !== -1 ? "/hydro-emploi-congo/" : (p.replace(/\/[^/]*$/, "/") || "/");
+      if (base.slice(-1) !== "/") base += "/";
+      document.write('<base href="' + base + '">');
+    })();
+  </script>
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
