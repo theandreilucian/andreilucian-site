@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hydro-Emploi Congo — Bridge between Congo, Africa and the world</title>
+  <meta name="description" content="Hydro-Emploi Congo connects African and international talents with global opportunities in Energy, Health, Tech, Data, AI, Pharma, Hospitality & Tourism, and Life Sciences." />
+  <meta property="og:title" content="Hydro-Emploi Congo" />
+  <meta property="og:description" content="Global in vocation, Congolese by roots, African at heart. A trusted bridge for partnerships and talent." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #050d18;
+      --navy: #0a182c;
+      --blue: #2f6fed;
+      --blue-hot: #4d86ff;
+      --blue-soft: #9fc2ff;
+      --mist: #e8f0ff;
+      --paper: #f4f7fb;
+      --paper-2: #ebf1f8;
+      --line: rgba(130, 155, 190, 0.28);
+      --muted: #7a8fa8;
+      --text: #121f33;
+      --soft: #52657e;
+      --white: #fff;
+      --display: "Syne", system-ui, sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+      --body: "Manrope", system-ui, sans-serif;
+      --max: 1200px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      color: var(--text);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: 0; background: none; cursor: pointer; color: inherit; }
+    ::selection { background: rgba(47, 111, 237, 0.25); color: var(--ink); }
+
+    .wrap { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    /* NAV */
+    .nav {
+      position: fixed; inset: 0 0 auto; z-index: 100;
+      padding: 1.25rem 0;
+      transition: 0.45s var(--ease);
+    }
+    .nav.scrolled {
+      padding: 0.7rem 0;
+      background: rgba(5, 13, 24, 0.82);
+      backdrop-filter: blur(20px) saturate(1.35);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.85rem; color: var(--white); }
+    .brand img {
+      width: 44px; height: 44px; border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .brand-txt {
+      font-family: var(--display); font-weight: 700; font-size: 1rem;
+      letter-spacing: -0.03em; line-height: 1.1;
+    }
+    .brand-txt small {
+      display: block; margin-top: 0.18rem;
+      font-family: var(--body); font-weight: 500; font-size: 0.66rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-soft);
+    }
+    .nav-links {
+      display: none; align-items: center; gap: 0.1rem;
+      padding: 0.28rem; border-radius: 999px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-links a {
+      padding: 0.58rem 0.95rem; border-radius: 999px;
+      color: rgba(255,255,255,0.7); font-size: 0.84rem; font-weight: 560;
+      transition: 0.25s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.78rem 1.2rem; border-radius: 999px;
+      background: linear-gradient(180deg, #5a90ff, var(--blue));
+      color: #fff; font-weight: 650; font-size: 0.86rem;
+      box-shadow: 0 12px 32px rgba(47,111,237,0.4);
+      transition: 0.3s var(--ease);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(47,111,237,0.5); }
+    .burger {
+      width: 44px; height: 44px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      display: grid; place-items: center; color: #fff;
+      background: rgba(255,255,255,0.04);
+    }
+    .burger i, .burger i::before, .burger i::after {
+      display: block; width: 16px; height: 1.5px; background: currentColor; position: relative; border-radius: 2px;
+    }
+    .burger i::before, .burger i::after { content: ""; position: absolute; left: 0; }
+    .burger i::before { top: -5px; } .burger i::after { top: 5px; }
+
+    .drawer {
+      position: fixed; inset: 0; z-index: 120; display: none;
+      flex-direction: column; gap: 0.2rem;
+      padding: 6.5rem 1.5rem 2rem;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(47,111,237,0.28), transparent 45%),
+        rgba(5,13,24,0.98);
+    }
+    .drawer.open { display: flex; }
+    .drawer a {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.7rem, 7vw, 2.4rem);
+      letter-spacing: -0.045em; color: #fff;
+      padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .drawer-x {
+      position: absolute; top: 1.15rem; right: 1.25rem;
+      width: 44px; height: 44px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14); color: #fff; font-size: 1.4rem;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100svh;
+      display: grid; align-items: end;
+      color: #fff; overflow: hidden; isolation: isolate;
+    }
+    .hero-bg {
+      position: absolute; inset: -4%; z-index: -3;
+      background: url("hero-premium.jpg") center / cover no-repeat;
+      transform: scale(1.05);
+      will-change: transform;
+    }
+    .hero-shade {
+      position: absolute; inset: 0; z-index: -2;
+      background:
+        linear-gradient(105deg, rgba(5,13,24,0.94) 0%, rgba(5,13,24,0.78) 36%, rgba(5,13,24,0.35) 62%, rgba(5,13,24,0.72) 100%),
+        linear-gradient(180deg, rgba(5,13,24,0.15) 0%, rgba(5,13,24,0.1) 45%, rgba(5,13,24,0.92) 100%),
+        radial-gradient(ellipse 50% 40% at 82% 22%, rgba(47,111,237,0.38), transparent 70%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0; z-index: -1; opacity: 0.35; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    .hero-orb {
+      position: absolute; right: -8%; top: 12%; z-index: -1;
+      width: min(52vw, 560px); height: min(52vw, 560px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,134,255,0.22), transparent 68%);
+      filter: blur(8px);
+      animation: orbFloat 10s ease-in-out infinite alternate;
+    }
+    @keyframes orbFloat {
+      from { transform: translate(0,0) scale(1); }
+      to { transform: translate(-4%, 6%) scale(1.08); }
+    }
+
+    .hero-copy {
+      position: relative;
+      padding: clamp(6.5rem, 11vh, 8.5rem) 0 clamp(3.5rem, 6vh, 5rem);
+      max-width: 46rem;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      margin-bottom: 1rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-soft);
+      opacity: 0; animation: up 1s var(--ease) 0.05s forwards;
+    }
+    .hero-kicker::before {
+      content: ""; width: 2rem; height: 1px; background: currentColor; opacity: 0.7;
+    }
+    .hero-brand {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2.55rem, 6.8vw, 4.6rem);
+      letter-spacing: -0.055em; line-height: 0.92;
+      margin-bottom: 1.05rem;
+      opacity: 0; animation: up 1.05s var(--ease) 0.15s forwards;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400; font-style: italic;
+      font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+      letter-spacing: -0.02em; line-height: 1.18;
+      max-width: 18ch; color: #f0f5ff;
+      margin-bottom: 0.95rem;
+      opacity: 0; animation: up 1.05s var(--ease) 0.3s forwards;
+    }
+    .hero-lead {
+      font-size: clamp(0.98rem, 1.7vw, 1.12rem); font-weight: 450;
+      color: rgba(230,238,250,0.78); max-width: 36ch;
+      margin-bottom: 1.85rem;
+      opacity: 0; animation: up 1.05s var(--ease) 0.42s forwards;
+    }
+    .cta-row {
+      display: flex; flex-wrap: wrap; gap: 0.85rem;
+      opacity: 0; animation: up 1.05s var(--ease) 0.55s forwards;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      min-height: 3.25rem; padding: 0.85rem 1.45rem; border-radius: 999px;
+      font-weight: 650; font-size: 0.95rem; letter-spacing: -0.01em;
+      transition: 0.3s var(--ease);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn svg { width: 17px; height: 17px; }
+    .btn-main {
+      background: linear-gradient(180deg, #5e94ff, var(--blue));
+      color: #fff; box-shadow: 0 16px 40px rgba(47,111,237,0.42);
+    }
+    .btn-main:hover { box-shadow: 0 20px 48px rgba(47,111,237,0.55); filter: brightness(1.05); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px); color: #fff;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.12); }
+
+    .scroll-cue {
+      position: absolute;
+      right: max(1.25rem, calc((100vw - var(--max)) / 2));
+      bottom: 2.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.7rem; font-weight: 650; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(232,239,250,0.5);
+      opacity: 0; animation: up 1s var(--ease) 1s forwards;
+    }
+    .scroll-cue b {
+      display: block; width: 1px; height: 48px;
+      background: linear-gradient(#fff, transparent);
+      animation: linePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes linePulse {
+      0%,100% { opacity: 0.3; transform: scaleY(0.8); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTIONS SHARED */
+    section { position: relative; padding: clamp(5.5rem, 11vw, 8rem) 0; }
+    .label {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1.15rem;
+    }
+    .label::before { content: ""; width: 1.6rem; height: 1px; background: currentColor; opacity: 0.75; }
+    .title {
+      font-family: var(--display); font-weight: 750;
+      font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+      letter-spacing: -0.05em; line-height: 1.02;
+      color: var(--ink); margin-bottom: 1.2rem; max-width: 11ch;
+    }
+    .copy {
+      color: var(--soft); font-size: 1.08rem; line-height: 1.75; max-width: 38rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background:
+        radial-gradient(ellipse 55% 45% at 100% 0%, rgba(47,111,237,0.09), transparent 60%),
+        linear-gradient(180deg, #f8fbff, var(--paper));
+    }
+    .about-grid { display: grid; gap: 2.75rem; }
+    .about-grid .copy + .copy { margin-top: 1.1rem; }
+    .pull {
+      margin-top: 2.25rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--line);
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+      color: var(--navy); letter-spacing: -0.015em; max-width: 22ch; line-height: 1.25;
+    }
+
+    /* VISUAL BAND */
+    .vista {
+      position: relative; min-height: clamp(22rem, 48vw, 34rem);
+      display: grid; align-items: end; overflow: hidden;
+      padding: 0;
+    }
+    .vista-img {
+      position: absolute; inset: 0;
+      background: url("about-visual.jpg") center / cover no-repeat;
+      transform: scale(1.04);
+    }
+    .vista-shade {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,13,24,0.15), rgba(5,13,24,0.78)),
+        linear-gradient(90deg, rgba(5,13,24,0.55), transparent 55%);
+    }
+    .vista-copy {
+      position: relative; z-index: 1;
+      padding: 4rem 0;
+      color: #fff;
+      max-width: 18ch;
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      letter-spacing: -0.02em; line-height: 1.15;
+    }
+
+    /* MISSION */
+    .mission {
+      background: var(--ink); color: #fff; overflow: hidden;
+    }
+    .mission::before {
+      content: ""; position: absolute; width: 48rem; height: 48rem;
+      right: -16rem; top: -20rem;
+      background: radial-gradient(circle, rgba(47,111,237,0.3), transparent 65%);
+      pointer-events: none;
+    }
+    .mission .label { color: var(--blue-soft); }
+    .mission .title { color: #fff; max-width: 13ch; }
+    .mission-grid { display: grid; gap: 3rem; position: relative; z-index: 1; }
+    .route {
+      margin-top: 1.35rem;
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.4rem; color: var(--mist);
+    }
+    .stack { display: grid; gap: 0; }
+    .block {
+      padding: 1.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .block:first-child { padding-top: 0; }
+    .block:last-child { border-bottom: 0; padding-bottom: 0; }
+    .block h3 {
+      font-family: var(--display); font-size: 1rem;
+      letter-spacing: -0.02em; color: var(--blue-soft); margin-bottom: 0.7rem;
+    }
+    .block p {
+      color: rgba(230,238,250,0.78); font-size: 1.05rem; line-height: 1.75; max-width: 36ch;
+    }
+
+    /* SERVICES */
+    .services { background: #fff; }
+    .services-head { max-width: 40rem; }
+    .sectors {
+      list-style: none; margin-top: 3.25rem;
+      display: grid; border-top: 1px solid #d7e2f0;
+    }
+    .sectors li {
+      display: grid; grid-template-columns: 3.4rem 1fr auto;
+      align-items: center; gap: 1rem;
+      padding: 1.4rem 0; border-bottom: 1px solid #d7e2f0;
+      font-family: var(--display); font-weight: 750;
+      font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+      letter-spacing: -0.04em; color: var(--ink);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), padding-left 0.35s var(--ease);
+    }
+    .sectors li.in { opacity: 1; transform: none; }
+    .sectors li:hover { padding-left: 0.4rem; }
+    .sectors .n {
+      font-family: var(--body); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--blue);
+    }
+    .sectors .line {
+      width: 28px; height: 1px; background: #b8c8dc;
+      transition: 0.35s var(--ease);
+    }
+    .sectors li:hover .line { width: 52px; background: var(--blue); }
+
+    /* PARTNERS */
+    .partners {
+      background:
+        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(47,111,237,0.08), transparent 55%),
+        var(--paper-2);
+    }
+    .partners-list {
+      list-style: none; margin-top: 3.25rem;
+      display: grid; border-top: 1px solid #c7d6e8;
+    }
+    .partners-list li { border-bottom: 1px solid #c7d6e8; }
+    .partners-list a,
+    .partners-list .row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+      padding: 1.45rem 0;
+      font-family: var(--display); font-weight: 750;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      letter-spacing: -0.045em; color: var(--ink);
+      transition: 0.35s var(--ease);
+    }
+    .partners-list a:hover { color: var(--blue); transform: translateX(8px); }
+    .partners-list small {
+      font-family: var(--body); font-weight: 550; font-size: 0.84rem;
+      letter-spacing: 0; color: var(--muted); white-space: nowrap;
+    }
+
+    /* RESOURCES */
+    .resources { background: #fff; }
+    .res-links {
+      margin-top: 2.5rem; max-width: 40rem;
+      border-top: 1px solid #d7e2f0;
+    }
+    .res-links a {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1.3rem 0; border-bottom: 1px solid #d7e2f0;
+      font-weight: 650; color: var(--ink);
+      transition: 0.3s var(--ease);
+    }
+    .res-links a:hover { color: var(--blue); padding-left: 0.45rem; }
+    .res-links span { color: var(--blue); font-size: 1.15rem; }
+    .resources .copy { margin-top: 0.25rem; }
+
+    /* CONTACT */
+    .contact {
+      background:
+        radial-gradient(ellipse 70% 55% at 85% 100%, rgba(47,111,237,0.32), transparent 55%),
+        linear-gradient(155deg, var(--navy), var(--ink));
+      color: #fff; overflow: hidden;
+    }
+    .contact::before {
+      content: ""; position: absolute; inset: 0; opacity: 0.45; pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    .contact .wrap { position: relative; z-index: 1; }
+    .contact .label { color: var(--blue-soft); }
+    .contact .title { color: #fff; max-width: 11ch; }
+    .contact-lead {
+      color: rgba(230,238,250,0.76); font-size: 1.12rem;
+      max-width: 32ch; margin-bottom: 2.4rem;
+    }
+    .person { margin-bottom: 2rem; }
+    .person strong {
+      display: block; font-family: var(--display);
+      font-size: 1.4rem; letter-spacing: -0.03em; margin-bottom: 0.25rem;
+    }
+    .person span { color: var(--muted); font-size: 0.95rem; }
+    .details {
+      margin-top: 2.1rem; display: grid; gap: 0.55rem;
+      color: rgba(230,238,250,0.7); font-size: 0.98rem;
+    }
+    .details a:hover { color: var(--mist); }
+
+    /* FOOTER */
+    footer {
+      background: #030910; color: rgba(230,238,250,0.55);
+      padding: 2.3rem 0 2.6rem; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .foot {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 1.2rem;
+    }
+    .foot-brand {
+      display: flex; align-items: center; gap: 0.75rem; color: #fff;
+      font-family: var(--display); font-weight: 700; letter-spacing: -0.02em;
+    }
+    .foot-brand img { width: 34px; height: 34px; border-radius: 10px; }
+    .socials { display: flex; gap: 0.55rem; }
+    .socials a {
+      width: 40px; height: 40px; display: grid; place-items: center;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(230,238,250,0.7); transition: 0.25s;
+    }
+    .socials a:hover {
+      color: #fff; border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.05); transform: translateY(-2px);
+    }
+    .socials svg { width: 15px; height: 15px; }
+    .copy-s {
+      width: 100%; margin-top: 0.2rem;
+      font-size: 0.82rem; color: rgba(230,238,250,0.35);
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.95s var(--ease), transform 0.95s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (min-width: 860px) {
+      .nav-links { display: flex; }
+      .burger { display: none; }
+      .about-grid {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 5.5rem; align-items: end;
+      }
+      .mission-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 5.5rem; align-items: start;
+      }
+      .sectors, .partners-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 3.75rem;
+      }
+    }
+    @media (max-width: 680px) {
+      .nav-cta, .scroll-cue { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .sectors li, .hero-kicker, .hero-brand, .hero h1, .hero-lead, .cta-row, .scroll-cue {
+        opacity: 1; transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Hydro-Emploi Congo home">
+        <img src="logo.svg" width="44" height="44" alt="" />
+        <div class="brand-txt">Hydro-Emploi Congo<small>Talent bridge</small></div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#mission">Mission</a>
+        <a href="#services">Services</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="https://wa.me/242066653697" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <button class="burger" id="menuOpen" aria-label="Open menu"><i></i></button>
+    </div>
+  </header>
+
+  <div class="drawer" id="drawer" hidden>
+    <button class="drawer-x" id="menuClose" aria-label="Close menu">×</button>
+    <a href="#about">About</a>
+    <a href="#mission">Mission</a>
+    <a href="#services">Services</a>
+    <a href="#partners">Partners</a>
+    <a href="#resources">Resources</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-main" style="margin-top:1.5rem;width:fit-content" href="https://wa.me/242066653697" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+
+  <main id="top">
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-orb" aria-hidden="true"></div>
+      <div class="wrap hero-copy">
+        <p class="hero-kicker">Congo · Africa · World</p>
+        <p class="hero-brand">Hydro-Emploi Congo</p>
+        <h1>Global in vocation, Congolese by roots, African at heart.</h1>
+        <p class="hero-lead">A trusted bridge between Congo, Africa and the world — connecting talent with international opportunity.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="https://wa.me/242066653697" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.06 0C5.5 0 .16 5.33.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.3-1.65a11.9 11.9 0 0 0 5.75 1.46h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.41ZM12.06 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.44 4.43-9.87 9.9-9.87 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.44-4.43 9.86-9.88 9.86Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.56-.35Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/geraldin-djembo-2136751b7" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22 0H2C.9 0 0 .9 0 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2Z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><b></b> Scroll</div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <p class="label">About</p>
+          <h2 class="title">Serious. Credible. International.</h2>
+        </div>
+        <div class="reveal">
+          <p class="copy">Hydro-Emploi Congo is building a professional bridge between Congo, Africa and global partners. We help organizations access African and international talent — and help talent reach opportunities that match their ambition.</p>
+          <p class="copy">Our posture is clear: partnership-ready, internationally oriented, and rooted in Congolese identity. We exist to make talent mobility and collaboration simpler, more credible, and more human.</p>
+          <p class="pull">Ready for institutions. Built for ambitious people.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="vista" aria-label="Visual">
+      <div class="vista-img" id="vistaImg" aria-hidden="true"></div>
+      <div class="vista-shade" aria-hidden="true"></div>
+      <div class="wrap">
+        <p class="vista-copy reveal">A trusted bridge between Congo, Africa and the world.</p>
+      </div>
+    </section>
+
+    <section class="mission" id="mission">
+      <div class="wrap mission-grid">
+        <div class="reveal">
+          <p class="label">Mission &amp; Vision</p>
+          <h2 class="title">Connecting talent with global opportunity.</h2>
+          <p class="route">Congo → Africa → the world.</p>
+        </div>
+        <div class="stack reveal">
+          <div class="block">
+            <h3>Mission</h3>
+            <p>Connecting African and international talents with global opportunities in Energy, Health, Tech, Data, AI, Pharma, Hospitality &amp; Tourism, and Life Sciences.</p>
+          </div>
+          <div class="block">
+            <h3>Vision</h3>
+            <p>To be recognized as a trusted bridge for partnerships and talent — serious enough for institutions, agile enough for ambitious people and organizations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="services-head reveal">
+          <p class="label">Services &amp; Activities</p>
+          <h2 class="title">Where we create value.</h2>
+          <p class="copy">Focused sectors where Hydro-Emploi Congo connects people, projects and partners.</p>
+        </div>
+        <ul class="sectors">
+          <li><span class="n">01</span>Energy<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">02</span>Health<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">03</span>Tech<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">04</span>Data<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">05</span>AI<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">06</span>Pharma<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">07</span>Hospitality &amp; Tourism<span class="line" aria-hidden="true"></span></li>
+          <li><span class="n">08</span>Life Sciences<span class="line" aria-hidden="true"></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="partners" id="partners">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="label">Partners</p>
+          <h2 class="title">Organizations we engage with.</h2>
+          <p class="copy">Names first. Logos and partnership details can be added as materials arrive.</p>
+        </div>
+        <ul class="partners-list reveal">
+          <li><a href="https://kjoller.com/" target="_blank" rel="noopener noreferrer">Kjoller<small>Visit site →</small></a></li>
+          <li><div class="row">Antal International</div></li>
+          <li><div class="row">Staff Finder 360</div></li>
+          <li><div class="row">Saudi Tourism Authority</div></li>
+          <li><div class="row">Trillium<small>Canada</small></div></li>
+          <li><div class="row">Synergya<small>Life Sciences</small></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="resources" id="resources">
+      <div class="wrap reveal">
+        <p class="label">Resources</p>
+        <h2 class="title">Documents &amp; links.</h2>
+        <p class="copy">Certificates, partnership decks and additional materials will appear here as they are finalized.</p>
+        <div class="res-links">
+          <a href="https://kjoller.com/" target="_blank" rel="noopener noreferrer">Kjoller — capital &amp; know-how<span>→</span></a>
+          <a href="https://wa.me/242066653697?text=Hello%20G%C3%A9raldin%2C%20I%20would%20like%20to%20request%20Hydro-Emploi%20Congo%20materials." target="_blank" rel="noopener noreferrer">Request partnership materials<span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap reveal">
+        <p class="label">Contact</p>
+        <h2 class="title">Let’s build the partnership.</h2>
+        <p class="contact-lead">Reach Géraldin directly. LinkedIn and WhatsApp are the main doors.</p>
+        <div class="person">
+          <strong>Géraldin DJEMBO</strong>
+          <span>CEO &amp; Founder — Hydro-Emploi Congo</span>
+        </div>
+        <div class="cta-row" style="opacity:1;animation:none">
+          <a class="btn btn-main" href="https://wa.me/242066653697" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/geraldin-djembo-2136751b7" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="details">
+          <div>WhatsApp: <a href="https://wa.me/242066653697">(+242) 066 653 697</a></div>
+          <div>Direct: <a href="tel:+242055325096">(+242) 055 325 096</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div class="foot-brand">
+        <img src="logo.svg" width="34" height="34" alt="" />
+        Hydro-Emploi Congo
+      </div>
+      <div class="socials" aria-label="Social media">
+        <a href="https://www.facebook.com/geraldin.clyde" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.03H7.9v-2.9h2.4V9.86c0-2.37 1.4-3.68 3.56-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.54.73-1.54 1.48v1.78h2.62l-.42 2.9h-2.2V22c4.78-.75 8.44-4.91 8.44-9.93Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/geraldinclyde" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Z"/></svg>
+        </a>
+        <a href="https://www.threads.com/@geraldinclyde" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.2 11.3c-.1-2.2-1.3-3.9-3.7-4-1.7-.1-3.1.7-3.7 2.1l1.5.7c.4-.9 1.2-1.3 2.2-1.3 1.4.1 2.1 1 2.2 2.4-.9-.5-1.9-.6-3-.4-1.9.3-3.2 1.5-3.1 3.4.1 1.7 1.4 2.9 3.2 2.9 1.3 0 2.3-.5 3-1.5.5.7 1.1 1.1 2 1.3l.5-1.5c-.5-.1-.8-.3-1.1-.7.1-.4.1-.9 0-1.4Zm-3.4 2.8c-1 0-1.6-.5-1.6-1.3 0-1 .8-1.6 2.2-1.8.7-.1 1.4 0 2 .3-.2 1.7-1.3 2.8-2.6 2.8Z"/><path d="M12.1 1.5C6.3 1.5 2 5.8 2 12s4.3 10.5 10.1 10.5S22.2 18.2 22.2 12 17.9 1.5 12.1 1.5Zm0 19.1c-4.9 0-8.2-3.4-8.2-8.6s3.3-8.6 8.2-8.6 8.2 3.4 8.2 8.6-3.3 8.6-8.2 8.6Z"/></svg>
+        </a>
+      </div>
+      <p class="copy-s">© <span id="year"></span> Hydro-Emploi Congo. Global in vocation, Congolese by roots, African at heart.</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const drawer = document.getElementById("drawer");
+    const heroBg = document.getElementById("heroBg");
+    const vistaImg = document.getElementById("vistaImg");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      nav.classList.toggle("scrolled", y > 20);
+      if (heroBg) heroBg.style.transform = `scale(1.05) translate3d(0, ${y * 0.18}px, 0)`;
+      if (vistaImg) {
+        const rect = vistaImg.parentElement.getBoundingClientRect();
+        const progress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
+        vistaImg.style.transform = `scale(1.08) translate3d(0, ${(progress - 0.5) * 40}px, 0)`;
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const open = () => { drawer.hidden = false; drawer.classList.add("open"); document.body.style.overflow = "hidden"; };
+    const close = () => { drawer.classList.remove("open"); drawer.hidden = true; document.body.style.overflow = ""; };
+    document.getElementById("menuOpen").addEventListener("click", open);
+    document.getElementById("menuClose").addEventListener("click", close);
+    drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+    document.querySelectorAll(".reveal, .sectors li").forEach((el, i) => {
+      if (el.matches(".sectors li")) el.style.transitionDelay = `${(i % 8) * 0.05}s`;
+      io.observe(el);
+    });
+  </script>
+</body>
+</html>

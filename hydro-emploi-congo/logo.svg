@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none" role="img" aria-label="Hydro-Emploi Congo">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="72" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071525"/>
+      <stop offset="1" stop-color="#143A66"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="14" y1="28" x2="66" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8EC5FF"/>
+      <stop offset="1" stop-color="#2F6FED"/>
+    </linearGradient>
+  </defs>
+  <rect width="80" height="80" rx="22" fill="url(#bg)"/>
+  <path d="M18 52c10-18 20-18 30 0 5 9 10 9 15 0" stroke="url(#wave)" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M24 37c7-12 14-12 21 0" stroke="#D7E8FF" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="40" cy="26" r="6.2" fill="#F7FAFF"/>
+  <circle cx="40" cy="26" r="2.5" fill="#2F6FED"/>
+</svg>
