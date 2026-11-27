@@ -408,34 +408,52 @@
 
     .proof-vault {
       margin-top: 28px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(94,234,212,0.35);
       border-radius: 18px;
-      background: rgba(255,255,255,0.02);
+      background: linear-gradient(180deg, rgba(94,234,212,0.1), rgba(255,255,255,0.03));
       overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(94,234,212,0.08), 0 12px 40px rgba(0,0,0,0.25);
     }
     .proof-vault > summary {
       list-style: none;
       cursor: pointer;
-      padding: 18px 20px;
-      font-size: 15px;
-      font-weight: 650;
-      color: #f0f0f2;
+      padding: 18px 18px 18px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
+      transition: background .18s ease;
+    }
+    .proof-vault > summary:hover {
+      background: rgba(94,234,212,0.12);
     }
     .proof-vault > summary::-webkit-details-marker { display: none; }
     .proof-vault > summary::after {
-      content: "+";
-      color: var(--accent);
-      font-size: 20px;
-      font-weight: 700;
+      content: "Open +";
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #04110f;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
-    .proof-vault[open] > summary::after { content: "–"; }
+    .proof-vault[open] > summary::after {
+      content: "Close –";
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
     .proof-vault > summary span {
-      color: var(--muted);
+      color: rgba(232,238,239,0.78);
       font-weight: 500;
       font-size: 13px;
     }
@@ -4208,7 +4226,7 @@
 
 
         <details class="proof-vault" id="proofVaultMid">
-          <summary>Full LinkedIn + X receipt wall <span>optional · open if you want every screenshot</span></summary>
+          <summary>See full LinkedIn + X proof <span>Tap to open every screenshot</span></summary>
           <div class="proof-vault-body">
         <div class="own-case-label" style="margin-top:12px;">LinkedIn receipts · biggest numbers</div>
         <p class="block-sub" style="margin:0 0 12px; opacity:.72;">Biggest analytics first. Client wins close the rail — use the arrows to check all.</p>
@@ -4536,7 +4554,7 @@
           <p>Keep going for FAQ — or open the vault for every LinkedIn + X screenshot.</p>
         </div>
         <details class="proof-vault" id="proofVaultClose">
-          <summary>Open inbox + receipt vault <span>LinkedIn + X · click to expand</span></summary>
+          <summary>See inbox + full receipt wall <span>Tap to open LinkedIn + X screenshots</span></summary>
           <div class="proof-vault-body">
         <div class="proof-block proof-block--wall">
           <div class="shot-rail-wrap">
