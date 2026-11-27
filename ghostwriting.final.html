@@ -238,16 +238,30 @@
     .hero-lead {
       font-size: clamp(16px, 2vw, 18px);
       color: var(--muted);
-      max-width: 28em;
-      margin-bottom: 28px;
+      max-width: 30em;
+      margin-bottom: 18px;
       line-height: 1.65;
     }
-    .hero-copy .btn-row { margin-bottom: 4px; }
+    .hero-lead strong { color: #eef2f2; font-weight: 650; }
+    .hero-copy .hero-proof-row {
+      margin: 0 0 22px;
+    }
+    .hero-copy .btn-row {
+      margin-bottom: 8px;
+      gap: 10px;
+    }
     .hero-copy .btn-li {
       padding: 16px 26px;
       font-size: 15px;
       box-shadow: 0 12px 32px rgba(10, 102, 194, 0.35);
     }
+    .hero-cta-note {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .hero-cta-note strong { color: #d7ece8; font-weight: 650; }
     .hero-portrait-wrap {
       max-width: 440px;
       margin-left: auto;
@@ -3618,33 +3632,34 @@
           </h1>
           <p class="hero-subline">You run the company. I write LinkedIn.</p>
           <p class="hero-lead">
-            Done-for-you ghostwriting or 1:1 LinkedIn coaching.
-            Your voice. Inbound without living on the feed.
+            <strong>I write. You approve. Nothing ships without you.</strong>
+            Get found, get trusted, get booked — without living on the feed.
+            +35 founders. Price after fit.
           </p>
-          <div class="btn-row">
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE</a>
-          </div>
-          <p class="hero-cta-note" style="margin:10px 0 0;font-size:13px;color:var(--muted);">Opens LinkedIn · say the word · price after fit</p>
           <div class="hero-proof-row" aria-label="Quick proof">
             <div class="hero-proof-chip">
               <strong>433K</strong>
-              <span>Impressions · 28 days</span>
+              <span>Impressions · 28d</span>
             </div>
             <div class="hero-proof-chip">
-              <strong>210K</strong>
-              <span>Impressions · 7 days</span>
+              <strong>129K</strong>
+              <span>One post peak</span>
             </div>
             <div class="hero-proof-chip">
               <strong>92%</strong>
-              <span>Out-of-network reach</span>
+              <span>Out-of-network</span>
             </div>
           </div>
+          <div class="btn-row">
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">I write for you · DM GHOST</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">1:1 coaching · DM ADVISE</a>
+          </div>
+          <p class="hero-cta-note">Opens LinkedIn · <strong>no pitch deck</strong> · fit first, then price</p>
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
             <img class="portrait" src="assets/images/andrei-hero-headshot.jpg" alt="Andrei Lucian" width="1080" height="1080" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
-            <span class="hero-portrait-tag">Andrei Lucian · Ghostwriter</span>
+            <span class="hero-portrait-tag">Andrei · Ghostwriter · +35 clients</span>
           </div>
         </aside>
       </div>
