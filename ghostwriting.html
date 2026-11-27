@@ -3045,6 +3045,7 @@
       gap: 14px;
       counter-reset: path;
       width: 100%;
+      position: relative;
     }
     .start-path .start-step {
       width: 100%;
@@ -3055,37 +3056,114 @@
       .start-path {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+        gap: 18px;
+      }
+      .start-path::before {
+        content: "";
+        position: absolute;
+        top: 42px;
+        left: 12%;
+        right: 12%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(94,234,212,0.35), transparent);
+        pointer-events: none;
+        z-index: 0;
       }
     }
     .start-step {
       position: relative;
-      padding: 26px 22px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
+      z-index: 1;
+      padding: 28px 24px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(94,234,212,0.18);
+      background:
+        radial-gradient(120% 80% at 0% 0%, rgba(94,234,212,0.12), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .18s ease, transform .18s ease;
+    }
+    .start-step:hover {
+      border-color: rgba(94,234,212,0.4);
+      transform: translateY(-2px);
+    }
+    .start-step.is-first {
+      border-color: rgba(10,102,194,0.45);
+      background:
+        radial-gradient(120% 80% at 0% 0%, rgba(10,102,194,0.22), transparent 55%),
+        linear-gradient(180deg, rgba(10,102,194,0.12), rgba(255,255,255,0.02));
     }
     .start-step::before {
       counter-increment: path;
       content: "0" counter(path);
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(94,234,212,0.35);
+      background: rgba(4,17,15,0.65);
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: 32px;
+      font-size: 20px;
       color: var(--accent);
-      margin-bottom: 10px;
       letter-spacing: -0.02em;
     }
-    .start-step h3 {
-      font-size: 18px;
+    .start-step .step-kicker {
+      font-size: 11px;
       font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(94,234,212,0.85);
       margin-bottom: 8px;
-      letter-spacing: -0.02em;
+    }
+    .start-step.is-first .step-kicker { color: #8ec4f0; }
+    .start-step h3 {
+      font-size: 22px;
+      font-weight: 750;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+      color: #fff;
     }
     .start-step p {
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 15px;
+      color: rgba(201,203,212,0.92);
       line-height: 1.55;
+      margin: 0;
+      flex: 1;
     }
+    .start-step .step-meta {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255,255,255,0.12);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 650;
+    }
+    .start-step.is-first .step-meta { color: #9fd0ff; }
+    .start-cta {
+      margin-top: 28px;
+      padding: 22px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(94,234,212,0.28);
+      background: linear-gradient(180deg, rgba(94,234,212,0.08), rgba(255,255,255,0.02));
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .start-cta p {
+      margin: 0;
+      max-width: 34em;
+      color: #e8eeef;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .start-cta p strong { color: #fff; }
+    .start-cta .btn-row { margin: 0; }
 
     .dm-lanes {
       display: grid;
@@ -4526,21 +4604,34 @@
         <div class="section-head center reveal">
           <span class="eyebrow">How to start</span>
           <h2 class="display">Three steps. No pitch deck.</h2>
-          <p>One message. Fit check. Price. Start. No pitch deck.</p>
+          <p>One LinkedIn message. Fit check. Price. Start.</p>
         </div>
         <div class="start-path reveal">
-          <article class="start-step">
-            <h3>1 · DM</h3>
-            <p>Send <strong>GHOST</strong> or <strong>ADVISE</strong>.</p>
+          <article class="start-step is-first">
+            <div class="step-kicker">Step one</div>
+            <h3>Send the DM</h3>
+            <p>Write <strong>GHOST</strong> (I write) or <strong>ADVISE</strong> (you write, I direct). That’s the whole application.</p>
+            <div class="step-meta">Opens LinkedIn · 30 seconds</div>
           </article>
           <article class="start-step">
-            <h3>2 · Fit</h3>
-            <p>Channel, goal, timeline. If it’s not right, I’ll say so.</p>
+            <div class="step-kicker">Step two</div>
+            <h3>Quick fit check</h3>
+            <p>Channel, offer, timeline. LinkedIn, X, or both. If it’s not a match, I’ll say so.</p>
+            <div class="step-meta">No pitch deck · no pressure</div>
           </article>
           <article class="start-step">
-            <h3>3 · Price</h3>
-            <p>Ask for pricing in the same DM. Numbers after fit. Then we start.</p>
+            <div class="step-kicker">Step three</div>
+            <h3>Get the number</h3>
+            <p>Ask for pricing in the same DM. Ghostwriting from <strong>$1K/mo</strong> after fit. Then we start.</p>
+            <div class="step-meta">Price after fit · month to month</div>
           </article>
+        </div>
+        <div class="start-cta reveal">
+          <p><strong>Ready?</strong> Most founders start with ghostwriting on LinkedIn + X.</p>
+          <div class="btn-row">
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE</a>
+          </div>
         </div>
       </div>
     </section>
