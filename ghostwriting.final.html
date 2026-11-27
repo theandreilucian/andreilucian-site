@@ -204,6 +204,30 @@
       max-width: 9.2em;
       line-height: 1.05;
     }
+    .hero h1.hero-hook {
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(42px, 7vw, 72px);
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+      max-width: 8.2em;
+      margin-bottom: 16px;
+    }
+    .hero-hook .hook-line { display: block; color: var(--text); }
+    .hero-hook .hook-accent {
+      display: block;
+      color: var(--accent);
+    }
+    .hero-subline {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-style: italic;
+      color: #b8f5e8;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 18px;
+      max-width: 18em;
+    }
     .hero h1 .brk {
       display: block;
       font-style: italic;
@@ -3586,7 +3610,13 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <div class="hero-niche">LinkedIn ghostwriting for B2B founders</div>
-          <h1 class="display">You run the company. <span class="brk">I write LinkedIn.</span></h1>
+          <h1 class="hero-hook">
+            <span class="hook-line">Your LinkedIn</span>
+            <span class="hook-line">should be</span>
+            <span class="hook-accent">booking</span>
+            <span class="hook-accent">you calls.</span>
+          </h1>
+          <p class="hero-subline">You run the company. I write LinkedIn.</p>
           <p class="hero-lead">
             Done-for-you ghostwriting or 1:1 LinkedIn coaching.
             Your voice. Inbound without living on the feed.
