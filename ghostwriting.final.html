@@ -405,6 +405,48 @@
       font-size: 13px;
       color: var(--muted);
     }
+
+    .proof-vault {
+      margin-top: 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+    }
+    .proof-vault > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 20px;
+      font-size: 15px;
+      font-weight: 650;
+      color: #f0f0f2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .proof-vault > summary::-webkit-details-marker { display: none; }
+    .proof-vault > summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .proof-vault[open] > summary::after { content: "–"; }
+    .proof-vault > summary span {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+    }
+    .proof-vault-body { padding: 0 16px 22px; }
+    .package .price-band {
+      margin: 10px 0 14px;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 650;
+    }
+
     .hero-niche {
       display: inline-flex;
       align-items: center;
@@ -3693,12 +3735,12 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="hero-niche">LinkedIn for B2B founders</div>
+          <div class="hero-niche">X + LinkedIn · for founders</div>
           <h1 class="hero-hook">
-            <span class="hook-line">LinkedIn that</span>
+            <span class="hook-line">A personal brand that</span>
             <span class="hook-accent-block">books you calls.</span>
           </h1>
-          <p class="hero-subline">You run the company. I write the posts.</p>
+          <p class="hero-subline">You run the company. I write X + LinkedIn.</p>
           <p class="hero-lead">Your voice. You approve every line. Then I publish.</p>
           <div class="hero-proof-row" aria-label="Quick proof">
             <div class="hero-proof-chip">
@@ -3718,7 +3760,7 @@
             <a class="hero-lane is-primary" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">
               <span class="lane-kicker">Most requested</span>
               <strong>Ghostwriting</strong>
-              <span class="lane-desc">I write your posts. You stay in the business.</span>
+              <span class="lane-desc">LinkedIn + X. I write. You stay in the business.</span>
               <span class="lane-cta">DM GHOST →</span>
             </a>
             <a class="hero-lane" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">
@@ -3728,7 +3770,7 @@
               <span class="lane-cta">DM ADVISE →</span>
             </a>
           </div>
-          <p class="hero-cta-note">One LinkedIn message · <strong>fit first</strong> · then price</p>
+          <p class="hero-cta-note">Ghostwriting from <strong>$1K/mo</strong> · fit first · then exact price</p>
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
@@ -3743,20 +3785,21 @@
     <section id="packages">
       <div class="wrap">
         <div class="section-head center reveal">
-          <span class="eyebrow">Two offers</span>
+          <span class="eyebrow">Two offers · X + LinkedIn</span>
           <h2 class="display">I write. Or I direct.</h2>
-          <p>Same standard. Different involvement. Pick a lane. DM the word. Price comes after fit.</p>
+          <p>Same standard. Different involvement. Most founders start with ghostwriting. Price after fit.</p>
         </div>
         <div class="packages reveal">
           <article class="package featured" id="pkg-ghost">
             <span class="pkg-tag">Most requested</span>
             <div class="platform">Done-for-you · Ghostwriting</div>
-            <h3 class="display pkg-line">I write LinkedIn. <em>You run the company.</em></h3>
-            <div class="promise">Positioning, weekly posts, inbound — without you living in the feed. <span>I write. You approve. Nothing ships without you.</span></div>
+            <h3 class="display pkg-line">I write. <em>You run the company.</em></h3>
+            <div class="promise">Positioning, weekly posts, inbound on <strong>LinkedIn + X</strong> — without you living in the feed. <span>I write. You approve. Nothing ships without you.</span></div>
+            <div class="price-band">From $1K/mo · price after fit</div>
             <div class="outcome-line">Best if you’re too busy building to own the content calendar.</div>
             <div class="badge-row">
-              <span>LinkedIn-first</span>
-              <span>X optional</span>
+              <span>LinkedIn</span>
+              <span>X</span>
               <span>35+ clients</span>
             </div>
             <ul>
@@ -4117,9 +4160,9 @@
     <section id="proof-mid">
       <div class="wrap">
         <div class="section-head center">
-          <span class="eyebrow">Proof · middle</span>
-          <h2 class="display">Client breakouts. Platform walls.</h2>
-          <p>Post spikes + LinkedIn/X receipts. Messages and the full wall close the page.</p>
+          <span class="eyebrow">Proof · LinkedIn + X</span>
+          <h2 class="display">Breakouts on both platforms.</h2>
+          <p>LinkedIn opens inbound. X compounds the brand. Same voice. Different doors.</p>
         </div>
 
         <div class="own-case-label" style="margin-top:36px;">Breakout posts</div>
@@ -4164,7 +4207,10 @@
 
 
 
-        <div class="own-case-label" style="margin-top:36px;">LinkedIn receipts · biggest numbers</div>
+        <details class="proof-vault" id="proofVaultMid">
+          <summary>Full LinkedIn + X receipt wall <span>optional · open if you want every screenshot</span></summary>
+          <div class="proof-vault-body">
+        <div class="own-case-label" style="margin-top:12px;">LinkedIn receipts · biggest numbers</div>
         <p class="block-sub" style="margin:0 0 12px; opacity:.72;">Biggest analytics first. Client wins close the rail — use the arrows to check all.</p>
         <div class="proof-block proof-block--wall">
           <div class="shot-rail-wrap">
@@ -4408,8 +4454,11 @@
           </div>
         </div>
 
+          </div>
+        </details>
+
 <div class="mid-cta reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:40px 0 8px;padding:22px 18px;border:1px solid rgba(94,234,212,0.22);border-radius:16px;background:rgba(255,255,255,0.03);">
-          <p style="margin:0;color:#e8eeef;font-size:14px;text-align:center;max-width:440px;">Ready for DFY ghostwriting — or 1:1 LinkedIn coaching?</p>
+          <p style="margin:0;color:#e8eeef;font-size:14px;text-align:center;max-width:440px;">Ready for DFY ghostwriting on LinkedIn + X?</p>
           <div class="btn-row" style="margin:0;">
             <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST</a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE</a>
@@ -4483,9 +4532,12 @@
       <div class="wrap">
         <div class="section-head center reveal">
           <span class="eyebrow">Proof · close</span>
-          <h2 class="display">Inbox screenshots. Then the wall.</h2>
-          <p>Messages, reviews, before → after, then the full receipt rail. Drag or arrows · click to enlarge.</p>
+          <h2 class="display">Messages + full wall.</h2>
+          <p>Keep going for FAQ — or open the vault for every LinkedIn + X screenshot.</p>
         </div>
+        <details class="proof-vault" id="proofVaultClose">
+          <summary>Open inbox + receipt vault <span>LinkedIn + X · click to expand</span></summary>
+          <div class="proof-vault-body">
         <div class="proof-block proof-block--wall">
           <div class="shot-rail-wrap">
           <div class="shot-rail" id="testimonialRail">
@@ -5317,6 +5369,8 @@
             </div>
           </div>
         </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -5456,11 +5510,11 @@
             <div class="hero-proof-chip"><strong>129K</strong><span>Single post peak</span></div>
           </div>
           <p class="final-lead">
-            Want pricing? Ask in the same message. Fit first — if it’s not a match, I’ll say so.
+            Ghostwriting from <strong>$1K/mo</strong> after fit. LinkedIn + X. Ask for pricing in the same DM.
           </p>
           <div class="dm-script reveal">
             <div class="dm-script-label">Copy this · paste in LinkedIn DM</div>
-            <p>“Hey Andrei — GHOST. Founder. Want LinkedIn done-for-you. What’s fit + pricing?”</p>
+            <p>“Hey Andrei — GHOST. Founder. Want LinkedIn + X done-for-you. What’s fit + pricing?”</p>
             <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">Open LinkedIn DM</a>
           </div>
           <div class="dm-lanes">
@@ -5487,7 +5541,7 @@
  </main>
 
   <div class="sticky-apply" id="stickyApply" role="region" aria-label="Send a DM" hidden>
-    <div class="sa-copy"><strong>433K · 28d</strong> · ready for your LinkedIn?</div>
+    <div class="sa-copy"><strong>DM GHOST</strong> · from $1K/mo · LinkedIn + X</div>
     <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST</a>
     <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE</a>
   </div>
