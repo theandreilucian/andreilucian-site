@@ -168,7 +168,7 @@
 
     /* Hero */
     .hero {
-      padding: 64px 0 40px;
+      padding: 72px 0 56px;
       position: relative;
       display: flex !important;
       flex-direction: column !important;
@@ -206,26 +206,30 @@
     }
     .hero h1.hero-hook {
       font-family: "DM Sans", system-ui, sans-serif;
-      font-weight: 800;
-      font-size: clamp(42px, 7vw, 72px);
-      letter-spacing: -0.045em;
-      line-height: 0.98;
-      max-width: 8.2em;
-      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: clamp(40px, 6.4vw, 64px);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      max-width: 9em;
+      margin-bottom: 14px;
     }
     .hero-hook .hook-line { display: block; color: var(--text); }
     .hero-hook .hook-accent {
+      display: inline;
+      color: var(--accent);
+    }
+    .hero-hook .hook-accent-block {
       display: block;
       color: var(--accent);
     }
     .hero-subline {
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(22px, 3vw, 30px);
+      font-size: clamp(20px, 2.6vw, 26px);
       font-style: italic;
-      color: #b8f5e8;
+      color: rgba(247,246,242,0.78);
       letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 0 0 18px;
+      line-height: 1.25;
+      margin: 0 0 16px;
       max-width: 18em;
     }
     .hero h1 .brk {
@@ -236,32 +240,36 @@
     }
     .hero h1 em { font-style: italic; color: var(--accent); }
     .hero-lead {
-      font-size: clamp(16px, 2vw, 18px);
+      font-size: 16px;
       color: var(--muted);
-      max-width: 30em;
-      margin-bottom: 18px;
-      line-height: 1.65;
+      max-width: 26em;
+      margin-bottom: 28px;
+      line-height: 1.55;
     }
-    .hero-lead strong { color: #eef2f2; font-weight: 650; }
+    .hero-lead strong { color: #f0f0f2; font-weight: 600; }
     .hero-copy .hero-proof-row {
-      margin: 0 0 22px;
+      margin: 0 0 28px;
     }
     .hero-copy .btn-row {
-      margin-bottom: 8px;
-      gap: 10px;
+      margin-bottom: 12px;
+      gap: 12px;
     }
     .hero-copy .btn-li {
-      padding: 16px 26px;
+      padding: 15px 28px;
       font-size: 15px;
-      box-shadow: 0 12px 32px rgba(10, 102, 194, 0.35);
+      box-shadow: none;
+    }
+    .hero-copy .btn-ghost {
+      border-color: rgba(255,255,255,0.18);
+      color: rgba(247,246,242,0.88);
     }
     .hero-cta-note {
       margin: 0;
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(154,154,164,0.92);
       line-height: 1.45;
     }
-    .hero-cta-note strong { color: #d7ece8; font-weight: 650; }
+    .hero-cta-note strong { color: rgba(247,246,242,0.72); font-weight: 600; }
     .hero-portrait-wrap {
       max-width: 440px;
       margin-left: auto;
@@ -340,28 +348,28 @@
       align-items: center;
       gap: 8px;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-weight: 650;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(94,234,212,0.28);
-      background: rgba(94,234,212,0.08);
+      color: rgba(94,234,212,0.88);
+      border: 1px solid rgba(94,234,212,0.16);
+      background: transparent;
       border-radius: 999px;
-      padding: 8px 12px;
-      margin-bottom: 16px;
+      padding: 7px 12px;
+      margin-bottom: 22px;
     }
     .hero-proof-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 22px;
-      max-width: 560px;
+      gap: 12px;
+      margin-top: 0;
+      max-width: 520px;
     }
     .hero-proof-chip {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      border-radius: 12px;
-      padding: 12px 12px 11px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: transparent;
+      border-radius: 14px;
+      padding: 14px 14px 12px;
     }
     .hero-proof-chip strong {
       display: block;
@@ -3623,43 +3631,39 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="hero-niche">LinkedIn ghostwriting for B2B founders</div>
+          <div class="hero-niche">For B2B founders</div>
           <h1 class="hero-hook">
-            <span class="hook-line">Your LinkedIn</span>
-            <span class="hook-line">should be</span>
-            <span class="hook-accent">booking</span>
-            <span class="hook-accent">you calls.</span>
+            <span class="hook-line">Your LinkedIn should be</span>
+            <span class="hook-accent-block">booking you calls.</span>
           </h1>
           <p class="hero-subline">You run the company. I write LinkedIn.</p>
           <p class="hero-lead">
-            <strong>I write. You approve. Nothing ships without you.</strong>
-            Get found, get trusted, get booked — without living on the feed.
-            +35 founders. Price after fit.
+            I write the posts. You approve. That’s it.
           </p>
           <div class="hero-proof-row" aria-label="Quick proof">
             <div class="hero-proof-chip">
               <strong>433K</strong>
-              <span>Impressions · 28d</span>
+              <span>Reach · 28 days</span>
             </div>
             <div class="hero-proof-chip">
               <strong>129K</strong>
-              <span>One post peak</span>
+              <span>Biggest post</span>
             </div>
             <div class="hero-proof-chip">
-              <strong>92%</strong>
-              <span>Out-of-network</span>
+              <strong>+35</strong>
+              <span>Clients helped</span>
             </div>
           </div>
           <div class="btn-row">
-            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">I write for you · DM GHOST</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">1:1 coaching · DM ADVISE</a>
+            <a class="btn btn-li" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM GHOST</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/messaging/compose/?recipient=theandreilucian" target="_blank" rel="noopener">DM ADVISE</a>
           </div>
-          <p class="hero-cta-note">Opens LinkedIn · <strong>no pitch deck</strong> · fit first, then price</p>
+          <p class="hero-cta-note">Ghostwriting or 1:1 coaching · <strong>one message</strong> · price after fit</p>
         </div>
         <aside class="hero-card" aria-label="Andrei Lucian">
           <div class="hero-portrait-wrap">
             <img class="portrait" src="assets/images/andrei-hero-headshot.jpg" alt="Andrei Lucian" width="1080" height="1080" onerror="this.src='assets/images/andrei-linkedin-headshot.png'">
-            <span class="hero-portrait-tag">Andrei · Ghostwriter · +35 clients</span>
+            <span class="hero-portrait-tag">Andrei Lucian</span>
           </div>
         </aside>
       </div>
